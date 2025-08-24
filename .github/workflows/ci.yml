@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: ["main", "dev"]
+  pull_request:
+    branches: ["main", "dev"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m venv .venv
+          . .venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Lint
+        run: |
+          . .venv/bin/activate
+          ruff check .
+      - name: Type check
+        run: |
+          . .venv/bin/activate
+          mypy --strict libs/ orchestrator/
+      - name: Test
+        run: |
+          . .venv/bin/activate
+          pytest -q
