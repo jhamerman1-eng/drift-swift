@@ -1,0 +1,7 @@
+hedge:
+  mode: stub   # stub | cex
+  urgency_threshold: 0.7
+  passive:
+    max_slippage_bps: 3
+  ioc:
+    max_slippage_bps: 8
