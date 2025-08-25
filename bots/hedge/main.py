@@ -1,0 +1,156 @@
+#!/usr/bin/env python3
+"""Hedge Bot.
+
+This module implements an asynchronous hedging strategy that neutralises
+inventory exposure using the new primitives introduced in v1.17.0‑RC.
+It loads a routing configuration from ``configs/hedge/routing.yaml``,
+computes the current net exposure from ``PositionTracker``, then
+decides whether to hedge via a passive or an IOC route.  Orders are
+sent through a ``DriftClient`` instance (mock or real) and recorded in
+an ``OrderManager``.  The risk manager is consulted before each
+operation to respect drawdown thresholds.
+
+The hedge loop runs continuously until a SIGINT or SIGTERM is
+received.  It will sleep for a configurable interval between
+iterations.
+"""
+
+from __future__ import annotations
+
+import asyncio
+import os
+import signal
+from typing import Any, Dict
+
+import yaml
+
+from libs.drift.client import build_client_from_config, Order, DriftClient
+from libs.order_management import PositionTracker, OrderManager, OrderRecord
+from orchestrator.risk_manager import RiskManager, RiskState
+
+
+def load_hedge_config(path: str) -> Dict[str, Any]:
+    """Load the hedge routing configuration from a YAML file.
+
+    Environment variables in the file will be expanded.  See
+    ``configs/hedge/routing.yaml`` for an example.
+    """
+    text = os.path.expandvars(open(path, "r").read())
+    return yaml.safe_load(text) or {}
+
+
+async def hedge_iteration(cfg: Dict[str, Any], client: DriftClient, risk_mgr: RiskManager,
+                          position: PositionTracker, orders: OrderManager) -> None:
+    """Perform a single hedging iteration.
+
+    This function reads the current net exposure, computes an urgency
+    score relative to ``max_inventory_usd`` and decides whether to send
+    an IOC or a passive hedge.  If no trading is allowed according to
+    the risk manager, it cancels all open orders and returns.
+    """
+    hedge_cfg = cfg.get("hedge", {})
+    max_inv = float(hedge_cfg.get("max_inventory_usd", 1500))
+    threshold = float(hedge_cfg.get("urgency_threshold", 0.7))
+    exposure = position.net_exposure
+    notional_abs = abs(exposure)
+
+    # Determine if hedging is necessary
+    if notional_abs < 1e-6:
+        return
+
+    # Check risk rails; mid price is used as a proxy for account equity
+    # We fetch a quick orderbook snapshot for price.
+    try:
+        ob = await client.get_orderbook()
+        if not ob.bids or not ob.asks:
+            return
+        best_bid = ob.bids[0][0]
+        best_ask = ob.asks[0][0]
+        mid = (best_bid + best_ask) / 2.0
+    except Exception:
+        # If the orderbook fetch fails, skip this iteration
+        return
+
+    state: RiskState = risk_mgr.evaluate(mid)
+    perms = risk_mgr.decisions(state)
+    if not perms.get("allow_trading", False):
+        # Trading disabled: cancel all open orders and bail out
+        await client.cancel_all()
+        orders.cancel_all()
+        return
+
+    # Determine route based on urgency
+    urgency_ratio = notional_abs / max_inv if max_inv > 0 else 0.0
+    urgent = urgency_ratio >= threshold
+    route_key = "ioc" if urgent else "passive"
+
+    # Determine side and limit price with slippage
+    # If exposure is positive (net long), we need to sell; otherwise buy
+    side = "sell" if exposure > 0 else "buy"
+    slippage_bps = float(hedge_cfg.get(route_key, {}).get("max_slippage_bps", 5))
+    slip = slippage_bps / 10_000.0
+    price = best_bid * (1.0 - slip) if side == "sell" else best_ask * (1.0 + slip)
+
+    # Choose notional size: hedge full exposure on each iteration
+    size_usd = notional_abs
+
+    order = Order(side=side, price=price, size_usd=size_usd)
+    order_id = await client.place_order(order)
+    orders.add_order(OrderRecord(order_id=order_id, side=side, price=price, size_usd=size_usd))
+    # Immediately adjust local position; in a real implementation this should
+    # occur after a fill confirmation from the exchange
+    position.update(side, size_usd)
+
+
+async def run_hedge_bot(cfg: Dict[str, Any], client: DriftClient, risk_mgr: RiskManager,
+                        position: PositionTracker, orders: OrderManager,
+                        refresh_interval: float = 1.0) -> None:
+    """Continuously hedge inventory exposure at a fixed cadence."""
+    while True:
+        await hedge_iteration(cfg, client, risk_mgr, position, orders)
+        await asyncio.sleep(refresh_interval)
+
+
+async def main() -> None:
+    """Configure and launch the hedge bot."""
+    # Load configuration files
+    cfg_path = os.getenv("HEDGE_CFG", "configs/hedge/routing.yaml")
+    cfg = load_hedge_config(cfg_path)
+    # Build market client from drift config
+    drift_cfg = os.getenv("DRIFT_CFG", "configs/core/drift_client.yaml")
+    client: DriftClient = await build_client_from_config(drift_cfg)
+    # Setup risk and bookkeeping
+    risk_mgr = RiskManager()
+    position = PositionTracker()
+    orders = OrderManager()
+
+    # Setup signal handling
+    loop = asyncio.get_running_loop()
+    stop_event = asyncio.Event()
+
+    def request_stop() -> None:
+        stop_event.set()
+
+    try:
+        loop.add_signal_handler(signal.SIGINT, request_stop)
+        loop.add_signal_handler(signal.SIGTERM, request_stop)
+    except NotImplementedError:
+        pass
+
+    # Launch hedge loop
+    bot_task = asyncio.create_task(run_hedge_bot(cfg, client, risk_mgr, position, orders))
+    await stop_event.wait()
+    bot_task.cancel()
+    try:
+        await bot_task
+    except asyncio.CancelledError:
+        pass
+    # Clean up
+    if hasattr(client, "close") and asyncio.iscoroutinefunction(client.close):
+        try:
+            await client.close()
+        except Exception:
+            pass
+
+if __name__ == "__main__":
+    asyncio.run(main())
