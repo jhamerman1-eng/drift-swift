@@ -1,5 +1,30 @@
-# Urgency-Based Hedging & Routing (STUB)
-routing:
+# Hedge routing configuration
+
+# This file defines how the hedge bot routes inventory neutralisation
+# orders across venues.  It merges the v16.9 urgency and slippage
+# parameters with venue definitions from earlier releases.  The hedge
+# bot computes the absolute exposure as a fraction of ``max_inventory_usd``;
+# if this exceeds ``urgency_threshold`` it uses the high‑urgency (IOC)
+# route otherwise it hedges passively.  Slippage caps are expressed in
+# basis points.
+
+hedge:
+  # Mode of operation.  ``stub`` will avoid sending orders to CEX venues,
+  # while ``cex`` enables both.  In the stub mode, all hedges go to
+  # ``DEX_DRIFT`` only.
+  mode: stub   # stub | cex
+
+  # Maximum inventory exposure (USD) allowed before hedging occurs.  This
+  # value is used to normalise the current net exposure to compute an
+  # urgency score.  When ``abs(net_exposure) / max_inventory_usd``
+  # exceeds ``urgency_threshold``, the bot uses the IOC route.
+  max_inventory_usd: 1500
+
+  # Fraction of max inventory above which hedging urgency is high.
+  urgency_threshold: 0.7
+
+  # Venue definitions.  In production you may add additional venues or
+  # adjust taker fee assumptions.
   venues:
     - name: "CEX_PRIMARY"
       type: "cex"
@@ -7,10 +32,18 @@ routing:
     - name: "DEX_DRIFT"
       type: "dex"
       taker_fee_bps: 1.0
-  urgency_bands:
-    - band: "high"
-      ioc: true
-      preferred: ["CEX_PRIMARY","DEX_DRIFT"]
-    - band: "normal"
-      ioc: false
-      preferred: ["DEX_DRIFT"]
+
+  # Parameters for passive hedging.  ``preferred`` lists the venues
+  # that should be used in order of preference.  ``max_slippage_bps``
+  # defines how far from top‑of‑book the limit price is allowed to be.
+  passive:
+    max_slippage_bps: 3
+    preferred: ["DEX_DRIFT"]
+
+  # Parameters for urgent hedging (IOC).  When high urgency, the bot
+  # sends an IOC order at the limit price computed using
+  # ``max_slippage_bps`` on the appropriate side.  ``preferred`` lists
+  # venues to attempt in order.
+  ioc:
+    max_slippage_bps: 8
+    preferred: ["CEX_PRIMARY","DEX_DRIFT"]
