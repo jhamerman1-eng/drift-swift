@@ -1,5 +1,23 @@
 # v1.17.0-RC — Drift/Swift Client Config
-environment: ${ENV}
+
+# Environment and market settings.  These values are propagated from
+# environment variables via ``os.path.expandvars`` in the client builder.
+env: ${ENV}
+market: ${MARKET}
+
+# When true, the client builder will return a MockDriftClient rather than
+# attempting to connect to real Drift endpoints.  Set to false in
+# production and provide appropriate rpc_url/ws_url values below.
+use_mock: true
+
+# Connection endpoints for a real client.  Only used when ``use_mock``
+# is set to false.  See ``libs/drift/client.py`` for details.
+rpc_url: ${RPC_URL_HTTP}
+ws_url: ${DRIFT_WS_URL}
+
+# Other settings are retained for backwards compatibility but are not
+# consumed by the new AsyncDriftClient implementation.  They may be
+# removed in a future version.
 transport:
   rpc_http: ${RPC_URL_HTTP}
   rpc_ws: ${RPC_URL_WS}

@@ -1,3 +1,13 @@
-# add your real dependencies here
+# Core dependencies for the v1.17.0‑RC implementation.
+pyyaml>=6.0
+requests>=2.28
+
+# Asynchronous networking clients for real Drift integrations.
+aiohttp>=3.8.1
 websockets>=11.0.0
+
+# Numerical library used by risk and crash detection modules.
+numpy>=1.23.0
+
+# Development and testing utilities.
 pytest>=7.0.0
