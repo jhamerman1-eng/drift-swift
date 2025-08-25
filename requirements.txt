@@ -1,3 +1,2 @@
-# add your real dependencies here
-websockets>=11.0.0
-pytest>=7.0.0
+pyyaml
+requests

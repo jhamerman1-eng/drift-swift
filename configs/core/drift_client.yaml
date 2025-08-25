@@ -1,14 +1,14 @@
-# Drift client config (env-driven)
-# Commit this file; it expands env vars at runtime.
+cluster: ${SOLANA_CLUSTER:devnet}
+rpc_url: ${RPC_URL:}
+ws_url: ${WS_URL:}
 
-cluster: devnet
+# driver: driftpy | swift
+driver: swift
 
-# Paths and endpoints are resolved from environment
-keypair_path: "${KEYPAIR_PATH}"
-
-# Solana RPC/WS (devnet)
-rpc_url: "${SOLANA_RPC_URL}"
-ws_url:  "${SOLANA_WS_URL}"
-
-# Optional Swift sidecar (if you use Swift)
-swift_ws_url: "${SWIFT_WS_URL}"
+jit:
+  post_only: true
+  cancel_replace_ms: 250
+  max_leverage: 10
+  markets:
+    - symbol: SOL-PERP
+      market_index: 0
