@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drift-bots"
+version = "0.9.0"
+description = "Drift JIT Maker Bots (v0.9 relink)"
+authors = [{name="AForged", email="team@example.com"}]
+readme = "README_v0_9.md"
+requires-python = ">=3.10"
+dependencies = [
+  "pydantic>=2.7",
+  "prometheus_client>=0.20",
+  # optional, used if installed
+  "driftpy>=0.5.0; python_version>='3.10'",
+  "anchorpy>=0.18.0; python_version>='3.10'",
+  "solana>=0.33.0; python_version>='3.10'",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
