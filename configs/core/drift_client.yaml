@@ -1,0 +1,6 @@
+http_url: "https://api.drift.trade"
+ws_url: "wss://ws.drift.trade"
+subaccount: "mm-01"
+qps_limit: 10   # maximum requests per second
+burst: 20        # maximum burst tokens for rate limiter
+timeout_sec: 10
