@@ -1,0 +1,9 @@
+risk:
+  drawdown_soft_pct: -7.5
+  drawdown_hard_pct: -12.5
+  position_notional_cap_usd: 25000
+  leverage_cap: 10
+feature_flags:
+  obi_enabled: false
+  trend_enabled: true
+  hedge_enabled: true

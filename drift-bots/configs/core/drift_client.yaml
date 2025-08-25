@@ -1,0 +1,7 @@
+env: testnet
+rpc_url: ${RPC_URL}
+ws_url: ${WS_URL}
+wallet_secret_key: ${WALLET_SECRET_KEY}
+market: SOL-PERP
+heartbeat_ms: 1000
+use_mock: true  # set to false when wiring real driftpy

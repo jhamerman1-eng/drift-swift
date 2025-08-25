@@ -1,0 +1,7 @@
+jit:
+  spread_bps: 6.0        # total spread (e.g., 6 bps → ±3 bps around mid)
+  skew_bps: 0.0          # static skew for now
+  quote_size_usd: 200
+  refresh_ms: 500
+  inventory_target: 0.0  # balanced
+  max_inventory_usd: 1500
