@@ -1,0 +1,11 @@
+trend:
+  use_macd: true
+  macd:
+    fast: 12
+    slow: 26
+    signal: 9
+  momentum_window: 14
+  atr_adx_filters:
+    enabled: false
+    atr_mult: 1.5
+    adx_min: 20

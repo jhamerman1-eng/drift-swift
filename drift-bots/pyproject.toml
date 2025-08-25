@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "drift-bots"
+version = "0.2.0"
+description = "v0.2 testnet alpha: JIT + Hedge stub + Trend bot with Prometheus metrics"
+authors = ["AForged MM Team <mm@example.com>"]
+readme = "README.md"
+packages = [
+  { include = "bots" },
+  { include = "libs" },
+  { include = "orchestrator" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+PyYAML = "^6.0"
+numpy = "^1.26"
+pandas = "^2.2"
+prometheus-client = "^0.20.0"
+loguru = "^0.7.2"
+httpx = "^0.27.0"
+uvloop = {version = "^0.20.0", markers = "sys_platform == 'linux'"}
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.5.0"
+mypy = "^1.10.0"
+
+[tool.ruff]
+line-length = 100
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
