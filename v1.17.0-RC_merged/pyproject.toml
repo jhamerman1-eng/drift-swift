@@ -1,0 +1,7 @@
+[project]
+name = "drift-bots"
+version = "1.17.0rc0"
+requires-python = ">=3.10"
+dependencies = []
+[tool.pytest.ini_options]
+testpaths = ["tests"]

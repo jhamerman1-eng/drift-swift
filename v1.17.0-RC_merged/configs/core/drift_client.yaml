@@ -1,0 +1,24 @@
+# v1.17.0-RC — Drift/Swift Client Config
+environment: ${ENV}
+transport:
+  rpc_http: ${RPC_URL_HTTP}
+  rpc_ws: ${RPC_URL_WS}
+  drift_ws: ${DRIFT_WS_URL}
+  swift_ws: ${SWIFT_WS_URL}
+  timeouts: { connect_seconds: 10, read_seconds: 20 }
+  reconnect: { max_backoff_seconds: 30, jitter: true }
+keys:
+  maker_keypair_path: ${KEYPAIR_PATH}
+  jito_keypair_path: ${JITO_KEYPAIR_PATH}
+features:
+  jit: ${FEATURE_JIT}
+  hedge: ${FEATURE_HEDGE}
+  trend: ${FEATURE_TREND}
+  obi: ${FEATURE_OBI}
+  crash_v2: ${FEATURE_CRASH_V2}
+risk:
+  soft_drawdown_pct: ${SOFT_DD_PCT}
+  trend_pause_pct: ${TREND_PAUSE_PCT}
+  circuit_break_pct: ${CIRCUIT_BREAK_PCT}
+metrics: { port: ${METRICS_PORT} }
+logging: { level: ${LOG_LEVEL} }
