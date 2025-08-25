@@ -1,0 +1,14 @@
+cluster: ${SOLANA_CLUSTER:devnet}
+rpc_url: ${RPC_URL:}
+ws_url: ${WS_URL:}
+
+# driver: driftpy | swift
+driver: swift
+
+jit:
+  post_only: true
+  cancel_replace_ms: 250
+  max_leverage: 10
+  markets:
+    - symbol: SOL-PERP
+      market_index: 0
