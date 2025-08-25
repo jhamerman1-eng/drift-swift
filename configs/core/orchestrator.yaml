@@ -1,0 +1,16 @@
+tick_ms: 200
+flags:
+  jit: true
+  hedge: false
+  trend: false
+risk:
+  max_dd_pct: -12.5
+  hard_stop_pct: -20.0
+  position_concentration: 0.30
+kill_switch:
+  pause_seconds_default: 300
+state_cache_ttl_ms: 100
+circuit_breaker:
+  failure_threshold: 5
+  recovery_timeout_sec: 60
+  tick_timeout_ms: 150
