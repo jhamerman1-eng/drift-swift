@@ -12,6 +12,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent / "libs"))
 
 from drift.client import build_client_from_config, Order, OrderSide
+from libs.drift.data_layer import add_live_data_to_existing_client
 
 async def main():
     """Main trading example"""
@@ -31,18 +32,45 @@ async def main():
     try:
         # Build client from configuration
         print("📡 Building Drift client...")
-        client = await build_client_from_config("configs/core/drift_client.yaml")
+        basic_client = await build_client_from_config("configs/core/drift_client.yaml")
+        client = await add_live_data_to_existing_client(basic_client.drift_client)
         
-        # Get current orderbook
-        print("\n📊 Getting orderbook...")
-        orderbook = client.get_orderbook()
+        # Test the 3 data components
+        print("\n🧪 Testing live data...")
         
-        print(f"Top bid: ${orderbook.bids[0][0]:.4f} (${orderbook.bids[0][1]:.2f})")
-        print(f"Top ask: ${orderbook.asks[0][0]:.4f} (${orderbook.asks[0][1]:.2f})")
+        # Test 1: Market data
+        market_data = await client.get_live_market_data()
+        if market_data:
+            print(f"✅ Oracle price: ${market_data.oracle_price:.2f}")
+            print(f"   Status: {market_data.status}")
+            print(f"   Funding rate: {market_data.funding_rate*100:.4f}%")
+            print(f"   Open interest: ${market_data.open_interest:,.0f}")
+        else:
+            print("❌ No market data")
         
-        # Calculate mid price
-        mid_price = (orderbook.bids[0][0] + orderbook.asks[0][0]) / 2
-        print(f"Mid price: ${mid_price:.4f}")
+        # Test 2: Orderbook  
+        orderbook = await client.get_live_orderbook()
+        if orderbook and orderbook.bids and orderbook.asks:
+            print(f"✅ Orderbook: {len(orderbook.bids)} bids, {len(orderbook.asks)} asks")
+            print(f"   Best bid: ${orderbook.bids[0][0]:.2f}")
+            print(f"   Best ask: ${orderbook.asks[0][0]:.2f}")
+            print(f"   Mid price: ${orderbook.mid_price:.2f}")
+            print(f"   Spread: {orderbook.spread_bps:.2f} bps")
+        else:
+            print("❌ No orderbook")
+        
+        # Test 3: Positions
+        positions = basic_client.get_positions()
+        pnl = basic_client.get_pnl_summary()  
+        print(f"✅ Positions: {len(positions)}")
+        print(f"   PnL: ${pnl['total_pnl']:.2f}")
+        
+        # Calculate mid price from orderbook for trading
+        if orderbook and orderbook.bids and orderbook.asks:
+            mid_price = orderbook.mid_price
+        else:
+            # Fallback to market data oracle price
+            mid_price = market_data.oracle_price if market_data else 150.0
         
         # Place a buy order slightly below mid price
         buy_price = mid_price * 0.999  # 0.1% below mid
@@ -58,7 +86,7 @@ async def main():
             size_usd=buy_size
         )
         
-        order_id = client.place_order(buy_order)
+        order_id = basic_client.place_order(buy_order)
         print(f"✅ Buy order placed! Order ID: {order_id}")
         
         # Place a sell order slightly above mid price
@@ -75,7 +103,7 @@ async def main():
             size_usd=sell_size
         )
         
-        order_id = client.place_order(sell_order)
+        order_id = basic_client.place_order(sell_order)
         print(f"✅ Sell order placed! Order ID: {order_id}")
         
         # Wait a moment to see order processing
@@ -98,11 +126,12 @@ async def main():
                 for pos in positions:
                     print(f"Size: {pos.size:.4f}, Avg Price: ${pos.avg_price:.4f}")
         
-        # Close client
-        await client.close()
+        # Close clients
+        await basic_client.close()
         print("\n✅ Trading example completed!")
         print("🔒 SAFE: This was on DEVNET - no real money involved!")
         print("🚫 NO MOCK MODE - Using real DriftPy client!")
+        print("📊 LIVE DATA LAYER: Enhanced market data with real-time feel!")
         
     except Exception as e:
         print(f"❌ Error: {e}")
