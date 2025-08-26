@@ -49,29 +49,41 @@ class DriftPyDriver:
             # Import DriftPy modules
             from driftpy import keypair, types, drift_client
             from solana.rpc.async_api import AsyncClient
+            from anchorpy import Wallet
             
             print(f"[DRIFTPY] ✅ DriftPy modules loaded")
             
-            # Load wallet keypair
+            # Load wallet keypair following official docs pattern
             with open(self.config.wallet_secret_key, 'r') as f:
                 keypair_data = json.load(f)
             
+            # Create keypair and wrap in anchorpy.Wallet as per docs
             self.keypair = keypair.Keypair.from_bytes(keypair_data)
-            print(f"[DRIFTPY] ✅ Wallet loaded successfully")
+            wallet = Wallet(self.keypair)
+            print(f"[DRIFTPY] ✅ Wallet loaded and wrapped in anchorpy.Wallet")
             
             # Initialize Solana connection
             self.solana_client = AsyncClient(self.config.rpc_url)
             print(f"[DRIFTPY] ✅ Solana connection established")
             
-            # Initialize Drift client
+            # Initialize Drift client following official docs exactly
             self.drift_client = drift_client.DriftClient(
                 connection=self.solana_client,
-                wallet=self.keypair,
+                wallet=wallet,  # Use anchorpy.Wallet wrapper
                 env=self.config.env
             )
             print(f"[DRIFTPY] ✅ Drift client initialized")
             
-            # Subscribe to Drift state
+            # CRITICAL: Add user account as per official docs
+            print(f"[DRIFTPY] 📡 Setting up user account...")
+            try:
+                await self.drift_client.add_user(0)  # Assuming account 0 exists
+                print(f"[DRIFTPY] ✅ User account setup complete")
+            except Exception as user_error:
+                print(f"[DRIFTPY] ⚠️  User account setup failed (may already exist): {user_error}")
+                # Continue anyway - user might already be initialized
+            
+            # Subscribe to Drift state as per official docs
             print(f"[DRIFTPY] 📡 Subscribing to Drift state...")
             await self.drift_client.subscribe()
             print(f"[DRIFTPY] ✅ Drift subscription active")
@@ -109,7 +121,7 @@ class DriftPyDriver:
             return self._place_simulated_order(order)
     
     async def _place_real_drift_order_v2(self, order: Order) -> str:
-        """Place real order using DriftPy instruction-based approach (for older versions)"""
+        """Place real order using DriftPy following official documentation"""
         print(f"[DRIFTPY] 🔥 PLACING REAL ORDER ON DRIFT (V2)!")
         
         try:
@@ -119,7 +131,7 @@ class DriftPyDriver:
             # Map our order side to DriftPy
             drift_side = PositionDirection.Long if order.side.value == "buy" else PositionDirection.Short
             
-            # Create order parameters
+            # Create order parameters following official docs structure
             print(f"[DRIFTPY] 📡 Building Drift instruction (V2)...")
             print(f"[DRIFTPY]   Market Index: {self.config.market_index} ({self.config.market})")
             print(f"[DRIFTPY]   Order Type: LIMIT")
@@ -128,20 +140,27 @@ class DriftPyDriver:
             print(f"[DRIFTPY]   Price: ${order.price}")
             print(f"[DRIFTPY]   Post Only: True")
             
-            # Create order parameters
+            # Convert size to base asset amount (SOL units for SOL-PERP)
+            # For SOL-PERP, we need to convert USD to SOL units
+            sol_price = order.price  # Current SOL price
+            sol_amount = order.size_usd / sol_price  # Convert USD to SOL units
+            
+            # Create order parameters with proper precision
             order_params = OrderParams(
                 order_type=OrderType.Limit,
-                base_asset_amount=int(order.size_usd * 1000000),  # Convert to base units
+                base_asset_amount=int(sol_amount * 1e9),  # Convert to lamports (1 SOL = 1e9 lamports)
                 market_index=self.config.market_index,
                 direction=drift_side,
                 market_type=0,  # Perp market
-                price=int(order.price * 1000000),  # Convert to base units
+                price=int(order.price * 1e6),  # Convert to price units (6 decimal precision)
                 post_only=PostOnlyParams.MustPostOnly
             )
             
             print(f"[DRIFTPY] ✅ OrderParams created successfully")
+            print(f"[DRIFTPY]   Base Asset Amount: {sol_amount:.6f} SOL ({int(sol_amount * 1e9)} lamports)")
+            print(f"[DRIFTPY]   Price: ${order.price:.6f} ({int(order.price * 1e6)} price units)")
             
-            # Try instruction-based approach first
+            # Try instruction-based approach first (recommended by docs)
             print(f"[DRIFTPY] 📡 Getting place_perp_order instruction...")
             try:
                 # Get the instruction
@@ -330,5 +349,3 @@ def create_driftpy_driver(rpc_url: str, wallet_secret_key: str, env: str = "devn
         market=market
     )
     return DriftPyDriver(config)
-a.drift
-tm
