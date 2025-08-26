@@ -1,7 +1,7 @@
 env: testnet
-rpc_url: ${RPC_URL}
-ws_url: ${WS_URL}
-wallet_secret_key: ${WALLET_SECRET_KEY}
+rpc_url: https://mainnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+ws_url: wss://mainnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+wallet_secret_key: C:\Users\genuw\.config\solana\id_devnet_custom.json
 market: SOL-PERP
 heartbeat_ms: 1000
-use_mock: true  # set to false when wiring real driftpy
+use_mock: true  # using enhanced mock client for testing strategy logic
