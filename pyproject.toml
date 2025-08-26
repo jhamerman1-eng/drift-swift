@@ -1,7 +1,20 @@
 [project]
-name = "drift-bots"
-version = "1.17.0rc0"
+name = "driftbot"
+version = "1.17.0rc2"
+description = "Drift JIT Maker + Swift sidecar scaffold (v1.17.0-rc2)"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+  "prometheus-client>=0.20.0",
+  "pydantic>=2.7.0",
+  "pyyaml>=6.0.1",
+  # Optional real integration (pin/enable when wiring live):
+  # "driftpy",
+  # "solana",
+]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100

@@ -1,8 +1,6 @@
-# Crash Sentinel v2 (STUB) — tune thresholds via research
-crash_sentinel_v2:
+crash_sentinel:
   enabled: true
-  lookback_seconds: 120
-  sigma_threshold: 3.0   # TODO: calibrate per market/regime
-  min_abs_move_bps: 80   # TODO: floor to avoid noise
-  cool_off_seconds: 60
-  action: "halt_bots"
+  sigma_threshold: 3.0
+  halt_seconds: 120
+  max_drawdown_soft_pct: 7.5
+  max_drawdown_hard_pct: 20.0
