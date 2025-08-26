@@ -1,6 +1,6 @@
 # Drift client configuration
-# Driver selection: mock, swift, driftpy, or hybrid
-driver: hybrid
+# Driver selection: driftpy, swift, or hybrid (NO MOCK MODE)
+driver: driftpy
 
 # Market configuration
 env: devnet
@@ -14,9 +14,9 @@ swift:
 
 # Wallet Configuration
 wallets:
-  maker_keypair_path: C:\Users\genuw\.config\solana\id_devnet_custom.json
+  maker_keypair_path: working_keypair.json
 
-# RPC Configuration (for DriftPy)
-  rpc_url: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+# RPC Configuration (for DriftPy) - DEVNET for safe testing
+rpc:
+  http_url: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
   ws_url: wss://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
-wallet_secret_key: C:\Users\genuw\.config\solana\id_devnet_custom.json

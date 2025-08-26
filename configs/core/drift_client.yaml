@@ -1,5 +1,5 @@
 cluster: ${ENV:testnet}  # testnet|devnet|mainnet
-driver: ${DRIVER:swift}  # swift|driftpy
+driver: ${DRIVER:driftpy}  # swift|driftpy|mock
 
 rpc:
   http_url: ${DRIFT_HTTP_URL:https://api.mainnet-beta.solana.com}
@@ -10,5 +10,5 @@ swift:
   ws_url: ${SWIFT_WS_URL:ws://localhost:8787/ws}
 
 wallets:
-  maker_keypair_path: ${KEYPAIR_PATH:/abs/path/to/maker-keypair.json}
+  maker_keypair_path: ${KEYPAIR_PATH:test_keypair.json}
   jito_keypair_path: ${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}
