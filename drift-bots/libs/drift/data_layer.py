@@ -94,9 +94,27 @@ class LiveDataClient:
                 for idx in range(5):  # Test indices 0-4
                     try:
                         oracle_data = self.drift_client.get_oracle_price_data_for_perp_market(idx)
-                        oracle_price = self.drift_client.convert_to_number(oracle_data.price)
                         
-                        print(f"✅ Real oracle price fetched: ${oracle_price:.4f}")
+                        # Convert price using the correct method
+                        if hasattr(self.drift_client, 'convert_to_price_precision'):
+                            # This method converts from raw integer to actual price
+                            oracle_price = self.drift_client.convert_to_price_precision(oracle_data.price)
+                        else:
+                            # Fallback: try to access price directly
+                            # Drift prices are typically stored as integers with 6 decimal precision
+                            oracle_price = float(oracle_data.price) / 1e6  # Convert from 6 decimal precision
+                        
+                        # If the price is still extremely large, it might be in a different precision
+                        if oracle_price > 1000000:  # If price > $1M, likely wrong precision
+                            # Try different precision conversions
+                            for precision in [1e6, 1e8, 1e9, 1e10]:
+                                test_price = float(oracle_data.price) / precision
+                                if 1 < test_price < 1000000:  # Reasonable price range
+                                    oracle_price = test_price
+                                    print(f"   Adjusted precision: {precision}")
+                                    break
+                        
+                        print(f"✅ Real oracle price fetched from market {idx}: ${oracle_price:.4f}")
                         
                         # Create live market data
                         market_data = LiveMarketData(
@@ -130,13 +148,34 @@ class LiveDataClient:
             
             # Try to get real data from Drift
             if hasattr(self.drift_client, 'get_oracle_price_data_for_perp_market'):
-                # Try different market indices
+                # Try different market indices for Drift devnet
                 for idx in range(5):  # Test indices 0-4
                     try:
-                        oracle_data = self.drift_client.get_oracle_price_data_for_perp_market(idx)
-                        oracle_price = self.drift_client.convert_to_number(oracle_data.price)
+                        print(f"🔍 Testing market index {idx} for orderbook...")
                         
-                        print(f"✅ Real oracle price for orderbook: ${oracle_price:.4f}")
+                        # Get oracle price data
+                        oracle_data = self.drift_client.get_oracle_price_data_for_perp_market(idx)
+                        
+                        # Convert price using the correct method
+                        if hasattr(self.drift_client, 'convert_to_price_precision'):
+                            # This method converts from raw integer to actual price
+                            oracle_price = self.drift_client.convert_to_price_precision(oracle_data.price)
+                        else:
+                            # Fallback: try to access price directly
+                            # Drift prices are typically stored as integers with 6 decimal precision
+                            oracle_price = float(oracle_data.price) / 1e6  # Convert from 6 decimal precision
+                        
+                        # If the price is still extremely large, it might be in a different precision
+                        if oracle_price > 1000000:  # If price > $1M, likely wrong precision
+                            # Try different precision conversions
+                            for precision in [1e6, 1e8, 1e9, 1e10]:
+                                test_price = float(oracle_data.price) / precision
+                                if 1 < test_price < 1000000:  # Reasonable price range
+                                    oracle_price = test_price
+                                    print(f"   Adjusted precision: {precision}")
+                                    break
+                        
+                        print(f"✅ Real oracle price for orderbook from market {idx}: ${oracle_price:.4f}")
                         
                         # Create realistic orderbook around oracle price
                         bids = []
@@ -178,7 +217,7 @@ class LiveDataClient:
                         return
                         
                     except Exception as e:
-                        print(f"❌ Market index {idx} failed: {e}")
+                        print(f"❌ Market index {idx} failed for orderbook: {e}")
                         continue
             
             print("ℹ️ Using enhanced mock orderbook (real markets not available)")

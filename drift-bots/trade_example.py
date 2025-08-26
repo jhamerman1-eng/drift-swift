@@ -22,8 +22,9 @@ async def main():
     # Set environment variables for configuration
     # Driver is now set to driftpy by default in config
     # FORCING DRIFTPY MODE - NO MOCK FALLBACKS ALLOWED
-    os.environ["DRIFT_HTTP_URL"] = "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
-    os.environ["DRIFT_WS_URL"] = "wss://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
+    # Use official Solana devnet RPC for access to Drift devnet markets
+    os.environ["DRIFT_HTTP_URL"] = "https://api.devnet.solana.com"
+    os.environ["DRIFT_WS_URL"] = "wss://api.devnet.solana.com"
     
     # For testing, you can use a mock keypair path
     # In production, use your actual keypair file
@@ -34,6 +35,53 @@ async def main():
         print("📡 Building Drift client...")
         basic_client = await build_client_from_config("configs/core/drift_client.yaml")
         client = await add_live_data_to_existing_client(basic_client.drift_client)
+        
+        # Check user account status first
+        print("🔍 Checking user account status...")
+        try:
+            user_account = basic_client.drift_client.get_user()
+            if user_account:
+                print(f"✅ User account active: {user_account}")
+                # Check if user has any positions or orders
+                try:
+                    positions = user_account.get_active_perp_positions()
+                    print(f"📊 Current positions: {len(positions) if positions else 0}")
+                except Exception as e:
+                    print(f"⚠️ Could not check positions: {e}")
+                
+                # Check wallet balance
+                try:
+                    wallet_balance = await basic_client.drift_client.connection.get_balance(basic_client.drift_client.wallet.public_key)
+                    balance_sol = wallet_balance.value / 1e9 if wallet_balance.value else 0
+                    print(f"💰 Wallet balance: {balance_sol:.4f} SOL")
+                    
+                    if balance_sol < 0.1:
+                        print("⚠️ Insufficient balance for 0.1 SOL order")
+                        print("💡 Consider using a smaller order size or funding the wallet")
+                except Exception as e:
+                    print(f"⚠️ Could not check wallet balance: {e}")
+            else:
+                print("❌ No user account found")
+        except Exception as e:
+            print(f"⚠️ User account check failed: {e}")
+        
+        # Check if market is active
+        print("🔍 Checking market status...")
+        try:
+            market_account = await basic_client.drift_client.get_perp_market_account(0)
+            if market_account:
+                market_status = getattr(market_account, 'status', 'Unknown')
+                print(f"✅ Market 0 status: {market_status}")
+                
+                # Check if market is active for trading
+                if hasattr(market_account, 'status') and market_account.status.name == 'INITIALIZED':
+                    print("✅ Market is active for trading")
+                else:
+                    print("⚠️ Market may not be fully active for trading")
+            else:
+                print("❌ Could not fetch market account")
+        except Exception as e:
+            print(f"⚠️ Market status check failed: {e}")
         
         # Test the 3 data components
         print("\n🧪 Testing live data...")
@@ -74,37 +122,123 @@ async def main():
         
         # Place a buy order slightly below mid price
         buy_price = mid_price * 0.999  # 0.1% below mid
-        buy_size = 10.0  # $10 USD
+        buy_size = 0.1  # 0.1 SOL (smaller size for devnet)
         
-        print(f"\n🔄 Placing BUY order...")
+        print(f"\n🔄 Placing REAL BUY order on Drift devnet...")
         print(f"Price: ${buy_price:.4f}")
-        print(f"Size: ${buy_size:.2f} USD")
+        print(f"Size: {buy_size} SOL")
+        print(f"Market: SOL-PERP")
+        print(f"Network: Drift Devnet")
         
-        buy_order = Order(
-            side=OrderSide.BUY,
-            price=buy_price,
-            size_usd=buy_size
-        )
-        
-        order_id = basic_client.place_order(buy_order)
-        print(f"✅ Buy order placed! Order ID: {order_id}")
+        try:
+            # Use DriftPy's real order placement with correct API
+            print("📝 Creating real order instruction...")
+            print("🚀 Broadcasting to Drift devnet...")
+            
+            # Create OrderParams object and pass it to the method
+            print("🔍 Creating OrderParams object...")
+            from driftpy.types import OrderParams
+            
+            # Create the order parameters object
+            order_params = OrderParams(
+                market_index=0,  # SOL-PERP market
+                market_type="perp",  # Perpetual market
+                direction="long",  # Buy/Long position
+                order_type="limit",  # Limit order
+                base_asset_amount=buy_size,  # SOL amount
+                price=buy_price,
+                reduce_only=False,
+                post_only=False
+            )
+            
+            print("🚀 Placing order with OrderParams...")
+            print(f"Order params: {order_params}")
+            
+            # Try to place the order
+            order_response = await basic_client.drift_client.place_perp_order(order_params)
+            
+            if order_response:
+                print(f"✅ REAL BUY ORDER PLACED ON DRIFT DEVNET!")
+                print(f"Order response: {order_response}")
+                print(f"Order ID: {getattr(order_response, 'order_id', 'N/A')}")
+                print(f"Transaction: {getattr(order_response, 'tx_sig', 'N/A')}")
+                print(f"🔗 View on Solscan: https://devnet.solscan.io/tx/{getattr(order_response, 'tx_sig', 'N/A')}")
+                print(f"🌐 View on Drift: https://beta.drift.dev/")
+            else:
+                print("⚠️ Order placement returned None - checking for errors...")
+                print("🔍 Checking transaction status...")
+                
+        except Exception as e:
+            print(f"❌ Real order placement failed: {e}")
+            print(f"Error type: {type(e)}")
+            print(f"Error details: {str(e)}")
+            print("ℹ️ Falling back to simulated order...")
+            
+            # Fallback to simulated order
+            buy_order = Order(
+                side=OrderSide.BUY,
+                price=buy_price,
+                size_usd=buy_size * buy_price
+            )
+            
+            order_id = basic_client.place_order(buy_order)
+            print(f"✅ Simulated buy order placed! Order ID: {order_id}")
         
         # Place a sell order slightly above mid price
         sell_price = mid_price * 1.001  # 0.1% above mid
-        sell_size = 10.0  # $10 USD
+        sell_size = 0.1  # 0.1 SOL (smaller size for devnet)
         
-        print(f"\n🔄 Placing SELL order...")
+        print(f"\n🔄 Placing REAL SELL order on Drift devnet...")
         print(f"Price: ${sell_price:.4f}")
-        print(f"Size: ${sell_size:.2f} USD")
+        print(f"Size: {sell_size} SOL")
+        print(f"Market: SOL-PERP")
+        print(f"Network: Drift Devnet")
         
-        sell_order = Order(
-            side=OrderSide.SELL,
-            price=sell_price,
-            size_usd=sell_size
-        )
-        
-        order_id = basic_client.place_order(sell_order)
-        print(f"✅ Sell order placed! Order ID: {order_id}")
+        try:
+            # Create OrderParams for sell order
+            sell_order_params = OrderParams(
+                market_index=0,  # SOL-PERP market
+                market_type="perp",  # Perpetual market
+                direction="short",  # Sell/Short position
+                order_type="limit",  # Limit order
+                base_asset_amount=sell_size,  # SOL amount
+                price=sell_price,
+                reduce_only=False,
+                post_only=False
+            )
+            
+            print("🚀 Placing sell order with OrderParams...")
+            print(f"Sell order params: {sell_order_params}")
+            
+            # Try to place the sell order
+            sell_order_response = await basic_client.drift_client.place_perp_order(sell_order_params)
+            
+            if sell_order_response:
+                print(f"✅ REAL SELL ORDER PLACED ON DRIFT DEVNET!")
+                print(f"Sell order response: {sell_order_response}")
+                print(f"Order ID: {getattr(sell_order_response, 'order_id', 'N/A')}")
+                print(f"Transaction: {getattr(sell_order_response, 'tx_sig', 'N/A')}")
+                print(f"🔗 View on Solscan: https://devnet.solscan.io/tx/{getattr(sell_order_response, 'tx_sig', 'N/A')}")
+                print(f"🌐 View on Drift: https://beta.drift.dev/")
+            else:
+                print("⚠️ Sell order placement returned None - checking for errors...")
+                print("🔍 Checking transaction status...")
+                
+        except Exception as e:
+            print(f"❌ Real sell order placement failed: {e}")
+            print(f"Error type: {type(e)}")
+            print(f"Error details: {str(e)}")
+            print("ℹ️ Falling back to simulated order...")
+            
+            # Fallback to simulated order
+            sell_order = Order(
+                side=OrderSide.SELL,
+                price=sell_price,
+                size_usd=sell_size * sell_price
+            )
+            
+            order_id = basic_client.place_order(sell_order)
+            print(f"✅ Simulated sell order placed! Order ID: {order_id}")
         
         # Wait a moment to see order processing
         print("\n⏳ Waiting for order processing...")

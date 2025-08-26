@@ -376,11 +376,11 @@ class DriftpyClient:
             self.solana_client = AsyncClient(rpc_url)
             
             # Initialize Drift client with explicit devnet environment
+            # DriftClient automatically uses the correct program ID based on env
             self.drift_client = DriftClient(
                 connection=self.solana_client,
                 wallet=self.wallet,  # Use anchorpy wallet
                 env='devnet'  # Explicitly set to devnet
-                # Remove opts parameter that was causing issues
             )
             
             self.keypair_available = True
@@ -398,9 +398,31 @@ class DriftpyClient:
         except Exception as e:
             print(f"[DRIFTPY] Warning: Failed to initialize real client: {e}")
             print(f"[DRIFTPY] Falling back to enhanced placeholder mode")
-            self.drift_client = None
             self.keypair_available = False
-        
+            self.drift_client = None
+    
+    async def initialize(self):
+        """Initialize the Drift client by adding user account and subscribing"""
+        if not self.drift_client:
+            print("[DRIFTPY] ❌ No Drift client available")
+            return False
+            
+        print("[DRIFTPY] 🔧 Initializing Drift client...")
+        try:
+            # Add user account (required for trading)
+            await self.drift_client.add_user(0)  # sub_account_id = 0
+            print("[DRIFTPY] ✅ User account added successfully")
+            
+            # Subscribe to the protocol
+            await self.drift_client.subscribe()
+            print("[DRIFTPY] ✅ Successfully subscribed to Drift protocol")
+            return True
+            
+        except Exception as init_error:
+            print(f"[DRIFTPY] ⚠️ Client initialization warning: {init_error}")
+            print("[DRIFTPY] ℹ️ Continuing without full initialization...")
+            return False
+
     async def get_orderbook(self) -> Orderbook:
         """Get REAL orderbook from Drift - IMPLEMENTED WITH ACTUAL DRIFT PROGRAM CALLS!"""
         try:
@@ -735,7 +757,9 @@ async def build_client_from_config(cfg_path: str) -> DriftClient:
         if not rpc or not secret:
             raise RuntimeError("rpc.http_url and wallets.maker_keypair_path are required for DriftPy client")
         logger.info(f"Using DriftpyClient for {market} ({env}) via {rpc}")
-        return DriftpyClient(rpc_url=rpc, wallet_secret_key=secret, market=market, ws_url=ws)
+        client = DriftpyClient(rpc_url=rpc, wallet_secret_key=secret, market=market, ws_url=ws)
+        await client.initialize() # Call initialize after client is created
+        return client
     else:
         # Default to enhanced mock
         logger.info(f"Using Enhanced MockDriftClient for {market} ({env})")
