@@ -330,28 +330,81 @@ class DriftpyClient:
             from solana.rpc.async_api import AsyncClient
             from anchorpy import Wallet
             import json
+            import base58
             
             # Load wallet keypair - try different approaches
             try:
                 if wallet_secret_key.endswith('.json'):
                     with open(wallet_secret_key, 'r') as f:
-                        secret_key = json.load(f)
+                        data = f.read().strip()
                     
-                    # Try to create keypair from the secret key bytes
-                    if len(secret_key) == 32:
-                        # 32-byte secret key - this is what solders expects
-                        from solders.keypair import Keypair
-                        self.keypair = Keypair.from_bytes(secret_key)
-                    elif len(secret_key) == 64:
-                        # 64-byte secret key - this is what some clients expect
-                        from solders.keypair import Keypair
-                        self.keypair = Keypair.from_bytes(secret_key[:32])  # Use first 32 bytes
+                    print(f"[DRIFTPY] 🔍 Loading keypair from {wallet_secret_key}")
+                    
+                    # Handle different keypair formats
+                    if data.startswith('[') and data.endswith(']'):
+                        # JSON array format [1,2,3,...]
+                        secret_key = json.loads(data)
+                        print(f"[DRIFTPY] Secret key length: {len(secret_key)} bytes")
+                        
+                        if len(secret_key) == 32:
+                            # 32-byte secret key - use seed method
+                            from solders.keypair import Keypair
+                            try:
+                                self.keypair = Keypair.from_seed(secret_key)
+                                print(f"[DRIFTPY] ✅ Loaded existing 32-byte keypair using seed method from {wallet_secret_key}")
+                            except Exception as e:
+                                print(f"[DRIFTPY] ⚠️ Seed method failed: {e}")
+                                # Try duplicating to 64-byte
+                                secret_key_64 = secret_key + secret_key
+                                self.keypair = Keypair.from_bytes(secret_key_64)
+                                print(f"[DRIFTPY] ✅ Loaded existing keypair (converted to 64-byte) from {wallet_secret_key}")
+                        elif len(secret_key) == 64:
+                            # 64-byte secret key
+                            from solders.keypair import Keypair
+                            self.keypair = Keypair.from_bytes(secret_key)
+                            print(f"[DRIFTPY] ✅ Loaded existing 64-byte keypair from {wallet_secret_key}")
+                        else:
+                            raise ValueError(f"Unexpected secret key length: {len(secret_key)}")
                     else:
-                        raise ValueError(f"Unexpected secret key length: {len(secret_key)}")
+                        # Assume base58 format
+                        from solders.keypair import Keypair
+                        try:
+                            # Try base58 format first
+                            self.keypair = Keypair.from_base58_string(data)
+                            print(f"[DRIFTPY] ✅ Loaded base58 keypair from {wallet_secret_key}")
+                        except Exception as base58_error:
+                            print(f"[DRIFTPY] Base58 failed: {base58_error}")
+                            # Try as raw bytes
+                            try:
+                                keypair_bytes = base58.b58decode(data)
+                                if len(keypair_bytes) == 64:
+                                    self.keypair = Keypair.from_bytes(keypair_bytes)
+                                    print(f"[DRIFTPY] ✅ Loaded keypair from decoded base58 bytes")
+                                else:
+                                    raise ValueError(f"Unexpected decoded length: {len(keypair_bytes)}")
+                            except Exception as bytes_error:
+                                print(f"[DRIFTPY] Bytes method failed: {bytes_error}")
+                                raise
                 else:
                     # Assume it's a base58 encoded secret key
                     from solders.keypair import Keypair
-                    self.keypair = Keypair.from_base58_string(wallet_secret_key)
+                    try:
+                        # Try base58 format first
+                        self.keypair = Keypair.from_base58_string(wallet_secret_key)
+                        print(f"[DRIFTPY] ✅ Loaded base58 keypair")
+                    except Exception as base58_error:
+                        print(f"[DRIFTPY] Base58 failed: {base58_error}")
+                        # Try as raw bytes
+                        try:
+                            keypair_bytes = base58.b58decode(wallet_secret_key)
+                            if len(keypair_bytes) == 64:
+                                self.keypair = Keypair.from_bytes(keypair_bytes)
+                                print(f"[DRIFTPY] ✅ Loaded keypair from decoded base58 bytes")
+                            else:
+                                raise ValueError(f"Unexpected decoded length: {len(keypair_bytes)}")
+                        except Exception as bytes_error:
+                            print(f"[DRIFTPY] Bytes method failed: {bytes_error}")
+                            raise
                 
                 # Create anchorpy wallet from the keypair
                 self.wallet = Wallet(self.keypair)
@@ -376,11 +429,11 @@ class DriftpyClient:
             self.solana_client = AsyncClient(rpc_url)
             
             # Initialize Drift client with explicit devnet environment
-            # DriftClient automatically uses the correct program ID based on env
             self.drift_client = DriftClient(
                 connection=self.solana_client,
                 wallet=self.wallet,  # Use anchorpy wallet
                 env='devnet'  # Explicitly set to devnet
+                # Remove opts parameter that was causing issues
             )
             
             self.keypair_available = True
@@ -398,8 +451,8 @@ class DriftpyClient:
         except Exception as e:
             print(f"[DRIFTPY] Warning: Failed to initialize real client: {e}")
             print(f"[DRIFTPY] Falling back to enhanced placeholder mode")
-            self.keypair_available = False
             self.drift_client = None
+            self.keypair_available = False
     
     async def initialize(self):
         """Initialize the Drift client by adding user account and subscribing"""
@@ -422,7 +475,7 @@ class DriftpyClient:
             print(f"[DRIFTPY] ⚠️ Client initialization warning: {init_error}")
             print("[DRIFTPY] ℹ️ Continuing without full initialization...")
             return False
-
+    
     async def get_orderbook(self) -> Orderbook:
         """Get REAL orderbook from Drift - IMPLEMENTED WITH ACTUAL DRIFT PROGRAM CALLS!"""
         try:

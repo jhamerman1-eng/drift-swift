@@ -26,9 +26,8 @@ async def main():
     os.environ["DRIFT_HTTP_URL"] = "https://api.devnet.solana.com"
     os.environ["DRIFT_WS_URL"] = "wss://api.devnet.solana.com"
     
-    # For testing, you can use a mock keypair path
-    # In production, use your actual keypair file
-    os.environ["DRIFT_KEYPAIR_PATH"] = "test_keypair.json"
+    # Use your ACTUAL funded wallet for real trading
+    os.environ["DRIFT_KEYPAIR_PATH"] = "funded_wallet.json"
     
     try:
         # Build client from configuration
@@ -36,52 +35,32 @@ async def main():
         basic_client = await build_client_from_config("configs/core/drift_client.yaml")
         client = await add_live_data_to_existing_client(basic_client.drift_client)
         
-        # Check user account status first
+        # Check user account status and wallet balance
         print("🔍 Checking user account status...")
         try:
             user_account = basic_client.drift_client.get_user()
             if user_account:
                 print(f"✅ User account active: {user_account}")
-                # Check if user has any positions or orders
-                try:
-                    positions = user_account.get_active_perp_positions()
-                    print(f"📊 Current positions: {len(positions) if positions else 0}")
-                except Exception as e:
-                    print(f"⚠️ Could not check positions: {e}")
                 
                 # Check wallet balance
                 try:
                     wallet_balance = await basic_client.drift_client.connection.get_balance(basic_client.drift_client.wallet.public_key)
                     balance_sol = wallet_balance.value / 1e9 if wallet_balance.value else 0
                     print(f"💰 Wallet balance: {balance_sol:.4f} SOL")
+                    print(f"🔑 Wallet address: {basic_client.drift_client.wallet.public_key}")
                     
                     if balance_sol < 0.1:
                         print("⚠️ Insufficient balance for 0.1 SOL order")
                         print("💡 Consider using a smaller order size or funding the wallet")
+                    else:
+                        print("✅ Sufficient balance for trading!")
+                        
                 except Exception as e:
                     print(f"⚠️ Could not check wallet balance: {e}")
             else:
                 print("❌ No user account found")
         except Exception as e:
             print(f"⚠️ User account check failed: {e}")
-        
-        # Check if market is active
-        print("🔍 Checking market status...")
-        try:
-            market_account = await basic_client.drift_client.get_perp_market_account(0)
-            if market_account:
-                market_status = getattr(market_account, 'status', 'Unknown')
-                print(f"✅ Market 0 status: {market_status}")
-                
-                # Check if market is active for trading
-                if hasattr(market_account, 'status') and market_account.status.name == 'INITIALIZED':
-                    print("✅ Market is active for trading")
-                else:
-                    print("⚠️ Market may not be fully active for trading")
-            else:
-                print("❌ Could not fetch market account")
-        except Exception as e:
-            print(f"⚠️ Market status check failed: {e}")
         
         # Test the 3 data components
         print("\n🧪 Testing live data...")
@@ -139,14 +118,20 @@ async def main():
             print("🔍 Creating OrderParams object...")
             from driftpy.types import OrderParams
             
-            # Create the order parameters object
+            # Create the order parameters object using correct DriftPy API
+            from driftpy.types import OrderType, PositionDirection, MarketType
+            
+            # Convert to proper precision for Drift
+            base_asset_amount_precise = int(buy_size * 1e9)  # Convert SOL to lamports
+            price_precise = int(buy_price * 1e6)  # Convert to price precision
+            
             order_params = OrderParams(
+                order_type=OrderType.Limit(),
+                base_asset_amount=base_asset_amount_precise,  # SOL amount in lamports
                 market_index=0,  # SOL-PERP market
-                market_type="perp",  # Perpetual market
-                direction="long",  # Buy/Long position
-                order_type="limit",  # Limit order
-                base_asset_amount=buy_size,  # SOL amount
-                price=buy_price,
+                direction=PositionDirection.Long(),
+                price=price_precise,
+                market_type=MarketType.Perp(),
                 reduce_only=False,
                 post_only=False
             )
@@ -195,14 +180,17 @@ async def main():
         print(f"Network: Drift Devnet")
         
         try:
-            # Create OrderParams for sell order
+            # Create OrderParams for sell order using correct DriftPy API
+            sell_base_asset_amount_precise = int(sell_size * 1e9)  # Convert SOL to lamports
+            sell_price_precise = int(sell_price * 1e6)  # Convert to price precision
+            
             sell_order_params = OrderParams(
+                order_type=OrderType.Limit(),
+                base_asset_amount=sell_base_asset_amount_precise,  # SOL amount in lamports
                 market_index=0,  # SOL-PERP market
-                market_type="perp",  # Perpetual market
-                direction="short",  # Sell/Short position
-                order_type="limit",  # Limit order
-                base_asset_amount=sell_size,  # SOL amount
-                price=sell_price,
+                direction=PositionDirection.Short(),
+                price=sell_price_precise,
+                market_type=MarketType.Perp(),
                 reduce_only=False,
                 post_only=False
             )

@@ -14,7 +14,7 @@ swift:
 
 # Wallet Configuration
 wallets:
-  maker_keypair_path: working_keypair.json
+  maker_keypair_path: funded_wallet.json
 
 # RPC Configuration (for DriftPy) - Use official Solana devnet for Drift access
 rpc:
