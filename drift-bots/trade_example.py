@@ -125,6 +125,8 @@ async def main():
             base_asset_amount_precise = int(buy_size * 1e9)  # Convert SOL to lamports
             price_precise = int(buy_price * 1e6)  # Convert to price precision
             
+            from driftpy.types import PostOnlyParams
+            
             order_params = OrderParams(
                 order_type=OrderType.Limit(),
                 base_asset_amount=base_asset_amount_precise,  # SOL amount in lamports
@@ -133,7 +135,7 @@ async def main():
                 price=price_precise,
                 market_type=MarketType.Perp(),
                 reduce_only=False,
-                post_only=False
+                post_only=PostOnlyParams.TryPostOnly()
             )
             
             print("🚀 Placing order with OrderParams...")
@@ -192,7 +194,7 @@ async def main():
                 price=sell_price_precise,
                 market_type=MarketType.Perp(),
                 reduce_only=False,
-                post_only=False
+                post_only=PostOnlyParams.TryPostOnly()
             )
             
             print("🚀 Placing sell order with OrderParams...")

@@ -340,51 +340,39 @@ class DriftpyClient:
                     
                     print(f"[DRIFTPY] 🔍 Loading keypair from {wallet_secret_key}")
                     
-                    # Handle different keypair formats
-                    if data.startswith('[') and data.endswith(']'):
-                        # JSON array format [1,2,3,...]
+                    # Case 1: Base58 encoded private key (most common)
+                    if len(data) == 88 and not data.startswith('['):
+                        print("[DRIFTPY] ✅ Detected Base58 private key. Loading...")
+                        from solders.keypair import Keypair
+                        keypair_bytes = base58.b58decode(data)
+                        self.keypair = Keypair.from_bytes(keypair_bytes)
+                        print(f"[DRIFTPY] ✅ Successfully loaded Base58 keypair from {wallet_secret_key}")
+                    
+                    # Case 2: JSON array of bytes
+                    elif data.startswith('[') and data.endswith(']'):
                         secret_key = json.loads(data)
                         print(f"[DRIFTPY] Secret key length: {len(secret_key)} bytes")
                         
-                        if len(secret_key) == 32:
-                            # 32-byte secret key - use seed method
-                            from solders.keypair import Keypair
-                            try:
-                                self.keypair = Keypair.from_seed(secret_key)
-                                print(f"[DRIFTPY] ✅ Loaded existing 32-byte keypair using seed method from {wallet_secret_key}")
-                            except Exception as e:
-                                print(f"[DRIFTPY] ⚠️ Seed method failed: {e}")
-                                # Try duplicating to 64-byte
-                                secret_key_64 = secret_key + secret_key
-                                self.keypair = Keypair.from_bytes(secret_key_64)
-                                print(f"[DRIFTPY] ✅ Loaded existing keypair (converted to 64-byte) from {wallet_secret_key}")
-                        elif len(secret_key) == 64:
-                            # 64-byte secret key
-                            from solders.keypair import Keypair
-                            self.keypair = Keypair.from_bytes(secret_key)
-                            print(f"[DRIFTPY] ✅ Loaded existing 64-byte keypair from {wallet_secret_key}")
-                        else:
-                            raise ValueError(f"Unexpected secret key length: {len(secret_key)}")
-                    else:
-                        # Assume base58 format
                         from solders.keypair import Keypair
-                        try:
-                            # Try base58 format first
-                            self.keypair = Keypair.from_base58_string(data)
-                            print(f"[DRIFTPY] ✅ Loaded base58 keypair from {wallet_secret_key}")
-                        except Exception as base58_error:
-                            print(f"[DRIFTPY] Base58 failed: {base58_error}")
-                            # Try as raw bytes
-                            try:
-                                keypair_bytes = base58.b58decode(data)
-                                if len(keypair_bytes) == 64:
-                                    self.keypair = Keypair.from_bytes(keypair_bytes)
-                                    print(f"[DRIFTPY] ✅ Loaded keypair from decoded base58 bytes")
-                                else:
-                                    raise ValueError(f"Unexpected decoded length: {len(keypair_bytes)}")
-                            except Exception as bytes_error:
-                                print(f"[DRIFTPY] Bytes method failed: {bytes_error}")
-                                raise
+                        
+                        # Handle 32-byte seed (from Phantom export)
+                        if len(secret_key) == 32:
+                            print("[DRIFTPY] ✅ Detected 32-byte seed. Loading...")
+                            self.keypair = Keypair.from_seed(secret_key)
+                            print(f"[DRIFTPY] ✅ Successfully loaded 32-byte seed keypair from {wallet_secret_key}")
+                        
+                        # Handle 64-byte secret key
+                        elif len(secret_key) == 64:
+                            print("[DRIFTPY] ✅ Detected 64-byte secret key. Loading...")
+                            self.keypair = Keypair.from_bytes(secret_key)
+                            print(f"[DRIFTPY] ✅ Successfully loaded 64-byte keypair from {wallet_secret_key}")
+                        
+                        else:
+                            raise ValueError(f"Invalid keypair length in JSON: {len(secret_key)}")
+                    
+                    else:
+                        raise ValueError("Unrecognized keypair file format.")
+                        
                 else:
                     # Assume it's a base58 encoded secret key
                     from solders.keypair import Keypair
