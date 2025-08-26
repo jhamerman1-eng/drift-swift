@@ -1,7 +1,22 @@
-env: testnet
-rpc_url: https://mainnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
-ws_url: wss://mainnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
-wallet_secret_key: C:\Users\genuw\.config\solana\id_devnet_custom.json
+# Drift client configuration
+# Driver selection: mock, swift, driftpy, or hybrid
+driver: hybrid
+
+# Market configuration
+env: devnet
 market: SOL-PERP
 heartbeat_ms: 1000
-use_mock: true  # using enhanced mock client for testing strategy logic
+
+# Swift Configuration
+swift:
+  http_url: https://swift.drift.trade
+  ws_url: wss://swift.drift.trade/ws
+
+# Wallet Configuration
+wallets:
+  maker_keypair_path: C:\Users\genuw\.config\solana\id_devnet_custom.json
+
+# RPC Configuration (for DriftPy)
+  rpc_url: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+  ws_url: wss://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+wallet_secret_key: C:\Users\genuw\.config\solana\id_devnet_custom.json
