@@ -1,10 +1,13 @@
 import express from 'express';
 import client from 'prom-client';
 import { WebSocketServer } from 'ws';
+import { subscribe, placeOrder, getBook } from './market';
+import { quotesCounter } from './metrics';
 
 const app = express();
 const register = new client.Registry();
 client.collectDefaultMetrics({ register });
+app.use(express.json());
 
 const PORT = parseInt(process.env.PORT || '8787', 10);
 
@@ -15,6 +18,20 @@ app.get('/health', (_req, res) => res.json({ ok: true, ts: Date.now() }));
 app.get('/metrics', async (_req, res) => {
   res.set('Content-Type', register.contentType);
   res.end(await register.metrics());
+});
+
+// Market data stub
+app.get('/markets/:symbol', (req, res) => {
+  const symbol = req.params.symbol;
+  subscribe(symbol);
+  res.json(getBook(symbol));
+});
+
+// Order relay stub
+app.post('/orders', (req, res) => {
+  placeOrder(req.body);
+  quotesCounter.inc();
+  res.json({ ok: true });
 });
 
 const server = app.listen(PORT, () => {
