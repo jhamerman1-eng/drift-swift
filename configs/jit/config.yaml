@@ -1,0 +1,8 @@
+env: devnet
+market: SOL-PERP
+use_mock: true
+
+# Force mock mode to avoid driftpy dependency issues
+# This allows JIT bot to run in simulation mode
+rpc_url: null
+wallet_secret_key: null

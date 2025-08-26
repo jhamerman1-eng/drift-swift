@@ -1,0 +1,343 @@
+2025-08-26 23:25:26,976 - __main__ - INFO - 🚀 STARTING MASTER BOT ORCHESTRATOR
+2025-08-26 23:25:26,976 - __main__ - INFO - ================================================================================
+2025-08-26 23:25:26,976 - __main__ - INFO - 🎯 Complex Strategies Enabled:
+2025-08-26 23:25:26,976 - __main__ - INFO -    🔄 Hedge Bot: Risk management, urgency scoring, IOC/Passive routing
+2025-08-26 23:25:26,976 - __main__ - INFO -    📈 Trend Bot: MACD, momentum, ATR/ADX filters, position scaling
+2025-08-26 23:25:26,976 - __main__ - INFO -    ⚡ JIT Bot: Micro-pricing, toxicity guards, dynamic spreads
+2025-08-26 23:25:26,976 - __main__ - INFO - ================================================================================
+2025-08-26 23:25:26,976 - __main__ - INFO - 📡 Initializing shared Drift client...
+2025-08-26 23:25:26,977 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 23:25:26,977 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 23:25:26,977 - __main__ - INFO - ✅ Drift client initialized successfully
+2025-08-26 23:25:26,977 - __main__ - INFO - 🚀 Starting all bots with complex strategies...
+2025-08-26 23:25:26,977 - __main__ - INFO - ✅ All bots started successfully!
+2025-08-26 23:25:26,977 - __main__ - INFO - 🔄 Starting Hedge Bot with complex strategies...
+2025-08-26 23:25:26,979 - __main__ - INFO - 📈 Starting Trend Bot with complex indicators...
+2025-08-26 23:25:27,010 - __main__ - INFO - ⚡ Starting JIT Bot with complex execution strategies...
+2025-08-26 23:25:27,034 - __main__ - ERROR - ⚡ JIT Bot failed to start: Duplicated timeseries in CollectorRegistry: {'jit_quotes', 'jit_quotes_total', 'jit_quotes_created'}
+2025-08-26 23:25:27,034 - __main__ - INFO - 📊 Starting unified bot monitoring...
+2025-08-26 23:25:27,034 - __main__ - INFO - ================================================================================
+2025-08-26 23:25:27,034 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:25:27,034 - __main__ - INFO - ================================================================================
+2025-08-26 23:25:27,034 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:25:27,034 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:25:27,034 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:25:27,034 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:25:27,034 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:25:27,034 - __main__ - INFO - ================================================================================
+2025-08-26 23:25:54,032 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:25:57,035 - __main__ - INFO - ================================================================================
+2025-08-26 23:25:57,035 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:25:57,035 - __main__ - INFO - ================================================================================
+2025-08-26 23:25:57,035 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:25:57,035 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:25:57,035 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:25:57,035 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:25:57,035 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:25:57,035 - __main__ - INFO - ================================================================================
+2025-08-26 23:26:12,004 - __main__ - INFO - 🔄 Hedge Bot: Completed 10 iterations, Net Exposure: $0.00
+2025-08-26 23:26:27,036 - __main__ - INFO - ================================================================================
+2025-08-26 23:26:27,036 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:26:27,036 - __main__ - INFO - ================================================================================
+2025-08-26 23:26:27,036 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:26:27,036 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:26:27,036 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:26:27,036 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:26:27,036 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:26:27,036 - __main__ - INFO - ================================================================================
+2025-08-26 23:26:31,056 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:26:57,037 - __main__ - INFO - ================================================================================
+2025-08-26 23:26:57,037 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:26:57,037 - __main__ - INFO - ================================================================================
+2025-08-26 23:26:57,037 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:26:57,037 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:26:57,037 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:26:57,037 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:26:57,037 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:26:57,037 - __main__ - INFO - ================================================================================
+2025-08-26 23:27:02,033 - __main__ - INFO - 🔄 Hedge Bot: Completed 20 iterations, Net Exposure: $0.00
+2025-08-26 23:27:08,080 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:27:27,041 - __main__ - INFO - ================================================================================
+2025-08-26 23:27:27,041 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:27:27,041 - __main__ - INFO - ================================================================================
+2025-08-26 23:27:27,041 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:27:27,041 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:27:27,041 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:27:27,041 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:27:27,041 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:27:27,041 - __main__ - INFO - ================================================================================
+2025-08-26 23:27:45,101 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:27:52,063 - __main__ - INFO - 🔄 Hedge Bot: Completed 30 iterations, Net Exposure: $0.00
+2025-08-26 23:27:57,044 - __main__ - INFO - ================================================================================
+2025-08-26 23:27:57,044 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:27:57,044 - __main__ - INFO - ================================================================================
+2025-08-26 23:27:57,044 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:27:57,044 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:27:57,044 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:27:57,044 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:27:57,044 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:27:57,044 - __main__ - INFO - ================================================================================
+2025-08-26 23:28:22,126 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:28:27,051 - __main__ - INFO - ================================================================================
+2025-08-26 23:28:27,051 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:28:27,051 - __main__ - INFO - ================================================================================
+2025-08-26 23:28:27,051 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:28:27,051 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:28:27,051 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:28:27,051 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:28:27,051 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:28:27,051 - __main__ - INFO - ================================================================================
+2025-08-26 23:28:42,091 - __main__ - INFO - 🔄 Hedge Bot: Completed 40 iterations, Net Exposure: $0.00
+2025-08-26 23:28:57,053 - __main__ - INFO - ================================================================================
+2025-08-26 23:28:57,053 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:28:57,053 - __main__ - INFO - ================================================================================
+2025-08-26 23:28:57,053 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:28:57,054 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:28:57,054 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:28:57,054 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:28:57,054 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:28:57,054 - __main__ - INFO - ================================================================================
+2025-08-26 23:28:59,148 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:29:27,057 - __main__ - INFO - ================================================================================
+2025-08-26 23:29:27,057 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:29:27,057 - __main__ - INFO - ================================================================================
+2025-08-26 23:29:27,057 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:29:27,057 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:29:27,057 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:29:27,057 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:29:27,057 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:29:27,057 - __main__ - INFO - ================================================================================
+2025-08-26 23:29:32,118 - __main__ - INFO - 🔄 Hedge Bot: Completed 50 iterations, Net Exposure: $0.00
+2025-08-26 23:29:36,170 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:29:57,060 - __main__ - INFO - ================================================================================
+2025-08-26 23:29:57,061 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:29:57,061 - __main__ - INFO - ================================================================================
+2025-08-26 23:29:57,061 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:29:57,061 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:29:57,061 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:29:57,061 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:29:57,061 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:29:57,061 - __main__ - INFO - ================================================================================
+2025-08-26 23:30:13,195 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:30:22,151 - __main__ - INFO - 🔄 Hedge Bot: Completed 60 iterations, Net Exposure: $0.00
+2025-08-26 23:30:27,063 - __main__ - INFO - ================================================================================
+2025-08-26 23:30:27,063 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:30:27,063 - __main__ - INFO - ================================================================================
+2025-08-26 23:30:27,063 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:30:27,063 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:30:27,063 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:30:27,063 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:30:27,063 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:30:27,063 - __main__ - INFO - ================================================================================
+2025-08-26 23:30:50,213 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:30:57,068 - __main__ - INFO - ================================================================================
+2025-08-26 23:30:57,069 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:30:57,069 - __main__ - INFO - ================================================================================
+2025-08-26 23:30:57,069 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:30:57,069 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:30:57,069 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:30:57,069 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:30:57,069 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:30:57,069 - __main__ - INFO - ================================================================================
+2025-08-26 23:31:12,175 - __main__ - INFO - 🔄 Hedge Bot: Completed 70 iterations, Net Exposure: $0.00
+2025-08-26 23:31:27,072 - __main__ - INFO - ================================================================================
+2025-08-26 23:31:27,072 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:31:27,072 - __main__ - INFO - ================================================================================
+2025-08-26 23:31:27,072 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:31:27,072 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:31:27,072 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:31:27,072 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:31:27,072 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:31:27,072 - __main__ - INFO - ================================================================================
+2025-08-26 23:31:27,235 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:31:57,075 - __main__ - INFO - ================================================================================
+2025-08-26 23:31:57,075 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:31:57,075 - __main__ - INFO - ================================================================================
+2025-08-26 23:31:57,075 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:31:57,075 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:31:57,075 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:31:57,075 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:31:57,075 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:31:57,075 - __main__ - INFO - ================================================================================
+2025-08-26 23:32:02,203 - __main__ - INFO - 🔄 Hedge Bot: Completed 80 iterations, Net Exposure: $0.00
+2025-08-26 23:32:04,257 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:32:27,076 - __main__ - INFO - ================================================================================
+2025-08-26 23:32:27,076 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:32:27,076 - __main__ - INFO - ================================================================================
+2025-08-26 23:32:27,076 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:32:27,077 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:32:27,077 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:32:27,077 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:32:27,077 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:32:27,077 - __main__ - INFO - ================================================================================
+2025-08-26 23:32:41,277 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:32:52,227 - __main__ - INFO - 🔄 Hedge Bot: Completed 90 iterations, Net Exposure: $0.00
+2025-08-26 23:32:57,080 - __main__ - INFO - ================================================================================
+2025-08-26 23:32:57,080 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:32:57,081 - __main__ - INFO - ================================================================================
+2025-08-26 23:32:57,081 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:32:57,081 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:32:57,081 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:32:57,081 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:32:57,081 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:32:57,081 - __main__ - INFO - ================================================================================
+2025-08-26 23:33:18,301 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:33:27,086 - __main__ - INFO - ================================================================================
+2025-08-26 23:33:27,086 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:33:27,086 - __main__ - INFO - ================================================================================
+2025-08-26 23:33:27,086 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:33:27,086 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:33:27,086 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:33:27,086 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:33:27,086 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:33:27,086 - __main__ - INFO - ================================================================================
+2025-08-26 23:33:42,252 - __main__ - INFO - 🔄 Hedge Bot: Completed 100 iterations, Net Exposure: $0.00
+2025-08-26 23:33:55,323 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:33:57,089 - __main__ - INFO - ================================================================================
+2025-08-26 23:33:57,089 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:33:57,089 - __main__ - INFO - ================================================================================
+2025-08-26 23:33:57,089 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:33:57,089 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:33:57,089 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:33:57,089 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:33:57,089 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:33:57,089 - __main__ - INFO - ================================================================================
+2025-08-26 23:34:27,091 - __main__ - INFO - ================================================================================
+2025-08-26 23:34:27,091 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:34:27,091 - __main__ - INFO - ================================================================================
+2025-08-26 23:34:27,091 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:34:27,091 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:34:27,091 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:34:27,091 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:34:27,091 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:34:27,091 - __main__ - INFO - ================================================================================
+2025-08-26 23:34:32,274 - __main__ - INFO - 🔄 Hedge Bot: Completed 110 iterations, Net Exposure: $0.00
+2025-08-26 23:34:32,346 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:34:57,095 - __main__ - INFO - ================================================================================
+2025-08-26 23:34:57,095 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:34:57,095 - __main__ - INFO - ================================================================================
+2025-08-26 23:34:57,095 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:34:57,095 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:34:57,095 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:34:57,095 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:34:57,095 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:34:57,095 - __main__ - INFO - ================================================================================
+2025-08-26 23:35:09,367 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:35:22,305 - __main__ - INFO - 🔄 Hedge Bot: Completed 120 iterations, Net Exposure: $0.00
+2025-08-26 23:35:27,097 - __main__ - INFO - ================================================================================
+2025-08-26 23:35:27,097 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:35:27,097 - __main__ - INFO - ================================================================================
+2025-08-26 23:35:27,097 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:35:27,097 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:35:27,097 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:35:27,097 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:35:27,097 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:35:27,097 - __main__ - INFO - ================================================================================
+2025-08-26 23:35:46,391 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:35:57,099 - __main__ - INFO - ================================================================================
+2025-08-26 23:35:57,099 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:35:57,099 - __main__ - INFO - ================================================================================
+2025-08-26 23:35:57,099 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:35:57,099 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:35:57,099 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:35:57,099 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:35:57,099 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:35:57,099 - __main__ - INFO - ================================================================================
+2025-08-26 23:36:12,328 - __main__ - INFO - 🔄 Hedge Bot: Completed 130 iterations, Net Exposure: $0.00
+2025-08-26 23:36:23,413 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:36:27,104 - __main__ - INFO - ================================================================================
+2025-08-26 23:36:27,105 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:36:27,105 - __main__ - INFO - ================================================================================
+2025-08-26 23:36:27,105 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:36:27,105 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:36:27,105 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:36:27,105 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:36:27,105 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:36:27,105 - __main__ - INFO - ================================================================================
+2025-08-26 23:36:57,108 - __main__ - INFO - ================================================================================
+2025-08-26 23:36:57,108 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:36:57,108 - __main__ - INFO - ================================================================================
+2025-08-26 23:36:57,108 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:36:57,108 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:36:57,108 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:36:57,108 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:36:57,108 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:36:57,108 - __main__ - INFO - ================================================================================
+2025-08-26 23:37:00,436 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:37:02,353 - __main__ - INFO - 🔄 Hedge Bot: Completed 140 iterations, Net Exposure: $0.00
+2025-08-26 23:37:27,110 - __main__ - INFO - ================================================================================
+2025-08-26 23:37:27,110 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:37:27,110 - __main__ - INFO - ================================================================================
+2025-08-26 23:37:27,110 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:37:27,110 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:37:27,110 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:37:27,110 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:37:27,110 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:37:27,110 - __main__ - INFO - ================================================================================
+2025-08-26 23:37:37,457 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:37:52,387 - __main__ - INFO - 🔄 Hedge Bot: Completed 150 iterations, Net Exposure: $0.00
+2025-08-26 23:37:57,111 - __main__ - INFO - ================================================================================
+2025-08-26 23:37:57,111 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:37:57,112 - __main__ - INFO - ================================================================================
+2025-08-26 23:37:57,112 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:37:57,112 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:37:57,112 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:37:57,112 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:37:57,112 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:37:57,112 - __main__ - INFO - ================================================================================
+2025-08-26 23:38:14,478 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:38:27,114 - __main__ - INFO - ================================================================================
+2025-08-26 23:38:27,115 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:38:27,115 - __main__ - INFO - ================================================================================
+2025-08-26 23:38:27,115 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:38:27,115 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:38:27,115 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:38:27,115 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:38:27,115 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:38:27,115 - __main__ - INFO - ================================================================================
+2025-08-26 23:38:42,412 - __main__ - INFO - 🔄 Hedge Bot: Completed 160 iterations, Net Exposure: $0.00
+2025-08-26 23:38:51,500 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:38:57,121 - __main__ - INFO - ================================================================================
+2025-08-26 23:38:57,121 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:38:57,121 - __main__ - INFO - ================================================================================
+2025-08-26 23:38:57,121 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:38:57,121 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:38:57,121 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:38:57,121 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:38:57,121 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:38:57,121 - __main__ - INFO - ================================================================================
+2025-08-26 23:39:27,123 - __main__ - INFO - ================================================================================
+2025-08-26 23:39:27,123 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:39:27,123 - __main__ - INFO - ================================================================================
+2025-08-26 23:39:27,123 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:39:27,123 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:39:27,123 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:39:27,123 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:39:27,123 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:39:27,123 - __main__ - INFO - ================================================================================
+2025-08-26 23:39:28,523 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:39:32,439 - __main__ - INFO - 🔄 Hedge Bot: Completed 170 iterations, Net Exposure: $0.00
+2025-08-26 23:39:57,124 - __main__ - INFO - ================================================================================
+2025-08-26 23:39:57,124 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:39:57,125 - __main__ - INFO - ================================================================================
+2025-08-26 23:39:57,125 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:39:57,125 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:39:57,125 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:39:57,125 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:39:57,125 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:39:57,125 - __main__ - INFO - ================================================================================
+2025-08-26 23:40:05,548 - __main__ - ERROR - 📈 Trend Bot error: 'PositionTracker' object has no attribute 'positions'
+2025-08-26 23:40:22,468 - __main__ - INFO - 🔄 Hedge Bot: Completed 180 iterations, Net Exposure: $0.00
+2025-08-26 23:40:27,128 - __main__ - INFO - ================================================================================
+2025-08-26 23:40:27,128 - __main__ - INFO - 🎯 BOT ORCHESTRATOR STATUS REPORT
+2025-08-26 23:40:27,128 - __main__ - INFO - ================================================================================
+2025-08-26 23:40:27,128 - __main__ - INFO - 🔄 Hedge Bot: Running
+2025-08-26 23:40:27,128 - __main__ - INFO - 🔄 Trend Bot: Running
+2025-08-26 23:40:27,128 - __main__ - INFO - ✅ JIT Bot: Completed successfully
+2025-08-26 23:40:27,128 - __main__ - INFO - 🔄 Monitor: Running
+2025-08-26 23:40:27,128 - __main__ - INFO - 💰 Overall System Status: All bots operational
+2025-08-26 23:40:27,128 - __main__ - INFO - ================================================================================
+2025-08-26 23:40:27,237 - __main__ - INFO - 🛑 Received signal 2, shutting down gracefully...
+2025-08-26 23:40:33,432 - __main__ - INFO - 🛑 Received signal 2, shutting down gracefully...
+2025-08-26 23:40:57,154 - __main__ - INFO - 🧹 Cleaning up bot tasks...
+2025-08-26 23:40:57,154 - __main__ - INFO - 🔒 All bots stopped. Orchestrator shutdown complete.

@@ -1,0 +1,370 @@
+Defaulting to user installation because normal site-packages is not writeable
+Collecting driftpy
+  Downloading driftpy-0.8.68-py3-none-any.whl.metadata (5.4 kB)
+Collecting solana
+  Downloading solana-0.36.9-py3-none-any.whl.metadata (5.3 kB)
+Collecting base58
+  Downloading base58-2.1.1-py3-none-any.whl.metadata (3.1 kB)
+Collecting cryptography
+  Downloading cryptography-45.0.6-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+Collecting aiodns==3.0.0 (from driftpy)
+  Downloading aiodns-3.0.0-py3-none-any.whl.metadata (3.5 kB)
+Collecting aiohttp<4.0.0,>=3.9.1 (from driftpy)
+  Downloading aiohttp-3.12.15-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+Collecting aiosignal==1.3.1 (from driftpy)
+  Downloading aiosignal-1.3.1-py3-none-any.whl.metadata (4.0 kB)
+Collecting anchorpy==0.21.0 (from driftpy)
+  Downloading anchorpy-0.21.0-py3-none-any.whl.metadata (2.3 kB)
+Collecting anchorpy-core==0.2.0 (from driftpy)
+  Downloading anchorpy_core-0.2.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (793 bytes)
+Collecting anyio==4.4.0 (from driftpy)
+  Downloading anyio-4.4.0-py3-none-any.whl.metadata (4.6 kB)
+Collecting apischema==0.17.5 (from driftpy)
+  Downloading apischema-0.17.5.tar.gz (505 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting async-timeout<5.0.0,>=4.0.2 (from driftpy)
+  Downloading async_timeout-4.0.3-py3-none-any.whl.metadata (4.2 kB)
+Collecting attrs==22.2.0 (from driftpy)
+  Downloading attrs-22.2.0-py3-none-any.whl.metadata (13 kB)
+Collecting backoff==2.2.1 (from driftpy)
+  Downloading backoff-2.2.1-py3-none-any.whl.metadata (14 kB)
+Collecting based58==0.1.1 (from driftpy)
+  Downloading based58-0.1.1-cp37-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.whl.metadata (2.2 kB)
+Collecting borsh-construct==0.1.0 (from driftpy)
+  Downloading borsh_construct-0.1.0-py3-none-any.whl.metadata (2.0 kB)
+Collecting cachetools==5.3 (from driftpy)
+  Downloading cachetools-5.3.0-py3-none-any.whl.metadata (5.2 kB)
+Collecting certifi==2025.1.31 (from driftpy)
+  Downloading certifi-2025.1.31-py3-none-any.whl.metadata (2.5 kB)
+Collecting cffi==1.15.1 (from driftpy)
+  Downloading cffi-1.15.1.tar.gz (508 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting charset-normalizer==2.1.1 (from driftpy)
+  Downloading charset_normalizer-2.1.1-py3-none-any.whl.metadata (11 kB)
+Collecting construct==2.10.68 (from driftpy)
+  Downloading construct-2.10.68.tar.gz (57 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting construct-typing==0.5.3 (from driftpy)
+  Downloading construct_typing-0.5.3-py3-none-any.whl.metadata (7.1 kB)
+Collecting deprecated<2.0.0,>=1.2.14 (from driftpy)
+  Downloading Deprecated-1.2.18-py2.py3-none-any.whl.metadata (5.7 kB)
+Collecting dnspython==2.2.1 (from driftpy)
+  Downloading dnspython-2.2.1-py3-none-any.whl.metadata (4.9 kB)
+Collecting events<0.6,>=0.5 (from driftpy)
+  Downloading Events-0.5-py3-none-any.whl.metadata (3.9 kB)
+Collecting exceptiongroup==1.0.4 (from driftpy)
+  Downloading exceptiongroup-1.0.4-py3-none-any.whl.metadata (6.1 kB)
+Collecting grpcio==1.68.1 (from driftpy)
+  Downloading grpcio-1.68.1-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.9 kB)
+Collecting h11==0.14.0 (from driftpy)
+  Downloading h11-0.14.0-py3-none-any.whl.metadata (8.2 kB)
+Collecting httpcore==1.0.7 (from driftpy)
+  Downloading httpcore-1.0.7-py3-none-any.whl.metadata (21 kB)
+Collecting httpx==0.28.1 (from driftpy)
+  Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting idna==3.4 (from driftpy)
+  Downloading idna-3.4-py3-none-any.whl.metadata (9.8 kB)
+Collecting iniconfig==1.1.1 (from driftpy)
+  Downloading iniconfig-1.1.1-py2.py3-none-any.whl.metadata (2.4 kB)
+Collecting jsonalias==0.1.1 (from driftpy)
+  Downloading jsonalias-0.1.1-py3-none-any.whl.metadata (469 bytes)
+Collecting jsonrpcclient==4.0.3 (from driftpy)
+  Downloading jsonrpcclient-4.0.3-py3-none-any.whl.metadata (3.2 kB)
+Collecting jsonrpcserver==5.0.9 (from driftpy)
+  Downloading jsonrpcserver-5.0.9.tar.gz (14 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting jsonschema==4.18.0 (from driftpy)
+  Downloading jsonschema-4.18.0-py3-none-any.whl.metadata (10 kB)
+Collecting loguru<0.8.0,>=0.7.0 (from driftpy)
+  Downloading loguru-0.7.3-py3-none-any.whl.metadata (22 kB)
+Collecting mccabe==0.7.0 (from driftpy)
+  Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
+Collecting more-itertools==8.14.0 (from driftpy)
+  Downloading more_itertools-8.14.0-py3-none-any.whl.metadata (30 kB)
+Collecting numpy<2.0.0,>=1.26.2 (from driftpy)
+  Downloading numpy-1.26.4.tar.gz (15.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.8/15.8 MB 217.8 MB/s eta 0:00:00
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Installing backend dependencies: started
+  Installing backend dependencies: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): still running...
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting oslash==0.6.3 (from driftpy)
+  Downloading OSlash-0.6.3-py3-none-any.whl.metadata (4.7 kB)
+Collecting packaging==23.1 (from driftpy)
+  Downloading packaging-23.1-py3-none-any.whl.metadata (3.1 kB)
+Collecting protobuf==5.29.2 (from driftpy)
+  Downloading protobuf-5.29.2-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
+Collecting psutil==5.9.4 (from driftpy)
+  Downloading psutil-5.9.4-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (21 kB)
+Collecting py==1.11.0 (from driftpy)
+  Downloading py-1.11.0-py2.py3-none-any.whl.metadata (2.8 kB)
+Collecting pycares==4.3.0 (from driftpy)
+  Downloading pycares-4.3.0.tar.gz (821 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 821.6/821.6 kB 73.2 MB/s eta 0:00:00
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting pycodestyle==2.10.0 (from driftpy)
+  Downloading pycodestyle-2.10.0-py2.py3-none-any.whl.metadata (31 kB)
+Collecting pycparser==2.21 (from driftpy)
+  Downloading pycparser-2.21-py2.py3-none-any.whl.metadata (1.1 kB)
+Collecting pyflakes==3.0.1 (from driftpy)
+  Downloading pyflakes-3.0.1-py2.py3-none-any.whl.metadata (3.8 kB)
+Collecting pyheck==0.1.5 (from driftpy)
+  Downloading pyheck-0.1.5-cp37-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.whl.metadata (2.6 kB)
+Collecting pynacl<2.0.0,>=1.5.0 (from driftpy)
+  Downloading PyNaCl-1.5.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl.metadata (8.6 kB)
+Collecting pyrsistent==0.19.2 (from driftpy)
+  Downloading pyrsistent-0.19.2-py3-none-any.whl.metadata (27 kB)
+Collecting pythclient==0.2.1 (from driftpy)
+  Downloading pythclient-0.2.1-py3-none-any.whl.metadata (5.2 kB)
+Collecting requests<3.0.0,>=2.28.1 (from driftpy)
+  Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting rfc3986==1.5.0 (from driftpy)
+  Downloading rfc3986-1.5.0-py2.py3-none-any.whl.metadata (6.5 kB)
+Collecting sniffio==1.3.0 (from driftpy)
+  Downloading sniffio-1.3.0-py3-none-any.whl.metadata (3.6 kB)
+Collecting solders<0.27.0,>=0.23.0 (from driftpy)
+  Downloading solders-0.26.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.6 kB)
+Collecting sumtypes==0.1a6 (from driftpy)
+  Downloading sumtypes-0.1a6-py2.py3-none-any.whl.metadata (3.7 kB)
+Collecting toml==0.10.2 (from driftpy)
+  Downloading toml-0.10.2-py2.py3-none-any.whl.metadata (7.1 kB)
+Collecting tomli==2.0.1 (from driftpy)
+  Downloading tomli-2.0.1-py3-none-any.whl.metadata (8.9 kB)
+Collecting toolz==0.11.2 (from driftpy)
+  Downloading toolz-0.11.2-py3-none-any.whl.metadata (5.1 kB)
+Collecting tqdm<5.0.0,>=4.67.1 (from driftpy)
+  Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+Collecting types-cachetools==4.2.10 (from driftpy)
+  Downloading types_cachetools-4.2.10-py3-none-any.whl.metadata (1.2 kB)
+Collecting typing-extensions<5.0.0,>=4.4.0 (from driftpy)
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting urllib3==1.26.13 (from driftpy)
+  Downloading urllib3-1.26.13-py2.py3-none-any.whl.metadata (47 kB)
+Collecting websockets==13.0 (from driftpy)
+  Downloading websockets-13.0-cp313-cp313-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+Collecting yarl==1.9.4 (from driftpy)
+  Downloading yarl-1.9.4-py3-none-any.whl.metadata (31 kB)
+Collecting zstandard==0.18.0 (from driftpy)
+  Downloading zstandard-0.18.0.tar.gz (631 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 631.5/631.5 kB 50.9 MB/s eta 0:00:00
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting frozenlist>=1.1.0 (from aiosignal==1.3.1->driftpy)
+  Downloading frozenlist-1.7.0-cp313-cp313-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (18 kB)
+Collecting jsonschema-specifications>=2023.03.6 (from jsonschema==4.18.0->driftpy)
+  Downloading jsonschema_specifications-2025.4.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting referencing>=0.28.4 (from jsonschema==4.18.0->driftpy)
+  Downloading referencing-0.36.2-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py>=0.7.1 (from jsonschema==4.18.0->driftpy)
+  Downloading rpds_py-0.27.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
+Collecting flake8 (from pythclient==0.2.1->driftpy)
+  Downloading flake8-7.3.0-py2.py3-none-any.whl.metadata (3.8 kB)
+Collecting pytz (from pythclient==0.2.1->driftpy)
+  Downloading pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting pycryptodome (from pythclient==0.2.1->driftpy)
+  Downloading pycryptodome-3.23.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.4 kB)
+Collecting multidict>=4.0 (from yarl==1.9.4->driftpy)
+  Downloading multidict-6.6.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+INFO: pip is looking at multiple versions of solana to determine which version is compatible with other requirements. This could take a while.
+Collecting solana
+  Downloading solana-0.36.7-py3-none-any.whl.metadata (5.3 kB)
+  Downloading solana-0.36.6-py3-none-any.whl.metadata (5.3 kB)
+Collecting aiohappyeyeballs>=2.5.0 (from aiohttp<4.0.0,>=3.9.1->driftpy)
+  Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl.metadata (5.9 kB)
+INFO: pip is looking at multiple versions of aiohttp to determine which version is compatible with other requirements. This could take a while.
+Collecting aiohttp<4.0.0,>=3.9.1 (from driftpy)
+  Downloading aiohttp-3.12.14-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+  Downloading aiohttp-3.12.13-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+Collecting propcache>=0.2.0 (from aiohttp<4.0.0,>=3.9.1->driftpy)
+  Downloading propcache-0.3.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (12 kB)
+Collecting aiohttp<4.0.0,>=3.9.1 (from driftpy)
+  Downloading aiohttp-3.12.12-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+  Downloading aiohttp-3.12.11-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+  Downloading aiohttp-3.12.10-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+  Downloading aiohttp-3.12.9-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+  Downloading aiohttp-3.12.8-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+INFO: pip is still looking at multiple versions of aiohttp to determine which version is compatible with other requirements. This could take a while.
+  Downloading aiohttp-3.12.7-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+  Downloading aiohttp-3.12.6-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+  Downloading aiohttp-3.12.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+  Downloading aiohttp-3.12.3-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+  Downloading aiohttp-3.12.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+INFO: This is taking longer than usual. You might need to provide the dependency resolver with stricter constraints to reduce runtime. See https://pip.pypa.io/warnings/backtracking for guidance. If you want to abort this run, press Ctrl + C.
+  Downloading aiohttp-3.12.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+  Downloading aiohttp-3.11.18-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.11.16-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.11.15-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.11.12-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.11.11-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.11.10-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.11.9-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.11.8-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.11.7-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.11.6-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.11.5-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.11.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.11.3-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.11.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.11.1-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.11.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.10.11-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+  Downloading aiohttp-3.10.10-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+  Downloading aiohttp-3.10.9-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+  Downloading aiohttp-3.10.8-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+  Downloading aiohttp-3.10.7-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+  Downloading aiohttp-3.10.6-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.6 kB)
+  Downloading aiohttp-3.10.5-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.5 kB)
+Collecting wrapt<2,>=1.10 (from deprecated<2.0.0,>=1.2.14->driftpy)
+  Downloading wrapt-1.17.3-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.4 kB)
+INFO: pip is looking at multiple versions of flake8 to determine which version is compatible with other requirements. This could take a while.
+Collecting flake8 (from pythclient==0.2.1->driftpy)
+  Downloading flake8-7.2.0-py2.py3-none-any.whl.metadata (3.8 kB)
+  Downloading flake8-7.1.2-py2.py3-none-any.whl.metadata (3.8 kB)
+  Downloading flake8-7.1.1-py2.py3-none-any.whl.metadata (3.8 kB)
+  Downloading flake8-7.1.0-py2.py3-none-any.whl.metadata (3.8 kB)
+  Downloading flake8-7.0.0-py2.py3-none-any.whl.metadata (3.8 kB)
+  Downloading flake8-6.1.0-py2.py3-none-any.whl.metadata (3.8 kB)
+  Downloading flake8-6.0.0-py2.py3-none-any.whl.metadata (3.8 kB)
+Downloading driftpy-0.8.68-py3-none-any.whl (249 kB)
+Downloading base58-2.1.1-py3-none-any.whl (5.6 kB)
+Downloading aiodns-3.0.0-py3-none-any.whl (5.0 kB)
+Downloading aiosignal-1.3.1-py3-none-any.whl (7.6 kB)
+Downloading anchorpy-0.21.0-py3-none-any.whl (63 kB)
+Downloading anchorpy_core-0.2.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 66.9 MB/s eta 0:00:00
+Downloading anyio-4.4.0-py3-none-any.whl (86 kB)
+Downloading attrs-22.2.0-py3-none-any.whl (60 kB)
+Downloading backoff-2.2.1-py3-none-any.whl (15 kB)
+Downloading based58-0.1.1-cp37-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 96.5 MB/s eta 0:00:00
+Downloading borsh_construct-0.1.0-py3-none-any.whl (6.4 kB)
+Downloading cachetools-5.3.0-py3-none-any.whl (9.3 kB)
+Downloading certifi-2025.1.31-py3-none-any.whl (166 kB)
+Downloading charset_normalizer-2.1.1-py3-none-any.whl (39 kB)
+Downloading construct_typing-0.5.3-py3-none-any.whl (22 kB)
+Downloading dnspython-2.2.1-py3-none-any.whl (269 kB)
+Downloading exceptiongroup-1.0.4-py3-none-any.whl (14 kB)
+Downloading grpcio-1.68.1-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (5.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.9/5.9 MB 201.9 MB/s eta 0:00:00
+Downloading h11-0.14.0-py3-none-any.whl (58 kB)
+Downloading httpcore-1.0.7-py3-none-any.whl (78 kB)
+Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+Downloading idna-3.4-py3-none-any.whl (61 kB)
+Downloading iniconfig-1.1.1-py2.py3-none-any.whl (5.0 kB)
+Downloading jsonalias-0.1.1-py3-none-any.whl (1.3 kB)
+Downloading jsonrpcclient-4.0.3-py3-none-any.whl (7.0 kB)
+Downloading jsonschema-4.18.0-py3-none-any.whl (81 kB)
+Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
+Downloading more_itertools-8.14.0-py3-none-any.whl (52 kB)
+Downloading OSlash-0.6.3-py3-none-any.whl (26 kB)
+Downloading packaging-23.1-py3-none-any.whl (48 kB)
+Downloading protobuf-5.29.2-cp38-abi3-manylinux2014_x86_64.whl (319 kB)
+Downloading psutil-5.9.4-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (280 kB)
+Downloading py-1.11.0-py2.py3-none-any.whl (98 kB)
+Downloading pycodestyle-2.10.0-py2.py3-none-any.whl (41 kB)
+Downloading pycparser-2.21-py2.py3-none-any.whl (118 kB)
+Downloading pyflakes-3.0.1-py2.py3-none-any.whl (62 kB)
+Downloading pyheck-0.1.5-cp37-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 54.4 MB/s eta 0:00:00
+Downloading pyrsistent-0.19.2-py3-none-any.whl (57 kB)
+Downloading pythclient-0.2.1-py3-none-any.whl (34 kB)
+Downloading rfc3986-1.5.0-py2.py3-none-any.whl (31 kB)
+Downloading sniffio-1.3.0-py3-none-any.whl (10 kB)
+Downloading sumtypes-0.1a6-py2.py3-none-any.whl (5.8 kB)
+Downloading toml-0.10.2-py2.py3-none-any.whl (16 kB)
+Downloading tomli-2.0.1-py3-none-any.whl (12 kB)
+Downloading toolz-0.11.2-py3-none-any.whl (55 kB)
+Downloading types_cachetools-4.2.10-py3-none-any.whl (4.8 kB)
+Downloading urllib3-1.26.13-py2.py3-none-any.whl (140 kB)
+Downloading websockets-13.0-cp313-cp313-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (158 kB)
+Downloading yarl-1.9.4-py3-none-any.whl (31 kB)
+Downloading solana-0.36.6-py3-none-any.whl (62 kB)
+Downloading cryptography-45.0.6-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 200.1 MB/s eta 0:00:00
+Downloading aiohttp-3.10.5-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 86.5 MB/s eta 0:00:00
+Downloading async_timeout-4.0.3-py3-none-any.whl (5.7 kB)
+Downloading Deprecated-1.2.18-py2.py3-none-any.whl (10.0 kB)
+Downloading Events-0.5-py3-none-any.whl (6.8 kB)
+Downloading loguru-0.7.3-py3-none-any.whl (61 kB)
+Downloading PyNaCl-1.5.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl (856 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 856.7/856.7 kB 95.7 MB/s eta 0:00:00
+Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+Downloading solders-0.26.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.5/13.5 MB 170.8 MB/s eta 0:00:00
+Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
+Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+Downloading frozenlist-1.7.0-cp313-cp313-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (232 kB)
+Downloading jsonschema_specifications-2025.4.1-py3-none-any.whl (18 kB)
+Downloading multidict-6.6.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (254 kB)
+Downloading referencing-0.36.2-py3-none-any.whl (26 kB)
+Downloading rpds_py-0.27.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (385 kB)
+Downloading wrapt-1.17.3-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (88 kB)
+Downloading flake8-6.0.0-py2.py3-none-any.whl (57 kB)
+Downloading pycryptodome-3.23.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 194.0 MB/s eta 0:00:00
+Downloading pytz-2025.2-py2.py3-none-any.whl (509 kB)
+Building wheels for collected packages: apischema, cffi, construct, jsonrpcserver, pycares, zstandard, numpy
+  Building wheel for apischema (pyproject.toml): started
+  Building wheel for apischema (pyproject.toml): finished with status 'done'
+  Created wheel for apischema: filename=apischema-0.17.5-cp313-cp313-linux_x86_64.whl size=120218 sha256=3152bb27214b890fc5fef8be0ed085a75abdbd4d7e30167d0b0a2a33302b4852
+  Stored in directory: /home/ubuntu/.cache/pip/wheels/63/cb/6e/5932d698de0264bec82230c9c92b55e3dadde0ffcc84874370
+  Building wheel for cffi (pyproject.toml): started
+  Building wheel for cffi (pyproject.toml): finished with status 'error'
+  Building wheel for construct (pyproject.toml): started
+  Building wheel for construct (pyproject.toml): finished with status 'done'
+  Created wheel for construct: filename=construct-2.10.68-py3-none-any.whl size=59317 sha256=5467284ff9ac45b808ce2d444010d3052ab757726cfd7d83f36f867cba1fd785
+  Stored in directory: /home/ubuntu/.cache/pip/wheels/9f/6c/84/97b0d63d17aeee1b0638247eca150d5ac452cc6b711ea91304
+  Building wheel for jsonrpcserver (pyproject.toml): started
+  Building wheel for jsonrpcserver (pyproject.toml): finished with status 'done'
+  Created wheel for jsonrpcserver: filename=jsonrpcserver-5.0.9-py3-none-any.whl size=15984 sha256=ef326e0f472d13c84dc4d44e16689e07bead5c34c58f5b4bdcfb299218963274
+  Stored in directory: /home/ubuntu/.cache/pip/wheels/9d/08/7a/135b8c648138ec3a636583fb8c305f20b6576879a4a781e446
+  Building wheel for pycares (pyproject.toml): started
+  Building wheel for pycares (pyproject.toml): finished with status 'done'
+  Created wheel for pycares: filename=pycares-4.3.0-cp313-cp313-linux_x86_64.whl size=270012 sha256=89c242914fa60b5b2d541e27693b471470851f6e338e9bf652ecb5e6450bd077
+  Stored in directory: /home/ubuntu/.cache/pip/wheels/33/79/29/06daaf1ae3d2d9ca9121dca4468994112cc9cc8469a18fe440
+  Building wheel for zstandard (pyproject.toml): started
+  Building wheel for zstandard (pyproject.toml): finished with status 'done'
+  Created wheel for zstandard: filename=zstandard-0.18.0-cp313-cp313-linux_x86_64.whl size=2071163 sha256=93298fb6295a41fb786ce6c3e8dbca951a374325a8027fa03d1902c8dfbb3b12
+  Stored in directory: /home/ubuntu/.cache/pip/wheels/fb/96/4d/b34cd253060043aed162790550dff0bec487cc21a2e609d282
+  Building wheel for numpy (pyproject.toml): started
+  Building wheel for numpy (pyproject.toml): finished with status 'done'
+  Created wheel for numpy: filename=numpy-1.26.4-cp313-cp313-linux_x86_64.whl size=8162807 sha256=e1c703231caa25549503eac5b9cdca216979ebb83ef909009dd1fec64656d442
+  Stored in directory: /home/ubuntu/.cache/pip/wheels/8b/2d/9f/b6b46373f328e2ef50388915d351ccacbedac929459b5459bf
+Successfully built apischema construct jsonrpcserver pycares zstandard numpy
+Failed to build cffi
