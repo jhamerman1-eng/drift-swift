@@ -1,42 +1,14 @@
-# v1.17.0-RC — Drift/Swift Client Config
+cluster: ${ENV:testnet}  # testnet|devnet|mainnet
+driver: ${DRIVER:swift}  # swift|driftpy
 
-# Environment and market settings.  These values are propagated from
-# environment variables via ``os.path.expandvars`` in the client builder.
-env: ${ENV}
-market: ${MARKET}
+rpc:
+  http_url: ${DRIFT_HTTP_URL:https://api.mainnet-beta.solana.com}
+  ws_url: ${DRIFT_WS_URL:wss://api.mainnet-beta.solana.com}
 
-# When true, the client builder will return a MockDriftClient rather than
-# attempting to connect to real Drift endpoints.  Set to false in
-# production and provide appropriate rpc_url/ws_url values below.
-use_mock: true
+swift:
+  http_url: ${SWIFT_HTTP_URL:http://localhost:8787}
+  ws_url: ${SWIFT_WS_URL:ws://localhost:8787/ws}
 
-# Connection endpoints for a real client.  Only used when ``use_mock``
-# is set to false.  See ``libs/drift/client.py`` for details.
-rpc_url: ${RPC_URL_HTTP}
-ws_url: ${DRIFT_WS_URL}
-
-# Other settings are retained for backwards compatibility but are not
-# consumed by the new AsyncDriftClient implementation.  They may be
-# removed in a future version.
-transport:
-  rpc_http: ${RPC_URL_HTTP}
-  rpc_ws: ${RPC_URL_WS}
-  drift_ws: ${DRIFT_WS_URL}
-  swift_ws: ${SWIFT_WS_URL}
-  timeouts: { connect_seconds: 10, read_seconds: 20 }
-  reconnect: { max_backoff_seconds: 30, jitter: true }
-keys:
-  maker_keypair_path: ${KEYPAIR_PATH}
-  jito_keypair_path: ${JITO_KEYPAIR_PATH}
-features:
-  jit: ${FEATURE_JIT}
-  hedge: ${FEATURE_HEDGE}
-  trend: ${FEATURE_TREND}
-  obi: ${FEATURE_OBI}
-  crash_v2: ${FEATURE_CRASH_V2}
-risk:
-  soft_drawdown_pct: ${SOFT_DD_PCT}
-  trend_pause_pct: ${TREND_PAUSE_PCT}
-  circuit_break_pct: ${CIRCUIT_BREAK_PCT}
-metrics: { port: ${METRICS_PORT} }
-logging: { level: ${LOG_LEVEL} }
+wallets:
+  maker_keypair_path: ${KEYPAIR_PATH:/abs/path/to/maker-keypair.json}
+  jito_keypair_path: ${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}

@@ -1,44 +1,7 @@
-# Trend signal generation configuration
-
-# This configuration is based on the v16.9 trend parameters, ported to
-# the v1.17.0‑RC architecture.  It defines the parameters for MACD,
-# momentum and optional ATR/ADX filters.  The ``trend`` key mirrors
-# the structure of earlier releases so that the bot can load it via
-# ``yaml.safe_load``.
-
-trend:
-  # Enable or disable the MACD component.  When false the bot will
-  # ignore the MACD histogram and rely solely on momentum.
-  use_macd: true
-
-  # Moving average periods for the MACD indicator.  The fast and slow
-  # EMAs determine the MACD line and the signal EMA smooths the MACD.
-  macd:
-    fast: 12
-    slow: 26
-    signal: 9
-
-  # Window length (in number of mid price samples) used to compute
-  # simple momentum.  Momentum is defined as ``price[t] - price[t-N]``.
-  momentum_window: 14
-
-  # Optional ATR/ADX filters.  When enabled, the bot will compute the
-  # Average True Range (ATR) and Average Directional Index (ADX) and
-  # only allow trades when ``atr`` exceeds ``atr_mult`` times the
-  # rolling ATR and ``adx`` is above ``adx_min``.  Setting ``enabled``
-  # to false disables these filters entirely.
-  atr_adx_filters:
-    enabled: false
-    atr_mult: 1.5
-    adx_min: 20
-
-  # Maximum position size (USD) that the trend bot is allowed to
-  # accumulate.  This is used to scale trade sizes relative to the
-  # absolute value of the MACD histogram and momentum signals.
-  max_position_usd: 5000
-
-  # Multiplier applied to the raw signal strength to compute order
-  # notional size.  For example, if the histogram magnitude and
-  # momentum magnitude sum to 2.0, the bot will trade
-  # ``position_scaler * 2.0 * max_position_usd``.
-  position_scaler: 0.1
+rbc_filters:
+  enabled: true
+  adx_min: 15
+  atr_mult: 1.7
+anti_chop:
+  enabled: true
+  window: 50

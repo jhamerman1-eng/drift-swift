@@ -1,12 +1,6 @@
-import os, time
-from libs.drift.client import ClientFactory
+from libs.drift.client import DriftClient
 
-# Ensure env is loaded before running:
-# RPC_URL, WS_URL, SOLANA_CLUSTER=devnet, SWIFT_SIDECAR_PORT=8787
-
-c = ClientFactory.from_env()
-print("Health:", c.health())
-
-# Place a tiny post-only bid
-resp = c.place_order(marketIndex=0, price=135.25, size=0.02, postOnly=True, side='bid')
-print("Place resp:", resp)
+if __name__ == "__main__":
+    c = DriftClient({"driver": "swift"})
+    c.connect()
+    print(c.place_order("SOL-PERP", "buy", 100.0, 0.01, post_only=True))
