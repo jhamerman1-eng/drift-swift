@@ -1,0 +1,20 @@
+2025-08-27 03:56:25,511 - __main__ - INFO - [LAUNCH] Starting Simple Hedge Bot for beta.drift.trade
+2025-08-27 03:56:25,512 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-08-27 03:56:25,513 - __main__ - INFO - ======================================================================
+2025-08-27 03:56:25,513 - __main__ - INFO - [INIT] Importing working DriftPy client...
+2025-08-27 03:56:27,668 - __main__ - INFO - [SUCCESS] DriftPy client imported successfully
+2025-08-27 03:56:27,669 - __main__ - INFO - [INIT] Importing bot components...
+2025-08-27 03:56:27,671 - root - ERROR - [ERROR] Fatal error: No module named 'libs.order_management'
+2025-08-27 03:56:27,675 - __main__ - INFO - ======================================================================
+2025-08-27 03:56:27,676 - __main__ - INFO - [SUMMARY] BETA HEDGE TRADING SESSION COMPLETE
+2025-08-27 03:56:27,676 - __main__ - INFO - ======================================================================
+2025-08-27 03:56:49,367 - __main__ - INFO - [LAUNCH] Starting Simple Hedge Bot for beta.drift.trade
+2025-08-27 03:56:49,367 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-08-27 03:56:49,368 - __main__ - INFO - ======================================================================
+2025-08-27 03:56:49,368 - __main__ - INFO - [INIT] Importing working DriftPy client...
+2025-08-27 03:56:51,164 - __main__ - INFO - [SUCCESS] DriftPy client imported successfully
+2025-08-27 03:56:51,166 - __main__ - INFO - [INIT] Importing bot components...
+2025-08-27 03:56:51,169 - root - ERROR - [ERROR] Fatal error: No module named 'libs.order_management'
+2025-08-27 03:56:51,170 - __main__ - INFO - ======================================================================
+2025-08-27 03:56:51,171 - __main__ - INFO - [SUMMARY] BETA HEDGE TRADING SESSION COMPLETE
+2025-08-27 03:56:51,171 - __main__ - INFO - ======================================================================
