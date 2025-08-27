@@ -12,9 +12,19 @@ class RiskManager:
         self.soft_dd = soft_dd
         self.trend_pause = trend_pause
         self.circuit = circuit
+        self.peak_equity = 0.0  # Track peak equity internally
 
-    def evaluate(self, equity: float, peak_equity: float) -> RiskState:
-        if peak_equity <= 0: peak_equity = equity
+    def evaluate(self, equity: float, peak_equity: float = None) -> RiskState:
+        if peak_equity is None:
+            peak_equity = self.peak_equity
+        if peak_equity <= 0:
+            peak_equity = equity
+
+        # Update peak equity if current equity is higher
+        if equity > peak_equity:
+            self.peak_equity = equity
+            peak_equity = equity
+
         dd = (equity/peak_equity - 1.0) * 100.0
         return RiskState(equity=equity, peak_equity=peak_equity, drawdown_pct=dd)
 

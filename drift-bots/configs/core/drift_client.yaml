@@ -1,6 +1,7 @@
 # Drift client configuration
 # Driver selection: driftpy, swift, or hybrid (NO MOCK MODE)
 driver: driftpy
+use_mock: false
 
 # Market configuration
 env: devnet

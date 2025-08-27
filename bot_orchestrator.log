@@ -1,0 +1,507 @@
+2025-08-26 19:15:02,502 - __main__ - INFO - ====================================================================================================
+2025-08-26 19:15:02,531 - __main__ - INFO - ====================================================================================================
+2025-08-26 19:16:22,937 - __main__ - INFO - ====================================================================================================
+2025-08-26 19:16:22,963 - __main__ - INFO - ====================================================================================================
+2025-08-26 19:18:38,216 - __main__ - INFO - ====================================================================================================
+2025-08-26 19:18:38,243 - __main__ - INFO - ====================================================================================================
+2025-08-26 19:32:00,250 - __main__ - INFO - ====================================================================================================
+2025-08-26 19:32:00,280 - __main__ - INFO - ====================================================================================================
+2025-08-26 19:35:49,477 - __main__ - INFO - ====================================================================================================
+2025-08-26 19:35:49,507 - __main__ - INFO - ====================================================================================================
+2025-08-26 19:48:36,425 - __main__ - INFO - ====================================================================================================
+2025-08-26 19:48:36,454 - __main__ - INFO - ====================================================================================================
+2025-08-26 20:20:19,102 - __main__ - INFO - STARTING ENHANCED MASTER BOT ORCHESTRATOR
+2025-08-26 20:20:19,103 - __main__ - INFO - ====================================================================================================
+2025-08-26 20:20:19,103 - __main__ - INFO - SOPHISTICATED MM/JIT STRATEGIES ENABLED:
+2025-08-26 20:20:19,103 - __main__ - INFO -    Enhanced Hedge Bot: Urgency-based hedging, volatility-adaptive, multi-account
+2025-08-26 20:20:19,104 - __main__ - INFO -    Enhanced Trend Bot: MACD + momentum, anti-chop filters (ATR/ADX), RBC entry
+2025-08-26 20:20:19,104 - __main__ - INFO -    Enhanced JIT Bot: OBI Config Pack v1, Quote Skew, Superburst Profile-D
+2025-08-26 20:20:19,104 - __main__ - INFO -    Crash Sentinel v2: Circuit breakers on >=3sigma moves
+2025-08-26 20:20:19,104 - __main__ - INFO -    Portfolio Rails: Multi-level risk management
+2025-08-26 20:20:19,105 - __main__ - INFO -    Multi-Account Layout: Sophisticated account management
+2025-08-26 20:20:19,105 - __main__ - INFO - ====================================================================================================
+2025-08-26 20:20:19,105 - __main__ - INFO - Initializing shared Drift client...
+2025-08-26 20:20:19,107 - __main__ - ERROR - Enhanced orchestrator error: rpc_url and wallet_secret_key/DRIFT_KEYPAIR_PATH are required for real client
+2025-08-26 20:20:19,109 - __main__ - INFO - Cleaning up enhanced bot tasks...
+2025-08-26 20:20:19,109 - __main__ - INFO - All enhanced bots stopped. Orchestrator shutdown complete.
+2025-08-26 20:50:44,302 - __main__ - INFO - STARTING ENHANCED MASTER BOT ORCHESTRATOR
+2025-08-26 20:50:44,303 - __main__ - INFO - ====================================================================================================
+2025-08-26 20:50:44,303 - __main__ - INFO - SOPHISTICATED MM/JIT STRATEGIES ENABLED:
+2025-08-26 20:50:44,303 - __main__ - INFO -    Enhanced Hedge Bot: Urgency-based hedging, volatility-adaptive, multi-account
+2025-08-26 20:50:44,303 - __main__ - INFO -    Enhanced Trend Bot: MACD + momentum, anti-chop filters (ATR/ADX), RBC entry
+2025-08-26 20:50:44,304 - __main__ - INFO -    Enhanced JIT Bot: OBI Config Pack v1, Quote Skew, Superburst Profile-D
+2025-08-26 20:50:44,304 - __main__ - INFO -    Crash Sentinel v2: Circuit breakers on >=3sigma moves
+2025-08-26 20:50:44,304 - __main__ - INFO -    Portfolio Rails: Multi-level risk management
+2025-08-26 20:50:44,304 - __main__ - INFO -    Multi-Account Layout: Sophisticated account management
+2025-08-26 20:50:44,304 - __main__ - INFO - ====================================================================================================
+2025-08-26 20:50:44,305 - __main__ - INFO - Using traditional signal handlers (Windows fallback)
+2025-08-26 20:50:44,323 - __main__ - INFO - Prometheus metrics server started on port 9101
+2025-08-26 20:50:44,329 - __main__ - INFO - Override: using mock client mode
+2025-08-26 20:50:44,329 - __main__ - INFO - Initializing shared Drift client...
+2025-08-26 20:50:44,331 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 20:50:44,331 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 20:50:44,331 - __main__ - INFO - Drift client initialized successfully
+2025-08-26 20:50:44,332 - __main__ - INFO - Cleaning up enhanced bot tasks...
+2025-08-26 20:50:44,332 - libs.drift.client - INFO - [MOCK] Client closing. Final PnL: $0.00, Max Drawdown: $0.00
+2025-08-26 20:50:44,332 - __main__ - INFO - Drift client closed successfully
+2025-08-26 20:50:44,332 - __main__ - INFO - All enhanced bots stopped. Orchestrator shutdown complete.
+2025-08-26 20:51:32,423 - __main__ - INFO - STARTING ENHANCED MASTER BOT ORCHESTRATOR
+2025-08-26 20:51:32,424 - __main__ - INFO - ====================================================================================================
+2025-08-26 20:51:32,425 - __main__ - INFO - SOPHISTICATED MM/JIT STRATEGIES ENABLED:
+2025-08-26 20:51:32,425 - __main__ - INFO -    Enhanced Hedge Bot: Urgency-based hedging, volatility-adaptive, multi-account
+2025-08-26 20:51:32,425 - __main__ - INFO -    Enhanced Trend Bot: MACD + momentum, anti-chop filters (ATR/ADX), RBC entry
+2025-08-26 20:51:32,426 - __main__ - INFO -    Enhanced JIT Bot: OBI Config Pack v1, Quote Skew, Superburst Profile-D
+2025-08-26 20:51:32,426 - __main__ - INFO -    Crash Sentinel v2: Circuit breakers on >=3sigma moves
+2025-08-26 20:51:32,426 - __main__ - INFO -    Portfolio Rails: Multi-level risk management
+2025-08-26 20:51:32,427 - __main__ - INFO -    Multi-Account Layout: Sophisticated account management
+2025-08-26 20:51:32,427 - __main__ - INFO - ====================================================================================================
+2025-08-26 20:51:32,427 - __main__ - INFO - Using traditional signal handlers (Windows fallback)
+2025-08-26 20:51:32,438 - __main__ - INFO - Prometheus metrics server started on port 9100
+2025-08-26 20:51:32,442 - __main__ - INFO - Override: using mock client mode
+2025-08-26 20:51:32,443 - __main__ - INFO - Initializing shared Drift client...
+2025-08-26 20:51:32,445 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 20:51:32,445 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 20:51:32,446 - __main__ - INFO - Drift client initialized successfully
+2025-08-26 20:51:32,446 - __main__ - INFO - Cleaning up enhanced bot tasks...
+2025-08-26 20:51:32,446 - libs.drift.client - INFO - [MOCK] Client closing. Final PnL: $0.00, Max Drawdown: $0.00
+2025-08-26 20:51:32,447 - __main__ - INFO - Drift client closed successfully
+2025-08-26 20:51:32,447 - __main__ - INFO - All enhanced bots stopped. Orchestrator shutdown complete.
+2025-08-26 20:51:48,172 - __main__ - INFO - STARTING ENHANCED MASTER BOT ORCHESTRATOR
+2025-08-26 20:51:48,172 - __main__ - INFO - ====================================================================================================
+2025-08-26 20:51:48,174 - __main__ - INFO - SOPHISTICATED MM/JIT STRATEGIES ENABLED:
+2025-08-26 20:51:48,174 - __main__ - INFO -    Enhanced Hedge Bot: Urgency-based hedging, volatility-adaptive, multi-account
+2025-08-26 20:51:48,175 - __main__ - INFO -    Enhanced Trend Bot: MACD + momentum, anti-chop filters (ATR/ADX), RBC entry
+2025-08-26 20:51:48,175 - __main__ - INFO -    Enhanced JIT Bot: OBI Config Pack v1, Quote Skew, Superburst Profile-D
+2025-08-26 20:51:48,175 - __main__ - INFO -    Crash Sentinel v2: Circuit breakers on >=3sigma moves
+2025-08-26 20:51:48,175 - __main__ - INFO -    Portfolio Rails: Multi-level risk management
+2025-08-26 20:51:48,176 - __main__ - INFO -    Multi-Account Layout: Sophisticated account management
+2025-08-26 20:51:48,176 - __main__ - INFO - ====================================================================================================
+2025-08-26 20:51:48,176 - __main__ - INFO - Using traditional signal handlers (Windows fallback)
+2025-08-26 20:51:48,187 - __main__ - INFO - Prometheus metrics server started on port 9100
+2025-08-26 20:51:48,193 - __main__ - INFO - Override: using mock client mode
+2025-08-26 20:51:48,194 - __main__ - INFO - Initializing shared Drift client...
+2025-08-26 20:51:48,195 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 20:51:48,196 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 20:51:48,196 - __main__ - INFO - Drift client initialized successfully
+2025-08-26 20:51:48,196 - __main__ - INFO - Cleaning up enhanced bot tasks...
+2025-08-26 20:51:48,196 - libs.drift.client - INFO - [MOCK] Client closing. Final PnL: $0.00, Max Drawdown: $0.00
+2025-08-26 20:51:48,196 - __main__ - INFO - Drift client closed successfully
+2025-08-26 20:51:48,196 - __main__ - INFO - All enhanced bots stopped. Orchestrator shutdown complete.
+2025-08-26 21:19:32,164 - __main__ - INFO - STARTING ENHANCED MASTER BOT ORCHESTRATOR
+2025-08-26 21:19:32,164 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:19:32,164 - __main__ - INFO - SOPHISTICATED MM/JIT STRATEGIES ENABLED:
+2025-08-26 21:19:32,165 - __main__ - INFO -    Enhanced Hedge Bot: Urgency-based hedging, volatility-adaptive, multi-account
+2025-08-26 21:19:32,165 - __main__ - INFO -    Enhanced Trend Bot: MACD + momentum, anti-chop filters (ATR/ADX), RBC entry
+2025-08-26 21:19:32,166 - __main__ - INFO -    Enhanced JIT Bot: OBI Config Pack v1, Quote Skew, Superburst Profile-D
+2025-08-26 21:19:32,166 - __main__ - INFO -    Crash Sentinel v2: Circuit breakers on >=3sigma moves
+2025-08-26 21:19:32,167 - __main__ - INFO -    Portfolio Rails: Multi-level risk management
+2025-08-26 21:19:32,167 - __main__ - INFO -    Multi-Account Layout: Sophisticated account management
+2025-08-26 21:19:32,167 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:19:32,168 - __main__ - INFO - Using traditional signal handlers (Windows fallback)
+2025-08-26 21:19:32,180 - __main__ - INFO - Prometheus metrics server started on port 9102
+2025-08-26 21:19:32,185 - __main__ - INFO - Override: using mock client mode
+2025-08-26 21:19:32,185 - __main__ - INFO - Initializing shared Drift client...
+2025-08-26 21:19:32,188 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 21:19:32,188 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 21:19:32,189 - __main__ - INFO - Drift client initialized successfully
+2025-08-26 21:19:32,189 - __main__ - INFO - Cleaning up enhanced bot tasks...
+2025-08-26 21:19:32,189 - libs.drift.client - INFO - [MOCK] Client closing. Final PnL: $0.00, Max Drawdown: $0.00
+2025-08-26 21:19:32,190 - __main__ - INFO - Drift client closed successfully
+2025-08-26 21:19:32,190 - __main__ - INFO - All enhanced bots stopped. Orchestrator shutdown complete.
+2025-08-26 21:20:28,045 - __main__ - INFO - STARTING ENHANCED MASTER BOT ORCHESTRATOR
+2025-08-26 21:20:28,046 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:20:28,046 - __main__ - INFO - SOPHISTICATED MM/JIT STRATEGIES ENABLED:
+2025-08-26 21:20:28,048 - __main__ - INFO -    Enhanced Hedge Bot: Urgency-based hedging, volatility-adaptive, multi-account
+2025-08-26 21:20:28,048 - __main__ - INFO -    Enhanced Trend Bot: MACD + momentum, anti-chop filters (ATR/ADX), RBC entry
+2025-08-26 21:20:28,048 - __main__ - INFO -    Enhanced JIT Bot: OBI Config Pack v1, Quote Skew, Superburst Profile-D
+2025-08-26 21:20:28,048 - __main__ - INFO -    Crash Sentinel v2: Circuit breakers on >=3sigma moves
+2025-08-26 21:20:28,049 - __main__ - INFO -    Portfolio Rails: Multi-level risk management
+2025-08-26 21:20:28,049 - __main__ - INFO -    Multi-Account Layout: Sophisticated account management
+2025-08-26 21:20:28,049 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:20:28,049 - __main__ - INFO - Using traditional signal handlers (Windows fallback)
+2025-08-26 21:20:28,068 - __main__ - INFO - Prometheus metrics server started on port 9103
+2025-08-26 21:20:28,072 - __main__ - INFO - Override: using mock client mode
+2025-08-26 21:20:28,073 - __main__ - INFO - Initializing shared Drift client...
+2025-08-26 21:20:28,075 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 21:20:28,075 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 21:20:28,075 - __main__ - INFO - Drift client initialized successfully
+2025-08-26 21:20:28,076 - __main__ - INFO - Cleaning up enhanced bot tasks...
+2025-08-26 21:20:28,076 - libs.drift.client - INFO - [MOCK] Client closing. Final PnL: $0.00, Max Drawdown: $0.00
+2025-08-26 21:20:28,076 - __main__ - INFO - Drift client closed successfully
+2025-08-26 21:20:28,076 - __main__ - INFO - All enhanced bots stopped. Orchestrator shutdown complete.
+2025-08-26 21:20:51,564 - __main__ - INFO - STARTING ENHANCED MASTER BOT ORCHESTRATOR
+2025-08-26 21:20:51,565 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:20:51,565 - __main__ - INFO - SOPHISTICATED MM/JIT STRATEGIES ENABLED:
+2025-08-26 21:20:51,565 - __main__ - INFO -    Enhanced Hedge Bot: Urgency-based hedging, volatility-adaptive, multi-account
+2025-08-26 21:20:51,566 - __main__ - INFO -    Enhanced Trend Bot: MACD + momentum, anti-chop filters (ATR/ADX), RBC entry
+2025-08-26 21:20:51,566 - __main__ - INFO -    Enhanced JIT Bot: OBI Config Pack v1, Quote Skew, Superburst Profile-D
+2025-08-26 21:20:51,566 - __main__ - INFO -    Crash Sentinel v2: Circuit breakers on >=3sigma moves
+2025-08-26 21:20:51,567 - __main__ - INFO -    Portfolio Rails: Multi-level risk management
+2025-08-26 21:20:51,567 - __main__ - INFO -    Multi-Account Layout: Sophisticated account management
+2025-08-26 21:20:51,567 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:20:51,568 - __main__ - INFO - Using traditional signal handlers (Windows fallback)
+2025-08-26 21:20:51,581 - __main__ - INFO - Prometheus metrics server started on port 9104
+2025-08-26 21:20:51,586 - __main__ - INFO - Override: using mock client mode
+2025-08-26 21:20:51,587 - __main__ - INFO - Initializing shared Drift client...
+2025-08-26 21:20:51,589 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 21:20:51,590 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 21:20:51,590 - __main__ - INFO - Drift client initialized successfully
+2025-08-26 21:20:51,590 - __main__ - INFO - Cleaning up enhanced bot tasks...
+2025-08-26 21:20:51,591 - libs.drift.client - INFO - [MOCK] Client closing. Final PnL: $0.00, Max Drawdown: $0.00
+2025-08-26 21:20:51,591 - __main__ - INFO - Drift client closed successfully
+2025-08-26 21:20:51,592 - __main__ - INFO - All enhanced bots stopped. Orchestrator shutdown complete.
+2025-08-26 21:21:18,100 - __main__ - INFO - STARTING ENHANCED MASTER BOT ORCHESTRATOR
+2025-08-26 21:21:18,101 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:21:18,101 - __main__ - INFO - SOPHISTICATED MM/JIT STRATEGIES ENABLED:
+2025-08-26 21:21:18,101 - __main__ - INFO -    Enhanced Hedge Bot: Urgency-based hedging, volatility-adaptive, multi-account
+2025-08-26 21:21:18,101 - __main__ - INFO -    Enhanced Trend Bot: MACD + momentum, anti-chop filters (ATR/ADX), RBC entry
+2025-08-26 21:21:18,102 - __main__ - INFO -    Enhanced JIT Bot: OBI Config Pack v1, Quote Skew, Superburst Profile-D
+2025-08-26 21:21:18,102 - __main__ - INFO -    Crash Sentinel v2: Circuit breakers on >=3sigma moves
+2025-08-26 21:21:18,102 - __main__ - INFO -    Portfolio Rails: Multi-level risk management
+2025-08-26 21:21:18,102 - __main__ - INFO -    Multi-Account Layout: Sophisticated account management
+2025-08-26 21:21:18,102 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:21:18,103 - __main__ - INFO - Using traditional signal handlers (Windows fallback)
+2025-08-26 21:21:18,115 - __main__ - INFO - Prometheus metrics server started on port 9105
+2025-08-26 21:21:18,115 - __main__ - INFO - DEBUG: About to set initial metrics
+2025-08-26 21:21:18,116 - __main__ - INFO - DEBUG: Initial metrics set successfully
+2025-08-26 21:21:18,120 - __main__ - INFO - Override: using mock client mode
+2025-08-26 21:21:18,120 - __main__ - INFO - Initializing shared Drift client...
+2025-08-26 21:21:18,122 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 21:21:18,122 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 21:21:18,122 - __main__ - INFO - Drift client initialized successfully
+2025-08-26 21:21:18,122 - __main__ - INFO - DEBUG: Right after client initialization - about to set metrics
+2025-08-26 21:21:18,123 - __main__ - INFO - Cleaning up enhanced bot tasks...
+2025-08-26 21:21:18,123 - libs.drift.client - INFO - [MOCK] Client closing. Final PnL: $0.00, Max Drawdown: $0.00
+2025-08-26 21:21:18,123 - __main__ - INFO - Drift client closed successfully
+2025-08-26 21:21:18,123 - __main__ - INFO - All enhanced bots stopped. Orchestrator shutdown complete.
+2025-08-26 21:21:38,302 - __main__ - INFO - STARTING ENHANCED MASTER BOT ORCHESTRATOR
+2025-08-26 21:21:38,303 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:21:38,304 - __main__ - INFO - SOPHISTICATED MM/JIT STRATEGIES ENABLED:
+2025-08-26 21:21:38,304 - __main__ - INFO -    Enhanced Hedge Bot: Urgency-based hedging, volatility-adaptive, multi-account
+2025-08-26 21:21:38,305 - __main__ - INFO -    Enhanced Trend Bot: MACD + momentum, anti-chop filters (ATR/ADX), RBC entry
+2025-08-26 21:21:38,305 - __main__ - INFO -    Enhanced JIT Bot: OBI Config Pack v1, Quote Skew, Superburst Profile-D
+2025-08-26 21:21:38,305 - __main__ - INFO -    Crash Sentinel v2: Circuit breakers on >=3sigma moves
+2025-08-26 21:21:38,305 - __main__ - INFO -    Portfolio Rails: Multi-level risk management
+2025-08-26 21:21:38,306 - __main__ - INFO -    Multi-Account Layout: Sophisticated account management
+2025-08-26 21:21:38,306 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:21:38,306 - __main__ - INFO - Using traditional signal handlers (Windows fallback)
+2025-08-26 21:21:38,317 - __main__ - INFO - Prometheus metrics server started on port 9106
+2025-08-26 21:21:38,317 - __main__ - INFO - DEBUG: About to set initial metrics
+2025-08-26 21:21:38,318 - __main__ - INFO - DEBUG: Initial metrics set successfully
+2025-08-26 21:21:38,318 - __main__ - INFO - DEBUG: use_mock parameter is: True
+2025-08-26 21:21:38,318 - __main__ - INFO - DEBUG: Entering mock mode override section
+2025-08-26 21:21:38,318 - __main__ - INFO - DEBUG: About to read config from configs/core/drift_client.yaml
+2025-08-26 21:21:38,322 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://api.devnet.solana.com}', 'ws_url': '${DRIFT_WS_URL:wss://api.devnet.solana.com}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
+2025-08-26 21:21:38,322 - __main__ - INFO - DEBUG: Original use_mock value: True
+2025-08-26 21:21:38,323 - __main__ - INFO - DEBUG: Setting use_mock to: True
+2025-08-26 21:21:38,325 - __main__ - INFO - DEBUG: Config file updated successfully
+2025-08-26 21:21:38,325 - __main__ - INFO - Override: using mock client mode
+2025-08-26 21:21:38,326 - __main__ - INFO - Initializing shared Drift client...
+2025-08-26 21:21:38,328 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 21:21:38,328 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 21:21:38,329 - __main__ - INFO - Drift client initialized successfully
+2025-08-26 21:21:38,329 - __main__ - INFO - DEBUG: Right after client initialization - about to set metrics
+2025-08-26 21:21:38,329 - __main__ - INFO - Cleaning up enhanced bot tasks...
+2025-08-26 21:21:38,330 - libs.drift.client - INFO - [MOCK] Client closing. Final PnL: $0.00, Max Drawdown: $0.00
+2025-08-26 21:21:38,330 - __main__ - INFO - Drift client closed successfully
+2025-08-26 21:21:38,330 - __main__ - INFO - All enhanced bots stopped. Orchestrator shutdown complete.
+2025-08-26 21:21:58,482 - __main__ - INFO - STARTING ENHANCED MASTER BOT ORCHESTRATOR
+2025-08-26 21:21:58,483 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:21:58,483 - __main__ - INFO - SOPHISTICATED MM/JIT STRATEGIES ENABLED:
+2025-08-26 21:21:58,483 - __main__ - INFO -    Enhanced Hedge Bot: Urgency-based hedging, volatility-adaptive, multi-account
+2025-08-26 21:21:58,484 - __main__ - INFO -    Enhanced Trend Bot: MACD + momentum, anti-chop filters (ATR/ADX), RBC entry
+2025-08-26 21:21:58,484 - __main__ - INFO -    Enhanced JIT Bot: OBI Config Pack v1, Quote Skew, Superburst Profile-D
+2025-08-26 21:21:58,484 - __main__ - INFO -    Crash Sentinel v2: Circuit breakers on >=3sigma moves
+2025-08-26 21:21:58,484 - __main__ - INFO -    Portfolio Rails: Multi-level risk management
+2025-08-26 21:21:58,484 - __main__ - INFO -    Multi-Account Layout: Sophisticated account management
+2025-08-26 21:21:58,484 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:21:58,484 - __main__ - INFO - Using traditional signal handlers (Windows fallback)
+2025-08-26 21:21:58,497 - __main__ - INFO - Prometheus metrics server started on port 9107
+2025-08-26 21:21:58,497 - __main__ - INFO - DEBUG: About to set initial metrics
+2025-08-26 21:21:58,498 - __main__ - INFO - DEBUG: Initial metrics set successfully
+2025-08-26 21:21:58,498 - __main__ - INFO - DEBUG: use_mock parameter is: True
+2025-08-26 21:21:58,498 - __main__ - INFO - DEBUG: Entering mock mode override section
+2025-08-26 21:21:58,498 - __main__ - INFO - DEBUG: About to read config from configs/core/drift_client.yaml
+2025-08-26 21:21:58,500 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://api.devnet.solana.com}', 'ws_url': '${DRIFT_WS_URL:wss://api.devnet.solana.com}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
+2025-08-26 21:21:58,500 - __main__ - INFO - DEBUG: Original use_mock value: True
+2025-08-26 21:21:58,501 - __main__ - INFO - DEBUG: Setting use_mock to: True
+2025-08-26 21:21:58,503 - __main__ - INFO - DEBUG: Config file updated successfully
+2025-08-26 21:21:58,503 - __main__ - INFO - Override: using mock client mode
+2025-08-26 21:21:58,503 - __main__ - INFO - Initializing shared Drift client...
+2025-08-26 21:21:58,505 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 21:21:58,506 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 21:21:58,506 - __main__ - INFO - Drift client initialized successfully
+2025-08-26 21:21:58,506 - __main__ - INFO - DEBUG: Right after client initialization - about to set metrics
+2025-08-26 21:21:58,506 - __main__ - INFO - DEBUG: About to continue to bot task creation section
+2025-08-26 21:21:58,507 - __main__ - INFO - Cleaning up enhanced bot tasks...
+2025-08-26 21:21:58,507 - libs.drift.client - INFO - [MOCK] Client closing. Final PnL: $0.00, Max Drawdown: $0.00
+2025-08-26 21:21:58,507 - __main__ - INFO - Drift client closed successfully
+2025-08-26 21:21:58,507 - __main__ - INFO - All enhanced bots stopped. Orchestrator shutdown complete.
+2025-08-26 21:22:25,767 - __main__ - INFO - STARTING ENHANCED MASTER BOT ORCHESTRATOR
+2025-08-26 21:22:25,768 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:22:25,768 - __main__ - INFO - SOPHISTICATED MM/JIT STRATEGIES ENABLED:
+2025-08-26 21:22:25,769 - __main__ - INFO -    Enhanced Hedge Bot: Urgency-based hedging, volatility-adaptive, multi-account
+2025-08-26 21:22:25,769 - __main__ - INFO -    Enhanced Trend Bot: MACD + momentum, anti-chop filters (ATR/ADX), RBC entry
+2025-08-26 21:22:25,769 - __main__ - INFO -    Enhanced JIT Bot: OBI Config Pack v1, Quote Skew, Superburst Profile-D
+2025-08-26 21:22:25,769 - __main__ - INFO -    Crash Sentinel v2: Circuit breakers on >=3sigma moves
+2025-08-26 21:22:25,770 - __main__ - INFO -    Portfolio Rails: Multi-level risk management
+2025-08-26 21:22:25,770 - __main__ - INFO -    Multi-Account Layout: Sophisticated account management
+2025-08-26 21:22:25,770 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:22:25,771 - __main__ - INFO - Using traditional signal handlers (Windows fallback)
+2025-08-26 21:22:25,782 - __main__ - INFO - Prometheus metrics server started on port 9108
+2025-08-26 21:22:25,783 - __main__ - INFO - DEBUG: About to set initial metrics
+2025-08-26 21:22:25,783 - __main__ - INFO - DEBUG: Initial metrics set successfully
+2025-08-26 21:22:25,784 - __main__ - INFO - DEBUG: use_mock parameter is: True
+2025-08-26 21:22:25,784 - __main__ - INFO - DEBUG: Entering mock mode override section
+2025-08-26 21:22:25,784 - __main__ - INFO - DEBUG: About to read config from configs/core/drift_client.yaml
+2025-08-26 21:22:25,786 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://api.devnet.solana.com}', 'ws_url': '${DRIFT_WS_URL:wss://api.devnet.solana.com}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
+2025-08-26 21:22:25,787 - __main__ - INFO - DEBUG: Original use_mock value: True
+2025-08-26 21:22:25,788 - __main__ - INFO - DEBUG: Setting use_mock to: True
+2025-08-26 21:22:25,790 - __main__ - INFO - DEBUG: Config file updated successfully
+2025-08-26 21:22:25,791 - __main__ - INFO - Override: using mock client mode
+2025-08-26 21:22:25,791 - __main__ - INFO - Initializing shared Drift client...
+2025-08-26 21:22:25,794 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 21:22:25,795 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 21:22:25,795 - __main__ - INFO - Drift client initialized successfully
+2025-08-26 21:22:25,795 - __main__ - INFO - DEBUG: Right after client initialization - about to set metrics
+2025-08-26 21:22:25,795 - __main__ - INFO - DEBUG: About to continue to bot task creation section
+2025-08-26 21:22:25,796 - __main__ - INFO - DEBUG: Inside the post-init try block
+2025-08-26 21:22:25,796 - __main__ - INFO - DEBUG: About to start bot task creation section
+2025-08-26 21:22:25,796 - __main__ - INFO - DEBUG: Client object type: <class 'libs.drift.client.EnhancedMockDriftClient'>
+2025-08-26 21:22:25,796 - __main__ - INFO - DEBUG: Client object: <libs.drift.client.EnhancedMockDriftClient object at 0x000001BC3DECAD10>
+2025-08-26 21:22:25,797 - __main__ - INFO - Cleaning up enhanced bot tasks...
+2025-08-26 21:22:25,797 - libs.drift.client - INFO - [MOCK] Client closing. Final PnL: $0.00, Max Drawdown: $0.00
+2025-08-26 21:22:25,797 - __main__ - INFO - Drift client closed successfully
+2025-08-26 21:22:25,797 - __main__ - INFO - All enhanced bots stopped. Orchestrator shutdown complete.
+2025-08-26 21:22:52,185 - __main__ - INFO - STARTING ENHANCED MASTER BOT ORCHESTRATOR
+2025-08-26 21:22:52,186 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:22:52,186 - __main__ - INFO - SOPHISTICATED MM/JIT STRATEGIES ENABLED:
+2025-08-26 21:22:52,187 - __main__ - INFO -    Enhanced Hedge Bot: Urgency-based hedging, volatility-adaptive, multi-account
+2025-08-26 21:22:52,187 - __main__ - INFO -    Enhanced Trend Bot: MACD + momentum, anti-chop filters (ATR/ADX), RBC entry
+2025-08-26 21:22:52,187 - __main__ - INFO -    Enhanced JIT Bot: OBI Config Pack v1, Quote Skew, Superburst Profile-D
+2025-08-26 21:22:52,188 - __main__ - INFO -    Crash Sentinel v2: Circuit breakers on >=3sigma moves
+2025-08-26 21:22:52,188 - __main__ - INFO -    Portfolio Rails: Multi-level risk management
+2025-08-26 21:22:52,188 - __main__ - INFO -    Multi-Account Layout: Sophisticated account management
+2025-08-26 21:22:52,189 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:22:52,189 - __main__ - INFO - Using traditional signal handlers (Windows fallback)
+2025-08-26 21:22:52,201 - __main__ - INFO - Prometheus metrics server started on port 9109
+2025-08-26 21:22:52,201 - __main__ - INFO - DEBUG: About to set initial metrics
+2025-08-26 21:22:52,202 - __main__ - INFO - DEBUG: Initial metrics set successfully
+2025-08-26 21:22:52,202 - __main__ - INFO - DEBUG: use_mock parameter is: True
+2025-08-26 21:22:52,203 - __main__ - INFO - DEBUG: Entering mock mode override section
+2025-08-26 21:22:52,203 - __main__ - INFO - DEBUG: About to read config from configs/core/drift_client.yaml
+2025-08-26 21:22:52,205 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://api.devnet.solana.com}', 'ws_url': '${DRIFT_WS_URL:wss://api.devnet.solana.com}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
+2025-08-26 21:22:52,206 - __main__ - INFO - DEBUG: Original use_mock value: True
+2025-08-26 21:22:52,206 - __main__ - INFO - DEBUG: Setting use_mock to: True
+2025-08-26 21:22:52,210 - __main__ - INFO - DEBUG: Config file updated successfully
+2025-08-26 21:22:52,212 - __main__ - INFO - Override: using mock client mode
+2025-08-26 21:22:52,212 - __main__ - INFO - Initializing shared Drift client...
+2025-08-26 21:22:52,215 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 21:22:52,215 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 21:22:52,216 - __main__ - INFO - Drift client initialized successfully
+2025-08-26 21:22:52,216 - __main__ - INFO - DEBUG: Right after client initialization - about to set metrics
+2025-08-26 21:22:52,216 - __main__ - INFO - DEBUG: About to continue to bot task creation section
+2025-08-26 21:22:52,216 - __main__ - INFO - DEBUG: Inside the post-init try block
+2025-08-26 21:22:52,216 - __main__ - INFO - DEBUG: About to start bot task creation section
+2025-08-26 21:22:52,217 - __main__ - INFO - DEBUG: Client object type: <class 'libs.drift.client.EnhancedMockDriftClient'>
+2025-08-26 21:22:52,217 - __main__ - INFO - DEBUG: Client object: <libs.drift.client.EnhancedMockDriftClient object at 0x000002571E3A8990>
+2025-08-26 21:22:52,217 - __main__ - INFO - Starting all enhanced bots with sophisticated strategies...
+2025-08-26 21:22:52,217 - __main__ - INFO - DEBUG: About to create Hedge Bot task
+2025-08-26 21:22:52,217 - __main__ - INFO - Enhanced Hedge Bot task created
+2025-08-26 21:22:52,218 - __main__ - INFO - DEBUG: About to create Trend Bot task
+2025-08-26 21:22:52,218 - __main__ - INFO - Enhanced Trend Bot task created
+2025-08-26 21:22:52,218 - __main__ - INFO - DEBUG: About to create JIT Bot task
+2025-08-26 21:22:52,219 - __main__ - INFO - Enhanced JIT Bot task created
+2025-08-26 21:22:52,219 - __main__ - INFO - DEBUG: About to create Monitor task
+2025-08-26 21:22:52,219 - __main__ - INFO - Enhanced Monitor task created
+2025-08-26 21:22:52,219 - __main__ - INFO - DEBUG: Bot task creation section completed. 4 tasks created
+2025-08-26 21:22:52,219 - __main__ - INFO - Cleaning up enhanced bot tasks...
+2025-08-26 21:22:52,220 - libs.drift.client - INFO - [MOCK] Client closing. Final PnL: $0.00, Max Drawdown: $0.00
+2025-08-26 21:22:52,220 - __main__ - INFO - Drift client closed successfully
+2025-08-26 21:22:52,220 - __main__ - INFO - All enhanced bots stopped. Orchestrator shutdown complete.
+2025-08-26 21:23:17,126 - __main__ - INFO - STARTING ENHANCED MASTER BOT ORCHESTRATOR
+2025-08-26 21:23:17,127 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:23:17,128 - __main__ - INFO - SOPHISTICATED MM/JIT STRATEGIES ENABLED:
+2025-08-26 21:23:17,128 - __main__ - INFO -    Enhanced Hedge Bot: Urgency-based hedging, volatility-adaptive, multi-account
+2025-08-26 21:23:17,128 - __main__ - INFO -    Enhanced Trend Bot: MACD + momentum, anti-chop filters (ATR/ADX), RBC entry
+2025-08-26 21:23:17,129 - __main__ - INFO -    Enhanced JIT Bot: OBI Config Pack v1, Quote Skew, Superburst Profile-D
+2025-08-26 21:23:17,129 - __main__ - INFO -    Crash Sentinel v2: Circuit breakers on >=3sigma moves
+2025-08-26 21:23:17,130 - __main__ - INFO -    Portfolio Rails: Multi-level risk management
+2025-08-26 21:23:17,130 - __main__ - INFO -    Multi-Account Layout: Sophisticated account management
+2025-08-26 21:23:17,130 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:23:17,131 - __main__ - INFO - Using traditional signal handlers (Windows fallback)
+2025-08-26 21:23:17,143 - __main__ - INFO - Prometheus metrics server started on port 9110
+2025-08-26 21:23:17,144 - __main__ - INFO - DEBUG: About to set initial metrics
+2025-08-26 21:23:17,144 - __main__ - INFO - DEBUG: Initial metrics set successfully
+2025-08-26 21:23:17,145 - __main__ - INFO - DEBUG: use_mock parameter is: True
+2025-08-26 21:23:17,145 - __main__ - INFO - DEBUG: Entering mock mode override section
+2025-08-26 21:23:17,145 - __main__ - INFO - DEBUG: About to read config from configs/core/drift_client.yaml
+2025-08-26 21:23:17,148 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://api.devnet.solana.com}', 'ws_url': '${DRIFT_WS_URL:wss://api.devnet.solana.com}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
+2025-08-26 21:23:17,148 - __main__ - INFO - DEBUG: Original use_mock value: True
+2025-08-26 21:23:17,149 - __main__ - INFO - DEBUG: Setting use_mock to: True
+2025-08-26 21:23:17,152 - __main__ - INFO - DEBUG: Config file updated successfully
+2025-08-26 21:23:17,153 - __main__ - INFO - Override: using mock client mode
+2025-08-26 21:23:17,153 - __main__ - INFO - Initializing shared Drift client...
+2025-08-26 21:23:17,155 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 21:23:17,155 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 21:23:17,155 - __main__ - INFO - Drift client initialized successfully
+2025-08-26 21:23:17,156 - __main__ - INFO - DEBUG: Right after client initialization - about to set metrics
+2025-08-26 21:23:17,156 - __main__ - INFO - DEBUG: About to continue to bot task creation section
+2025-08-26 21:23:17,156 - __main__ - INFO - DEBUG: Inside the post-init try block
+2025-08-26 21:23:17,156 - __main__ - INFO - DEBUG: About to start bot task creation section
+2025-08-26 21:23:17,157 - __main__ - INFO - DEBUG: Client object type: <class 'libs.drift.client.EnhancedMockDriftClient'>
+2025-08-26 21:23:17,157 - __main__ - INFO - DEBUG: Client object: <libs.drift.client.EnhancedMockDriftClient object at 0x000001B9AC97FAD0>
+2025-08-26 21:23:17,157 - __main__ - INFO - Starting all enhanced bots with sophisticated strategies...
+2025-08-26 21:23:17,157 - __main__ - INFO - DEBUG: About to create Hedge Bot task
+2025-08-26 21:23:17,157 - __main__ - INFO - Enhanced Hedge Bot task created
+2025-08-26 21:23:17,158 - __main__ - INFO - DEBUG: About to create Trend Bot task
+2025-08-26 21:23:17,158 - __main__ - INFO - Enhanced Trend Bot task created
+2025-08-26 21:23:17,158 - __main__ - INFO - DEBUG: About to create JIT Bot task
+2025-08-26 21:23:17,159 - __main__ - INFO - Enhanced JIT Bot task created
+2025-08-26 21:23:17,159 - __main__ - INFO - DEBUG: About to create Monitor task
+2025-08-26 21:23:17,159 - __main__ - INFO - Enhanced Monitor task created
+2025-08-26 21:23:17,159 - __main__ - INFO - DEBUG: Bot task creation section completed. 4 tasks created
+2025-08-26 21:23:17,160 - __main__ - INFO - Cleaning up enhanced bot tasks...
+2025-08-26 21:23:17,160 - libs.drift.client - INFO - [MOCK] Client closing. Final PnL: $0.00, Max Drawdown: $0.00
+2025-08-26 21:23:17,160 - __main__ - INFO - Drift client closed successfully
+2025-08-26 21:23:17,160 - __main__ - INFO - All enhanced bots stopped. Orchestrator shutdown complete.
+2025-08-26 21:23:38,144 - __main__ - INFO - STARTING ENHANCED MASTER BOT ORCHESTRATOR
+2025-08-26 21:23:38,144 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:23:38,145 - __main__ - INFO - SOPHISTICATED MM/JIT STRATEGIES ENABLED:
+2025-08-26 21:23:38,145 - __main__ - INFO -    Enhanced Hedge Bot: Urgency-based hedging, volatility-adaptive, multi-account
+2025-08-26 21:23:38,145 - __main__ - INFO -    Enhanced Trend Bot: MACD + momentum, anti-chop filters (ATR/ADX), RBC entry
+2025-08-26 21:23:38,146 - __main__ - INFO -    Enhanced JIT Bot: OBI Config Pack v1, Quote Skew, Superburst Profile-D
+2025-08-26 21:23:38,146 - __main__ - INFO -    Crash Sentinel v2: Circuit breakers on >=3sigma moves
+2025-08-26 21:23:38,146 - __main__ - INFO -    Portfolio Rails: Multi-level risk management
+2025-08-26 21:23:38,147 - __main__ - INFO -    Multi-Account Layout: Sophisticated account management
+2025-08-26 21:23:38,147 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:23:38,147 - __main__ - INFO - Using traditional signal handlers (Windows fallback)
+2025-08-26 21:23:38,161 - __main__ - INFO - Prometheus metrics server started on port 9111
+2025-08-26 21:23:38,162 - __main__ - INFO - DEBUG: About to set initial metrics
+2025-08-26 21:23:38,162 - __main__ - INFO - DEBUG: Initial metrics set successfully
+2025-08-26 21:23:38,162 - __main__ - INFO - DEBUG: use_mock parameter is: True
+2025-08-26 21:23:38,162 - __main__ - INFO - DEBUG: Entering mock mode override section
+2025-08-26 21:23:38,162 - __main__ - INFO - DEBUG: About to read config from configs/core/drift_client.yaml
+2025-08-26 21:23:38,165 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://api.devnet.solana.com}', 'ws_url': '${DRIFT_WS_URL:wss://api.devnet.solana.com}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
+2025-08-26 21:23:38,165 - __main__ - INFO - DEBUG: Original use_mock value: True
+2025-08-26 21:23:38,165 - __main__ - INFO - DEBUG: Setting use_mock to: True
+2025-08-26 21:23:38,167 - __main__ - INFO - DEBUG: Config file updated successfully
+2025-08-26 21:23:38,168 - __main__ - INFO - Override: using mock client mode
+2025-08-26 21:23:38,168 - __main__ - INFO - Initializing shared Drift client...
+2025-08-26 21:23:38,170 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 21:23:38,170 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 21:23:38,171 - __main__ - INFO - Drift client initialized successfully
+2025-08-26 21:23:38,171 - __main__ - INFO - DEBUG: Right after client initialization - about to set metrics
+2025-08-26 21:23:38,171 - __main__ - INFO - DEBUG: About to continue to bot task creation section
+2025-08-26 21:23:38,171 - __main__ - INFO - DEBUG: Inside the post-init try block
+2025-08-26 21:23:38,171 - __main__ - INFO - DEBUG: About to start bot task creation section
+2025-08-26 21:23:38,172 - __main__ - INFO - DEBUG: Client object type: <class 'libs.drift.client.EnhancedMockDriftClient'>
+2025-08-26 21:23:38,172 - __main__ - INFO - DEBUG: Client object: <libs.drift.client.EnhancedMockDriftClient object at 0x0000022A3AC31C50>
+2025-08-26 21:23:38,172 - __main__ - INFO - Starting all enhanced bots with sophisticated strategies...
+2025-08-26 21:23:38,172 - __main__ - INFO - DEBUG: About to create Hedge Bot task
+2025-08-26 21:23:38,173 - __main__ - INFO - Enhanced Hedge Bot task created
+2025-08-26 21:23:38,173 - __main__ - INFO - DEBUG: About to create Trend Bot task
+2025-08-26 21:23:38,173 - __main__ - INFO - Enhanced Trend Bot task created
+2025-08-26 21:23:38,174 - __main__ - INFO - DEBUG: About to create JIT Bot task
+2025-08-26 21:23:38,174 - __main__ - INFO - Enhanced JIT Bot task created
+2025-08-26 21:23:38,175 - __main__ - INFO - DEBUG: About to create Monitor task
+2025-08-26 21:23:38,175 - __main__ - INFO - Enhanced Monitor task created
+2025-08-26 21:23:38,175 - __main__ - INFO - DEBUG: Bot task creation section completed. 4 tasks created
+2025-08-26 21:23:38,175 - __main__ - INFO - Cleaning up enhanced bot tasks...
+2025-08-26 21:23:38,176 - libs.drift.client - INFO - [MOCK] Client closing. Final PnL: $0.00, Max Drawdown: $0.00
+2025-08-26 21:23:38,176 - __main__ - INFO - Drift client closed successfully
+2025-08-26 21:23:38,176 - __main__ - INFO - All enhanced bots stopped. Orchestrator shutdown complete.
+2025-08-26 21:24:02,554 - __main__ - INFO - STARTING ENHANCED MASTER BOT ORCHESTRATOR
+2025-08-26 21:24:02,555 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:24:02,555 - __main__ - INFO - SOPHISTICATED MM/JIT STRATEGIES ENABLED:
+2025-08-26 21:24:02,556 - __main__ - INFO -    Enhanced Hedge Bot: Urgency-based hedging, volatility-adaptive, multi-account
+2025-08-26 21:24:02,556 - __main__ - INFO -    Enhanced Trend Bot: MACD + momentum, anti-chop filters (ATR/ADX), RBC entry
+2025-08-26 21:24:02,556 - __main__ - INFO -    Enhanced JIT Bot: OBI Config Pack v1, Quote Skew, Superburst Profile-D
+2025-08-26 21:24:02,557 - __main__ - INFO -    Crash Sentinel v2: Circuit breakers on >=3sigma moves
+2025-08-26 21:24:02,557 - __main__ - INFO -    Portfolio Rails: Multi-level risk management
+2025-08-26 21:24:02,557 - __main__ - INFO -    Multi-Account Layout: Sophisticated account management
+2025-08-26 21:24:02,557 - __main__ - INFO - ====================================================================================================
+2025-08-26 21:24:02,557 - __main__ - INFO - Using traditional signal handlers (Windows fallback)
+2025-08-26 21:24:02,569 - __main__ - INFO - Prometheus metrics server started on port 9112
+2025-08-26 21:24:02,569 - __main__ - INFO - DEBUG: About to set initial metrics
+2025-08-26 21:24:02,569 - __main__ - INFO - DEBUG: Initial metrics set successfully
+2025-08-26 21:24:02,570 - __main__ - INFO - DEBUG: use_mock parameter is: True
+2025-08-26 21:24:02,570 - __main__ - INFO - DEBUG: Entering mock mode override section
+2025-08-26 21:24:02,570 - __main__ - INFO - DEBUG: About to read config from configs/core/drift_client.yaml
+2025-08-26 21:24:02,572 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://api.devnet.solana.com}', 'ws_url': '${DRIFT_WS_URL:wss://api.devnet.solana.com}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
+2025-08-26 21:24:02,573 - __main__ - INFO - DEBUG: Original use_mock value: True
+2025-08-26 21:24:02,573 - __main__ - INFO - DEBUG: Setting use_mock to: True
+2025-08-26 21:24:02,576 - __main__ - INFO - DEBUG: Config file updated successfully
+2025-08-26 21:24:02,576 - __main__ - INFO - Override: using mock client mode
+2025-08-26 21:24:02,576 - __main__ - INFO - Initializing shared Drift client...
+2025-08-26 21:24:02,579 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 21:24:02,579 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 21:24:02,579 - __main__ - INFO - Drift client initialized successfully
+2025-08-26 21:24:02,579 - __main__ - INFO - DEBUG: Right after client initialization - about to set metrics
+2025-08-26 21:24:02,580 - __main__ - INFO - DEBUG: About to continue to bot task creation section
+2025-08-26 21:24:02,580 - __main__ - INFO - DEBUG: Inside the post-init try block
+2025-08-26 21:24:02,580 - __main__ - INFO - DEBUG: About to start bot task creation section
+2025-08-26 21:24:02,580 - __main__ - INFO - DEBUG: Client object type: <class 'libs.drift.client.EnhancedMockDriftClient'>
+2025-08-26 21:24:02,581 - __main__ - INFO - DEBUG: Client object: <libs.drift.client.EnhancedMockDriftClient object at 0x000001E8C328A1D0>
+2025-08-26 21:24:02,581 - __main__ - INFO - Starting all enhanced bots with sophisticated strategies...
+2025-08-26 21:24:02,581 - __main__ - INFO - DEBUG: About to create Hedge Bot task
+2025-08-26 21:24:02,581 - __main__ - INFO - Enhanced Hedge Bot task created
+2025-08-26 21:24:02,581 - __main__ - INFO - DEBUG: About to create Trend Bot task
+2025-08-26 21:24:02,582 - __main__ - INFO - Enhanced Trend Bot task created
+2025-08-26 21:24:02,582 - __main__ - INFO - DEBUG: About to create JIT Bot task
+2025-08-26 21:24:02,582 - __main__ - INFO - Enhanced JIT Bot task created
+2025-08-26 21:24:02,582 - __main__ - INFO - DEBUG: About to create Monitor task
+2025-08-26 21:24:02,583 - __main__ - INFO - Enhanced Monitor task created
+2025-08-26 21:24:02,583 - __main__ - INFO - DEBUG: Bot task creation section completed. 4 tasks created
+2025-08-26 21:24:02,583 - __main__ - INFO - DEBUG: About to enter asyncio.gather section
+2025-08-26 21:24:02,583 - __main__ - INFO - DEBUG: BOT_TASKS contains: ['Enhanced Hedge Bot', 'Enhanced Trend Bot', 'Enhanced JIT Bot', 'Enhanced Monitor']
+2025-08-26 21:24:02,583 - __main__ - INFO - Waiting for 4 bot tasks to complete...
+2025-08-26 21:24:02,584 - __main__ - INFO - STOP_EVENT is set: False
+2025-08-26 21:24:02,584 - __main__ - INFO - Task Enhanced Hedge Bot: done=False, cancelled=False
+2025-08-26 21:24:02,584 - __main__ - INFO - Task Enhanced Trend Bot: done=False, cancelled=False
+2025-08-26 21:24:02,585 - __main__ - INFO - Task Enhanced JIT Bot: done=False, cancelled=False
+2025-08-26 21:24:02,585 - __main__ - INFO - Task Enhanced Monitor: done=False, cancelled=False
+2025-08-26 21:24:02,585 - __main__ - INFO - DEBUG: Waiting 2 seconds to see if bot tasks start running...
+2025-08-26 21:24:02,585 - __main__ - INFO - Starting SIMPLIFIED Enhanced Hedge Bot...
+2025-08-26 21:24:02,586 - __main__ - INFO - Hedge Bot: Entering simple loop
+2025-08-26 21:24:02,586 - __main__ - INFO - Hedge Bot: Iteration 0
+2025-08-26 21:24:02,586 - __main__ - INFO - Starting SIMPLIFIED Enhanced Trend Bot...
+2025-08-26 21:24:02,586 - __main__ - INFO - Trend Bot: Entering simple loop
+2025-08-26 21:24:02,586 - __main__ - INFO - Trend Bot: Iteration 0
+2025-08-26 21:24:02,587 - __main__ - INFO - Starting SIMPLIFIED Enhanced JIT Bot...
+2025-08-26 21:24:02,587 - __main__ - INFO - JIT Bot: Entering simple loop
+2025-08-26 21:24:02,587 - __main__ - INFO - JIT Bot: Iteration 0
+2025-08-26 21:24:02,587 - __main__ - INFO - Starting SIMPLIFIED Enhanced Monitor...
+2025-08-26 21:24:02,587 - __main__ - INFO - Monitor: Entering simple loop
+2025-08-26 21:24:02,588 - __main__ - INFO - Monitor: Iteration 0
+2025-08-26 21:24:03,604 - __main__ - INFO - Hedge Bot: Iteration 1
+2025-08-26 21:24:03,604 - __main__ - INFO - Trend Bot: Iteration 1
+2025-08-26 21:24:03,605 - __main__ - INFO - Monitor: Iteration 1
+2025-08-26 21:24:03,605 - __main__ - INFO - JIT Bot: Iteration 1
+2025-08-26 21:24:03,997 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-26 21:24:03,998 - __main__ - INFO - STOP_EVENT was set to: False
+2025-08-26 21:24:03,998 - __main__ - INFO - STOP_EVENT is now set to: True
+2025-08-26 21:24:04,589 - __main__ - INFO - Task Enhanced Hedge Bot after 2s: done=False, cancelled=False
+2025-08-26 21:24:04,590 - __main__ - INFO - Task Enhanced Trend Bot after 2s: done=False, cancelled=False
+2025-08-26 21:24:04,590 - __main__ - INFO - Task Enhanced JIT Bot after 2s: done=False, cancelled=False
+2025-08-26 21:24:04,590 - __main__ - INFO - Task Enhanced Monitor after 2s: done=False, cancelled=False
+2025-08-26 21:24:04,591 - __main__ - INFO - Hedge Bot: Loop completed successfully
+2025-08-26 21:24:04,615 - __main__ - INFO - Trend Bot: Loop completed successfully
+2025-08-26 21:24:04,616 - __main__ - INFO - Monitor: Loop completed successfully
+2025-08-26 21:24:04,616 - __main__ - INFO - JIT Bot: Loop completed successfully
+2025-08-26 21:24:04,617 - __main__ - INFO - asyncio.gather completed with 4 results
+2025-08-26 21:24:04,617 - __main__ - INFO - Enhanced Hedge Bot completed normally with result: Hedge Bot completed
+2025-08-26 21:24:04,617 - __main__ - INFO - Enhanced Trend Bot completed normally with result: Trend Bot completed
+2025-08-26 21:24:04,617 - __main__ - INFO - Enhanced JIT Bot completed normally with result: JIT Bot completed
+2025-08-26 21:24:04,618 - __main__ - INFO - Enhanced Monitor completed normally with result: Monitor completed
+2025-08-26 21:24:04,618 - __main__ - INFO - Cleaning up enhanced bot tasks...
+2025-08-26 21:24:04,618 - libs.drift.client - INFO - [MOCK] Client closing. Final PnL: $0.00, Max Drawdown: $0.00
+2025-08-26 21:24:04,618 - __main__ - INFO - Drift client closed successfully
+2025-08-26 21:24:04,619 - __main__ - INFO - All enhanced bots stopped. Orchestrator shutdown complete.
+2025-08-26 23:06:29,492 - __main__ - INFO - ================================================================================
+2025-08-26 23:06:29,506 - __main__ - INFO - ================================================================================
+2025-08-26 23:06:29,621 - libs.drift.client - INFO - Using Enhanced MockDriftClient for SOL-PERP (testnet)
+2025-08-26 23:06:29,621 - libs.drift.client - INFO - Enhanced Mock Client initialized for SOL-PERP starting at $150.00
+2025-08-26 23:06:30,183 - __main__ - INFO - ================================================================================
+2025-08-26 23:06:30,187 - __main__ - INFO - ================================================================================
+2025-08-26 23:06:30,207 - __main__ - INFO - ================================================================================
