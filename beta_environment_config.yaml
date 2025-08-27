@@ -4,16 +4,16 @@
 
 # 🔑 Wallet Configuration (REQUIRED)
 wallet:
-  maker_keypair_path: ".beta_wallet.json"  # ⚠️  CHANGE THIS to your funded wallet!
+  maker_keypair_path: ".beta_dev_wallet.json"  # DEV wallet for testing
   jito_keypair_path: ".jito_keypair.json"  # Optional: for MEV/tipping
 
-# 🌐 Network Configuration for beta.drift.trade
+# 🌐 Network Configuration for beta.drift.trade DEV
 network:
-  cluster: "mainnet"
-  env: "mainnet"
+  cluster: "devnet"
+  env: "devnet"
   rpc:
-    http_url: "https://api.mainnet-beta.solana.com"
-    ws_url: "wss://api.mainnet-beta.solana.com"
+    http_url: "https://api.devnet.solana.com"
+    ws_url: "wss://api.devnet.solana.com"
   swift:
     http_url: "https://swift.drift.trade"
     ws_url: "wss://swift.drift.trade/ws"
@@ -112,7 +112,7 @@ advanced:
 
   # Client settings
   driver: "driftpy"  # or "swift" if using Swift API
-  use_mock: false    # ⚠️  Set to false for live trading!
+  use_mock: false    # Set to false for live trading on blockchain
 
   # Performance
   enable_async_execution: true

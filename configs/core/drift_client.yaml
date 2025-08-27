@@ -1,14 +1,9 @@
-cluster: ${ENV:testnet}  # testnet|devnet|mainnet
-driver: ${DRIVER:driftpy}  # swift|driftpy|mock
-
+env: devnet
+market: SOL-PERP
+use_mock: false
+driver: driftpy
 rpc:
-  http_url: ${DRIFT_HTTP_URL:https://api.mainnet-beta.solana.com}
-  ws_url: ${DRIFT_WS_URL:wss://api.mainnet-beta.solana.com}
-
-swift:
-  http_url: ${SWIFT_HTTP_URL:http://localhost:8787}
-  ws_url: ${SWIFT_WS_URL:ws://localhost:8787/ws}
-
+  http_url: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+  ws_url: wss://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
 wallets:
-  maker_keypair_path: ${KEYPAIR_PATH:test_keypair.json}
-  jito_keypair_path: ${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}
+  maker_keypair_path: .beta_dev_wallet.json

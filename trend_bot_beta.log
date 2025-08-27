@@ -1,0 +1,238 @@
+2025-08-27 01:03:51,872 | __main__ | INFO | ============================================================
+2025-08-27 01:03:51,872 | __main__ | INFO | LAUNCHING TREND BOT IN BETA MODE
+2025-08-27 01:03:51,872 | __main__ | INFO | ============================================================
+2025-08-27 01:03:51,873 | __main__ | INFO | Strategy: MACD + Momentum with Anti-Chop Filters
+2025-08-27 01:03:51,873 | __main__ | INFO | Target: SOL-PERP on Drift Protocol
+2025-08-27 01:03:51,873 | __main__ | INFO | Orders will be visible on beta.drift.trade
+2025-08-27 01:03:51,873 | __main__ | INFO | WARNING: REAL MONEY - USE WITH CAUTION
+2025-08-27 01:03:51,874 | __main__ | INFO | ============================================================
+2025-08-27 01:03:52,143 | __main__ | INFO | Starting Trend Bot in BETA mode...
+2025-08-27 01:03:52,143 | __main__ | INFO | Configuration: MACD(12,26,9) + Momentum(14) + Anti-Chop(50)
+2025-08-27 01:03:52,143 | __main__ | INFO | Press Ctrl+C to stop gracefully
+2025-08-27 01:03:52,149 | libs.drift.client | INFO | Config use_mock setting: False (OVERRIDING TO FALSE)
+2025-08-27 01:03:54,943 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:03:55,040 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:03:55,154 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:03:55,385 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:03:55,625 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:03:55,790 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:03:57,044 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:03:58,104 | websockets.client | INFO | ! connect failed; reconnecting in 4.1 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 01:04:15,828 | websockets.client | INFO | ! connect failed; reconnecting in 1.5 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 315, in handshake
+    status_code, response_headers = await self.read_http_response()
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 135, in read_http_response
+    status_code, reason, headers = await read_response(self.reader)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\http.py", line 120, in read_response
+    status_line = await read_line(stream)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\http.py", line 194, in read_line
+    line = await stream.readline()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\asyncio\streams.py", line 566, in readline
+    line = await self.readuntil(sep)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\asyncio\streams.py", line 658, in readuntil
+    await self._wait_for_data('readuntil')
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\asyncio\streams.py", line 543, in _wait_for_data
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 651, in __await_impl__
+    async with asyncio_timeout(self.open_timeout):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\asyncio\timeouts.py", line 115, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+2025-08-27 01:40:11,359 | __main__ | INFO | Received signal 2, initiating graceful shutdown...
+2025-08-27 01:41:01,210 | __main__ | INFO | Received signal 2, initiating graceful shutdown...
+2025-08-27 01:41:02,620 | __main__ | INFO | Received signal 2, initiating graceful shutdown...
+2025-08-27 01:41:41,033 | __main__ | INFO | ============================================================
+2025-08-27 01:41:41,034 | __main__ | INFO | LAUNCHING TREND BOT IN BETA MODE
+2025-08-27 01:41:41,034 | __main__ | INFO | ============================================================
+2025-08-27 01:41:41,034 | __main__ | INFO | Strategy: MACD + Momentum with Anti-Chop Filters
+2025-08-27 01:41:41,035 | __main__ | INFO | Target: SOL-PERP on Drift Protocol
+2025-08-27 01:41:41,035 | __main__ | INFO | Orders will be visible on beta.drift.trade
+2025-08-27 01:41:41,035 | __main__ | INFO | WARNING: REAL MONEY - USE WITH CAUTION
+2025-08-27 01:41:41,036 | __main__ | INFO | ============================================================
+2025-08-27 01:41:41,279 | __main__ | INFO | Starting Trend Bot in BETA mode...
+2025-08-27 01:41:41,279 | __main__ | INFO | Configuration: MACD(12,26,9) + Momentum(14) + Anti-Chop(50)
+2025-08-27 01:41:41,280 | __main__ | INFO | Press Ctrl+C to stop gracefully
+2025-08-27 01:41:41,285 | libs.drift.client | INFO | Config use_mock setting: False (OVERRIDING TO FALSE)
+2025-08-27 01:41:44,258 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:41:44,418 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:41:44,686 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:41:45,032 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:41:45,445 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:41:45,730 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:41:46,901 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:41:47,657 | websockets.client | INFO | ! connect failed; reconnecting in 3.9 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 01:41:47,669 | websockets.client | INFO | ! connect failed; reconnecting in 2.3 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 01:42:12,101 | __main__ | INFO | Received signal 2, initiating graceful shutdown...
+2025-08-27 01:43:52,877 | __main__ | INFO | ============================================================
+2025-08-27 01:43:52,878 | __main__ | INFO | LAUNCHING TREND BOT IN BETA MODE
+2025-08-27 01:43:52,878 | __main__ | INFO | ============================================================
+2025-08-27 01:43:52,879 | __main__ | INFO | Strategy: MACD + Momentum with Anti-Chop Filters
+2025-08-27 01:43:52,879 | __main__ | INFO | Target: SOL-PERP on Drift Protocol
+2025-08-27 01:43:52,879 | __main__ | INFO | Orders will be visible on beta.drift.trade
+2025-08-27 01:43:52,880 | __main__ | INFO | WARNING: REAL MONEY - USE WITH CAUTION
+2025-08-27 01:43:52,880 | __main__ | INFO | ============================================================
+2025-08-27 01:43:53,069 | __main__ | INFO | Starting Trend Bot in BETA mode...
+2025-08-27 01:43:53,070 | __main__ | INFO | Configuration: MACD(12,26,9) + Momentum(14) + Anti-Chop(50)
+2025-08-27 01:43:53,070 | __main__ | INFO | Press Ctrl+C to stop gracefully
+2025-08-27 01:43:53,076 | libs.drift.client | INFO | Config use_mock setting: False (OVERRIDING TO FALSE)
+2025-08-27 01:43:54,166 | __main__ | INFO | Received signal 2, initiating graceful shutdown...
+2025-08-27 01:43:55,514 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:43:55,657 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:43:55,787 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:43:56,150 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:43:56,424 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:43:56,525 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:43:58,077 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 01:43:58,703 | websockets.client | INFO | ! connect failed; reconnecting in 3.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 01:43:58,708 | websockets.client | INFO | ! connect failed; reconnecting in 0.1 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 01:43:58,870 | websockets.client | INFO | ! connect failed; reconnecting in 2.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 01:43:58,872 | websockets.client | INFO | ! connect failed; reconnecting in 2.7 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 01:43:58,913 | websockets.client | INFO | ! connect failed; reconnecting in 1.3 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 01:43:59,018 | websockets.client | INFO | ! connect failed again; retrying in 3 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429

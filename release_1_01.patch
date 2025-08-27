@@ -1,0 +1,723 @@
+diff --git a/.env.example b/.env.example
+new file mode 100644
+--- /dev/null
++++ b/.env.example
+@@ -0,0 +14 @@
++# Example environment overrides
++# Global
++# TRADE_MODE=simulated | real
++# TRADE_NETWORK=devnet | mainnet
++# DRIVER_TYPE=swift | driftpy
++# CONFIRM_MAINNET="I UNDERSTAND"
++
++# Per-bot overrides
++# BOT_JIT_MODE=simulated|real
++# BOT_JIT_NETWORK=devnet|mainnet
++# BOT_HEDGE_MODE=simulated|real
++# BOT_HEDGE_NETWORK=devnet|mainnet
++# BOT_TREND_MODE=simulated|real
++# BOT_TREND_NETWORK=devnet|mainnet
+
+diff --git a/README.md b/README.md
+new file mode 100644
+--- /dev/null
++++ b/README.md
+@@ -0,0 +62 @@
++# Drift Bots — Release 1.01 (Trade Mode Universal Switch)
++
++This package adds a **single, universal trade-mode switch** plus **per‑bot overrides**:
++- **Simulated** (no blockchain I/O)
++- **Real on Devnet** (beta.drift.trade)
++- **Real on Mainnet** (app.drift.trade, with safety rails)
++
++It guarantees **Mock vs Real** is synchronized across:
++driver selection, send_orders/simulate_fills, endpoints, risk strictness, cancel/replace,
++hedging toggles, and metrics labels.
++
++## Quick Start
++
++1) Create a virtual env and install deps:
++```bash
++python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
++pip install -r requirements.txt
++```
++
++2) Configure global mode in `configs/core/runtime.yaml` or via environment:
++```bash
++# Simulated (no chain I/O)
++export TRADE_MODE=simulated
++
++# Real on Devnet (beta.drift.trade)
++export TRADE_MODE=real
++export TRADE_NETWORK=devnet
++
++# Real on Mainnet (app.drift.trade) — guarded
++export TRADE_MODE=real
++export TRADE_NETWORK=mainnet
++export CONFIRM_MAINNET="I UNDERSTAND"   # and set execution.confirm_mainnet: true in YAML
++```
++
++3) (Optional) Per‑bot overrides:
++```bash
++# JIT real on devnet while hedge/trend simulated
++export TRADE_MODE=simulated
++export BOT_JIT_MODE=real
++export BOT_JIT_NETWORK=devnet
++```
++
++4) Run a bot (example JIT):
++```bash
++python bots/jit/main.py
++```
++
++## Files of interest
++
++- `configs/core/runtime.yaml` – global **mode/network** and endpoints.
++- `configs/*/params.yaml` – per‑bot `mode` and `network` (inherit by default).
++- `libs/runtime/mode.py` – core runtime types + **UniversalFlags** and sync helpers.
++- `libs/drift/drivers/*` – driver factory and simple stubs (mock/swift/driftpy).
++- `bots/*/main.py` – shows how to apply universal flags per bot.
++- `orchestrator/main.py` – example stamping all bots in one place.
++- `tests/test_universal_flags.py` – sanity tests for simulated/devnet/mainnet.
++
++## Safety rails
++- Mainnet requires *both* `execution.confirm_mainnet: true` in YAML and
++  `CONFIRM_MAINNET="I UNDERSTAND"` in the environment.
++- Optional `max_order_notional_usd` is provided (bots should enforce before sends).
++
+
+diff --git a/RELEASE_NOTES_v1.01.md b/RELEASE_NOTES_v1.01.md
+new file mode 100644
+--- /dev/null
++++ b/RELEASE_NOTES_v1.01.md
+@@ -0,0 +33 @@
++# 📦 Release 1.01 — Universal Trade‑Mode Switch
++
++**Date:** 2025‑08‑27  
++**Status:** Stable
++
++## What’s new
++- **Universal trade‑mode:** `simulated` vs `real` (with `devnet` or `mainnet`) as a
++  single source of truth that cascades to all subordinate flags.
++- **Per‑bot overrides:** `mode: inherit|simulated|real`, `network: inherit|devnet|mainnet`.
++- **Environment sync:** stamps effective mode/network and toggles for sidecars/subprocesses.
++- **Safety rails:** double‑confirm for mainnet (YAML + `CONFIRM_MAINNET="I UNDERSTAND"`).
++- **Driver cohesion:** mock vs swift/driftpy chosen automatically from the universal flags.
++
++## Operator cheatsheet
++```bash
++# Simulated
++export TRADE_MODE=simulated
++
++# Real on Devnet
++export TRADE_MODE=real
++export TRADE_NETWORK=devnet
++
++# Real on Mainnet (guarded)
++export TRADE_MODE=real
++export TRADE_NETWORK=mainnet
++export CONFIRM_MAINNET="I UNDERSTAND"
++```
++
++## Files
++- `configs/core/runtime.yaml` — execution mode, network, endpoints
++- `configs/*/params.yaml` — per‑bot overrides
++- `libs/runtime/mode.py` — core logic and safety rails
++- `bots/*/main.py` — integration examples
+
+diff --git a/VERSION b/VERSION
+new file mode 100644
+--- /dev/null
++++ b/VERSION
+@@ -0,0 +2 @@
++1.01
++
+
+diff --git a/requirements.txt b/requirements.txt
+new file mode 100644
+--- /dev/null
++++ b/requirements.txt
+@@ -0,0 +1 @@
++pyyaml>=6.0
+
+diff --git a/configs/core/runtime.yaml b/configs/core/runtime.yaml
+new file mode 100644
+--- /dev/null
++++ b/configs/core/runtime.yaml
+@@ -0,0 +26 @@
++execution:
++  # mode: simulated | real
++  mode: simulated
++
++  # network: devnet | mainnet   (ignored when mode=simulated)
++  network: devnet
++
++  confirm_mainnet: false        # AND require env CONFIRM_MAINNET="I UNDERSTAND"
++  max_order_notional_usd: 0
++
++endpoints:
++  devnet:
++    rpc_url:  "${RPC_URL_DEVNET:-https://api.devnet.solana.com}"
++    ws_url:   "${WS_URL_DEVNET:-wss://api.devnet.solana.com}"
++    drift_http_base: "${DRIFT_HTTP_DEVNET:-https://beta.drift.trade}"
++    swift_forward_base: "${SWIFT_DEVNET:-https://swift-devnet.drift.trade}"
++
++  mainnet:
++    rpc_url:  "${RPC_URL_MAINNET:-https://api.mainnet-beta.solana.com}"
++    ws_url:   "${WS_URL_MAINNET:-wss://api.mainnet-beta.solana.com}"
++    drift_http_base: "${DRIFT_HTTP_MAINNET:-https://app.drift.trade}"
++    swift_forward_base: "${SWIFT_MAINNET:-https://swift.drift.trade}"
++
++driver:
++  # swift | driftpy
++  type: "${DRIVER_TYPE:-swift}"
+
+diff --git a/configs/jit/params.yaml b/configs/jit/params.yaml
+new file mode 100644
+--- /dev/null
++++ b/configs/jit/params.yaml
+@@ -0,0 +11 @@
++bot:
++  name: jit
++  mode: inherit       # inherit | simulated | real
++  network: inherit    # inherit | devnet | mainnet (used only if mode=real)
++
++# Optional sections that will be force‑synced by UniversalFlags
++execution: {}        # send_orders, simulate_fills, driver_kind, metrics_env, log_prefix
++risk: {}             # strict_mode
++cancel_replace: {}   # enabled
++hedge: {}            # enabled
++endpoints: {}        # rpc_url, ws_url, swift_base
+
+diff --git a/configs/hedge/params.yaml b/configs/hedge/params.yaml
+new file mode 100644
+--- /dev/null
++++ b/configs/hedge/params.yaml
+@@ -0,0 +11 @@
++bot:
++  name: hedge
++  mode: inherit       # inherit | simulated | real
++  network: inherit    # inherit | devnet | mainnet (used only if mode=real)
++
++# Optional sections that will be force‑synced by UniversalFlags
++execution: {}        # send_orders, simulate_fills, driver_kind, metrics_env, log_prefix
++risk: {}             # strict_mode
++cancel_replace: {}   # enabled
++hedge: {}            # enabled
++endpoints: {}        # rpc_url, ws_url, swift_base
+
+diff --git a/configs/trend/params.yaml b/configs/trend/params.yaml
+new file mode 100644
+--- /dev/null
++++ b/configs/trend/params.yaml
+@@ -0,0 +11 @@
++bot:
++  name: trend
++  mode: inherit       # inherit | simulated | real
++  network: inherit    # inherit | devnet | mainnet (used only if mode=real)
++
++# Optional sections that will be force‑synced by UniversalFlags
++execution: {}        # send_orders, simulate_fills, driver_kind, metrics_env, log_prefix
++risk: {}             # strict_mode
++cancel_replace: {}   # enabled
++hedge: {}            # enabled
++endpoints: {}        # rpc_url, ws_url, swift_base
+
+diff --git a/bots/jit/main.py b/bots/jit/main.py
+new file mode 100644
+--- /dev/null
++++ b/bots/jit/main.py
+@@ -0,0 +46 @@
++import os, yaml
++from libs.runtime.mode import build_runtime, derive_universal, sync_environment, apply_universal_to_bot
++from libs.drift.drivers import make_driver
++
++def load_yaml(path: str):
++    with open(path, "r") as f:
++        return yaml.safe_load(f)
++
++def run_bot(name: str, cfg: dict):
++    print(f"{cfg['execution']['log_prefix']} [{name}] send_orders={cfg['execution']['send_orders']} "
++          f"simulate_fills={cfg['execution']['simulate_fills']} "
++          f"driver={cfg['execution']['driver_kind']} "
++          f"strict_risk={cfg['risk']['strict_mode']} "
++          f"cancel_replace={cfg['cancel_replace']['enabled']}")
++
++def main(config_path_core: str, config_path_bot: str, env_mode_key: str, env_net_key: str):
++    core = load_yaml(config_path_core)
++    bot  = load_yaml(config_path_bot)
++    bot_meta = (bot.get("bot", {}) or {})
++    rt = build_runtime(core,
++                       bot_mode=bot_meta.get("mode", "inherit"),
++                       bot_net=bot_meta.get("network", "inherit"),
++                       bot_env_mode_key=env_mode_key,
++                       bot_env_net_key=env_net_key)
++    univ = derive_universal(rt)
++    sync_environment(univ)
++    effective = apply_universal_to_bot(bot, univ, driver_type=rt.driver_type)
++
++    # init driver
++    kind = effective["execution"]["driver_kind"]
++    if kind == "mock":
++        driver = make_driver(kind="mock")
++    else:
++        eps = effective.get("endpoints", {})
++        driver = make_driver(kind=kind,
++                             rpc_url=eps.get("rpc_url"),
++                             ws_url=eps.get("ws_url"),
++                             swift_base=eps.get("swift_base"))
++    # demo action
++    run_bot(bot_meta.get("name","bot"), effective)
++
++if __name__ == "__main__":
++    raise SystemExit("Run specific bot entrypoints.")
++from __main__ import *
++if __name__ == "__main__":
++    main("configs/core/runtime.yaml", "configs/jit/params.yaml", "BOT_JIT_MODE", "BOT_JIT_NETWORK")
+
+diff --git a/bots/hedge/main.py b/bots/hedge/main.py
+new file mode 100644
+--- /dev/null
++++ b/bots/hedge/main.py
+@@ -0,0 +46 @@
++import os, yaml
++from libs.runtime.mode import build_runtime, derive_universal, sync_environment, apply_universal_to_bot
++from libs.drift.drivers import make_driver
++
++def load_yaml(path: str):
++    with open(path, "r") as f:
++        return yaml.safe_load(f)
++
++def run_bot(name: str, cfg: dict):
++    print(f"{cfg['execution']['log_prefix']} [{name}] send_orders={cfg['execution']['send_orders']} "
++          f"simulate_fills={cfg['execution']['simulate_fills']} "
++          f"driver={cfg['execution']['driver_kind']} "
++          f"strict_risk={cfg['risk']['strict_mode']} "
++          f"cancel_replace={cfg['cancel_replace']['enabled']}")
++
++def main(config_path_core: str, config_path_bot: str, env_mode_key: str, env_net_key: str):
++    core = load_yaml(config_path_core)
++    bot  = load_yaml(config_path_bot)
++    bot_meta = (bot.get("bot", {}) or {})
++    rt = build_runtime(core,
++                       bot_mode=bot_meta.get("mode", "inherit"),
++                       bot_net=bot_meta.get("network", "inherit"),
++                       bot_env_mode_key=env_mode_key,
++                       bot_env_net_key=env_net_key)
++    univ = derive_universal(rt)
++    sync_environment(univ)
++    effective = apply_universal_to_bot(bot, univ, driver_type=rt.driver_type)
++
++    # init driver
++    kind = effective["execution"]["driver_kind"]
++    if kind == "mock":
++        driver = make_driver(kind="mock")
++    else:
++        eps = effective.get("endpoints", {})
++        driver = make_driver(kind=kind,
++                             rpc_url=eps.get("rpc_url"),
++                             ws_url=eps.get("ws_url"),
++                             swift_base=eps.get("swift_base"))
++    # demo action
++    run_bot(bot_meta.get("name","bot"), effective)
++
++if __name__ == "__main__":
++    raise SystemExit("Run specific bot entrypoints.")
++from __main__ import *
++if __name__ == "__main__":
++    main("configs/core/runtime.yaml", "configs/hedge/params.yaml", "BOT_HEDGE_MODE", "BOT_HEDGE_NETWORK")
+
+diff --git a/bots/trend/main.py b/bots/trend/main.py
+new file mode 100644
+--- /dev/null
++++ b/bots/trend/main.py
+@@ -0,0 +46 @@
++import os, yaml
++from libs.runtime.mode import build_runtime, derive_universal, sync_environment, apply_universal_to_bot
++from libs.drift.drivers import make_driver
++
++def load_yaml(path: str):
++    with open(path, "r") as f:
++        return yaml.safe_load(f)
++
++def run_bot(name: str, cfg: dict):
++    print(f"{cfg['execution']['log_prefix']} [{name}] send_orders={cfg['execution']['send_orders']} "
++          f"simulate_fills={cfg['execution']['simulate_fills']} "
++          f"driver={cfg['execution']['driver_kind']} "
++          f"strict_risk={cfg['risk']['strict_mode']} "
++          f"cancel_replace={cfg['cancel_replace']['enabled']}")
++
++def main(config_path_core: str, config_path_bot: str, env_mode_key: str, env_net_key: str):
++    core = load_yaml(config_path_core)
++    bot  = load_yaml(config_path_bot)
++    bot_meta = (bot.get("bot", {}) or {})
++    rt = build_runtime(core,
++                       bot_mode=bot_meta.get("mode", "inherit"),
++                       bot_net=bot_meta.get("network", "inherit"),
++                       bot_env_mode_key=env_mode_key,
++                       bot_env_net_key=env_net_key)
++    univ = derive_universal(rt)
++    sync_environment(univ)
++    effective = apply_universal_to_bot(bot, univ, driver_type=rt.driver_type)
++
++    # init driver
++    kind = effective["execution"]["driver_kind"]
++    if kind == "mock":
++        driver = make_driver(kind="mock")
++    else:
++        eps = effective.get("endpoints", {})
++        driver = make_driver(kind=kind,
++                             rpc_url=eps.get("rpc_url"),
++                             ws_url=eps.get("ws_url"),
++                             swift_base=eps.get("swift_base"))
++    # demo action
++    run_bot(bot_meta.get("name","bot"), effective)
++
++if __name__ == "__main__":
++    raise SystemExit("Run specific bot entrypoints.")
++from __main__ import *
++if __name__ == "__main__":
++    main("configs/core/runtime.yaml", "configs/trend/params.yaml", "BOT_TREND_MODE", "BOT_TREND_NETWORK")
+
+diff --git a/libs/runtime/mode.py b/libs/runtime/mode.py
+new file mode 100644
+--- /dev/null
++++ b/libs/runtime/mode.py
+@@ -0,0 +191 @@
++from __future__ import annotations
++import os
++from dataclasses import dataclass
++from enum import Enum
++from typing import Dict, Any, Optional, Literal
++
++class ExecMode(str, Enum):
++    SIMULATED = "simulated"
++    REAL = "real"
++
++class Network(str, Enum):
++    NONE = "none"
++    DEVNET = "devnet"
++    MAINNET = "mainnet"
++
++@dataclass(frozen=True)
++class ClusterConfig:
++    rpc_url: str
++    ws_url: str
++    drift_http_base: str
++    swift_forward_base: str
++
++@dataclass(frozen=True)
++class TradeRuntime:
++    mode: ExecMode                 # simulated | real
++    network: Network               # none | devnet | mainnet
++    confirm_mainnet: bool
++    max_order_notional_usd: float
++    clusters: Dict[Network, ClusterConfig]
++    driver_type: Literal["swift", "driftpy"]
++
++@dataclass(frozen=True)
++class UniversalFlags:
++    mode: ExecMode
++    is_simulated: bool
++    is_real: bool
++    network: Network
++    send_orders: bool
++    simulate_fills: bool
++    strict_risk: bool
++    cancel_replace_enabled: bool
++    hedge_enabled: bool
++    metrics_env: str
++    log_prefix: str
++    endpoints: Optional[ClusterConfig]
++
++def _coerce_mode(val: Optional[str]) -> ExecMode:
++    v = (val or "").strip().lower()
++    if v in ("sim", "simulated", "mock"):
++        return ExecMode.SIMULATED
++    if v in ("real", "onchain", "on-chain"):
++        return ExecMode.REAL
++    return ExecMode.SIMULATED
++
++def _coerce_net(val: Optional[str]) -> Network:
++    v = (val or "").strip().lower()
++    if v in ("dev", "devnet", "beta"):
++        return Network.DEVNET
++    if v in ("main", "mainnet", "prod", "production"):
++        return Network.MAINNET
++    return Network.NONE
++
++def build_runtime(cfg: Dict[str, Any], *, bot_mode: str | None, bot_net: str | None,
++                  bot_env_mode_key: str | None = None, bot_env_net_key: str | None = None) -> TradeRuntime:
++    ex = cfg.get("execution", {})
++    ep = cfg.get("endpoints", {})
++    drv = cfg.get("driver", {})
++
++    mode = _coerce_mode(ex.get("mode"))
++    mode = _coerce_mode(os.getenv("TRADE_MODE", mode.value))
++    if bot_env_mode_key and os.getenv(bot_env_mode_key):
++        mode = _coerce_mode(os.getenv(bot_env_mode_key))
++    if bot_mode and bot_mode != "inherit":
++        mode = _coerce_mode(bot_mode)
++
++    net = _coerce_net(ex.get("network"))
++    net = _coerce_net(os.getenv("TRADE_NETWORK", net.value))
++    if bot_env_net_key and os.getenv(bot_env_net_key):
++        net = _coerce_net(os.getenv(bot_env_net_key))
++    if bot_net and bot_net != "inherit":
++        net = _coerce_net(bot_net)
++
++    if mode == ExecMode.SIMULATED:
++        net = Network.NONE
++
++    clusters: Dict[Network, ClusterConfig] = {
++        Network.DEVNET: ClusterConfig(
++            rpc_url=os.path.expandvars(ep.get("devnet", {}).get("rpc_url", "")),
++            ws_url=os.path.expandvars(ep.get("devnet", {}).get("ws_url", "")),
++            drift_http_base=os.path.expandvars(ep.get("devnet", {}).get("drift_http_base", "")),
++            swift_forward_base=os.path.expandvars(ep.get("devnet", {}).get("swift_forward_base", "")),
++        ),
++        Network.MAINNET: ClusterConfig(
++            rpc_url=os.path.expandvars(ep.get("mainnet", {}).get("rpc_url", "")),
++            ws_url=os.path.expandvars(ep.get("mainnet", {}).get("ws_url", "")),
++            drift_http_base=os.path.expandvars(ep.get("mainnet", {}).get("drift_http_base", "")),
++            swift_forward_base=os.path.expandvars(ep.get("mainnet", {}).get("swift_forward_base", "")),
++        ),
++    }
++
++    driver_type = (os.getenv("DRIVER_TYPE") or drv.get("type") or "swift").lower()
++    if driver_type not in ("swift", "driftpy"):
++        raise ValueError("driver.type must be 'swift' or 'driftpy'")
++
++    rt = TradeRuntime(
++        mode=mode,
++        network=net,
++        confirm_mainnet=bool(ex.get("confirm_mainnet", False)),
++        max_order_notional_usd=float(ex.get("max_order_notional_usd", 0)),
++        clusters=clusters,
++        driver_type=driver_type,  # type: ignore
++    )
++    _safety_rails(rt)
++    return rt
++
++def _safety_rails(rt: TradeRuntime) -> None:
++    if rt.mode == ExecMode.REAL and rt.network == Network.MAINNET:
++        if not rt.confirm_mainnet:
++            raise RuntimeError("Mainnet blocked: set execution.confirm_mainnet=true in configs/core/runtime.yaml")
++        if os.getenv("CONFIRM_MAINNET", "").strip() != "I UNDERSTAND":
++            raise RuntimeError('Mainnet blocked: set env CONFIRM_MAINNET="I UNDERSTAND"')
++
++def derive_universal(rt: TradeRuntime) -> UniversalFlags:
++    if rt.mode == ExecMode.SIMULATED:
++        return UniversalFlags(
++            mode=rt.mode, is_simulated=True, is_real=False, network=Network.NONE,
++            send_orders=False, simulate_fills=True,
++            strict_risk=False, cancel_replace_enabled=False, hedge_enabled=False,
++            metrics_env="simulated", log_prefix="[SIM]", endpoints=None,
++        )
++    eps = rt.clusters[rt.network] if rt.network in (Network.DEVNET, Network.MAINNET) else None
++    metrics_env = "devnet" if rt.network == Network.DEVNET else "mainnet"
++    log_prefix = "[DEVNET]" if rt.network == Network.DEVNET else "[MAINNET]"
++    return UniversalFlags(
++        mode=rt.mode, is_simulated=False, is_real=True, network=rt.network,
++        send_orders=True, simulate_fills=False,
++        strict_risk=(rt.network == Network.MAINNET),
++        cancel_replace_enabled=True, hedge_enabled=True,
++        metrics_env=metrics_env, log_prefix=log_prefix, endpoints=eps,
++    )
++
++def sync_environment(univ: UniversalFlags) -> None:
++    os.environ["EFFECTIVE_MODE"] = univ.mode.value
++    os.environ["EFFECTIVE_REAL"] = "1" if univ.is_real else "0"
++    os.environ["EFFECTIVE_NETWORK"] = univ.network.value
++    os.environ["SEND_ORDERS"] = "1" if univ.send_orders else "0"
++    os.environ["SIMULATE_FILLS"] = "1" if univ.simulate_fills else "0"
++    os.environ["CANCEL_REPLACE_ENABLED"] = "1" if univ.cancel_replace_enabled else "0"
++    os.environ["STRICT_RISK"] = "1" if univ.strict_risk else "0"
++    os.environ["METRICS_ENV"] = univ.metrics_env
++    if univ.endpoints:
++        os.environ.setdefault("RPC_URL", univ.endpoints.rpc_url)
++        os.environ.setdefault("WS_URL", univ.endpoints.ws_url)
++
++def apply_universal_to_bot(bot_cfg: dict, univ: UniversalFlags, *, driver_type: str) -> dict:
++    cfg = dict(bot_cfg)
++    execution = dict(cfg.get("execution", {}))
++    risk = dict(cfg.get("risk", {}))
++    cancel = dict(cfg.get("cancel_replace", {}))
++    hedge = dict(cfg.get("hedge", {}))
++    endpoints = dict(cfg.get("endpoints", {}))
++
++    execution["send_orders"]    = univ.send_orders
++    execution["simulate_fills"] = univ.simulate_fills
++    execution["driver_kind"]    = "mock" if univ.is_simulated else driver_type
++    execution["metrics_env"]    = univ.metrics_env
++    execution["log_prefix"]     = univ.log_prefix
++
++    risk["strict_mode"]         = univ.strict_risk
++    cancel["enabled"]           = univ.cancel_replace_enabled
++    hedge["enabled"]            = univ.hedge_enabled
++
++    if univ.endpoints:
++        endpoints["rpc_url"]    = univ.endpoints.rpc_url
++        endpoints["ws_url"]     = univ.endpoints.ws_url
++        endpoints["swift_base"] = univ.endpoints.swift_forward_base
++    else:
++        endpoints.clear()
++
++    cfg["execution"] = execution
++    cfg["risk"] = risk
++    cfg["cancel_replace"] = cancel
++    cfg["hedge"] = hedge
++    cfg["endpoints"] = endpoints
++    cfg["universal"] = {
++        "mode": univ.mode.value,
++        "is_real": univ.is_real,
++        "network": univ.network.value,
++        "metrics_env": univ.metrics_env,
++    }
++    return cfg
+
+diff --git a/libs/drift/drivers/__init__.py b/libs/drift/drivers/__init__.py
+new file mode 100644
+--- /dev/null
++++ b/libs/drift/drivers/__init__.py
+@@ -0,0 +20 @@
++from .mock import MockDriver
++from .swift import SwiftSidecarDriver
++from .driftpy_driver import DriftpyDriver
++
++def make_driver(kind: str, **kwargs):
++    k = kind.lower()
++    if k == "mock":
++        return MockDriver()
++    if k == "swift":
++        return SwiftSidecarDriver(
++            rpc_url=kwargs.get("rpc_url"),
++            ws_url=kwargs.get("ws_url"),
++            base=kwargs.get("swift_base"),
++        )
++    if k == "driftpy":
++        return DriftpyDriver(
++            rpc_url=kwargs.get("rpc_url"),
++            ws_url=kwargs.get("ws_url"),
++        )
++    raise ValueError(f"Unknown driver kind {kind}")
+
+diff --git a/libs/drift/drivers/driftpy_driver.py b/libs/drift/drivers/driftpy_driver.py
+new file mode 100644
+--- /dev/null
++++ b/libs/drift/drivers/driftpy_driver.py
+@@ -0,0 +15 @@
++class DriftpyDriver:
++    def __init__(self, rpc_url: str | None, ws_url: str | None):
++        self.rpc_url = rpc_url
++        self.ws_url = ws_url
++        try:
++            import driftpy  # noqa
++        except Exception as e:
++            raise RuntimeError("driftpy not installed; install and wire real client") from e
++
++    def place_order(self, *args, **kwargs):
++        # TODO: implement using driftpy once wired
++        raise NotImplementedError("Implement driftpy place_order")
++
++    def cancel_order(self, order_id: str):
++        raise NotImplementedError("Implement driftpy cancel_order")
+
+diff --git a/libs/drift/drivers/mock.py b/libs/drift/drivers/mock.py
+new file mode 100644
+--- /dev/null
++++ b/libs/drift/drivers/mock.py
+@@ -0,0 +8 @@
++class MockDriver:
++    def place_order(self, *args, **kwargs):
++        print("[MOCK] place_order", args, kwargs)
++        return {"status": "ok", "id": "MOCK-ORDER"}
++
++    def cancel_order(self, order_id: str):
++        print("[MOCK] cancel_order", order_id)
++        return {"status": "ok", "id": order_id}
+
+diff --git a/libs/drift/drivers/swift.py b/libs/drift/drivers/swift.py
+new file mode 100644
+--- /dev/null
++++ b/libs/drift/drivers/swift.py
+@@ -0,0 +14 @@
++class SwiftSidecarDriver:
++    def __init__(self, rpc_url: str | None, ws_url: str | None, base: str | None):
++        self.rpc_url = rpc_url
++        self.ws_url = ws_url
++        self.base = base
++
++    def place_order(self, *args, **kwargs):
++        # Placeholder: wire to Swift sidecar/API in your main repo
++        print(f"[SWIFT] place_order rpc={self.rpc_url} ws={self.ws_url} base={self.base}")
++        return {"status": "ok", "id": "SWIFT-ORDER"}
++
++    def cancel_order(self, order_id: str):
++        print(f"[SWIFT] cancel_order id={order_id}")
++        return {"status": "ok", "id": order_id}
+
+diff --git a/orchestrator/main.py b/orchestrator/main.py
+new file mode 100644
+--- /dev/null
++++ b/orchestrator/main.py
+@@ -0,0 +20 @@
++import yaml
++from libs.runtime.mode import build_runtime, derive_universal, sync_environment, apply_universal_to_bot
++
++def load_yaml(p):
++    with open(p,"r") as f:
++        return yaml.safe_load(f)
++
++def main():
++    core = load_yaml("configs/core/runtime.yaml")
++    rt = build_runtime(core, bot_mode="inherit", bot_net="inherit")
++    univ = derive_universal(rt)
++    sync_environment(univ)
++    # Prepare patched configs for each bot
++    for name, path in [("jit","configs/jit/params.yaml"), ("hedge","configs/hedge/params.yaml"), ("trend","configs/trend/params.yaml")]:
++        cfg = load_yaml(path)
++        eff = apply_universal_to_bot(cfg, univ, driver_type=rt.driver_type)
++        print(f"{eff['execution']['log_prefix']} [{name}] driver={eff['execution']['driver_kind']} send_orders={eff['execution']['send_orders']} metrics_env={eff['execution']['metrics_env']}")
++
++if __name__ == "__main__":
++    main()
+
+diff --git a/tests/test_universal_flags.py b/tests/test_universal_flags.py
+new file mode 100644
+--- /dev/null
++++ b/tests/test_universal_flags.py
+@@ -0,0 +33 @@
++import yaml
++from libs.runtime.mode import build_runtime, derive_universal
++
++def _load_core():
++    with open("configs/core/runtime.yaml","r") as f:
++        return yaml.safe_load(f)
++
++def test_simulated():
++    core = _load_core()
++    core["execution"]["mode"] = "simulated"
++    rt = build_runtime(core, bot_mode="inherit", bot_net="inherit")
++    u = derive_universal(rt)
++    assert u.is_simulated and not u.is_real and u.network.value == "none" and not u.send_orders and u.simulate_fills
++
++def test_devnet():
++    core = _load_core()
++    core["execution"]["mode"] = "real"
++    core["execution"]["network"] = "devnet"
++    rt = build_runtime(core, bot_mode="inherit", bot_net="inherit")
++    u = derive_universal(rt)
++    assert u.is_real and not u.is_simulated and u.network.value == "devnet" and u.send_orders and not u.simulate_fills
++
++def test_mainnet_guard():
++    core = _load_core()
++    core["execution"]["mode"] = "real"
++    core["execution"]["network"] = "mainnet"
++    core["execution"]["confirm_mainnet"] = False
++    try:
++        _ = build_runtime(core, bot_mode="inherit", bot_net="inherit")
++    except RuntimeError:
++        assert True
++    else:
++        assert False, "Expected RuntimeError without confirmations"

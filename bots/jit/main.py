@@ -65,8 +65,8 @@ def _sigterm(_signo, _frame):
 def load_yaml(path: Path) -> dict:
     """Load YAML configuration file with error handling"""
     try:
-    with path.open("r") as f:
-        return yaml.safe_load(f)
+        with path.open("r") as f:
+            return yaml.safe_load(f)
     except FileNotFoundError:
         logger.error(f"Configuration file not found: {path}")
         raise

@@ -46,10 +46,11 @@ class BetaBotLauncher:
                 logger.info(f"💡 Create {self.config_path} based on beta_environment_config.yaml")
                 return False
 
-            with open(self.config_path, 'r') as f:
+            with open(self.config_path, 'r', encoding='utf-8') as f:
                 self.config = yaml.safe_load(f)
 
-            logger.info("✅ Configuration loaded successfully"            return True
+            logger.info("✅ Configuration loaded successfully")
+            return True
 
         except Exception as e:
             logger.error(f"❌ Failed to load configuration: {e}")
@@ -66,7 +67,8 @@ class BetaBotLauncher:
         total_checks += 1
         wallet_path = Path(self.config['wallet']['maker_keypair_path'])
         if wallet_path.exists():
-            logger.info("✅ Wallet keypair found"            checks_passed += 1
+            logger.info("✅ Wallet keypair found")
+            checks_passed += 1
         else:
             logger.error(f"❌ Wallet keypair not found: {wallet_path}")
             logger.info(f"💡 Create your wallet using: solana-keygen new --outfile {wallet_path}")
@@ -76,7 +78,8 @@ class BetaBotLauncher:
         try:
             import prometheus_client
             import aiohttp
-            logger.info("✅ Required packages installed"            checks_passed += 1
+            logger.info("✅ Required packages installed")
+            checks_passed += 1
         except ImportError as e:
             logger.error(f"❌ Missing required packages: {e}")
             logger.info("💡 Install with: pip install prometheus_client aiohttp")
@@ -87,7 +90,8 @@ class BetaBotLauncher:
             import requests
             response = requests.get(self.config['network']['rpc']['http_url'], timeout=5)
             if response.status_code == 200:
-                logger.info("✅ RPC endpoint reachable"                checks_passed += 1
+                logger.info("✅ RPC endpoint reachable")
+                checks_passed += 1
             else:
                 logger.warning(f"⚠️  RPC endpoint returned status {response.status_code}")
         except Exception as e:
@@ -97,7 +101,8 @@ class BetaBotLauncher:
         total_checks += 1
         risk_config = self.config.get('risk_management', {})
         if risk_config.get('enable_circuit_breaker', False):
-            logger.info("✅ Circuit breaker enabled"            checks_passed += 1
+            logger.info("✅ Circuit breaker enabled")
+            checks_passed += 1
         else:
             logger.warning("⚠️  Circuit breaker disabled - enable for live trading!")
 
@@ -144,7 +149,7 @@ LOG_LEVEL={self.config['monitoring']['log_level']}
                 return False
 
             # Read current config
-            with open(config_path, 'r') as f:
+            with open(config_path, 'r', encoding='utf-8') as f:
                 current_config = yaml.safe_load(f)
 
             # Update with beta settings
@@ -182,14 +187,16 @@ LOG_LEVEL={self.config['monitoring']['log_level']}
 
         # Risk Management
         risk = self.config.get('risk_management', {})
-        logger.info("⚠️  Risk Management:"        logger.info(f"   • Circuit Breaker: {'✅ Enabled' if risk.get('enable_circuit_breaker') else '❌ Disabled'}")
+        logger.info("⚠️  Risk Management:")
+        logger.info(f"   • Circuit Breaker: {'✅ Enabled' if risk.get('enable_circuit_breaker') else '❌ Disabled'}")
         logger.info(f"   • Portfolio Rails: {'✅ Enabled' if risk.get('enable_portfolio_rails') else '❌ Disabled'}")
         logger.info(f"   • Crash Sentinel: {'✅ Enabled' if risk.get('enable_crash_sentinel') else '❌ Disabled'}")
         logger.info(f"   • Max Position: ${risk.get('max_position_size_usd', 0):.0f} USD")
         logger.info(f"   • Max Inventory: ${risk.get('max_inventory_usd', 0):.0f} USD")
 
         # Bot Configuration
-        logger.info("🚦 Bot Configuration:"        jit = self.config.get('jit_bot', {})
+        logger.info("🚦 Bot Configuration:")
+        jit = self.config.get('jit_bot', {})
         logger.info(f"   • JIT Spread: {jit.get('spread_bps', 0)} bps")
         logger.info(f"   • JIT Size: ${jit.get('size_usd', 0):.0f} USD")
 
@@ -198,7 +205,8 @@ LOG_LEVEL={self.config['monitoring']['log_level']}
 
         # Monitoring
         monitor = self.config.get('monitoring', {})
-        logger.info("📊 Monitoring:"        logger.info(f"   • Metrics Port: {monitor.get('prometheus_port', 9109)}")
+        logger.info("📊 Monitoring:")
+        logger.info(f"   • Metrics Port: {monitor.get('prometheus_port', 9109)}")
         logger.info(f"   • Health Endpoints: {'✅ Enabled' if monitor.get('enable_health_endpoints') else '❌ Disabled'}")
 
         # Safety Notice
@@ -249,7 +257,8 @@ LOG_LEVEL={self.config['monitoring']['log_level']}
             # Launch the bots
             process = subprocess.Popen(cmd, cwd=self.project_root)
 
-            logger.info("✅ Bots launched successfully!"            logger.info(f"📊 Metrics available at: http://localhost:{self.config['monitoring']['prometheus_port']}/metrics")
+            logger.info("✅ Bots launched successfully!")
+            logger.info(f"📊 Metrics available at: http://localhost:{self.config['monitoring']['prometheus_port']}/metrics")
             logger.info(f"💚 Health check: http://localhost:{self.config['monitoring']['prometheus_port']}/health")
             logger.info(f"🔍 Ready check: http://localhost:{self.config['monitoring']['prometheus_port']}/ready")
 

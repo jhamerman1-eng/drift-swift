@@ -1,0 +1,1029 @@
+2025-08-27 00:02:14,749 - __main__ - INFO - ============================================================
+2025-08-27 00:02:14,755 - libs.drift.client - INFO - Using DriftpyClient for SOL-PERP (devnet) via https://api.devnet.solana.com
+2025-08-27 00:02:17,105 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:02:17,122 - __main__ - WARNING -    Address: 9RegnytkvvTE2WjhDZrRDBgKLSssfhz3fexwUaWVdrGQ
+2025-08-27 00:02:17,136 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 00:02:17,137 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 00:02:17,138 - __main__ - INFO -    Open Orders: 0
+2025-08-27 00:02:22,165 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 00:02:22,165 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 00:02:22,166 - __main__ - INFO -    Open Orders: 0
+2025-08-27 00:02:27,186 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 00:02:27,186 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 00:02:27,187 - __main__ - INFO -    Open Orders: 0
+2025-08-27 00:02:32,220 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 00:02:32,221 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 00:02:32,221 - __main__ - INFO -    Open Orders: 0
+2025-08-27 00:02:37,248 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 00:02:37,248 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 00:02:37,248 - __main__ - INFO -    Open Orders: 0
+2025-08-27 00:02:42,270 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 00:02:42,270 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 00:02:42,270 - __main__ - INFO -    Open Orders: 0
+2025-08-27 00:02:47,154 - __main__ - INFO -    runtime_seconds: 30.68715262413025
+2025-08-27 00:02:47,154 - __main__ - INFO -    total_orders: 0
+2025-08-27 00:02:47,154 - __main__ - INFO -    successful_orders: 0
+2025-08-27 00:02:47,154 - __main__ - INFO -    failed_orders: 0
+2025-08-27 00:02:47,154 - __main__ - INFO -    success_rate_percent: 0
+2025-08-27 00:02:47,155 - __main__ - INFO -    total_volume_usd: 0.0
+2025-08-27 00:02:47,155 - __main__ - INFO -    orders_per_minute: 0.0
+2025-08-27 00:02:47,155 - __main__ - INFO -    volume_per_minute: 0.0
+2025-08-27 00:02:47,155 - __main__ - INFO -    oracle_price_changes: 0
+2025-08-27 00:02:47,155 - __main__ - INFO -    avg_spread_bps: 0.0
+2025-08-27 00:02:47,155 - __main__ - INFO -    last_oracle_price: 0.0
+2025-08-27 00:02:47,155 - __main__ - INFO -    best_bid_hits: 0
+2025-08-27 00:02:47,155 - __main__ - INFO -    best_ask_hits: 0
+2025-08-27 00:02:47,156 - __main__ - INFO -    spread_captured_usd: 0.0
+2025-08-27 00:02:47,160 - __main__ - WARNING -    1. Iteration 2 error: float division by zero
+2025-08-27 00:02:47,160 - __main__ - WARNING -    2. Iteration 3 error: float division by zero
+2025-08-27 00:02:47,160 - __main__ - WARNING -    3. Iteration 4 error: float division by zero
+2025-08-27 00:02:47,160 - __main__ - WARNING -    4. Iteration 5 error: float division by zero
+2025-08-27 00:02:47,161 - __main__ - WARNING -    5. Iteration 6 error: float division by zero
+2025-08-27 00:02:47,297 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 00:02:47,297 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 00:02:47,298 - __main__ - INFO -    Open Orders: 0
+2025-08-27 00:02:52,314 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 00:02:52,314 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 00:02:52,314 - __main__ - INFO -    Open Orders: 0
+2025-08-27 00:02:57,329 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 00:02:57,330 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 00:02:57,330 - __main__ - INFO -    Open Orders: 0
+2025-08-27 00:02:58,897 - __main__ - WARNING -    1. Iteration 1 error: float division by zero
+2025-08-27 00:02:58,898 - __main__ - WARNING -    2. Iteration 2 error: float division by zero
+2025-08-27 00:02:58,898 - __main__ - WARNING -    3. Iteration 3 error: float division by zero
+2025-08-27 00:02:58,898 - __main__ - WARNING -    4. Iteration 4 error: float division by zero
+2025-08-27 00:02:58,899 - __main__ - WARNING -    5. Iteration 5 error: float division by zero
+2025-08-27 00:02:58,899 - __main__ - WARNING -    6. Iteration 6 error: float division by zero
+2025-08-27 00:02:58,899 - __main__ - WARNING -    7. Iteration 7 error: float division by zero
+2025-08-27 00:02:58,899 - __main__ - WARNING -    8. Iteration 8 error: float division by zero
+2025-08-27 00:02:58,900 - __main__ - WARNING -    9. Iteration 9 error: float division by zero
+2025-08-27 00:02:58,900 - __main__ - WARNING - Total errors: 9
+2025-08-27 00:02:58,906 - __main__ - INFO - ============================================================
+2025-08-27 00:04:40,585 - root - INFO - [LAUNCH] Starting DEV Trading Launch Sequence
+2025-08-27 00:04:40,586 - root - INFO - ============================================================
+2025-08-27 00:04:40,587 - root - ERROR - [ERROR] Fatal error in main execution: name 'logger' is not defined
+2025-08-27 00:04:40,588 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-27 00:04:40,588 - root - WARNING - [ERRORS] FINAL ERROR SUMMARY:
+2025-08-27 00:04:40,589 - root - WARNING -    1. Fatal error: name 'logger' is not defined
+2025-08-27 00:04:40,589 - root - WARNING - Total errors: 1
+2025-08-27 00:04:40,590 - root - INFO - [COMPLETE] Dev trading session completed
+2025-08-27 00:04:40,590 - root - INFO - ============================================================
+2025-08-27 00:05:13,686 - root - INFO - [LAUNCH] Starting DEV Trading Launch Sequence
+2025-08-27 00:05:13,688 - root - INFO - ============================================================
+2025-08-27 00:05:13,689 - root - INFO - [INIT] Initializing Drift client for devnet trading...
+2025-08-27 00:05:13,692 - libs.drift.client - INFO - Using DriftpyClient for SOL-PERP (devnet) via https://api.devnet.solana.com
+2025-08-27 00:05:16,075 - root - INFO - [SUCCESS] Real DriftpyClient initialized successfully
+2025-08-27 00:05:16,076 - root - WARNING - [WARNING] Client initialization completed with warnings
+2025-08-27 00:05:16,380 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:05:16,382 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:05:16,382 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:05:16,383 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:05:16,383 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:05:16,384 - root - INFO - [TRADE] Starting devnet trading loop...
+2025-08-27 00:05:16,384 - root - INFO - [TRADE] Starting iteration #1
+2025-08-27 00:05:16,385 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:05:16,387 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:05:16,387 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:05:16,388 - root - INFO -    Open Orders: 0
+2025-08-27 00:05:16,388 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:05:19,391 - root - INFO - [TRADE] Starting iteration #2
+2025-08-27 00:05:19,392 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:05:19,392 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:05:19,393 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:05:19,393 - root - INFO -    Open Orders: 0
+2025-08-27 00:05:19,393 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:05:22,397 - root - INFO - [TRADE] Starting iteration #3
+2025-08-27 00:05:22,398 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:05:22,399 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:05:22,399 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:05:22,400 - root - INFO -    Open Orders: 0
+2025-08-27 00:05:22,401 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:05:25,418 - root - INFO - [TRADE] Starting iteration #4
+2025-08-27 00:05:25,419 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:05:25,420 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:05:25,420 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:05:25,421 - root - INFO -    Open Orders: 0
+2025-08-27 00:05:25,422 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:05:28,427 - root - INFO - [TRADE] Starting iteration #5
+2025-08-27 00:05:28,428 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:05:28,428 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:05:28,428 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:05:28,429 - root - INFO -    Open Orders: 0
+2025-08-27 00:05:28,429 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:05:28,712 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:05:28,713 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:05:28,713 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:05:28,714 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:05:28,714 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:05:31,726 - root - INFO - [TRADE] Starting iteration #6
+2025-08-27 00:05:31,726 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:05:31,726 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:05:31,726 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:05:31,726 - root - INFO -    Open Orders: 0
+2025-08-27 00:05:31,727 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:05:34,740 - root - INFO - [TRADE] Starting iteration #7
+2025-08-27 00:05:34,740 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:05:34,741 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:05:34,741 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:05:34,741 - root - INFO -    Open Orders: 0
+2025-08-27 00:05:34,741 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:05:37,749 - root - INFO - [TRADE] Starting iteration #8
+2025-08-27 00:05:37,749 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:05:37,749 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:05:37,749 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:05:37,750 - root - INFO -    Open Orders: 0
+2025-08-27 00:05:37,750 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:05:40,759 - root - INFO - [TRADE] Starting iteration #9
+2025-08-27 00:05:40,760 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:05:40,760 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:05:40,760 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:05:40,760 - root - INFO -    Open Orders: 0
+2025-08-27 00:05:40,761 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:05:43,766 - root - INFO - [TRADE] Starting iteration #10
+2025-08-27 00:05:43,766 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:05:43,766 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:05:43,766 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:05:43,766 - root - INFO -    Open Orders: 0
+2025-08-27 00:05:43,766 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:05:44,071 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:05:44,073 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:05:44,073 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:05:44,074 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:05:44,074 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:05:46,393 - root - INFO - [STATS] Performance Stats:
+2025-08-27 00:05:46,394 - root - INFO -    runtime_seconds: 30.32073473930359
+2025-08-27 00:05:46,394 - root - INFO -    total_orders: 0
+2025-08-27 00:05:46,394 - root - INFO -    successful_orders: 0
+2025-08-27 00:05:46,395 - root - INFO -    failed_orders: 0
+2025-08-27 00:05:46,395 - root - INFO -    success_rate_percent: 0
+2025-08-27 00:05:46,395 - root - INFO -    total_volume_usd: 0.0
+2025-08-27 00:05:46,395 - root - INFO -    orders_per_minute: 0.0
+2025-08-27 00:05:46,395 - root - INFO -    volume_per_minute: 0.0
+2025-08-27 00:05:46,396 - root - INFO -    oracle_price_changes: 0
+2025-08-27 00:05:46,396 - root - INFO -    avg_spread_bps: 0.0
+2025-08-27 00:05:46,396 - root - INFO -    last_oracle_price: 0.0
+2025-08-27 00:05:46,397 - root - INFO -    best_bid_hits: 0
+2025-08-27 00:05:46,397 - root - INFO -    best_ask_hits: 0
+2025-08-27 00:05:46,397 - root - INFO -    spread_captured_usd: 0.0
+2025-08-27 00:05:47,100 - root - INFO - [TRADE] Starting iteration #11
+2025-08-27 00:05:47,101 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:05:47,101 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:05:47,101 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:05:47,101 - root - INFO -    Open Orders: 0
+2025-08-27 00:05:47,101 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:05:50,110 - root - INFO - [TRADE] Starting iteration #12
+2025-08-27 00:05:50,110 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:05:50,110 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:05:50,110 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:05:50,111 - root - INFO -    Open Orders: 0
+2025-08-27 00:05:50,111 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:05:53,118 - root - INFO - [TRADE] Starting iteration #13
+2025-08-27 00:05:53,118 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:05:53,118 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:05:53,118 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:05:53,118 - root - INFO -    Open Orders: 0
+2025-08-27 00:05:53,119 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:05:56,121 - root - INFO - [TRADE] Starting iteration #14
+2025-08-27 00:05:56,121 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:05:56,122 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:05:56,122 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:05:56,122 - root - INFO -    Open Orders: 0
+2025-08-27 00:05:56,122 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:05:59,128 - root - INFO - [TRADE] Starting iteration #15
+2025-08-27 00:05:59,129 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:05:59,129 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:05:59,130 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:05:59,130 - root - INFO -    Open Orders: 0
+2025-08-27 00:05:59,130 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:05:59,802 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:05:59,803 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:05:59,803 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:05:59,804 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:05:59,804 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:06:02,814 - root - INFO - [TRADE] Starting iteration #16
+2025-08-27 00:06:02,814 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:02,815 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:02,815 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:02,816 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:02,817 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:05,818 - root - INFO - [TRADE] Starting iteration #17
+2025-08-27 00:06:05,818 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:05,818 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:05,819 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:05,819 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:05,819 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:08,826 - root - INFO - [TRADE] Starting iteration #18
+2025-08-27 00:06:08,827 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:08,827 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:08,828 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:08,828 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:08,828 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:11,834 - root - INFO - [TRADE] Starting iteration #19
+2025-08-27 00:06:11,835 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:11,835 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:11,836 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:11,836 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:11,836 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:14,842 - root - INFO - [TRADE] Starting iteration #20
+2025-08-27 00:06:14,842 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:14,842 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:14,843 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:14,843 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:14,843 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:15,467 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:06:15,467 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:06:15,468 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:06:15,468 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:06:15,468 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:06:16,399 - root - INFO - [STATS] Performance Stats:
+2025-08-27 00:06:16,399 - root - INFO -    runtime_seconds: 60.3266716003418
+2025-08-27 00:06:16,399 - root - INFO -    total_orders: 0
+2025-08-27 00:06:16,399 - root - INFO -    successful_orders: 0
+2025-08-27 00:06:16,400 - root - INFO -    failed_orders: 0
+2025-08-27 00:06:16,401 - root - INFO -    success_rate_percent: 0
+2025-08-27 00:06:16,401 - root - INFO -    total_volume_usd: 0.0
+2025-08-27 00:06:16,401 - root - INFO -    orders_per_minute: 0.0
+2025-08-27 00:06:16,401 - root - INFO -    volume_per_minute: 0.0
+2025-08-27 00:06:16,401 - root - INFO -    oracle_price_changes: 0
+2025-08-27 00:06:16,402 - root - INFO -    avg_spread_bps: 0.0
+2025-08-27 00:06:16,402 - root - INFO -    last_oracle_price: 0.0
+2025-08-27 00:06:16,402 - root - INFO -    best_bid_hits: 0
+2025-08-27 00:06:16,402 - root - INFO -    best_ask_hits: 0
+2025-08-27 00:06:16,403 - root - INFO -    spread_captured_usd: 0.0
+2025-08-27 00:06:18,468 - root - INFO - [TRADE] Starting iteration #21
+2025-08-27 00:06:18,468 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:18,468 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:18,468 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:18,469 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:18,469 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:21,475 - root - INFO - [TRADE] Starting iteration #22
+2025-08-27 00:06:21,476 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:21,476 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:21,476 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:21,476 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:21,476 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:24,483 - root - INFO - [TRADE] Starting iteration #23
+2025-08-27 00:06:24,483 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:24,483 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:24,483 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:24,483 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:24,483 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:27,490 - root - INFO - [TRADE] Starting iteration #24
+2025-08-27 00:06:27,490 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:27,490 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:27,490 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:27,491 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:27,491 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:30,492 - root - INFO - [TRADE] Starting iteration #25
+2025-08-27 00:06:30,492 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:30,492 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:30,492 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:30,493 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:30,493 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:30,785 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:06:30,786 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:06:30,786 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:06:30,786 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:06:30,787 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:06:33,792 - root - INFO - [TRADE] Starting iteration #26
+2025-08-27 00:06:33,792 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:33,792 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:33,792 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:33,793 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:33,793 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:36,800 - root - INFO - [TRADE] Starting iteration #27
+2025-08-27 00:06:36,800 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:36,800 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:36,800 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:36,800 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:36,801 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:39,815 - root - INFO - [TRADE] Starting iteration #28
+2025-08-27 00:06:39,815 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:39,815 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:39,815 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:39,816 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:39,816 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:42,816 - root - INFO - [TRADE] Starting iteration #29
+2025-08-27 00:06:42,817 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:42,817 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:42,817 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:42,817 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:42,818 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:45,824 - root - INFO - [TRADE] Starting iteration #30
+2025-08-27 00:06:45,824 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:45,824 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:45,824 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:45,825 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:45,825 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:46,121 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:06:46,122 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:06:46,122 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:06:46,122 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:06:46,122 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:06:46,415 - root - INFO - [STATS] Performance Stats:
+2025-08-27 00:06:46,415 - root - INFO -    runtime_seconds: 90.34228181838989
+2025-08-27 00:06:46,415 - root - INFO -    total_orders: 0
+2025-08-27 00:06:46,416 - root - INFO -    successful_orders: 0
+2025-08-27 00:06:46,416 - root - INFO -    failed_orders: 0
+2025-08-27 00:06:46,416 - root - INFO -    success_rate_percent: 0
+2025-08-27 00:06:46,417 - root - INFO -    total_volume_usd: 0.0
+2025-08-27 00:06:46,417 - root - INFO -    orders_per_minute: 0.0
+2025-08-27 00:06:46,417 - root - INFO -    volume_per_minute: 0.0
+2025-08-27 00:06:46,417 - root - INFO -    oracle_price_changes: 0
+2025-08-27 00:06:46,417 - root - INFO -    avg_spread_bps: 0.0
+2025-08-27 00:06:46,418 - root - INFO -    last_oracle_price: 0.0
+2025-08-27 00:06:46,418 - root - INFO -    best_bid_hits: 0
+2025-08-27 00:06:46,418 - root - INFO -    best_ask_hits: 0
+2025-08-27 00:06:46,418 - root - INFO -    spread_captured_usd: 0.0
+2025-08-27 00:06:49,125 - root - INFO - [TRADE] Starting iteration #31
+2025-08-27 00:06:49,125 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:49,125 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:49,125 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:49,126 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:49,126 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:52,133 - root - INFO - [TRADE] Starting iteration #32
+2025-08-27 00:06:52,133 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:52,133 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:52,133 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:52,134 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:52,134 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:55,125 - root - INFO - [TRADE] Starting iteration #33
+2025-08-27 00:06:55,125 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:55,125 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:55,125 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:55,126 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:55,126 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:06:58,138 - root - INFO - [TRADE] Starting iteration #34
+2025-08-27 00:06:58,138 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:06:58,138 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:06:58,139 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:06:58,139 - root - INFO -    Open Orders: 0
+2025-08-27 00:06:58,139 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:01,150 - root - INFO - [TRADE] Starting iteration #35
+2025-08-27 00:07:01,150 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:01,150 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:01,150 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:01,151 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:01,151 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:01,759 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:07:01,760 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:07:01,760 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:07:01,760 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:07:01,760 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:07:04,766 - root - INFO - [TRADE] Starting iteration #36
+2025-08-27 00:07:04,766 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:04,766 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:04,766 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:04,766 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:04,767 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:07,778 - root - INFO - [TRADE] Starting iteration #37
+2025-08-27 00:07:07,778 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:07,778 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:07,778 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:07,779 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:07,779 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:10,779 - root - INFO - [TRADE] Starting iteration #38
+2025-08-27 00:07:10,779 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:10,779 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:10,780 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:10,780 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:10,780 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:13,782 - root - INFO - [TRADE] Starting iteration #39
+2025-08-27 00:07:13,783 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:13,783 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:13,783 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:13,783 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:13,783 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:16,432 - root - INFO - [STATS] Performance Stats:
+2025-08-27 00:07:16,432 - root - INFO -    runtime_seconds: 120.35921382904053
+2025-08-27 00:07:16,432 - root - INFO -    total_orders: 0
+2025-08-27 00:07:16,432 - root - INFO -    successful_orders: 0
+2025-08-27 00:07:16,433 - root - INFO -    failed_orders: 0
+2025-08-27 00:07:16,433 - root - INFO -    success_rate_percent: 0
+2025-08-27 00:07:16,433 - root - INFO -    total_volume_usd: 0.0
+2025-08-27 00:07:16,433 - root - INFO -    orders_per_minute: 0.0
+2025-08-27 00:07:16,434 - root - INFO -    volume_per_minute: 0.0
+2025-08-27 00:07:16,434 - root - INFO -    oracle_price_changes: 0
+2025-08-27 00:07:16,434 - root - INFO -    avg_spread_bps: 0.0
+2025-08-27 00:07:16,434 - root - INFO -    last_oracle_price: 0.0
+2025-08-27 00:07:16,434 - root - INFO -    best_bid_hits: 0
+2025-08-27 00:07:16,435 - root - INFO -    best_ask_hits: 0
+2025-08-27 00:07:16,435 - root - INFO -    spread_captured_usd: 0.0
+2025-08-27 00:07:16,782 - root - INFO - [TRADE] Starting iteration #40
+2025-08-27 00:07:16,782 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:16,783 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:16,783 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:16,783 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:16,784 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:17,385 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:07:17,386 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:07:17,386 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:07:17,386 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:07:17,387 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:07:20,390 - root - INFO - [TRADE] Starting iteration #41
+2025-08-27 00:07:20,391 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:20,391 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:20,391 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:20,392 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:20,392 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:23,398 - root - INFO - [TRADE] Starting iteration #42
+2025-08-27 00:07:23,399 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:23,399 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:23,399 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:23,399 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:23,399 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:26,412 - root - INFO - [TRADE] Starting iteration #43
+2025-08-27 00:07:26,412 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:26,412 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:26,413 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:26,413 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:26,413 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:29,415 - root - INFO - [TRADE] Starting iteration #44
+2025-08-27 00:07:29,416 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:29,416 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:29,416 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:29,416 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:29,417 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:32,422 - root - INFO - [TRADE] Starting iteration #45
+2025-08-27 00:07:32,422 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:32,422 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:32,422 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:32,423 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:32,423 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:32,709 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:07:32,710 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:07:32,710 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:07:32,710 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:07:32,710 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:07:35,716 - root - INFO - [TRADE] Starting iteration #46
+2025-08-27 00:07:35,716 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:35,716 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:35,716 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:35,716 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:35,716 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:38,729 - root - INFO - [TRADE] Starting iteration #47
+2025-08-27 00:07:38,729 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:38,729 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:38,729 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:38,730 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:38,730 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:41,740 - root - INFO - [TRADE] Starting iteration #48
+2025-08-27 00:07:41,740 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:41,740 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:41,740 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:41,740 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:41,741 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:44,751 - root - INFO - [TRADE] Starting iteration #49
+2025-08-27 00:07:44,751 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:44,751 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:44,751 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:44,752 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:44,752 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:46,448 - root - INFO - [STATS] Performance Stats:
+2025-08-27 00:07:46,449 - root - INFO -    runtime_seconds: 150.37538766860962
+2025-08-27 00:07:46,449 - root - INFO -    total_orders: 0
+2025-08-27 00:07:46,449 - root - INFO -    successful_orders: 0
+2025-08-27 00:07:46,449 - root - INFO -    failed_orders: 0
+2025-08-27 00:07:46,450 - root - INFO -    success_rate_percent: 0
+2025-08-27 00:07:46,450 - root - INFO -    total_volume_usd: 0.0
+2025-08-27 00:07:46,450 - root - INFO -    orders_per_minute: 0.0
+2025-08-27 00:07:46,450 - root - INFO -    volume_per_minute: 0.0
+2025-08-27 00:07:46,450 - root - INFO -    oracle_price_changes: 0
+2025-08-27 00:07:46,451 - root - INFO -    avg_spread_bps: 0.0
+2025-08-27 00:07:46,451 - root - INFO -    last_oracle_price: 0.0
+2025-08-27 00:07:46,451 - root - INFO -    best_bid_hits: 0
+2025-08-27 00:07:46,451 - root - INFO -    best_ask_hits: 0
+2025-08-27 00:07:46,451 - root - INFO -    spread_captured_usd: 0.0
+2025-08-27 00:07:47,762 - root - INFO - [TRADE] Starting iteration #50
+2025-08-27 00:07:47,762 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:47,762 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:47,762 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:47,762 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:47,762 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:48,038 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:07:48,040 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:07:48,040 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:07:48,040 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:07:48,040 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:07:51,047 - root - INFO - [TRADE] Starting iteration #51
+2025-08-27 00:07:51,047 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:51,047 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:51,048 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:51,048 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:51,048 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:54,057 - root - INFO - [TRADE] Starting iteration #52
+2025-08-27 00:07:54,057 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:54,058 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:54,058 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:54,058 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:54,058 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:07:57,070 - root - INFO - [TRADE] Starting iteration #53
+2025-08-27 00:07:57,070 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:07:57,070 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:07:57,070 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:07:57,070 - root - INFO -    Open Orders: 0
+2025-08-27 00:07:57,070 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:00,074 - root - INFO - [TRADE] Starting iteration #54
+2025-08-27 00:08:00,074 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:00,075 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:00,075 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:00,075 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:00,076 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:03,086 - root - INFO - [TRADE] Starting iteration #55
+2025-08-27 00:08:03,087 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:03,087 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:03,087 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:03,087 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:03,087 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:03,697 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:08:03,698 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:08:03,698 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:08:03,698 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:08:03,698 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:08:06,710 - root - INFO - [TRADE] Starting iteration #56
+2025-08-27 00:08:06,710 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:06,710 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:06,711 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:06,711 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:06,711 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:09,716 - root - INFO - [TRADE] Starting iteration #57
+2025-08-27 00:08:09,716 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:09,716 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:09,716 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:09,716 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:09,717 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:12,722 - root - INFO - [TRADE] Starting iteration #58
+2025-08-27 00:08:12,722 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:12,722 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:12,723 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:12,724 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:12,724 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:15,738 - root - INFO - [TRADE] Starting iteration #59
+2025-08-27 00:08:15,738 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:15,738 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:15,738 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:15,739 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:15,739 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:16,469 - root - INFO - [STATS] Performance Stats:
+2025-08-27 00:08:16,469 - root - INFO -    runtime_seconds: 180.39596486091614
+2025-08-27 00:08:16,469 - root - INFO -    total_orders: 0
+2025-08-27 00:08:16,469 - root - INFO -    successful_orders: 0
+2025-08-27 00:08:16,469 - root - INFO -    failed_orders: 0
+2025-08-27 00:08:16,470 - root - INFO -    success_rate_percent: 0
+2025-08-27 00:08:16,470 - root - INFO -    total_volume_usd: 0.0
+2025-08-27 00:08:16,470 - root - INFO -    orders_per_minute: 0.0
+2025-08-27 00:08:16,470 - root - INFO -    volume_per_minute: 0.0
+2025-08-27 00:08:16,470 - root - INFO -    oracle_price_changes: 0
+2025-08-27 00:08:16,471 - root - INFO -    avg_spread_bps: 0.0
+2025-08-27 00:08:16,471 - root - INFO -    last_oracle_price: 0.0
+2025-08-27 00:08:16,471 - root - INFO -    best_bid_hits: 0
+2025-08-27 00:08:16,472 - root - INFO -    best_ask_hits: 0
+2025-08-27 00:08:16,472 - root - INFO -    spread_captured_usd: 0.0
+2025-08-27 00:08:18,749 - root - INFO - [TRADE] Starting iteration #60
+2025-08-27 00:08:18,750 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:18,750 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:18,750 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:18,750 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:18,751 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:19,361 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:08:19,362 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:08:19,362 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:08:19,362 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:08:19,363 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:08:22,377 - root - INFO - [TRADE] Starting iteration #61
+2025-08-27 00:08:22,377 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:22,377 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:22,377 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:22,378 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:22,378 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:25,388 - root - INFO - [TRADE] Starting iteration #62
+2025-08-27 00:08:25,388 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:25,388 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:25,388 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:25,388 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:25,389 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:28,393 - root - INFO - [TRADE] Starting iteration #63
+2025-08-27 00:08:28,394 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:28,394 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:28,394 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:28,395 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:28,395 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:31,403 - root - INFO - [TRADE] Starting iteration #64
+2025-08-27 00:08:31,403 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:31,403 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:31,404 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:31,404 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:31,404 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:34,413 - root - INFO - [TRADE] Starting iteration #65
+2025-08-27 00:08:34,413 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:34,413 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:34,413 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:34,414 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:34,414 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:34,706 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:08:34,707 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:08:34,707 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:08:34,707 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:08:34,707 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:08:37,710 - root - INFO - [TRADE] Starting iteration #66
+2025-08-27 00:08:37,710 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:37,710 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:37,711 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:37,711 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:37,711 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:40,720 - root - INFO - [TRADE] Starting iteration #67
+2025-08-27 00:08:40,720 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:40,721 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:40,721 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:40,721 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:40,721 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:43,730 - root - INFO - [TRADE] Starting iteration #68
+2025-08-27 00:08:43,730 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:43,730 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:43,730 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:43,730 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:43,731 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:46,478 - root - INFO - [STATS] Performance Stats:
+2025-08-27 00:08:46,478 - root - INFO -    runtime_seconds: 210.40490341186523
+2025-08-27 00:08:46,478 - root - INFO -    total_orders: 0
+2025-08-27 00:08:46,478 - root - INFO -    successful_orders: 0
+2025-08-27 00:08:46,479 - root - INFO -    failed_orders: 0
+2025-08-27 00:08:46,479 - root - INFO -    success_rate_percent: 0
+2025-08-27 00:08:46,479 - root - INFO -    total_volume_usd: 0.0
+2025-08-27 00:08:46,479 - root - INFO -    orders_per_minute: 0.0
+2025-08-27 00:08:46,479 - root - INFO -    volume_per_minute: 0.0
+2025-08-27 00:08:46,479 - root - INFO -    oracle_price_changes: 0
+2025-08-27 00:08:46,479 - root - INFO -    avg_spread_bps: 0.0
+2025-08-27 00:08:46,480 - root - INFO -    last_oracle_price: 0.0
+2025-08-27 00:08:46,480 - root - INFO -    best_bid_hits: 0
+2025-08-27 00:08:46,480 - root - INFO -    best_ask_hits: 0
+2025-08-27 00:08:46,480 - root - INFO -    spread_captured_usd: 0.0
+2025-08-27 00:08:46,744 - root - INFO - [TRADE] Starting iteration #69
+2025-08-27 00:08:46,744 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:46,745 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:46,745 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:46,746 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:46,746 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:49,756 - root - INFO - [TRADE] Starting iteration #70
+2025-08-27 00:08:49,756 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:49,756 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:49,756 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:49,757 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:49,757 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:50,069 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:08:50,071 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:08:50,071 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:08:50,071 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:08:50,072 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:08:53,085 - root - INFO - [TRADE] Starting iteration #71
+2025-08-27 00:08:53,086 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:53,086 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:53,086 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:53,087 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:53,089 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:56,101 - root - INFO - [TRADE] Starting iteration #72
+2025-08-27 00:08:56,101 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:56,102 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:56,102 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:56,102 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:56,103 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:08:59,119 - root - INFO - [TRADE] Starting iteration #73
+2025-08-27 00:08:59,119 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:08:59,120 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:08:59,120 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:08:59,120 - root - INFO -    Open Orders: 0
+2025-08-27 00:08:59,121 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:02,129 - root - INFO - [TRADE] Starting iteration #74
+2025-08-27 00:09:02,129 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:02,130 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:02,130 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:02,130 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:02,130 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:05,135 - root - INFO - [TRADE] Starting iteration #75
+2025-08-27 00:09:05,135 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:05,135 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:05,135 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:05,136 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:05,136 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:05,747 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:09:05,748 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:09:05,748 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:09:05,748 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:09:05,748 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:09:08,753 - root - INFO - [TRADE] Starting iteration #76
+2025-08-27 00:09:08,754 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:08,754 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:08,755 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:08,755 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:08,755 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:11,760 - root - INFO - [TRADE] Starting iteration #77
+2025-08-27 00:09:11,760 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:11,760 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:11,761 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:11,761 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:11,761 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:14,762 - root - INFO - [TRADE] Starting iteration #78
+2025-08-27 00:09:14,762 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:14,762 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:14,762 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:14,763 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:14,763 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:16,493 - root - INFO - [STATS] Performance Stats:
+2025-08-27 00:09:16,493 - root - INFO -    runtime_seconds: 240.42013311386108
+2025-08-27 00:09:16,494 - root - INFO -    total_orders: 0
+2025-08-27 00:09:16,494 - root - INFO -    successful_orders: 0
+2025-08-27 00:09:16,494 - root - INFO -    failed_orders: 0
+2025-08-27 00:09:16,494 - root - INFO -    success_rate_percent: 0
+2025-08-27 00:09:16,495 - root - INFO -    total_volume_usd: 0.0
+2025-08-27 00:09:16,495 - root - INFO -    orders_per_minute: 0.0
+2025-08-27 00:09:16,495 - root - INFO -    volume_per_minute: 0.0
+2025-08-27 00:09:16,495 - root - INFO -    oracle_price_changes: 0
+2025-08-27 00:09:16,496 - root - INFO -    avg_spread_bps: 0.0
+2025-08-27 00:09:16,496 - root - INFO -    last_oracle_price: 0.0
+2025-08-27 00:09:16,496 - root - INFO -    best_bid_hits: 0
+2025-08-27 00:09:16,496 - root - INFO -    best_ask_hits: 0
+2025-08-27 00:09:16,497 - root - INFO -    spread_captured_usd: 0.0
+2025-08-27 00:09:17,769 - root - INFO - [TRADE] Starting iteration #79
+2025-08-27 00:09:17,770 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:17,770 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:17,771 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:17,771 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:17,772 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:20,777 - root - INFO - [TRADE] Starting iteration #80
+2025-08-27 00:09:20,777 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:20,777 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:20,778 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:20,778 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:20,778 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:21,411 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:09:21,413 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:09:21,413 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:09:21,414 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:09:21,414 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:09:24,418 - root - INFO - [TRADE] Starting iteration #81
+2025-08-27 00:09:24,418 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:24,418 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:24,418 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:24,419 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:24,419 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:27,434 - root - INFO - [TRADE] Starting iteration #82
+2025-08-27 00:09:27,434 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:27,434 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:27,434 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:27,435 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:27,435 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:30,436 - root - INFO - [TRADE] Starting iteration #83
+2025-08-27 00:09:30,436 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:30,436 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:30,436 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:30,436 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:30,437 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:33,444 - root - INFO - [TRADE] Starting iteration #84
+2025-08-27 00:09:33,444 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:33,444 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:33,444 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:33,445 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:33,445 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:36,448 - root - INFO - [TRADE] Starting iteration #85
+2025-08-27 00:09:36,448 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:36,448 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:36,448 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:36,449 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:36,449 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:37,060 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:09:37,060 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:09:37,061 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:09:37,061 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:09:37,061 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:09:40,067 - root - INFO - [TRADE] Starting iteration #86
+2025-08-27 00:09:40,067 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:40,067 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:40,067 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:40,067 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:40,067 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:43,075 - root - INFO - [TRADE] Starting iteration #87
+2025-08-27 00:09:43,075 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:43,075 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:43,075 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:43,076 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:43,076 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:46,089 - root - INFO - [TRADE] Starting iteration #88
+2025-08-27 00:09:46,089 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:46,089 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:46,089 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:46,090 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:46,090 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:46,506 - root - INFO - [STATS] Performance Stats:
+2025-08-27 00:09:46,506 - root - INFO -    runtime_seconds: 270.4333209991455
+2025-08-27 00:09:46,507 - root - INFO -    total_orders: 0
+2025-08-27 00:09:46,507 - root - INFO -    successful_orders: 0
+2025-08-27 00:09:46,507 - root - INFO -    failed_orders: 0
+2025-08-27 00:09:46,507 - root - INFO -    success_rate_percent: 0
+2025-08-27 00:09:46,507 - root - INFO -    total_volume_usd: 0.0
+2025-08-27 00:09:46,508 - root - INFO -    orders_per_minute: 0.0
+2025-08-27 00:09:46,508 - root - INFO -    volume_per_minute: 0.0
+2025-08-27 00:09:46,508 - root - INFO -    oracle_price_changes: 0
+2025-08-27 00:09:46,508 - root - INFO -    avg_spread_bps: 0.0
+2025-08-27 00:09:46,508 - root - INFO -    last_oracle_price: 0.0
+2025-08-27 00:09:46,509 - root - INFO -    best_bid_hits: 0
+2025-08-27 00:09:46,509 - root - INFO -    best_ask_hits: 0
+2025-08-27 00:09:46,509 - root - INFO -    spread_captured_usd: 0.0
+2025-08-27 00:09:49,108 - root - INFO - [TRADE] Starting iteration #89
+2025-08-27 00:09:49,108 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:49,109 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:49,109 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:49,109 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:49,109 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:52,109 - root - INFO - [TRADE] Starting iteration #90
+2025-08-27 00:09:52,109 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:52,110 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:52,110 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:52,110 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:52,110 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:52,726 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:09:52,728 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:09:52,728 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:09:52,728 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:09:52,729 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:09:55,732 - root - INFO - [TRADE] Starting iteration #91
+2025-08-27 00:09:55,732 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:55,732 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:55,733 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:55,733 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:55,733 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:09:58,735 - root - INFO - [TRADE] Starting iteration #92
+2025-08-27 00:09:58,735 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:09:58,735 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:09:58,735 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:09:58,735 - root - INFO -    Open Orders: 0
+2025-08-27 00:09:58,736 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:01,749 - root - INFO - [TRADE] Starting iteration #93
+2025-08-27 00:10:01,749 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:01,749 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:01,749 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:01,749 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:01,750 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:04,752 - root - INFO - [TRADE] Starting iteration #94
+2025-08-27 00:10:04,752 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:04,752 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:04,753 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:04,753 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:04,753 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:07,757 - root - INFO - [TRADE] Starting iteration #95
+2025-08-27 00:10:07,757 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:07,757 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:07,758 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:07,758 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:07,758 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:08,053 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:10:08,054 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:10:08,055 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:10:08,055 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:10:08,055 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:10:11,056 - root - INFO - [TRADE] Starting iteration #96
+2025-08-27 00:10:11,056 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:11,056 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:11,056 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:11,057 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:11,057 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:14,062 - root - INFO - [TRADE] Starting iteration #97
+2025-08-27 00:10:14,062 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:14,062 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:14,062 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:14,062 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:14,063 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:16,501 - root - INFO - [STATS] Performance Stats:
+2025-08-27 00:10:16,501 - root - INFO -    runtime_seconds: 300.42871499061584
+2025-08-27 00:10:16,501 - root - INFO -    total_orders: 0
+2025-08-27 00:10:16,503 - root - INFO -    successful_orders: 0
+2025-08-27 00:10:16,503 - root - INFO -    failed_orders: 0
+2025-08-27 00:10:16,503 - root - INFO -    success_rate_percent: 0
+2025-08-27 00:10:16,503 - root - INFO -    total_volume_usd: 0.0
+2025-08-27 00:10:16,503 - root - INFO -    orders_per_minute: 0.0
+2025-08-27 00:10:16,503 - root - INFO -    volume_per_minute: 0.0
+2025-08-27 00:10:16,503 - root - INFO -    oracle_price_changes: 0
+2025-08-27 00:10:16,503 - root - INFO -    avg_spread_bps: 0.0
+2025-08-27 00:10:16,503 - root - INFO -    last_oracle_price: 0.0
+2025-08-27 00:10:16,503 - root - INFO -    best_bid_hits: 0
+2025-08-27 00:10:16,503 - root - INFO -    best_ask_hits: 0
+2025-08-27 00:10:16,504 - root - INFO -    spread_captured_usd: 0.0
+2025-08-27 00:10:17,079 - root - INFO - [TRADE] Starting iteration #98
+2025-08-27 00:10:17,079 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:17,079 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:17,079 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:17,079 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:17,080 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:20,095 - root - INFO - [TRADE] Starting iteration #99
+2025-08-27 00:10:20,095 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:20,096 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:20,096 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:20,096 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:20,096 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:23,101 - root - INFO - [TRADE] Starting iteration #100
+2025-08-27 00:10:23,102 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:23,102 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:23,102 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:23,103 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:23,103 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:23,390 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:10:23,391 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:10:23,391 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:10:23,392 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:10:23,392 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:10:26,400 - root - INFO - [TRADE] Starting iteration #101
+2025-08-27 00:10:26,400 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:26,401 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:26,401 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:26,401 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:26,402 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:29,416 - root - INFO - [TRADE] Starting iteration #102
+2025-08-27 00:10:29,416 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:29,416 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:29,416 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:29,417 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:29,417 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:32,424 - root - INFO - [TRADE] Starting iteration #103
+2025-08-27 00:10:32,424 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:32,424 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:32,425 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:32,425 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:32,425 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:35,441 - root - INFO - [TRADE] Starting iteration #104
+2025-08-27 00:10:35,441 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:35,442 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:35,443 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:35,443 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:35,443 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:38,449 - root - INFO - [TRADE] Starting iteration #105
+2025-08-27 00:10:38,450 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:38,451 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:38,451 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:38,452 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:38,452 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:39,046 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:10:39,047 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:10:39,048 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:10:39,048 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:10:39,049 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:10:42,061 - root - INFO - [TRADE] Starting iteration #106
+2025-08-27 00:10:42,061 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:42,062 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:42,062 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:42,063 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:42,063 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:45,074 - root - INFO - [TRADE] Starting iteration #107
+2025-08-27 00:10:45,075 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:45,076 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:45,076 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:45,077 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:45,077 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:46,500 - root - INFO - [STATS] Performance Stats:
+2025-08-27 00:10:46,500 - root - INFO -    runtime_seconds: 330.4270944595337
+2025-08-27 00:10:46,501 - root - INFO -    total_orders: 0
+2025-08-27 00:10:46,501 - root - INFO -    successful_orders: 0
+2025-08-27 00:10:46,501 - root - INFO -    failed_orders: 0
+2025-08-27 00:10:46,502 - root - INFO -    success_rate_percent: 0
+2025-08-27 00:10:46,502 - root - INFO -    total_volume_usd: 0.0
+2025-08-27 00:10:46,502 - root - INFO -    orders_per_minute: 0.0
+2025-08-27 00:10:46,503 - root - INFO -    volume_per_minute: 0.0
+2025-08-27 00:10:46,503 - root - INFO -    oracle_price_changes: 0
+2025-08-27 00:10:46,503 - root - INFO -    avg_spread_bps: 0.0
+2025-08-27 00:10:46,503 - root - INFO -    last_oracle_price: 0.0
+2025-08-27 00:10:46,503 - root - INFO -    best_bid_hits: 0
+2025-08-27 00:10:46,504 - root - INFO -    best_ask_hits: 0
+2025-08-27 00:10:46,504 - root - INFO -    spread_captured_usd: 0.0
+2025-08-27 00:10:48,095 - root - INFO - [TRADE] Starting iteration #108
+2025-08-27 00:10:48,095 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:48,095 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:48,095 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:48,095 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:48,095 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:51,111 - root - INFO - [TRADE] Starting iteration #109
+2025-08-27 00:10:51,111 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:51,111 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:51,112 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:51,112 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:51,112 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:54,116 - root - INFO - [TRADE] Starting iteration #110
+2025-08-27 00:10:54,116 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:54,116 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:54,116 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:54,117 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:54,117 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:10:54,714 - httpx - INFO - HTTP Request: POST https://api.devnet.solana.com "HTTP/1.1 200 OK"
+2025-08-27 00:10:54,714 - root - INFO - [BALANCE] Wallet Balance: 0.0000 SOL
+2025-08-27 00:10:54,715 - root - WARNING - [WARNING] LOW BALANCE - Consider funding wallet for trading
+2025-08-27 00:10:54,715 - root - WARNING - [INFO] Use: https://faucet.solana.com
+2025-08-27 00:10:54,715 - root - WARNING -    Address: ydmqsp2XSjYMooJyj2y3BCxRGaF7YMjeNaxPYoM3o67
+2025-08-27 00:10:57,731 - root - INFO - [TRADE] Starting iteration #111
+2025-08-27 00:10:57,731 - root - INFO - [STATUS] Iteration Status:
+2025-08-27 00:10:57,731 - root - INFO -    Net Exposure: $0.00
+2025-08-27 00:10:57,731 - root - INFO -    Total Volume: $0.00
+2025-08-27 00:10:57,731 - root - INFO -    Open Orders: 0
+2025-08-27 00:10:57,731 - root - INFO -    Risk State: Drawdown 0.00%
+2025-08-27 00:11:00,074 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-27 00:11:00,075 - root - INFO - [SUCCESS] Client closed successfully
+2025-08-27 00:11:00,076 - root - INFO - [SUCCESS] No errors recorded during session
+2025-08-27 00:11:00,076 - root - INFO - [COMPLETE] Dev trading session completed
+2025-08-27 00:11:00,077 - root - INFO - ============================================================
+2025-08-27 00:11:00,079 - root - INFO - [SHUTDOWN] Launch script interrupted by user

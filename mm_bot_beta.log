@@ -1,0 +1,700 @@
+2025-08-27 00:40:50,408 | __main__ | INFO | ============================================================
+2025-08-27 00:40:50,416 | __main__ | INFO | ============================================================
+2025-08-27 00:40:50,431 | __main__ | INFO | ============================================================
+2025-08-27 00:40:50,446 | __main__ | ERROR | Fatal error in MM bot: expected an indented block after 'try' statement on line 67 (main.py, line 68)
+2025-08-27 00:40:50,447 | __main__ | ERROR | Traceback: Traceback (most recent call last):
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\run_mm_bot_beta.py", line 76, in main
+    from main import main as jit_main
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\bots\jit\main.py", line 68
+    with path.open("r") as f:
+    ^^^^
+IndentationError: expected an indented block after 'try' statement on line 67
+
+2025-08-27 00:40:50,448 | __main__ | INFO | MM Bot shutdown complete
+2025-08-27 00:40:50,448 | __main__ | INFO | ============================================================
+2025-08-27 00:40:50,453 | __main__ | INFO | ============================================================
+2025-08-27 00:41:23,260 | __main__ | INFO | ============================================================
+2025-08-27 00:41:23,260 | __main__ | INFO | LAUNCHING MM BOT IN BETA MODE
+2025-08-27 00:41:23,260 | __main__ | INFO | ============================================================
+2025-08-27 00:41:23,261 | __main__ | INFO | Target: SOL-PERP on Drift Protocol
+2025-08-27 00:41:23,261 | __main__ | INFO | Current SOL Price: ~$198.63
+2025-08-27 00:41:23,261 | __main__ | INFO | Orders will be visible on beta.drift.trade
+2025-08-27 00:41:23,262 | __main__ | INFO | WARNING: REAL MONEY - USE WITH CAUTION
+2025-08-27 00:41:23,262 | __main__ | INFO | ============================================================
+2025-08-27 00:41:23,282 | __main__ | ERROR | Fatal error in MM bot: unexpected indent (main.py, line 562)
+2025-08-27 00:41:23,283 | __main__ | ERROR | Traceback: Traceback (most recent call last):
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\run_mm_bot_beta.py", line 76, in main
+    from main import main as jit_main
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\bots\jit\main.py", line 562
+    logger.info("JIT MM shutdown complete")
+IndentationError: unexpected indent
+
+2025-08-27 00:41:23,284 | __main__ | INFO | MM Bot shutdown complete
+2025-08-27 00:41:23,284 | __main__ | INFO | ============================================================
+2025-08-27 00:41:23,284 | __main__ | INFO | MM BOT STOPPED
+2025-08-27 00:41:23,284 | __main__ | INFO | ============================================================
+2025-08-27 00:42:13,754 | __main__ | INFO | ============================================================
+2025-08-27 00:42:13,755 | __main__ | INFO | LAUNCHING MM BOT IN BETA MODE
+2025-08-27 00:42:13,755 | __main__ | INFO | ============================================================
+2025-08-27 00:42:13,755 | __main__ | INFO | Target: SOL-PERP on Drift Protocol
+2025-08-27 00:42:13,755 | __main__ | INFO | Current SOL Price: ~$198.63
+2025-08-27 00:42:13,756 | __main__ | INFO | Orders will be visible on beta.drift.trade
+2025-08-27 00:42:13,756 | __main__ | INFO | WARNING: REAL MONEY - USE WITH CAUTION
+2025-08-27 00:42:13,756 | __main__ | INFO | ============================================================
+2025-08-27 00:42:13,825 | __main__ | INFO | Starting JIT Market Maker in BETA mode...
+2025-08-27 00:42:13,825 | __main__ | INFO | Press Ctrl+C to stop gracefully
+2025-08-27 00:42:13,827 | main_fixed | INFO | ============================================================
+2025-08-27 00:42:13,827 | main_fixed | INFO | STARTING JIT MM BOT WITH REAL DRIFT INTEGRATION
+2025-08-27 00:42:13,827 | main_fixed | INFO | ============================================================
+2025-08-27 00:42:13,827 | main_fixed | INFO | Environment: devnet
+2025-08-27 00:42:13,828 | main_fixed | INFO | Config: configs/core/drift_client.yaml
+2025-08-27 00:42:13,828 | main_fixed | INFO | Expected SOL Price: ~$198.63 (from Drift oracle)
+2025-08-27 00:42:13,828 | main_fixed | INFO | ============================================================
+2025-08-27 00:42:13,828 | main_fixed | INFO | Initializing REAL Drift client...
+2025-08-27 00:42:13,830 | drift.client | INFO | Config use_mock setting: False (OVERRIDING TO FALSE)
+2025-08-27 00:42:14,750 | main_fixed | INFO | Received signal 2, initiating graceful shutdown...
+2025-08-27 00:42:16,841 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:42:17,008 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:42:17,141 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:42:17,497 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:42:17,775 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:42:17,926 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:42:19,079 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:42:19,095 | main_fixed | INFO | Client type: DriftpyClient
+2025-08-27 00:42:19,096 | main_fixed | INFO | Testing market data connectivity...
+2025-08-27 00:42:19,097 | main_fixed | ERROR | Market data test failed: 'coroutine' object has no attribute 'bids'
+2025-08-27 00:42:19,097 | main_fixed | INFO | Closing client connection...
+2025-08-27 00:42:19,097 | main_fixed | INFO | JIT MM shutdown complete
+2025-08-27 00:42:19,105 | __main__ | INFO | MM Bot shutdown complete
+2025-08-27 00:42:19,105 | __main__ | INFO | ============================================================
+2025-08-27 00:42:19,106 | __main__ | INFO | MM BOT STOPPED
+2025-08-27 00:42:19,106 | __main__ | INFO | ============================================================
+2025-08-27 00:42:22,594 | __main__ | INFO | ============================================================
+2025-08-27 00:42:22,595 | __main__ | INFO | LAUNCHING MM BOT IN BETA MODE
+2025-08-27 00:42:22,595 | __main__ | INFO | ============================================================
+2025-08-27 00:42:22,596 | __main__ | INFO | Target: SOL-PERP on Drift Protocol
+2025-08-27 00:42:22,596 | __main__ | INFO | Current SOL Price: ~$198.63
+2025-08-27 00:42:22,596 | __main__ | INFO | Orders will be visible on beta.drift.trade
+2025-08-27 00:42:22,596 | __main__ | INFO | WARNING: REAL MONEY - USE WITH CAUTION
+2025-08-27 00:42:22,597 | __main__ | INFO | ============================================================
+2025-08-27 00:42:22,666 | __main__ | INFO | Starting JIT Market Maker in BETA mode...
+2025-08-27 00:42:22,666 | __main__ | INFO | Press Ctrl+C to stop gracefully
+2025-08-27 00:42:22,670 | main_fixed | INFO | ============================================================
+2025-08-27 00:42:22,670 | main_fixed | INFO | STARTING JIT MM BOT WITH REAL DRIFT INTEGRATION
+2025-08-27 00:42:22,671 | main_fixed | INFO | ============================================================
+2025-08-27 00:42:22,671 | main_fixed | INFO | Environment: devnet
+2025-08-27 00:42:22,671 | main_fixed | INFO | Config: configs/core/drift_client.yaml
+2025-08-27 00:42:22,672 | main_fixed | INFO | Expected SOL Price: ~$198.63 (from Drift oracle)
+2025-08-27 00:42:22,672 | main_fixed | INFO | ============================================================
+2025-08-27 00:42:22,672 | main_fixed | INFO | Initializing REAL Drift client...
+2025-08-27 00:42:22,675 | drift.client | INFO | Config use_mock setting: False (OVERRIDING TO FALSE)
+2025-08-27 00:42:25,807 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:42:25,990 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:42:26,154 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:42:26,385 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:42:26,641 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:42:26,740 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:42:28,021 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:42:28,087 | main_fixed | INFO | Client type: DriftpyClient
+2025-08-27 00:42:28,088 | main_fixed | INFO | Testing market data connectivity...
+2025-08-27 00:42:28,088 | main_fixed | ERROR | Market data test failed: 'coroutine' object has no attribute 'bids'
+2025-08-27 00:42:28,089 | main_fixed | INFO | Closing client connection...
+2025-08-27 00:42:28,117 | main_fixed | INFO | JIT MM shutdown complete
+2025-08-27 00:42:28,121 | __main__ | INFO | MM Bot shutdown complete
+2025-08-27 00:42:28,121 | __main__ | INFO | ============================================================
+2025-08-27 00:42:28,122 | __main__ | INFO | MM BOT STOPPED
+2025-08-27 00:42:28,122 | __main__ | INFO | ============================================================
+2025-08-27 00:43:37,408 | __main__ | INFO | ============================================================
+2025-08-27 00:43:37,409 | __main__ | INFO | LAUNCHING MM BOT IN BETA MODE
+2025-08-27 00:43:37,409 | __main__ | INFO | ============================================================
+2025-08-27 00:43:37,410 | __main__ | INFO | Target: SOL-PERP on Drift Protocol
+2025-08-27 00:43:37,410 | __main__ | INFO | Current SOL Price: ~$198.63
+2025-08-27 00:43:37,410 | __main__ | INFO | Orders will be visible on beta.drift.trade
+2025-08-27 00:43:37,411 | __main__ | INFO | WARNING: REAL MONEY - USE WITH CAUTION
+2025-08-27 00:43:37,412 | __main__ | INFO | ============================================================
+2025-08-27 00:43:37,471 | __main__ | INFO | Starting JIT Market Maker in BETA mode...
+2025-08-27 00:43:37,471 | __main__ | INFO | Press Ctrl+C to stop gracefully
+2025-08-27 00:43:37,474 | main_fixed | INFO | ============================================================
+2025-08-27 00:43:37,475 | main_fixed | INFO | STARTING JIT MM BOT WITH REAL DRIFT INTEGRATION
+2025-08-27 00:43:37,476 | main_fixed | INFO | ============================================================
+2025-08-27 00:43:37,476 | main_fixed | INFO | Environment: devnet
+2025-08-27 00:43:37,477 | main_fixed | INFO | Config: configs/core/drift_client.yaml
+2025-08-27 00:43:37,478 | main_fixed | INFO | Expected SOL Price: ~$198.63 (from Drift oracle)
+2025-08-27 00:43:37,478 | main_fixed | INFO | ============================================================
+2025-08-27 00:43:37,479 | main_fixed | INFO | Initializing REAL Drift client...
+2025-08-27 00:43:37,482 | drift.client | INFO | Config use_mock setting: False (OVERRIDING TO FALSE)
+2025-08-27 00:43:39,978 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:43:40,113 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:43:40,289 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:43:40,693 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:43:40,881 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:43:41,171 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:43:42,376 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:43:42,385 | main_fixed | INFO | Client type: DriftpyClient
+2025-08-27 00:43:42,385 | main_fixed | INFO | Testing market data connectivity...
+2025-08-27 00:43:42,386 | main_fixed | INFO | Orderbook: Bid=$149.9200, Ask=$150.9200, Mid=$150.4200
+2025-08-27 00:43:42,387 | main_fixed | INFO | SUCCESS: Price $150.4200 is within expected SOL-PERP range
+2025-08-27 00:43:42,387 | main_fixed | INFO | ORACLE PRICE: $150.4200
+2025-08-27 00:43:42,387 | main_fixed | INFO | SUCCESS: Using REAL oracle price from Drift Protocol!
+2025-08-27 00:43:42,388 | main_fixed | INFO | Starting market making loop...
+2025-08-27 00:43:42,388 | main_fixed | INFO | Press Ctrl+C to stop
+2025-08-27 00:43:42,389 | main_fixed | INFO | Cycle 1: BUY $25.0 @ $150.3598 | SELL $25.0 @ $150.4802 | Mid: $150.4200
+2025-08-27 00:43:43,128 | websockets.client | INFO | ! connect failed; reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 00:43:43,132 | websockets.client | INFO | ! connect failed; reconnecting in 2.3 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 00:43:43,134 | websockets.client | INFO | ! connect failed; reconnecting in 2.4 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 00:43:43,163 | websockets.client | INFO | ! connect failed; reconnecting in 0.7 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 00:43:43,166 | websockets.client | INFO | ! connect failed; reconnecting in 2.2 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 00:43:44,393 | main_fixed | INFO | Cycle 2: BUY $25.0 @ $150.3798 | SELL $25.0 @ $150.5002 | Mid: $150.4400
+2025-08-27 00:43:46,381 | main_fixed | INFO | Cycle 3: BUY $25.0 @ $150.3998 | SELL $25.0 @ $150.5202 | Mid: $150.4600
+2025-08-27 00:43:48,381 | main_fixed | INFO | Cycle 4: BUY $25.0 @ $150.4198 | SELL $25.0 @ $150.5402 | Mid: $150.4800
+2025-08-27 00:43:50,381 | main_fixed | INFO | Cycle 5: BUY $25.0 @ $150.4398 | SELL $25.0 @ $150.5602 | Mid: $150.5000
+2025-08-27 00:43:52,390 | main_fixed | INFO | Cycle 6: BUY $25.0 @ $150.4598 | SELL $25.0 @ $150.5802 | Mid: $150.5200
+2025-08-27 00:43:54,394 | main_fixed | INFO | Cycle 7: BUY $25.0 @ $150.4798 | SELL $25.0 @ $150.6002 | Mid: $150.5400
+2025-08-27 00:43:56,402 | main_fixed | INFO | Cycle 8: BUY $25.0 @ $150.4998 | SELL $25.0 @ $150.6202 | Mid: $150.5600
+2025-08-27 00:43:58,401 | main_fixed | INFO | Cycle 9: BUY $25.0 @ $150.5198 | SELL $25.0 @ $150.6402 | Mid: $150.5800
+2025-08-27 00:44:00,402 | main_fixed | INFO | Cycle 10: BUY $25.0 @ $149.9400 | SELL $25.0 @ $150.0600 | Mid: $150.0000
+2025-08-27 00:44:00,402 | main_fixed | INFO | Completed 10 cycles. Mid price: $150.0000
+2025-08-27 00:44:02,416 | main_fixed | INFO | Cycle 11: BUY $25.0 @ $149.9600 | SELL $25.0 @ $150.0800 | Mid: $150.0200
+2025-08-27 00:44:04,405 | main_fixed | INFO | Cycle 12: BUY $25.0 @ $149.9800 | SELL $25.0 @ $150.1000 | Mid: $150.0400
+2025-08-27 00:44:06,394 | main_fixed | INFO | Cycle 13: BUY $25.0 @ $150.0000 | SELL $25.0 @ $150.1200 | Mid: $150.0600
+2025-08-27 00:44:08,402 | main_fixed | INFO | Cycle 14: BUY $25.0 @ $150.0200 | SELL $25.0 @ $150.1400 | Mid: $150.0800
+2025-08-27 00:44:10,415 | main_fixed | INFO | Cycle 15: BUY $25.0 @ $150.0400 | SELL $25.0 @ $150.1600 | Mid: $150.1000
+2025-08-27 00:44:12,415 | main_fixed | INFO | Cycle 16: BUY $25.0 @ $150.0600 | SELL $25.0 @ $150.1800 | Mid: $150.1200
+2025-08-27 00:44:14,415 | main_fixed | INFO | Cycle 17: BUY $25.0 @ $150.0799 | SELL $25.0 @ $150.2001 | Mid: $150.1400
+2025-08-27 00:44:16,414 | main_fixed | INFO | Cycle 18: BUY $25.0 @ $150.0999 | SELL $25.0 @ $150.2201 | Mid: $150.1600
+2025-08-27 00:44:18,403 | main_fixed | INFO | Cycle 19: BUY $25.0 @ $150.1199 | SELL $25.0 @ $150.2401 | Mid: $150.1800
+2025-08-27 00:44:20,403 | main_fixed | INFO | Cycle 20: BUY $25.0 @ $150.1399 | SELL $25.0 @ $150.2601 | Mid: $150.2000
+2025-08-27 00:44:20,404 | main_fixed | INFO | Completed 20 cycles. Mid price: $150.2000
+2025-08-27 00:44:22,386 | main_fixed | INFO | Cycle 21: BUY $25.0 @ $150.1599 | SELL $25.0 @ $150.2801 | Mid: $150.2200
+2025-08-27 00:44:24,405 | main_fixed | INFO | Cycle 22: BUY $25.0 @ $150.1799 | SELL $25.0 @ $150.3001 | Mid: $150.2400
+2025-08-27 00:44:26,394 | main_fixed | INFO | Cycle 23: BUY $25.0 @ $150.1999 | SELL $25.0 @ $150.3201 | Mid: $150.2600
+2025-08-27 00:44:28,381 | main_fixed | INFO | Cycle 24: BUY $25.0 @ $150.2199 | SELL $25.0 @ $150.3401 | Mid: $150.2800
+2025-08-27 00:44:30,387 | main_fixed | INFO | Cycle 25: BUY $25.0 @ $150.2399 | SELL $25.0 @ $150.3601 | Mid: $150.3000
+2025-08-27 00:44:32,381 | main_fixed | INFO | Cycle 26: BUY $25.0 @ $150.2599 | SELL $25.0 @ $150.3801 | Mid: $150.3200
+2025-08-27 00:44:34,382 | main_fixed | INFO | Cycle 27: BUY $25.0 @ $150.2799 | SELL $25.0 @ $150.4001 | Mid: $150.3400
+2025-08-27 00:44:36,388 | main_fixed | INFO | Cycle 28: BUY $25.0 @ $150.2999 | SELL $25.0 @ $150.4201 | Mid: $150.3600
+2025-08-27 00:44:38,404 | main_fixed | INFO | Cycle 29: BUY $25.0 @ $150.3198 | SELL $25.0 @ $150.4402 | Mid: $150.3800
+2025-08-27 00:44:40,421 | main_fixed | INFO | Cycle 30: BUY $25.0 @ $150.3398 | SELL $25.0 @ $150.4602 | Mid: $150.4000
+2025-08-27 00:44:40,422 | main_fixed | INFO | Completed 30 cycles. Mid price: $150.4000
+2025-08-27 00:44:42,415 | main_fixed | INFO | Cycle 31: BUY $25.0 @ $150.3598 | SELL $25.0 @ $150.4802 | Mid: $150.4200
+2025-08-27 00:44:44,419 | main_fixed | INFO | Cycle 32: BUY $25.0 @ $150.3798 | SELL $25.0 @ $150.5002 | Mid: $150.4400
+2025-08-27 00:44:46,409 | main_fixed | INFO | Cycle 33: BUY $25.0 @ $150.3998 | SELL $25.0 @ $150.5202 | Mid: $150.4600
+2025-08-27 00:44:48,394 | main_fixed | INFO | Cycle 34: BUY $25.0 @ $150.4198 | SELL $25.0 @ $150.5402 | Mid: $150.4800
+2025-08-27 00:44:50,387 | main_fixed | INFO | Cycle 35: BUY $25.0 @ $150.4398 | SELL $25.0 @ $150.5602 | Mid: $150.5000
+2025-08-27 00:44:52,389 | main_fixed | INFO | Cycle 36: BUY $25.0 @ $150.4598 | SELL $25.0 @ $150.5802 | Mid: $150.5200
+2025-08-27 00:44:54,400 | main_fixed | INFO | Cycle 37: BUY $25.0 @ $150.4798 | SELL $25.0 @ $150.6002 | Mid: $150.5400
+2025-08-27 00:44:56,389 | main_fixed | INFO | Cycle 38: BUY $25.0 @ $150.4998 | SELL $25.0 @ $150.6202 | Mid: $150.5600
+2025-08-27 00:44:58,400 | main_fixed | INFO | Cycle 39: BUY $25.0 @ $150.5198 | SELL $25.0 @ $150.6402 | Mid: $150.5800
+2025-08-27 00:45:00,389 | main_fixed | INFO | Cycle 40: BUY $25.0 @ $149.9400 | SELL $25.0 @ $150.0600 | Mid: $150.0000
+2025-08-27 00:45:00,390 | main_fixed | INFO | Completed 40 cycles. Mid price: $150.0000
+2025-08-27 00:45:02,401 | main_fixed | INFO | Cycle 41: BUY $25.0 @ $149.9600 | SELL $25.0 @ $150.0800 | Mid: $150.0200
+2025-08-27 00:45:04,405 | main_fixed | INFO | Cycle 42: BUY $25.0 @ $149.9800 | SELL $25.0 @ $150.1000 | Mid: $150.0400
+2025-08-27 00:45:06,421 | main_fixed | INFO | Cycle 43: BUY $25.0 @ $150.0000 | SELL $25.0 @ $150.1200 | Mid: $150.0600
+2025-08-27 00:45:08,430 | main_fixed | INFO | Cycle 44: BUY $25.0 @ $150.0200 | SELL $25.0 @ $150.1400 | Mid: $150.0800
+2025-08-27 00:45:10,435 | main_fixed | INFO | Cycle 45: BUY $25.0 @ $150.0400 | SELL $25.0 @ $150.1600 | Mid: $150.1000
+2025-08-27 00:45:12,454 | main_fixed | INFO | Cycle 46: BUY $25.0 @ $150.0600 | SELL $25.0 @ $150.1800 | Mid: $150.1200
+2025-08-27 00:45:14,463 | main_fixed | INFO | Cycle 47: BUY $25.0 @ $150.0799 | SELL $25.0 @ $150.2001 | Mid: $150.1400
+2025-08-27 00:45:16,466 | main_fixed | INFO | Cycle 48: BUY $25.0 @ $150.0999 | SELL $25.0 @ $150.2201 | Mid: $150.1600
+2025-08-27 00:45:18,479 | main_fixed | INFO | Cycle 49: BUY $25.0 @ $150.1199 | SELL $25.0 @ $150.2401 | Mid: $150.1800
+2025-08-27 00:45:20,493 | main_fixed | INFO | Cycle 50: BUY $25.0 @ $150.1399 | SELL $25.0 @ $150.2601 | Mid: $150.2000
+2025-08-27 00:45:20,494 | main_fixed | INFO | Completed 50 cycles. Mid price: $150.2000
+2025-08-27 00:45:22,494 | main_fixed | INFO | Cycle 51: BUY $25.0 @ $150.1599 | SELL $25.0 @ $150.2801 | Mid: $150.2200
+2025-08-27 00:45:24,507 | main_fixed | INFO | Cycle 52: BUY $25.0 @ $150.1799 | SELL $25.0 @ $150.3001 | Mid: $150.2400
+2025-08-27 00:45:26,483 | main_fixed | INFO | Cycle 53: BUY $25.0 @ $150.1999 | SELL $25.0 @ $150.3201 | Mid: $150.2600
+2025-08-27 00:45:28,468 | main_fixed | INFO | Cycle 54: BUY $25.0 @ $150.2199 | SELL $25.0 @ $150.3401 | Mid: $150.2800
+2025-08-27 00:45:30,481 | main_fixed | INFO | Cycle 55: BUY $25.0 @ $150.2399 | SELL $25.0 @ $150.3601 | Mid: $150.3000
+2025-08-27 00:45:32,478 | main_fixed | INFO | Cycle 56: BUY $25.0 @ $150.2599 | SELL $25.0 @ $150.3801 | Mid: $150.3200
+2025-08-27 00:45:34,478 | main_fixed | INFO | Cycle 57: BUY $25.0 @ $150.2799 | SELL $25.0 @ $150.4001 | Mid: $150.3400
+2025-08-27 00:45:36,488 | main_fixed | INFO | Cycle 58: BUY $25.0 @ $150.2999 | SELL $25.0 @ $150.4201 | Mid: $150.3600
+2025-08-27 00:45:38,492 | main_fixed | INFO | Cycle 59: BUY $25.0 @ $150.3198 | SELL $25.0 @ $150.4402 | Mid: $150.3800
+2025-08-27 00:45:40,503 | main_fixed | INFO | Cycle 60: BUY $25.0 @ $150.3398 | SELL $25.0 @ $150.4602 | Mid: $150.4000
+2025-08-27 00:45:40,503 | main_fixed | INFO | Completed 60 cycles. Mid price: $150.4000
+2025-08-27 00:45:42,511 | main_fixed | INFO | Cycle 61: BUY $25.0 @ $150.3598 | SELL $25.0 @ $150.4802 | Mid: $150.4200
+2025-08-27 00:45:44,521 | main_fixed | INFO | Cycle 62: BUY $25.0 @ $150.3798 | SELL $25.0 @ $150.5002 | Mid: $150.4400
+2025-08-27 00:45:46,527 | main_fixed | INFO | Cycle 63: BUY $25.0 @ $150.3998 | SELL $25.0 @ $150.5202 | Mid: $150.4600
+2025-08-27 00:45:48,510 | main_fixed | INFO | Cycle 64: BUY $25.0 @ $150.4198 | SELL $25.0 @ $150.5402 | Mid: $150.4800
+2025-08-27 00:45:50,512 | main_fixed | INFO | Cycle 65: BUY $25.0 @ $150.4398 | SELL $25.0 @ $150.5602 | Mid: $150.5000
+2025-08-27 00:45:52,516 | main_fixed | INFO | Cycle 66: BUY $25.0 @ $150.4598 | SELL $25.0 @ $150.5802 | Mid: $150.5200
+2025-08-27 00:45:54,536 | main_fixed | INFO | Cycle 67: BUY $25.0 @ $150.4798 | SELL $25.0 @ $150.6002 | Mid: $150.5400
+2025-08-27 00:45:56,549 | main_fixed | INFO | Cycle 68: BUY $25.0 @ $150.4998 | SELL $25.0 @ $150.6202 | Mid: $150.5600
+2025-08-27 00:45:58,560 | main_fixed | INFO | Cycle 69: BUY $25.0 @ $150.5198 | SELL $25.0 @ $150.6402 | Mid: $150.5800
+2025-08-27 00:46:00,569 | main_fixed | INFO | Cycle 70: BUY $25.0 @ $149.9400 | SELL $25.0 @ $150.0600 | Mid: $150.0000
+2025-08-27 00:46:00,569 | main_fixed | INFO | Completed 70 cycles. Mid price: $150.0000
+2025-08-27 00:46:02,574 | main_fixed | INFO | Cycle 71: BUY $25.0 @ $149.9600 | SELL $25.0 @ $150.0800 | Mid: $150.0200
+2025-08-27 00:46:04,584 | main_fixed | INFO | Cycle 72: BUY $25.0 @ $149.9800 | SELL $25.0 @ $150.1000 | Mid: $150.0400
+2025-08-27 00:46:06,566 | main_fixed | INFO | Cycle 73: BUY $25.0 @ $150.0000 | SELL $25.0 @ $150.1200 | Mid: $150.0600
+2025-08-27 00:46:08,546 | main_fixed | INFO | Cycle 74: BUY $25.0 @ $150.0200 | SELL $25.0 @ $150.1400 | Mid: $150.0800
+2025-08-27 00:46:10,528 | main_fixed | INFO | Cycle 75: BUY $25.0 @ $150.0400 | SELL $25.0 @ $150.1600 | Mid: $150.1000
+2025-08-27 00:46:12,511 | main_fixed | INFO | Cycle 76: BUY $25.0 @ $150.0600 | SELL $25.0 @ $150.1800 | Mid: $150.1200
+2025-08-27 00:46:14,522 | main_fixed | INFO | Cycle 77: BUY $25.0 @ $150.0799 | SELL $25.0 @ $150.2001 | Mid: $150.1400
+2025-08-27 00:46:16,528 | main_fixed | INFO | Cycle 78: BUY $25.0 @ $150.0999 | SELL $25.0 @ $150.2201 | Mid: $150.1600
+2025-08-27 00:46:18,546 | main_fixed | INFO | Cycle 79: BUY $25.0 @ $150.1199 | SELL $25.0 @ $150.2401 | Mid: $150.1800
+2025-08-27 00:46:20,544 | main_fixed | INFO | Cycle 80: BUY $25.0 @ $150.1399 | SELL $25.0 @ $150.2601 | Mid: $150.2000
+2025-08-27 00:46:20,545 | main_fixed | INFO | Completed 80 cycles. Mid price: $150.2000
+2025-08-27 00:46:22,565 | main_fixed | INFO | Cycle 81: BUY $25.0 @ $150.1599 | SELL $25.0 @ $150.2801 | Mid: $150.2200
+2025-08-27 00:46:24,545 | main_fixed | INFO | Cycle 82: BUY $25.0 @ $150.1799 | SELL $25.0 @ $150.3001 | Mid: $150.2400
+2025-08-27 00:46:26,558 | main_fixed | INFO | Cycle 83: BUY $25.0 @ $150.1999 | SELL $25.0 @ $150.3201 | Mid: $150.2600
+2025-08-27 00:46:28,566 | main_fixed | INFO | Cycle 84: BUY $25.0 @ $150.2199 | SELL $25.0 @ $150.3401 | Mid: $150.2800
+2025-08-27 00:46:30,568 | main_fixed | INFO | Cycle 85: BUY $25.0 @ $150.2399 | SELL $25.0 @ $150.3601 | Mid: $150.3000
+2025-08-27 00:46:32,567 | main_fixed | INFO | Cycle 86: BUY $25.0 @ $150.2599 | SELL $25.0 @ $150.3801 | Mid: $150.3200
+2025-08-27 00:46:34,585 | main_fixed | INFO | Cycle 87: BUY $25.0 @ $150.2799 | SELL $25.0 @ $150.4001 | Mid: $150.3400
+2025-08-27 00:46:36,578 | main_fixed | INFO | Cycle 88: BUY $25.0 @ $150.2999 | SELL $25.0 @ $150.4201 | Mid: $150.3600
+2025-08-27 00:46:38,585 | main_fixed | INFO | Cycle 89: BUY $25.0 @ $150.3198 | SELL $25.0 @ $150.4402 | Mid: $150.3800
+2025-08-27 00:46:40,583 | main_fixed | INFO | Cycle 90: BUY $25.0 @ $150.3398 | SELL $25.0 @ $150.4602 | Mid: $150.4000
+2025-08-27 00:46:40,584 | main_fixed | INFO | Completed 90 cycles. Mid price: $150.4000
+2025-08-27 00:46:42,590 | main_fixed | INFO | Cycle 91: BUY $25.0 @ $150.3598 | SELL $25.0 @ $150.4802 | Mid: $150.4200
+2025-08-27 00:46:44,577 | main_fixed | INFO | Cycle 92: BUY $25.0 @ $150.3798 | SELL $25.0 @ $150.5002 | Mid: $150.4400
+2025-08-27 00:46:46,594 | main_fixed | INFO | Cycle 93: BUY $25.0 @ $150.3998 | SELL $25.0 @ $150.5202 | Mid: $150.4600
+2025-08-27 00:46:48,601 | main_fixed | INFO | Cycle 94: BUY $25.0 @ $150.4198 | SELL $25.0 @ $150.5402 | Mid: $150.4800
+2025-08-27 00:46:50,608 | main_fixed | INFO | Cycle 95: BUY $25.0 @ $150.4398 | SELL $25.0 @ $150.5602 | Mid: $150.5000
+2025-08-27 00:46:52,594 | main_fixed | INFO | Cycle 96: BUY $25.0 @ $150.4598 | SELL $25.0 @ $150.5802 | Mid: $150.5200
+2025-08-27 00:46:54,613 | main_fixed | INFO | Cycle 97: BUY $25.0 @ $150.4798 | SELL $25.0 @ $150.6002 | Mid: $150.5400
+2025-08-27 00:46:56,610 | main_fixed | INFO | Cycle 98: BUY $25.0 @ $150.4998 | SELL $25.0 @ $150.6202 | Mid: $150.5600
+2025-08-27 00:46:58,608 | main_fixed | INFO | Cycle 99: BUY $25.0 @ $150.5198 | SELL $25.0 @ $150.6402 | Mid: $150.5800
+2025-08-27 00:47:00,613 | main_fixed | INFO | Cycle 100: BUY $25.0 @ $149.9400 | SELL $25.0 @ $150.0600 | Mid: $150.0000
+2025-08-27 00:47:00,614 | main_fixed | INFO | Completed 100 cycles. Mid price: $150.0000
+2025-08-27 00:47:02,617 | main_fixed | INFO | Cycle 101: BUY $25.0 @ $149.9600 | SELL $25.0 @ $150.0800 | Mid: $150.0200
+2025-08-27 00:47:04,607 | main_fixed | INFO | Cycle 102: BUY $25.0 @ $149.9800 | SELL $25.0 @ $150.1000 | Mid: $150.0400
+2025-08-27 00:47:06,632 | main_fixed | INFO | Cycle 103: BUY $25.0 @ $150.0000 | SELL $25.0 @ $150.1200 | Mid: $150.0600
+2025-08-27 00:47:08,626 | main_fixed | INFO | Cycle 104: BUY $25.0 @ $150.0200 | SELL $25.0 @ $150.1400 | Mid: $150.0800
+2025-08-27 00:47:10,639 | main_fixed | INFO | Cycle 105: BUY $25.0 @ $150.0400 | SELL $25.0 @ $150.1600 | Mid: $150.1000
+2025-08-27 00:47:12,658 | main_fixed | INFO | Cycle 106: BUY $25.0 @ $150.0600 | SELL $25.0 @ $150.1800 | Mid: $150.1200
+2025-08-27 00:47:14,673 | main_fixed | INFO | Cycle 107: BUY $25.0 @ $150.0799 | SELL $25.0 @ $150.2001 | Mid: $150.1400
+2025-08-27 00:47:16,689 | main_fixed | INFO | Cycle 108: BUY $25.0 @ $150.0999 | SELL $25.0 @ $150.2201 | Mid: $150.1600
+2025-08-27 00:47:18,698 | main_fixed | INFO | Cycle 109: BUY $25.0 @ $150.1199 | SELL $25.0 @ $150.2401 | Mid: $150.1800
+2025-08-27 00:47:20,708 | main_fixed | INFO | Cycle 110: BUY $25.0 @ $150.1399 | SELL $25.0 @ $150.2601 | Mid: $150.2000
+2025-08-27 00:47:20,708 | main_fixed | INFO | Completed 110 cycles. Mid price: $150.2000
+2025-08-27 00:47:22,709 | main_fixed | INFO | Cycle 111: BUY $25.0 @ $150.1599 | SELL $25.0 @ $150.2801 | Mid: $150.2200
+2025-08-27 00:47:24,696 | main_fixed | INFO | Cycle 112: BUY $25.0 @ $150.1799 | SELL $25.0 @ $150.3001 | Mid: $150.2400
+2025-08-27 00:47:26,691 | main_fixed | INFO | Cycle 113: BUY $25.0 @ $150.1999 | SELL $25.0 @ $150.3201 | Mid: $150.2600
+2025-08-27 00:47:28,707 | main_fixed | INFO | Cycle 114: BUY $25.0 @ $150.2199 | SELL $25.0 @ $150.3401 | Mid: $150.2800
+2025-08-27 00:47:30,705 | main_fixed | INFO | Cycle 115: BUY $25.0 @ $150.2399 | SELL $25.0 @ $150.3601 | Mid: $150.3000
+2025-08-27 00:47:32,714 | main_fixed | INFO | Cycle 116: BUY $25.0 @ $150.2599 | SELL $25.0 @ $150.3801 | Mid: $150.3200
+2025-08-27 00:47:34,722 | main_fixed | INFO | Cycle 117: BUY $25.0 @ $150.2799 | SELL $25.0 @ $150.4001 | Mid: $150.3400
+2025-08-27 00:47:36,730 | main_fixed | INFO | Cycle 118: BUY $25.0 @ $150.2999 | SELL $25.0 @ $150.4201 | Mid: $150.3600
+2025-08-27 00:47:38,739 | main_fixed | INFO | Cycle 119: BUY $25.0 @ $150.3198 | SELL $25.0 @ $150.4402 | Mid: $150.3800
+2025-08-27 00:47:40,743 | main_fixed | INFO | Cycle 120: BUY $25.0 @ $150.3398 | SELL $25.0 @ $150.4602 | Mid: $150.4000
+2025-08-27 00:47:40,743 | main_fixed | INFO | Completed 120 cycles. Mid price: $150.4000
+2025-08-27 00:47:42,752 | main_fixed | INFO | Cycle 121: BUY $25.0 @ $150.3598 | SELL $25.0 @ $150.4802 | Mid: $150.4200
+2025-08-27 00:47:44,744 | main_fixed | INFO | Cycle 122: BUY $25.0 @ $150.3798 | SELL $25.0 @ $150.5002 | Mid: $150.4400
+2025-08-27 00:47:46,738 | main_fixed | INFO | Cycle 123: BUY $25.0 @ $150.3998 | SELL $25.0 @ $150.5202 | Mid: $150.4600
+2025-08-27 00:47:48,740 | main_fixed | INFO | Cycle 124: BUY $25.0 @ $150.4198 | SELL $25.0 @ $150.5402 | Mid: $150.4800
+2025-08-27 00:47:50,739 | main_fixed | INFO | Cycle 125: BUY $25.0 @ $150.4398 | SELL $25.0 @ $150.5602 | Mid: $150.5000
+2025-08-27 00:47:52,741 | main_fixed | INFO | Cycle 126: BUY $25.0 @ $150.4598 | SELL $25.0 @ $150.5802 | Mid: $150.5200
+2025-08-27 00:47:54,745 | main_fixed | INFO | Cycle 127: BUY $25.0 @ $150.4798 | SELL $25.0 @ $150.6002 | Mid: $150.5400
+2025-08-27 00:47:56,749 | main_fixed | INFO | Cycle 128: BUY $25.0 @ $150.4998 | SELL $25.0 @ $150.6202 | Mid: $150.5600
+2025-08-27 00:47:58,766 | main_fixed | INFO | Cycle 129: BUY $25.0 @ $150.5198 | SELL $25.0 @ $150.6402 | Mid: $150.5800
+2025-08-27 00:48:00,775 | main_fixed | INFO | Cycle 130: BUY $25.0 @ $149.9400 | SELL $25.0 @ $150.0600 | Mid: $150.0000
+2025-08-27 00:48:00,776 | main_fixed | INFO | Completed 130 cycles. Mid price: $150.0000
+2025-08-27 00:48:02,778 | main_fixed | INFO | Cycle 131: BUY $25.0 @ $149.9600 | SELL $25.0 @ $150.0800 | Mid: $150.0200
+2025-08-27 00:48:04,763 | main_fixed | INFO | Cycle 132: BUY $25.0 @ $149.9800 | SELL $25.0 @ $150.1000 | Mid: $150.0400
+2025-08-27 00:48:06,780 | main_fixed | INFO | Cycle 133: BUY $25.0 @ $150.0000 | SELL $25.0 @ $150.1200 | Mid: $150.0600
+2025-08-27 00:48:08,776 | main_fixed | INFO | Cycle 134: BUY $25.0 @ $150.0200 | SELL $25.0 @ $150.1400 | Mid: $150.0800
+2025-08-27 00:48:10,786 | main_fixed | INFO | Cycle 135: BUY $25.0 @ $150.0400 | SELL $25.0 @ $150.1600 | Mid: $150.1000
+2025-08-27 00:48:12,792 | main_fixed | INFO | Cycle 136: BUY $25.0 @ $150.0600 | SELL $25.0 @ $150.1800 | Mid: $150.1200
+2025-08-27 00:48:14,816 | main_fixed | INFO | Cycle 137: BUY $25.0 @ $150.0799 | SELL $25.0 @ $150.2001 | Mid: $150.1400
+2025-08-27 00:48:16,798 | main_fixed | INFO | Cycle 138: BUY $25.0 @ $150.0999 | SELL $25.0 @ $150.2201 | Mid: $150.1600
+2025-08-27 00:48:18,809 | main_fixed | INFO | Cycle 139: BUY $25.0 @ $150.1199 | SELL $25.0 @ $150.2401 | Mid: $150.1800
+2025-08-27 00:48:20,808 | main_fixed | INFO | Cycle 140: BUY $25.0 @ $150.1399 | SELL $25.0 @ $150.2601 | Mid: $150.2000
+2025-08-27 00:48:20,808 | main_fixed | INFO | Completed 140 cycles. Mid price: $150.2000
+2025-08-27 00:48:22,811 | main_fixed | INFO | Cycle 141: BUY $25.0 @ $150.1599 | SELL $25.0 @ $150.2801 | Mid: $150.2200
+2025-08-27 00:48:24,795 | main_fixed | INFO | Cycle 142: BUY $25.0 @ $150.1799 | SELL $25.0 @ $150.3001 | Mid: $150.2400
+2025-08-27 00:48:26,807 | main_fixed | INFO | Cycle 143: BUY $25.0 @ $150.1999 | SELL $25.0 @ $150.3201 | Mid: $150.2600
+2025-08-27 00:48:28,821 | main_fixed | INFO | Cycle 144: BUY $25.0 @ $150.2199 | SELL $25.0 @ $150.3401 | Mid: $150.2800
+2025-08-27 00:48:30,831 | main_fixed | INFO | Cycle 145: BUY $25.0 @ $150.2399 | SELL $25.0 @ $150.3601 | Mid: $150.3000
+2025-08-27 00:48:32,829 | main_fixed | INFO | Cycle 146: BUY $25.0 @ $150.2599 | SELL $25.0 @ $150.3801 | Mid: $150.3200
+2025-08-27 00:48:34,832 | main_fixed | INFO | Cycle 147: BUY $25.0 @ $150.2799 | SELL $25.0 @ $150.4001 | Mid: $150.3400
+2025-08-27 00:48:36,834 | main_fixed | INFO | Cycle 148: BUY $25.0 @ $150.2999 | SELL $25.0 @ $150.4201 | Mid: $150.3600
+2025-08-27 00:48:38,833 | main_fixed | INFO | Cycle 149: BUY $25.0 @ $150.3198 | SELL $25.0 @ $150.4402 | Mid: $150.3800
+2025-08-27 00:48:40,833 | main_fixed | INFO | Cycle 150: BUY $25.0 @ $150.3398 | SELL $25.0 @ $150.4602 | Mid: $150.4000
+2025-08-27 00:48:40,833 | main_fixed | INFO | Completed 150 cycles. Mid price: $150.4000
+2025-08-27 00:48:42,833 | main_fixed | INFO | Cycle 151: BUY $25.0 @ $150.3598 | SELL $25.0 @ $150.4802 | Mid: $150.4200
+2025-08-27 00:48:44,823 | main_fixed | INFO | Cycle 152: BUY $25.0 @ $150.3798 | SELL $25.0 @ $150.5002 | Mid: $150.4400
+2025-08-27 00:48:46,826 | main_fixed | INFO | Cycle 153: BUY $25.0 @ $150.3998 | SELL $25.0 @ $150.5202 | Mid: $150.4600
+2025-08-27 00:48:48,837 | main_fixed | INFO | Cycle 154: BUY $25.0 @ $150.4198 | SELL $25.0 @ $150.5402 | Mid: $150.4800
+2025-08-27 00:48:50,840 | main_fixed | INFO | Cycle 155: BUY $25.0 @ $150.4398 | SELL $25.0 @ $150.5602 | Mid: $150.5000
+2025-08-27 00:48:52,860 | main_fixed | INFO | Cycle 156: BUY $25.0 @ $150.4598 | SELL $25.0 @ $150.5802 | Mid: $150.5200
+2025-08-27 00:48:54,857 | main_fixed | INFO | Cycle 157: BUY $25.0 @ $150.4798 | SELL $25.0 @ $150.6002 | Mid: $150.5400
+2025-08-27 00:48:56,867 | main_fixed | INFO | Cycle 158: BUY $25.0 @ $150.4998 | SELL $25.0 @ $150.6202 | Mid: $150.5600
+2025-08-27 00:48:58,868 | main_fixed | INFO | Cycle 159: BUY $25.0 @ $150.5198 | SELL $25.0 @ $150.6402 | Mid: $150.5800
+2025-08-27 00:49:00,862 | main_fixed | INFO | Cycle 160: BUY $25.0 @ $149.9400 | SELL $25.0 @ $150.0600 | Mid: $150.0000
+2025-08-27 00:49:00,864 | main_fixed | INFO | Completed 160 cycles. Mid price: $150.0000
+2025-08-27 00:49:02,862 | main_fixed | INFO | Cycle 161: BUY $25.0 @ $149.9600 | SELL $25.0 @ $150.0800 | Mid: $150.0200
+2025-08-27 00:49:04,854 | main_fixed | INFO | Cycle 162: BUY $25.0 @ $149.9800 | SELL $25.0 @ $150.1000 | Mid: $150.0400
+2025-08-27 00:49:06,842 | main_fixed | INFO | Cycle 163: BUY $25.0 @ $150.0000 | SELL $25.0 @ $150.1200 | Mid: $150.0600
+2025-08-27 00:49:08,855 | main_fixed | INFO | Cycle 164: BUY $25.0 @ $150.0200 | SELL $25.0 @ $150.1400 | Mid: $150.0800
+2025-08-27 00:49:10,874 | main_fixed | INFO | Cycle 165: BUY $25.0 @ $150.0400 | SELL $25.0 @ $150.1600 | Mid: $150.1000
+2025-08-27 00:49:12,889 | main_fixed | INFO | Cycle 166: BUY $25.0 @ $150.0600 | SELL $25.0 @ $150.1800 | Mid: $150.1200
+2025-08-27 00:49:14,911 | main_fixed | INFO | Cycle 167: BUY $25.0 @ $150.0799 | SELL $25.0 @ $150.2001 | Mid: $150.1400
+2025-08-27 00:49:16,905 | main_fixed | INFO | Cycle 168: BUY $25.0 @ $150.0999 | SELL $25.0 @ $150.2201 | Mid: $150.1600
+2025-08-27 00:49:18,922 | main_fixed | INFO | Cycle 169: BUY $25.0 @ $150.1199 | SELL $25.0 @ $150.2401 | Mid: $150.1800
+2025-08-27 00:49:19,824 | main_fixed | INFO | Received signal 2, initiating graceful shutdown...
+2025-08-27 00:49:20,923 | main_fixed | INFO | Market making loop stopped
+2025-08-27 00:49:20,923 | main_fixed | INFO | Closing client connection...
+2025-08-27 00:49:20,924 | main_fixed | INFO | JIT MM shutdown complete
+2025-08-27 00:49:20,925 | __main__ | INFO | MM Bot shutdown complete
+2025-08-27 00:49:20,925 | __main__ | INFO | ============================================================
+2025-08-27 00:49:20,925 | __main__ | INFO | MM BOT STOPPED
+2025-08-27 00:49:20,925 | __main__ | INFO | ============================================================
+2025-08-27 00:49:59,698 | __main__ | INFO | ============================================================
+2025-08-27 00:49:59,699 | __main__ | INFO | LAUNCHING MM BOT IN BETA MODE
+2025-08-27 00:49:59,699 | __main__ | INFO | ============================================================
+2025-08-27 00:49:59,700 | __main__ | INFO | Target: SOL-PERP on Drift Protocol
+2025-08-27 00:49:59,700 | __main__ | INFO | Current SOL Price: ~$198.63
+2025-08-27 00:49:59,701 | __main__ | INFO | Orders will be visible on beta.drift.trade
+2025-08-27 00:49:59,701 | __main__ | INFO | WARNING: REAL MONEY - USE WITH CAUTION
+2025-08-27 00:49:59,701 | __main__ | INFO | ============================================================
+2025-08-27 00:49:59,764 | __main__ | INFO | Starting JIT Market Maker in BETA mode...
+2025-08-27 00:49:59,765 | __main__ | INFO | Press Ctrl+C to stop gracefully
+2025-08-27 00:49:59,767 | main_fixed | INFO | ============================================================
+2025-08-27 00:49:59,768 | main_fixed | INFO | STARTING JIT MM BOT WITH REAL DRIFT INTEGRATION
+2025-08-27 00:49:59,768 | main_fixed | INFO | ============================================================
+2025-08-27 00:49:59,769 | main_fixed | INFO | Environment: devnet
+2025-08-27 00:49:59,770 | main_fixed | INFO | Config: configs/core/drift_client.yaml
+2025-08-27 00:49:59,771 | main_fixed | INFO | Expected SOL Price: ~$198.63 (from Drift oracle)
+2025-08-27 00:49:59,772 | main_fixed | INFO | ============================================================
+2025-08-27 00:49:59,773 | main_fixed | INFO | Initializing REAL Drift client...
+2025-08-27 00:49:59,777 | drift.client | INFO | Config use_mock setting: False (OVERRIDING TO FALSE)
+2025-08-27 00:50:00,692 | main_fixed | INFO | Received signal 2, initiating graceful shutdown...
+2025-08-27 00:50:02,873 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:50:03,152 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:50:03,289 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:50:03,531 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:50:03,730 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:50:03,930 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:50:05,114 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:50:05,182 | main_fixed | INFO | Client type: DriftpyClient
+2025-08-27 00:50:05,182 | main_fixed | INFO | Testing market data connectivity...
+2025-08-27 00:50:05,184 | main_fixed | INFO | Orderbook: Bid=$204.8237, Ask=$204.9876, Mid=$204.9056
+2025-08-27 00:50:05,184 | main_fixed | INFO | SUCCESS: Price $204.9056 is within expected SOL-PERP range
+2025-08-27 00:50:05,184 | main_fixed | INFO | ORACLE PRICE: $150.0500
+2025-08-27 00:50:05,185 | main_fixed | INFO | SUCCESS: Using REAL oracle price from Drift Protocol!
+2025-08-27 00:50:05,185 | main_fixed | INFO | Starting market making loop...
+2025-08-27 00:50:05,185 | main_fixed | INFO | Press Ctrl+C to stop
+2025-08-27 00:50:05,185 | main_fixed | INFO | Market making loop stopped
+2025-08-27 00:50:05,185 | main_fixed | INFO | Closing client connection...
+2025-08-27 00:50:05,208 | main_fixed | INFO | JIT MM shutdown complete
+2025-08-27 00:50:05,209 | __main__ | INFO | MM Bot shutdown complete
+2025-08-27 00:50:05,209 | __main__ | INFO | ============================================================
+2025-08-27 00:50:05,209 | __main__ | INFO | MM BOT STOPPED
+2025-08-27 00:50:05,210 | __main__ | INFO | ============================================================
+2025-08-27 00:50:42,309 | __main__ | INFO | ============================================================
+2025-08-27 00:50:42,310 | __main__ | INFO | LAUNCHING MM BOT IN BETA MODE
+2025-08-27 00:50:42,310 | __main__ | INFO | ============================================================
+2025-08-27 00:50:42,311 | __main__ | INFO | Target: SOL-PERP on Drift Protocol
+2025-08-27 00:50:42,312 | __main__ | INFO | Current SOL Price: ~$198.63
+2025-08-27 00:50:42,312 | __main__ | INFO | Orders will be visible on beta.drift.trade
+2025-08-27 00:50:42,312 | __main__ | INFO | WARNING: REAL MONEY - USE WITH CAUTION
+2025-08-27 00:50:42,313 | __main__ | INFO | ============================================================
+2025-08-27 00:50:42,367 | __main__ | INFO | Starting JIT Market Maker in BETA mode...
+2025-08-27 00:50:42,367 | __main__ | INFO | Press Ctrl+C to stop gracefully
+2025-08-27 00:50:42,370 | main_fixed | INFO | ============================================================
+2025-08-27 00:50:42,371 | main_fixed | INFO | STARTING JIT MM BOT WITH REAL DRIFT INTEGRATION
+2025-08-27 00:50:42,371 | main_fixed | INFO | ============================================================
+2025-08-27 00:50:42,372 | main_fixed | INFO | Environment: devnet
+2025-08-27 00:50:42,372 | main_fixed | INFO | Config: configs/core/drift_client.yaml
+2025-08-27 00:50:42,373 | main_fixed | INFO | Expected SOL Price: ~$198.63 (from Drift oracle)
+2025-08-27 00:50:42,373 | main_fixed | INFO | ============================================================
+2025-08-27 00:50:42,373 | main_fixed | INFO | Initializing REAL Drift client...
+2025-08-27 00:50:42,375 | drift.client | INFO | Config use_mock setting: False (OVERRIDING TO FALSE)
+2025-08-27 00:50:44,849 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:50:45,057 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:50:45,337 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:50:45,571 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:50:45,862 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:50:45,967 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:50:47,357 | httpx | INFO | HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 00:50:47,470 | main_fixed | INFO | Client type: DriftpyClient
+2025-08-27 00:50:47,471 | main_fixed | INFO | Testing market data connectivity...
+2025-08-27 00:50:47,473 | main_fixed | INFO | Orderbook: Bid=$204.8881, Ask=$205.0521, Mid=$204.9701
+2025-08-27 00:50:47,474 | main_fixed | INFO | SUCCESS: Price $204.9701 is within expected SOL-PERP range
+2025-08-27 00:50:47,475 | main_fixed | INFO | ORACLE PRICE: $150.4700
+2025-08-27 00:50:47,475 | main_fixed | INFO | SUCCESS: Using REAL oracle price from Drift Protocol!
+2025-08-27 00:50:47,475 | main_fixed | INFO | Starting market making loop...
+2025-08-27 00:50:47,476 | main_fixed | INFO | Press Ctrl+C to stop
+2025-08-27 00:50:47,478 | main_fixed | INFO | Cycle 1: BUY $25.0 @ $204.8881 | SELL $25.0 @ $205.0521 | Mid: $204.9701
+2025-08-27 00:50:48,100 | websockets.client | INFO | ! connect failed; reconnecting in 1.8 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 00:50:48,102 | websockets.client | INFO | ! connect failed; reconnecting in 2.3 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 00:50:48,109 | websockets.client | INFO | ! connect failed; reconnecting in 0.4 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 00:50:48,111 | websockets.client | INFO | ! connect failed; reconnecting in 1.4 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 00:50:48,133 | websockets.client | INFO | ! connect failed; reconnecting in 2.9 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 00:50:48,152 | websockets.client | INFO | ! connect failed; reconnecting in 2.3 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 00:50:49,470 | main_fixed | INFO | Cycle 2: BUY $25.0 @ $204.7457 | SELL $25.0 @ $204.9095 | Mid: $204.8276
+2025-08-27 00:50:51,479 | main_fixed | INFO | Cycle 3: BUY $25.0 @ $204.6959 | SELL $25.0 @ $204.8597 | Mid: $204.7778
+2025-08-27 00:50:53,485 | main_fixed | INFO | Cycle 4: BUY $25.0 @ $204.6932 | SELL $25.0 @ $204.8570 | Mid: $204.7751
+2025-08-27 00:50:55,493 | main_fixed | INFO | Cycle 5: BUY $25.0 @ $204.6829 | SELL $25.0 @ $204.8467 | Mid: $204.7648
+2025-08-27 00:50:57,475 | main_fixed | INFO | Cycle 6: BUY $25.0 @ $204.6479 | SELL $25.0 @ $204.8116 | Mid: $204.7297
+2025-08-27 00:50:59,480 | main_fixed | INFO | Cycle 7: BUY $25.0 @ $204.6159 | SELL $25.0 @ $204.7797 | Mid: $204.6978
+2025-08-27 00:51:01,488 | main_fixed | INFO | Cycle 8: BUY $25.0 @ $204.6149 | SELL $25.0 @ $204.7787 | Mid: $204.6968
+2025-08-27 00:51:03,501 | main_fixed | INFO | Cycle 9: BUY $25.0 @ $204.5812 | SELL $25.0 @ $204.7449 | Mid: $204.6630
+2025-08-27 00:51:05,490 | main_fixed | INFO | Cycle 10: BUY $25.0 @ $204.6035 | SELL $25.0 @ $204.7672 | Mid: $204.6853
+2025-08-27 00:51:05,491 | main_fixed | INFO | Completed 10 cycles. Mid price: $204.6853
+2025-08-27 00:51:07,467 | main_fixed | INFO | Cycle 11: BUY $25.0 @ $204.6136 | SELL $25.0 @ $204.7773 | Mid: $204.6954
+2025-08-27 00:51:09,485 | main_fixed | INFO | Cycle 12: BUY $25.0 @ $204.6281 | SELL $25.0 @ $204.7918 | Mid: $204.7099
+2025-08-27 00:51:11,494 | main_fixed | INFO | Cycle 13: BUY $25.0 @ $204.6233 | SELL $25.0 @ $204.7870 | Mid: $204.7052
+2025-08-27 00:51:13,490 | main_fixed | INFO | Cycle 14: BUY $25.0 @ $204.6284 | SELL $25.0 @ $204.7921 | Mid: $204.7103
+2025-08-27 00:51:15,499 | main_fixed | INFO | Cycle 15: BUY $25.0 @ $204.6285 | SELL $25.0 @ $204.7923 | Mid: $204.7104
+2025-08-27 00:51:17,514 | main_fixed | INFO | Cycle 16: BUY $25.0 @ $204.6285 | SELL $25.0 @ $204.7923 | Mid: $204.7104
+2025-08-27 00:51:19,528 | main_fixed | INFO | Cycle 17: BUY $25.0 @ $204.6304 | SELL $25.0 @ $204.7942 | Mid: $204.7123
+2025-08-27 00:51:21,527 | main_fixed | INFO | Cycle 18: BUY $25.0 @ $204.6304 | SELL $25.0 @ $204.7942 | Mid: $204.7123
+2025-08-27 00:51:23,531 | main_fixed | INFO | Cycle 19: BUY $25.0 @ $204.7823 | SELL $25.0 @ $204.9462 | Mid: $204.8642
+2025-08-27 00:51:25,525 | main_fixed | INFO | Cycle 20: BUY $25.0 @ $204.7765 | SELL $25.0 @ $204.9404 | Mid: $204.8585
+2025-08-27 00:51:25,526 | main_fixed | INFO | Completed 20 cycles. Mid price: $204.8585
+2025-08-27 00:51:27,540 | main_fixed | INFO | Cycle 21: BUY $25.0 @ $204.8439 | SELL $25.0 @ $205.0078 | Mid: $204.9258
+2025-08-27 00:51:29,535 | main_fixed | INFO | Cycle 22: BUY $25.0 @ $204.8528 | SELL $25.0 @ $205.0167 | Mid: $204.9348
+2025-08-27 00:51:31,541 | main_fixed | INFO | Cycle 23: BUY $25.0 @ $204.8043 | SELL $25.0 @ $204.9682 | Mid: $204.8863
+2025-08-27 00:51:33,534 | main_fixed | INFO | Cycle 24: BUY $25.0 @ $204.7882 | SELL $25.0 @ $204.9521 | Mid: $204.8701
+2025-08-27 00:51:35,541 | main_fixed | INFO | Cycle 25: BUY $25.0 @ $204.7816 | SELL $25.0 @ $204.9455 | Mid: $204.8636
+2025-08-27 00:51:37,544 | main_fixed | INFO | Cycle 26: BUY $25.0 @ $204.7706 | SELL $25.0 @ $204.9344 | Mid: $204.8525
+2025-08-27 00:51:39,561 | main_fixed | INFO | Cycle 27: BUY $25.0 @ $204.7114 | SELL $25.0 @ $204.8752 | Mid: $204.7933
+2025-08-27 00:51:41,567 | main_fixed | INFO | Cycle 28: BUY $25.0 @ $204.7696 | SELL $25.0 @ $204.9335 | Mid: $204.8516
+2025-08-27 00:51:43,568 | main_fixed | INFO | Cycle 29: BUY $25.0 @ $204.7674 | SELL $25.0 @ $204.9313 | Mid: $204.8494
+2025-08-27 00:51:45,567 | main_fixed | INFO | Cycle 30: BUY $25.0 @ $204.7683 | SELL $25.0 @ $204.9322 | Mid: $204.8503
+2025-08-27 00:51:45,568 | main_fixed | INFO | Completed 30 cycles. Mid price: $204.8503
+2025-08-27 00:51:47,563 | main_fixed | INFO | Cycle 31: BUY $25.0 @ $204.8115 | SELL $25.0 @ $204.9754 | Mid: $204.8935
+2025-08-27 00:51:49,576 | main_fixed | INFO | Cycle 32: BUY $25.0 @ $204.8606 | SELL $25.0 @ $205.0246 | Mid: $204.9426
+2025-08-27 00:51:51,594 | main_fixed | INFO | Cycle 33: BUY $25.0 @ $204.8633 | SELL $25.0 @ $205.0273 | Mid: $204.9453
+2025-08-27 00:51:53,600 | main_fixed | INFO | Cycle 34: BUY $25.0 @ $204.8928 | SELL $25.0 @ $205.0568 | Mid: $204.9748
+2025-08-27 00:51:55,600 | main_fixed | INFO | Cycle 35: BUY $25.0 @ $204.8922 | SELL $25.0 @ $205.0562 | Mid: $204.9742
+2025-08-27 00:51:57,614 | main_fixed | INFO | Cycle 36: BUY $25.0 @ $204.8528 | SELL $25.0 @ $205.0168 | Mid: $204.9348
+2025-08-27 00:51:59,628 | main_fixed | INFO | Cycle 37: BUY $25.0 @ $204.8584 | SELL $25.0 @ $205.0224 | Mid: $204.9404
+2025-08-27 00:52:01,615 | main_fixed | INFO | Cycle 38: BUY $25.0 @ $204.8614 | SELL $25.0 @ $205.0253 | Mid: $204.9434
+2025-08-27 00:52:03,624 | main_fixed | INFO | Cycle 39: BUY $25.0 @ $204.8227 | SELL $25.0 @ $204.9866 | Mid: $204.9047
+2025-08-27 00:52:05,637 | main_fixed | INFO | Cycle 40: BUY $25.0 @ $204.8187 | SELL $25.0 @ $204.9826 | Mid: $204.9006
+2025-08-27 00:52:05,637 | main_fixed | INFO | Completed 40 cycles. Mid price: $204.9006
+2025-08-27 00:52:07,627 | main_fixed | INFO | Cycle 41: BUY $25.0 @ $204.8128 | SELL $25.0 @ $204.9767 | Mid: $204.8947
+2025-08-27 00:52:09,623 | main_fixed | INFO | Cycle 42: BUY $25.0 @ $204.8259 | SELL $25.0 @ $204.9899 | Mid: $204.9079
+2025-08-27 00:52:11,638 | main_fixed | INFO | Cycle 43: BUY $25.0 @ $204.8129 | SELL $25.0 @ $204.9768 | Mid: $204.8949
+2025-08-27 00:52:13,661 | main_fixed | INFO | Cycle 44: BUY $25.0 @ $204.8134 | SELL $25.0 @ $204.9773 | Mid: $204.8954
+2025-08-27 00:52:15,666 | main_fixed | INFO | Cycle 45: BUY $25.0 @ $204.8184 | SELL $25.0 @ $204.9823 | Mid: $204.9004
+2025-08-27 00:52:17,679 | main_fixed | INFO | Cycle 46: BUY $25.0 @ $204.8433 | SELL $25.0 @ $205.0073 | Mid: $204.9253
+2025-08-27 00:52:19,655 | main_fixed | INFO | Cycle 47: BUY $25.0 @ $204.8433 | SELL $25.0 @ $205.0072 | Mid: $204.9253
+2025-08-27 00:52:21,652 | main_fixed | INFO | Cycle 48: BUY $25.0 @ $204.9027 | SELL $25.0 @ $205.0667 | Mid: $204.9847
+2025-08-27 00:52:23,657 | main_fixed | INFO | Cycle 49: BUY $25.0 @ $204.8847 | SELL $25.0 @ $205.0487 | Mid: $204.9667
+2025-08-27 00:52:25,653 | main_fixed | INFO | Cycle 50: BUY $25.0 @ $204.8539 | SELL $25.0 @ $205.0178 | Mid: $204.9359
+2025-08-27 00:52:25,653 | main_fixed | INFO | Completed 50 cycles. Mid price: $204.9359
+2025-08-27 00:52:27,672 | main_fixed | INFO | Cycle 51: BUY $25.0 @ $204.7884 | SELL $25.0 @ $204.9522 | Mid: $204.8703
+2025-08-27 00:52:29,684 | main_fixed | INFO | Cycle 52: BUY $25.0 @ $204.7828 | SELL $25.0 @ $204.9467 | Mid: $204.8648
+2025-08-27 00:52:31,706 | main_fixed | INFO | Cycle 53: BUY $25.0 @ $204.7632 | SELL $25.0 @ $204.9271 | Mid: $204.8451
+2025-08-27 00:52:33,707 | main_fixed | INFO | Cycle 54: BUY $25.0 @ $204.7681 | SELL $25.0 @ $204.9319 | Mid: $204.8500
+2025-08-27 00:52:35,711 | main_fixed | INFO | Cycle 55: BUY $25.0 @ $204.7828 | SELL $25.0 @ $204.9467 | Mid: $204.8648
+2025-08-27 00:52:37,724 | main_fixed | INFO | Cycle 56: BUY $25.0 @ $204.7277 | SELL $25.0 @ $204.8915 | Mid: $204.8096
+2025-08-27 00:52:39,724 | main_fixed | INFO | Cycle 57: BUY $25.0 @ $204.6934 | SELL $25.0 @ $204.8572 | Mid: $204.7753
+2025-08-27 00:52:41,717 | main_fixed | INFO | Cycle 58: BUY $25.0 @ $204.6732 | SELL $25.0 @ $204.8370 | Mid: $204.7551
+2025-08-27 00:52:43,731 | main_fixed | INFO | Cycle 59: BUY $25.0 @ $204.6637 | SELL $25.0 @ $204.8275 | Mid: $204.7456
+2025-08-27 00:52:45,728 | main_fixed | INFO | Cycle 60: BUY $25.0 @ $204.6633 | SELL $25.0 @ $204.8271 | Mid: $204.7452
+2025-08-27 00:52:45,728 | main_fixed | INFO | Completed 60 cycles. Mid price: $204.7452
+2025-08-27 00:52:47,732 | main_fixed | INFO | Cycle 61: BUY $25.0 @ $204.6527 | SELL $25.0 @ $204.8165 | Mid: $204.7346
+2025-08-27 00:52:49,751 | main_fixed | INFO | Cycle 62: BUY $25.0 @ $204.6601 | SELL $25.0 @ $204.8239 | Mid: $204.7420
+2025-08-27 00:52:51,758 | main_fixed | INFO | Cycle 63: BUY $25.0 @ $204.6596 | SELL $25.0 @ $204.8234 | Mid: $204.7415
+2025-08-27 00:52:53,756 | main_fixed | INFO | Cycle 64: BUY $25.0 @ $204.6523 | SELL $25.0 @ $204.8161 | Mid: $204.7342
+2025-08-27 00:52:55,756 | main_fixed | INFO | Cycle 65: BUY $25.0 @ $204.6431 | SELL $25.0 @ $204.8069 | Mid: $204.7250
+2025-08-27 00:52:57,753 | main_fixed | INFO | Cycle 66: BUY $25.0 @ $204.6446 | SELL $25.0 @ $204.8084 | Mid: $204.7265
+2025-08-27 00:52:59,762 | main_fixed | INFO | Cycle 67: BUY $25.0 @ $204.6445 | SELL $25.0 @ $204.8083 | Mid: $204.7264
+2025-08-27 00:53:01,779 | main_fixed | INFO | Cycle 68: BUY $25.0 @ $204.6354 | SELL $25.0 @ $204.7992 | Mid: $204.7173
+2025-08-27 00:53:03,785 | main_fixed | INFO | Cycle 69: BUY $25.0 @ $204.6365 | SELL $25.0 @ $204.8002 | Mid: $204.7183
+2025-08-27 00:53:05,786 | main_fixed | INFO | Cycle 70: BUY $25.0 @ $204.6335 | SELL $25.0 @ $204.7973 | Mid: $204.7154
+2025-08-27 00:53:05,786 | main_fixed | INFO | Completed 70 cycles. Mid price: $204.7154
+2025-08-27 00:53:07,791 | main_fixed | INFO | Cycle 71: BUY $25.0 @ $204.6328 | SELL $25.0 @ $204.7966 | Mid: $204.7147
+2025-08-27 00:53:09,779 | main_fixed | INFO | Cycle 72: BUY $25.0 @ $204.6330 | SELL $25.0 @ $204.7968 | Mid: $204.7149
+2025-08-27 00:53:11,781 | main_fixed | INFO | Cycle 73: BUY $25.0 @ $204.6337 | SELL $25.0 @ $204.7975 | Mid: $204.7156
+2025-08-27 00:53:13,800 | main_fixed | INFO | Cycle 74: BUY $25.0 @ $204.6332 | SELL $25.0 @ $204.7970 | Mid: $204.7151
+2025-08-27 00:53:15,814 | main_fixed | INFO | Cycle 75: BUY $25.0 @ $204.6203 | SELL $25.0 @ $204.7841 | Mid: $204.7022
+2025-08-27 00:53:17,822 | main_fixed | INFO | Cycle 76: BUY $25.0 @ $204.6657 | SELL $25.0 @ $204.8295 | Mid: $204.7476
+2025-08-27 00:53:19,837 | main_fixed | INFO | Cycle 77: BUY $25.0 @ $204.7523 | SELL $25.0 @ $204.9162 | Mid: $204.8342
+2025-08-27 00:53:21,824 | main_fixed | INFO | Cycle 78: BUY $25.0 @ $204.7533 | SELL $25.0 @ $204.9172 | Mid: $204.8353
+2025-08-27 00:53:23,839 | main_fixed | INFO | Cycle 79: BUY $25.0 @ $204.7503 | SELL $25.0 @ $204.9142 | Mid: $204.8322
+2025-08-27 00:53:25,839 | main_fixed | INFO | Cycle 80: BUY $25.0 @ $204.7156 | SELL $25.0 @ $204.8795 | Mid: $204.7976
+2025-08-27 00:53:25,839 | main_fixed | INFO | Completed 80 cycles. Mid price: $204.7976
+2025-08-27 00:53:27,826 | main_fixed | INFO | Cycle 81: BUY $25.0 @ $204.7414 | SELL $25.0 @ $204.9052 | Mid: $204.8233
+2025-08-27 00:53:29,823 | main_fixed | INFO | Cycle 82: BUY $25.0 @ $204.7327 | SELL $25.0 @ $204.8965 | Mid: $204.8146
+2025-08-27 00:53:31,840 | main_fixed | INFO | Cycle 83: BUY $25.0 @ $204.7027 | SELL $25.0 @ $204.8665 | Mid: $204.7846
+2025-08-27 00:53:33,857 | main_fixed | INFO | Cycle 84: BUY $25.0 @ $204.7104 | SELL $25.0 @ $204.8742 | Mid: $204.7923
+2025-08-27 00:53:35,860 | main_fixed | INFO | Cycle 85: BUY $25.0 @ $204.7833 | SELL $25.0 @ $204.9472 | Mid: $204.8653
+2025-08-27 00:53:37,863 | main_fixed | INFO | Cycle 86: BUY $25.0 @ $204.7628 | SELL $25.0 @ $204.9267 | Mid: $204.8448
+2025-08-27 00:53:39,856 | main_fixed | INFO | Cycle 87: BUY $25.0 @ $204.7515 | SELL $25.0 @ $204.9154 | Mid: $204.8334
+2025-08-27 00:53:41,862 | main_fixed | INFO | Cycle 88: BUY $25.0 @ $204.7182 | SELL $25.0 @ $204.8821 | Mid: $204.8002
+2025-08-27 00:53:43,840 | main_fixed | INFO | Cycle 89: BUY $25.0 @ $204.7128 | SELL $25.0 @ $204.8767 | Mid: $204.7947
+2025-08-27 00:53:45,846 | main_fixed | INFO | Cycle 90: BUY $25.0 @ $204.7144 | SELL $25.0 @ $204.8782 | Mid: $204.7963
+2025-08-27 00:53:45,847 | main_fixed | INFO | Completed 90 cycles. Mid price: $204.7963
+2025-08-27 00:53:47,860 | main_fixed | INFO | Cycle 91: BUY $25.0 @ $204.7250 | SELL $25.0 @ $204.8889 | Mid: $204.8070
+2025-08-27 00:53:49,857 | main_fixed | INFO | Cycle 92: BUY $25.0 @ $204.7228 | SELL $25.0 @ $204.8867 | Mid: $204.8048
+2025-08-27 00:53:51,879 | main_fixed | INFO | Cycle 93: BUY $25.0 @ $204.7228 | SELL $25.0 @ $204.8867 | Mid: $204.8048
+2025-08-27 00:53:53,884 | main_fixed | INFO | Cycle 94: BUY $25.0 @ $204.7282 | SELL $25.0 @ $204.8920 | Mid: $204.8101
+2025-08-27 00:53:55,879 | main_fixed | INFO | Cycle 95: BUY $25.0 @ $204.7284 | SELL $25.0 @ $204.8922 | Mid: $204.8103
+2025-08-27 00:53:57,870 | main_fixed | INFO | Cycle 96: BUY $25.0 @ $204.7639 | SELL $25.0 @ $204.9277 | Mid: $204.8458
+2025-08-27 00:53:59,857 | main_fixed | INFO | Cycle 97: BUY $25.0 @ $204.7334 | SELL $25.0 @ $204.8973 | Mid: $204.8153
+2025-08-27 00:54:01,857 | main_fixed | INFO | Cycle 98: BUY $25.0 @ $204.6958 | SELL $25.0 @ $204.8596 | Mid: $204.7777
+2025-08-27 00:54:03,874 | main_fixed | INFO | Cycle 99: BUY $25.0 @ $204.6983 | SELL $25.0 @ $204.8621 | Mid: $204.7802
+2025-08-27 00:54:05,889 | main_fixed | INFO | Cycle 100: BUY $25.0 @ $204.6834 | SELL $25.0 @ $204.8472 | Mid: $204.7653
+2025-08-27 00:54:05,890 | main_fixed | INFO | Completed 100 cycles. Mid price: $204.7653
+2025-08-27 00:54:07,909 | main_fixed | INFO | Cycle 101: BUY $25.0 @ $204.6659 | SELL $25.0 @ $204.8297 | Mid: $204.7478
+2025-08-27 00:54:09,891 | main_fixed | INFO | Cycle 102: BUY $25.0 @ $204.6450 | SELL $25.0 @ $204.8088 | Mid: $204.7269
+2025-08-27 00:54:11,872 | main_fixed | INFO | Cycle 103: BUY $25.0 @ $204.6592 | SELL $25.0 @ $204.8230 | Mid: $204.7411
+2025-08-27 00:54:13,885 | main_fixed | INFO | Cycle 104: BUY $25.0 @ $204.6787 | SELL $25.0 @ $204.8425 | Mid: $204.7606
+2025-08-27 00:54:15,901 | main_fixed | INFO | Cycle 105: BUY $25.0 @ $204.6906 | SELL $25.0 @ $204.8544 | Mid: $204.7725
+2025-08-27 00:54:17,915 | main_fixed | INFO | Cycle 106: BUY $25.0 @ $204.7228 | SELL $25.0 @ $204.8867 | Mid: $204.8048
+2025-08-27 00:54:19,912 | main_fixed | INFO | Cycle 107: BUY $25.0 @ $204.7234 | SELL $25.0 @ $204.8872 | Mid: $204.8053
+2025-08-27 00:54:21,904 | main_fixed | INFO | Cycle 108: BUY $25.0 @ $204.6907 | SELL $25.0 @ $204.8545 | Mid: $204.7726
+2025-08-27 00:54:23,271 | main_fixed | INFO | Received signal 2, initiating graceful shutdown...
+2025-08-27 00:54:23,919 | main_fixed | INFO | Market making loop stopped
+2025-08-27 00:54:23,919 | main_fixed | INFO | Closing client connection...
+2025-08-27 00:54:23,921 | main_fixed | INFO | JIT MM shutdown complete
+2025-08-27 00:54:23,922 | __main__ | INFO | MM Bot shutdown complete
+2025-08-27 00:54:23,923 | __main__ | INFO | ============================================================
+2025-08-27 00:54:23,923 | __main__ | INFO | MM BOT STOPPED
+2025-08-27 00:54:23,923 | __main__ | INFO | ============================================================

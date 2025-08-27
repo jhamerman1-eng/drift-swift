@@ -1,0 +1,40 @@
+# Trend Bot Configuration for BETA Mode
+# This bot uses MACD + Momentum with Anti-Chop filters
+
+trend:
+  # MACD Settings
+  macd:
+    fast: 12          # Fast EMA period
+    slow: 26          # Slow EMA period  
+    signal: 9         # Signal line period
+    use_macd: true    # Enable MACD signals
+  
+  # Momentum Settings
+  momentum_window: 14  # Lookback period for momentum calculation
+  
+  # Position Management
+  position_scaler: 0.1      # Scale factor for position sizing (0.1 = 10% of max)
+  max_position_usd: 5000    # Maximum position size in USD
+  
+  # ATR/ADX Filters (Risk-Based Controls)
+  atr_adx_filters:
+    enabled: true
+    adx_min: 15       # Minimum ADX for trend strength
+    atr_mult: 1.7     # ATR multiplier for volatility
+
+# Anti-Chop Filters
+anti_chop:
+  enabled: true
+  window: 50          # Window for detecting sideways markets
+
+# Risk Management
+risk:
+  max_drawdown: 0.15  # Maximum allowed drawdown (15%)
+  position_limit: 0.8  # Maximum position size as fraction of capital
+  stop_loss_bps: 200  # Stop loss in basis points (2%)
+
+# Trading Parameters
+trading:
+  refresh_interval: 1.0    # Signal evaluation frequency (seconds)
+  slippage_bps: 5          # Slippage tolerance for entries
+  min_signal_threshold: 0.01  # Minimum signal strength to trade
