@@ -1,8 +1,9 @@
 cluster: ${ENV:testnet}  # testnet|devnet|mainnet
 driver: ${DRIVER:driftpy}  # swift|driftpy|mock
+use_mock: ${USE_MOCK:false}  # true for mock mode, false for real client
 
 rpc:
-  http_url: ${DRIFT_HTTP_URL:https://api.mainnet-beta.solana.com}
+  http_url: ${DRIFT_RPC_URL:https://api.mainnet-beta.solana.com}
   ws_url: ${DRIFT_WS_URL:wss://api.mainnet-beta.solana.com}
 
 swift:

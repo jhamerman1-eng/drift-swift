@@ -1,0 +1,252 @@
+2025-08-27 03:04:15,637 - __main__ - INFO - [LAUNCH] Starting Hedge Bot for beta.drift.trade
+2025-08-27 03:04:15,637 - __main__ - INFO - ======================================================================
+2025-08-27 03:04:15,637 - __main__ - INFO - [IMPORTANT] This will place REAL orders on beta.drift.trade!
+2025-08-27 03:04:15,637 - __main__ - INFO - [INFO] Beta environment uses real SOL but testnet conditions
+2025-08-27 03:04:15,637 - __main__ - INFO - ======================================================================
+2025-08-27 03:04:15,637 - __main__ - INFO - [INIT] Initializing Drift client for beta.drift.trade...
+2025-08-27 03:04:15,645 - libs.drift.client - INFO - Config loaded - env: testnet, market: SOL-PERP, use_mock: False
+2025-08-27 03:04:15,646 - libs.drift.client - INFO - Raw use_mock value: False
+2025-08-27 03:04:15,646 - libs.drift.client - INFO - Using DriftpyClient for SOL-PERP (testnet) via https://api.mainnet-beta.solana.com
+2025-08-27 03:04:15,646 - libs.drift.client - INFO - Initializing DriftpyClient with fallback: True
+2025-08-27 03:04:15,647 - __main__ - INFO - [SUCCESS] Real DriftpyClient initialized for beta
+2025-08-27 03:04:15,647 - __main__ - INFO - [INFO] Connected to: https://beta.drift.trade
+2025-08-27 03:04:15,647 - __main__ - ERROR - [ERROR] Failed to initialize beta client: 'DriftpyClient' object has no attribute 'initialize'
+2025-08-27 03:04:15,648 - __main__ - ERROR - [ERROR] Beta client initialization failed - aborting
+2025-08-27 03:04:15,648 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-27 03:04:15,650 - root - INFO - [SUCCESS] Beta client closed successfully
+2025-08-27 03:04:15,650 - root - INFO - ======================================================================
+2025-08-27 03:04:15,651 - root - INFO - [SUMMARY] BETA HEDGE TRADING SESSION COMPLETE
+2025-08-27 03:04:15,651 - root - INFO - ======================================================================
+2025-08-27 03:04:15,652 - root - INFO - Total Iterations: 0
+2025-08-27 03:04:15,652 - root - INFO - Net Exposure: $0.00
+2025-08-27 03:04:15,653 - root - INFO - Total Volume: $0.00
+2025-08-27 03:04:15,653 - root - WARNING - Errors Encountered: 1
+2025-08-27 03:04:15,654 - root - WARNING -   1. Client initialization failed: 'DriftpyClient' object has no attribute 'initialize'
+2025-08-27 03:04:15,655 - root - INFO - ======================================================================
+2025-08-27 03:04:57,398 - __main__ - INFO - [LAUNCH] Starting Hedge Bot for beta.drift.trade
+2025-08-27 03:04:57,399 - __main__ - INFO - ======================================================================
+2025-08-27 03:04:57,399 - __main__ - INFO - [IMPORTANT] This will place REAL orders on beta.drift.trade!
+2025-08-27 03:04:57,399 - __main__ - INFO - [INFO] Beta environment uses real SOL but testnet conditions
+2025-08-27 03:04:57,400 - __main__ - INFO - ======================================================================
+2025-08-27 03:04:57,400 - __main__ - INFO - [INIT] Initializing Drift client for beta.drift.trade...
+2025-08-27 03:04:57,403 - libs.drift.client - INFO - Config loaded - env: testnet, market: SOL-PERP, use_mock: False
+2025-08-27 03:04:57,403 - libs.drift.client - INFO - Raw use_mock value: False
+2025-08-27 03:04:57,403 - libs.drift.client - INFO - Using DriftpyClient for SOL-PERP (testnet) via https://api.mainnet-beta.solana.com
+2025-08-27 03:04:57,403 - libs.drift.client - INFO - Initializing DriftpyClient with fallback: True
+2025-08-27 03:04:57,404 - __main__ - INFO - [SUCCESS] DriftpyClient initialized for beta
+2025-08-27 03:04:57,404 - __main__ - INFO - [INFO] Connected to: https://beta.drift.trade
+2025-08-27 03:04:57,404 - __main__ - INFO - [INFO] Using simulation mode - orders will be logged but not executed
+2025-08-27 03:04:57,404 - __main__ - WARNING - [WARNING] This is a SIMULATION - no real orders will be placed!
+2025-08-27 03:04:57,404 - __main__ - WARNING - [INFO] To place real orders, use the working DriftpyClient from drift-bots/ directory
+2025-08-27 03:04:57,404 - __main__ - WARNING - [WARNING] No Solana client available
+2025-08-27 03:04:57,405 - __main__ - ERROR - [ERROR] Wallet check failed - aborting
+2025-08-27 03:04:57,405 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-27 03:04:57,405 - root - INFO - [SUCCESS] Beta client closed successfully
+2025-08-27 03:04:57,405 - root - INFO - ======================================================================
+2025-08-27 03:04:57,406 - root - INFO - [SUMMARY] BETA HEDGE TRADING SESSION COMPLETE
+2025-08-27 03:04:57,406 - root - INFO - ======================================================================
+2025-08-27 03:04:57,407 - root - INFO - Total Iterations: 0
+2025-08-27 03:04:57,407 - root - INFO - Net Exposure: $0.00
+2025-08-27 03:04:57,407 - root - INFO - Total Volume: $0.00
+2025-08-27 03:04:57,408 - root - INFO - Errors: None - Clean beta session!
+2025-08-27 03:04:57,408 - root - INFO - ======================================================================
+2025-08-27 03:05:36,373 - __main__ - INFO - [LAUNCH] Starting Hedge Bot for beta.drift.trade
+2025-08-27 03:05:36,377 - __main__ - INFO - ======================================================================
+2025-08-27 03:05:36,378 - __main__ - INFO - [IMPORTANT] SIMULATION MODE - Orders will be logged but NOT executed!
+2025-08-27 03:05:36,380 - __main__ - INFO - [INFO] This is a safe testing environment for hedge bot development
+2025-08-27 03:05:36,381 - __main__ - INFO - ======================================================================
+2025-08-27 03:05:36,382 - __main__ - INFO - [INIT] Initializing Drift client for beta.drift.trade...
+2025-08-27 03:05:36,387 - libs.drift.client - INFO - Config loaded - env: testnet, market: SOL-PERP, use_mock: False
+2025-08-27 03:05:36,388 - libs.drift.client - INFO - Raw use_mock value: False
+2025-08-27 03:05:36,388 - libs.drift.client - INFO - Using DriftpyClient for SOL-PERP (testnet) via https://api.mainnet-beta.solana.com
+2025-08-27 03:05:36,389 - libs.drift.client - INFO - Initializing DriftpyClient with fallback: True
+2025-08-27 03:05:36,390 - __main__ - INFO - [SUCCESS] DriftpyClient initialized for beta
+2025-08-27 03:05:36,391 - __main__ - INFO - [INFO] Connected to: https://beta.drift.trade
+2025-08-27 03:05:36,391 - __main__ - INFO - [INFO] Using simulation mode - orders will be logged but not executed
+2025-08-27 03:05:36,392 - __main__ - WARNING - [WARNING] This is a SIMULATION - no real orders will be placed!
+2025-08-27 03:05:36,393 - __main__ - WARNING - [INFO] To place real orders, use the working DriftpyClient from drift-bots/ directory
+2025-08-27 03:05:36,394 - __main__ - INFO - [BALANCE] Beta Wallet Status (Simulation Mode):
+2025-08-27 03:05:36,395 - __main__ - INFO -    Mode: SIMULATION - No real wallet required
+2025-08-27 03:05:36,396 - __main__ - INFO -    Status: Ready for beta hedge testing
+2025-08-27 03:05:36,397 - __main__ - INFO -    Note: Orders will be simulated, not executed on blockchain
+2025-08-27 03:05:36,398 - __main__ - INFO - [STARTING] Beginning SIMULATION beta hedge trading session...
+2025-08-27 03:05:36,399 - __main__ - INFO - [INFO] Simulation Mode: Orders will be logged but not executed
+2025-08-27 03:05:36,400 - __main__ - INFO - [INFO] View simulation logs for hedge bot behavior
+2025-08-27 03:05:36,401 - __main__ - INFO - [TRADE] Starting Hedge Bot trading loop on beta.drift.trade...
+2025-08-27 03:05:36,401 - __main__ - INFO - [INFO] View positions at: https://beta.drift.trade
+2025-08-27 03:05:36,402 - __main__ - INFO - [TRADE] Starting beta hedge iteration #1
+2025-08-27 03:05:36,403 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:05:36,404 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:05:36,405 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:05:36,406 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:05:36,407 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 1: float division by zero
+2025-08-27 03:05:51,409 - __main__ - INFO - [TRADE] Starting beta hedge iteration #2
+2025-08-27 03:05:51,411 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:05:51,412 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:05:51,413 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:05:51,413 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:05:51,413 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 2: float division by zero
+2025-08-27 03:06:06,419 - __main__ - INFO - [TRADE] Starting beta hedge iteration #3
+2025-08-27 03:06:06,421 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:06:06,422 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:06:06,422 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:06:06,423 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:06:06,423 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 3: float division by zero
+2025-08-27 03:06:21,431 - __main__ - INFO - [TRADE] Starting beta hedge iteration #4
+2025-08-27 03:06:21,433 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:06:21,433 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:06:21,434 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:06:21,435 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:06:21,436 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 4: float division by zero
+2025-08-27 03:06:36,451 - __main__ - INFO - [TRADE] Starting beta hedge iteration #5
+2025-08-27 03:06:36,452 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:06:36,452 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:06:36,453 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:06:36,454 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:06:36,454 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 5: float division by zero
+2025-08-27 03:06:51,462 - __main__ - INFO - [TRADE] Starting beta hedge iteration #6
+2025-08-27 03:06:51,463 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:06:51,464 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:06:51,465 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:06:51,466 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:06:51,466 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 6: float division by zero
+2025-08-27 03:07:06,477 - __main__ - INFO - [TRADE] Starting beta hedge iteration #7
+2025-08-27 03:07:06,478 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:07:06,479 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:07:06,481 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:07:06,482 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:07:06,483 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 7: float division by zero
+2025-08-27 03:07:21,493 - __main__ - INFO - [TRADE] Starting beta hedge iteration #8
+2025-08-27 03:07:21,495 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:07:21,495 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:07:21,495 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:07:21,495 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:07:21,495 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 8: float division by zero
+2025-08-27 03:07:36,499 - __main__ - INFO - [TRADE] Starting beta hedge iteration #9
+2025-08-27 03:07:36,500 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:07:36,501 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:07:36,502 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:07:36,503 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:07:36,503 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 9: float division by zero
+2025-08-27 03:07:51,513 - __main__ - INFO - [TRADE] Starting beta hedge iteration #10
+2025-08-27 03:07:51,514 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:07:51,514 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:07:51,515 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:07:51,516 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:07:51,517 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 10: float division by zero
+2025-08-27 03:07:56,396 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-27 03:07:56,397 - root - INFO - [SUCCESS] Beta client closed successfully
+2025-08-27 03:07:56,397 - root - INFO - ======================================================================
+2025-08-27 03:07:56,397 - root - INFO - [SUMMARY] BETA HEDGE TRADING SESSION COMPLETE
+2025-08-27 03:07:56,398 - root - INFO - ======================================================================
+2025-08-27 03:07:56,398 - root - INFO - Total Iterations: 10
+2025-08-27 03:07:56,399 - root - INFO - Net Exposure: $0.00
+2025-08-27 03:07:56,399 - root - INFO - Total Volume: $0.00
+2025-08-27 03:07:56,400 - root - WARNING - Errors Encountered: 10
+2025-08-27 03:07:56,400 - root - WARNING -   1. Iteration 6 error: float division by zero
+2025-08-27 03:07:56,400 - root - WARNING -   2. Iteration 7 error: float division by zero
+2025-08-27 03:07:56,401 - root - WARNING -   3. Iteration 8 error: float division by zero
+2025-08-27 03:07:56,401 - root - WARNING -   4. Iteration 9 error: float division by zero
+2025-08-27 03:07:56,401 - root - WARNING -   5. Iteration 10 error: float division by zero
+2025-08-27 03:07:56,402 - root - INFO - ======================================================================
+2025-08-27 03:07:56,414 - root - INFO - [SHUTDOWN] Beta hedge bot interrupted by user
+2025-08-27 03:11:40,818 - __main__ - INFO - [LAUNCH] Starting Hedge Bot for beta.drift.trade
+2025-08-27 03:11:40,831 - __main__ - INFO - ======================================================================
+2025-08-27 03:11:40,832 - __main__ - INFO - [IMPORTANT] SIMULATION MODE - Orders will be logged but NOT executed!
+2025-08-27 03:11:40,833 - __main__ - INFO - [INFO] This is a safe testing environment for hedge bot development
+2025-08-27 03:11:40,837 - __main__ - INFO - ======================================================================
+2025-08-27 03:11:40,839 - __main__ - INFO - [INIT] Initializing Drift client for beta.drift.trade...
+2025-08-27 03:11:40,847 - libs.drift.client - INFO - Config loaded - env: testnet, market: SOL-PERP, use_mock: False
+2025-08-27 03:11:40,848 - libs.drift.client - INFO - Raw use_mock value: False
+2025-08-27 03:11:40,849 - libs.drift.client - INFO - Using DriftpyClient for SOL-PERP (testnet) via https://api.mainnet-beta.solana.com
+2025-08-27 03:11:40,853 - libs.drift.client - INFO - Initializing DriftpyClient with fallback: True
+2025-08-27 03:11:40,855 - __main__ - INFO - [SUCCESS] DriftpyClient initialized for beta
+2025-08-27 03:11:40,856 - __main__ - INFO - [INFO] Connected to: https://beta.drift.trade
+2025-08-27 03:11:40,859 - __main__ - INFO - [INFO] Using simulation mode - orders will be logged but not executed
+2025-08-27 03:11:40,862 - __main__ - WARNING - [WARNING] This is a SIMULATION - no real orders will be placed!
+2025-08-27 03:11:40,863 - __main__ - WARNING - [INFO] To place real orders, use the working DriftpyClient from drift-bots/ directory
+2025-08-27 03:11:40,865 - __main__ - INFO - [BALANCE] Beta Wallet Status (Simulation Mode):
+2025-08-27 03:11:40,865 - __main__ - INFO -    Mode: SIMULATION - No real wallet required
+2025-08-27 03:11:40,866 - __main__ - INFO -    Status: Ready for beta hedge testing
+2025-08-27 03:11:40,871 - __main__ - INFO -    Note: Orders will be simulated, not executed on blockchain
+2025-08-27 03:11:40,872 - __main__ - INFO - [STARTING] Beginning SIMULATION beta hedge trading session...
+2025-08-27 03:11:40,873 - __main__ - INFO - [INFO] Simulation Mode: Orders will be logged but not executed
+2025-08-27 03:11:40,874 - __main__ - INFO - [INFO] View simulation logs for hedge bot behavior
+2025-08-27 03:11:40,875 - __main__ - INFO - [TRADE] Starting Hedge Bot trading loop on beta.drift.trade...
+2025-08-27 03:11:40,877 - __main__ - INFO - [INFO] View positions at: https://beta.drift.trade
+2025-08-27 03:11:40,880 - __main__ - INFO - [TRADE] Starting beta hedge iteration #1
+2025-08-27 03:11:40,881 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:11:40,883 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:11:40,884 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:11:40,884 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:11:40,884 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 1: float division by zero
+2025-08-27 03:11:55,895 - __main__ - INFO - [TRADE] Starting beta hedge iteration #2
+2025-08-27 03:11:55,895 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:11:55,896 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:11:55,896 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:11:55,897 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:11:55,897 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 2: float division by zero
+2025-08-27 03:12:10,897 - __main__ - INFO - [TRADE] Starting beta hedge iteration #3
+2025-08-27 03:12:10,898 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:12:10,898 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:12:10,899 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:12:10,899 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:12:10,900 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 3: float division by zero
+2025-08-27 03:12:25,904 - __main__ - INFO - [TRADE] Starting beta hedge iteration #4
+2025-08-27 03:12:25,905 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:12:25,908 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:12:25,910 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:12:25,910 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:12:25,911 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 4: float division by zero
+2025-08-27 03:12:40,913 - __main__ - INFO - [TRADE] Starting beta hedge iteration #5
+2025-08-27 03:12:40,913 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:12:40,913 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:12:40,913 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:12:40,914 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:12:40,914 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 5: float division by zero
+2025-08-27 03:12:55,919 - __main__ - INFO - [TRADE] Starting beta hedge iteration #6
+2025-08-27 03:12:55,920 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:12:55,920 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:12:55,920 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:12:55,920 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:12:55,921 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 6: float division by zero
+2025-08-27 03:13:10,922 - __main__ - INFO - [TRADE] Starting beta hedge iteration #7
+2025-08-27 03:13:10,923 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:13:10,923 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:13:10,923 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:13:10,923 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:13:10,924 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 7: float division by zero
+2025-08-27 03:13:25,926 - __main__ - INFO - [TRADE] Starting beta hedge iteration #8
+2025-08-27 03:13:25,926 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:13:25,926 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:13:25,927 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:13:25,927 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:13:25,928 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 8: float division by zero
+2025-08-27 03:13:40,937 - __main__ - INFO - [TRADE] Starting beta hedge iteration #9
+2025-08-27 03:13:40,938 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:13:40,940 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:13:40,941 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:13:40,941 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:13:40,941 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 9: float division by zero
+2025-08-27 03:13:55,944 - __main__ - INFO - [TRADE] Starting beta hedge iteration #10
+2025-08-27 03:13:55,947 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-27 03:13:55,948 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 03:13:55,948 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 03:13:55,949 - __main__ - INFO -    Open Orders: 0
+2025-08-27 03:13:55,950 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 10: float division by zero
+2025-08-27 03:14:01,102 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-27 03:14:01,103 - root - INFO - [SUCCESS] Beta client closed successfully
+2025-08-27 03:14:01,104 - root - INFO - ======================================================================
+2025-08-27 03:14:01,104 - root - INFO - [SUMMARY] BETA HEDGE TRADING SESSION COMPLETE
+2025-08-27 03:14:01,105 - root - INFO - ======================================================================
+2025-08-27 03:14:01,105 - root - INFO - Total Iterations: 10
+2025-08-27 03:14:01,106 - root - INFO - Net Exposure: $0.00
+2025-08-27 03:14:01,106 - root - INFO - Total Volume: $0.00
+2025-08-27 03:14:01,107 - root - WARNING - Errors Encountered: 10
+2025-08-27 03:14:01,107 - root - WARNING -   1. Iteration 6 error: float division by zero
+2025-08-27 03:14:01,107 - root - WARNING -   2. Iteration 7 error: float division by zero
+2025-08-27 03:14:01,108 - root - WARNING -   3. Iteration 8 error: float division by zero
+2025-08-27 03:14:01,108 - root - WARNING -   4. Iteration 9 error: float division by zero
+2025-08-27 03:14:01,109 - root - WARNING -   5. Iteration 10 error: float division by zero
+2025-08-27 03:14:01,110 - root - INFO - ======================================================================
+2025-08-27 03:14:01,117 - root - INFO - [SHUTDOWN] Beta hedge bot interrupted by user

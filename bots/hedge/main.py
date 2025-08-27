@@ -27,6 +27,8 @@ import yaml
 from libs.drift.client import build_client_from_config, Order, DriftClient
 from libs.order_management import PositionTracker, OrderManager, OrderRecord
 from orchestrator.risk_manager import RiskManager, RiskState
+from bots.hedge.decide import decide_hedge, HedgeInputs, HedgeDecision
+from bots.hedge.execution import execute_hedge
 
 
 def load_hedge_config(path: str) -> Dict[str, Any]:
@@ -41,65 +43,93 @@ def load_hedge_config(path: str) -> Dict[str, Any]:
 
 async def hedge_iteration(cfg: Dict[str, Any], client: DriftClient, risk_mgr: RiskManager,
                           position: PositionTracker, orders: OrderManager) -> None:
-    """Perform a single hedging iteration.
+    """Perform a single hedging iteration with safe decision making.
 
-    This function reads the current net exposure, computes an urgency
-    score relative to ``max_inventory_usd`` and decides whether to send
-    an IOC or a passive hedge.  If no trading is allowed according to
-    the risk manager, it cancels all open orders and returns.
+    This function reads the current net exposure, gathers market data,
+    and uses the safe decision engine to determine hedging actions.
+    Prevents division by zero errors when ATR, equity, or price are zero/None.
     """
-    hedge_cfg = cfg.get("hedge", {})
-    max_inv = float(hedge_cfg.get("max_inventory_usd", 1500))
-    threshold = float(hedge_cfg.get("urgency_threshold", 0.7))
-    exposure = position.net_exposure
-    notional_abs = abs(exposure)
-
-    # Determine if hedging is necessary
-    if notional_abs < 1e-6:
-        return
-
-    # Check risk rails; mid price is used as a proxy for account equity
-    # We fetch a quick orderbook snapshot for price.
+    # Check risk rails first; mid price is used as a proxy for account equity
     try:
         ob = await client.get_orderbook()
         if not ob.bids or not ob.asks:
             return
         best_bid = ob.bids[0][0]
         best_ask = ob.asks[0][0]
-        mid = (best_bid + best_ask) / 2.0
+        mid_price = (best_bid + best_ask) / 2.0
     except Exception:
         # If the orderbook fetch fails, skip this iteration
         return
 
-    state: RiskState = risk_mgr.evaluate(mid)
+    state: RiskState = risk_mgr.evaluate(mid_price)
     perms = risk_mgr.decisions(state)
     if not perms.get("allow_trading", False):
         # Trading disabled: cancel all open orders and bail out
-        await client.cancel_all()
+        try:
+            await client.cancel_all()
+        except:
+            pass
         orders.cancel_all()
         return
 
-    # Determine route based on urgency
-    urgency_ratio = notional_abs / max_inv if max_inv > 0 else 0.0
-    urgent = urgency_ratio >= threshold
-    route_key = "ioc" if urgent else "passive"
+    # Gather inputs for hedge decision
+    current_delta_usd = position.net_exposure
+    current_atr = None  # TODO: Implement ATR calculation
+    account_equity_usd = None  # TODO: Get from account data
 
-    # Determine side and limit price with slippage
-    # If exposure is positive (net long), we need to sell; otherwise buy
-    side = "sell" if exposure > 0 else "buy"
-    slippage_bps = float(hedge_cfg.get(route_key, {}).get("max_slippage_bps", 5))
-    slip = slippage_bps / 10_000.0
-    price = best_bid * (1.0 - slip) if side == "sell" else best_ask * (1.0 + slip)
+    # Create inputs for decision engine
+    inp = HedgeInputs(
+        net_exposure_usd=current_delta_usd,     # can be 0 in SIM
+        mid_price=mid_price,                    # validate > 0
+        atr=current_atr,                        # can be 0 at startup
+        equity_usd=account_equity_usd           # 0/None in SIM
+    )
 
-    # Choose notional size: hedge full exposure on each iteration
-    size_usd = notional_abs
+    # Get hedge decision
+    decision = decide_hedge(inp)
 
-    order = Order(side=side, price=price, size_usd=size_usd)
-    order_id = await client.place_order(order)
-    orders.add_order(OrderRecord(order_id=order_id, side=side, price=price, size_usd=size_usd))
-    # Immediately adjust local position; in a real implementation this should
-    # occur after a fill confirmation from the exchange
-    position.update(side, size_usd)
+    if decision.action == "SKIP":
+        # Log skip reason for monitoring
+        print(f"[HEDGE] Skip: {decision.reason}")
+        return
+
+    # Execute hedge if decision is to trade
+    if decision.action == "HEDGE":
+        hedge_cfg = cfg.get("hedge", {})
+        qty_usd = abs(decision.qty)  # Convert to positive notional
+
+        # Determine side based on quantity sign
+        side = "sell" if decision.qty < 0 else "buy"
+
+        # Apply slippage based on route
+        route_key = "ioc" if "urgency" in decision.reason and float(decision.reason.split("=")[1]) > 1.0 else "passive"
+        slippage_bps = float(hedge_cfg.get(route_key, {}).get("max_slippage_bps", 5))
+        slip = slippage_bps / 10_000.0
+
+        # Calculate limit price with slippage
+        price = best_bid * (1.0 - slip) if side == "sell" else best_ask * (1.0 + slip)
+
+        # Execute the hedge decision
+        venues = hedge_cfg.get(route_key, {}).get("venues", ["DEX_DRIFT"])
+        execution_result = execute_hedge(decision, venues)
+        print(f"[HEDGE] {execution_result}")
+
+        # Place the hedge order
+        try:
+            order = Order(side=side, price=price, size_usd=qty_usd)
+            order_id = client.place_order(order)
+            orders.add_order(OrderRecord(order_id=order_id, side=side, price=price, size_usd=qty_usd))
+
+            # Immediately adjust local position; in a real implementation this should
+            # occur after a fill confirmation from the exchange
+            position.update(side, qty_usd)
+
+            print(f"[HEDGE] Executed {side.upper()} ${qty_usd:.2f} @ ${price:.4f} ({decision.reason})")
+        except Exception as e:
+            print(f"[HEDGE] Failed to place hedge order: {e}")
+    else:
+        # No-op; do not attempt any math downstream
+        pass
 
 
 async def run_hedge_bot(cfg: Dict[str, Any], client: DriftClient, risk_mgr: RiskManager,
