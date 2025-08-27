@@ -4,6 +4,7 @@ from typing import List, Tuple, Optional
 from dataclasses import dataclass
 from driftpy.dlob.dlob import DLOB
 from driftpy.types import OraclePriceData
+from driftpy.accounts import get_perp_market_account
 
 @dataclass
 class LiveOrderbook:
@@ -78,7 +79,9 @@ class RealOrderbookFetcher:
                     
                     # Try to get market account first to verify it exists
                     try:
-                        market_account = await self.drift_client.get_perp_market_account(idx)
+                        # Get market pubkey first, then fetch the market account
+                        market_pubkey = self.drift_client.get_perp_market_public_key(idx)
+                        market_account = await get_perp_market_account(self.drift_client.connection, market_pubkey)
                         print(f"✅ Market account {idx} found")
                     except Exception as market_error:
                         print(f"❌ Market account {idx} not found: {market_error}")

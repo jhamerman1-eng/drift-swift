@@ -299,6 +299,85 @@ class EnhancedMockDriftClient:
         
         logger.info(f"[MOCK] Client closing. Final PnL: ${self.total_pnl:.2f}, Max Drawdown: ${self.max_drawdown:.2f}")
 
+# Enhanced Stats Tracking for Real Trading
+@dataclass
+class TradingStats:
+    """Comprehensive trading statistics"""
+    start_time: float
+    total_orders: int = 0
+    successful_orders: int = 0
+    failed_orders: int = 0
+    total_volume_usd: float = 0.0
+    realized_pnl: float = 0.0
+    unrealized_pnl: float = 0.0
+    max_drawdown: float = 0.0
+    peak_equity: float = 0.0
+    best_bid_hit: int = 0
+    best_ask_hit: int = 0
+    spread_captured: float = 0.0
+    oracle_price_changes: int = 0
+    last_oracle_price: float = 0.0
+    avg_spread_bps: float = 0.0
+    spread_measurements: List[float] = None
+
+    def __post_init__(self):
+        if self.spread_measurements is None:
+            self.spread_measurements = []
+
+    def update_spread(self, spread_bps: float):
+        """Update spread tracking"""
+        self.spread_measurements.append(spread_bps)
+        self.avg_spread_bps = sum(self.spread_measurements) / len(self.spread_measurements)
+
+    def record_order(self, success: bool, volume_usd: float):
+        """Record order execution"""
+        self.total_orders += 1
+        if success:
+            self.successful_orders += 1
+            self.total_volume_usd += volume_usd
+        else:
+            self.failed_orders += 1
+
+    def update_pnl(self, realized: float, unrealized: float):
+        """Update PnL tracking"""
+        self.realized_pnl = realized
+        self.unrealized_pnl = unrealized
+        current_equity = realized + unrealized
+
+        if current_equity > self.peak_equity:
+            self.peak_equity = current_equity
+
+        current_drawdown = self.peak_equity - current_equity
+        if current_drawdown > self.max_drawdown:
+            self.max_drawdown = current_drawdown
+
+    def get_summary(self) -> Dict[str, any]:
+        """Get comprehensive stats summary"""
+        runtime = time.time() - self.start_time
+        success_rate = (self.successful_orders / self.total_orders * 100) if self.total_orders > 0 else 0
+
+        return {
+            "runtime_seconds": runtime,
+            "total_orders": self.total_orders,
+            "successful_orders": self.successful_orders,
+            "failed_orders": self.failed_orders,
+            "success_rate_percent": success_rate,
+            "total_volume_usd": self.total_volume_usd,
+            "orders_per_minute": (self.total_orders / runtime * 60) if runtime > 0 else 0,
+            "volume_per_minute": (self.total_volume_usd / runtime * 60) if runtime > 0 else 0,
+            "realized_pnl": self.realized_pnl,
+            "unrealized_pnl": self.unrealized_pnl,
+            "total_pnl": self.realized_pnl + self.unrealized_pnl,
+            "max_drawdown": self.max_drawdown,
+            "peak_equity": self.peak_equity,
+            "best_bid_hits": self.best_bid_hit,
+            "best_ask_hits": self.best_ask_hit,
+            "spread_captured_usd": self.spread_captured,
+            "oracle_price_changes": self.oracle_price_changes,
+            "avg_spread_bps": self.avg_spread_bps,
+            "last_oracle_price": self.last_oracle_price
+        }
+
 # Legacy MockDriftClient for backward compatibility
 MockDriftClient = EnhancedMockDriftClient
 
@@ -326,7 +405,7 @@ class DriftpyClient:
         # Initialize real Drift client
         try:
             from driftpy.drift_client import DriftClient
-            from driftpy.accounts import get_user_account
+            from driftpy.accounts import get_user_account, get_perp_market_account
             from solana.rpc.async_api import AsyncClient
             from anchorpy import Wallet
             import json
@@ -428,19 +507,22 @@ class DriftpyClient:
             print(f"[DRIFTPY] ✅ Real Drift client initialized successfully!")
             print(f"[DRIFTPY] Public key: {self.keypair.pubkey()}")
             print(f"[DRIFTPY] Environment: devnet")
-            
-            # Initialize position tracking
+
+            # Initialize comprehensive stats tracking
+            self.stats = TradingStats(start_time=time.time())
             self.positions = {}
             self.trades = []
             self.total_pnl = 0.0
             self.max_drawdown = 0.0
             self.peak_equity = 0.0
+            print(f"[DRIFTPY] 📊 Stats tracking initialized")
+            print(f"[DRIFTPY] 🚀 Ready to place REAL orders on Drift Protocol!")
             
         except Exception as e:
             print(f"[DRIFTPY] Warning: Failed to initialize real client: {e}")
             print(f"[DRIFTPY] Falling back to enhanced placeholder mode")
-            self.drift_client = None
-            self.keypair_available = False
+        self.drift_client = None
+        self.keypair_available = False
     
     async def initialize(self):
         """Initialize the Drift client by adding user account and subscribing"""
@@ -450,10 +532,21 @@ class DriftpyClient:
             
         print("[DRIFTPY] 🔧 Initializing Drift client...")
         try:
+            # Check wallet balance first
+            try:
+                balance = await self.solana_client.get_balance(self.keypair.pubkey())
+                balance_sol = balance.value / 1e9
+                print(f"[DRIFTPY] 💰 Wallet balance: {balance_sol:.4f} SOL")
+                if balance_sol < 0.1:
+                    print(f"[DRIFTPY] ⚠️  WARNING: Low SOL balance may cause transaction failures")
+                    print(f"[DRIFTPY] 💡 Consider getting more SOL from https://faucet.solana.com")
+            except Exception as balance_error:
+                print(f"[DRIFTPY] ⚠️  Could not check balance: {balance_error}")
+
             # Add user account (required for trading)
             await self.drift_client.add_user(0)  # sub_account_id = 0
             print("[DRIFTPY] ✅ User account added successfully")
-            
+
             # Subscribe to the protocol
             await self.drift_client.subscribe()
             print("[DRIFTPY] ✅ Successfully subscribed to Drift protocol")
@@ -487,7 +580,15 @@ class DriftpyClient:
                     print(f"[DRIFTPY] Spread: {live_orderbook.spread_bps:.2f} bps")
                     print(f"[DRIFTPY] Top Bid: ${live_orderbook.bids[0][0]:.4f} ({live_orderbook.bids[0][1]:.2f})")
                     print(f"[DRIFTPY] Top Ask: ${live_orderbook.asks[0][0]:.4f} ({live_orderbook.asks[0][1]:.2f})")
-                    
+
+                    # Update stats tracking
+                    if hasattr(self, 'stats'):
+                        self.stats.update_spread(live_orderbook.spread_bps)
+                        if live_orderbook.oracle_price != self.stats.last_oracle_price and self.stats.last_oracle_price != 0.0:
+                            self.stats.oracle_price_changes += 1
+                        self.stats.last_oracle_price = live_orderbook.oracle_price
+                        print(f"[DRIFTPY] 📊 Stats: Spread={live_orderbook.spread_bps:.2f}bps, Oracle=${live_orderbook.oracle_price:.4f}")
+
                     # Convert to your existing Orderbook format
                     return Orderbook(
                         bids=live_orderbook.bids,
@@ -508,7 +609,7 @@ class DriftpyClient:
                     
             else:
                 # Enhanced placeholder mode
-                return Orderbook(bids=[(149.50, 10.0), (149.40, 15.0)], asks=[(150.50, 10.0), (150.60, 15.0)])
+        return Orderbook(bids=[(149.50, 10.0), (149.40, 15.0)], asks=[(150.50, 10.0), (150.60, 15.0)])
         except Exception as e:
             print(f"[DRIFTPY] Error getting real orderbook: {e}")
             print(f"[DRIFTPY] Falling back to enhanced mock orderbook")
@@ -522,7 +623,7 @@ class DriftpyClient:
                 asks=[(base_price + 0.5, 10.0), (base_price + 1.0, 15.0)]
             )
 
-    def place_order(self, order: Order) -> str:
+    async def place_order(self, order: Order) -> str:
         """Place real order on Drift blockchain"""
         try:
             if self.drift_client and self.keypair_available:
@@ -532,30 +633,54 @@ class DriftpyClient:
                 print(f"[DRIFTPY] Network: {self.rpc_url}")
                 print(f"[DRIFTPY] Wallet: {self.keypair.pubkey()}")
                 
-                # TODO: Implement real DriftPy order placement
-                # This would involve:
-                # 1. Getting market info from Drift
-                # 2. Creating the order instruction
-                # 3. Sending the transaction
-                
-                # Simulate real order placement process
-                print(f"[DRIFTPY] 📡 Connecting to Drift devnet...")
-                print(f"[DRIFTPY] 🔐 Authenticating wallet...")
-                print(f"[DRIFTPY] 📊 Fetching market data for {self.market}...")
-                print(f"[DRIFTPY] 💰 Checking account balance...")
-                print(f"[DRIFTPY] 📝 Creating order instruction...")
-                print(f"[DRIFTPY] 🚀 Broadcasting transaction...")
-                
-                # Generate realistic transaction signature
-                tx_sig = f"drift_real_{order.side.value}_{int(time.time()*1000)}"
-                print(f"[DRIFTPY] ✅ Real order simulation complete!")
-                print(f"[DRIFTPY] Transaction: {tx_sig}")
-                print(f"[DRIFTPY] 💡 Next: Implement actual Drift program calls")
-                print(f"[DRIFTPY] 🔗 View on Solscan: https://devnet.solscan.io/tx/{tx_sig}")
-                
+                # IMPLEMENT REAL DRIFTPY ORDER PLACEMENT - PLACE ORDERS ON LIVE DRIFT PROTOCOL!
+                try:
+                    from driftpy.types import OrderParams, OrderType, PositionDirection, MarketType, PostOnlyParams
+
+                    # Convert USD size to base asset amount (SOL)
+                    # For SOL-PERP, 1 SOL = $price, so size_usd / price = SOL amount
+                    base_asset_amount = int((order.size_usd / order.price) * 1e9)  # Convert to lamports
+
+                    # Create DriftPy order parameters
+                    order_params = OrderParams(
+                        order_type=OrderType.Limit(),
+                        base_asset_amount=base_asset_amount,
+                        market_index=0,  # SOL-PERP market index
+                        direction=PositionDirection.Long() if order.side.value == "buy" else PositionDirection.Short(),
+                        price=int(order.price * 1e6),  # Convert price to Drift precision
+                        market_type=MarketType.Perp(),
+                        post_only=PostOnlyParams.TryPostOnly()  # Maker-only orders
+                    )
+
+                    print(f"[DRIFTPY] 📝 OrderParams: {base_asset_amount} lamports @ {order.price} (${order.size_usd})")
+                    print(f"[DRIFTPY] 🚀 Broadcasting REAL order to Drift devnet...")
+
+                    # PLACE THE ACTUAL ORDER ON DRIFT PROTOCOL!
+                    tx_sig = await self.drift_client.place_perp_order(order_params)
+
+                    print(f"[DRIFTPY] ✅ REAL ORDER PLACED ON DRIFT!")
+                    print(f"[DRIFTPY] Transaction: {tx_sig}")
+                    print(f"[DRIFTPY] 🌐 View on beta.drift.trade (devnet)")
+                    print(f"[DRIFTPY] 🔍 Solscan: https://devnet.solscan.io/tx/{tx_sig}")
+
+                except Exception as real_order_error:
+                    print(f"[DRIFTPY] ❌ Real order placement failed: {real_order_error}")
+                    print(f"[DRIFTPY] 💡 Falling back to simulation...")
+                    print(f"[DRIFTPY] ⚠️  ORDERS WILL NOT APPEAR ON BETA.DRIFT.TRADE")
+
+                    # Fallback to simulation (orders won't be visible on beta.drift.trade)
+                    tx_sig = f"drift_simulation_{order.side.value}_{int(time.time()*1000)}"
+                    print(f"[DRIFTPY] ✅ Order simulation complete!")
+                    print(f"[DRIFTPY] Transaction ID: {tx_sig} (NOT REAL)")
+
                 # Track the order for PnL calculation
                 self._track_order(order, tx_sig)
-                
+
+                # Update stats for successful order
+                if hasattr(self, 'stats'):
+                    self.stats.record_order(success=True, volume_usd=order.size_usd)
+                    print(f"[DRIFTPY] 📊 Stats updated: {self.stats.successful_orders}/{self.stats.total_orders} successful")
+
                 return tx_sig
             else:
                 # Enhanced placeholder mode - simulate real Drift order flow
@@ -582,11 +707,16 @@ class DriftpyClient:
                 print(f"[DRIFTPY] 💡 This shows what a REAL order would look like")
                 print(f"[DRIFTPY] 🌐 Next: Implement actual Drift program calls")
                 print(f"[DRIFTPY] 🔗 View on Solscan: https://devnet.solscan.io/tx/{tx_sig}")
-                
+
                 # Track the order for PnL calculation
                 self._track_order(order, tx_sig)
-                
-                return tx_sig
+
+                # Update stats for placeholder order
+                if hasattr(self, 'stats'):
+                    self.stats.record_order(success=True, volume_usd=order.size_usd)
+                    print(f"[DRIFTPY] 📊 Stats updated: {self.stats.successful_orders}/{self.stats.total_orders} successful")
+            
+            return tx_sig
             
         except Exception as e:
             print(f"[DRIFTPY] ❌ Error placing order: {e}")
@@ -647,6 +777,17 @@ class DriftpyClient:
         except Exception as e:
             print(f"[DRIFTPY] Error getting PnL: {e}")
             return {"total_pnl": 0.0, "unrealized_pnl": 0.0, "realized_pnl": 0.0}
+
+    def get_comprehensive_stats_report(self) -> Dict[str, any]:
+        """Get comprehensive stats report for testing"""
+        try:
+            if hasattr(self, 'stats'):
+                return self.stats.get_summary()
+            else:
+                return {"error": "Stats tracking not initialized"}
+        except Exception as e:
+            print(f"[DRIFTPY] Error getting stats report: {e}")
+            return {"error": str(e)}
     
     def get_positions(self) -> List[Position]:
         """Get real positions from Drift"""
@@ -671,7 +812,8 @@ class DriftpyClient:
                 oracle_price = self.drift_client.convert_to_number(oracle_data.price)
                 
                 # Get market account for additional data
-                market_account = await self.drift_client.get_perp_market_account(0)
+                market_pubkey = self.drift_client.get_perp_market_public_key(0)
+                market_account = await get_perp_market_account(self.drift_client.connection, market_pubkey)
                 
                 # Get funding rate
                 funding_rate = self.drift_client.convert_to_number(market_account.amm.funding_rate)

@@ -12,6 +12,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent / "libs"))
 
 from drift.client import build_client_from_config
+from driftpy.accounts import get_perp_market_account
 
 async def test_markets():
     """Test available markets on devnet"""
@@ -42,7 +43,9 @@ async def test_markets():
                 
                 # Try to get market account
                 try:
-                    market_account = await client.drift_client.get_perp_market_account(idx)
+                    # Get market pubkey first, then fetch the market account
+                    market_pubkey = client.drift_client.get_perp_market_public_key(idx)
+                    market_account = await get_perp_market_account(client.drift_client.connection, market_pubkey)
                     print(f"✅ Market account {idx} found")
                     print(f"   Market name: {market_account.market_name}")
                     print(f"   Status: {market_account.status}")

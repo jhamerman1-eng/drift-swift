@@ -1,0 +1,39 @@
+market: SOL-PERP
+metrics_port: 9109
+jit:
+  loop_secs: 0.9
+  skew:
+    enabled: true
+    toxicity_threshold: 0.7
+    skew_multiplier: 1.5
+  cancel_replace_v2:
+    enabled: false
+    min_lifetime_ms: 250
+    price_move_bps: 1.5
+  crash_sentinel:
+    de_risk_fraction: 0.5
+  rails:
+    soft_stop: -0.075
+    trend_pause: -0.125
+    circuit_breaker: -0.20
+    token_cap: 20000
+  obi_ab:
+    enabled: false
+hedge:
+  loop_secs: 5.0
+  route:
+    allow_cex: false
+    venue_weights: { fee: 0.4, depth: 0.4, latency: 0.2 }
+  slippage_bps: 4
+  max_retries: 3
+trend:
+  loop_secs: 3.0
+  indicators:
+    macd: [12, 26, 9]
+    momentum_window: 10
+    atr_window: 14
+    adx_window: 14
+  filters:
+    adx_min: 18
+    atr_min_bps: 8
+  oco_emulation: true
