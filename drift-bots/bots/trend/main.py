@@ -9,6 +9,8 @@ from loguru import logger
 from libs.metrics import start_metrics, LOOP_LATENCY, ORDERS_PLACED
 from libs.drift.client import build_client_from_config
 from libs.drift.order import Order
+from libs.order_management import PositionTracker, OrderManager, OrderRecord
+from orchestrator.risk_manager import RiskManager, RiskState
 
 TREND_CFG = Path("configs/trend/filters.yaml")
 CORE_CFG = os.getenv("DRIFT_CFG", "configs/core/drift_client.yaml")
@@ -38,8 +40,14 @@ async def run(env: str = "testnet", metrics_port: int | None = 9103, cfg_path: s
     cfg = yaml.safe_load(Path(TREND_CFG).read_text())["trend"]
     client = await build_client_from_config(cfg_path)
     prices: deque[float] = deque(maxlen=500)
+    momentum_window = int(cfg.get("momentum_window", 14))
+    position = PositionTracker()
+    orders = OrderManager()
+    risk_mgr = RiskManager()
     logger.info(f"Trend bot starting – env={env}")
-    logger.info(f"MACD params: fast={cfg['macd']['fast']}, slow={cfg['macd']['slow']}, signal={cfg['macd']['signal']}")
+    logger.info(
+        f"MACD params: fast={cfg['macd']['fast']}, slow={cfg['macd']['slow']}, signal={cfg['macd']['signal']}; momentum_window={momentum_window}"
+    )
     
     try:
         while True:
@@ -51,45 +59,77 @@ async def run(env: str = "testnet", metrics_port: int | None = 9103, cfg_path: s
             if ob.bids and ob.asks:
                 mid = (ob.bids[0][0] + ob.asks[0][0]) / 2.0
                 prices.append(mid)
-                
+
                 # Only trade if we have enough price history
                 if len(prices) >= cfg["macd"]["slow"] + cfg["macd"]["signal"]:
                     trade_signal = None
-                    
+
+                    # Compute indicators
+                    m, s = macd(list(prices), cfg["macd"]["fast"], cfg["macd"]["slow"], cfg["macd"]["signal"])
+                    momentum = mid - prices[-(momentum_window + 1)] if len(prices) > momentum_window else 0.0
+                    logger.debug(
+                        f"[TREND] Indicators -> MACD: {m:.6f}, Signal: {s:.6f}, Momentum: {momentum:.6f}"
+                    )
+
+                    # Generate trading signals based on MACD crossover
                     if cfg.get("use_macd", True):
-                        m, s = macd(list(prices), cfg["macd"]["fast"], cfg["macd"]["slow"], cfg["macd"]["signal"])
-                        
-                        # Generate trading signals based on MACD crossover
-                        if m > s and m > 0:  # Bullish crossover above zero
+                        if m > s and m > 0:
                             trade_signal = "long"
-                        elif m < s and m < 0:  # Bearish crossover below zero
+                        elif m < s and m < 0:
                             trade_signal = "short"
-                        
-                        if trade_signal:
-                            logger.info(f"[TREND] MACD signal: {trade_signal} | MACD: {m:.6f}, Signal: {s:.6f} @ mid=${mid:.4f}")
-                            
+
+                    # Momentum filter: require momentum in direction of signal
+                    if trade_signal == "long" and momentum <= 0:
+                        trade_signal = None
+                    elif trade_signal == "short" and momentum >= 0:
+                        trade_signal = None
+
+                    if trade_signal:
+                        # Consult risk manager
+                        state: RiskState = risk_mgr.evaluate(position.net_exposure)
+                        perms = risk_mgr.decisions(state)
+                        if not perms.get("allow_trading", False) or not perms.get("allow_trend", True):
+                            # Cancel any open orders and skip trading
+                            try:
+                                if hasattr(client, "cancel_all"):
+                                    await client.cancel_all()
+                            except Exception:
+                                pass
+                            orders.cancel_all()
+                            logger.info("[TREND] Trading paused by risk manager")
+                        else:
+                            logger.info(
+                                f"[TREND] Signal: {trade_signal} | MACD: {m:.6f}, Signal: {s:.6f}, Momentum: {momentum:.6f} @ mid=${mid:.4f}"
+                            )
                             # Place trade order
                             try:
-                                order_size = float(cfg.get("order_size_usd", 100))  # Default $100
+                                order_size = float(cfg.get("order_size_usd", 100))
                                 order_price = mid  # Market order approximation
-                                
                                 order = Order(
                                     side="buy" if trade_signal == "long" else "sell",
                                     price=order_price,
-                                    size_usd=order_size
+                                    size_usd=order_size,
                                 )
-                                
-                                order_id = await client.place_order(order) if asyncio.iscoroutinefunction(client.place_order) else client.place_order(order)
-                                logger.info(f"[TREND] Order placed: {trade_signal.upper()} {order_id} @ ${order_price:.4f}")
+                                order_id = (
+                                    await client.place_order(order)
+                                    if asyncio.iscoroutinefunction(client.place_order)
+                                    else client.place_order(order)
+                                )
+                                orders.add_order(OrderRecord(order_id, order.side, order.price, order.size_usd))
+                                position.update(order.side, order.size_usd)
+                                logger.info(
+                                    f"[TREND] Order placed: {trade_signal.upper()} {order_id} @ ${order_price:.4f}"
+                                )
                                 ORDERS_PLACED.inc()
-                                
                             except Exception as e:
                                 logger.error(f"[TREND] Failed to place order: {e}")
                                 ORDERS_PLACED.inc(0)
-                
-                # Log current market state
+
+                # Log current market state periodically
                 if len(prices) % 10 == 0:  # Log every 10th update
-                    logger.info(f"[TREND] Market: mid=${mid:.4f}, prices tracked: {len(prices)}")
+                    logger.info(
+                        f"[TREND] Market: mid=${mid:.4f}, prices tracked: {len(prices)}, exposure={position.net_exposure:.2f}"
+                    )
             
             LOOP_LATENCY.observe(time.perf_counter() - t0)
             await asyncio.sleep(1.0)
