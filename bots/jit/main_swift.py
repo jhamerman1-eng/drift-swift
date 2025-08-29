@@ -310,8 +310,7 @@ class SwiftExecClient:
 
             drift_client = DriftpyClient(
                 env=env,
-                cfg={"cluster": env, "wallets": {"maker_keypair_path": ".valid_wallet.json"}},
-                use_mock=False
+                cfg={"cluster": env, "wallets": {"maker_keypair_path": ".valid_wallet.json"}}
             )
             self._signer = drift_client.drift_client
             logger.info("✅ DriftPy client initialized successfully for Swift orders")

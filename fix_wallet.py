@@ -11,3 +11,4 @@ with open('.beta_dev_wallet.json', 'w') as f:
 print("✅ Wallet format fixed!")
 print("📁 .beta_dev_wallet.json now contains proper JSON array format")
 print("🚀 Ready to run: python launch_hedge_beta_real.py")
+

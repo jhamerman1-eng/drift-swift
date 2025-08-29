@@ -60,3 +60,4 @@ async def deposit_sol_to_drift():
 if __name__ == "__main__":
     print("🚀 Depositing SOL collateral to Drift Protocol devnet...")
     asyncio.run(deposit_sol_to_drift())
+

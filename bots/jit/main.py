@@ -128,6 +128,13 @@ class OrderBookImbalance:
     skew_adjustment: float
     confidence: float
 
+@dataclass
+class Orderbook:
+    """Orderbook data structure"""
+    bids: List[Tuple[float, float]]
+    asks: List[Tuple[float, float]]
+    ts: float
+
 class InventoryManager:
     """Manages inventory and position limits"""
 
