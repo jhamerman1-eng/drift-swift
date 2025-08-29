@@ -1,0 +1,56 @@
+# Prometheus Configuration for Drift Bots v3.0
+# Place this file at /etc/prometheus/prometheus.yml (Linux) or prometheus.yml (Docker)
+
+global:
+  scrape_interval: 15s      # How often to scrape targets
+  evaluation_interval: 15s  # How often to evaluate rules
+  scrape_timeout: 10s       # Timeout for scrape requests
+
+# Alertmanager configuration (optional)
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape
+scrape_configs:
+  # Drift Bots Orchestrator - Main metrics endpoint
+  - job_name: 'drift-bots-orchestrator'
+    static_configs:
+      - targets: ['localhost:9109']  # Default metrics port
+        labels:
+          service: 'drift-orchestrator'
+          environment: 'development'
+    scrape_interval: 5s    # More frequent scraping for real-time metrics
+    scrape_timeout: 3s     # Shorter timeout for faster response
+
+  # Drift Bots - Additional instances (uncomment and modify as needed)
+  # - job_name: 'drift-bots-production'
+  #   static_configs:
+  #     - targets: ['prod-server:9109']
+  #       labels:
+  #         service: 'drift-orchestrator'
+  #         environment: 'production'
+  #   scrape_interval: 10s
+
+  # - job_name: 'drift-bots-staging'
+  #   static_configs:
+  #     - targets: ['staging-server:9110']
+  #       labels:
+  #         service: 'drift-orchestrator'
+  #         environment: 'staging'
+  #   scrape_interval: 15s
+
+  # Node Exporter for system metrics (optional)
+  # - job_name: 'node'
+  #   static_configs:
+  #     - targets: ['localhost:9100']
+  #       labels:
+  #         service: 'node-exporter'
+  #         environment: 'development'

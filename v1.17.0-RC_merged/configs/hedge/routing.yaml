@@ -1,0 +1,16 @@
+# Urgency-Based Hedging & Routing (STUB)
+routing:
+  venues:
+    - name: "CEX_PRIMARY"
+      type: "cex"
+      taker_fee_bps: 2.5
+    - name: "DEX_DRIFT"
+      type: "dex"
+      taker_fee_bps: 1.0
+  urgency_bands:
+    - band: "high"
+      ioc: true
+      preferred: ["CEX_PRIMARY","DEX_DRIFT"]
+    - band: "normal"
+      ioc: false
+      preferred: ["DEX_DRIFT"]

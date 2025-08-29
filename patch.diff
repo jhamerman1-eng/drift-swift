@@ -1,0 +1,116 @@
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..9b5b7a1
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,20 @@
++# --- Secrets & local env ---
++*.env
++.env
++devnet_drift.env
++
++# Keys (DO NOT COMMIT)
++drift-maker-keypair.json
++**/keys/*.json
++**/keys/*.key
++**/keys/*.pem
++
++# Python build/cache
++__pycache__/
++.pytest_cache/
++.mypy_cache/
++.ruff_cache/
++*.pyc
++
++# Virtual envs
++.venv/
+diff --git a/Makefile b/Makefile
+new file mode 100644
+index 0000000..b6f2e7c
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,79 @@
++# --- Makefile ---
++# Default to devnet .env (override with: make run-devnet ENV=path/to/file)
++ENV ?= devnet_drift.env
++
++# Helper: load .env into the shell
++define dotenv
++	@if [ ! -f $(ENV) ]; then echo "Missing $(ENV). Copy devnet_drift.env.example and fill values."; exit 1; fi
++	@set -a; . $(ENV); set +a; \
++	echo "Loaded $(ENV) for $$CLUSTER using $$SOLANA_RPC_URL"
++endef
++
++.PHONY: env-check
++env-check:
++	$(call dotenv)
++
++.PHONY: install
++install:
++	python -m pip install -U pip
++	-uv pip install -r requirements.txt || pip install -r requirements.txt
++
++.PHONY: preflight
++preflight: env-check
++	@set -a; . $(ENV); set +a; \
++	echo ">> Solana config:"; \
++	solana config set --url "$$SOLANA_RPC_URL" >/dev/null; \
++	solana config get; \
++	echo ">> Wallet pubkey:"; \
++	solana-keygen pubkey "$$KEYPAIR_PATH"; \
++	echo ">> Balance:"; \
++	solana balance "$$(solana-keygen pubkey $$KEYPAIR_PATH)" || true; \
++	echo ">> RPC reachability:"; \
++	python - <<'PY' || true
++from urllib.parse import urlparse
++import os, socket
++u=os.environ['SOLANA_RPC_URL']; h=urlparse(u).hostname or u
++print("Host:", h); s=socket.socket(); s.settimeout(3); s.connect((h,443)); s.close(); print("OK")
++PY
++
++.PHONY: run-devnet
++run-devnet: env-check
++	@set -a; . $(ENV); set +a; \
++	python -m bots.jit.main --env devnet
++
++.PHONY: metrics
++metrics: env-check
++	@curl -s localhost:8000/metrics | head -n 50 || true
+diff --git a/devnet_drift.env.example b/devnet_drift.env.example
+new file mode 100644
+index 0000000..e3d0e10
+--- /dev/null
++++ b/devnet_drift.env.example
+@@ -0,0 +1,17 @@
++# --- Drift Devnet bootstrap (.env) ---
++CLUSTER=devnet
++DRIFT_WS_URL="wss://api.devnet.drift.trade"
++SWIFT_WS_URL="wss://<your-swift-endpoint>"
++
++# Local keypairs (DO NOT COMMIT REAL PATHS)
++KEYPAIR_PATH="/abs/path/to/drift-maker-keypair.json"
++JITO_KEYPAIR_PATH="/abs/path/to/jito-keypair.json"
++
++# Helius devnet (replace with your API key)
++SOLANA_RPC_URL="https://devnet.helius-rpc.com/?api-key=<your-helius-api-key>"
++SOLANA_WS_URL="wss://devnet.helius-rpc.com/?api-key=<your-helius-api-key>"
+diff --git a/configs/core/drift_client.yaml b/configs/core/drift_client.yaml
+new file mode 100644
+index 0000000..7a8d5b1
+--- /dev/null
++++ b/configs/core/drift_client.yaml
+@@ -0,0 +1,14 @@
++# Drift client config (env-driven)
++# Commit this file; it expands env vars at runtime.
++
++cluster: devnet
++
++# Paths and endpoints are resolved from environment
++keypair_path: "${KEYPAIR_PATH}"
++
++# Solana RPC/WS (devnet)
++rpc_url: "${SOLANA_RPC_URL}"
++ws_url:  "${SOLANA_WS_URL}"
++
++# Optional Swift sidecar (if you use Swift)
++swift_ws_url: "${SWIFT_WS_URL}"

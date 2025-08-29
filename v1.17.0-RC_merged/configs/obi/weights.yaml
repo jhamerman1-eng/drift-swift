@@ -1,0 +1,11 @@
+# OBI / Microprice Weights (STUB) — regime aware
+obi_weights:
+  default:
+    microprice: 0.5
+    order_imbalance: 0.5
+  trend:
+    microprice: 0.6
+    order_imbalance: 0.4
+  range:
+    microprice: 0.4
+    order_imbalance: 0.6

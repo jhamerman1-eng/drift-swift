@@ -1,0 +1,14 @@
+symbol: SOL-PERP
+leverage: 10
+post_only: true
+obi_microprice: true
+spread_bps:
+  base: 8
+  min: 4
+  max: 25
+inventory_target: 0
+max_position_abs: 120
+cancel_replace:
+  enabled: true
+  interval_ms: 900
+  toxicity_guard: true

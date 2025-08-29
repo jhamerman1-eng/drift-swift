@@ -1,0 +1,8 @@
+hedge:
+  enabled: true
+  urgency_scoring: true
+  route:
+    - venue: "CEX:BINANCE"
+      mode: "IOC"
+    - venue: "CEX:OKX"
+      mode: "PASSIVE"

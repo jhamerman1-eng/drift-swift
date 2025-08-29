@@ -1,0 +1,38 @@
+{
+  "test_info": {
+    "duration_minutes": 7.74220669666926,
+    "environment": "Drift Devnet",
+    "market": "SOL-PERP",
+    "wallet": "A68b4xetPcF6tJShZsCeCCE1iGYZLr9314dggLJ1JNgW",
+    "timestamp": "2025-08-26T22:13:23.005870"
+  },
+  "trading_stats": {
+    "runtime_seconds": 462.95254945755005,
+    "total_orders": 421,
+    "successful_orders": 421,
+    "failed_orders": 0,
+    "success_rate_percent": 100.0,
+    "total_volume_usd": 2105.0,
+    "orders_per_minute": 54.562827291042254,
+    "volume_per_minute": 272.81413645521127,
+    "realized_pnl": 0.0,
+    "unrealized_pnl": 0.0,
+    "total_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "peak_equity": 0.0,
+    "best_bid_hits": 0,
+    "best_ask_hits": 0,
+    "spread_captured_usd": 0.0,
+    "oracle_price_changes": 0,
+    "avg_spread_bps": 0.0,
+    "last_oracle_price": 0.0
+  },
+  "pnl_summary": {
+    "total_pnl": 0.0,
+    "unrealized_pnl": 0.0,
+    "realized_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "peak_equity": 0.0
+  },
+  "recommendations": []
+}

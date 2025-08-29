@@ -1,0 +1,11 @@
+prometheus-client>=0.20.0
+pydantic>=2.7.0
+PyYAML>=6.0.1
+httpx>=0.25.0
+aiohttp>=3.9.0
+# Enable when wiring to real Drift:
+driftpy>=0.6.3
+anchorpy>=0.20
+solana>=0.30.0
+base58>=2.1.0
+cryptography>=41.0.0

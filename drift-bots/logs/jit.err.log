@@ -1,0 +1,24 @@
+2025-08-26 03:57:41.299 | INFO     | libs.drift.client:build_client_from_config:114 - Using DriftpyClient for SOL-PERP (testnet) via ${RPC_URL}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\drift-bots\bots\jit\main.py", line 59, in <module>
+    asyncio.run(run(env=args.env, metrics_port=args.metrics_port, cfg_path=args.cfg))
+  File "C:\Users\genuw\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\genuw\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\genuw\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\drift-bots\bots\jit\main.py", line 20, in run
+    client = await build_client_from_config(cfg_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\drift-bots\libs\drift\client.py", line 115, in build_client_from_config
+    return DriftpyClient(rpc_url=rpc, wallet_secret_key=secret, market=market, ws_url=ws)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\drift-bots\libs\drift\client.py", line 74, in __init__
+    raise RuntimeError("driftpy not installed. Add to pyproject and install.")
+RuntimeError: driftpy not installed. Add to pyproject and install.

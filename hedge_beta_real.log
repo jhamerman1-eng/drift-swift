@@ -1,0 +1,1126 @@
+2025-08-27 06:19:35,909 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-08-27 06:19:35,910 - __main__ - INFO - ======================================================================
+2025-08-27 06:19:35,911 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-08-27 06:19:35,912 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-08-27 06:19:35,912 - __main__ - INFO - ======================================================================
+2025-08-27 06:19:35,913 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-08-27 06:19:35,914 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-08-27 06:19:35,914 - __main__ - INFO - [CONFIG] RPC: https://api.mainnet-beta.solana.com
+2025-08-27 06:19:35,914 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-08-27 06:19:35,914 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-08-27 06:19:35,916 - __main__ - ERROR - [ERROR] REAL Drift client initialization failed
+2025-08-27 06:19:35,917 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-08-27 06:19:35,917 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-27 06:19:35,918 - root - INFO - [SUCCESS] Real beta client closed successfully
+2025-08-27 06:19:35,918 - root - INFO - ======================================================================
+2025-08-27 06:19:35,919 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-08-27 06:19:35,919 - root - INFO - ======================================================================
+2025-08-27 06:19:35,919 - root - INFO - Total Iterations: 0
+2025-08-27 06:19:35,920 - root - INFO - Net Exposure: $0.00
+2025-08-27 06:19:35,920 - root - INFO - Total Volume: $0.00
+2025-08-27 06:19:35,920 - root - INFO - Errors: None - Clean real beta session!
+2025-08-27 06:19:35,921 - root - INFO - ======================================================================
+2025-08-27 06:39:37,704 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-08-27 06:39:37,705 - __main__ - INFO - ======================================================================
+2025-08-27 06:39:37,706 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-08-27 06:39:37,706 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-08-27 06:39:37,706 - __main__ - INFO - ======================================================================
+2025-08-27 06:39:37,706 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-08-27 06:39:37,706 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-08-27 06:39:37,707 - __main__ - INFO - [CONFIG] RPC: https://api.mainnet-beta.solana.com
+2025-08-27 06:39:37,707 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-08-27 06:39:37,708 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-08-27 06:39:37,708 - __main__ - ERROR - [ERROR] REAL Drift client initialization failed
+2025-08-27 06:39:37,708 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-08-27 06:39:37,708 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-27 06:39:37,710 - root - INFO - [SUCCESS] Real beta client closed successfully
+2025-08-27 06:39:37,710 - root - INFO - ======================================================================
+2025-08-27 06:39:37,711 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-08-27 06:39:37,711 - root - INFO - ======================================================================
+2025-08-27 06:39:37,712 - root - INFO - Total Iterations: 0
+2025-08-27 06:39:37,712 - root - INFO - Net Exposure: $0.00
+2025-08-27 06:39:37,712 - root - INFO - Total Volume: $0.00
+2025-08-27 06:39:37,712 - root - INFO - Errors: None - Clean real beta session!
+2025-08-27 06:39:37,712 - root - INFO - ======================================================================
+2025-08-27 06:43:15,249 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-08-27 06:43:15,250 - __main__ - INFO - ======================================================================
+2025-08-27 06:43:15,251 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-08-27 06:43:15,251 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-08-27 06:43:15,252 - __main__ - INFO - ======================================================================
+2025-08-27 06:43:15,252 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-08-27 06:43:15,252 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-08-27 06:43:15,253 - __main__ - INFO - [CONFIG] RPC: https://api.mainnet-beta.solana.com
+2025-08-27 06:43:15,253 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-08-27 06:43:15,254 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-08-27 06:43:15,256 - __main__ - ERROR - [ERROR] REAL Drift client initialization failed
+2025-08-27 06:43:15,256 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-08-27 06:43:15,257 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-27 06:43:15,257 - root - INFO - [SUCCESS] Real beta client closed successfully
+2025-08-27 06:43:15,258 - root - INFO - ======================================================================
+2025-08-27 06:43:15,258 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-08-27 06:43:15,258 - root - INFO - ======================================================================
+2025-08-27 06:43:15,259 - root - INFO - Total Iterations: 0
+2025-08-27 06:43:15,259 - root - INFO - Net Exposure: $0.00
+2025-08-27 06:43:15,260 - root - INFO - Total Volume: $0.00
+2025-08-27 06:43:15,260 - root - INFO - Errors: None - Clean real beta session!
+2025-08-27 06:43:15,261 - root - INFO - ======================================================================
+2025-08-27 06:45:10,397 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-08-27 06:45:10,398 - __main__ - INFO - ======================================================================
+2025-08-27 06:45:10,398 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-08-27 06:45:10,399 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-08-27 06:45:10,400 - __main__ - INFO - ======================================================================
+2025-08-27 06:45:10,401 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-08-27 06:45:10,401 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-08-27 06:45:10,402 - __main__ - INFO - [CONFIG] RPC: https://api.mainnet-beta.solana.com
+2025-08-27 06:45:10,402 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-08-27 06:45:10,403 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-08-27 06:45:11,392 - httpx - INFO - HTTP Request: POST https://api.mainnet-beta.solana.com "HTTP/1.1 200 OK"
+2025-08-27 06:45:11,449 - httpx - INFO - HTTP Request: POST https://api.mainnet-beta.solana.com "HTTP/1.1 410 Gone"
+2025-08-27 06:45:11,493 - __main__ - ERROR - [ERROR] REAL Drift client initialization failed
+2025-08-27 06:45:11,493 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-08-27 06:45:11,494 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-27 06:45:11,494 - root - INFO - [SUCCESS] Real beta client closed successfully
+2025-08-27 06:45:11,495 - root - INFO - ======================================================================
+2025-08-27 06:45:11,495 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-08-27 06:45:11,496 - root - INFO - ======================================================================
+2025-08-27 06:45:11,496 - root - INFO - Total Iterations: 0
+2025-08-27 06:45:11,497 - root - INFO - Net Exposure: $0.00
+2025-08-27 06:45:11,497 - root - INFO - Total Volume: $0.00
+2025-08-27 06:45:11,499 - root - INFO - Errors: None - Clean real beta session!
+2025-08-27 06:45:11,499 - root - INFO - ======================================================================
+2025-08-27 06:49:21,378 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-08-27 06:49:21,379 - __main__ - INFO - ======================================================================
+2025-08-27 06:49:21,379 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-08-27 06:49:21,380 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-08-27 06:49:21,380 - __main__ - INFO - ======================================================================
+2025-08-27 06:49:21,380 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-08-27 06:49:21,381 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-08-27 06:49:21,381 - __main__ - INFO - [CONFIG] RPC: https://api.mainnet-beta.solana.com
+2025-08-27 06:49:21,381 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-08-27 06:49:21,382 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-08-27 06:49:22,350 - httpx - INFO - HTTP Request: POST https://api.mainnet-beta.solana.com "HTTP/1.1 200 OK"
+2025-08-27 06:49:22,440 - httpx - INFO - HTTP Request: POST https://api.mainnet-beta.solana.com "HTTP/1.1 410 Gone"
+2025-08-27 06:49:22,441 - __main__ - ERROR - [ERROR] REAL Drift client initialization failed
+2025-08-27 06:49:22,442 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-08-27 06:49:22,443 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-27 06:49:22,443 - root - INFO - [SUCCESS] Real beta client closed successfully
+2025-08-27 06:49:22,444 - root - INFO - ======================================================================
+2025-08-27 06:49:22,444 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-08-27 06:49:22,445 - root - INFO - ======================================================================
+2025-08-27 06:49:22,445 - root - INFO - Total Iterations: 0
+2025-08-27 06:49:22,445 - root - INFO - Net Exposure: $0.00
+2025-08-27 06:49:22,446 - root - INFO - Total Volume: $0.00
+2025-08-27 06:49:22,446 - root - INFO - Errors: None - Clean real beta session!
+2025-08-27 06:49:22,447 - root - INFO - ======================================================================
+2025-08-27 06:49:52,724 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-08-27 06:49:52,725 - __main__ - INFO - ======================================================================
+2025-08-27 06:49:52,726 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-08-27 06:49:52,726 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-08-27 06:49:52,726 - __main__ - INFO - ======================================================================
+2025-08-27 06:49:52,727 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-08-27 06:49:52,727 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-08-27 06:49:52,728 - __main__ - INFO - [CONFIG] RPC: https://api.mainnet.solana.com
+2025-08-27 06:49:52,728 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-08-27 06:49:52,729 - __main__ - INFO - [CONFIG] Environment: mainnet
+2025-08-27 06:49:53,447 - __main__ - ERROR - [ERROR] REAL Drift client initialization failed
+2025-08-27 06:49:53,448 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-08-27 06:49:53,448 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-27 06:49:53,449 - root - INFO - [SUCCESS] Real beta client closed successfully
+2025-08-27 06:49:53,449 - root - INFO - ======================================================================
+2025-08-27 06:49:53,450 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-08-27 06:49:53,450 - root - INFO - ======================================================================
+2025-08-27 06:49:53,450 - root - INFO - Total Iterations: 0
+2025-08-27 06:49:53,451 - root - INFO - Net Exposure: $0.00
+2025-08-27 06:49:53,451 - root - INFO - Total Volume: $0.00
+2025-08-27 06:49:53,451 - root - INFO - Errors: None - Clean real beta session!
+2025-08-27 06:49:53,451 - root - INFO - ======================================================================
+2025-08-27 06:50:06,665 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-08-27 06:50:06,666 - __main__ - INFO - ======================================================================
+2025-08-27 06:50:06,667 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-08-27 06:50:06,667 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-08-27 06:50:06,668 - __main__ - INFO - ======================================================================
+2025-08-27 06:50:06,669 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-08-27 06:50:06,669 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-08-27 06:50:06,670 - __main__ - INFO - [CONFIG] RPC: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+2025-08-27 06:50:06,671 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-08-27 06:50:06,671 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-08-27 06:50:07,832 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 06:50:08,180 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 06:50:08,504 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 06:50:08,653 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 06:50:09,775 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 06:50:09,980 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 06:50:09,981 - __main__ - INFO - [SUCCESS] REAL Drift client initialized and ready for beta trading!
+2025-08-27 06:50:09,982 - __main__ - INFO - [SUCCESS] Connected to beta.drift.trade - READY FOR REAL ORDERS!
+2025-08-27 06:50:09,983 - __main__ - INFO - [BALANCE] Checking wallet balance for beta trading...
+2025-08-27 06:50:09,984 - __main__ - ERROR - [ERROR] Error checking wallet balance: 'RealDriftTrader' object has no attribute 'check_wallet_balance'
+2025-08-27 06:50:09,984 - __main__ - ERROR - [ERROR] Wallet/balance check failed - aborting
+2025-08-27 06:50:09,985 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-27 06:50:10,870 - websockets.client - INFO - ! connect failed; reconnecting in 0.5 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 06:50:10,917 - websockets.client - INFO - ! connect failed; reconnecting in 1.7 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 06:50:13,091 - root - INFO - [SUCCESS] Real beta client closed successfully
+2025-08-27 06:50:13,091 - root - INFO - ======================================================================
+2025-08-27 06:50:13,091 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-08-27 06:50:13,091 - root - INFO - ======================================================================
+2025-08-27 06:50:13,092 - root - INFO - Total Iterations: 0
+2025-08-27 06:50:13,092 - root - INFO - Net Exposure: $0.00
+2025-08-27 06:50:13,092 - root - INFO - Total Volume: $0.00
+2025-08-27 06:50:13,092 - root - INFO - Errors: None - Clean real beta session!
+2025-08-27 06:50:13,093 - root - INFO - ======================================================================
+2025-08-27 06:50:24,696 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-08-27 06:50:24,697 - __main__ - INFO - ======================================================================
+2025-08-27 06:50:24,697 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-08-27 06:50:24,698 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-08-27 06:50:24,698 - __main__ - INFO - ======================================================================
+2025-08-27 06:50:24,699 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-08-27 06:50:24,699 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-08-27 06:50:24,700 - __main__ - INFO - [CONFIG] RPC: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+2025-08-27 06:50:24,700 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-08-27 06:50:24,701 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-08-27 06:50:26,217 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 06:50:26,446 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 06:50:26,735 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 06:50:27,038 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 06:50:28,178 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 06:50:28,369 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 06:50:28,371 - __main__ - INFO - [SUCCESS] REAL Drift client initialized and ready for beta trading!
+2025-08-27 06:50:28,371 - __main__ - INFO - [SUCCESS] Connected to beta.drift.trade - READY FOR REAL ORDERS!
+2025-08-27 06:50:28,372 - __main__ - INFO - [BALANCE] Checking wallet balance for beta trading...
+2025-08-27 06:50:28,372 - __main__ - WARNING - [WARNING] Balance check method not available - proceeding without balance verification
+2025-08-27 06:50:28,372 - __main__ - INFO - [INFO] Make sure your wallet has sufficient SOL for gas fees
+2025-08-27 06:50:28,372 - __main__ - INFO - [STARTING] Beginning REAL beta hedge trading session...
+2025-08-27 06:50:28,373 - __main__ - INFO - [INFO] Wallet: .beta_dev_wallet.json
+2025-08-27 06:50:28,373 - __main__ - INFO - [INFO] View trades on: https://beta.drift.trade
+2025-08-27 06:50:28,373 - __main__ - WARNING - [FINAL WARNING] REAL ORDERS WILL BE PLACED NOW!
+2025-08-27 06:50:28,373 - __main__ - INFO - [TRADE] Starting REAL hedge trading loop on beta.drift.trade...
+2025-08-27 06:50:28,373 - __main__ - WARNING - [WARNING] This will place REAL ORDERS - Monitor closely!
+2025-08-27 06:50:28,374 - __main__ - INFO - [INFO] View positions at: https://beta.drift.trade
+2025-08-27 06:50:28,374 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #1
+2025-08-27 06:50:28,374 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 06:50:28,374 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 06:50:28,375 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 06:50:28,375 - __main__ - INFO -    Open Orders: 0
+2025-08-27 06:50:28,376 - __main__ - INFO -    Active Positions: None
+2025-08-27 06:50:28,376 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 1: float division by zero
+2025-08-27 06:50:29,042 - websockets.client - INFO - ! connect failed; reconnecting in 1.3 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 06:50:29,102 - websockets.client - INFO - ! connect failed; reconnecting in 1.3 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 06:50:29,110 - websockets.client - INFO - ! connect failed; reconnecting in 2.1 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 06:50:29,129 - websockets.client - INFO - ! connect failed; reconnecting in 4.9 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 06:50:29,156 - websockets.client - INFO - ! connect failed; reconnecting in 2.5 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 06:50:29,248 - websockets.client - INFO - ! connect failed; reconnecting in 2.9 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 06:50:29,360 - websockets.client - INFO - ! connect failed; reconnecting in 4.7 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 06:50:48,355 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #2
+2025-08-27 06:50:48,355 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 06:50:48,355 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 06:50:48,356 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 06:50:48,356 - __main__ - INFO -    Open Orders: 0
+2025-08-27 06:50:48,356 - __main__ - INFO -    Active Positions: None
+2025-08-27 06:50:48,357 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 2: float division by zero
+2025-08-27 06:51:08,385 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #3
+2025-08-27 06:51:08,385 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 06:51:08,386 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 06:51:08,386 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 06:51:08,386 - __main__ - INFO -    Open Orders: 0
+2025-08-27 06:51:08,387 - __main__ - INFO -    Active Positions: None
+2025-08-27 06:51:08,387 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 3: float division by zero
+2025-08-27 06:51:28,403 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #4
+2025-08-27 06:51:28,404 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 06:51:28,405 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 06:51:28,406 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 06:51:28,407 - __main__ - INFO -    Open Orders: 0
+2025-08-27 06:51:28,408 - __main__ - INFO -    Active Positions: None
+2025-08-27 06:51:28,409 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 4: float division by zero
+2025-08-27 06:51:48,417 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #5
+2025-08-27 06:51:48,418 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 06:51:48,420 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 06:51:48,423 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 06:51:48,424 - __main__ - INFO -    Open Orders: 0
+2025-08-27 06:51:48,425 - __main__ - INFO -    Active Positions: None
+2025-08-27 06:51:48,426 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 5: float division by zero
+2025-08-27 06:52:08,443 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #6
+2025-08-27 06:52:08,444 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 06:52:08,444 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 06:52:08,444 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 06:52:08,445 - __main__ - INFO -    Open Orders: 0
+2025-08-27 06:52:08,445 - __main__ - INFO -    Active Positions: None
+2025-08-27 06:52:08,445 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 6: float division by zero
+2025-08-27 06:52:28,435 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #7
+2025-08-27 06:52:28,435 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 06:52:28,435 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 06:52:28,436 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 06:52:28,436 - __main__ - INFO -    Open Orders: 0
+2025-08-27 06:52:28,436 - __main__ - INFO -    Active Positions: None
+2025-08-27 06:52:28,436 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 7: float division by zero
+2025-08-27 06:52:48,447 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #8
+2025-08-27 06:52:48,448 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 06:52:48,448 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 06:52:48,448 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 06:52:48,448 - __main__ - INFO -    Open Orders: 0
+2025-08-27 06:52:48,449 - __main__ - INFO -    Active Positions: None
+2025-08-27 06:52:48,449 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 8: float division by zero
+2025-08-27 06:53:08,451 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #9
+2025-08-27 06:53:08,452 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 06:53:08,452 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 06:53:08,453 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 06:53:08,454 - __main__ - INFO -    Open Orders: 0
+2025-08-27 06:53:08,454 - __main__ - INFO -    Active Positions: None
+2025-08-27 06:53:08,455 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 9: float division by zero
+2025-08-27 06:53:28,469 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #10
+2025-08-27 06:53:28,469 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 06:53:28,470 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 06:53:28,472 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 06:53:28,472 - __main__ - INFO -    Open Orders: 0
+2025-08-27 06:53:28,473 - __main__ - INFO -    Active Positions: None
+2025-08-27 06:53:28,474 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 10: float division by zero
+2025-08-27 06:53:48,481 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #11
+2025-08-27 06:53:48,482 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 06:53:48,482 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 06:53:48,483 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 06:53:48,484 - __main__ - INFO -    Open Orders: 0
+2025-08-27 06:53:48,484 - __main__ - INFO -    Active Positions: None
+2025-08-27 06:53:48,485 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 11: float division by zero
+2025-08-27 06:54:08,482 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #12
+2025-08-27 06:54:08,482 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 06:54:08,483 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 06:54:08,483 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 06:54:08,483 - __main__ - INFO -    Open Orders: 0
+2025-08-27 06:54:08,484 - __main__ - INFO -    Active Positions: None
+2025-08-27 06:54:08,485 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 12: float division by zero
+2025-08-27 06:54:28,489 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #13
+2025-08-27 06:54:28,489 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 06:54:28,491 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 06:54:28,493 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 06:54:28,494 - __main__ - INFO -    Open Orders: 0
+2025-08-27 06:54:28,495 - __main__ - INFO -    Active Positions: None
+2025-08-27 06:54:28,496 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 13: float division by zero
+2025-08-27 20:43:43,415 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-08-27 20:43:43,416 - __main__ - INFO - ======================================================================
+2025-08-27 20:43:43,417 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-08-27 20:43:43,417 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-08-27 20:43:43,418 - __main__ - INFO - ======================================================================
+2025-08-27 20:43:43,418 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-08-27 20:43:43,418 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-08-27 20:43:43,419 - __main__ - INFO - [CONFIG] RPC: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+2025-08-27 20:43:43,419 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-08-27 20:43:43,420 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-08-27 20:43:44,852 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 20:43:45,040 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 20:43:45,300 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 20:43:45,520 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 20:43:46,767 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 20:43:46,950 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 20:43:46,952 - __main__ - INFO - [SUCCESS] REAL Drift client initialized and ready for beta trading!
+2025-08-27 20:43:46,953 - __main__ - INFO - [SUCCESS] Connected to beta.drift.trade - READY FOR REAL ORDERS!
+2025-08-27 20:43:46,954 - __main__ - INFO - [BALANCE] Checking wallet balance for beta trading...
+2025-08-27 20:43:46,954 - __main__ - WARNING - [WARNING] Balance check method not available - proceeding without balance verification
+2025-08-27 20:43:46,955 - __main__ - INFO - [INFO] Make sure your wallet has sufficient SOL for gas fees
+2025-08-27 20:43:46,956 - __main__ - INFO - [STARTING] Beginning REAL beta hedge trading session...
+2025-08-27 20:43:46,956 - __main__ - INFO - [INFO] Wallet: .beta_dev_wallet.json
+2025-08-27 20:43:46,957 - __main__ - INFO - [INFO] View trades on: https://beta.drift.trade
+2025-08-27 20:43:46,957 - __main__ - WARNING - [FINAL WARNING] REAL ORDERS WILL BE PLACED NOW!
+2025-08-27 20:43:46,958 - __main__ - INFO - [TRADE] Starting REAL hedge trading loop on beta.drift.trade...
+2025-08-27 20:43:46,958 - __main__ - WARNING - [WARNING] This will place REAL ORDERS - Monitor closely!
+2025-08-27 20:43:46,958 - __main__ - INFO - [INFO] View positions at: https://beta.drift.trade
+2025-08-27 20:43:46,959 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #1
+2025-08-27 20:43:46,959 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:43:46,960 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:43:46,960 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:43:46,961 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:43:46,962 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:43:46,963 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 1: float division by zero
+2025-08-27 20:43:47,720 - websockets.client - INFO - ! connect failed; reconnecting in 0.1 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 20:43:47,873 - websockets.client - INFO - ! connect failed; reconnecting in 4.1 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 20:44:06,990 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #2
+2025-08-27 20:44:06,990 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:44:06,991 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:44:06,991 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:44:06,991 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:44:06,992 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:44:06,992 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 2: float division by zero
+2025-08-27 20:44:19,874 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-27 20:44:23,847 - root - INFO - [SUCCESS] Real beta client closed successfully
+2025-08-27 20:44:23,848 - root - INFO - ======================================================================
+2025-08-27 20:44:23,848 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-08-27 20:44:23,849 - root - INFO - ======================================================================
+2025-08-27 20:44:23,852 - root - INFO - Total Iterations: 2
+2025-08-27 20:44:23,855 - root - INFO - Net Exposure: $0.00
+2025-08-27 20:44:23,858 - root - INFO - Total Volume: $0.00
+2025-08-27 20:44:23,859 - root - WARNING - Errors Encountered: 2
+2025-08-27 20:44:23,860 - root - WARNING -   1. Iteration 1 error: float division by zero
+2025-08-27 20:44:23,861 - root - WARNING -   2. Iteration 2 error: float division by zero
+2025-08-27 20:44:23,862 - root - INFO - ======================================================================
+2025-08-27 20:44:24,038 - root - INFO - [SHUTDOWN] Real beta hedge bot interrupted by user
+2025-08-27 20:47:11,710 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-08-27 20:47:11,711 - __main__ - INFO - ======================================================================
+2025-08-27 20:47:11,711 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-08-27 20:47:11,711 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-08-27 20:47:11,712 - __main__ - INFO - ======================================================================
+2025-08-27 20:47:11,712 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-08-27 20:47:11,712 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-08-27 20:47:11,713 - __main__ - INFO - [CONFIG] RPC: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+2025-08-27 20:47:11,713 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-08-27 20:47:11,714 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-08-27 20:47:13,059 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 20:47:13,361 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 20:47:13,764 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 20:47:13,904 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 20:47:15,393 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 20:47:15,914 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-27 20:47:15,917 - __main__ - INFO - [SUCCESS] REAL Drift client initialized and ready for beta trading!
+2025-08-27 20:47:15,918 - __main__ - INFO - [SUCCESS] Connected to beta.drift.trade - READY FOR REAL ORDERS!
+2025-08-27 20:47:15,918 - __main__ - INFO - [BALANCE] Checking wallet balance for beta trading...
+2025-08-27 20:47:15,918 - __main__ - WARNING - [WARNING] Balance check method not available - proceeding without balance verification
+2025-08-27 20:47:15,918 - __main__ - INFO - [INFO] Make sure your wallet has sufficient SOL for gas fees
+2025-08-27 20:47:15,919 - __main__ - INFO - [STARTING] Beginning REAL beta hedge trading session...
+2025-08-27 20:47:15,919 - __main__ - INFO - [INFO] Wallet: .beta_dev_wallet.json
+2025-08-27 20:47:15,919 - __main__ - INFO - [INFO] View trades on: https://beta.drift.trade
+2025-08-27 20:47:15,920 - __main__ - WARNING - [FINAL WARNING] REAL ORDERS WILL BE PLACED NOW!
+2025-08-27 20:47:15,920 - __main__ - INFO - [TRADE] Starting REAL hedge trading loop on beta.drift.trade...
+2025-08-27 20:47:15,921 - __main__ - WARNING - [WARNING] This will place REAL ORDERS - Monitor closely!
+2025-08-27 20:47:15,921 - __main__ - INFO - [INFO] View positions at: https://beta.drift.trade
+2025-08-27 20:47:15,922 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #1
+2025-08-27 20:47:15,922 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:47:15,923 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:47:15,923 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:47:15,924 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:47:15,924 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:47:15,925 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 1: float division by zero
+2025-08-27 20:47:16,694 - websockets.client - INFO - ! connect failed; reconnecting in 3.1 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 20:47:16,839 - websockets.client - INFO - ! connect failed; reconnecting in 2.2 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 20:47:16,898 - websockets.client - INFO - ! connect failed; reconnecting in 3.2 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-27 20:47:35,937 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #2
+2025-08-27 20:47:35,938 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:47:35,939 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:47:35,939 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:47:35,940 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:47:35,940 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:47:35,941 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 2: float division by zero
+2025-08-27 20:47:55,949 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #3
+2025-08-27 20:47:55,949 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:47:55,950 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:47:55,950 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:47:55,951 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:47:55,951 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:47:55,951 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 3: float division by zero
+2025-08-27 20:48:15,959 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #4
+2025-08-27 20:48:15,959 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:48:15,960 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:48:15,961 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:48:15,961 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:48:15,962 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:48:15,963 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 4: float division by zero
+2025-08-27 20:48:35,972 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #5
+2025-08-27 20:48:35,973 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:48:35,973 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:48:35,974 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:48:35,974 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:48:35,975 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:48:35,976 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 5: float division by zero
+2025-08-27 20:48:55,982 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #6
+2025-08-27 20:48:55,983 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:48:55,984 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:48:55,985 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:48:55,985 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:48:55,986 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:48:55,987 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 6: float division by zero
+2025-08-27 20:49:15,995 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #7
+2025-08-27 20:49:15,996 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:49:15,997 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:49:15,997 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:49:15,998 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:49:15,998 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:49:15,999 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 7: float division by zero
+2025-08-27 20:49:36,001 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #8
+2025-08-27 20:49:36,002 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:49:36,003 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:49:36,004 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:49:36,005 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:49:36,005 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:49:36,006 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 8: float division by zero
+2025-08-27 20:49:56,011 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #9
+2025-08-27 20:49:56,011 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:49:56,012 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:49:56,012 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:49:56,013 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:49:56,013 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:49:56,014 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 9: float division by zero
+2025-08-27 20:50:16,026 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #10
+2025-08-27 20:50:16,026 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:50:16,027 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:50:16,027 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:50:16,028 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:50:16,028 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:50:16,029 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 10: float division by zero
+2025-08-27 20:50:36,040 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #11
+2025-08-27 20:50:36,040 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:50:36,040 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:50:36,041 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:50:36,041 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:50:36,042 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:50:36,042 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 11: float division by zero
+2025-08-27 20:50:56,057 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #12
+2025-08-27 20:50:56,057 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:50:56,057 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:50:56,058 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:50:56,058 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:50:56,058 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:50:56,059 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 12: float division by zero
+2025-08-27 20:51:16,074 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #13
+2025-08-27 20:51:16,075 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:51:16,075 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:51:16,076 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:51:16,076 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:51:16,077 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:51:16,077 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 13: float division by zero
+2025-08-27 20:51:36,095 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #14
+2025-08-27 20:51:36,096 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:51:36,097 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:51:36,097 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:51:36,098 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:51:36,098 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:51:36,099 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 14: float division by zero
+2025-08-27 20:51:56,102 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #15
+2025-08-27 20:51:56,103 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:51:56,104 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:51:56,104 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:51:56,105 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:51:56,105 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:51:56,106 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 15: float division by zero
+2025-08-27 20:52:16,120 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #16
+2025-08-27 20:52:16,121 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:52:16,121 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:52:16,122 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:52:16,122 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:52:16,123 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:52:16,124 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 16: float division by zero
+2025-08-27 20:52:36,130 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #17
+2025-08-27 20:52:36,130 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:52:36,131 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:52:36,131 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:52:36,132 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:52:36,132 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:52:36,133 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 17: float division by zero
+2025-08-27 20:52:56,106 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #18
+2025-08-27 20:52:56,107 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:52:56,107 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:52:56,107 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:52:56,107 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:52:56,108 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:52:56,108 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 18: float division by zero
+2025-08-27 20:53:16,119 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #19
+2025-08-27 20:53:16,119 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:53:16,119 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:53:16,120 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:53:16,120 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:53:16,120 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:53:16,120 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 19: float division by zero
+2025-08-27 20:53:36,106 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #20
+2025-08-27 20:53:36,106 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:53:36,107 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:53:36,107 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:53:36,108 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:53:36,108 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:53:36,108 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 20: float division by zero
+2025-08-27 20:53:56,126 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #21
+2025-08-27 20:53:56,127 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:53:56,128 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:53:56,129 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:53:56,130 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:53:56,131 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:53:56,132 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 21: float division by zero
+2025-08-27 20:54:16,142 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #22
+2025-08-27 20:54:16,142 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:54:16,143 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:54:16,143 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:54:16,144 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:54:16,144 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:54:16,144 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 22: float division by zero
+2025-08-27 20:54:36,147 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #23
+2025-08-27 20:54:36,148 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:54:36,149 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:54:36,150 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:54:36,150 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:54:36,151 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:54:36,152 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 23: float division by zero
+2025-08-27 20:54:56,157 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #24
+2025-08-27 20:54:56,157 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:54:56,159 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:54:56,159 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:54:56,160 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:54:56,160 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:54:56,161 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 24: float division by zero
+2025-08-27 20:55:16,164 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #25
+2025-08-27 20:55:16,165 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:55:16,165 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:55:16,166 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:55:16,166 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:55:16,166 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:55:16,166 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 25: float division by zero
+2025-08-27 20:55:36,187 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #26
+2025-08-27 20:55:36,187 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:55:36,188 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:55:36,188 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:55:36,189 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:55:36,189 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:55:36,189 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 26: float division by zero
+2025-08-27 20:55:56,203 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #27
+2025-08-27 20:55:56,203 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:55:56,204 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:55:56,204 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:55:56,205 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:55:56,205 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:55:56,206 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 27: float division by zero
+2025-08-27 20:56:16,219 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #28
+2025-08-27 20:56:16,220 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:56:16,221 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:56:16,221 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:56:16,222 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:56:16,222 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:56:16,223 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 28: float division by zero
+2025-08-27 20:56:36,228 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #29
+2025-08-27 20:56:36,229 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:56:36,230 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:56:36,230 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:56:36,231 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:56:36,232 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:56:36,232 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 29: float division by zero
+2025-08-27 20:56:56,246 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #30
+2025-08-27 20:56:56,246 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:56:56,247 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:56:56,247 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:56:56,248 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:56:56,248 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:56:56,249 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 30: float division by zero
+2025-08-27 20:57:16,270 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #31
+2025-08-27 20:57:16,271 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:57:16,271 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:57:16,271 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:57:16,272 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:57:16,272 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:57:16,273 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 31: float division by zero
+2025-08-27 20:57:36,280 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #32
+2025-08-27 20:57:36,280 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:57:36,281 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:57:36,281 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:57:36,282 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:57:36,282 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:57:36,283 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 32: float division by zero
+2025-08-27 20:57:56,284 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #33
+2025-08-27 20:57:56,284 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:57:56,284 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:57:56,285 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:57:56,285 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:57:56,286 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:57:56,286 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 33: float division by zero
+2025-08-27 20:58:16,288 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #34
+2025-08-27 20:58:16,288 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:58:16,288 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:58:16,289 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:58:16,289 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:58:16,289 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:58:16,290 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 34: float division by zero
+2025-08-27 20:58:36,299 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #35
+2025-08-27 20:58:36,300 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:58:36,300 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:58:36,300 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:58:36,301 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:58:36,301 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:58:36,301 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 35: float division by zero
+2025-08-27 20:58:56,315 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #36
+2025-08-27 20:58:56,316 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:58:56,316 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:58:56,317 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:58:56,318 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:58:56,318 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:58:56,319 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 36: float division by zero
+2025-08-27 20:59:16,327 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #37
+2025-08-27 20:59:16,328 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:59:16,328 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:59:16,329 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:59:16,330 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:59:16,331 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:59:16,332 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 37: float division by zero
+2025-08-27 20:59:36,334 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #38
+2025-08-27 20:59:36,335 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:59:36,335 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:59:36,336 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:59:36,337 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:59:36,337 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:59:36,338 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 38: float division by zero
+2025-08-27 20:59:56,332 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #39
+2025-08-27 20:59:56,333 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 20:59:56,333 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 20:59:56,334 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 20:59:56,334 - __main__ - INFO -    Open Orders: 0
+2025-08-27 20:59:56,335 - __main__ - INFO -    Active Positions: None
+2025-08-27 20:59:56,335 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 39: float division by zero
+2025-08-27 21:00:16,347 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #40
+2025-08-27 21:00:16,347 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:00:16,348 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:00:16,348 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:00:16,348 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:00:16,348 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:00:16,349 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 40: float division by zero
+2025-08-27 21:00:36,351 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #41
+2025-08-27 21:00:36,351 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:00:36,352 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:00:36,352 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:00:36,352 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:00:36,353 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:00:36,353 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 41: float division by zero
+2025-08-27 21:00:56,356 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #42
+2025-08-27 21:00:56,356 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:00:56,357 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:00:56,357 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:00:56,358 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:00:56,358 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:00:56,359 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 42: float division by zero
+2025-08-27 21:01:16,361 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #43
+2025-08-27 21:01:16,362 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:01:16,363 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:01:16,363 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:01:16,363 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:01:16,364 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:01:16,364 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 43: float division by zero
+2025-08-27 21:01:36,380 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #44
+2025-08-27 21:01:36,380 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:01:36,381 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:01:36,381 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:01:36,382 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:01:36,382 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:01:36,383 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 44: float division by zero
+2025-08-27 21:01:56,355 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #45
+2025-08-27 21:01:56,355 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:01:56,356 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:01:56,356 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:01:56,357 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:01:56,358 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:01:56,358 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 45: float division by zero
+2025-08-27 21:02:16,366 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #46
+2025-08-27 21:02:16,366 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:02:16,367 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:02:16,367 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:02:16,367 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:02:16,368 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:02:16,368 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 46: float division by zero
+2025-08-27 21:02:36,366 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #47
+2025-08-27 21:02:36,367 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:02:36,367 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:02:36,368 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:02:36,368 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:02:36,368 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:02:36,368 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 47: float division by zero
+2025-08-27 21:02:56,364 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #48
+2025-08-27 21:02:56,366 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:02:56,368 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:02:56,369 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:02:56,370 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:02:56,371 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:02:56,374 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 48: float division by zero
+2025-08-27 21:03:16,367 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #49
+2025-08-27 21:03:16,368 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:03:16,368 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:03:16,369 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:03:16,369 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:03:16,370 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:03:16,370 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 49: float division by zero
+2025-08-27 21:03:36,381 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #50
+2025-08-27 21:03:36,382 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:03:36,382 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:03:36,383 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:03:36,383 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:03:36,384 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:03:36,384 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 50: float division by zero
+2025-08-27 21:03:56,385 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #51
+2025-08-27 21:03:56,386 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:03:56,387 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:03:56,388 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:03:56,388 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:03:56,389 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:03:56,389 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 51: float division by zero
+2025-08-27 21:04:16,404 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #52
+2025-08-27 21:04:16,405 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:04:16,407 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:04:16,408 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:04:16,409 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:04:16,410 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:04:16,411 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 52: float division by zero
+2025-08-27 21:04:36,415 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #53
+2025-08-27 21:04:36,415 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:04:36,415 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:04:36,416 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:04:36,416 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:04:36,417 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:04:36,417 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 53: float division by zero
+2025-08-27 21:04:56,435 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #54
+2025-08-27 21:04:56,436 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:04:56,437 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:04:56,437 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:04:56,437 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:04:56,437 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:04:56,438 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 54: float division by zero
+2025-08-27 21:05:16,457 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #55
+2025-08-27 21:05:16,457 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:05:16,457 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:05:16,458 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:05:16,458 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:05:16,458 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:05:16,459 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 55: float division by zero
+2025-08-27 21:05:36,461 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #56
+2025-08-27 21:05:36,462 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:05:36,462 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:05:36,462 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:05:36,463 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:05:36,463 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:05:36,463 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 56: float division by zero
+2025-08-27 21:05:56,471 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #57
+2025-08-27 21:05:56,474 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:05:56,474 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:05:56,475 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:05:56,475 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:05:56,475 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:05:56,476 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 57: float division by zero
+2025-08-27 21:06:16,472 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #58
+2025-08-27 21:06:16,473 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:06:16,474 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:06:16,474 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:06:16,475 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:06:16,476 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:06:16,477 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 58: float division by zero
+2025-08-27 21:06:36,472 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #59
+2025-08-27 21:06:36,472 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:06:36,473 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:06:36,474 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:06:36,474 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:06:36,475 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:06:36,475 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 59: float division by zero
+2025-08-27 21:06:56,467 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #60
+2025-08-27 21:06:56,468 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:06:56,468 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:06:56,469 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:06:56,469 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:06:56,469 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:06:56,470 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 60: float division by zero
+2025-08-27 21:07:16,469 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #61
+2025-08-27 21:07:16,470 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:07:16,471 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:07:16,472 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:07:16,473 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:07:16,473 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:07:16,474 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 61: float division by zero
+2025-08-27 21:07:36,474 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #62
+2025-08-27 21:07:36,475 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:07:36,475 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:07:36,476 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:07:36,476 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:07:36,477 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:07:36,477 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 62: float division by zero
+2025-08-27 21:07:56,483 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #63
+2025-08-27 21:07:56,484 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:07:56,485 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:07:56,485 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:07:56,486 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:07:56,486 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:07:56,487 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 63: float division by zero
+2025-08-27 21:08:16,486 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #64
+2025-08-27 21:08:16,486 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:08:16,487 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:08:16,487 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:08:16,488 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:08:16,489 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:08:16,489 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 64: float division by zero
+2025-08-27 21:08:36,501 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #65
+2025-08-27 21:08:36,559 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:08:36,813 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:08:36,816 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:08:36,820 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:08:36,840 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:08:36,841 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 65: float division by zero
+2025-08-27 21:08:56,851 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #66
+2025-08-27 21:08:56,852 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:08:56,852 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:08:56,853 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:08:56,854 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:08:56,854 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:08:56,854 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 66: float division by zero
+2025-08-27 21:09:16,868 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #67
+2025-08-27 21:09:16,869 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:09:16,870 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:09:16,870 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:09:16,871 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:09:16,871 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:09:16,872 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 67: float division by zero
+2025-08-27 21:09:36,892 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #68
+2025-08-27 21:09:36,892 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:09:36,893 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:09:36,893 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:09:36,893 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:09:36,894 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:09:36,894 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 68: float division by zero
+2025-08-27 21:09:56,893 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #69
+2025-08-27 21:09:56,893 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:09:56,893 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:09:56,894 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:09:56,894 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:09:56,894 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:09:56,894 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 69: float division by zero
+2025-08-27 21:10:16,894 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #70
+2025-08-27 21:10:16,894 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:10:16,894 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:10:16,894 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:10:16,895 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:10:16,895 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:10:16,895 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 70: float division by zero
+2025-08-27 21:10:36,900 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #71
+2025-08-27 21:10:36,901 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:10:36,902 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:10:36,902 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:10:36,903 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:10:36,903 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:10:36,904 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 71: float division by zero
+2025-08-27 21:10:56,923 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #72
+2025-08-27 21:10:56,924 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:10:56,924 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:10:56,924 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:10:56,925 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:10:56,925 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:10:56,926 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 72: float division by zero
+2025-08-27 21:11:16,937 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #73
+2025-08-27 21:11:16,938 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:11:16,938 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:11:16,939 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:11:16,940 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:11:16,940 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:11:16,941 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 73: float division by zero
+2025-08-27 21:11:36,942 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #74
+2025-08-27 21:11:36,942 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:11:36,943 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:11:36,943 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:11:36,944 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:11:36,944 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:11:36,945 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 74: float division by zero
+2025-08-27 21:11:56,948 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #75
+2025-08-27 21:11:56,948 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-08-27 21:11:56,949 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-27 21:11:56,949 - __main__ - INFO -    Total Volume: $0.00
+2025-08-27 21:11:56,950 - __main__ - INFO -    Open Orders: 0
+2025-08-27 21:11:56,950 - __main__ - INFO -    Active Positions: None
+2025-08-27 21:11:56,951 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 75: float division by zero
+2025-08-28 01:19:34,062 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-08-28 01:19:34,062 - __main__ - INFO - ======================================================================
+2025-08-28 01:19:34,062 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-08-28 01:19:34,062 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-08-28 01:19:34,062 - __main__ - INFO - ======================================================================
+2025-08-28 01:19:34,062 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-08-28 01:19:34,062 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-08-28 01:19:34,062 - __main__ - INFO - [CONFIG] RPC: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+2025-08-28 01:19:34,062 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-08-28 01:19:34,062 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-08-28 01:19:34,066 - __main__ - ERROR - [ERROR] REAL Drift client initialization failed
+2025-08-28 01:19:34,066 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-08-28 01:19:34,066 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-28 01:19:34,066 - root - INFO - [SUCCESS] Real beta client closed successfully
+2025-08-28 01:19:34,066 - root - INFO - ======================================================================
+2025-08-28 01:19:34,068 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-08-28 01:19:34,068 - root - INFO - ======================================================================
+2025-08-28 01:19:34,068 - root - INFO - Total Iterations: 0
+2025-08-28 01:19:34,068 - root - INFO - Net Exposure: $0.00
+2025-08-28 01:19:34,068 - root - INFO - Total Volume: $0.00
+2025-08-28 01:19:34,068 - root - INFO - Errors: None - Clean real beta session!
+2025-08-28 01:19:34,069 - root - INFO - ======================================================================

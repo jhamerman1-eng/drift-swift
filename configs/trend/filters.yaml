@@ -1,0 +1,7 @@
+rbc_filters:
+  enabled: true
+  adx_min: 15
+  atr_mult: 1.7
+anti_chop:
+  enabled: true
+  window: 50

@@ -1,0 +1,71 @@
+# RPC Endpoints Configuration
+# This file contains RPC endpoint configurations for different environments
+# The system will automatically failover between endpoints when they error out or hit rate limits
+
+mainnet:
+  endpoints:
+    - name: "Alchemy (your key)"
+      http: "https://solana-mainnet.g.alchemy.com/v2/kjEqbEv7evHlXvQf4LZeU"
+      ws: "wss://solana-mainnet.g.alchemy.com/v2/kjEqbEv7evHlXvQf4LZeU"
+      priority: 100
+      max_rps: 100
+      timeout: 5.0
+      retry_after: 60.0
+      description: "Your primary Alchemy mainnet endpoint"
+    
+    - name: "Solana Labs"
+      http: "https://api.mainnet-beta.solana.com"
+      ws: "wss://api.mainnet-beta.solana.com"
+      priority: 50
+      max_rps: 50
+      timeout: 10.0
+      retry_after: 30.0
+      description: "Official Solana Labs endpoint (fallback)"
+    
+    - name: "Alchemy Demo"
+      http: "https://solana-mainnet.g.alchemy.com/v2/demo"
+      ws: "wss://solana-mainnet.g.alchemy.com/v2/demo"
+      priority: 25
+      max_rps: 20
+      timeout: 15.0
+      retry_after: 120.0
+      description: "Alchemy demo endpoint (last resort)"
+
+devnet:
+  endpoints:
+    - name: "Alchemy Devnet (your key)"
+      http: "https://solana-devnet.g.alchemy.com/v2/kjEqbEv7evHlXvQf4LZeU"
+      ws: "wss://solana-devnet.g.alchemy.com/v2/kjEqbEv7evHlXvQf4LZeU"
+      priority: 100
+      max_rps: 100
+      timeout: 5.0
+      retry_after: 60.0
+      description: "Your primary Alchemy devnet endpoint"
+    
+    - name: "Helius Devnet"
+      http: "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
+      ws: "wss://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
+      priority: 75
+      max_rps: 80
+      timeout: 8.0
+      retry_after: 45.0
+      description: "Helius devnet endpoint (secondary fallback)"
+    
+    - name: "Solana Labs Devnet"
+      http: "https://api.devnet.solana.com"
+      ws: "wss://api.devnet.solana.com"
+      priority: 50
+      max_rps: 50
+      timeout: 10.0
+      retry_after: 30.0
+      description: "Official Solana Labs devnet endpoint (last resort)"
+
+# Configuration Notes:
+# - priority: Higher numbers = higher priority (100 = highest)
+# - max_rps: Maximum requests per second for rate limiting
+# - timeout: Request timeout in seconds
+# - retry_after: Seconds to wait after rate limiting before retrying
+# - The system automatically fails over to the next available endpoint
+# - Health checks run every 30 seconds in the background
+# - Endpoints are marked as failed after 3 consecutive failures
+# - Rate-limited endpoints are automatically excluded until cooldown period

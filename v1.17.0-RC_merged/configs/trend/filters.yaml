@@ -1,0 +1,9 @@
+# Trend Anti-Chop & RBC Filters (STUB)
+filters:
+  atr_period: 14
+  atr_min: 0.8       # TODO: calibrate
+  adx_period: 14
+  adx_min: 18        # TODO: calibrate
+  rbc:
+    lookback_bars: 96
+    regime_names: ["trend","range"]

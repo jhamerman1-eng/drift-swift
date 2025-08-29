@@ -1,0 +1,21 @@
+{
+  "version": "legacy",
+  "instructions": [
+    {
+      "programId": "dRiftyHA39MWEi3m9aunc5MzRF1JYuBsbn6VPcn33UH",
+      "accounts": [
+        {
+          "pubkey": "11111111111111111111111111111111",
+          "isSigner": false,
+          "isWritable": false
+        },
+        {
+          "pubkey": "11111111111111111111111111111111",
+          "isSigner": false,
+          "isWritable": false
+        }
+      ],
+      "data": "eyJwcm9ncmFtSWQiOiAiZFJpZnR5SEEzOU1XRWkzbTlhdW5jNU16UkYxSll1QnNibjZWUGNuMzNVSCIsICJpbnN0cnVjdGlvbiI6ICJwbGFjZVBlcnBPcmRlciIsICJkYXRhIjogeyJtYXJrZXRJbmRleCI6IDAsICJzaWRlIjogImJ1eSIsICJvcmRlclR5cGUiOiAibGltaXQiLCAiYmFzZUFzc2V0QW1vdW50IjogMjUwMDAwMDAsICJwcmljZSI6IDE0OTUwMDAwMCwgInBvc3RPbmx5IjogdHJ1ZSwgInJlZHVjZU9ubHkiOiBmYWxzZSwgIm1hcmtldFR5cGUiOiAicGVycCJ9fQ=="
+    }
+  ]
+}
