@@ -1,27 +1,7 @@
 hedge:
   enabled: true
   urgency_scoring: true
-  max_inventory_usd: 5000
-  urgency_threshold: 0.7
-
-  # Guardrails to prevent division by zero errors
-  guardrails:
-    eps_price: 1e-6
-    eps_atr: 1e-9
-    min_equity_usd: 0.01
-    on_invalid: skip   # skip | clamp
-
-  # Execution routes based on urgency
   route:
-    ioc:
-      max_slippage_bps: 10
-      venues: ["CEX:BINANCE", "DEX_DRIFT"]
-    passive:
-      max_slippage_bps: 5
-      venues: ["DEX_DRIFT"]
-
-  # Legacy format (for backward compatibility)
-  legacy_routes:
     - venue: "CEX:BINANCE"
       mode: "IOC"
     - venue: "CEX:OKX"

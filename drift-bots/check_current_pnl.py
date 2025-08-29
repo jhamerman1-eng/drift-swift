@@ -13,7 +13,7 @@ def main():
     client = EnhancedMockDriftClient("SOL-PERP", start=150.0)
     
     print(f"📊 Market: {client.market}")
-    print(f"💰 Starting Balance: $1000.00")
+    print(f"💰 Starting Balance: $5000.00")
     
     # Simulate some trading activity
     print(f"\n🔄 Simulating trading activity...")

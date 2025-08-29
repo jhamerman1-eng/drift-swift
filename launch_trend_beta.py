@@ -55,11 +55,11 @@ class TrendBetaLauncher:
         try:
             logger.info("Initializing Trend Bot for beta.drift.trade...")
 
-            # Set beta environment variables
+            # Set devnet environment variables (using devnet for safety)
             os.environ["USE_MOCK"] = "false"
-            os.environ["DRIFT_RPC_URL"] = "https://api.mainnet-beta.solana.com"
-            os.environ["DRIFT_WS_URL"] = "wss://api.mainnet-beta.solana.com"
-            os.environ["DRIFT_KEYPAIR_PATH"] = "test_keypair.json"
+            os.environ["DRIFT_RPC_URL"] = "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
+            os.environ["DRIFT_WS_URL"] = "wss://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
+            os.environ["DRIFT_KEYPAIR_PATH"] = ".valid_wallet.json"
 
             # Build client from config
             self.client = await build_client_from_config("configs/core/drift_client.yaml")
@@ -67,8 +67,9 @@ class TrendBetaLauncher:
             logger.info("Trend Bot client initialized successfully!")
             logger.info("Strategy: MACD + Momentum with Anti-Chop Filters")
             logger.info("Target: SOL-PERP on Drift Protocol")
-            logger.info("Orders will be visible on beta.drift.trade")
-            logger.warning("WARNING: REAL MONEY - USE WITH CAUTION")
+            logger.info("Environment: Devnet (Test Network)")
+            logger.info("Orders will be visible on devnet.drift.trade")
+            logger.warning("WARNING: TEST NETWORK - SAFE TO USE")
 
             return True
 
@@ -135,12 +136,12 @@ class TrendBetaLauncher:
     async def show_startup_banner(self):
         """Display startup information."""
         print("=" * 80)
-        print("TREND BOT LAUNCHING IN BETA MODE")
+        print("TREND BOT LAUNCHING IN DEVNET MODE")
         print("=" * 80)
         print("Strategy: MACD + Momentum with Anti-Chop Filters")
         print("Target: SOL-PERP on Drift Protocol")
-        print("Environment: beta.drift.trade")
-        print("Mode: REAL TRADING (use with caution!)")
+        print("Environment: Devnet (Test Network)")
+        print("Mode: TEST TRADING (safe to use!)")
         print("=" * 80)
         print("Press Ctrl+C to stop gracefully")
         print()

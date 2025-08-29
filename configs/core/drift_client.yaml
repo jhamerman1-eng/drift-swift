@@ -1,15 +1,19 @@
-cluster: ${ENV:testnet}  # testnet|devnet|mainnet
-driver: ${DRIVER:driftpy}  # swift|driftpy|mock
-use_mock: ${USE_MOCK:false}  # true for mock mode, false for real client
+cluster: devnet
+driver: driftpy
 
 rpc:
-  http_url: ${DRIFT_RPC_URL:https://api.mainnet-beta.solana.com}
-  ws_url: ${DRIFT_WS_URL:wss://api.mainnet-beta.solana.com}
+  http_url: https://api.devnet.solana.com
+  ws_url: wss://api.devnet.solana.com
 
 swift:
-  http_url: ${SWIFT_HTTP_URL:http://localhost:8787}
-  ws_url: ${SWIFT_WS_URL:ws://localhost:8787/ws}
+  http_url: https://swift.drift.trade
+  ws_url: wss://swift.drift.trade/ws
 
 wallets:
-  maker_keypair_path: ${KEYPAIR_PATH:test_keypair.json}
-  jito_keypair_path: ${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}
+  maker_keypair_path: .valid_wallet.json
+  jito_keypair_path: .swift_test_wallet.json
+
+# SOL-PERP market index (0 = SOL-PERP)
+market_index: 0
+
+use_mock: true

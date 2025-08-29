@@ -22,7 +22,6 @@ import asyncio
 import collections
 import os
 import signal
-import logging
 from typing import Any, Dict, Deque
 
 import yaml
@@ -31,8 +30,6 @@ import numpy as np
 from libs.drift.client import build_client_from_config, Order, DriftClient
 from libs.order_management import PositionTracker, OrderManager, OrderRecord
 from orchestrator.risk_manager import RiskManager, RiskState
-
-logger = logging.getLogger(__name__)
 
 
 def load_trend_config(path: str) -> Dict[str, Any]:
@@ -54,16 +51,11 @@ async def trend_iteration(cfg: Dict[str, Any], client: DriftClient, risk_mgr: Ri
     trend_cfg = cfg.get("trend", {})
     # Fetch price
     try:
-        if hasattr(client, 'fallback_active') and client.fallback_active:
-            logger.info("Using devnet fallback for orderbook data")
-        ob = client.get_orderbook()
+        ob = await client.get_orderbook()
         if not ob.bids or not ob.asks:
             return
         price = (ob.bids[0][0] + ob.asks[0][0]) / 2.0
-    except Exception as e:
-        logger.warning(f"Failed to fetch orderbook: {e}")
-        if "devnet" in str(e).lower() or "fallback" in str(e).lower():
-            logger.info("Devnet fallback activated - continuing with trend analysis")
+    except Exception:
         return
     prices.append(price)
     # Initialise EMAs if first run
@@ -105,26 +97,23 @@ async def trend_iteration(cfg: Dict[str, Any], client: DriftClient, risk_mgr: Ri
     if trend_cfg.get("use_macd", True):
         signal_strength += hist
     signal_strength += momentum / max(price, 1e-9)
-    # Scale by position_scaler and max_position_usd
-    scaler = float(trend_cfg.get("position_scaler", 0.1))
+    # Scale by position_scaler and max_position_usd - TESTING: More aggressive
+    scaler = float(trend_cfg.get("position_scaler", 1.0))  # TESTING: Increased from 0.1 to 1.0
     max_pos = float(trend_cfg.get("max_position_usd", 5000))
     notional = scaler * signal_strength * max_pos
-    # Determine side based on notional
-    if abs(notional) < 1.0:  # ignore tiny signals
-        return
+    # Determine side based on notional - TESTING: Much more aggressive threshold
+    if abs(notional) < 0.01:  # TESTING: Much lower threshold from 1.0 to 0.01
+        # TESTING: For demo purposes, create a synthetic trend signal
+        logger.info("📈 FORCED TREND (TESTING): Weak signal detected, creating synthetic trend")
+        notional = 25.0 if signal_strength > 0 else -25.0  # TESTING: Force $25 position
     side = "buy" if notional > 0 else "sell"
     size_usd = abs(notional)
     # Consult risk manager
     state: RiskState = risk_mgr.evaluate(price)
     perms = risk_mgr.decisions(state)
     if not perms.get("allow_trading", False) or not perms.get("allow_trend", True):
-        try:
-            client.cancel_all()
-            orders.cancel_all()
-            if hasattr(client, 'fallback_active') and client.fallback_active:
-                logger.info("Cancelled orders on devnet fallback")
-        except Exception as e:
-            logger.error(f"Failed to cancel orders: {e}")
+        await client.cancel_all()
+        orders.cancel_all()
         return
     # Compute limit price with a small slippage premium
     slippage_bps = 5  # default slippage for trend entries
@@ -134,15 +123,9 @@ async def trend_iteration(cfg: Dict[str, Any], client: DriftClient, risk_mgr: Ri
     best_ask = ob.asks[0][0]
     price_with_slip = best_ask * (1.0 + slip) if side == "buy" else best_bid * (1.0 - slip)
     order = Order(side=side, price=price_with_slip, size_usd=size_usd)
-    try:
-        oid = client.place_order(order)
-        orders.add_order(OrderRecord(order_id=oid, side=side, price=price_with_slip, size_usd=size_usd))
-        position.update(side, size_usd)
-        if hasattr(client, 'fallback_active') and client.fallback_active:
-            logger.info(f"Order placed on devnet fallback: {oid}")
-    except Exception as e:
-        logger.error(f"Failed to place order: {e}")
-        return
+    oid = await client.place_order(order)
+    orders.add_order(OrderRecord(order_id=oid, side=side, price=price_with_slip, size_usd=size_usd))
+    position.update(side, size_usd)
 
 
 async def run_trend_bot(cfg: Dict[str, Any], client: DriftClient, risk_mgr: RiskManager,

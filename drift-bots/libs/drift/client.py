@@ -609,7 +609,7 @@ class DriftpyClient:
                     
             else:
                 # Enhanced placeholder mode
-        return Orderbook(bids=[(149.50, 10.0), (149.40, 15.0)], asks=[(150.50, 10.0), (150.60, 15.0)])
+                return Orderbook(bids=[(149.50, 10.0), (149.40, 15.0)], asks=[(150.50, 10.0), (150.60, 15.0)])
         except Exception as e:
             print(f"[DRIFTPY] Error getting real orderbook: {e}")
             print(f"[DRIFTPY] Falling back to enhanced mock orderbook")
@@ -883,16 +883,22 @@ except ImportError as e:
 
 async def build_client_from_config(cfg_path: str) -> DriftClient:
     """Builder reads YAML with env‑var interpolation and returns a client."""
+    import json
+    from solana.rpc.async_api import AsyncClient
+    from solders.keypair import Keypair
+    from anchorpy.provider import Wallet
+    from driftpy.account_subscription_config import AccountSubscriptionConfig
+
     text = os.path.expandvars(open(cfg_path, "r").read())
     cfg = yaml.safe_load(text)
     env = cfg.get("env", "testnet")
     market = cfg.get("market", "SOL-PERP")
-    
+
     # Check driver mode
     driver = cfg.get("driver", "driftpy").lower()
-    
+
     logger.info(f"Building client with driver: {driver} for {market} ({env})")
-    
+
     if driver == "hybrid":
         # Use our working hybrid solution
         logger.info(f"Using Hybrid driver for {market} ({env})")
@@ -902,47 +908,56 @@ async def build_client_from_config(cfg_path: str) -> DriftClient:
             secret = cfg.get("wallet_secret_key") or os.getenv("DRIFT_KEYPAIR_PATH")
             if not rpc or not secret:
                 raise RuntimeError("rpc_url and wallet_secret_key are required for hybrid driver")
-            
+
             # Create a wrapper that implements the DriftClient interface
             class HybridClientWrapper:
                 def __init__(self, trader: SolanaCLITrader):
                     self.trader = trader
                     self.market = market
-                
+
                 def place_order(self, order: Order) -> str:
                     return self.trader.place_drift_order(order)
-                
+
                 def get_orderbook(self) -> Orderbook:
                     # Return simulated orderbook for now
                     return Orderbook(bids=[(149.50, 10.0), (149.40, 15.0)], asks=[(150.50, 10.0), (150.60, 15.0)])
-                
+
                 def cancel_all(self) -> None:
                     print("[HYBRID] Cancelling all orders...")
-                
+
                 async def close(self) -> None:
                     print("[HYBRID] Client closed")
-            
+
             trader = SolanaCLITrader(secret, rpc, env)
             return HybridClientWrapper(trader)
-            
+
         except ImportError as e:
             logger.warning(f"Hybrid driver not available: {e}, falling back to mock")
             return EnhancedMockDriftClient(market=market)
-    
+
     elif driver == "swift" and SWIFT_AVAILABLE:
         logger.info(f"Using Swift driver for {market} ({env})")
         return create_swift_driver(cfg)
     elif driver == "driftpy":
-        # Fix the configuration mapping to match the YAML structure
-        rpc = cfg.get("rpc", {}).get("http_url") or os.getenv("DRIFT_HTTP_URL")
-        ws = cfg.get("rpc", {}).get("ws_url") or os.getenv("DRIFT_WS_URL")
-        secret = cfg.get("wallets", {}).get("maker_keypair_path") or os.getenv("DRIFT_KEYPAIR_PATH")
-        if not rpc or not secret:
-            raise RuntimeError("rpc.http_url and wallets.maker_keypair_path are required for DriftPy client")
+        # FIXED: Use correct DriftClient constructor
+        rpc = cfg.get("rpc", {}).get("http_url") or cfg.get("rpc_url") or os.getenv("DRIFT_RPC_URL")
+        ws = cfg.get("rpc", {}).get("ws_url") or cfg.get("ws_url") or os.getenv("DRIFT_WS_URL")
+        secret_path = cfg.get("wallets", {}).get("maker_keypair_path") or cfg.get("wallet_secret_key") or os.getenv("DRIFT_KEYPAIR_PATH")
+
+        if not rpc or not secret_path:
+            raise RuntimeError("rpc_url and wallet_secret_key are required for DriftPy client")
+
         logger.info(f"Using DriftpyClient for {market} ({env}) via {rpc}")
-        client = DriftpyClient(rpc_url=rpc, wallet_secret_key=secret, market=market, ws_url=ws)
-        await client.initialize() # Call initialize after client is created
-        return client
+
+        # Load wallet secret key
+        secret = json.load(open(secret_path, "r", encoding="utf-8"))
+        kp = Keypair.from_bytes(bytes(secret))
+        wallet = Wallet(kp)
+        conn = AsyncClient(rpc)
+        subcfg = AccountSubscriptionConfig.default() if not ws else AccountSubscriptionConfig(ws_url=ws)
+        dc = DriftClient(connection=conn, wallet=wallet, env=env, account_subscription=subcfg)
+        await dc.subscribe()
+        return dc
     else:
         # Default to enhanced mock
         logger.info(f"Using Enhanced MockDriftClient for {market} ({env})")

@@ -1,0 +1,24 @@
+2025-08-27 13:22:04,501 - __main__ - INFO - [MM-BETA] Starting JIT Market Making Bot on Beta Blockchain
+2025-08-27 13:22:04,502 - __main__ - INFO - ============================================================
+2025-08-27 13:22:04,502 - __main__ - INFO - [MM-BETA] Configuration: 5bps spread, $50 quote size
+2025-08-27 13:22:04,502 - __main__ - INFO - [MM-BETA] Target: Beta.drift.trade (REAL BLOCKCHAIN)
+2025-08-27 13:22:04,503 - __main__ - INFO - ============================================================
+2025-08-27 13:22:04,503 - __main__ - INFO - [MM-BETA] Connecting to Beta blockchain...
+2025-08-27 13:22:04,506 - libs.drift.client - INFO - Config loaded - env: testnet, market: SOL-PERP, driver: swift_sidecar, use_mock: False
+2025-08-27 13:22:04,506 - libs.drift.client - INFO - [DRIVER] SwiftSidecar mode=FORWARD base=https://swift.drift.trade
+2025-08-27 13:22:04,565 - libs.drift.client - INFO - Initializing DriftpyClient with fallback: True
+2025-08-27 13:22:10,195 - __main__ - ERROR - [MM-BETA] Bot error: Failed to initialize driftpy client: TooShort
+2025-08-27 13:22:10,200 - __main__ - INFO - [MM-BETA] Shutting down Beta bot...
+2025-08-27 13:22:10,201 - __main__ - INFO - [MM-BETA] Beta bot stopped successfully.
+2025-08-27 13:29:30,275 - __main__ - INFO - [MM-BETA] Starting JIT Market Making Bot on Beta Blockchain
+2025-08-27 13:29:30,276 - __main__ - INFO - ============================================================
+2025-08-27 13:29:30,276 - __main__ - INFO - [MM-BETA] Configuration: 5bps spread, $50 quote size
+2025-08-27 13:29:30,277 - __main__ - INFO - [MM-BETA] Target: Beta.drift.trade (REAL BLOCKCHAIN)
+2025-08-27 13:29:30,277 - __main__ - INFO - ============================================================
+2025-08-27 13:29:30,277 - __main__ - INFO - [MM-BETA] Connecting to Beta blockchain...
+2025-08-27 13:29:30,280 - libs.drift.client - INFO - Config loaded - env: testnet, market: SOL-PERP, driver: swift_sidecar, use_mock: False
+2025-08-27 13:29:30,280 - libs.drift.client - INFO - [DRIVER] SwiftSidecar mode=FORWARD base=https://swift.drift.trade
+2025-08-27 13:29:30,292 - libs.drift.client - INFO - Initializing DriftpyClient with fallback: True
+2025-08-27 13:29:31,822 - __main__ - ERROR - [MM-BETA] Bot error: Failed to initialize driftpy client: TooShort
+2025-08-27 13:29:31,826 - __main__ - INFO - [MM-BETA] Shutting down Beta bot...
+2025-08-27 13:29:31,826 - __main__ - INFO - [MM-BETA] Beta bot stopped successfully.

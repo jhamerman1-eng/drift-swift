@@ -474,3 +474,273 @@
 2025-08-27 04:12:31,584 - root - INFO - Total Volume: $0.00
 2025-08-27 04:12:31,585 - root - INFO - Errors: None - Clean beta session!
 2025-08-27 04:12:31,585 - root - INFO - ======================================================================
+2025-08-29 02:44:40,491 - __main__ - WARNING - [CONFIG] Using default guardrail values
+2025-08-29 02:44:40,495 - __main__ - INFO - [LAUNCH] Starting Hedge Bot for devnet.drift.trade
+2025-08-29 02:44:40,495 - __main__ - INFO - ======================================================================
+2025-08-29 02:44:40,496 - __main__ - INFO - [IMPORTANT] This will place TEST orders on devnet.drift.trade!
+2025-08-29 02:44:40,496 - __main__ - INFO - [INFO] Devnet environment uses test SOL (no real value)
+2025-08-29 02:44:40,497 - __main__ - INFO - ======================================================================
+2025-08-29 02:44:40,497 - __main__ - INFO - [INIT] Initializing Drift client for beta.drift.trade...
+2025-08-29 02:44:41,074 - libs.drift.client - ERROR - Failed to build client from config: DriftpyClient.__init__() got an unexpected keyword argument 'connection'
+2025-08-29 02:44:41,074 - __main__ - ERROR - [ERROR] Failed to initialize beta client: DriftpyClient.__init__() got an unexpected keyword argument 'connection'
+2025-08-29 02:44:41,077 - __main__ - ERROR - [ERROR] Beta client initialization failed - aborting
+2025-08-29 02:44:41,078 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-29 02:44:41,079 - root - INFO - ======================================================================
+2025-08-29 02:44:41,079 - root - INFO - [SUMMARY] DEVNET HEDGE TRADING SESSION COMPLETE
+2025-08-29 02:44:41,080 - root - INFO - ======================================================================
+2025-08-29 02:44:41,080 - root - INFO - Total Iterations: 0
+2025-08-29 02:44:41,081 - root - INFO - Net Exposure: $0.00
+2025-08-29 02:44:41,081 - root - INFO - Total Volume: $0.00
+2025-08-29 02:44:41,081 - root - WARNING - Errors Encountered: 1
+2025-08-29 02:44:41,082 - root - WARNING -   1. Client initialization failed: DriftpyClient.__init__() got an unexpected keyword argument 'connection'
+2025-08-29 02:44:41,082 - root - INFO - ======================================================================
+2025-08-29 02:49:40,106 - __main__ - WARNING - [CONFIG] Using default guardrail values
+2025-08-29 02:49:40,111 - __main__ - INFO - [LAUNCH] Starting Hedge Bot for devnet.drift.trade
+2025-08-29 02:49:40,112 - __main__ - INFO - ======================================================================
+2025-08-29 02:49:40,112 - __main__ - INFO - [IMPORTANT] This will place TEST orders on devnet.drift.trade!
+2025-08-29 02:49:40,113 - __main__ - INFO - [INFO] Devnet environment uses test SOL (no real value)
+2025-08-29 02:49:40,114 - __main__ - INFO - ======================================================================
+2025-08-29 02:49:40,114 - __main__ - INFO - [INIT] Initializing Drift client for beta.drift.trade...
+2025-08-29 02:49:41,087 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-29 02:49:41,324 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-29 02:49:41,611 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-29 02:49:41,704 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-29 02:49:42,725 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-29 02:49:42,865 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-29 02:49:42,866 - libs.drift.client - INFO - User account initialized
+2025-08-29 02:49:42,866 - libs.drift.client - ERROR - Failed to build client from config: 'DriftpyClient' object has no attribute '_user_subscribed'
+2025-08-29 02:49:42,866 - __main__ - ERROR - [ERROR] Failed to initialize beta client: 'DriftpyClient' object has no attribute '_user_subscribed'
+2025-08-29 02:49:42,867 - __main__ - ERROR - [ERROR] Beta client initialization failed - aborting
+2025-08-29 02:49:42,867 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-29 02:49:42,867 - root - INFO - ======================================================================
+2025-08-29 02:49:42,867 - root - INFO - [SUMMARY] DEVNET HEDGE TRADING SESSION COMPLETE
+2025-08-29 02:49:42,867 - root - INFO - ======================================================================
+2025-08-29 02:49:42,868 - root - INFO - Total Iterations: 0
+2025-08-29 02:49:42,868 - root - INFO - Net Exposure: $0.00
+2025-08-29 02:49:42,868 - root - INFO - Total Volume: $0.00
+2025-08-29 02:49:42,868 - root - WARNING - Errors Encountered: 1
+2025-08-29 02:49:42,868 - root - WARNING -   1. Client initialization failed: 'DriftpyClient' object has no attribute '_user_subscribed'
+2025-08-29 02:49:42,869 - root - INFO - ======================================================================
+2025-08-29 02:50:01,482 - __main__ - WARNING - [CONFIG] Using default guardrail values
+2025-08-29 02:50:01,486 - __main__ - INFO - [LAUNCH] Starting Hedge Bot for devnet.drift.trade
+2025-08-29 02:50:01,486 - __main__ - INFO - ======================================================================
+2025-08-29 02:50:01,487 - __main__ - INFO - [IMPORTANT] This will place TEST orders on devnet.drift.trade!
+2025-08-29 02:50:01,487 - __main__ - INFO - [INFO] Devnet environment uses test SOL (no real value)
+2025-08-29 02:50:01,487 - __main__ - INFO - ======================================================================
+2025-08-29 02:50:01,488 - __main__ - INFO - [INIT] Initializing Drift client for beta.drift.trade...
+2025-08-29 02:50:02,553 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-29 02:50:02,774 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-29 02:50:03,484 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-29 02:50:03,623 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-29 02:50:04,646 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-29 02:50:04,834 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-29 02:50:04,836 - libs.drift.client - INFO - User account initialized
+2025-08-29 02:50:04,836 - __main__ - INFO - [SUCCESS] DriftpyClient initialized for devnet
+2025-08-29 02:50:04,837 - __main__ - INFO - [INFO] Connected to: https://devnet.drift.trade
+2025-08-29 02:50:04,837 - __main__ - INFO - [INFO] Using devnet testnet - safe for testing
+2025-08-29 02:50:04,838 - __main__ - WARNING - [WARNING] This is DEVNET - using test SOL (no real value)!
+2025-08-29 02:50:04,838 - __main__ - INFO - [INFO] Safe environment for testing hedge bot functionality
+2025-08-29 02:50:05,003 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-08-29 02:50:05,005 - __main__ - INFO - [BALANCE] Beta Wallet Status:
+2025-08-29 02:50:05,005 - __main__ - INFO -    Address: 6g8TziYAupUDtNAz6Thi3c6Ntu7AEcMMVdUWGJPrR2nW
+2025-08-29 02:50:05,005 - __main__ - INFO -    Balance: 0.2953 SOL
+2025-08-29 02:50:05,006 - __main__ - INFO - [SUCCESS] Sufficient devnet SOL for testing
+2025-08-29 02:50:05,006 - __main__ - INFO - [STARTING] Beginning TEST devnet hedge trading session...
+2025-08-29 02:50:05,006 - __main__ - INFO - [INFO] Wallet: 6g8TziYAupUDtNAz6Thi3c6Ntu7AEcMMVdUWGJPrR2nW
+2025-08-29 02:50:05,007 - __main__ - INFO - [INFO] View trades on: https://devnet.drift.trade
+2025-08-29 02:50:05,007 - __main__ - INFO - [TRADE] Starting Hedge Bot trading loop on devnet.drift.trade...
+2025-08-29 02:50:05,007 - __main__ - INFO - [INFO] View positions at: https://devnet.drift.trade
+2025-08-29 02:50:05,007 - __main__ - INFO - [TRADE] Starting beta hedge iteration #1
+2025-08-29 02:50:05,009 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-29 02:50:05,009 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-29 02:50:05,010 - __main__ - INFO -    Total Volume: $0.00
+2025-08-29 02:50:05,010 - __main__ - INFO -    Open Orders: 0
+2025-08-29 02:50:05,010 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 1: float division by zero
+2025-08-29 02:50:05,529 - websockets.client - INFO - ! connect failed; reconnecting in 1.5 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-29 02:50:05,533 - websockets.client - INFO - ! connect failed; reconnecting in 2.7 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-29 02:50:05,540 - websockets.client - INFO - ! connect failed; reconnecting in 2.2 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-29 02:50:05,543 - websockets.client - INFO - ! connect failed; reconnecting in 3.8 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-29 02:50:05,553 - websockets.client - INFO - ! connect failed; reconnecting in 4.5 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-29 02:50:05,554 - websockets.client - INFO - ! connect failed; reconnecting in 0.4 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-29 02:50:05,570 - websockets.client - INFO - ! connect failed; reconnecting in 4.9 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-29 02:50:05,572 - websockets.client - INFO - ! connect failed; reconnecting in 3.9 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-29 02:50:05,604 - websockets.client - INFO - ! connect failed; reconnecting in 3.2 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\.venv\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-08-29 02:50:19,993 - __main__ - INFO - [TRADE] Starting beta hedge iteration #2
+2025-08-29 02:50:19,995 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-29 02:50:19,996 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-29 02:50:19,996 - __main__ - INFO -    Total Volume: $0.00
+2025-08-29 02:50:19,997 - __main__ - INFO -    Open Orders: 0
+2025-08-29 02:50:19,998 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 2: float division by zero
+2025-08-29 02:50:35,005 - __main__ - INFO - [TRADE] Starting beta hedge iteration #3
+2025-08-29 02:50:35,006 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-29 02:50:35,007 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-29 02:50:35,007 - __main__ - INFO -    Total Volume: $0.00
+2025-08-29 02:50:35,008 - __main__ - INFO -    Open Orders: 0
+2025-08-29 02:50:35,008 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 3: float division by zero
+2025-08-29 02:50:50,016 - __main__ - INFO - [TRADE] Starting beta hedge iteration #4
+2025-08-29 02:50:50,017 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-29 02:50:50,017 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-29 02:50:50,018 - __main__ - INFO -    Total Volume: $0.00
+2025-08-29 02:50:50,018 - __main__ - INFO -    Open Orders: 0
+2025-08-29 02:50:50,019 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 4: float division by zero
+2025-08-29 02:51:05,037 - __main__ - INFO - [TRADE] Starting beta hedge iteration #5
+2025-08-29 02:51:05,037 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-29 02:51:05,038 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-29 02:51:05,038 - __main__ - INFO -    Total Volume: $0.00
+2025-08-29 02:51:05,039 - __main__ - INFO -    Open Orders: 0
+2025-08-29 02:51:05,039 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 5: float division by zero
+2025-08-29 02:51:20,033 - __main__ - INFO - [TRADE] Starting beta hedge iteration #6
+2025-08-29 02:51:20,034 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-29 02:51:20,035 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-29 02:51:20,035 - __main__ - INFO -    Total Volume: $0.00
+2025-08-29 02:51:20,036 - __main__ - INFO -    Open Orders: 0
+2025-08-29 02:51:20,037 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 6: float division by zero
+2025-08-29 02:51:35,054 - __main__ - INFO - [TRADE] Starting beta hedge iteration #7
+2025-08-29 02:51:35,055 - __main__ - INFO - [STATUS] Beta Hedge Iteration Status:
+2025-08-29 02:51:35,055 - __main__ - INFO -    Net Exposure: $0.00
+2025-08-29 02:51:35,056 - __main__ - INFO -    Total Volume: $0.00
+2025-08-29 02:51:35,056 - __main__ - INFO -    Open Orders: 0
+2025-08-29 02:51:35,057 - __main__ - ERROR - [ERROR] Error in beta hedge iteration 7: float division by zero
+2025-08-29 02:51:40,105 - root - INFO - [CLEANUP] Starting cleanup...
+2025-08-29 02:51:40,106 - root - INFO - ======================================================================
+2025-08-29 02:51:40,108 - root - INFO - [SUMMARY] DEVNET HEDGE TRADING SESSION COMPLETE
+2025-08-29 02:51:40,108 - root - INFO - ======================================================================
+2025-08-29 02:51:40,110 - root - INFO - Total Iterations: 7
+2025-08-29 02:51:40,112 - root - INFO - Net Exposure: $0.00
+2025-08-29 02:51:40,114 - root - INFO - Total Volume: $0.00
+2025-08-29 02:51:40,115 - root - WARNING - Errors Encountered: 7
+2025-08-29 02:51:40,115 - root - WARNING -   1. Iteration 3 error: float division by zero
+2025-08-29 02:51:40,117 - root - WARNING -   2. Iteration 4 error: float division by zero
+2025-08-29 02:51:40,117 - root - WARNING -   3. Iteration 5 error: float division by zero
+2025-08-29 02:51:40,118 - root - WARNING -   4. Iteration 6 error: float division by zero
+2025-08-29 02:51:40,119 - root - WARNING -   5. Iteration 7 error: float division by zero
+2025-08-29 02:51:40,119 - root - INFO - ======================================================================
+2025-08-29 02:51:40,427 - root - INFO - [SHUTDOWN] Beta hedge bot interrupted by user
+2025-08-29 10:01:39,745 - launch_hedge_beta - WARNING - [CONFIG] Using default guardrail values
+2025-08-29 10:21:06,633 - launch_hedge_beta - WARNING - [CONFIG] Using default guardrail values

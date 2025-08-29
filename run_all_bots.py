@@ -20,21 +20,36 @@ from typing import Dict, Any
 import yaml
 import logging
 
+# --- BEGIN: UTF-8 safe logging (Windows console) ---
+import sys, logging, io
+
+def _force_utf8_console():
+    try:
+        if hasattr(sys.stdout, "reconfigure"):
+            sys.stdout.reconfigure(encoding="utf-8")
+        if hasattr(sys.stderr, "reconfigure"):
+            sys.stderr.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
+_force_utf8_console()
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
+for h in logging.getLogger().handlers:
+    try:
+        h.setFormatter(logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s"))
+    except Exception:
+        pass
+# --- END: UTF-8 safe logging ---
+
 # Add the libs directory to the path
 sys.path.append(str(Path(__file__).parent / "libs"))
 
 from libs.drift.client import build_client_from_config
 from orchestrator.risk_manager import RiskManager
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('bot_orchestrator.log'),
-        logging.StreamHandler()
-    ]
-)
 logger = logging.getLogger(__name__)
 
 # Global state
@@ -154,13 +169,13 @@ async def run_jit_bot(client, config):
         
         spread_g = Gauge("jit_spread_bps", "Current spread bps")
         quotes_c = Counter("jit_quotes_total", "Total quotes placed")
-        prints_c = Counter("jit_quotes_total", "Total fills")
+        prints_c = Counter("jit_fills_total", "Total fills")
         
         iteration = 0
         while RUNNING:
             try:
                 # Get current orderbook
-                ob = await client.get_orderbook()
+                ob = client.get_orderbook()
                 if not ob.bids or not ob.asks:
                     await asyncio.sleep(1)
                     continue
@@ -243,7 +258,7 @@ async def monitor_bots():
             logger.error(f"📊 Monitoring error: {e}")
             await asyncio.sleep(10)
 
-async def main(client_config='configs/core/drift_client.yaml', metrics_port=9109):
+async def main(client_config='configs/core/drift_client.yaml', metrics_port=9109, health_port=None):
     """Main orchestrator function"""
     global RUNNING
 
@@ -282,7 +297,8 @@ async def main(client_config='configs/core/drift_client.yaml', metrics_port=9109
         # Initialize shared Drift client
         logger.info("📡 Initializing shared Drift client...")
         client = await build_client_from_config(client_config)
-        logger.info("✅ Drift client initialized successfully")
+        await client.initialize()  # CRITICAL: Subscribe to user account data
+        logger.info("✅ Drift client initialized and subscribed successfully")
         READINESS.set(1.0)
         
         # Start all bots concurrently
@@ -295,7 +311,7 @@ async def main(client_config='configs/core/drift_client.yaml', metrics_port=9109
 
         logger.info("✅ All bots started successfully!")
 
-        # Start health server
+        # Start health server on a different port than metrics to avoid conflicts
         from aiohttp import web
         health_app = web.Application()
 
@@ -311,9 +327,18 @@ async def main(client_config='configs/core/drift_client.yaml', metrics_port=9109
 
         runner = web.AppRunner(health_app)
         await runner.setup()
-        site = web.TCPSite(runner, '0.0.0.0', metrics_port)
-        await site.start()
-        logger.info(f"🏥 Health server started on port {metrics_port}")
+        if health_port is None:
+            health_port = int(metrics_port) + 1
+        try:
+            site = web.TCPSite(runner, '0.0.0.0', health_port)
+            await site.start()
+            logger.info(f"🏥 Health server started on port {health_port}")
+        except OSError as e:
+            # Fallback to next port if taken
+            health_port = health_port + 1
+            site = web.TCPSite(runner, '0.0.0.0', health_port)
+            await site.start()
+            logger.info(f"🏥 Health server started on fallback port {health_port}")
 
         # Wait for all bots to complete or shutdown signal
         await asyncio.gather(*BOT_TASKS.values(), return_exceptions=True)
@@ -351,13 +376,15 @@ if __name__ == "__main__":
                        help='Path to orchestrator configuration YAML')
     parser.add_argument('--metrics-port', type=int, default=int(os.getenv('METRICS_PORT', '9109')),
                        help='Port for Prometheus metrics server (default: 9109)')
+    parser.add_argument('--health-port', type=int, default=(int(os.getenv('HEALTH_PORT')) if os.getenv('HEALTH_PORT') else None),
+                       help='Port for health endpoints (default: metrics_port + 1)')
     parser.add_argument('--mock', action='store_true', help='Force mock client mode for testing')
     parser.add_argument('--real', action='store_true', help='Force real client mode (requires credentials)')
 
     args = parser.parse_args()
 
     try:
-        asyncio.run(main(client_config=args.client_config, metrics_port=args.metrics_port))
+        asyncio.run(main(client_config=args.client_config, metrics_port=args.metrics_port, health_port=args.health_port))
     except KeyboardInterrupt:
         logger.info("🛑 Orchestrator interrupted by user")
     except Exception as e:
