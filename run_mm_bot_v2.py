@@ -398,23 +398,33 @@ class MarketDataAdapter:
         try:
             if self._use_driver:
                 raw = self._driver.get_orderbook()  # expected dict {bids:[[p,s]], asks:[[p,s]]}
-                # Handle case where raw might be a coroutine
-                if hasattr(raw, '__call__') and hasattr(raw, 'send'):
-                    # It's a coroutine, we can't await it here since this method is sync
-                    # Let's try a different approach
-                    logger.warning("Orderbook method returned coroutine, trying alternative approach")
-                    # Try to get the orderbook from the drift client directly
-                    if hasattr(self._driver, 'connection') and hasattr(self._driver.connection, 'get_orderbook'):
-                        # This might be async too, but let's try
+                # If the driver returned a coroutine, execute it in a safe temporary loop
+                if asyncio.iscoroutine(raw):
+                    logger.debug("Orderbook call returned coroutine - executing")
+                    try:
+                        raw = asyncio.run(raw)
+                    except RuntimeError:
+                        loop = asyncio.new_event_loop()
                         try:
-                            raw = self._driver.connection.get_orderbook()
+                            raw = loop.run_until_complete(raw)
+                        finally:
+                            loop.close()
+
+                # Fallback to alternative connection method if still coroutine
+                if asyncio.iscoroutine(raw) and hasattr(self._driver, 'connection'):
+                    alt = getattr(self._driver.connection, 'get_orderbook', None)
+                    if alt:
+                        try:
+                            tmp = alt()
+                            if asyncio.iscoroutine(tmp):
+                                raw = asyncio.run(tmp)
+                            else:
+                                raw = tmp
                         except Exception as e:
                             logger.warning(f"Connection orderbook failed: {e}, using mock")
                             raw = {"bids": [[150.0, 10.0]], "asks": [[150.1, 10.0]]}
-                    else:
-                        logger.warning("No alternative orderbook method available, using mock")
-                        raw = {"bids": [[150.0, 10.0]], "asks": [[150.1, 10.0]]}
-                elif not isinstance(raw, dict):
+
+                if not isinstance(raw, dict):
                     logger.warning(f"Unexpected orderbook type: {type(raw)}, using mock")
                     raw = {"bids": [[150.0, 10.0]], "asks": [[150.1, 10.0]]}
 
@@ -587,24 +597,31 @@ class SwiftExecClient:
         try:
             # Debug: log available methods
             logger.info(f"Signer type: {type(self._signer)}")
-            logger.info(f"Signer methods: {[m for m in dir(self._signer) if 'sign' in m.lower() or 'encode' in m.lower()]}")
+            logger.info(
+                f"Signer methods: {[m for m in dir(self._signer) if 'sign' in m.lower() or 'encode' in m.lower()]}")
 
-            # Try the sign_signed_msg_order_params_message method first (most reliable)
-            if hasattr(self._signer, "sign_signed_msg_order_params_message"):
-                logger.info("Using DriftPy sign_signed_msg_order_params_message (preferred method)")
-                try:
-                    msg_bytes = self._signer.sign_signed_msg_order_params_message(envelope)
-                    logger.info(f"sign_signed_msg_order_params_message returned: {type(msg_bytes)}, length: {len(msg_bytes) if msg_bytes else 0}")
-                except Exception as e:
-                    logger.warning(f"sign_signed_msg_order_params_message failed: {e}")
-                    msg_bytes = None
+            # Prefer explicit encode methods which return raw envelope bytes
+            if hasattr(self._signer, "encode_signed_msg_order_params_message"):
+                logger.info("Using DriftPy encode_signed_msg_order_params_message (preferred method)")
+                msg_bytes = self._signer.encode_signed_msg_order_params_message(envelope)
 
-            # Try alternative method names that might exist in different DriftPy versions
+            elif hasattr(self._signer, "encode_signed_msg_order_params"):
+                logger.info("Using DriftPy encode_signed_msg_order_params")
+                msg_bytes = self._signer.encode_signed_msg_order_params(envelope)
+
+            # Fallback: use sign_* and extract order_params bytes
+            elif hasattr(self._signer, "sign_signed_msg_order_params_message"):
+                logger.info(
+                    "Using DriftPy sign_signed_msg_order_params_message and extracting order_params")
+                signed_obj = self._signer.sign_signed_msg_order_params_message(envelope)
+                op = getattr(signed_obj, "order_params", b"")
+                msg_bytes = bytes.fromhex(op.decode() if isinstance(op, (bytes, bytearray)) else str(op))
+
             elif hasattr(self._signer, "sign_signed_msg_order_params"):
-                logger.info("Using DriftPy sign_signed_msg_order_params")
-                msg_bytes = self._signer.sign_signed_msg_order_params(envelope)
-
-            # sign_signed_msg_order_params_message is already tried as the preferred method above
+                logger.info("Using DriftPy sign_signed_msg_order_params and extracting order_params")
+                signed_obj = self._signer.sign_signed_msg_order_params(envelope)
+                op = getattr(signed_obj, "order_params", b"")
+                msg_bytes = bytes.fromhex(op.decode() if isinstance(op, (bytes, bytearray)) else str(op))
 
             # Try direct envelope serialization if available
             elif hasattr(envelope, "serialize"):
@@ -615,24 +632,22 @@ class SwiftExecClient:
                 logger.info("Using direct envelope __bytes__ method")
                 msg_bytes = bytes(envelope)
 
-            # Try using the drift client's sign_signed_msg_order_params_message method
-            elif hasattr(self._signer, "drift_client") and hasattr(self._signer.drift_client, "sign_signed_msg_order_params_message"):
-                logger.info("Using drift_client.sign_signed_msg_order_params_message")
-                msg_bytes = self._signer.drift_client.sign_signed_msg_order_params_message(envelope)
+            # Try using the drift client's encode method if signer wraps another client
+            elif (
+                hasattr(self._signer, "drift_client")
+                and hasattr(self._signer.drift_client, "encode_signed_msg_order_params_message")
+            ):
+                logger.info("Using drift_client.encode_signed_msg_order_params_message")
+                msg_bytes = self._signer.drift_client.encode_signed_msg_order_params_message(envelope)
 
-            # Try manual serialization + signing approach
+            # Last resort: manual serialize + sign (not ideal but keeps bot running)
             elif hasattr(envelope, "serialize") and hasattr(self._signer, "sign_message"):
                 logger.info("Using manual serialize + sign_message approach")
                 try:
-                    # Serialize the envelope
                     envelope_bytes = envelope.serialize()
                     logger.info(f"Envelope serialized to {len(envelope_bytes)} bytes")
-
-                    # Sign the serialized envelope
                     signed_msg = self._signer.sign_message(envelope_bytes)
                     logger.info(f"Message signed, type: {type(signed_msg)}")
-
-                    # The signed message should contain the original message + signature
                     msg_bytes = signed_msg
                 except Exception as e:
                     logger.warning(f"Manual serialize+sign failed: {e}")

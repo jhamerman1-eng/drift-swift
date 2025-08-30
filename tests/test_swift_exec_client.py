@@ -1,6 +1,7 @@
 import asyncio
 
 from bots.jit.main_swift import SwiftExecClient
+
 import libs.drift.client as drift_client_module
 
 
@@ -40,3 +41,4 @@ def test_ensure_signer_uses_rpc_and_wallet(monkeypatch):
     assert signer is not None
     assert captured["rpc_url"] == "https://example-rpc"
     assert captured["cfg"]["wallets"]["maker_keypair_path"] == "/tmp/test-wallet.json"
+

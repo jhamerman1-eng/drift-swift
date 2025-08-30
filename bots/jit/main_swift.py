@@ -404,7 +404,7 @@ class SwiftExecClient:
             direction=direction,
             base_asset_amount=base_asset_amount,
             price=price_precision,
-            post_only=PostOnlyParams.MustPostOnly() if post_only else PostOnlyParams.NONE,
+            post_only=PostOnlyParams.MustPostOnly() if post_only else PostOnlyParams.NONE(),
         )
 
         # Get slot correctly
@@ -446,41 +446,37 @@ class SwiftExecClient:
         def _b64(b: bytes) -> str:
             return base64.b64encode(b).decode("ascii")
 
-        # Serialize the entire signed message to bytes
+        # Extract order params (already hex) and signature
+        order_hex = getattr(signed, "order_params", b"")
+        if isinstance(order_hex, (bytes, bytearray)):
+            message_hex = order_hex.decode()
+        else:
+            message_hex = str(order_hex)
+
         try:
-            # Try to get the raw bytes representation of the signed message
-            if hasattr(signed, '__bytes__'):
-                raw_message_bytes = bytes(signed)
-            elif hasattr(signed, 'serialize'):
-                raw_message_bytes = signed.serialize()
-            else:
-                # Fallback: convert to JSON and encode
-                import json
-                raw_message_bytes = json.dumps(str(signed)).encode('utf-8')
-            
-            # For Swift API: message should be hex-encoded bytes (not base64)
-            message_hex = raw_message_bytes.hex()
-
-            # Monitor variant byte to ensure we're not sending raw order_params (variant 0xc8)
-            if raw_message_bytes and len(raw_message_bytes) > 0:
+            raw_message_bytes = bytes.fromhex(message_hex)
+            if raw_message_bytes:
                 variant_byte = raw_message_bytes[0]
-                if variant_byte > 0x20:  # Most enum variants should be < 0x20
-                    logger.warning("POST check: message[0]=0x%02x (high variant byte - may be raw order_params)", variant_byte)
-                    if variant_byte == 0xc8:
-                        logger.error("CRITICAL: Detected raw order_params (variant=0xc8) in Swift message!")
-                        logger.error("This will cause Swift API rejection. Message should be SignedMsgOrderParamsMessage envelope.")
+                if variant_byte > 0x20:
+                    logger.warning(
+                        "POST check: message[0]=0x%02x (high variant byte - may be raw order_params)",
+                        variant_byte,
+                    )
                 else:
-                    logger.debug("Swift payload ready (len=%d, variant=0x%02x)", len(raw_message_bytes), variant_byte)
-            
-        except Exception as fallback_error:
-            # Ultimate fallback: create a simple string representation
-            logger.warning(f"Message serialization failed ({fallback_error}), using string fallback")
-            message_hex = str(signed).encode('utf-8').hex()
+                    logger.debug(
+                        "Swift payload ready (len=%d, variant=0x%02x)",
+                        len(raw_message_bytes),
+                        variant_byte,
+                    )
+        except Exception as e:
+            logger.warning(f"Failed to inspect message variant: {e}")
 
-        # Get signature
-        signature_bytes = getattr(signed, 'signature', b'')
+        signature_bytes = getattr(signed, "signature", b"")
         if isinstance(signature_bytes, str):
-            signature_bytes = signature_bytes.encode('utf-8')
+            try:
+                signature_bytes = bytes.fromhex(signature_bytes)
+            except ValueError:
+                signature_bytes = signature_bytes.encode("utf-8")
         signature_b64 = _b64(signature_bytes) if signature_bytes else ""
 
         payload = {
