@@ -283,17 +283,62 @@ except Exception as e:
 
 class SwiftExecClient:
     def __init__(self, core_cfg: dict, symbol: str):
+        """Execution client used by the JIT market maker to submit orders via
+        Drift's "Swift" HTTP API.
+
+        Historically this class only consumed a small portion of the MM config
+        and relied on ``libs.drift.client.DriftpyClient`` to discover its RPC
+        endpoint.  Recent versions of ``DriftpyClient`` require the ``rpc_url``
+        parameter to be explicitly provided which caused runtime failures such
+        as ``ValueError: rpc_url is required`` when the bot attempted to place
+        orders.  The run\_MM\_bot script would therefore crash before any
+        trading logic executed.
+
+        To make the client robust we now capture the RPC HTTP endpoint and
+        wallet path during initialisation, pulling from either environment
+        variables or the supplied configuration.  The values are then passed to
+        ``DriftpyClient`` when creating the signer, guaranteeing a valid RPC is
+        always supplied.
+        """
+
         self.symbol = symbol
+        self._core_cfg = core_cfg
+
+        # Swift/sidecar configuration
         self.sidecar_base = os.getenv("SWIFT_SIDECAR", core_cfg.get("swift", {}).get("sidecar_url", ""))
         self.swift_base = os.getenv("SWIFT_BASE", core_cfg.get("swift", {}).get("swift_base", "https://swift.drift.trade"))
         self._mode = "SIDECAR" if self.sidecar_base else "DIRECT"
         self._http = httpx.AsyncClient(timeout=15.0)
         self._signer: Optional[DriftSignerClient] = None
+
+        # Cluster/market information
         self.cluster = os.getenv("DRIFT_CLUSTER", core_cfg.get("cluster", "beta"))
         self.market_index = int(core_cfg.get("market_index", 0))
-        logger.info("[SWIFT] mode=%s base=%s", self._mode, self.sidecar_base or self.swift_base)
+
+        # RPC + wallet paths (allow environment overrides)
+        rpc_env = os.getenv("DRIFT_HTTP_URL") or os.getenv("RPC_URL")
+        self.rpc_url = rpc_env or core_cfg.get("rpc", {}).get("http_url", "")
+        wallet_env = os.getenv("DRIFT_KEYPAIR_PATH")
+        self.wallet_path = wallet_env or core_cfg.get("wallets", {}).get("maker_keypair_path", ".valid_wallet.json")
+
+        logger.info(
+            "[SWIFT] mode=%s base=%s rpc=%s wallet=%s",
+            self._mode,
+            self.sidecar_base or self.swift_base,
+            self.rpc_url or "<missing>",
+            self.wallet_path,
+        )
 
     async def _ensure_signer(self) -> DriftSignerClient:
+        """Return a ready-to-use ``DriftpyClient`` signer.
+
+        The previous implementation relied on ``DriftpyClient`` inferring the
+        RPC URL from its config which is no longer supported.  This method now
+        explicitly forwards ``rpc_url`` and the desired wallet path so that
+        signer initialisation is deterministic and does not raise the confusing
+        ``rpc_url is required`` error seen in production.
+        """
+
         if not HAVE_DRIFTPY:
             raise RuntimeError("DriftPy not installed — cannot sign Swift orders")
         if self._signer:
@@ -302,20 +347,34 @@ class SwiftExecClient:
         # Use the working DriftpyClient from libs.drift.client
         try:
             from libs.drift.client import DriftpyClient
-            
-            # Use the same config pattern as run_mm_bot_v2.py
-            # Map 'beta' to 'devnet' for compatibility with installed driftpy version
+
             env = (self.cluster or "devnet").lower()
             env = "devnet" if env in ("beta", "devnet", "devnet-beta") else env
 
+            # Ensure we have an RPC URL; surfacing a clear error if missing
+            if not self.rpc_url:
+                raise RuntimeError(
+                    "rpc_url is required – set DRIFT_HTTP_URL/RPC_URL or provide in config['rpc']['http_url']"
+                )
+
             drift_client = DriftpyClient(
                 env=env,
-                cfg={"cluster": env, "wallets": {"maker_keypair_path": ".valid_wallet.json"}}
+                rpc_url=self.rpc_url,
+                cfg={
+                    "cluster": env,
+                    "wallets": {"maker_keypair_path": self.wallet_path},
+                    "rpc": {"http_url": self.rpc_url},
+                },
             )
+
+            # Ensure the underlying Drift client is fully initialised
+            if hasattr(drift_client, "initialize"):
+                await drift_client.initialize()
+
             self._signer = drift_client.drift_client
             logger.info("✅ DriftPy client initialized successfully for Swift orders")
             return self._signer
-            
+
         except Exception as e:
             logger.error(f"Failed to initialize DriftPy client: {e}")
             raise RuntimeError(f"Cannot initialize DriftPy client: {e}")
@@ -349,7 +408,7 @@ class SwiftExecClient:
             direction=direction,
             base_asset_amount=base_asset_amount,
             price=price_precision,
-            post_only=PostOnlyParams.MustPostOnly() if post_only else PostOnlyParams.NONE,
+            post_only=PostOnlyParams.MustPostOnly() if post_only else PostOnlyParams.NONE(),
         )
 
         # Get slot correctly
@@ -391,41 +450,37 @@ class SwiftExecClient:
         def _b64(b: bytes) -> str:
             return base64.b64encode(b).decode("ascii")
 
-        # Serialize the entire signed message to bytes
+        # Extract order params (already hex) and signature
+        order_hex = getattr(signed, "order_params", b"")
+        if isinstance(order_hex, (bytes, bytearray)):
+            message_hex = order_hex.decode()
+        else:
+            message_hex = str(order_hex)
+
         try:
-            # Try to get the raw bytes representation of the signed message
-            if hasattr(signed, '__bytes__'):
-                raw_message_bytes = bytes(signed)
-            elif hasattr(signed, 'serialize'):
-                raw_message_bytes = signed.serialize()
-            else:
-                # Fallback: convert to JSON and encode
-                import json
-                raw_message_bytes = json.dumps(str(signed)).encode('utf-8')
-            
-            # For Swift API: message should be hex-encoded bytes (not base64)
-            message_hex = raw_message_bytes.hex()
-
-            # Monitor variant byte to ensure we're not sending raw order_params (variant 0xc8)
-            if raw_message_bytes and len(raw_message_bytes) > 0:
+            raw_message_bytes = bytes.fromhex(message_hex)
+            if raw_message_bytes:
                 variant_byte = raw_message_bytes[0]
-                if variant_byte > 0x20:  # Most enum variants should be < 0x20
-                    logger.warning("POST check: message[0]=0x%02x (high variant byte - may be raw order_params)", variant_byte)
-                    if variant_byte == 0xc8:
-                        logger.error("CRITICAL: Detected raw order_params (variant=0xc8) in Swift message!")
-                        logger.error("This will cause Swift API rejection. Message should be SignedMsgOrderParamsMessage envelope.")
+                if variant_byte > 0x20:
+                    logger.warning(
+                        "POST check: message[0]=0x%02x (high variant byte - may be raw order_params)",
+                        variant_byte,
+                    )
                 else:
-                    logger.debug("Swift payload ready (len=%d, variant=0x%02x)", len(raw_message_bytes), variant_byte)
-            
-        except Exception as fallback_error:
-            # Ultimate fallback: create a simple string representation
-            logger.warning(f"Message serialization failed ({fallback_error}), using string fallback")
-            message_hex = str(signed).encode('utf-8').hex()
+                    logger.debug(
+                        "Swift payload ready (len=%d, variant=0x%02x)",
+                        len(raw_message_bytes),
+                        variant_byte,
+                    )
+        except Exception as e:
+            logger.warning(f"Failed to inspect message variant: {e}")
 
-        # Get signature
-        signature_bytes = getattr(signed, 'signature', b'')
+        signature_bytes = getattr(signed, "signature", b"")
         if isinstance(signature_bytes, str):
-            signature_bytes = signature_bytes.encode('utf-8')
+            try:
+                signature_bytes = bytes.fromhex(signature_bytes)
+            except ValueError:
+                signature_bytes = signature_bytes.encode("utf-8")
         signature_b64 = _b64(signature_bytes) if signature_bytes else ""
 
         payload = {
