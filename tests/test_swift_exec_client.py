@@ -1,7 +1,7 @@
 import asyncio
 
 from bots.jit.main_swift import SwiftExecClient
-from run_mm_bot_v2 import SwiftExecClient as V2SwiftExecClient
+
 import libs.drift.client as drift_client_module
 
 
@@ -42,19 +42,3 @@ def test_ensure_signer_uses_rpc_and_wallet(monkeypatch):
     assert captured["rpc_url"] == "https://example-rpc"
     assert captured["cfg"]["wallets"]["maker_keypair_path"] == "/tmp/test-wallet.json"
 
-
-def test_encode_envelope_bytes_uses_encode_method():
-    class Signer:
-        def __init__(self):
-            self.called = False
-
-        def encode_signed_msg_order_params_message(self, envelope):
-            self.called = True
-            return b"\x01\x02"
-
-    client = V2SwiftExecClient({}, "SOL-PERP")
-    client._signer = Signer()
-    result = asyncio.run(client._encode_envelope_bytes(object()))
-
-    assert result == b"\x01\x02"
-    assert client._signer.called

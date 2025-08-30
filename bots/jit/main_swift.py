@@ -367,10 +367,6 @@ class SwiftExecClient:
                 },
             )
 
-            # Ensure the underlying Drift client is fully initialised
-            if hasattr(drift_client, "initialize"):
-                await drift_client.initialize()
-
             self._signer = drift_client.drift_client
             logger.info("✅ DriftPy client initialized successfully for Swift orders")
             return self._signer
