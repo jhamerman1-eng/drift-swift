@@ -18,3 +18,4 @@ wallets:
 market_index: 0
 
 use_mock: false
+live_trading: true

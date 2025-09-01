@@ -34,7 +34,6 @@ def _force_utf8_console():
 
 _force_utf8_console()
 
-)
 for h in logging.getLogger().handlers:
     try:
         h.setFormatter(logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s"))
@@ -365,9 +364,10 @@ async def main(client_config='configs/core/drift_client.yaml', metrics_port=9109
 
 if __name__ == "__main__":
     import argparse
-# Setup centralized logging
-from libs.logging_config import setup_critical_logging
-logger = setup_critical_logging("orchestrator")
+    
+    # Setup centralized logging
+    from libs.logging_config import setup_critical_logging
+    logger = setup_critical_logging("orchestrator")
 
     parser = argparse.ArgumentParser(description='Drift Bots Orchestrator v3.0')
     parser.add_argument('--client-config', default='configs/core/drift_client.yaml',
