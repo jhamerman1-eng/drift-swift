@@ -9,8 +9,6 @@ import logging
 from libs.drift.client import DriftpyClient, Order
 
 # Setup logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 async def test_monitoring_features():
     """Test the monitoring and caching features of DriftpyClient."""
@@ -101,6 +99,9 @@ async def test_monitoring_features():
     except Exception as e:
         logger.error(f"❌ Test failed: {e}")
         import traceback
+# Setup centralized logging
+from libs.logging_config import setup_utility_logging
+logger = setup_utility_logging("test_monitoring")
         traceback.print_exc()
 
 if __name__ == "__main__":

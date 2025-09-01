@@ -6,9 +6,10 @@ Test Devnet Connection - Verify we're connecting to Drift Protocol DEVNET
 import asyncio
 import logging
 from libs.drift.client import build_client_from_config, Order, OrderSide
+# Setup centralized logging
+from libs.logging_config import setup_utility_logging
+logger = setup_utility_logging("devnet_test_connection")
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
 
 async def test_devnet_connection():
     """Test connection to Drift Protocol DEVNET"""

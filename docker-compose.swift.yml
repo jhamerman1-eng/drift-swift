@@ -1,9 +1,17 @@
 version: "3.9"
 services:
   swift-mm:
-    build: ./services/swift-mm
-    ports:
-      - "8787:8787"
+    build:
+      context: ./services/swift-mm
+      dockerfile: Dockerfile
+    container_name: swift-mm
     environment:
-      - PORT=8787
+      - PORT=${PORT:-8787}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - SWIFT_FORWARD_BASE=${SWIFT_FORWARD_BASE}
+      - SWIFT_API_KEY=${SWIFT_API_KEY}
+      - METRICS_ENABLED=${METRICS_ENABLED:-true}
+      - METRICS_PREFIX=${METRICS_PREFIX:-swift_}
+    ports:
+      - "${PORT:-8787}:8787"
     restart: unless-stopped

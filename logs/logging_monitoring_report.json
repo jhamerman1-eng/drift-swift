@@ -1,0 +1,102 @@
+{
+  "timestamp": "2025-08-30T21:50:12.610535",
+  "health_check": {
+    "total_files": 9,
+    "total_size_mb": 0.0035762786865234375,
+    "health_issues": [],
+    "warnings": [],
+    "file_details": {
+      "drift-client.log": {
+        "name": "drift-client.log",
+        "size_bytes": 420,
+        "size_mb": 0.000400543212890625,
+        "modified": 1756604943.5178936,
+        "age_days": 0.0007994930694500605,
+        "status": "OK"
+      },
+      "hedge-bot.log": {
+        "name": "hedge-bot.log",
+        "size_bytes": 390,
+        "size_mb": 0.0003719329833984375,
+        "modified": 1756604943.51389,
+        "age_days": 0.0007995394065424248,
+        "status": "OK"
+      },
+      "jit-mm-swift.log": {
+        "name": "jit-mm-swift.log",
+        "size_bytes": 420,
+        "size_mb": 0.000400543212890625,
+        "modified": 1756604943.5123837,
+        "age_days": 0.0007995684527688557,
+        "status": "OK"
+      },
+      "orchestrator.log": {
+        "name": "orchestrator.log",
+        "size_bytes": 420,
+        "size_mb": 0.000400543212890625,
+        "modified": 1756604943.5258934,
+        "age_days": 0.0007994120899173948,
+        "status": "OK"
+      },
+      "order-management.log": {
+        "name": "order-management.log",
+        "size_bytes": 460,
+        "size_mb": 0.000438690185546875,
+        "modified": 1756604943.5208924,
+        "age_days": 0.0007994699726502101,
+        "status": "OK"
+      },
+      "risk-manager.log": {
+        "name": "risk-manager.log",
+        "size_bytes": 420,
+        "size_mb": 0.000400543212890625,
+        "modified": 1756604943.5228918,
+        "age_days": 0.0007994584435666048,
+        "status": "OK"
+      },
+      "rpc-manager.log": {
+        "name": "rpc-manager.log",
+        "size_bytes": 410,
+        "size_mb": 0.0003910064697265625,
+        "modified": 1756604943.5198905,
+        "age_days": 0.0007994931798290324,
+        "status": "OK"
+      },
+      "swift-client.log": {
+        "name": "swift-client.log",
+        "size_bytes": 420,
+        "size_mb": 0.000400543212890625,
+        "modified": 1756604943.523894,
+        "age_days": 0.0007994468427366681,
+        "status": "OK"
+      },
+      "trend-bot.log": {
+        "name": "trend-bot.log",
+        "size_bytes": 390,
+        "size_mb": 0.0003719329833984375,
+        "modified": 1756604943.515894,
+        "age_days": 0.0007995394368966421,
+        "status": "OK"
+      }
+    }
+  },
+  "rotation_check": {
+    "rotation_issues": [],
+    "rotation_warnings": []
+  },
+  "quality_check": {
+    "quality_issues": [],
+    "quality_warnings": []
+  },
+  "maintenance": {
+    "cleanup_performed": false,
+    "files_removed": 0,
+    "errors": []
+  },
+  "recommendations": [
+    "\ud83d\udcca MONITORING: Set up automated log monitoring and alerting",
+    "\ud83d\udd04 ROTATION: Ensure all critical loggers have proper rotation configured",
+    "\ud83e\uddf9 MAINTENANCE: Run log cleanup weekly to prevent disk space issues",
+    "\ud83d\udcc8 ANALYSIS: Consider log aggregation and analysis tools for better insights"
+  ]
+}

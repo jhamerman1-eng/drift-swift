@@ -1,72 +1,70 @@
-# Swift MM Sidecar (Scaffold)
+# Swift MM Sidecar & Python Driver
 
-A minimal TypeScript service that would sit between the Python bot and Drift Swift components.
-This version exposes `/health`, `/metrics`, simple market data, and stubs for order relaying and a WS endpoint.
+This adds a Node/TypeScript **Swift MM Sidecar** and a Python **SwiftSidecarDriver**.
 
-## Dev
-```bash
-cd services/swift-mm
-npm install
-npm run build
-node dist/index.js
+## Why
+- Avoids 422 signature/encoding issues by keeping signing in Python and forwarding envelopes.
+- Provides a **local ACK mode** for offline smoke tests.
+- When `SWIFT_FORWARD_BASE` is set, the sidecar **proxies** to the real Swift API.
+- Exposes `/health`, `/metrics`, `/orders` (submit), and `/orders/:id/cancel`.
+
+## Layout
+```
+services/swift-mm/
+  Dockerfile
+  package.json
+  tsconfig.json
+  src/
+    index.ts
+    metrics.ts
+    types.ts
+libs/drift/swift_sidecar_driver.py
+docker-compose.swift.yml
+configs/core/swift_mm.example.env
+examples/swift_smoke_place_order.py
 ```
 
-Or via Docker:
+## Quick start
 ```bash
-docker build -t swift-mm:rc2 .
-docker run -p 8787:8787 swift-mm:rc2
+cp configs/core/swift_mm.example.env .env.swift
+docker compose -f docker-compose.swift.yml --env-file .env.swift up -d --build
+curl -s localhost:8787/health
+curl -s localhost:8787/metrics | head
 ```
 
-### HTTP endpoints
-
-- `GET /health` – basic health check
-- `GET /metrics` – Prometheus metrics
-- `GET /markets/:symbol` – fetch stubbed order book for a symbol
-- `POST /orders` – submit a stub order `{symbol, side, price, size}`
-
-WebSocket clients may connect to `/ws` to experiment with message relays.
-
-## Python Swift Integration
-
-The Python bots now support direct Swift integration for high-speed market taker orders:
-
-### Features
-- **High-speed execution** via Swift's optimized matching engine
-- **Market taker orders** with auction pricing
-- **Real-time market data** from Drift protocol
-- **Direct blockchain settlement** on Solana
-
-### Usage
-
+## Using the Python driver
 ```python
-from libs.drift.swift_submit import swift_market_taker
-from driftpy.types import PositionDirection
-
-# Place a market buy order
-result = await swift_market_taker(
-    drift_client=client.drift_client,
-    market_index=0,  # SOL-PERP
-    direction=PositionDirection.Long(),
-    qty_perp=0.1,   # 0.1 SOL
-    auction_ms=50    # Auction duration
-)
+from libs.drift.swift_sidecar_driver import SwiftSidecarDriver
+driver = SwiftSidecarDriver(base_url="http://localhost:8787", api_key=None)
+ack = driver.place_order({
+    "message": "SignedMsgOrderParamsMessageBase64OrHex",
+    "signature": "base64/hex",
+    "market_index": 0,
+    "market_type": "perp",
+    "taker_authority": "yourPubkey",
+})
+print(ack)
 ```
 
-### Example
-See `examples/swift_market_taker_example.py` for a complete working example.
-
-### Requirements
-- `driftpy` package installed
-- Valid Solana wallet with DEV SOL
-- Drift account initialized
-- Swift API access (configured via `SWIFT_BASE` environment variable)
-
-### Environment Variables
-```bash
-SWIFT_BASE=https://swift.drift.trade  # Swift API endpoint
-DRIFT_RPC_URL=https://api.devnet.solana.com  # Solana RPC
-DRIFT_WS_URL=wss://api.devnet.solana.com     # Solana WebSocket
-KEYPAIR_PATH=.beta_dev_wallet.json            # Your wallet
+To cancel:
+```python
+driver.cancel_order("your-order-id")
 ```
 
-This integration enables **sub-millisecond order execution** for high-frequency trading strategies!
+## Modes
+- **Local ACK mode** (default): sidecar returns `{"status":"accepted","id":"..."}`
+- **Forward mode**: set `SWIFT_FORWARD_BASE` to the real Swift base (e.g. `https://swift.drift.trade`)
+
+## Env (example)
+See `configs/core/swift_mm.example.env`.
+
+## Metrics
+Prometheus endpoint at `/metrics`. Basic counters/timers are included:
+- `swift_submit_seconds` (histogram)
+- `swift_submit_total`
+- `swift_cancel_seconds` (histogram)
+- `swift_cancel_total`
+
+## Notes
+- Keep secrets out of the repo and environment where possible.
+- Start with tiny order sizes on devnet/beta to validate wiring.

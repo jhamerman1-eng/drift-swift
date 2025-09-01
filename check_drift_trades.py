@@ -9,8 +9,6 @@ import logging
 from libs.drift.client import build_client_from_config
 
 # Setup basic logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
 
 async def check_wallet_balance():
     """Check SOL balance and Drift account status"""
@@ -95,6 +93,9 @@ async def try_simple_order():
 
         # Try a very simple order
         from libs.drift.client import Order, OrderSide
+# Setup centralized logging
+from libs.logging_config import setup_utility_logging
+logger = setup_utility_logging("check_drift_trades")
         simple_order = Order(
             side=OrderSide.BUY,
             price=current_price,

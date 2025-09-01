@@ -76,9 +76,6 @@ def safe_hedge_sizing(delta_usd: float, mid: float|None, atr: float|None, equity
     return qty, f"urgency={urgency:.2f}"
 
 # Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
         logging.FileHandler('hedge_beta.log'),
         logging.StreamHandler(sys.stdout)
@@ -168,6 +165,9 @@ class HedgeBetaLauncher:
             
             for endpoint_data in fallback_endpoints:
                 from libs.rpc_manager import RPCEndpoint
+# Setup centralized logging
+from libs.logging_config import setup_critical_logging
+logger = setup_critical_logging("hedge-bot")
                 endpoint = RPCEndpoint(
                     name=endpoint_data['name'],
                     http_url=endpoint_data['http'],

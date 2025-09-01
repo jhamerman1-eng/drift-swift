@@ -1,6 +1,7 @@
 cluster: devnet
 driver: driftpy
 
+rpc_url: https://api.devnet.solana.com
 rpc:
   http_url: https://api.devnet.solana.com
   ws_url: wss://api.devnet.solana.com
@@ -16,4 +17,4 @@ wallets:
 # SOL-PERP market index (0 = SOL-PERP)
 market_index: 0
 
-use_mock: true
+use_mock: false

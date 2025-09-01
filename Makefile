@@ -1,12 +1,19 @@
 .PHONY: install dev test test-unit test-e2e test-jit test-hedge test-trend test-cov test-ci clean-test lint
 
+# Use python3, but ensure it's at least Python 3.10
 PY?=python3
+PYTHON_MIN_VERSION:=3.10
+
+# Check Python version
+check-python:
+	@echo "Checking Python version..."
+	@$(PY) -c "import sys; v=sys.version_info; print(f'Python {v.major}.{v.minor}.{v.micro}'); assert v >= (3, 10), f'Python {v.major}.{v.minor} is too old. Need Python {PYTHON_MIN_VERSION}+'"
 
 install:
 	$(PY) -m pip install -U pip
 	$(PY) -m pip install -r requirements.txt
 
-dev:
+dev: check-python
 	$(PY) -m pip install -r requirements-dev.txt
 	pre-commit install || true
 
@@ -57,7 +64,7 @@ test-cov-xml:
 	$(PY) -m pytest --cov-report=xml
 
 # CI/CD test suite
-test-ci:
+test-ci: check-python
 	$(PY) -m pytest --junitxml=test-results.xml
 
 # Development workflow

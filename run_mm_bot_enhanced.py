@@ -41,9 +41,6 @@ import yaml
 import httpx
 
 # ---------------------------- Logging ----------------------------------------
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
 )
 logger = logging.getLogger("jit-mm-swift")
 
@@ -607,6 +604,9 @@ async def run_main(env: str, cfg_path: Path, *, no_metrics: bool = False) -> int
         logger.warning("[METRICS] Using NOOP backend")
     else:
         from prometheus_client import Gauge as _G, Counter as _C
+# Setup centralized logging
+from libs.logging_config import setup_critical_logging
+logger = setup_critical_logging("jit-mm-swift")
         MM_TICKS = _C("mm_ticks_total", "Total MM ticks")
         MM_SKIPS = _C("mm_skips_total", "MM skips by reason", labelnames=("reason",))
         MM_QUOTES = _C("mm_quotes_total", "Quotes placed")
@@ -734,7 +734,7 @@ def _selftest() -> int:
 
     assert asyncio.get_event_loop().run_until_complete(_sleep_then_cancel()) is True, "Cancel test failed"
 
-    print("✅ Selftest passed (no network/ssl required)")
+    logger.info("✅ Selftest passed (no network/ssl required)")
     return 0
 
 # ---------------------------- CLI --------------------------------------------

@@ -1,5 +1,9 @@
 from dataclasses import dataclass
 
+# Setup centralized logging
+from libs.logging_config import setup_critical_logging
+logger = setup_critical_logging("risk-manager")
+
 @dataclass
 class RiskState:
     equity: float
@@ -24,16 +28,34 @@ class RiskManager:
         if equity > peak_equity:
             self.peak_equity = equity
             peak_equity = equity
+            logger.info(f"New peak equity: ${equity:,.2f}")
 
         dd = (equity/peak_equity - 1.0) * 100.0
+        
+        # Log significant drawdown events
+        if dd <= self.soft_dd:
+            logger.warning(f"Soft drawdown threshold reached: {dd:.2f}% (equity: ${equity:,.2f})")
+        if dd <= self.trend_pause:
+            logger.warning(f"Trend pause threshold reached: {dd:.2f}% (equity: ${equity:,.2f})")
+        if dd <= self.circuit:
+            logger.error(f"Circuit breaker threshold reached: {dd:.2f}% (equity: ${equity:,.2f})")
+        
         return RiskState(equity=equity, peak_equity=peak_equity, drawdown_pct=dd)
 
     def decisions(self, state: RiskState) -> dict:
         d = {"allow_trading": True, "allow_trend": True}
+        
         if state.drawdown_pct <= self.soft_dd:
             d["tighten_quotes"] = True
+            logger.info("Risk decision: Tightening quotes due to drawdown")
+            
         if state.drawdown_pct <= self.trend_pause:
             d["allow_trend"] = False
+            logger.warning("Risk decision: Pausing trend trading due to drawdown")
+            
         if state.drawdown_pct <= self.circuit:
             d["allow_trading"] = False
+            logger.error("Risk decision: Circuit breaker activated - trading halted")
+        
+        logger.debug(f"Risk decisions: {d}")
         return d

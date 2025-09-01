@@ -8,11 +8,11 @@ import asyncio
 import logging
 import aiohttp
 import time
+# Setup centralized logging
+from libs.logging_config import setup_utility_logging
+logger = setup_utility_logging("test_rpc_health")
 
 # Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
 

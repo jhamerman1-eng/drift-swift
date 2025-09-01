@@ -17,9 +17,6 @@ from collections import deque
 sys.path.append(str(Path(__file__).parent / "libs"))
 
 # Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s | %(name)s | %(levelname)s | %(message)s',
     handlers=[
         logging.FileHandler('trend_bot_beta.log'),
         logging.StreamHandler(sys.stdout)
@@ -32,6 +29,9 @@ from libs.drift.client import build_client_from_config
 from libs.order_management import PositionTracker, OrderManager
 from orchestrator.risk_manager import RiskManager
 from bots.trend.main import trend_iteration, load_trend_config
+# Setup centralized logging
+from libs.logging_config import setup_critical_logging
+logger = setup_critical_logging("trend-bot")
 
 class TrendBetaLauncher:
     """Launcher for Trend Bot in beta.drift.trade environment."""
@@ -136,14 +136,14 @@ class TrendBetaLauncher:
     async def show_startup_banner(self):
         """Display startup information."""
         print("=" * 80)
-        print("TREND BOT LAUNCHING IN DEVNET MODE")
+        logger.info("TREND BOT LAUNCHING IN DEVNET MODE")
         print("=" * 80)
-        print("Strategy: MACD + Momentum with Anti-Chop Filters")
-        print("Target: SOL-PERP on Drift Protocol")
-        print("Environment: Devnet (Test Network)")
-        print("Mode: TEST TRADING (safe to use!)")
+        logger.info("Strategy: MACD + Momentum with Anti-Chop Filters")
+        logger.info("Target: SOL-PERP on Drift Protocol")
+        logger.info("Environment: Devnet (Test Network)")
+        logger.info("Mode: TEST TRADING (safe to use!)")
         print("=" * 80)
-        print("Press Ctrl+C to stop gracefully")
+        logger.info("Press Ctrl+C to stop gracefully")
         print()
 
     async def run(self) -> int:
@@ -215,5 +215,5 @@ if __name__ == "__main__":
         exit_code = asyncio.run(main())
         sys.exit(exit_code)
     except KeyboardInterrupt:
-        print("\nTrend Bot stopped by user")
+        logger.info("\nTrend Bot stopped by user")
         sys.exit(0)

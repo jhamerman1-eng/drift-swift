@@ -346,3 +346,4 @@ def trend_config_file(temp_dir, test_config):
     """Create trend bot config file."""
     return create_test_config_file(test_config["trend_bot"], temp_dir)
 
+
