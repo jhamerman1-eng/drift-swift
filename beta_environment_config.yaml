@@ -1,0 +1,119 @@
+# ===== Drift Bots v3.0 - BETA.DRIFT.TRADE Configuration =====
+# This file contains all settings needed to launch bots in beta.drift.trade
+# Copy this to your .env file or use with the quickstart script
+
+# 🔑 Wallet Configuration (REQUIRED)
+wallet:
+  maker_keypair_path: ".beta_wallet.json"  # ⚠️  CHANGE THIS to your funded wallet!
+  jito_keypair_path: ".jito_keypair.json"  # Optional: for MEV/tipping
+
+# 🌐 Network Configuration for beta.drift.trade
+network:
+  cluster: "mainnet"
+  env: "mainnet"
+  rpc:
+    http_url: "https://api.mainnet-beta.solana.com"
+    ws_url: "wss://api.mainnet-beta.solana.com"
+  swift:
+    http_url: "https://swift.drift.trade"
+    ws_url: "wss://swift.drift.trade/ws"
+
+# 📊 Monitoring & Health
+monitoring:
+  prometheus_port: 9109
+  enable_metrics: true
+  enable_health_endpoints: true
+  log_level: "INFO"
+  log_file: "logs/beta_bots.log"
+
+# ⚠️  RISK MANAGEMENT SETTINGS (IMPORTANT!)
+# These are CONSERVATIVE defaults for beta testing
+# Adjust based on your risk tolerance and testing results
+
+risk_management:
+  # Maximum position size per bot ($USD)
+  max_position_size_usd: 100.0
+
+  # Maximum inventory exposure ($USD)
+  max_inventory_usd: 500.0
+
+  # Circuit breaker thresholds (percentage)
+  circuit_breaker_threshold: 0.05  # 5% price move = HALT
+  soft_stop_threshold: 0.03       # 3% price move = reduced sizing
+  trend_pause_threshold: 0.08     # 8% price move = trend pause
+
+  # Safety features
+  enable_circuit_breaker: true
+  enable_portfolio_rails: true
+  enable_crash_sentinel: true
+
+# 🚦 Bot-Specific Configuration
+
+jit_bot:
+  # Spread configuration
+  spread_bps: 2.5
+  base_spread_bps: 2.5
+
+  # Size configuration
+  size_usd: 25.0
+
+  # Quote lifetime
+  min_lifetime_ms: 5000
+
+  # OBI Configuration
+  obi_config_pack: "v1"
+  toxicity_proxy_threshold: 0.7
+  spoof_filter_enabled: true
+
+  # Crash Sentinel v2
+  crash_sentinel_enabled: true
+  sigma_threshold: 3.0
+  halt_threshold: 0.15
+  de_risk_threshold: 0.10
+
+hedge_bot:
+  # Delta management
+  max_delta: 0.1
+  urgency_threshold: 0.7
+
+  # Execution
+  ioc_slippage_bps: 5
+  passive_slippage_bps: 2
+
+  # Multi-account (if applicable)
+  multi_account_enabled: false
+
+trend_bot:
+  # MACD Configuration
+  macd_fast: 12
+  macd_slow: 26
+  macd_signal: 9
+
+  # Anti-chop filters
+  atr_period: 14
+  adx_period: 14
+  adx_threshold: 25
+
+  # RBC (Range Breakout Confirmation)
+  rbc_enabled: true
+  rbc_lookback_periods: 20
+
+# 🚨 Alert Configuration (Optional)
+alerts:
+  enabled: false
+  # slack_webhook_url: "https://hooks.slack.com/your/webhook"
+  # discord_webhook_url: "https://discord.com/api/webhooks/your/webhook"
+
+# 📈 Advanced Settings
+advanced:
+  # Bot orchestration
+  orchestrator_loop_interval: 5  # seconds
+  monitor_loop_interval: 30      # seconds
+
+  # Client settings
+  driver: "driftpy"  # or "swift" if using Swift API
+  use_mock: false    # ⚠️  Set to false for live trading!
+
+  # Performance
+  enable_async_execution: true
+  max_concurrent_orders: 5

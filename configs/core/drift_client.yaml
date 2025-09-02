@@ -1,0 +1,21 @@
+cluster: devnet
+driver: driftpy
+
+rpc_url: https://api.devnet.solana.com
+rpc:
+  http_url: https://api.devnet.solana.com
+  ws_url: wss://api.devnet.solana.com
+
+swift:
+  http_url: https://swift.drift.trade
+  ws_url: wss://swift.drift.trade/ws
+
+wallets:
+  maker_keypair_path: .valid_wallet.json
+  jito_keypair_path: .swift_test_wallet.json
+
+# SOL-PERP market index (0 = SOL-PERP)
+market_index: 0
+
+use_mock: false
+live_trading: true

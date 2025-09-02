@@ -1,0 +1,29 @@
+# ===== Drift Bot v1.17 (rc3) .env template =====
+# Wallets
+KEYPAIR_PATH={USERPROFILE}\.config\solana\id.json
+# JITO key (optional; only if using Jito tip/priority flow)
+# JITO_KEYPAIR_PATH=C:\path\to\jito-keypair.json
+
+# Cluster (devnet | testnet | mainnet)
+DRIFT_CLUSTER=devnet
+
+# RPC / WS (Helius examples; replace YOUR_API_KEY)
+# Devnet (HTTP/WS)
+DRIFT_HTTP_URL=https://devnet.helius-rpc.com/?api-key=YOUR_API_KEY
+DRIFT_WS_URL=wss://devnet.helius-rpc.com/?api-key=YOUR_API_KEY
+
+# Mainnet (HTTP/WS)
+# DRIFT_HTTP_URL=https://mainnet.helius-rpc.com/?api-key=YOUR_API_KEY
+# DRIFT_WS_URL=wss://mainnet.helius-rpc.com/?api-key=YOUR_API_KEY
+
+# Swift forward base (use direct Swift API or your local sidecar)
+# For local sidecar:
+# SWIFT_FORWARD_BASE=http://localhost:8787
+# For direct API (example; confirm per your access):
+# SWIFT_FORWARD_BASE=https://swift.drift.trade
+
+# Prometheus metrics port for the bot
+PROMETHEUS_PORT=8000
+
+# Optional: explicit taker authority for signing (fallback if not using KEYPAIR_PATH)
+# TAKER_AUTHORITY=<base58 pubkey>

@@ -1,7 +1,23 @@
-env: testnet
-rpc_url: ${RPC_URL}
-ws_url: ${WS_URL}
-wallet_secret_key: ${WALLET_SECRET_KEY}
+# Drift client configuration
+# Driver selection: driftpy, swift, or hybrid (NO MOCK MODE)
+driver: driftpy
+use_mock: false
+
+# Market configuration
+env: devnet
 market: SOL-PERP
 heartbeat_ms: 1000
-use_mock: true  # set to false when wiring real driftpy
+
+# Swift Configuration
+swift:
+  http_url: https://swift.drift.trade
+  ws_url: wss://swift.drift.trade/ws
+
+# Wallet Configuration
+wallets:
+  maker_keypair_path: funded_wallet.json
+
+# RPC Configuration (for DriftPy) - Use official Solana devnet for Drift access
+rpc:
+  http_url: https://api.devnet.solana.com
+  ws_url: wss://api.devnet.solana.com

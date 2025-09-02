@@ -1,0 +1,9 @@
+obi_weights:
+  regime_default:
+    microprice: 0.6
+    order_imbalance: 0.3
+    toxicity: 0.1
+  regime_high_vol:
+    microprice: 0.5
+    order_imbalance: 0.4
+    toxicity: 0.1

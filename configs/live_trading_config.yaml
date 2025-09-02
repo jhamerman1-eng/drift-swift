@@ -1,0 +1,55 @@
+# ===== LIVE TRADING CONFIGURATION =====
+# ⚠️  WARNING: This configuration enables REAL blockchain orders with REAL money!
+# Only use this configuration if you understand the risks and have sufficient funds.
+
+cluster: devnet
+driver: driftpy
+
+# Live trading settings
+live_trading: true
+use_mock: false
+
+# Network configuration
+rpc_url: https://api.devnet.solana.com
+rpc:
+  http_url: https://api.devnet.solana.com
+  ws_url: wss://api.devnet.solana.com
+
+# Swift configuration for real orders
+swift:
+  http_url: https://swift.drift.trade
+  ws_url: wss://swift.drift.trade/ws
+
+# Wallet configuration - MUST be funded!
+wallets:
+  maker_keypair_path: .valid_wallet.json  # ⚠️  Must be funded wallet!
+  jito_keypair_path: .swift_test_wallet.json
+
+# Market configuration
+market_index: 0  # SOL-PERP
+
+# JIT Market Making parameters
+symbol: SOL-PERP
+leverage: 10
+post_only: true
+
+# Spread configuration (in basis points)
+spread_bps:
+  base: 8.0
+  min: 4.0
+  max: 25.0
+
+# Risk management
+inventory_target: 0.0
+max_position_abs: 120.0
+tick_size: 0.001
+
+# Order book settings
+orderbook_ttl_seconds: 0.25
+orderbook_max_stale_seconds: 2.0
+
+# Live trading warnings
+warnings:
+  real_money_at_risk: true
+  ensure_sufficient_balance: true
+  understand_risks: true

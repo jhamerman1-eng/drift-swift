@@ -2,7 +2,7 @@ version: "3.9"
 services:
   redis:
     image: redis:7-alpine
-    command: ["redis-server", "--appendonly", "yes"]
+    command: ["redis-server","--appendonly","yes","--requirepass","${REDIS_PASSWORD}"]
     ports: ["6379:6379"]
 
   prometheus:
