@@ -1,1 +1,46 @@
-v1.17.0-rc2
+V.35 - Complete Swift MM Bot Stable Release
+============================================
+
+Release Date: 2025-09-12
+Status: STABLE - Production Ready
+
+## 🚀 V.35 RELEASE HIGHLIGHTS
+
+### ✅ CORE FIXES
+- Fixed DriftPy client initialization (DriftClient vs DriftpyClient)
+- Resolved wallet loading issues (64-byte key support)
+- Fixed "Cannot decompress Edwards point" error
+- Added missing swift_envelope.py module
+- Enhanced error handling with graceful fallbacks
+
+### ✅ SWIFT INTEGRATION
+- Complete Swift order placement via sidecar
+- Real-time Swift order reception (WebSocket ready)
+- Swift envelope creation and processing
+- JIT trade execution logic
+- Swift order processor with statistics
+
+### ✅ PRODUCTION FEATURES
+- Comprehensive order management
+- Real-time statistics and monitoring
+- RPC failover system integration ready
+- Advanced error handling and recovery
+- Live trading configuration
+
+### ✅ TESTING STATUS
+- Successfully tested and running
+- Zero critical errors in logs
+- Wallet connection verified
+- DriftPy client stable
+- Swift sidecar integration working
+
+## 📁 KEY FILES V.35
+- run_swift_mm_complete.py (Main bot)
+- libs/drift/swift_envelope.py (Swift envelopes)
+- libs/drift/swift_receiver.py (Swift reception)
+- libs/drift/swift_sidecar_driver.py (Sidecar integration)
+- configs/core/drift_client.yaml (Configuration)
+- tools/triage_mm_logs.py (Log analysis)
+
+## 🎯 READY FOR PRODUCTION
+This version is fully tested, stable, and ready for live trading operations.
