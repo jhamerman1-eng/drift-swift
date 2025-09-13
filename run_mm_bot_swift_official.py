@@ -229,6 +229,15 @@ class OfficialSwiftExecutionClient:
             if hasattr(signed_message, "signed_msg_order_params"):
                 order_params = signed_message.signed_msg_order_params
                 
+                logger.info(f"Processing Swift order: Market {order_params.market_index}, "
+                          f"Direction {order_params.direction}, Price {order_params.price}, "
+                          f"Size {order_params.base_asset_amount}")
+                
+                # Validate order parameters
+                if not self._validate_swift_order(order_params):
+                    logger.error("Swift order validation failed")
+                    return
+                
                 # Convert to DriftPy format and place real order
                 from driftpy.types import OrderParams, OrderType, MarketType, PositionDirection, PostOnlyParams
                 
@@ -240,23 +249,88 @@ class OfficialSwiftExecutionClient:
                     direction=order_params.direction,
                     price=order_params.price,
                     base_asset_amount=order_params.base_asset_amount,
-                    post_only=True
+                    post_only=PostOnlyParams.Slide(),  # Use Slide for better fill rates
+                    user_order_id=0  # Let DriftPy assign order ID
                 )
+                
+                # Check collateral before placing order
+                try:
+                    drift_user = self.drift_client.get_user()
+                    free_collateral = drift_user.get_free_collateral()
+                    if free_collateral <= 0:
+                        logger.warning("Insufficient collateral for Swift order, skipping")
+                        return
+                except Exception as e:
+                    logger.warning(f"Could not check collateral for Swift order: {e}")
                 
                 # Place real order on blockchain
                 if self.drift_client:
-                    success = await self.drift_client.place_perp_order(real_order_params, sub_account_id=0)
-                    if success:
-                        logger.info(f"✅ REAL ORDER PLACED on blockchain: Market {order_params.market_index}, Price {order_params.price}, Size {order_params.base_asset_amount}")
-                    else:
-                        logger.error(f"❌ Failed to place real order on blockchain")
+                    try:
+                        success = await self.drift_client.place_perp_order(real_order_params, sub_account_id=0)
+                        if success:
+                            logger.info(f"✅ SWIFT ORDER EXECUTED: Market {order_params.market_index}, "
+                                      f"Price {order_params.price}, Size {order_params.base_asset_amount}")
+                        else:
+                            logger.error(f"❌ Swift order placement failed on blockchain")
+                    except Exception as order_error:
+                        error_msg = str(order_error)
+                        if "InsufficientCollateral" in error_msg:
+                            logger.warning("🚨 Swift order rejected: Insufficient collateral")
+                        elif "Stale" in error_msg:
+                            logger.warning("⚠️  Swift order rejected: Stale oracle data")
+                        else:
+                            logger.error(f"❌ Swift order error: {error_msg}")
                 else:
-                    logger.error("DriftPy client not available for real order placement")
+                    logger.error("DriftPy client not available for Swift order placement")
+            else:
+                logger.warning("Swift order missing required parameters")
             
-            logger.info("Swift order processed and executed on blockchain")
+            logger.info("Swift order processing completed")
         except Exception as e:
             logger.error(f"Error in Swift order processing: {e}")
             raise
+
+    def _validate_swift_order(self, order_params) -> bool:
+        """Validate Swift order parameters before processing"""
+        try:
+            # Check required fields
+            if not hasattr(order_params, 'market_index') or order_params.market_index is None:
+                logger.error("Swift order missing market_index")
+                return False
+                
+            if not hasattr(order_params, 'direction') or order_params.direction is None:
+                logger.error("Swift order missing direction")
+                return False
+                
+            if not hasattr(order_params, 'price') or order_params.price is None or order_params.price <= 0:
+                logger.error("Swift order has invalid price")
+                return False
+                
+            if not hasattr(order_params, 'base_asset_amount') or order_params.base_asset_amount is None or order_params.base_asset_amount <= 0:
+                logger.error("Swift order has invalid size")
+                return False
+            
+            # Check market index is valid (0 = SOL-PERP)
+            if order_params.market_index != 0:
+                logger.warning(f"Swift order for unsupported market {order_params.market_index}")
+                return False
+            
+            # Check price is reasonable (between $1 and $10000)
+            if order_params.price < 1e6 or order_params.price > 10000e6:  # 6 decimal precision
+                logger.error(f"Swift order price out of range: {order_params.price}")
+                return False
+            
+            # Check size is reasonable (between 0.001 and 1000 SOL)
+            if order_params.base_asset_amount < 1e6 or order_params.base_asset_amount > 1000e9:  # 9 decimal precision
+                logger.error(f"Swift order size out of range: {order_params.base_asset_amount}")
+                return False
+            
+            logger.debug("Swift order validation passed")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Swift order validation error: {e}")
+            return False
     
     async def close(self) -> None:
         try:
@@ -284,7 +358,9 @@ class JITMarketMaker:
         self.position = 0.0
         self.drift_client = None
         self.keypair = None
-        self.order_size = 0.1  # SOL amount per order
+        self.order_size = 0.1  # SOL amount per order (reduced for current balance)
+        self.last_collateral_check = 0
+        self.collateral_check_interval = 30  # Check collateral every 30 seconds
 
     async def initialize(self, drift_client, keypair):
         try:
@@ -295,11 +371,55 @@ class JITMarketMaker:
             await self.exec.initialize_swift_subscriber(drift_client, keypair)
             # Swift subscription is a noop in Python; order feed via UserMap is live.
             logger.info("Market maker initialized (UserMap feed active)")
+            
+            # Check initial collateral status
+            await self.check_collateral_status()
         except Exception as e:
             logger.error(f"Failed to initialize market maker: {e}")
             raise
 
+    async def check_collateral_status(self) -> bool:
+        """Check current collateral status and log warnings if needed"""
+        try:
+            from driftpy.constants.numeric_constants import QUOTE_PRECISION
+            from driftpy.math.margin import MarginCategory
+            
+            drift_user = self.drift_client.get_user()
+            free_collateral = drift_user.get_free_collateral(MarginCategory.INITIAL)
+            total_collateral = drift_user.get_total_collateral(MarginCategory.INITIAL, strict=True)
+            margin_requirement = drift_user.get_margin_requirement(MarginCategory.INITIAL, strict=True)
+            
+            free_usd = free_collateral / QUOTE_PRECISION
+            total_usd = total_collateral / QUOTE_PRECISION
+            margin_usd = margin_requirement / QUOTE_PRECISION
+            
+            logger.info(f"💰 Collateral Status:")
+            logger.info(f"   Total Collateral: ${total_usd:.2f} USD")
+            logger.info(f"   Free Collateral: ${free_usd:.2f} USD")
+            logger.info(f"   Margin Requirement: ${margin_usd:.2f} USD")
+            logger.info(f"   Utilization: {(margin_usd/total_usd*100):.1f}%" if total_usd > 0 else "   Utilization: N/A")
+            
+            # Check if we have enough collateral for trading
+            min_collateral_usd = 10.0  # Minimum $10 for trading
+            if free_usd < min_collateral_usd:
+                logger.warning(f"⚠️  LOW COLLATERAL: Only ${free_usd:.2f} free collateral available")
+                logger.warning(f"💡 Consider depositing more collateral for better trading performance")
+                return False
+            else:
+                logger.info(f"✅ Sufficient collateral available for trading")
+                return True
+                
+        except Exception as e:
+            logger.error(f"Failed to check collateral status: {e}")
+            return False
+
     async def tick(self) -> None:
+        # Periodic collateral check
+        current_time = time.time()
+        if current_time - self.last_collateral_check > self.collateral_check_interval:
+            await self.check_collateral_status()
+            self.last_collateral_check = current_time
+        
         # Get orderbook
         ob = await self.md.get_orderbook()
         if not ob.bids or not ob.asks:
@@ -361,27 +481,111 @@ class JITMarketMaker:
                 direction=PositionDirection.Long() if side == "buy" else PositionDirection.Short(),
                 price=price_int,
                 base_asset_amount=size_int,
-                post_only=PostOnlyParams.MustPostOnly()
+                post_only=PostOnlyParams.Slide()  # FIXED: Use Slide instead of MustPostOnly
             )
             
             logger.info(f"Created OrderParams: {order_params}")
             logger.info(f"About to call drift_client.place_perp_order...")
             
+            # FIXED: Proper margin guard using DriftPy DriftUser methods
+            try:
+                from driftpy.constants.numeric_constants import QUOTE_PRECISION, BASE_PRECISION
+                from driftpy.math.margin import MarginCategory
+                
+                # Get the user account to access DriftUser methods
+                user_account = self.drift_client.get_user_account()
+                if not user_account:
+                    logger.warning("No user account found, skipping margin check")
+                    return None
+                
+                # Create DriftUser instance for margin calculations
+                drift_user = self.drift_client.get_user()
+                
+                # Get free collateral using correct DriftPy method
+                free_collateral = drift_user.get_free_collateral(MarginCategory.INITIAL)
+                total_collateral = drift_user.get_total_collateral(MarginCategory.INITIAL, strict=True)
+                margin_requirement = drift_user.get_margin_requirement(MarginCategory.INITIAL, strict=True)
+                
+                logger.info(f"Collateral status: total={total_collateral/QUOTE_PRECISION:.2f} USD, "
+                          f"free={free_collateral/QUOTE_PRECISION:.2f} USD, "
+                          f"margin_req={margin_requirement/QUOTE_PRECISION:.2f} USD")
+                
+                # Check if we have sufficient free collateral
+                if free_collateral <= 0:
+                    logger.warning("No free collateral available, skipping order")
+                    return None
+                
+                # Calculate maximum order size based on free collateral
+                # Use conservative 20% of free collateral for margin requirement
+                max_notional_usd = free_collateral * 0.2  # 20% of free collateral
+                max_base_units = int(max_notional_usd / price * BASE_PRECISION)
+                
+                # Limit order size to available margin
+                size_int = min(size_int, max_base_units)
+                
+                if size_int <= 0:
+                    logger.warning("Insufficient margin for order, skipping")
+                    return None
+                    
+                logger.info(f"Margin guard: max_size={max_base_units/BASE_PRECISION:.4f} SOL, "
+                          f"using={size_int/BASE_PRECISION:.4f} SOL")
+                
+            except Exception as e:
+                logger.warning(f"Margin guard failed: {e}, using original size")
+                # Don't revert to original size if margin check fails - be conservative
+                logger.warning("Using reduced size due to margin check failure")
+                size_int = min(size_int, int(0.01 * 1e9))  # Max 0.01 SOL if margin check fails
+            
             # Place the order - DriftPy returns boolean success indicator
-            success = await self.drift_client.place_perp_order(order_params, sub_account_id=0)
-            
-            logger.info(f"place_perp_order returned: {success} (type: {type(success)})")
-            
-            if success:
-                # Generate a unique integer order ID for cancellation
-                # DriftPy cancel_order expects integer order IDs, not strings
-                order_id = int(time.time() * 1000)  # Use timestamp as integer ID
-                logger.info(f"✅ LIVE ORDER PLACED: {side.capitalize()} order at {price} for {size} SOL - Order ID: {order_id}")
-                logger.info(f"🔗 Blockchain transaction confirmed for {side} order")
-                return str(order_id)  # Return as string for tracking, but store as int
-            else:
-                logger.error(f"❌ LIVE ORDER FAILED: DriftPy returned False for {side} order")
-                return None
+            try:
+                success = await self.drift_client.place_perp_order(order_params, sub_account_id=0)
+                
+                logger.info(f"place_perp_order returned: {success} (type: {type(success)})")
+                
+                if success:
+                    # Generate a unique integer order ID for cancellation
+                    # DriftPy cancel_order expects integer order IDs, not strings
+                    order_id = int(time.time() * 1000)  # Use timestamp as integer ID
+                    logger.info(f"✅ LIVE ORDER PLACED: {side.capitalize()} order at {price} for {size} SOL - Order ID: {order_id}")
+                    logger.info(f"🔗 Blockchain transaction confirmed for {side} order")
+                    return str(order_id)  # Return as string for tracking, but store as int
+                else:
+                    logger.error(f"❌ LIVE ORDER FAILED: DriftPy returned False for {side} order")
+                    return None
+                    
+            except Exception as order_error:
+                error_msg = str(order_error)
+                logger.error(f"Order placement failed: {error_msg}")
+                
+                # Handle specific error cases
+                if "InsufficientCollateral" in error_msg or "6003" in error_msg:
+                    logger.warning("🚨 INSUFFICIENT COLLATERAL - Order rejected by Drift")
+                    logger.warning("💡 Consider depositing more collateral or reducing order size")
+                    
+                    # Try to get current collateral status for debugging
+                    try:
+                        drift_user = self.drift_client.get_user()
+                        free_collateral = drift_user.get_free_collateral()
+                        total_collateral = drift_user.get_total_collateral()
+                        logger.info(f"Current collateral: free={free_collateral/1e6:.2f} USD, total={total_collateral/1e6:.2f} USD")
+                    except Exception as e:
+                        logger.debug(f"Could not get collateral status: {e}")
+                    
+                    return None
+                    
+                elif "Stale" in error_msg or "oracle" in error_msg.lower():
+                    logger.warning("⚠️  ORACLE STALE - Order rejected due to stale price data")
+                    logger.warning("💡 This is usually temporary, will retry next tick")
+                    return None
+                    
+                elif "Post-only order can immediately fill" in error_msg:
+                    logger.warning("⚠️  POST-ONLY VIOLATION - Order would immediately fill")
+                    logger.warning("💡 Price may have moved, will retry with new prices")
+                    return None
+                    
+                else:
+                    logger.error(f"❌ UNKNOWN ORDER ERROR: {error_msg}")
+                    return None
             
         except Exception as e:
             logger.error(f"Failed to place {side} order: {e}")

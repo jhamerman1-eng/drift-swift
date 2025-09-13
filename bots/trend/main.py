@@ -22,6 +22,7 @@ import asyncio
 import collections
 import os
 import signal
+import logging
 from typing import Any, Dict, Deque
 
 import yaml
@@ -30,6 +31,8 @@ import numpy as np
 from libs.drift.client import build_client_from_config, Order, DriftClient
 from libs.order_management import PositionTracker, OrderManager, OrderRecord
 from orchestrator.risk_manager import RiskManager, RiskState
+
+logger = logging.getLogger(__name__)
 
 
 def load_trend_config(path: str) -> Dict[str, Any]:

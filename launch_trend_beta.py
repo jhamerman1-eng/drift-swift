@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+`#!/usr/bin/env python3
 """
 🚀 Trend Bot - Beta.Drift.Trade Launcher
 Launches the Trend Bot specifically in the beta.drift.trade environment.
@@ -17,6 +17,9 @@ from collections import deque
 sys.path.append(str(Path(__file__).parent / "libs"))
 
 # Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s | %(levelname)s | %(message)s',
     handlers=[
         logging.FileHandler('trend_bot_beta.log'),
         logging.StreamHandler(sys.stdout)

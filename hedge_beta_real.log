@@ -1124,3 +1124,25 @@ websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: H
 2025-08-28 01:19:34,068 - root - INFO - Total Volume: $0.00
 2025-08-28 01:19:34,068 - root - INFO - Errors: None - Clean real beta session!
 2025-08-28 01:19:34,069 - root - INFO - ======================================================================
+2025-09-01 23:18:40,234 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-09-01 23:18:40,235 - __main__ - INFO - ======================================================================
+2025-09-01 23:18:40,236 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-09-01 23:18:40,237 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-09-01 23:18:40,238 - __main__ - INFO - ======================================================================
+2025-09-01 23:18:40,238 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-09-01 23:18:40,239 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-09-01 23:18:40,239 - __main__ - INFO - [CONFIG] RPC: https://api.devnet.solana.com
+2025-09-01 23:18:40,240 - __main__ - INFO - [CONFIG] Wallet: .valid_wallet.json
+2025-09-01 23:18:40,240 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-09-01 23:18:40,243 - __main__ - ERROR - [ERROR] Failed to initialize real beta client: DriftpyClient.__init__() got an unexpected keyword argument 'market'
+2025-09-01 23:18:40,244 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-09-01 23:18:40,245 - root - INFO - [CLEANUP] Starting cleanup...
+2025-09-01 23:18:40,246 - root - INFO - ======================================================================
+2025-09-01 23:18:40,247 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-09-01 23:18:40,248 - root - INFO - ======================================================================
+2025-09-01 23:18:40,248 - root - INFO - Total Iterations: 0
+2025-09-01 23:18:40,249 - root - INFO - Net Exposure: $0.00
+2025-09-01 23:18:40,249 - root - INFO - Total Volume: $0.00
+2025-09-01 23:18:40,250 - root - WARNING - Errors Encountered: 1
+2025-09-01 23:18:40,251 - root - WARNING -   1. Real client initialization failed: DriftpyClient.__init__() got an unexpected keyword argument 'market'
+2025-09-01 23:18:40,253 - root - INFO - ======================================================================

@@ -1,0 +1,29 @@
+cluster: devnet
+driver: driftpy
+
+# Beta.drift.trade configuration
+rpc_url: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+rpc:
+  http_url: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+  ws_url: wss://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+
+swift:
+  http_url: https://swift.drift.trade
+  ws_url: wss://swift.drift.trade/ws
+
+wallets:
+  maker_keypair_path: .valid_wallet.json
+  jito_keypair_path: .swift_test_wallet.json
+
+# SOL-PERP market index (0 = SOL-PERP)
+market_index: 0
+
+use_mock: false
+live_trading: true
+
+# Beta environment settings
+env: beta
+market: SOL-PERP
+
+
+

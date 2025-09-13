@@ -9,3 +9,4 @@ anchorpy>=0.20
 solana>=0.30.0
 base58>=2.1.0
 cryptography>=41.0.0
+websockets>=11.0.0

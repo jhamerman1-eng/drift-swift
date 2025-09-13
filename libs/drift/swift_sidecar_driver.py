@@ -49,3 +49,7 @@ class SwiftSidecarDriver:
             self._client.close()
         except Exception:
             pass
+
+
+
+

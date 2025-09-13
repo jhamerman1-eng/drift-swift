@@ -1,7 +1,21 @@
+trend:
+  macd:
+    fast: 12
+    slow: 26
+    signal: 9
+    use_macd: true
+  momentum_window: 14
+  position_scaler: 0.5  # More aggressive for beta testing
+  max_position_usd: 500  # Smaller position for beta testing
+  atr_adx_filters:
+    enabled: false
+  refresh_interval: 2.0  # Slower refresh for better tracking
+
 rbc_filters:
   enabled: true
   adx_min: 15
   atr_mult: 1.7
+
 anti_chop:
   enabled: true
   window: 50

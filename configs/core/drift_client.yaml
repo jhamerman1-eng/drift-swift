@@ -13,6 +13,7 @@ swift:
 wallets:
   maker_keypair_path: .valid_wallet.json
   jito_keypair_path: .swift_test_wallet.json
+  # Target wallet address: A68b4xetPcF6tJShZsCeCCE1iGYZLr9314dggLJ1JNgW
 
 # SOL-PERP market index (0 = SOL-PERP)
 market_index: 0

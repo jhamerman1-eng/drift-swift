@@ -39,6 +39,7 @@ export function timeSubmit() {
 }
 
 export function timeCancel() {
+  // @ts-ignore: process is available in Node.js environments
   const end = metrics.cancel_seconds.startTimer({ mode: process.env.SWIFT_FORWARD_BASE ? "forward" : "local" });
   return end;
 }

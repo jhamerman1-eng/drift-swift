@@ -66,3 +66,13 @@
 2025-08-29 01:56:37,954 - __main__ - INFO - ======================================================================
 2025-08-29 01:56:37,955 - __main__ - INFO - [SUMMARY] BETA HEDGE TRADING SESSION COMPLETE
 2025-08-29 01:56:37,955 - __main__ - INFO - ======================================================================
+2025-09-01 23:17:25,606 - __main__ - INFO - [LAUNCH] Starting Simple Hedge Bot for beta.drift.trade
+2025-09-01 23:17:25,610 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-09-01 23:17:25,611 - __main__ - INFO - ======================================================================
+2025-09-01 23:17:25,612 - __main__ - INFO - [INIT] Importing working DriftPy client...
+2025-09-01 23:17:27,127 - __main__ - INFO - [SUCCESS] DriftPy client imported successfully
+2025-09-01 23:17:27,127 - __main__ - INFO - [INIT] Importing bot components...
+2025-09-01 23:17:27,137 - root - ERROR - [ERROR] Fatal error: No module named 'libs.order_management'
+2025-09-01 23:17:27,139 - __main__ - INFO - ======================================================================
+2025-09-01 23:17:27,140 - __main__ - INFO - [SUMMARY] BETA HEDGE TRADING SESSION COMPLETE
+2025-09-01 23:17:27,140 - __main__ - INFO - ======================================================================
