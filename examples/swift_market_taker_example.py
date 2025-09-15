@@ -19,8 +19,8 @@ async def main():
         # Set environment for DEV mode
         os.environ['ENV'] = 'devnet'
         os.environ['USE_MOCK'] = 'false'
-        os.environ['DRIFT_RPC_URL'] = 'https://api.devnet.solana.com'
-        os.environ['DRIFT_WS_URL'] = 'wss://api.devnet.solana.com'
+        os.environ['DRIFT_RPC_URL'] = 'https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494'
+        os.environ['DRIFT_WS_URL'] = 'wss://https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494'
         os.environ['KEYPAIR_PATH'] = '.beta_dev_wallet.json'
 
         print("🔗 Connecting to DEV blockchain...")

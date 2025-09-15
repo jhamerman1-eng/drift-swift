@@ -23,8 +23,8 @@ async def main():
     # Driver is now set to driftpy by default in config
     # FORCING DRIFTPY MODE - NO MOCK FALLBACKS ALLOWED
     # Use official Solana devnet RPC for access to Drift devnet markets
-    os.environ["DRIFT_HTTP_URL"] = "https://api.devnet.solana.com"
-    os.environ["DRIFT_WS_URL"] = "wss://api.devnet.solana.com"
+    os.environ["DRIFT_HTTP_URL"] = "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
+    os.environ["DRIFT_WS_URL"] = "wss://https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
     
     # Use your ACTUAL funded wallet for real trading
     os.environ["DRIFT_KEYPAIR_PATH"] = "funded_wallet.json"

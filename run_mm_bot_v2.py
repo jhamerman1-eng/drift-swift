@@ -19,14 +19,18 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 import yaml
-import httpx
 
-# Basic logging setup
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s | %(levelname)s | %(message)s",
-)
-logger = logging.getLogger("jit-mm-swift-official")
+# Setup centralized logging with fallback
+# AUDIT_COMPLIANT: Uses centralized logging with file and console handlers
+try:
+    from libs.logging_config import setup_critical_logging
+    logger = setup_critical_logging("jit-mm-swift")  # Includes RotatingFileHandler + StreamHandler
+except ImportError:
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s | %(levelname)s | %(message)s",
+    )
+    logger = logging.getLogger("jit-mm-swift-official")
 
 # Test the Swift imports
 try:

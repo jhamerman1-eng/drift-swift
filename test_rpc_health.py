@@ -13,7 +13,6 @@ from libs.logging_config import setup_utility_logging
 logger = setup_utility_logging("test_rpc_health")
 
 # Configure logging
-)
 logger = logging.getLogger(__name__)
 
 class RPCTester:
@@ -115,14 +114,19 @@ class RPCTester:
 
         devnet_options = [
             {
+                'http': 'https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494',
+                'ws': 'wss://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494',
+                'name': 'Helius Devnet (Primary)'
+            },
+            {
                 'http': 'https://solana-devnet.g.alchemy.com/v2/demo',
                 'ws': 'wss://solana-devnet.g.alchemy.com/v2/demo',
-                'name': 'Alchemy Devnet'
+                'name': 'Alchemy Devnet (Fallback)'
             },
             {
                 'http': 'https://api.devnet.solana.com',
                 'ws': 'wss://api.devnet.solana.com',
-                'name': 'Solana Labs Devnet'
+                'name': 'Solana Labs Devnet (Last Resort)'
             }
         ]
 

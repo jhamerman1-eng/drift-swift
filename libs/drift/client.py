@@ -12,19 +12,17 @@ from collections import defaultdict
 from solana.rpc.async_api import AsyncClient
 from solders.keypair import Keypair
 from solders.pubkey import Pubkey
-from driftpy.drift_client import DriftClient
-from driftpy.account_subscription_config import AccountSubscriptionConfig
+from driftpy.constants.config import DriftEnv
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from driftpy.types import OrderParams, OrderType, MarketType, PositionDirection, PostOnlyParams, SignedMsgOrderParamsMessage
 try:
     from anchorpy.provider import Wallet  # optional
 except Exception:
     Wallet = None  # type: ignore
 
-from driftpy.types import (
-    OrderParams,
-    OrderType,
-    MarketType,
-    PositionDirection,
-)
+# OrderParams, OrderType, MarketType, PositionDirection imported locally where needed
 from driftpy.constants.numeric_constants import (
     BASE_PRECISION,     # 1e9 for perps base
     PRICE_PRECISION,    # 1e6
@@ -32,6 +30,9 @@ from driftpy.constants.numeric_constants import (
 # Fallback if constants move between versions
 PRICE_PRECISION_I = int(getattr(PRICE_PRECISION, "n", getattr(PRICE_PRECISION, "value", PRICE_PRECISION)))
 BASE_PRECISION_I  = int(getattr(BASE_PRECISION, "n",  getattr(BASE_PRECISION, "value",  BASE_PRECISION)))
+
+# Import driftpy types at module level to avoid type checker issues
+from driftpy.types import OrderParams, OrderType, MarketType, PositionDirection, PostOnlyParams, SignedMsgOrderParamsMessage
 
 log = logging.getLogger("libs.drift.client")
 
@@ -84,7 +85,7 @@ class DriftpyClient:
         cfg: Optional[Dict[str, Any]] = None,
         rpc_url: Optional[str] = None,
         wallet_secret_key: Optional[Union[List[int], bytes, str]] = None,
-        env: Optional[str] = None,
+        env: Optional[Union[str, DriftEnv]] = None,
         ws_url: Optional[str] = None,
         use_fallback: bool = True,
         logger: Optional[Any] = None,
@@ -99,7 +100,12 @@ class DriftpyClient:
             rpc_url_from_config = rpc_config
 
         self._rpc_url = (self._cfg.get("rpc_url") or rpc_url_from_config or rpc_url or "").strip()
-        self._env = (self._cfg.get("env") or env or "devnet").lower().replace("beta", "devnet")
+        env_str = (self._cfg.get("env") or env or "devnet").lower().replace("beta", "devnet")
+        # Convert string to DriftEnv type
+        if env_str in ["devnet", "mainnet"]:
+            self._env: DriftEnv = env_str  # type: ignore
+        else:
+            self._env: DriftEnv = "devnet"  # Default to devnet for safety
         self._ws_url = self._cfg.get("ws_url") or ws_url  # currently unused by DriftClient, kept for future use
         # wallet may be path/list/bytes - support multiple config formats
         wallet_config = self._cfg.get("wallets", {})
@@ -118,7 +124,7 @@ class DriftpyClient:
         self._secret: Optional[bytes] = None
 
         self._conn: Optional[AsyncClient] = None
-        self._driver: Optional[DriftClient] = None
+        self._driver: Optional[Any] = None
         self._use_fallback = bool(use_fallback)
         self._logger = logger or log  # Use provided logger or default
 
@@ -223,7 +229,7 @@ class DriftpyClient:
         return self._driver is not None
 
     @property
-    def drift_client(self) -> Optional[DriftClient]:
+    def drift_client(self) -> Optional[Any]:
         """Get the underlying drift client."""
         return self._driver
 
@@ -270,6 +276,7 @@ class DriftpyClient:
         for attempt in range(max_retries):
             try:
                 self._conn = AsyncClient(self._rpc_url)
+                assert self._secret is not None, "Secret key must be loaded before connecting"
                 kp = Keypair.from_bytes(self._secret)  # 32 or 64 both supported by solders
                 wallet = Wallet(kp) if Wallet else kp
 
@@ -285,7 +292,8 @@ class DriftpyClient:
                 )
 
                 # Subscribe to accounts (required for proper operation)
-                await self._driver.subscribe()
+                if self._driver is not None:
+                    await self._driver.subscribe()
                 self._logger.info("✅ driftpy connected and subscribed (env=%s, rpc=%s)", self._env, self._rpc_url)
                 return
 
@@ -416,6 +424,9 @@ class DriftpyClient:
     # --- try all known APIs across driftpy versions ---
     async def _try_all_orderbook_paths(self, market: str | int, depth: int) -> Dict[str, Any]:
         dc = self._driver  # underlying driftpy.DriftClient
+        if dc is None:
+            raise RuntimeError("Drift client not initialized - call connect() first")
+
         mindex = await self._resolve_perp_index(market)
 
         # Helper to call both sync/async functions uniformly
@@ -479,10 +490,11 @@ class DriftpyClient:
                 else:
                     px = qty = None
                 try:
-                    px = float(px)
-                    qty = float(qty)
-                    if qty > 0 and math.isfinite(px) and math.isfinite(qty):
-                        out.append((px, qty))
+                    if px is not None and qty is not None:
+                        px = float(px)
+                        qty = float(qty)
+                        if qty > 0 and math.isfinite(px) and math.isfinite(qty):
+                            out.append((px, qty))
                 except Exception:
                     # raw "orders" → we try to aggregate below
                     pass
@@ -495,9 +507,11 @@ class DriftpyClient:
                         px = it.get("price") or it.get("px") or it.get("order_price")
                         q  = it.get("baseAmount") or it.get("qty") or it.get("size")
                         try:
-                            px = float(px); q = float(q)
-                            if q > 0:
-                                buckets[px] += q
+                            if px is not None and q is not None:
+                                px = float(px)
+                                q = float(q)
+                                if q > 0:
+                                    buckets[px] += q
                         except Exception:
                             continue
                 if buckets:
@@ -517,7 +531,11 @@ class DriftpyClient:
             self._logger.debug(f"[ORDERBOOK] _approx_mid called with market={market}")
             mindex = await self._resolve_perp_index(market)
             self._logger.debug(f"[ORDERBOOK] Resolved market index: {mindex}")
-            
+
+            if self._driver is None:
+                self._logger.debug("[ORDERBOOK] Driver not initialized in _approx_mid")
+                return None
+
             # these names differ across versions; pick the first that works
             for getter in ("get_oracle_price_data_for_perp_market", "get_oracle_price_data"):
                 if hasattr(self._driver, getter):
@@ -557,7 +575,7 @@ class DriftpyClient:
         # minimal mapping with driftpy index cache if available
         try:
             # many versions expose market_map or perp_market_indexer
-            if hasattr(self._driver, "perp_market_map"):
+            if self._driver is not None and hasattr(self._driver, "perp_market_map"):
                 idx = self._driver.perp_market_map.get_market_index(name)
                 if idx is not None:
                     return int(idx)
@@ -577,7 +595,7 @@ class DriftpyClient:
         # 1) Try a direct driftpy method if it exists
         try:
             # e.g., newer shapes
-            if hasattr(self._driver, "get_l2_orderbook"):
+            if self._driver is not None and hasattr(self._driver, "get_l2_orderbook"):
                 ob = await self._driver.get_l2_orderbook(market_index, depth)
                 if ob and ob.get("bids") and ob.get("asks"):
                     ob["source"] = "driftpy"
@@ -589,7 +607,6 @@ class DriftpyClient:
         # 2) Try a DLOB-based fallback if the module exists in this driftpy version
         try:
             from driftpy.dlob.dlob import DLOB
-            from driftpy.types import MarketType
 
             dlob = DLOB()
             # ensure your user/market subscribers are active before this
@@ -599,14 +616,21 @@ class DriftpyClient:
             # Get current slot and oracle data for the new API
             try:
                 # Try to get slot from connection
-                slot = await self._conn.get_slot()
+                if self._conn is None:
+                    raise ValueError("Connection not initialized")
+                slot_response = await self._conn.get_slot()
+                if hasattr(slot_response, 'value'):
+                    slot = slot_response.value
+                else:
+                    slot = slot_response
             except Exception:
                 slot = 0  # fallback
 
             # Get oracle price data
             oracle_price_data = None
             try:
-                oracle_price_data = await self._driver.get_oracle_price_data_for_perp_market(market_index)
+                if self._driver is not None:
+                    oracle_price_data = await self._driver.get_oracle_price_data_for_perp_market(market_index)
             except Exception:
                 pass
 
@@ -614,7 +638,12 @@ class DriftpyClient:
                 raise ValueError("Cannot get oracle price data for DLOB")
 
             # Use new API: single call returns both bids and asks
-            l2_orderbook = dlob.get_l2(market_index, MarketType.Perp(), slot, oracle_price_data, depth)
+            # Ensure slot is an integer - handle GetSlotResp properly
+            if isinstance(slot, int):
+                slot_int = slot
+            else:
+                slot_int = 0
+            l2_orderbook = dlob.get_l2(market_index, MarketType.Perp(), slot_int, oracle_price_data, depth)  # type: ignore
 
             # Extract bids and asks from the L2OrderBook object
             bids = []
@@ -715,10 +744,9 @@ class DriftpyClient:
 
         return l2_orderbook
 
-    def _create_signed_message_envelope(self, order_params):
+    async def _create_signed_message_envelope(self, order_params):
         """Create a signed message envelope manually when DriftPy methods aren't available."""
         try:
-            from driftpy.types import SignedMsgOrderParamsMessage
             import time
 
             # Create a signed message envelope
@@ -736,7 +764,7 @@ class DriftpyClient:
             }
 
             # Try to sign the message using available methods
-            if hasattr(self, '_driver') and self._driver:
+            if hasattr(self, '_driver') and self._driver is not None:
                 try:
                     # Try to use the driver's signing method
                     if hasattr(self._driver, 'sign_message'):
@@ -754,9 +782,30 @@ class DriftpyClient:
             # If we have a SignedMsgOrderParamsMessage type, try to use it
             try:
                 if 'SignedMsgOrderParamsMessage' in dir():
+                    # Get current slot for the message
+                    slot = 0
+                    try:
+                        if self._conn:
+                            # Get slot asynchronously
+                            slot_response = await self._conn.get_slot()
+                            if hasattr(slot_response, 'value'):
+                                slot = slot_response.value
+                            else:
+                                slot = slot_response
+                    except Exception:
+                        slot = 0  # fallback
+
+                    # Generate UUID bytes (8 bytes as required)
+                    import uuid
+                    uuid_bytes = uuid.uuid4().bytes[:8]
+
                     proper_signed_message = SignedMsgOrderParamsMessage(
                         signed_msg_order_params=order_params,
-                        signature=signed_message.get('signature')
+                        sub_account_id=getattr(self, 'active_sub_account_id', 0),
+                        slot=int(slot) if isinstance(slot, int) else 0,
+                        uuid=uuid_bytes,
+                        stop_loss_order_params=None,
+                        take_profit_order_params=None
                     )
                     return proper_signed_message
             except Exception:
@@ -803,18 +852,20 @@ class DriftpyClient:
 
         # Initialize user account (required for order placement)
         try:
-            await self._driver.add_user(0)  # Use default sub-account
-            self._logger.info("User account initialized")
+            if self._driver is not None:
+                await self._driver.add_user(0)  # Use default sub-account
+                self._logger.info("User account initialized")
         except Exception as e:
             self._logger.warning(f"User account initialization failed (may already exist): {e}")
 
         # Get user object to verify it's ready
         try:
-            user = self._driver.get_user(0)
-            ua = user.get_user_account()
-            if ua is None:
-                raise RuntimeError("Drift user not ready (no user account) after subscribe()")
-            self._logger.info("Drift client ready with user account")
+            if self._driver is not None:
+                user = self._driver.get_user(0)
+                ua = user.get_user_account()
+                if ua is None:
+                    raise RuntimeError("Drift user not ready (no user account) after subscribe()")
+                self._logger.info("Drift client ready with user account")
         except Exception as e:
             self._logger.warning(f"User verification failed: {e}")
             self._logger.info("Drift client ready (user verification skipped)")
@@ -891,37 +942,43 @@ class DriftpyClient:
             price_i = _price_to_int(px)
             base_amt_i = _base_amt_to_int(size_usd, px)
 
-            from driftpy.types import OrderParams, OrderType, MarketType, PositionDirection
-            direction = PositionDirection.Long() if str(order.side).upper().endswith("BUY") else PositionDirection.Short()
+            direction = PositionDirection.Long() if str(order.side).upper().endswith("BUY") else PositionDirection.Short()  # type: ignore
+
+            # Convert post_only boolean to PostOnlyParams
+            post_only_value = getattr(order, "post_only", True)
+            if isinstance(post_only_value, bool):
+                post_only = PostOnlyParams.MustPostOnly() if post_only_value else PostOnlyParams.TryPostOnly()  # type: ignore
+            else:
+                post_only = post_only_value
 
             order_params = OrderParams(
                 market_index=getattr(order, "market_index", 0),
-                order_type=OrderType.Limit(),
-                market_type=MarketType.Perp(),
+                order_type=OrderType.Limit(),  # type: ignore
+                market_type=MarketType.Perp(),  # type: ignore
                 direction=direction,
                 base_asset_amount=base_amt_i,
                 price=price_i,
-                post_only=getattr(order, "post_only", True),
+                post_only=post_only,
             )
 
             # Create signed message envelope for Swift API
             try:
                 # Try to use the proper DriftPy signing method
-                if hasattr(self._driver, 'sign_signed_msg_order_params_message'):
+                if self._driver is not None and hasattr(self._driver, 'sign_signed_msg_order_params_message'):
                     signed_message = self._driver.sign_signed_msg_order_params_message(order_params)
                     log.debug(f"Created signed message: {type(signed_message)}")
-                elif hasattr(self._driver, 'sign_order_params'):
+                elif self._driver is not None and hasattr(self._driver, 'sign_order_params'):
                     signed_message = self._driver.sign_order_params(order_params)
                     log.debug(f"Created signed message via sign_order_params: {type(signed_message)}")
                 else:
                     # Fallback to manual signing
-                    signed_message = self._create_signed_message_envelope(order_params)
+                    signed_message = await self._create_signed_message_envelope(order_params)
                     log.debug("Created signed message via fallback method")
 
                 # Try to place the signed order
-                if hasattr(self._driver, 'place_signed_perp_order'):
+                if self._driver is not None and hasattr(self._driver, 'place_signed_perp_order'):
                     tx_sig = await self._driver.place_signed_perp_order(signed_message)
-                elif hasattr(self._driver, 'place_perp_order'):
+                elif self._driver is not None and hasattr(self._driver, 'place_perp_order'):
                     # Try with signed message
                     tx_sig = await self._driver.place_perp_order(signed_message)
                 else:
@@ -933,7 +990,7 @@ class DriftpyClient:
             except Exception as sign_error:
                 self._logger.warning(f"Failed to create/sign order message: {sign_error}")
                 # Try direct placement as fallback
-                if hasattr(self._driver, 'place_perp_order'):
+                if self._driver is not None and hasattr(self._driver, 'place_perp_order'):
                     tx_sig = await self._driver.place_perp_order(order_params)
                     self._logger.info("REAL BLOCKCHAIN ORDER PLACED (direct): %s", tx_sig)
                     return tx_sig
@@ -955,8 +1012,15 @@ class DriftpyClient:
     async def get_oracle_price_data_for_perp_market(self, market_index: int):
         """Get oracle price data for perpetual market."""
         await self._ensure_ready()
+        
+        if self._driver is None:
+            self._logger.error("Drift driver is not initialized")
+            return None
+            
         try:
-            return await self._driver.get_oracle_price_data_for_perp_market(market_index)
+            if self._driver is not None:
+                return await self._driver.get_oracle_price_data_for_perp_market(market_index)
+            return None
         except Exception as e:
             self._logger.warning(f"Oracle price fetch failed for market {market_index}: {e}")
             return None
@@ -1033,7 +1097,7 @@ class DriftpyClient:
         # Try different method names that might exist in driftpy
         try:
             # Try the exact method name first
-            if hasattr(self._driver, 'sign_signed_msg_order_params_message'):
+            if self._driver is not None and hasattr(self._driver, 'sign_signed_msg_order_params_message'):
                 result = self._driver.sign_signed_msg_order_params_message(order_message)
 
                 # Monitor the result if it's bytes
@@ -1043,7 +1107,7 @@ class DriftpyClient:
                 return result
 
             # Try alternative method names
-            elif hasattr(self._driver, 'sign_signed_msg_order_params'):
+            elif self._driver is not None and hasattr(self._driver, 'sign_signed_msg_order_params'):
                 result = self._driver.sign_signed_msg_order_params(order_message)
 
                 # Monitor the result if it's bytes
@@ -1052,7 +1116,7 @@ class DriftpyClient:
 
                 return result
 
-            elif hasattr(self._driver, 'sign_order_params'):
+            elif self._driver is not None and hasattr(self._driver, 'sign_order_params'):
                 result = self._driver.sign_order_params(order_message)
 
                 # Monitor the result if it's bytes
@@ -1114,10 +1178,12 @@ async def build_client_from_config(config_path: str) -> DriftpyClient:
         with open(config_path, 'r') as f:
             cfg = yaml.safe_load(f)
 
-        # Create client using the new constructor
+        # Allow environment override for RPC failover
+        override_rpc = os.getenv("DRIFT_RPC_URL") or os.getenv("RPC_URL")
+        rpc_url_final = override_rpc or cfg.get("rpc", {}).get("http_url")
         client = DriftpyClient(
             cfg=cfg,
-            rpc_url=cfg.get("rpc", {}).get("http_url"),
+            rpc_url=rpc_url_final,
             env="devnet",  # Use devnet for safety
             ws_url=cfg.get("rpc", {}).get("ws_url")
         )
@@ -1133,6 +1199,19 @@ async def build_client_from_config(config_path: str) -> DriftpyClient:
 
 # Alias for backward compatibility
 DriftClient = DriftpyClient
+
+# Convenience: provide a best-effort cancel_all on the class even if not defined
+async def _driftpyclient_cancel_all(self) -> None:  # type: ignore
+    try:
+        if getattr(self, "_driver", None) is not None and hasattr(self._driver, 'cancel_all_orders'):
+            await self._driver.cancel_all_orders()
+    except Exception:
+        pass
+
+try:
+    setattr(DriftpyClient, "cancel_all", _driftpyclient_cancel_all)  # type: ignore
+except Exception:
+    pass
 
 
 if __name__ == "__main__":

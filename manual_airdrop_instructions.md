@@ -32,8 +32,8 @@ If the main faucet doesn't work, try these alternatives:
 ```bash
 # Install Solana CLI if you don't have it
 # Then run:
-solana airdrop 1 G4aTeEx1pVMXcMKDjnnEyucqxmi3StxcAsLE9CcQZGzD --url https://api.devnet.solana.com
-solana airdrop 1 6g8TziYAupUDtNAz6Thi3c6Ntu7AEcMMVdUWGJPrR2nW --url https://api.devnet.solana.com
+solana airdrop 1 G4aTeEx1pVMXcMKDjnnEyucqxmi3StxcAsLE9CcQZGzD --url https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+solana airdrop 1 6g8TziYAupUDtNAz6Thi3c6Ntu7AEcMMVdUWGJPrR2nW --url https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
 ```
 
 ## Verification Steps

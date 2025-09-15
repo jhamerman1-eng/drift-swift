@@ -7,6 +7,9 @@ KEYPAIR_PATH={USERPROFILE}\.config\solana\id.json
 # Cluster (devnet | testnet | mainnet)
 DRIFT_CLUSTER=devnet
 
+# Helius API Key (required for RPC/WS connections)
+HELIUS_API_KEY=YOUR_API_KEY
+
 # RPC / WS (Helius examples; replace YOUR_API_KEY)
 # Devnet (HTTP/WS)
 DRIFT_HTTP_URL=https://devnet.helius-rpc.com/?api-key=YOUR_API_KEY

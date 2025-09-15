@@ -4,6 +4,7 @@ Centralized logging configuration for Drift Trading Bots
 Provides consistent logging setup across all applications with proper file rotation and formatting
 """
 
+import json
 import logging
 import logging.handlers
 import os
@@ -310,6 +311,189 @@ def get_swift_client_logger() -> logging.Logger:
 def get_orchestrator_logger() -> logging.Logger:
     """Get logger for orchestrator"""
     return get_existing_logger("orchestrator")
+
+# Bug tracking integration
+class BugTracker:
+    """Enhanced bug tracking that integrates with logging system"""
+
+    def __init__(self, logger: logging.Logger):
+        self.logger = logger
+        self.active_bugs = {}
+        self.bug_registry_file = LOG_DIR / "bug_registry_active.json"
+
+    def log_bug(self, bug_id: str, description: str, root_cause: str = "",
+                impact: str = "", priority: str = "medium",
+                context: dict = None) -> str:
+        """Log a new bug with comprehensive tracking"""
+        if bug_id in self.active_bugs:
+            self.logger.warning(f"Bug {bug_id} already exists, updating...")
+            return bug_id
+
+        bug_data = {
+            "id": bug_id,
+            "description": description,
+            "root_cause": root_cause,
+            "impact": impact,
+            "priority": priority,
+            "status": "active",
+            "created": time.time(),
+            "updated": time.time(),
+            "context": context or {},
+            "log_entries": [],
+            "resolution_attempted": False,
+            "resolution_notes": []
+        }
+
+        self.active_bugs[bug_id] = bug_data
+        self._save_bug_registry()
+
+        # Log the bug with comprehensive information
+        self.logger.error(f"🐛 BUG DETECTED: {bug_id}")
+        self.logger.error(f"   Description: {description}")
+        if root_cause:
+            self.logger.error(f"   Root Cause: {root_cause}")
+        if impact:
+            self.logger.error(f"   Impact: {impact}")
+        self.logger.error(f"   Priority: {priority.upper()}")
+        self.logger.error(f"   Context: {json.dumps(context, indent=2) if context else 'None'}")
+
+        return bug_id
+
+    def log_bug_resolution_attempt(self, bug_id: str, solution_attempted: str,
+                                  success: bool = False, notes: str = "") -> None:
+        """Log an attempt to resolve a bug"""
+        if bug_id not in self.active_bugs:
+            self.logger.warning(f"Attempting to resolve unknown bug {bug_id}")
+            return
+
+        bug_data = self.active_bugs[bug_id]
+        bug_data["resolution_attempted"] = True
+        bug_data["updated"] = time.time()
+
+        resolution_entry = {
+            "timestamp": time.time(),
+            "solution_attempted": solution_attempted,
+            "success": success,
+            "notes": notes
+        }
+
+        bug_data["resolution_notes"].append(resolution_entry)
+
+        if success:
+            bug_data["status"] = "resolved"
+            self.logger.info(f"✅ BUG RESOLVED: {bug_id}")
+            self.logger.info(f"   Solution: {solution_attempted}")
+            if notes:
+                self.logger.info(f"   Notes: {notes}")
+        else:
+            self.logger.warning(f"❌ RESOLUTION FAILED: {bug_id}")
+            self.logger.warning(f"   Attempted: {solution_attempted}")
+            if notes:
+                self.logger.warning(f"   Notes: {notes}")
+
+        self._save_bug_registry()
+
+    def log_error_with_bug_tracking(self, error: Exception, context: dict = None,
+                                   auto_create_bug: bool = True) -> str:
+        """Log an error with automatic bug tracking"""
+        error_type = type(error).__name__
+        error_msg = str(error)
+
+        # Create a unique bug ID based on error type and message
+        import hashlib
+        bug_signature = f"{error_type}:{error_msg}"
+        bug_id = f"ERR-{hashlib.md5(bug_signature.encode()).hexdigest()[:8].upper()}"
+
+        # Log the error
+        self.logger.error(f"❌ ERROR: {error_type}: {error_msg}")
+        if context:
+            self.logger.error(f"   Context: {json.dumps(context, indent=2)}")
+
+        if auto_create_bug:
+            description = f"Runtime error: {error_type} - {error_msg}"
+            root_cause = f"Exception in {context.get('function', 'unknown') if context else 'unknown'}"
+            impact = f"Affects {context.get('component', 'unknown') if context else 'unknown'}"
+
+            self.log_bug(
+                bug_id=bug_id,
+                description=description,
+                root_cause=root_cause,
+                impact=impact,
+                priority="high" if "critical" in error_msg.lower() else "medium",
+                context=context
+            )
+
+        return bug_id
+
+    def get_bug_summary(self) -> dict:
+        """Get summary of all active bugs"""
+        return {
+            "total_active": len(self.active_bugs),
+            "by_priority": {
+                "critical": len([b for b in self.active_bugs.values() if b["priority"] == "critical"]),
+                "high": len([b for b in self.active_bugs.values() if b["priority"] == "high"]),
+                "medium": len([b for b in self.active_bugs.values() if b["priority"] == "medium"]),
+                "low": len([b for b in self.active_bugs.values() if b["priority"] == "low"])
+            },
+            "recent_activity": sorted(
+                [(bid, b["updated"]) for bid, b in self.active_bugs.items()],
+                key=lambda x: x[1],
+                reverse=True
+            )[:5]
+        }
+
+    def _save_bug_registry(self) -> None:
+        """Save active bug registry to file"""
+        try:
+            with open(self.bug_registry_file, 'w', encoding='utf-8') as f:
+                json.dump(self.active_bugs, f, indent=2, default=str)
+        except Exception as e:
+            self.logger.error(f"Failed to save bug registry: {e}")
+
+    def _load_bug_registry(self) -> None:
+        """Load active bug registry from file"""
+        try:
+            if self.bug_registry_file.exists():
+                with open(self.bug_registry_file, 'r', encoding='utf-8') as f:
+                    self.active_bugs = json.load(f)
+        except Exception as e:
+            self.logger.warning(f"Failed to load bug registry: {e}")
+
+# Global bug tracker instance
+_bug_trackers = {}
+
+def get_bug_tracker(logger_name: str) -> BugTracker:
+    """Get or create a bug tracker for a specific logger"""
+    if logger_name not in _bug_trackers:
+        logger = get_existing_logger(logger_name)
+        _bug_trackers[logger_name] = BugTracker(logger)
+        _bug_trackers[logger_name]._load_bug_registry()
+    return _bug_trackers[logger_name]
+
+# Enhanced logging functions with bug tracking
+def log_error_with_tracking(logger: logging.Logger, error: Exception,
+                           context: dict = None, component: str = "") -> str:
+    """Log an error with automatic bug tracking"""
+    tracker = get_bug_tracker(logger.name)
+
+    if not context:
+        context = {}
+
+    if component:
+        context["component"] = component
+
+    # Get the calling function name
+    import inspect
+    frame = inspect.currentframe()
+    try:
+        caller_frame = frame.f_back.f_back  # Go up two frames to get the actual caller
+        context["function"] = caller_frame.f_code.co_name
+        context["file"] = caller_frame.f_code.co_filename
+        context["line"] = caller_frame.f_lineno
+    except:
+        pass
+
+    return tracker.log_error_with_bug_tracking(error, context)
 
 # Initialize logging directory on import
 ensure_log_directory()

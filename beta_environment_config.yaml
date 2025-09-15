@@ -4,19 +4,32 @@
 
 # 🔑 Wallet Configuration (REQUIRED)
 wallet:
-  maker_keypair_path: ".beta_wallet.json"  # ⚠️  CHANGE THIS to your funded wallet!
+  maker_keypair_path: ".beta_dev_wallet.json"  # ⚠️  CHANGE THIS to your funded wallet!
   jito_keypair_path: ".jito_keypair.json"  # Optional: for MEV/tipping
 
 # 🌐 Network Configuration for beta.drift.trade
+# 🔧 CONFIGURE ENVIRONMENT: Set DRIFT_ENV environment variable
+#   - DRIFT_ENV=devnet  → beta.drift.trade/devnet (default)
+#   - DRIFT_ENV=mainnet → app.drift.trade/production
+
 network:
-  cluster: "mainnet"
-  env: "mainnet"
+  # Will be overridden by DRIFT_ENV environment variable
+  cluster: "devnet"  # Default to devnet for beta
+  env: "devnet"      # Default to devnet for beta
   rpc:
-    http_url: "https://api.mainnet-beta.solana.com"
-    ws_url: "wss://api.mainnet-beta.solana.com"
+    # Devnet RPC (beta.drift.trade environment)
+    http_url: "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
+    ws_url: "wss://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
   swift:
-    http_url: "https://swift.drift.trade"
-    ws_url: "wss://swift.drift.trade/ws"
+    # Beta/Devnet Swift endpoints
+    http_url: "https://beta.drift.trade"
+    ws_url: "wss://beta.drift.trade/ws"
+
+# 🚨 FOR PRODUCTION/MAINNET: Override these values via environment variables:
+# export DRIFT_ENV=mainnet
+# export SWIFT_HTTP_URL=https://swift.drift.trade
+# export SWIFT_WS_URL=wss://swift.drift.trade/ws
+# export RPC_URL=https://api.mainnet-beta.solana.com
 
 # 📊 Monitoring & Health
 monitoring:

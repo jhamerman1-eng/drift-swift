@@ -10,10 +10,10 @@ live_trading: true
 use_mock: false
 
 # Network configuration
-rpc_url: https://api.devnet.solana.com
+rpc_url: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
 rpc:
-  http_url: https://api.devnet.solana.com
-  ws_url: wss://api.devnet.solana.com
+  http_url: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+  ws_url: wss://https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
 
 # Swift configuration for real orders
 swift:

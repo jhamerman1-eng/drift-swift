@@ -1,0 +1,127 @@
+# Market Regime Classification Thresholds
+# Used by orchestrator/regime_classifier.py to determine market conditions
+# and adjust bot behavior accordingly
+
+thresholds:
+  # Trend Analysis Thresholds
+  trend_strength_min: 0.5        # Minimum ADX for trending regime (0-1 scale)
+  trend_duration_min: 5          # Minimum candles for trend confirmation
+
+  # Volatility Thresholds
+  volatility_high_threshold: 0.05  # 5% daily volatility = high volatility
+  volatility_low_threshold: 0.01   # 1% daily volatility = low volatility
+
+  # Breakout Detection
+  breakout_volume_multiplier: 1.5   # Volume must be 1.5x average for breakout
+  breakout_price_change_pct: 0.02   # 2% price change minimum for breakout
+
+  # Consolidation Detection
+  consolidation_range_pct: 0.01     # 1% price range = consolidation
+  consolidation_duration: 10        # 10 candles minimum for consolidation
+
+  # Momentum Thresholds
+  momentum_strong_threshold: 0.7    # Strong momentum (>0.7)
+  momentum_weak_threshold: 0.3      # Weak momentum (<0.3)
+
+  # Choppiness Indicators
+  atr_choppy_threshold: 0.02         # ATR threshold for choppy markets
+  adx_trending_threshold: 25.0       # ADX threshold for trending markets
+
+# Regime-specific Bot Adjustments
+regime_adjustments:
+  # High Volatility Regime
+  high_volatility:
+    spread_multiplier: 1.5          # Increase spreads by 50%
+    max_position_size: 0.7          # Reduce position size to 70%
+    quote_frequency: 0.8            # Reduce quoting frequency
+
+  # Trending Regimes (Up/Down)
+  trending:
+    momentum_weight: 1.3            # Increase momentum weighting
+    trend_following: 1.4            # Increase trend-following strength
+    stop_loss_multiplier: 1.2       # Wider stops for trends
+
+  # Low Volatility Regime
+  low_volatility:
+    spread_multiplier: 0.8          # Tighten spreads by 20%
+    quote_frequency: 1.2            # Increase quoting frequency
+    inventory_target: 0.9           # Maintain tighter inventory
+
+  # Consolidation Regime
+  consolidation:
+    range_weight: 1.2               # Increase range trading weight
+    mean_reversion: 1.3             # Strengthen mean reversion
+    spread_multiplier: 0.9          # Slightly tighter spreads
+
+  # Sideways Regime
+  sideways:
+    balance_weight: 1.2             # Increase inventory balancing
+    spread_multiplier: 1.0          # Normal spreads
+    quote_frequency: 1.0            # Normal frequency
+
+# Bot-specific Regime Preferences
+bot_preferences:
+  trend_bot:
+    favorable_regimes:
+      - trending_up
+      - trending_down
+      - breakout
+    min_confidence: 0.6
+    avoid_regimes:
+      - consolidation
+      - low_volatility
+
+  jit_bot:
+    favorable_regimes:
+      - low_volatility
+      - sideways
+      - consolidation
+    min_confidence: 0.4
+    avoid_regimes:
+      - high_volatility
+      - trending_up
+      - trending_down
+
+  hedge_bot:
+    favorable_regimes:
+      - trending_up
+      - trending_down
+      - high_volatility
+    min_confidence: 0.5
+    avoid_regimes: []
+
+# Risk Adjustments by Regime
+risk_adjustments:
+  high_volatility:
+    max_leverage: 0.5               # Reduce leverage by 50%
+    position_limit_pct: 0.3         # Limit positions to 30% of normal
+    stop_loss_pct: 0.02             # 2% stop losses
+
+  trending:
+    max_leverage: 1.2               # Increase leverage for trends
+    position_limit_pct: 1.5         # Allow larger positions
+    stop_loss_pct: 0.05             # Wider stops for trends
+
+  low_volatility:
+    max_leverage: 1.0               # Normal leverage
+    position_limit_pct: 1.2         # Slightly larger positions
+    stop_loss_pct: 0.015            # Tighter stops
+
+  consolidation:
+    max_leverage: 0.8               # Conservative leverage
+    position_limit_pct: 0.8         # Smaller positions
+    stop_loss_pct: 0.025            # Moderate stops
+
+# Monitoring and Alerts
+monitoring:
+  regime_change_alert_threshold: 0.7  # Alert on regime confidence > 70%
+  unstable_regime_threshold: 10       # Alert if regime changes >10 times/hour
+  volatility_spike_threshold: 0.1     # Alert on 10%+ volatility spikes
+
+# Historical Analysis
+analysis:
+  regime_history_window: 100          # Keep last 100 regime classifications
+  trend_persistence_min: 3            # Minimum periods for trend confirmation
+  regime_stability_threshold: 0.8     # Regime stable if >80% consistent
+
+

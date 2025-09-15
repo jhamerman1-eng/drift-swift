@@ -191,7 +191,7 @@
 2025-08-26 21:21:38,318 - __main__ - INFO - DEBUG: use_mock parameter is: True
 2025-08-26 21:21:38,318 - __main__ - INFO - DEBUG: Entering mock mode override section
 2025-08-26 21:21:38,318 - __main__ - INFO - DEBUG: About to read config from configs/core/drift_client.yaml
-2025-08-26 21:21:38,322 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://api.devnet.solana.com}', 'ws_url': '${DRIFT_WS_URL:wss://api.devnet.solana.com}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
+2025-08-26 21:21:38,322 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494}', 'ws_url': '${DRIFT_WS_URL:wss://https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
 2025-08-26 21:21:38,322 - __main__ - INFO - DEBUG: Original use_mock value: True
 2025-08-26 21:21:38,323 - __main__ - INFO - DEBUG: Setting use_mock to: True
 2025-08-26 21:21:38,325 - __main__ - INFO - DEBUG: Config file updated successfully
@@ -222,7 +222,7 @@
 2025-08-26 21:21:58,498 - __main__ - INFO - DEBUG: use_mock parameter is: True
 2025-08-26 21:21:58,498 - __main__ - INFO - DEBUG: Entering mock mode override section
 2025-08-26 21:21:58,498 - __main__ - INFO - DEBUG: About to read config from configs/core/drift_client.yaml
-2025-08-26 21:21:58,500 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://api.devnet.solana.com}', 'ws_url': '${DRIFT_WS_URL:wss://api.devnet.solana.com}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
+2025-08-26 21:21:58,500 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494}', 'ws_url': '${DRIFT_WS_URL:wss://https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
 2025-08-26 21:21:58,500 - __main__ - INFO - DEBUG: Original use_mock value: True
 2025-08-26 21:21:58,501 - __main__ - INFO - DEBUG: Setting use_mock to: True
 2025-08-26 21:21:58,503 - __main__ - INFO - DEBUG: Config file updated successfully
@@ -254,7 +254,7 @@
 2025-08-26 21:22:25,784 - __main__ - INFO - DEBUG: use_mock parameter is: True
 2025-08-26 21:22:25,784 - __main__ - INFO - DEBUG: Entering mock mode override section
 2025-08-26 21:22:25,784 - __main__ - INFO - DEBUG: About to read config from configs/core/drift_client.yaml
-2025-08-26 21:22:25,786 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://api.devnet.solana.com}', 'ws_url': '${DRIFT_WS_URL:wss://api.devnet.solana.com}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
+2025-08-26 21:22:25,786 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494}', 'ws_url': '${DRIFT_WS_URL:wss://https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
 2025-08-26 21:22:25,787 - __main__ - INFO - DEBUG: Original use_mock value: True
 2025-08-26 21:22:25,788 - __main__ - INFO - DEBUG: Setting use_mock to: True
 2025-08-26 21:22:25,790 - __main__ - INFO - DEBUG: Config file updated successfully
@@ -290,7 +290,7 @@
 2025-08-26 21:22:52,202 - __main__ - INFO - DEBUG: use_mock parameter is: True
 2025-08-26 21:22:52,203 - __main__ - INFO - DEBUG: Entering mock mode override section
 2025-08-26 21:22:52,203 - __main__ - INFO - DEBUG: About to read config from configs/core/drift_client.yaml
-2025-08-26 21:22:52,205 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://api.devnet.solana.com}', 'ws_url': '${DRIFT_WS_URL:wss://api.devnet.solana.com}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
+2025-08-26 21:22:52,205 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494}', 'ws_url': '${DRIFT_WS_URL:wss://https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
 2025-08-26 21:22:52,206 - __main__ - INFO - DEBUG: Original use_mock value: True
 2025-08-26 21:22:52,206 - __main__ - INFO - DEBUG: Setting use_mock to: True
 2025-08-26 21:22:52,210 - __main__ - INFO - DEBUG: Config file updated successfully
@@ -336,7 +336,7 @@
 2025-08-26 21:23:17,145 - __main__ - INFO - DEBUG: use_mock parameter is: True
 2025-08-26 21:23:17,145 - __main__ - INFO - DEBUG: Entering mock mode override section
 2025-08-26 21:23:17,145 - __main__ - INFO - DEBUG: About to read config from configs/core/drift_client.yaml
-2025-08-26 21:23:17,148 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://api.devnet.solana.com}', 'ws_url': '${DRIFT_WS_URL:wss://api.devnet.solana.com}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
+2025-08-26 21:23:17,148 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494}', 'ws_url': '${DRIFT_WS_URL:wss://https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
 2025-08-26 21:23:17,148 - __main__ - INFO - DEBUG: Original use_mock value: True
 2025-08-26 21:23:17,149 - __main__ - INFO - DEBUG: Setting use_mock to: True
 2025-08-26 21:23:17,152 - __main__ - INFO - DEBUG: Config file updated successfully
@@ -382,7 +382,7 @@
 2025-08-26 21:23:38,162 - __main__ - INFO - DEBUG: use_mock parameter is: True
 2025-08-26 21:23:38,162 - __main__ - INFO - DEBUG: Entering mock mode override section
 2025-08-26 21:23:38,162 - __main__ - INFO - DEBUG: About to read config from configs/core/drift_client.yaml
-2025-08-26 21:23:38,165 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://api.devnet.solana.com}', 'ws_url': '${DRIFT_WS_URL:wss://api.devnet.solana.com}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
+2025-08-26 21:23:38,165 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494}', 'ws_url': '${DRIFT_WS_URL:wss://https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
 2025-08-26 21:23:38,165 - __main__ - INFO - DEBUG: Original use_mock value: True
 2025-08-26 21:23:38,165 - __main__ - INFO - DEBUG: Setting use_mock to: True
 2025-08-26 21:23:38,167 - __main__ - INFO - DEBUG: Config file updated successfully
@@ -428,7 +428,7 @@
 2025-08-26 21:24:02,570 - __main__ - INFO - DEBUG: use_mock parameter is: True
 2025-08-26 21:24:02,570 - __main__ - INFO - DEBUG: Entering mock mode override section
 2025-08-26 21:24:02,570 - __main__ - INFO - DEBUG: About to read config from configs/core/drift_client.yaml
-2025-08-26 21:24:02,572 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://api.devnet.solana.com}', 'ws_url': '${DRIFT_WS_URL:wss://api.devnet.solana.com}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
+2025-08-26 21:24:02,572 - __main__ - INFO - DEBUG: Config loaded: {'cluster': '${ENV:devnet}', 'driver': '${DRIVER:driftpy}', 'rpc': {'http_url': '${DRIFT_HTTP_URL:https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494}', 'ws_url': '${DRIFT_WS_URL:wss://https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494}'}, 'swift': {'http_url': '${SWIFT_HTTP_URL:http://localhost:8787}', 'ws_url': '${SWIFT_WS_URL:ws://localhost:8787/ws}'}, 'use_mock': True, 'wallets': {'jito_keypair_path': '${JITO_KEYPAIR_PATH:/abs/path/to/jito-keypair.json}', 'maker_keypair_path': '${KEYPAIR_PATH:funded_wallet.json}'}}
 2025-08-26 21:24:02,573 - __main__ - INFO - DEBUG: Original use_mock value: True
 2025-08-26 21:24:02,573 - __main__ - INFO - DEBUG: Setting use_mock to: True
 2025-08-26 21:24:02,576 - __main__ - INFO - DEBUG: Config file updated successfully

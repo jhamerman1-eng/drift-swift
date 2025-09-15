@@ -45,9 +45,25 @@ jobs:
         ruff check bots/ libs/ tests/
         ruff format --check bots/ libs/ tests/
 
-    - name: Type check with mypy
+    - name: Type check with mypy (strict for libs/ and orchestrator/)
       run: |
-        mypy bots/ libs/ tests/ || true
+        # Install mypy and pyright for comprehensive type checking
+        pip install mypy pyright
+
+        # Run strict mypy checks on libs/ and orchestrator/
+        echo "Running strict mypy checks on libs/ and orchestrator/..."
+        mypy libs/ orchestrator/ --config-file mypy.ini
+        echo "✅ Strict mypy checks passed for libs/ and orchestrator/"
+
+        # Run pyright for additional type checking
+        echo "Running pyright type checks..."
+        pyright libs/ orchestrator/
+        echo "✅ Pyright checks passed for libs/ and orchestrator/"
+
+        # Run basic mypy on other modules (gradual adoption)
+        echo "Running basic mypy checks on remaining modules..."
+        mypy bots/ tests/ --ignore-missing-imports --no-strict-optional || true
+        echo "Basic type checks completed"
 
     - name: Run unit tests
       run: |

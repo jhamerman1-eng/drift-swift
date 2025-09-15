@@ -15,7 +15,7 @@ class AlternativeAirdrop:
         self.endpoints = [
             {
                 'name': 'QuickNode Devnet',
-                'url': 'https://api.devnet.solana.com'
+                'url': 'https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494'
             },
             {
                 'name': 'GenesysGo Devnet',

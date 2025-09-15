@@ -28,7 +28,7 @@ class OrderCanceler:
         self.connection = None
         self.drift_client = None
         self.wallet = None
-        self.rpc_url = "https://api.devnet.solana.com"
+        self.rpc_url = "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
         self.drift_program_id = "dRiftyHA39MWEi3m9aunc5MzRF1JYuBsbn6VPcn33UH"
 
     async def initialize(self):

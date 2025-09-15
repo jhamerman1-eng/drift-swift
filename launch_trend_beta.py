@@ -1,31 +1,20 @@
-`#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 🚀 Trend Bot - Beta.Drift.Trade Launcher
 Launches the Trend Bot specifically in the beta.drift.trade environment.
 """
 
 import asyncio
-import logging
+import argparse
 import signal
 import sys
 import os
 from pathlib import Path
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 from collections import deque
 
 # Add libs directory to path
 sys.path.append(str(Path(__file__).parent / "libs"))
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s | %(levelname)s | %(message)s',
-    handlers=[
-        logging.FileHandler('trend_bot_beta.log'),
-        logging.StreamHandler(sys.stdout)
-    ]
-)
-logger = logging.getLogger(__name__)
 
 # Import bot components
 from libs.drift.client import build_client_from_config
@@ -39,14 +28,19 @@ logger = setup_critical_logging("trend-bot")
 class TrendBetaLauncher:
     """Launcher for Trend Bot in beta.drift.trade environment."""
 
-    def __init__(self):
-        self.client = None
+    def __init__(self, network: str = "devnet", rpc_url: Optional[str] = None, 
+                 ws_url: Optional[str] = None, keypair_path: Optional[str] = None):
+        self.client: Optional[Any] = None
         self.position_tracker = PositionTracker()
         self.order_manager = OrderManager()
         self.risk_manager = RiskManager()
         self.iteration_count = 0
         self.errors = []
         self.running = True
+        self.network = network
+        self.rpc_url = rpc_url
+        self.ws_url = ws_url
+        self.keypair_path = keypair_path
 
         # Initialize data structures for trend analysis
         self.prices = deque(maxlen=1000)
@@ -58,11 +52,33 @@ class TrendBetaLauncher:
         try:
             logger.info("Initializing Trend Bot for beta.drift.trade...")
 
-            # Set devnet environment variables (using devnet for safety)
+            # Get Helius API key from environment
+            helius_api_key = os.getenv("HELIUS_API_KEY")
+            if not helius_api_key:
+                logger.error("HELIUS_API_KEY environment variable not set")
+                return False
+
+            # Set environment variables
             os.environ["USE_MOCK"] = "false"
-            os.environ["DRIFT_RPC_URL"] = "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
-            os.environ["DRIFT_WS_URL"] = "wss://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
-            os.environ["DRIFT_KEYPAIR_PATH"] = ".valid_wallet.json"
+            
+            # Use provided URLs or build from API key
+            if self.rpc_url and self.ws_url:
+                os.environ["DRIFT_RPC_URL"] = self.rpc_url
+                os.environ["DRIFT_WS_URL"] = self.ws_url
+            else:
+                os.environ["DRIFT_RPC_URL"] = f"https://devnet.helius-rpc.com/?api-key={helius_api_key}"
+                os.environ["DRIFT_WS_URL"] = f"wss://devnet.helius-rpc.com/?api-key={helius_api_key}"
+            
+            # Use provided keypair path or default
+            keypair_path = self.keypair_path or ".swift_test_wallet.json"
+            os.environ["DRIFT_KEYPAIR_PATH"] = keypair_path
+            
+            # Validate keypair file exists
+            if not Path(keypair_path).exists():
+                logger.error(f"Keypair file not found: {keypair_path}")
+                logger.error(f"Current working directory: {os.getcwd()}")
+                logger.error(f"Expected path: {Path(keypair_path).absolute()}")
+                return False
 
             # Build client from config
             self.client = await build_client_from_config("configs/core/drift_client.yaml")
@@ -70,24 +86,32 @@ class TrendBetaLauncher:
             logger.info("Trend Bot client initialized successfully!")
             logger.info("Strategy: MACD + Momentum with Anti-Chop Filters")
             logger.info("Target: SOL-PERP on Drift Protocol")
-            logger.info("Environment: Devnet (Test Network)")
+            logger.info(f"Environment: {self.network.title()} (Test Network)")
+            logger.info(f"Keypair: {keypair_path}")
             logger.info("Orders will be visible on devnet.drift.trade")
             logger.warning("WARNING: TEST NETWORK - SAFE TO USE")
 
             return True
 
         except Exception as e:
-            logger.error(f"Failed to initialize Trend Bot client: {e}")
+            logger.exception("Failed to initialize Trend Bot client")
             return False
 
     async def load_trend_configuration(self) -> Dict[str, Any]:
         """Load trend bot configuration."""
         try:
-            config = load_trend_config("configs/trend/filters.yaml")
+            config_path = "configs/trend/filters.yaml"
+            if not Path(config_path).exists():
+                logger.error(f"Config file not found: {config_path}")
+                logger.error(f"Current working directory: {os.getcwd()}")
+                logger.error(f"Expected path: {Path(config_path).absolute()}")
+                return {}
+                
+            config = load_trend_config(config_path)
             logger.info("Trend configuration loaded")
             return config
         except Exception as e:
-            logger.error(f"Failed to load trend configuration: {e}")
+            logger.exception("Failed to load trend configuration")
             return {}
 
     async def run_trend_loop(self, config: Dict[str, Any]):
@@ -100,14 +124,18 @@ class TrendBetaLauncher:
 
         while self.running:
             try:
-                iteration_start = asyncio.get_event_loop().time()
+                loop = asyncio.get_running_loop()
+                iteration_start = loop.time()
 
                 # Run one iteration of trend analysis
-                await trend_iteration(
-                    config, self.client, self.risk_manager,
-                    self.position_tracker, self.order_manager,
-                    self.prices, self.macd_values, self.state_vars
-                )
+                if self.client is not None:
+                    await trend_iteration(
+                        config, self.client, self.risk_manager,
+                        self.position_tracker, self.order_manager,
+                        self.prices, self.macd_values, self.state_vars
+                    )
+                else:
+                    logger.error("Drift client is not initialized. Skipping trend iteration.")
 
                 self.iteration_count += 1
 
@@ -118,14 +146,14 @@ class TrendBetaLauncher:
                     logger.info(f"Total volume: ${self.position_tracker.volume:.2f}")
 
                 # Calculate sleep time to maintain refresh interval
-                iteration_time = asyncio.get_event_loop().time() - iteration_start
+                iteration_time = loop.time() - iteration_start
                 sleep_time = max(0, refresh_interval - iteration_time)
 
                 if sleep_time > 0:
                     await asyncio.sleep(sleep_time)
 
             except Exception as e:
-                logger.error(f"Error in trend iteration {self.iteration_count}: {e}")
+                logger.exception(f"Error in trend iteration {self.iteration_count}")
                 self.errors.append(str(e))
 
                 # Continue running despite errors
@@ -138,16 +166,16 @@ class TrendBetaLauncher:
 
     async def show_startup_banner(self):
         """Display startup information."""
-        print("=" * 80)
-        logger.info("TREND BOT LAUNCHING IN DEVNET MODE")
-        print("=" * 80)
+        logger.info("=" * 80)
+        logger.info(f"TREND BOT LAUNCHING IN {self.network.upper()} MODE")
+        logger.info("=" * 80)
         logger.info("Strategy: MACD + Momentum with Anti-Chop Filters")
         logger.info("Target: SOL-PERP on Drift Protocol")
-        logger.info("Environment: Devnet (Test Network)")
+        logger.info(f"Environment: {self.network.title()} (Test Network)")
         logger.info("Mode: TEST TRADING (safe to use!)")
-        print("=" * 80)
+        logger.info("=" * 80)
         logger.info("Press Ctrl+C to stop gracefully")
-        print()
+        logger.info("")
 
     async def run(self) -> int:
         """Main launcher execution."""
@@ -196,7 +224,7 @@ class TrendBetaLauncher:
             return 0
 
         except Exception as e:
-            logger.error(f"Fatal error: {e}")
+            logger.exception("Fatal error")
             return 1
 
         finally:
@@ -208,9 +236,27 @@ class TrendBetaLauncher:
                 except Exception as e:
                     logger.error(f"Error closing client: {e}")
 
+def parse_arguments():
+    """Parse command line arguments."""
+    parser = argparse.ArgumentParser(description="Trend Bot Beta Launcher")
+    parser.add_argument("--network", default="devnet", choices=["devnet", "mainnet-beta"],
+                       help="Network to use (default: devnet)")
+    parser.add_argument("--rpc", help="Custom RPC URL")
+    parser.add_argument("--ws", help="Custom WebSocket URL")
+    parser.add_argument("--keypair", help="Path to keypair file")
+    parser.add_argument("--config", default="configs/core/drift_client.yaml",
+                       help="Path to drift client config")
+    return parser.parse_args()
+
 async def main():
     """Main entry point."""
-    launcher = TrendBetaLauncher()
+    args = parse_arguments()
+    launcher = TrendBetaLauncher(
+        network=args.network,
+        rpc_url=args.rpc,
+        ws_url=args.ws,
+        keypair_path=args.keypair
+    )
     return await launcher.run()
 
 if __name__ == "__main__":

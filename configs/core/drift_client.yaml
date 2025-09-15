@@ -1,18 +1,18 @@
 cluster: devnet
 driver: driftpy
 
-rpc_url: https://api.devnet.solana.com
+rpc_url: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
 rpc:
-  http_url: https://api.devnet.solana.com
-  ws_url: wss://api.devnet.solana.com
+  http_url: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+  ws_url: wss://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
 
 swift:
   http_url: https://swift.drift.trade
   ws_url: wss://swift.drift.trade/ws
 
 wallets:
-  maker_keypair_path: .valid_wallet.json
-  jito_keypair_path: .swift_test_wallet.json
+  maker_keypair_path: .stable_wallet.json
+  jito_keypair_path: .swift_trading_wallet.json
   # Target wallet address: A68b4xetPcF6tJShZsCeCCE1iGYZLr9314dggLJ1JNgW
 
 # SOL-PERP market index (0 = SOL-PERP)

@@ -1131,7 +1131,7 @@ websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: H
 2025-09-01 23:18:40,238 - __main__ - INFO - ======================================================================
 2025-09-01 23:18:40,238 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
 2025-09-01 23:18:40,239 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
-2025-09-01 23:18:40,239 - __main__ - INFO - [CONFIG] RPC: https://api.devnet.solana.com
+2025-09-01 23:18:40,239 - __main__ - INFO - [CONFIG] RPC: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
 2025-09-01 23:18:40,240 - __main__ - INFO - [CONFIG] Wallet: .valid_wallet.json
 2025-09-01 23:18:40,240 - __main__ - INFO - [CONFIG] Environment: devnet
 2025-09-01 23:18:40,243 - __main__ - ERROR - [ERROR] Failed to initialize real beta client: DriftpyClient.__init__() got an unexpected keyword argument 'market'
@@ -1146,3 +1146,571 @@ websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: H
 2025-09-01 23:18:40,250 - root - WARNING - Errors Encountered: 1
 2025-09-01 23:18:40,251 - root - WARNING -   1. Real client initialization failed: DriftpyClient.__init__() got an unexpected keyword argument 'market'
 2025-09-01 23:18:40,253 - root - INFO - ======================================================================
+2025-09-13 09:53:03,592 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-09-13 09:53:03,593 - __main__ - INFO - ======================================================================
+2025-09-13 09:53:03,593 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-09-13 09:53:03,594 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-09-13 09:53:03,595 - __main__ - INFO - ======================================================================
+2025-09-13 09:53:03,595 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-09-13 09:53:03,596 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-09-13 09:53:03,596 - __main__ - INFO - [CONFIG] RPC: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+2025-09-13 09:53:03,597 - __main__ - INFO - [CONFIG] Wallet: .valid_wallet.json
+2025-09-13 09:53:03,597 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-09-13 09:53:03,598 - __main__ - ERROR - [ERROR] Failed to initialize real beta client: DriftpyClient.__init__() got an unexpected keyword argument 'market'
+2025-09-13 09:53:03,599 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-09-13 09:53:03,599 - root - INFO - [CLEANUP] Starting cleanup...
+2025-09-13 09:53:03,601 - root - INFO - ======================================================================
+2025-09-13 09:53:03,601 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-09-13 09:53:03,602 - root - INFO - ======================================================================
+2025-09-13 09:53:03,603 - root - INFO - Total Iterations: 0
+2025-09-13 09:53:03,603 - root - INFO - Net Exposure: $0.00
+2025-09-13 09:53:03,604 - root - INFO - Total Volume: $0.00
+2025-09-13 09:53:03,604 - root - WARNING - Errors Encountered: 1
+2025-09-13 09:53:03,606 - root - WARNING -   1. Real client initialization failed: DriftpyClient.__init__() got an unexpected keyword argument 'market'
+2025-09-13 09:53:03,606 - root - INFO - ======================================================================
+2025-09-13 09:53:25,580 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-09-13 09:53:25,580 - __main__ - INFO - ======================================================================
+2025-09-13 09:53:25,581 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-09-13 09:53:25,581 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-09-13 09:53:25,582 - __main__ - INFO - ======================================================================
+2025-09-13 09:53:25,582 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-09-13 09:53:25,583 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-09-13 09:53:25,583 - __main__ - INFO - [CONFIG] RPC: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+2025-09-13 09:53:25,584 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-09-13 09:53:25,584 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-09-13 09:53:25,585 - __main__ - INFO - [SUCCESS] REAL Drift client initialized and ready for beta trading!
+2025-09-13 09:53:25,586 - __main__ - INFO - [SUCCESS] Connected to beta.drift.trade - READY FOR REAL ORDERS!
+2025-09-13 09:53:25,586 - __main__ - INFO - [BALANCE] Checking wallet balance for beta trading...
+2025-09-13 09:53:25,587 - __main__ - INFO - [INFO] Main client initialized - wallet loaded successfully
+2025-09-13 09:53:25,588 - __main__ - INFO - [INFO] Make sure your wallet has sufficient SOL for gas fees
+2025-09-13 09:53:25,588 - __main__ - INFO - [STARTING] Beginning REAL beta hedge trading session...
+2025-09-13 09:53:25,589 - __main__ - INFO - [INFO] Wallet: .beta_dev_wallet.json
+2025-09-13 09:53:25,589 - __main__ - INFO - [INFO] View trades on: https://beta.drift.trade
+2025-09-13 09:53:25,589 - __main__ - WARNING - [FINAL WARNING] REAL ORDERS WILL BE PLACED NOW!
+2025-09-13 09:53:25,590 - __main__ - INFO - [TRADE] Starting REAL hedge trading loop on beta.drift.trade...
+2025-09-13 09:53:25,590 - __main__ - WARNING - [WARNING] This will place REAL ORDERS - Monitor closely!
+2025-09-13 09:53:25,590 - __main__ - INFO - [INFO] View positions at: https://beta.drift.trade
+2025-09-13 09:53:25,591 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #1
+2025-09-13 09:53:26,274 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:53:26,275 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:53:26,276 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:53:26,276 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:53:26,276 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:53:26,277 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:53:26,277 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 1: float division by zero
+2025-09-13 09:53:46,280 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #2
+2025-09-13 09:53:46,717 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:53:46,717 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:53:46,718 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:53:46,718 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:53:46,719 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:53:46,719 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:53:46,719 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 2: float division by zero
+2025-09-13 09:54:06,721 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #3
+2025-09-13 09:54:07,121 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:54:07,122 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:54:07,123 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:54:07,123 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:54:07,124 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:54:07,125 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:54:07,125 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 3: float division by zero
+2025-09-13 09:54:27,136 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #4
+2025-09-13 09:54:27,639 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:54:27,640 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:54:27,641 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:54:27,641 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:54:27,642 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:54:27,643 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:54:27,643 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 4: float division by zero
+2025-09-13 09:54:47,647 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #5
+2025-09-13 09:54:48,070 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:54:48,071 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:54:48,072 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:54:48,072 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:54:48,073 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:54:48,074 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:54:48,074 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 5: float division by zero
+2025-09-13 09:55:08,075 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #6
+2025-09-13 09:55:08,559 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:55:08,559 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:55:08,559 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:55:08,560 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:55:08,560 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:55:08,560 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:55:08,560 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 6: float division by zero
+2025-09-13 09:55:28,570 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #7
+2025-09-13 09:55:29,006 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:55:29,006 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:55:29,007 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:55:29,007 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:55:29,007 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:55:29,007 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:55:29,007 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 7: float division by zero
+2025-09-13 09:55:49,019 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #8
+2025-09-13 09:55:49,449 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:55:49,449 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:55:49,450 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:55:49,450 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:55:49,451 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:55:49,451 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:55:49,451 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 8: float division by zero
+2025-09-13 09:56:09,459 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #9
+2025-09-13 09:56:10,006 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:56:10,006 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:56:10,007 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:56:10,007 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:56:10,008 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:56:10,008 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:56:10,009 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 9: float division by zero
+2025-09-13 09:56:30,016 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #10
+2025-09-13 09:56:30,544 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:56:30,545 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:56:30,545 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:56:30,545 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:56:30,546 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:56:30,546 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:56:30,546 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 10: float division by zero
+2025-09-13 09:56:50,560 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #11
+2025-09-13 09:56:51,019 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:56:51,019 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:56:51,020 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:56:51,020 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:56:51,020 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:56:51,020 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:56:51,020 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 11: float division by zero
+2025-09-13 09:57:11,028 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #12
+2025-09-13 09:57:11,544 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:57:11,545 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:57:11,545 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:57:11,545 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:57:11,545 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:57:11,545 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:57:11,545 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 12: float division by zero
+2025-09-13 09:57:31,554 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #13
+2025-09-13 09:57:31,972 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:57:31,974 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:57:31,974 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:57:31,974 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:57:31,975 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:57:31,975 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:57:31,976 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 13: float division by zero
+2025-09-13 09:57:51,992 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #14
+2025-09-13 09:57:52,552 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:57:52,553 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:57:52,554 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:57:52,554 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:57:52,554 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:57:52,555 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:57:52,555 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 14: float division by zero
+2025-09-13 09:58:12,566 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #15
+2025-09-13 09:58:13,103 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:58:13,103 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:58:13,104 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:58:13,104 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:58:13,105 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:58:13,105 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:58:13,105 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 15: float division by zero
+2025-09-13 09:58:33,114 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #16
+2025-09-13 09:58:33,538 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:58:33,538 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:58:33,539 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:58:33,539 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:58:33,540 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:58:33,540 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:58:33,540 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 16: float division by zero
+2025-09-13 09:58:53,553 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #17
+2025-09-13 09:58:54,073 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:58:54,073 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:58:54,074 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:58:54,074 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:58:54,075 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:58:54,075 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:58:54,075 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 17: float division by zero
+2025-09-13 09:59:14,078 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #18
+2025-09-13 09:59:14,514 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:59:14,515 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:59:14,515 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:59:14,516 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:59:14,516 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:59:14,516 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:59:14,516 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 18: float division by zero
+2025-09-13 09:59:34,530 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #19
+2025-09-13 09:59:35,081 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:59:35,082 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:59:35,082 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:59:35,082 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:59:35,083 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:59:35,083 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:59:35,083 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 19: float division by zero
+2025-09-13 09:59:55,099 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #20
+2025-09-13 09:59:55,553 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 09:59:55,553 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 09:59:55,553 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 09:59:55,555 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 09:59:55,555 - __main__ - INFO -    Open Orders: 0
+2025-09-13 09:59:55,555 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 09:59:55,555 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 20: float division by zero
+2025-09-13 10:00:15,571 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #21
+2025-09-13 10:00:16,018 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:00:16,018 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:00:16,019 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:00:16,019 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:00:16,019 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:00:16,020 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:00:16,020 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 21: float division by zero
+2025-09-13 10:00:36,029 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #22
+2025-09-13 10:00:36,496 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:00:36,497 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:00:36,497 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:00:36,498 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:00:36,498 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:00:36,498 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:00:36,499 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 22: float division by zero
+2025-09-13 10:00:56,512 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #23
+2025-09-13 10:00:56,993 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:00:56,993 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:00:56,994 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:00:56,994 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:00:56,994 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:00:56,994 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:00:56,995 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 23: float division by zero
+2025-09-13 10:01:17,009 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #24
+2025-09-13 10:01:17,485 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:01:17,486 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:01:17,486 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:01:17,486 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:01:17,487 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:01:17,487 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:01:17,488 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 24: float division by zero
+2025-09-13 10:01:37,493 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #25
+2025-09-13 10:01:37,902 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:01:37,903 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:01:37,903 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:01:37,903 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:01:37,904 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:01:37,904 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:01:37,904 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 25: float division by zero
+2025-09-13 10:01:57,904 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #26
+2025-09-13 10:01:58,449 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:01:58,449 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:01:58,450 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:01:58,451 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:01:58,451 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:01:58,452 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:01:58,452 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 26: float division by zero
+2025-09-13 10:02:18,468 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #27
+2025-09-13 10:02:18,892 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:02:18,893 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:02:18,893 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:02:18,893 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:02:18,893 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:02:18,893 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:02:18,894 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 27: float division by zero
+2025-09-13 10:02:38,904 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #28
+2025-09-13 10:02:39,360 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:02:39,360 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:02:39,360 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:02:39,360 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:02:39,360 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:02:39,361 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:02:39,361 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 28: float division by zero
+2025-09-13 10:02:59,371 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #29
+2025-09-13 10:02:59,854 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:02:59,855 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:02:59,855 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:02:59,856 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:02:59,857 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:02:59,857 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:02:59,858 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 29: float division by zero
+2025-09-13 10:03:19,865 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #30
+2025-09-13 10:03:20,353 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:03:20,353 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:03:20,354 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:03:20,354 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:03:20,355 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:03:20,355 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:03:20,356 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 30: float division by zero
+2025-09-13 10:03:40,356 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #31
+2025-09-13 10:03:40,830 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:03:40,831 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:03:40,832 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:03:40,832 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:03:40,832 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:03:40,833 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:03:40,833 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 31: float division by zero
+2025-09-13 10:04:00,838 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #32
+2025-09-13 10:04:01,245 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:04:01,246 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:04:01,247 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:04:01,247 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:04:01,247 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:04:01,247 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:04:01,247 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 32: float division by zero
+2025-09-13 10:04:21,251 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #33
+2025-09-13 10:04:21,838 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:04:21,838 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:04:21,839 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:04:21,839 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:04:21,839 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:04:21,839 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:04:21,840 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 33: float division by zero
+2025-09-13 10:04:41,845 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #34
+2025-09-13 10:04:42,342 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:04:42,342 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:04:42,343 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:04:42,343 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:04:42,343 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:04:42,344 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:04:42,344 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 34: float division by zero
+2025-09-13 10:05:02,344 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #35
+2025-09-13 10:05:02,752 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:05:02,752 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:05:02,753 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:05:02,753 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:05:02,753 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:05:02,754 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:05:02,754 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 35: float division by zero
+2025-09-13 10:05:22,759 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #36
+2025-09-13 10:05:23,161 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:05:23,162 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:05:23,162 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:05:23,163 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:05:23,163 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:05:23,164 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:05:23,164 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 36: float division by zero
+2025-09-13 10:05:43,167 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #37
+2025-09-13 10:05:43,646 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:05:43,647 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:05:43,648 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:05:43,648 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:05:43,649 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:05:43,649 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:05:43,650 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 37: float division by zero
+2025-09-13 10:06:03,665 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #38
+2025-09-13 10:06:04,102 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:06:04,102 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:06:04,103 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:06:04,103 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:06:04,103 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:06:04,104 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:06:04,104 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 38: float division by zero
+2025-09-13 10:06:24,115 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #39
+2025-09-13 10:06:24,650 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:06:24,651 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:06:24,651 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:06:24,652 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:06:24,652 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:06:24,652 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:06:24,653 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 39: float division by zero
+2025-09-13 10:06:44,665 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #40
+2025-09-13 10:06:45,131 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:06:45,131 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:06:45,132 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:06:45,133 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:06:45,133 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:06:45,134 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:06:45,134 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 40: float division by zero
+2025-09-13 10:07:05,146 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #41
+2025-09-13 10:07:05,614 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:07:05,614 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:07:05,615 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:07:05,615 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:07:05,616 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:07:05,616 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:07:05,616 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 41: float division by zero
+2025-09-13 10:07:25,632 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #42
+2025-09-13 10:07:26,151 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:07:26,152 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:07:26,153 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:07:26,153 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:07:26,153 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:07:26,154 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:07:26,154 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 42: float division by zero
+2025-09-13 10:07:46,168 - __main__ - INFO - [TRADE] Starting REAL beta hedge iteration #43
+2025-09-13 10:07:46,605 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 10:07:46,606 - __main__ - INFO - [STATUS] REAL Beta Hedge Iteration Status:
+2025-09-13 10:07:46,606 - __main__ - INFO -    Net Exposure: $0.00
+2025-09-13 10:07:46,606 - __main__ - INFO -    Total Volume: $0.00
+2025-09-13 10:07:46,606 - __main__ - INFO -    Open Orders: 0
+2025-09-13 10:07:46,607 - __main__ - INFO -    Active Positions: Method not available
+2025-09-13 10:07:46,607 - __main__ - ERROR - [ERROR] Error in REAL beta hedge iteration 43: float division by zero
+2025-09-13 10:07:53,202 - root - INFO - [CLEANUP] Starting cleanup...
+2025-09-13 10:07:53,202 - root - INFO - [SUCCESS] Real beta client closed successfully
+2025-09-13 10:07:53,202 - root - INFO - ======================================================================
+2025-09-13 10:07:53,203 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-09-13 10:07:53,203 - root - INFO - ======================================================================
+2025-09-13 10:07:53,203 - root - INFO - Total Iterations: 43
+2025-09-13 10:07:53,204 - root - INFO - Net Exposure: $0.00
+2025-09-13 10:07:53,204 - root - INFO - Total Volume: $0.00
+2025-09-13 10:07:53,204 - root - WARNING - Errors Encountered: 43
+2025-09-13 10:07:53,204 - root - WARNING -   1. Iteration 39 error: float division by zero
+2025-09-13 10:07:53,205 - root - WARNING -   2. Iteration 40 error: float division by zero
+2025-09-13 10:07:53,205 - root - WARNING -   3. Iteration 41 error: float division by zero
+2025-09-13 10:07:53,205 - root - WARNING -   4. Iteration 42 error: float division by zero
+2025-09-13 10:07:53,205 - root - WARNING -   5. Iteration 43 error: float division by zero
+2025-09-13 10:07:53,205 - root - INFO - ======================================================================
+2025-09-13 10:07:53,206 - root - INFO - [SHUTDOWN] Real beta hedge bot interrupted by user
+2025-09-13 16:16:13,137 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-09-13 16:16:13,139 - __main__ - INFO - ======================================================================
+2025-09-13 16:16:13,140 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-09-13 16:16:13,141 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-09-13 16:16:13,141 - __main__ - INFO - ======================================================================
+2025-09-13 16:16:13,142 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-09-13 16:16:13,142 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-09-13 16:16:13,143 - __main__ - INFO - [CONFIG] RPC: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+2025-09-13 16:16:13,143 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-09-13 16:16:13,144 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-09-13 16:16:13,147 - __main__ - INFO - [SUCCESS] REAL Drift client initialized and ready for beta trading!
+2025-09-13 16:16:13,148 - __main__ - INFO - [SUCCESS] Connected to beta.drift.trade - READY FOR REAL ORDERS!
+2025-09-13 16:16:13,149 - __main__ - INFO - [BALANCE] Checking wallet balance for beta trading...
+2025-09-13 16:16:13,150 - __main__ - INFO - [INFO] Main client initialized - wallet loaded successfully
+2025-09-13 16:16:13,151 - __main__ - INFO - [INFO] Make sure your wallet has sufficient SOL for gas fees
+2025-09-13 16:16:13,152 - __main__ - INFO - [STARTING] Beginning SIMPLE BUY/SELL test (5 minutes)...
+2025-09-13 16:16:13,152 - __main__ - INFO - [INFO] Wallet: .beta_dev_wallet.json
+2025-09-13 16:16:13,153 - __main__ - INFO - [INFO] View trades on: https://beta.drift.trade
+2025-09-13 16:16:13,153 - __main__ - WARNING - [FINAL WARNING] REAL TEST ORDERS WILL BE PLACED NOW!
+2025-09-13 16:16:13,154 - __main__ - INFO - [TEST] Starting SIMPLE BUY/SELL test on beta.drift.trade...
+2025-09-13 16:16:13,154 - __main__ - WARNING - [WARNING] This will place REAL TEST ORDERS - Monitor closely!
+2025-09-13 16:16:13,155 - __main__ - INFO - [INFO] View positions at: https://beta.drift.trade
+2025-09-13 16:16:13,155 - __main__ - INFO - [TEST] Will place one buy order, then one sell order within 5 minutes
+2025-09-13 16:16:13,156 - __main__ - INFO - [TEST] Step 1: Getting current market price...
+2025-09-13 16:16:14,288 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 16:16:14,289 - __main__ - ERROR - [TEST] Could not get orderbook - aborting test
+2025-09-13 16:16:14,289 - root - INFO - [CLEANUP] Starting cleanup...
+2025-09-13 16:16:14,289 - root - INFO - [SUCCESS] Real beta client closed successfully
+2025-09-13 16:16:14,290 - root - INFO - ======================================================================
+2025-09-13 16:16:14,290 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-09-13 16:16:14,290 - root - INFO - ======================================================================
+2025-09-13 16:16:14,291 - root - INFO - Total Iterations: 0
+2025-09-13 16:16:14,291 - root - INFO - Net Exposure: $0.00
+2025-09-13 16:16:14,291 - root - INFO - Total Volume: $0.00
+2025-09-13 16:16:14,292 - root - INFO - Errors: None - Clean real beta session!
+2025-09-13 16:16:14,292 - root - INFO - ======================================================================
+2025-09-13 16:17:06,655 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-09-13 16:17:06,656 - __main__ - INFO - ======================================================================
+2025-09-13 16:17:06,658 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-09-13 16:17:06,659 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-09-13 16:17:06,659 - __main__ - INFO - ======================================================================
+2025-09-13 16:17:06,662 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-09-13 16:17:06,664 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-09-13 16:17:06,665 - __main__ - INFO - [CONFIG] RPC: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+2025-09-13 16:17:06,665 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-09-13 16:17:06,666 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-09-13 16:17:06,668 - __main__ - INFO - [SUCCESS] REAL Drift client initialized and ready for beta trading!
+2025-09-13 16:17:06,668 - __main__ - INFO - [SUCCESS] Connected to beta.drift.trade - READY FOR REAL ORDERS!
+2025-09-13 16:17:06,668 - __main__ - INFO - [BALANCE] Checking wallet balance for beta trading...
+2025-09-13 16:17:06,669 - __main__ - INFO - [INFO] Main client initialized - wallet loaded successfully
+2025-09-13 16:17:06,669 - __main__ - INFO - [INFO] Make sure your wallet has sufficient SOL for gas fees
+2025-09-13 16:17:06,670 - __main__ - INFO - [STARTING] Beginning SIMPLE BUY/SELL test (5 minutes)...
+2025-09-13 16:17:06,670 - __main__ - INFO - [INFO] Wallet: .beta_dev_wallet.json
+2025-09-13 16:17:06,671 - __main__ - INFO - [INFO] View trades on: https://beta.drift.trade
+2025-09-13 16:17:06,672 - __main__ - WARNING - [FINAL WARNING] REAL TEST ORDERS WILL BE PLACED NOW!
+2025-09-13 16:17:06,673 - __main__ - INFO - [TEST] Starting SIMPLE BUY/SELL test on beta.drift.trade...
+2025-09-13 16:17:06,673 - __main__ - WARNING - [WARNING] This will place REAL TEST ORDERS - Monitor closely!
+2025-09-13 16:17:06,674 - __main__ - INFO - [INFO] View positions at: https://beta.drift.trade
+2025-09-13 16:17:06,674 - __main__ - INFO - [TEST] Will place one buy order, then one sell order within 5 minutes
+2025-09-13 16:17:06,676 - __main__ - INFO - [TEST] Step 1: Getting current market price...
+2025-09-13 16:17:07,511 - libs.drift.client - WARNING - [ORDERBOOK] Failed to fetch orderbook: Failed to initialize driftpy client: signature error: Cannot decompress Edwards point
+2025-09-13 16:17:07,513 - __main__ - ERROR - [TEST] Could not get orderbook - aborting test
+2025-09-13 16:17:07,513 - root - INFO - [CLEANUP] Starting cleanup...
+2025-09-13 16:17:07,514 - root - INFO - [SUCCESS] Real beta client closed successfully
+2025-09-13 16:17:07,514 - root - INFO - ======================================================================
+2025-09-13 16:17:07,514 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-09-13 16:17:07,515 - root - INFO - ======================================================================
+2025-09-13 16:17:07,515 - root - INFO - Total Iterations: 0
+2025-09-13 16:17:07,515 - root - INFO - Net Exposure: $0.00
+2025-09-13 16:17:07,516 - root - INFO - Total Volume: $0.00
+2025-09-13 16:17:07,516 - root - INFO - Errors: None - Clean real beta session!
+2025-09-13 16:17:07,516 - root - INFO - ======================================================================
+2025-09-13 16:17:37,114 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-09-13 16:17:37,114 - __main__ - INFO - ======================================================================
+2025-09-13 16:17:37,115 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-09-13 16:17:37,115 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-09-13 16:17:37,115 - __main__ - INFO - ======================================================================
+2025-09-13 16:17:37,116 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-09-13 16:17:37,116 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-09-13 16:17:37,117 - __main__ - INFO - [CONFIG] RPC: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+2025-09-13 16:17:37,117 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-09-13 16:17:37,117 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-09-13 16:17:37,118 - __main__ - ERROR - [ERROR] Failed to initialize real beta client: Invalid character '{'
+2025-09-13 16:17:37,119 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-09-13 16:17:37,119 - root - INFO - [CLEANUP] Starting cleanup...
+2025-09-13 16:17:37,119 - root - INFO - ======================================================================
+2025-09-13 16:17:37,120 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-09-13 16:17:37,120 - root - INFO - ======================================================================
+2025-09-13 16:17:37,120 - root - INFO - Total Iterations: 0
+2025-09-13 16:17:37,121 - root - INFO - Net Exposure: $0.00
+2025-09-13 16:17:37,122 - root - INFO - Total Volume: $0.00
+2025-09-13 16:17:37,122 - root - WARNING - Errors Encountered: 1
+2025-09-13 16:17:37,123 - root - WARNING -   1. Real client initialization failed: Invalid character '{'
+2025-09-13 16:17:37,123 - root - INFO - ======================================================================
+2025-09-13 16:18:04,622 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-09-13 16:18:04,622 - __main__ - INFO - ======================================================================
+2025-09-13 16:18:04,623 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-09-13 16:18:04,623 - __main__ - WARNING - [CRITICAL] Make sure you have funded your wallet!
+2025-09-13 16:18:04,624 - __main__ - INFO - ======================================================================
+2025-09-13 16:18:04,624 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-09-13 16:18:04,624 - __main__ - WARNING - [WARNING] This will place REAL orders on beta.drift.trade!
+2025-09-13 16:18:04,625 - __main__ - INFO - [CONFIG] RPC: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+2025-09-13 16:18:04,625 - __main__ - INFO - [CONFIG] Wallet: .beta_dev_wallet.json
+2025-09-13 16:18:04,626 - __main__ - INFO - [CONFIG] Environment: devnet
+2025-09-13 16:18:04,627 - __main__ - ERROR - [ERROR] Failed to initialize real beta client: Invalid character '{'
+2025-09-13 16:18:04,627 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-09-13 16:18:04,628 - root - INFO - [CLEANUP] Starting cleanup...
+2025-09-13 16:18:04,628 - root - INFO - ======================================================================
+2025-09-13 16:18:04,629 - root - INFO - [SUMMARY] REAL BETA HEDGE TRADING SESSION COMPLETE
+2025-09-13 16:18:04,629 - root - INFO - ======================================================================
+2025-09-13 16:18:04,630 - root - INFO - Total Iterations: 0
+2025-09-13 16:18:04,630 - root - INFO - Net Exposure: $0.00
+2025-09-13 16:18:04,631 - root - INFO - Total Volume: $0.00
+2025-09-13 16:18:04,632 - root - WARNING - Errors Encountered: 1
+2025-09-13 16:18:04,632 - root - WARNING -   1. Real client initialization failed: Invalid character '{'
+2025-09-13 16:18:04,633 - root - INFO - ======================================================================
+2025-09-13 22:39:27,521 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-09-13 22:39:27,522 - __main__ - INFO - ======================================================================
+2025-09-13 22:39:27,523 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-09-13 22:39:27,523 - __main__ - INFO - ======================================================================
+2025-09-13 22:39:27,523 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-09-13 22:39:27,526 - libs.drift.client - ERROR - Failed to build client from config: wallet_secret_key must be path, list[int], or bytes
+2025-09-13 22:39:27,526 - __main__ - ERROR - [ERROR] Failed to initialize shared client: wallet_secret_key must be path, list[int], or bytes
+2025-09-13 22:39:27,527 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-09-13 22:39:29,723 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-09-13 22:39:29,723 - __main__ - INFO - ======================================================================
+2025-09-13 22:39:29,724 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-09-13 22:39:29,724 - __main__ - INFO - ======================================================================
+2025-09-13 22:39:29,724 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-09-13 22:39:29,727 - libs.drift.client - ERROR - Failed to build client from config: wallet_secret_key must be path, list[int], or bytes
+2025-09-13 22:39:29,728 - __main__ - ERROR - [ERROR] Failed to initialize shared client: wallet_secret_key must be path, list[int], or bytes
+2025-09-13 22:39:29,728 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-09-13 22:39:34,097 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-09-13 22:39:34,098 - __main__ - INFO - ======================================================================
+2025-09-13 22:39:34,098 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-09-13 22:39:34,099 - __main__ - INFO - ======================================================================
+2025-09-13 22:39:34,099 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-09-13 22:39:34,103 - libs.drift.client - ERROR - Failed to build client from config: wallet_secret_key must be path, list[int], or bytes
+2025-09-13 22:39:34,103 - __main__ - ERROR - [ERROR] Failed to initialize shared client: wallet_secret_key must be path, list[int], or bytes
+2025-09-13 22:39:34,104 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-09-13 22:39:40,080 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-09-13 22:39:40,080 - __main__ - INFO - ======================================================================
+2025-09-13 22:39:40,081 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-09-13 22:39:40,081 - __main__ - INFO - ======================================================================
+2025-09-13 22:39:40,081 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-09-13 22:39:40,084 - libs.drift.client - ERROR - Failed to build client from config: wallet_secret_key must be path, list[int], or bytes
+2025-09-13 22:39:40,084 - __main__ - ERROR - [ERROR] Failed to initialize shared client: wallet_secret_key must be path, list[int], or bytes
+2025-09-13 22:39:40,084 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-09-13 22:39:50,147 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-09-13 22:39:50,148 - __main__ - INFO - ======================================================================
+2025-09-13 22:39:50,149 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-09-13 22:39:50,149 - __main__ - INFO - ======================================================================
+2025-09-13 22:39:50,150 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-09-13 22:39:50,153 - libs.drift.client - ERROR - Failed to build client from config: wallet_secret_key must be path, list[int], or bytes
+2025-09-13 22:39:50,153 - __main__ - ERROR - [ERROR] Failed to initialize shared client: wallet_secret_key must be path, list[int], or bytes
+2025-09-13 22:39:50,153 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting
+2025-09-13 22:40:08,009 - __main__ - INFO - [LAUNCH] Starting REAL Hedge Bot for beta.drift.trade
+2025-09-13 22:40:08,009 - __main__ - INFO - ======================================================================
+2025-09-13 22:40:08,009 - __main__ - WARNING - [CRITICAL] THIS WILL PLACE REAL ORDERS ON BETA.DRIFT.TRADE!
+2025-09-13 22:40:08,010 - __main__ - INFO - ======================================================================
+2025-09-13 22:40:08,010 - __main__ - INFO - [INIT] Initializing REAL Drift client for beta.drift.trade...
+2025-09-13 22:40:08,012 - libs.drift.client - ERROR - Failed to build client from config: wallet_secret_key must be path, list[int], or bytes
+2025-09-13 22:40:08,013 - __main__ - ERROR - [ERROR] Failed to initialize shared client: wallet_secret_key must be path, list[int], or bytes
+2025-09-13 22:40:08,013 - __main__ - ERROR - [ERROR] REAL beta client initialization failed - aborting

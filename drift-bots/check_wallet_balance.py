@@ -13,7 +13,7 @@ async def check_wallet_balance(wallet_address: str):
     print("=" * 60)
     
     # Connect to Solana devnet
-    rpc_url = "https://api.devnet.solana.com"
+    rpc_url = "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
     print(f"🌐 Connecting to: {rpc_url}")
     
     async with AsyncClient(rpc_url) as client:

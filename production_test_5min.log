@@ -1,0 +1,12 @@
+2025-09-13 14:01:56,187 - INFO - [INFO] ============================================================
+2025-09-13 14:02:00,454 - ERROR - Failed to initialize bot: signature error: keypair bytes do not specify same pubkey as derived from their secret key
+2025-09-13 17:33:15,103 - INFO - [INFO] ============================================================
+2025-09-13 17:33:22,118 - INFO - Loading wallet in secret_key format
+2025-09-13 17:33:22,124 - ERROR - Wallet file: .beta_dev_wallet.json
+2025-09-13 17:33:22,124 - ERROR - Wallet data keys: ['public_key', 'secret_key', 'created_for']
+2025-09-13 17:33:22,125 - ERROR - Failed to initialize bot: string argument without an encoding
+2025-09-13 17:34:06,790 - INFO - [INFO] ============================================================
+2025-09-13 17:34:08,443 - INFO - Loading wallet in secret_key format
+2025-09-13 17:34:08,451 - ERROR - Wallet file: .beta_dev_wallet.json
+2025-09-13 17:34:08,451 - ERROR - Wallet data keys: ['public_key', 'secret_key', 'created_for']
+2025-09-13 17:34:08,451 - ERROR - Failed to initialize bot: string argument without an encoding

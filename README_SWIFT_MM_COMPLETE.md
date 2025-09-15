@@ -91,7 +91,7 @@ python run_mm_bot_swift_sidecar_enhanced.py
 ### Environment Variables
 ```bash
 DRIFT_ENV=devnet                    # Drift environment
-RPC_URL=https://api.devnet.solana.com  # Solana RPC URL
+RPC_URL=https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494  # Solana RPC URL
 SWIFT_SIDECAR_URL=http://localhost:8787  # Swift sidecar URL
 SWIFT_WEBSOCKET_URL=wss://swift.drift.trade/ws  # Swift websocket URL
 LOG_LEVEL=INFO                      # Logging level

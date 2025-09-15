@@ -18,7 +18,7 @@ def validate_wallet_address(address: str) -> bool:
     except Exception:
         return False
 
-def check_wallet_balance(address: str, rpc_url: str = "https://api.devnet.solana.com"):
+def check_wallet_balance(address: str, rpc_url: str = "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"):
     """Check wallet balance"""
     try:
         import requests

@@ -107,7 +107,7 @@ async def trend_iteration(cfg: Dict[str, Any], client: DriftClient, risk_mgr: Ri
     # Determine side based on notional - TESTING: Much more aggressive threshold
     if abs(notional) < 0.01:  # TESTING: Much lower threshold from 1.0 to 0.01
         # TESTING: For demo purposes, create a synthetic trend signal
-        logger.info("📈 FORCED TREND (TESTING): Weak signal detected, creating synthetic trend")
+        logger.info("FORCED TREND (TESTING): Weak signal detected, creating synthetic trend")
         notional = 25.0 if signal_strength > 0 else -25.0  # TESTING: Force $25 position
     side = "buy" if notional > 0 else "sell"
     size_usd = abs(notional)

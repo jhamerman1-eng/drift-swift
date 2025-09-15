@@ -120,7 +120,7 @@ class CompleteSwiftMMBot:
     async def _initialize_drift_client(self):
         """Initialize DriftPy client"""
         env = self.config.get("env", "devnet")
-        rpc_url = self.config.get("rpc_url", "https://api.devnet.solana.com")
+        rpc_url = self.config.get("rpc_url", "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494")
         
         self.drift_client = DriftpyClient(
             cfg={"rpc_url": rpc_url, "env": env},

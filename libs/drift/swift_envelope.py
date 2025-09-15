@@ -1,19 +1,32 @@
 #!/usr/bin/env python3
 """
 Swift Envelope Creator and Processor
-Handles Swift order envelope creation and processing
+Handles Swift order envelope creation and processing using proper DriftPy types
 """
 
 import json
 import time
-from typing import Dict, Any, Optional
+import uuid
+from typing import Dict, Any
 from dataclasses import dataclass
 from solders.keypair import Keypair
-from solders.pubkey import Pubkey
-from solders.signature import Signature
-from solders.message import Message
-from solders.hash import Hash
-from driftpy.types import PostOnlyParams
+
+# Import DriftPy types for proper Swift integration
+try:
+    from driftpy.types import (
+        OrderParams, OrderType, MarketType, PositionDirection,
+        PostOnlyParams, SignedMsgOrderParamsMessage
+    )
+    DRIFTPY_AVAILABLE = True
+except ImportError:
+    DRIFTPY_AVAILABLE = False
+    # Set to None when not available
+    OrderParams = None  # type: ignore
+    OrderType = None  # type: ignore
+    MarketType = None  # type: ignore
+    PositionDirection = None  # type: ignore
+    PostOnlyParams = None  # type: ignore
+    SignedMsgOrderParamsMessage = None  # type: ignore
 
 @dataclass
 class SwiftOrderParams:
@@ -35,79 +48,216 @@ class SwiftEnvelopeCreator:
     def __init__(self):
         self.envelope_version = "1.0"
     
-    def create_order_envelope(self, params: SwiftOrderParams, keypair: Keypair) -> Dict[str, Any]:
-        """Create a Swift order envelope"""
+    def create_order_envelope(self, params: SwiftOrderParams, keypair: Keypair, drift_client=None, cluster: str = "devnet") -> Dict[str, Any]:
+        """Create a Swift order envelope using DriftPy's native serialization for proper Swift compatibility"""
+        # Pre-validate parameters
+        if not all([
+            params.market_index is not None,
+            params.market_type,
+            params.side,
+            params.price is not None,
+            params.size is not None,
+            params.taker_authority
+        ]):
+            raise ValueError("Missing required order parameters")
+
         try:
-            # Create order message
-            order_message = {
-                "version": self.envelope_version,
-                "type": "order",
-                "timestamp": int(time.time() * 1000),
-                "data": {
-                    "market_index": params.market_index,
-                    "market_type": params.market_type,
-                    "side": params.side,
-                    "price": params.price,
-                    "size": params.size,
-                    "taker_authority": params.taker_authority,
-                    "sub_account_id": params.sub_account_id,
-                    "order_type": params.order_type,
-                    "post_only": params.post_only,
-                    "reduce_only": params.reduce_only
-                }
-            }
+            if not DRIFTPY_AVAILABLE or not drift_client:
+                # Fallback to JSON-based approach if DriftPy not available
+                return self._create_json_envelope(params, keypair)
             
-            # Sign the message
-            message_str = json.dumps(order_message, separators=(',', ':'))
-            message_bytes = message_str.encode('utf-8')
-            
-            # Create signature
-            signature = keypair.sign_message(message_bytes)
-            
-            # Create envelope
-            envelope = {
-                "message": order_message,
-                "signature": str(signature),
-                "public_key": str(keypair.pubkey())
-            }
-            
-            return envelope
+            # Use DriftPy's native serialization for proper Swift compatibility
+            return self._create_driftpy_envelope(params, keypair, drift_client, cluster)
             
         except Exception as e:
-            raise Exception(f"Failed to create order envelope: {e}")
+            raise Exception(f"Failed to create Swift order envelope: {e}")
+    
+    def _create_driftpy_envelope(self, params: SwiftOrderParams, keypair: Keypair, drift_client, cluster: str = "devnet") -> Dict[str, Any]:
+        """Create envelope using proper Swift-compatible byte signing"""
+        import base64
+        import asyncio
+
+        # Convert to DriftPy OrderParams - FIXED: Proper enum values
+        order_params = OrderParams(  # type: ignore
+            order_type=OrderType.Limit(),  # type: ignore
+            market_type=MarketType.Perp(),  # type: ignore
+            direction=PositionDirection.Long() if params.side.lower() == 'buy' else PositionDirection.Short(),  # type: ignore
+            market_index=params.market_index,
+            base_asset_amount=int(params.size * 1e9),  # Convert to BASE_PRECISION
+            price=int(params.price * 1e6),  # Convert to PRICE_PRECISION
+            user_order_id=0,
+            post_only=PostOnlyParams.MustPostOnly() if params.post_only else PostOnlyParams.TryPostOnly(),  # type: ignore
+            reduce_only=params.reduce_only,
+            auction_duration=None,  # None for regular orders, not an integer
+            auction_start_price=int(params.price * 1e6),
+            auction_end_price=int(params.price * 1e6),
+            max_ts=None  # Option type: None is valid for no expiration
+        )
+
+        # Get current slot
+        slot = 0
+        try:
+            if hasattr(drift_client, 'connection') and drift_client.connection:
+                import asyncio
+                try:
+                    loop = asyncio.get_running_loop()
+                    slot_task = loop.create_task(drift_client.connection.get_slot())
+                    slot_response = loop.run_until_complete(slot_task)
+                    slot = slot_response.value
+                except RuntimeError:
+                    slot_response = asyncio.run(drift_client.connection.get_slot())
+                    slot = slot_response.value
+                except Exception as e:
+                    print(f"Warning: Could not get current slot: {e}, using timestamp")
+                    slot = int(time.time() * 1000)
+            else:
+                slot = int(time.time() * 1000)
+        except Exception as e:
+            print(f"Warning: Slot retrieval failed: {e}, using timestamp")
+            slot = int(time.time() * 1000)
+
+        # Generate UUID as bytes
+        order_uuid_bytes = uuid.uuid4().bytes[:8]
+        order_uuid_str = str(uuid.uuid4())
+
+        # Create the signed message structure for DriftPy - FIXED: Proper Option handling
+        msg = SignedMsgOrderParamsMessage(  # type: ignore
+            signed_msg_order_params=order_params,  # type: ignore
+            sub_account_id=params.sub_account_id,
+            slot=slot,
+            uuid=order_uuid_bytes,
+            stop_loss_order_params=None,  # Option type: None is valid
+            take_profit_order_params=None,  # Option type: None is valid
+        )
+
+        # DEBUG: Log the order_params to identify serialization issues
+        print(f"[DEBUG] OrderParams created: market_index={order_params.market_index}, direction={order_params.direction}")
+        print(f"[DEBUG] OrderParams: base_asset_amount={order_params.base_asset_amount}, price={order_params.price}")
+        print(f"[DEBUG] OrderParams: post_only={order_params.post_only}, reduce_only={order_params.reduce_only}")
+        print(f"[DEBUG] OrderParams: auction_duration={order_params.auction_duration}, max_ts={order_params.max_ts}")
+        print(f"[DEBUG] OrderParams: auction_start={order_params.auction_start_price}, auction_end={order_params.auction_end_price}")
+
+        # CRITICAL FIX: Use DriftPy's official signing method
+        # This ensures the message and signature are created correctly for Swift
+        signed_msg = drift_client.sign_signed_msg_order_params_message(msg)
+
+        # Extract message and signature from the signed result
+        message_hex = signed_msg.order_params.decode('utf-8')  # Already hex-encoded bytes
+        signature_b64 = base64.b64encode(signed_msg.signature).decode("ascii")
+
+        # Get the user account public key (different from wallet public key)
+        from driftpy.addresses import get_user_account_public_key
+        user_account_pubkey = get_user_account_public_key(
+            drift_client.program_id,
+            keypair.pubkey(),
+            params.sub_account_id
+        )
+
+        # Return Swift-compatible format with CORRECT signing (matching WebSocket format exactly)
+        return {
+            # Standard order fields
+            "market_index": params.market_index,
+            "market_type": params.market_type.capitalize(),
+            "direction": "Long" if params.side.lower() == 'buy' else "Short",
+            "base_asset_amount": int(params.size * 1e9),
+            "price": int(params.price * 1e6),
+            "order_type": params.order_type.capitalize(),
+            "post_only": params.post_only,
+            "slot": slot,
+            "uuid": order_uuid_str,
+            "sub_account_id": params.sub_account_id,
+            "taker_authority": str(user_account_pubkey),  # User account public key (not wallet)
+            "authority": str(keypair.pubkey()),  # Wallet public key for signing
+            "signing_authority": str(keypair.pubkey()),  # Add signing authority like WebSocket
+            "ts": int(time.time() * 1000),  # Add timestamp like WebSocket
+            "will_sanitize": True,  # Add will_sanitize like WebSocket
+            # Match sidecar expectations (message + signature fields)
+            "message": message_hex,  # hex-encoded binary message
+            "signature": signature_b64,  # base64-encoded signature
+            "cluster": cluster
+        }
+    
+    def _create_json_envelope(self, params: SwiftOrderParams, keypair: Keypair) -> Dict[str, Any]:
+        """Fallback JSON-based envelope creation"""
+        # Convert to proper precision values
+        BASE_PRECISION = 1e9  # 1e9 for base asset amount
+        PRICE_PRECISION = 1e6  # 1e6 for price
+        
+        # Create Swift order parameters in the exact format expected
+        swift_order_params = {
+            "marketIndex": int(params.market_index),
+            "marketType": str(params.market_type),
+            "direction": "long" if params.side == "buy" else "short",
+            "baseAssetAmount": int(params.size * BASE_PRECISION),  # Convert to proper precision
+            "orderType": str(params.order_type),
+            "price": int(params.price * PRICE_PRECISION),  # Convert to proper precision
+            "postOnly": bool(params.post_only),
+            "immediateOrCancel": False,
+            "reduceOnly": bool(params.reduce_only),
+            "userOrderId": int(time.time() * 1000) % 1000000,  # Generate unique order ID
+            "subAccountId": int(params.sub_account_id),
+            # Swift auction parameters (required!)
+            "auctionDuration": 10,  # slots
+            "auctionStartPrice": int(params.price * PRICE_PRECISION),  # Starting price for auction
+            "auctionEndPrice": int(params.price * PRICE_PRECISION),    # Ending price for auction
+            "maxTs": 0,  # Max timestamp (0 for no expiration)
+        }
+        
+        # Create the message structure Swift expects for signing
+        swift_message = {
+            "signedMsgOrderParams": swift_order_params,
+            "subAccountId": int(params.sub_account_id)
+        }
+        
+        # Convert to bytes for signing
+        message_bytes = json.dumps(swift_message, separators=(',', ':')).encode('utf-8')
+        
+        # Sign the message
+        signature = keypair.sign_message(message_bytes)
+        
+        # Create the final payload matching Swift's expected format
+        envelope = {
+            "taker_authority": str(keypair.pubkey()),  # Note: underscore, not camelCase
+            "signature": bytes(signature).hex(),
+            "message": message_bytes.hex(),  # Add the signed message as hex
+            "signedMsgOrderParams": swift_order_params,
+            "subAccountId": int(params.sub_account_id)
+        }
+        
+        return envelope
     
     def create_cancel_envelope(self, order_id: str, taker_authority: str, keypair: Keypair) -> Dict[str, Any]:
         """Create a Swift cancel envelope"""
+        # Pre-validate parameters
+        if not order_id or not taker_authority:
+            raise ValueError("Missing required cancel parameters")
+
         try:
             # Create cancel message
             cancel_message = {
-                "version": self.envelope_version,
-                "type": "cancel",
-                "timestamp": int(time.time() * 1000),
-                "data": {
-                    "order_id": order_id,
-                    "taker_authority": taker_authority
-                }
+                "action": "cancel_order",
+                "order_id": str(order_id),
+                "taker_authority": str(taker_authority),
+                "timestamp": int(time.time() * 1000)
             }
             
-            # Sign the message
-            message_str = json.dumps(cancel_message, separators=(',', ':'))
-            message_bytes = message_str.encode('utf-8')
+            # Serialize to bytes
+            message_bytes = json.dumps(cancel_message, separators=(',', ':')).encode('utf-8')
             
-            # Create signature
+            # Sign the message
             signature = keypair.sign_message(message_bytes)
             
-            # Create envelope
+            # Create the envelope
             envelope = {
-                "message": cancel_message,
-                "signature": str(signature),
+                "signed_message": message_bytes.hex(),  # Hex-encoded message
+                "signature": bytes(signature).hex(),  # Hex-encoded signature
                 "public_key": str(keypair.pubkey())
             }
             
             return envelope
             
         except Exception as e:
-            raise Exception(f"Failed to create cancel envelope: {e}")
+            raise Exception(f"Failed to create Swift cancel envelope: {e}")
 
 class SwiftOrderProcessor:
     """Processes incoming Swift orders"""
@@ -211,7 +361,7 @@ class SwiftOrderProcessor:
             trade_id = f"JIT-{int(time.time() * 1000000) % 999999:06d}"
             
             # Log the trade
-            print(f"🎯 JIT TRADE EXECUTED: {side.upper()} {size} @ {price} (ID: {trade_id})")
+            print(f" JIT TRADE EXECUTED: {side.upper()} {size} @ {price} (ID: {trade_id})")
             
             return {
                 "success": True,
@@ -230,3 +380,77 @@ class SwiftOrderProcessor:
     def get_stats(self) -> Dict[str, Any]:
         """Get processing statistics"""
         return self.stats.copy()
+
+
+class SwiftMessageSerializer:
+    """Serialize order parameters for Swift protocol"""
+
+    @staticmethod
+    def create_order_message(order_params: Dict[str, Any]) -> bytes:
+        """Create a binary message matching Swift's SignedMsgOrderParamsMessage format"""
+        import struct
+        import hashlib
+
+        # Create discriminator (first 8 bytes)
+        discriminator = hashlib.sha256(b'global:SignedMsgOrderParamsMessage').digest()[:8]
+
+        buffer = bytearray()
+        buffer.extend(discriminator)
+
+        # Add subAccountId (u16)
+        buffer.extend(struct.pack('<H', order_params.get('subAccountId', 0)))
+
+        # Add direction (1 byte: 0=long, 1=short)
+        direction = 0 if order_params.get('direction', 'long') == 'long' else 1
+        buffer.extend(struct.pack('<B', direction))
+
+        # Add marketType (1 byte: 0=spot, 1=perp)
+        buffer.extend(struct.pack('<B', 1))  # Always perp for Swift MM
+
+        # Add marketIndex (u16)
+        buffer.extend(struct.pack('<H', order_params.get('marketIndex', 0)))
+
+        # Add baseAssetAmount (i64)
+        base_amount = int(order_params.get('baseAssetAmount', 0))
+        buffer.extend(struct.pack('<q', base_amount))
+
+        # Add price (i64) - can be 0 for market orders
+        price = int(order_params.get('price', 0))
+        buffer.extend(struct.pack('<q', price))
+
+        # Add orderType (1 byte: 0=market, 1=limit)
+        buffer.extend(struct.pack('<B', 1))  # Limit order
+
+        # Add userOrderId (u8)
+        buffer.extend(struct.pack('<B', order_params.get('userOrderId', 0)))
+
+        # Add reduceOnly (1 byte boolean)
+        buffer.extend(struct.pack('<B', 1 if order_params.get('reduceOnly', False) else 0))
+
+        # Add postOnly (1 byte: 0=none, 1=must_post_only, 2=try_post_only)
+        buffer.extend(struct.pack('<B', 1))  # Must post only
+
+        # Add immediateOrCancel (1 byte boolean)
+        buffer.extend(struct.pack('<B', 0))
+
+        # Add triggerPrice (i64) - 0 for non-trigger orders
+        buffer.extend(struct.pack('<q', 0))
+
+        # Add triggerCondition (1 byte: 0=above, 1=below, 2=triggered_above, 3=triggered_below)
+        buffer.extend(struct.pack('<B', 0))
+
+        # Add auctionDuration (u8)
+        buffer.extend(struct.pack('<B', order_params.get('auctionDuration', 10)))
+
+        # Add auctionStartPrice (i64)
+        auction_start = int(order_params.get('auctionStartPrice', price))
+        buffer.extend(struct.pack('<q', auction_start))
+
+        # Add auctionEndPrice (i64)
+        auction_end = int(order_params.get('auctionEndPrice', price))
+        buffer.extend(struct.pack('<q', auction_end))
+
+        # Add maxTs (i64) - 0 means no expiry
+        buffer.extend(struct.pack('<q', order_params.get('maxTs', 0)))
+
+        return bytes(buffer)

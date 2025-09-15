@@ -1,0 +1,48 @@
+2025-09-14 12:38:36,357 | demo-bug-tracker | ERROR | Failed to save bug registry: name 'json' is not defined
+2025-09-14 12:38:36,358 | demo-bug-tracker | ERROR | 🐛 BUG DETECTED: DEMO-001
+2025-09-14 12:38:36,359 | demo-bug-tracker | ERROR |    Description: Wallet connection timeout during high load
+2025-09-14 12:38:36,360 | demo-bug-tracker | ERROR |    Root Cause: RPC endpoint rate limiting
+2025-09-14 12:38:36,361 | demo-bug-tracker | ERROR |    Impact: Bot cannot place orders during peak trading hours
+2025-09-14 12:38:36,362 | demo-bug-tracker | ERROR |    Priority: HIGH
+2025-09-14 12:38:41,231 | demo-bug-tracker | WARNING | Failed to load bug registry: Expecting value: line 1 column 1 (char 0)
+2025-09-14 12:38:41,234 | demo-bug-tracker | ERROR | 🐛 BUG DETECTED: DEMO-001
+2025-09-14 12:38:41,236 | demo-bug-tracker | ERROR |    Description: Wallet connection timeout during high load
+2025-09-14 12:38:41,237 | demo-bug-tracker | ERROR |    Root Cause: RPC endpoint rate limiting
+2025-09-14 12:38:41,238 | demo-bug-tracker | ERROR |    Impact: Bot cannot place orders during peak trading hours
+2025-09-14 12:38:41,240 | demo-bug-tracker | ERROR |    Priority: HIGH
+2025-09-14 12:38:41,241 | demo-bug-tracker | ERROR |    Context: {
+  "affected_component": "wallet_manager",
+  "rpc_endpoints": [
+    "endpoint1",
+    "endpoint2"
+  ],
+  "timeout_threshold": "30s"
+}
+2025-09-14 12:38:41,274 | demo-bug-tracker | ERROR | ❌ ERROR: ConnectionError: RPC endpoint rate limit exceeded
+2025-09-14 12:38:41,275 | demo-bug-tracker | ERROR |    Context: {
+  "component": "rpc_client",
+  "operation": "get_recent_blockhash",
+  "endpoint": "https://api.mainnet-beta.solana.com",
+  "function": "<module>",
+  "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\demo_bug_tracking.py",
+  "line": 100
+}
+2025-09-14 12:38:41,278 | demo-bug-tracker | ERROR | 🐛 BUG DETECTED: ERR-AAC12A19
+2025-09-14 12:38:41,279 | demo-bug-tracker | ERROR |    Description: Runtime error: ConnectionError - RPC endpoint rate limit exceeded
+2025-09-14 12:38:41,280 | demo-bug-tracker | ERROR |    Root Cause: Exception in <module>
+2025-09-14 12:38:41,281 | demo-bug-tracker | ERROR |    Impact: Affects rpc_client
+2025-09-14 12:38:41,282 | demo-bug-tracker | ERROR |    Priority: MEDIUM
+2025-09-14 12:38:41,284 | demo-bug-tracker | ERROR |    Context: {
+  "component": "rpc_client",
+  "operation": "get_recent_blockhash",
+  "endpoint": "https://api.mainnet-beta.solana.com",
+  "function": "<module>",
+  "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\demo_bug_tracking.py",
+  "line": 100
+}
+2025-09-14 12:38:41,286 | demo-bug-tracker | INFO | ✅ BUG RESOLVED: DEMO-001
+2025-09-14 12:38:41,289 | demo-bug-tracker | INFO |    Solution: Implemented exponential backoff with jitter
+2025-09-14 12:38:41,291 | demo-bug-tracker | INFO |    Notes: Added retry logic with 1s, 2s, 4s, 8s delays. Reduced timeout failures by 85%.
+2025-09-14 12:38:41,295 | demo-bug-tracker | WARNING | ❌ RESOLUTION FAILED: ERR-AAC12A19
+2025-09-14 12:38:41,295 | demo-bug-tracker | WARNING |    Attempted: Increased timeout from 30s to 60s
+2025-09-14 12:38:41,297 | demo-bug-tracker | WARNING |    Notes: Timeout increase helped but still seeing failures during extreme load.

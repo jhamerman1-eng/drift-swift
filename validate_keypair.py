@@ -2,7 +2,6 @@
 """
 Validate a base58 keypair string
 """
-import base58
 from solders.keypair import Keypair
 
 def validate_keypair(secret_key_str):

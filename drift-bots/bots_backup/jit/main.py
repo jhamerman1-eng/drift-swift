@@ -153,7 +153,7 @@ async def generate_test_report(client, start_time):
         print("-" * 40)
         print("✅ Drift Client: Connected")
         print("✅ Wallet: Funded")
-        print("✅ RPC: https://api.devnet.solana.com")
+        print("✅ RPC: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494")
         print("✅ Environment: devnet")
         print()
 

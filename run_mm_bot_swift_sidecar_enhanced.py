@@ -10,7 +10,7 @@ import os
 import sys
 import time
 import json
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 from dataclasses import dataclass
 
 # Add libs to path
@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "libs"))
 
 from drift.swift_sidecar_driver import SwiftSidecarDriver
 from drift.client import DriftpyClient
-from drift.swift_envelope import SwiftEnvelopeCreator, SwiftOrderParams, SwiftOrderProcessor
+from drift.swift_envelope import SwiftEnvelopeCreator, SwiftOrderParams
 from solders.keypair import Keypair
 
 # Configure logging
@@ -65,8 +65,8 @@ class SwiftSidecarExecutionClient:
     async def place_order(self, order_params: Dict) -> Optional[str]:
         """Place order via Swift sidecar with real envelope creation"""
         try:
-            if not self.keypair:
-                logger.error("Keypair not initialized")
+            if not self.keypair or not self.taker_authority:
+                logger.error("Keypair or taker_authority not initialized")
                 return None
                 
             # Create Swift order parameters
@@ -105,8 +105,8 @@ class SwiftSidecarExecutionClient:
     async def cancel_order(self, order_id: str) -> bool:
         """Cancel order via Swift sidecar"""
         try:
-            if not self.keypair:
-                logger.error("Keypair not initialized")
+            if not self.keypair or not self.taker_authority:
+                logger.error("Keypair or taker_authority not initialized")
                 return False
                 
             # Create cancel envelope
@@ -381,7 +381,7 @@ async def run_main():
         
         # Initialize drift client
         drift_client = DriftpyClient(
-            cfg={"rpc_url": "https://api.devnet.solana.com", "env": "devnet"},
+            cfg={"rpc_url": "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494", "env": "devnet"},
             env="devnet"
         )
         

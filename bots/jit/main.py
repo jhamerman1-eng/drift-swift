@@ -39,7 +39,7 @@ import sys
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 import yaml
 from prometheus_client import start_http_server, Gauge, Counter, Histogram
@@ -66,13 +66,13 @@ def safe_ratio(numerator: float, denominator: float, default: float = 0.0) -> fl
 
 RUNNING = True
 
-def _sigterm(_signo, _frame):
+def _sigterm(_signo: int, _frame: Any) -> None:
     """Signal handler for graceful shutdown"""
     global RUNNING
     logger.info(f"Received signal {_signo}, initiating graceful shutdown...")
     RUNNING = False
 
-def load_yaml(path: Path) -> dict:
+def load_yaml(path: Path) -> Dict[str, Any]:
     """Load YAML configuration file with error handling"""
     try:
         with path.open("r") as f:
@@ -101,7 +101,7 @@ class JITConfig:
     toxicity_guard: bool
 
     @classmethod
-    def from_yaml(cls, config: dict) -> 'JITConfig':
+    def from_yaml(cls, config: Dict[str, Any]) -> 'JITConfig':
         spread_bps = config.get('spread_bps', {})
         cancel_replace = config.get('cancel_replace', {})
 
@@ -109,15 +109,15 @@ class JITConfig:
             symbol=config['symbol'],
             leverage=config.get('leverage', 10),
             post_only=config.get('post_only', True),
-            obi_microprice=config.get('obi_microprice', True),
-            spread_bps_base=float(spread_bps.get('base', 8)),
-            spread_bps_min=float(spread_bps.get('min', 4)),
-            spread_bps_max=float(spread_bps.get('max', 25)),
-            inventory_target=float(config.get('inventory_target', 0)),
-            max_position_abs=float(config.get('max_position_abs', 120)),
-            cancel_replace_enabled=cancel_replace.get('enabled', True),
-            cancel_replace_interval_ms=int(cancel_replace.get('interval_ms', 900)),
-            toxicity_guard=cancel_replace.get('toxicity_guard', True)
+            obi_microprice=bool(config.get('obi_microprice', True)),
+            spread_bps_base=float(spread_bps.get('base') if spread_bps.get('base') is not None else 8.0),
+            spread_bps_min=float(spread_bps.get('min') if spread_bps.get('min') is not None else 4.0),
+            spread_bps_max=float(spread_bps.get('max') if spread_bps.get('max') is not None else 25.0),
+            inventory_target=float(config.get('inventory_target', 0.0) or 0.0),
+            max_position_abs=float(config.get('max_position_abs', 120.0) or 120.0),
+            cancel_replace_enabled=bool(cancel_replace.get('enabled', True)),
+            cancel_replace_interval_ms=int(cancel_replace.get('interval_ms') if cancel_replace.get('interval_ms') is not None else 900),
+            toxicity_guard=bool(cancel_replace.get('toxicity_guard', True))
         )
 
 @dataclass
@@ -156,6 +156,26 @@ class InventoryManager:
     def should_trade(self, current_position: float) -> bool:
         """Check if bot should continue trading"""
         return abs(current_position) < self.max_position
+
+    def calculate_position_based_sizing(self, current_position: float, base_size: float) -> Tuple[float, float]:
+        """Calculate bid and ask sizes based on inventory skew"""
+        # Calculate inventory skew
+        inventory_skew = self.calculate_inventory_skew(current_position)
+
+        # Start with base size for both sides
+        bid_size = base_size
+        ask_size = base_size
+
+        # Use sophisticated position-based sizing
+        if inventory_skew > 0.1:  # Long position - want to sell more
+            ask_size = base_size * 1.2
+            bid_size = base_size * 0.8
+        elif inventory_skew < -0.1:  # Short position - want to buy more
+            bid_size = base_size * 1.2
+            ask_size = base_size * 0.8
+        # else: Neutral position - keep base sizes
+
+        return bid_size, ask_size
 
 class OBICalculator:
     """Calculates Order Book Imbalance and microprice"""

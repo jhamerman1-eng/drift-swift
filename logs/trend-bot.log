@@ -3,3 +3,72 @@
 2025-08-30 21:48:31,317 | trend-bot | INFO | Test log message from trend-bot
 2025-08-30 21:48:48,711 | trend-bot | INFO | Test log message from trend-bot
 2025-08-30 21:49:03,515 | trend-bot | INFO | Test log message from trend-bot
+2025-09-13 22:39:28,701 | trend-bot | INFO | ================================================================================
+2025-09-13 22:39:28,702 | trend-bot | INFO | TREND BOT LAUNCHING IN DEVNET MODE
+2025-09-13 22:39:28,702 | trend-bot | INFO | ================================================================================
+2025-09-13 22:39:28,703 | trend-bot | INFO | Strategy: MACD + Momentum with Anti-Chop Filters
+2025-09-13 22:39:28,704 | trend-bot | INFO | Target: SOL-PERP on Drift Protocol
+2025-09-13 22:39:28,704 | trend-bot | INFO | Environment: Devnet (Test Network)
+2025-09-13 22:39:28,705 | trend-bot | INFO | Mode: TEST TRADING (safe to use!)
+2025-09-13 22:39:28,705 | trend-bot | INFO | ================================================================================
+2025-09-13 22:39:28,705 | trend-bot | INFO | Press Ctrl+C to stop gracefully
+2025-09-13 22:39:28,706 | trend-bot | INFO | 
+2025-09-13 22:39:28,706 | trend-bot | INFO | Initializing Trend Bot for beta.drift.trade...
+2025-09-13 22:39:28,707 | trend-bot | ERROR | HELIUS_API_KEY environment variable not set
+2025-09-13 22:39:28,707 | trend-bot | ERROR | Failed to initialize client
+2025-09-13 22:39:30,883 | trend-bot | INFO | ================================================================================
+2025-09-13 22:39:30,884 | trend-bot | INFO | TREND BOT LAUNCHING IN DEVNET MODE
+2025-09-13 22:39:30,884 | trend-bot | INFO | ================================================================================
+2025-09-13 22:39:30,885 | trend-bot | INFO | Strategy: MACD + Momentum with Anti-Chop Filters
+2025-09-13 22:39:30,885 | trend-bot | INFO | Target: SOL-PERP on Drift Protocol
+2025-09-13 22:39:30,886 | trend-bot | INFO | Environment: Devnet (Test Network)
+2025-09-13 22:39:30,887 | trend-bot | INFO | Mode: TEST TRADING (safe to use!)
+2025-09-13 22:39:30,887 | trend-bot | INFO | ================================================================================
+2025-09-13 22:39:30,888 | trend-bot | INFO | Press Ctrl+C to stop gracefully
+2025-09-13 22:39:30,888 | trend-bot | INFO | 
+2025-09-13 22:39:30,889 | trend-bot | INFO | Initializing Trend Bot for beta.drift.trade...
+2025-09-13 22:39:30,889 | trend-bot | ERROR | HELIUS_API_KEY environment variable not set
+2025-09-13 22:39:30,890 | trend-bot | ERROR | Failed to initialize client
+2025-09-13 22:39:35,321 | trend-bot | INFO | ================================================================================
+2025-09-13 22:39:35,322 | trend-bot | INFO | TREND BOT LAUNCHING IN DEVNET MODE
+2025-09-13 22:39:35,322 | trend-bot | INFO | ================================================================================
+2025-09-13 22:39:35,323 | trend-bot | INFO | Strategy: MACD + Momentum with Anti-Chop Filters
+2025-09-13 22:39:35,323 | trend-bot | INFO | Target: SOL-PERP on Drift Protocol
+2025-09-13 22:39:35,324 | trend-bot | INFO | Environment: Devnet (Test Network)
+2025-09-13 22:39:35,324 | trend-bot | INFO | Mode: TEST TRADING (safe to use!)
+2025-09-13 22:39:35,325 | trend-bot | INFO | ================================================================================
+2025-09-13 22:39:35,325 | trend-bot | INFO | Press Ctrl+C to stop gracefully
+2025-09-13 22:39:35,326 | trend-bot | INFO | 
+2025-09-13 22:39:35,326 | trend-bot | INFO | Initializing Trend Bot for beta.drift.trade...
+2025-09-13 22:39:35,327 | trend-bot | ERROR | HELIUS_API_KEY environment variable not set
+2025-09-13 22:39:35,327 | trend-bot | ERROR | Failed to initialize client
+2025-09-13 22:39:42,664 | trend-bot | INFO | ================================================================================
+2025-09-13 22:39:42,665 | trend-bot | INFO | TREND BOT LAUNCHING IN DEVNET MODE
+2025-09-13 22:39:42,666 | trend-bot | INFO | ================================================================================
+2025-09-13 22:39:42,666 | trend-bot | INFO | Strategy: MACD + Momentum with Anti-Chop Filters
+2025-09-13 22:39:42,667 | trend-bot | INFO | Target: SOL-PERP on Drift Protocol
+2025-09-13 22:39:42,667 | trend-bot | INFO | Environment: Devnet (Test Network)
+2025-09-13 22:39:42,668 | trend-bot | INFO | Mode: TEST TRADING (safe to use!)
+2025-09-13 22:39:42,668 | trend-bot | INFO | ================================================================================
+2025-09-13 22:39:42,669 | trend-bot | INFO | Press Ctrl+C to stop gracefully
+2025-09-13 22:39:42,669 | trend-bot | INFO | 
+2025-09-13 22:39:42,670 | trend-bot | INFO | Initializing Trend Bot for beta.drift.trade...
+2025-09-13 22:39:42,670 | trend-bot | ERROR | HELIUS_API_KEY environment variable not set
+2025-09-13 22:39:42,671 | trend-bot | ERROR | Failed to initialize client
+2025-09-13 22:39:53,590 | trend-bot | INFO | ================================================================================
+2025-09-13 22:39:53,591 | trend-bot | INFO | TREND BOT LAUNCHING IN DEVNET MODE
+2025-09-13 22:39:53,592 | trend-bot | INFO | ================================================================================
+2025-09-13 22:39:53,593 | trend-bot | INFO | Strategy: MACD + Momentum with Anti-Chop Filters
+2025-09-13 22:39:53,594 | trend-bot | INFO | Target: SOL-PERP on Drift Protocol
+2025-09-13 22:39:53,594 | trend-bot | INFO | Environment: Devnet (Test Network)
+2025-09-13 22:39:53,595 | trend-bot | INFO | Mode: TEST TRADING (safe to use!)
+2025-09-13 22:39:53,596 | trend-bot | INFO | ================================================================================
+2025-09-13 22:39:53,597 | trend-bot | INFO | Press Ctrl+C to stop gracefully
+2025-09-13 22:39:53,598 | trend-bot | INFO | 
+2025-09-13 22:39:53,599 | trend-bot | INFO | Initializing Trend Bot for beta.drift.trade...
+2025-09-13 22:39:53,600 | trend-bot | ERROR | HELIUS_API_KEY environment variable not set
+2025-09-13 22:39:53,601 | trend-bot | ERROR | Failed to initialize client
+2025-09-14 12:30:08,619 | trend-bot | INFO | Test log message from trend-bot
+2025-09-14 12:31:16,198 | trend-bot | INFO | Test log message from trend-bot
+2025-09-14 12:37:28,690 | trend-bot | INFO | Test log message from trend-bot
+2025-09-14 12:38:10,482 | trend-bot | INFO | Test log message from trend-bot

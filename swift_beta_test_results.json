@@ -1,0 +1,58 @@
+{
+  "total_tests": 7,
+  "passed": 2,
+  "failed": 5,
+  "success_rate": 28.57142857142857,
+  "total_time": 39.55562949180603,
+  "test_results": [
+    {
+      "test": "Swift WebSocket Authentication",
+      "passed": false,
+      "details": "Should have timed out",
+      "error": null,
+      "timestamp": 1757899011.7957232
+    },
+    {
+      "test": "Swift API Envelope Creation",
+      "passed": false,
+      "details": "Unexpected error: Swift signature verification failed: {\"message\":\"Error verifying signed message\",\"error\":\"signature error: Cannot decompress Edwards point\"}",
+      "error": null,
+      "timestamp": 1757899018.7326577
+    },
+    {
+      "test": "Position-Aware Cancel/Replace",
+      "passed": true,
+      "details": "Correctly rejected order exceeding position limits",
+      "error": null,
+      "timestamp": 1757899024.4166172
+    },
+    {
+      "test": "DriftPy Client Method Detection",
+      "passed": false,
+      "details": "place_order test failed: place_perp_order not available",
+      "error": null,
+      "timestamp": 1757899024.4216118
+    },
+    {
+      "test": "WebSocket Health Monitoring",
+      "passed": true,
+      "details": "All health monitoring and stats properly structured",
+      "error": null,
+      "timestamp": 1757899029.9688635
+    },
+    {
+      "test": "Order Placement with Health Monitoring",
+      "passed": false,
+      "details": "Direct order placement failed",
+      "error": null,
+      "timestamp": 1757899035.6250012
+    },
+    {
+      "test": "WebSocket Reconnection Logic",
+      "passed": false,
+      "details": "Missing reconnection features: ['exponential backoff']",
+      "error": null,
+      "timestamp": 1757899041.2429686
+    }
+  ]
+}

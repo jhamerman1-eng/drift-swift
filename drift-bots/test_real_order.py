@@ -19,8 +19,8 @@ async def test_real_order():
     print("=" * 60)
     
     # Set environment variables
-    os.environ["DRIFT_HTTP_URL"] = "https://api.devnet.solana.com"
-    os.environ["DRIFT_WS_URL"] = "wss://api.devnet.solana.com"
+    os.environ["DRIFT_HTTP_URL"] = "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
+    os.environ["DRIFT_WS_URL"] = "wss://https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
     os.environ["DRIFT_KEYPAIR_PATH"] = "funded_wallet.json"
     
     try:

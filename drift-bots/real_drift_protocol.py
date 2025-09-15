@@ -275,7 +275,7 @@ async def test_drift_integration():
     
     # Initialize client
     client = RealDriftClient(
-        rpc_url="https://api.devnet.solana.com",
+        rpc_url="https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494",
         wallet_path="C:\\Users\\genuw\\.config\\solana\\id_devnet_custom.json",
         env="devnet"
     )

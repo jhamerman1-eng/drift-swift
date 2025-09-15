@@ -55,7 +55,7 @@ def check_wallet_balance(wallet_path):
         keypair = Keypair.from_secret_key(secret_key)
         
         # Connect to devnet
-        client = Client("https://api.devnet.solana.com")
+        client = Client("https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494")
         
         # Get balance
         balance = client.get_balance(keypair.public_key)

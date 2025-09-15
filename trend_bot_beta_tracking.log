@@ -1933,3 +1933,31 @@ websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: H
 2025-09-05 13:17:26,190 - libs.drift.client - INFO - Drift client ready with user account
 2025-09-05 13:17:26,311 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
 2025-09-05 13:17:26,312 - libs.drift.client - WARNING - [ORDERBOOK] DLOB fallback failed: Cannot get oracle price data for DLOB
+2025-09-14 18:01:28,941 - __main__ - INFO - ============================================================
+2025-09-14 18:01:28,942 - __main__ - INFO - Environment: DEVNET (Beta)
+2025-09-14 18:01:28,943 - __main__ - INFO - Trading Platform: beta.drift.trade
+2025-09-14 18:01:28,943 - __main__ - INFO - Strategy: MACD + Momentum Trend Following
+2025-09-14 18:01:28,944 - __main__ - INFO - Market: SOL-PERP
+2025-09-14 18:01:28,944 - __main__ - INFO - ============================================================
+2025-09-14 18:01:31,733 - libs.drift.client - ERROR - Failed to build client from config: wallet_secret_key must be path, list[int], or bytes
+2025-09-14 18:01:31,734 - __main__ - ERROR - Trend Bot beta failed: wallet_secret_key must be path, list[int], or bytes
+2025-09-14 18:01:31,736 - __main__ - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\run_trend_bot_beta.py", line 69, in run_trend_bot_beta
+    client = await build_client_from_config("configs/core/drift_client_beta.yaml")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\libs\drift\client.py", line 1184, in build_client_from_config
+    client = DriftpyClient(
+             ^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\libs\drift\client.py", line 153, in __init__
+    self._secret = self._load_secret(self._secret_src)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\libs\drift\client.py", line 175, in _load_secret
+    raise ValueError("wallet_secret_key must be path, list[int], or bytes")
+ValueError: wallet_secret_key must be path, list[int], or bytes
+
+2025-09-14 18:01:59,830 - __main__ - INFO - ============================================================
+2025-09-14 18:01:59,830 - __main__ - INFO - Environment: DEVNET (Beta)
+2025-09-14 18:01:59,830 - __main__ - INFO - Trading Platform: beta.drift.trade
+2025-09-14 18:01:59,831 - __main__ - INFO - Strategy: MACD + Momentum Trend Following
+2025-09-14 18:01:59,831 - __main__ - INFO - Market: SOL-PERP
+2025-09-14 18:01:59,831 - __main__ - INFO - ============================================================

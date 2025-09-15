@@ -40,8 +40,8 @@ async def main():
         # Set up environment for mock mode
         os.environ['ENV'] = 'devnet'
         os.environ['USE_MOCK'] = 'true'  # Mock mode for testing
-        os.environ['DRIFT_RPC_URL'] = 'https://api.devnet.solana.com'
-        os.environ['DRIFT_WS_URL'] = 'wss://api.devnet.solana.com'
+        os.environ['DRIFT_RPC_URL'] = 'https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494'
+        os.environ['DRIFT_WS_URL'] = 'wss://https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494'
 
         print("\n🔗 Connecting to Drift client (mock mode)...")
         client = await build_client_from_config("configs/core/drift_client.yaml")

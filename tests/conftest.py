@@ -98,6 +98,29 @@ TEST_CONFIGS = {
             "max_daily_loss_usd": 750,
             "circuit_breaker_pct": 0.015
         }
+    },
+
+    "swift_mm_bot": {
+        "env": "devnet",
+        "rpc_url": "https://test-rpc.com",
+        "sidecar_url": "http://localhost:8787",
+        "swift_websocket_url": "wss://test-swift.com/ws",
+        "wallet_file": ".test_wallet.json",
+        "order_size": 0.01,
+        "max_orders_per_side": 1,
+        "price_tolerance": 0.01,
+        "spread_bps": 8,
+        "symbol": "SOL-PERP",
+        "leverage": 10,
+        "max_position_abs": 120.0,
+        "inventory_target": 0.0,
+        "spread_bps_min": 4.0,
+        "spread_bps_max": 25.0,
+        "post_only": True,
+        "obi_microprice": True,
+        "cancel_replace_enabled": True,
+        "cancel_replace_interval_ms": 1000,
+        "toxicity_guard": True
     }
 }
 
@@ -345,5 +368,69 @@ def hedge_config_file(temp_dir, test_config):
 def trend_config_file(temp_dir, test_config):
     """Create trend bot config file."""
     return create_test_config_file(test_config["trend_bot"], temp_dir)
+
+
+@pytest.fixture
+def swift_mm_config_file(temp_dir, test_config):
+    """Create Swift MM bot config file."""
+    return create_test_config_file(test_config["swift_mm_bot"], temp_dir)
+
+
+@pytest.fixture
+def swift_mm_config(test_config):
+    """Get Swift MM bot configuration."""
+    return test_config["swift_mm_bot"]
+
+
+@pytest.fixture
+def test_wallet_file():
+    """Create a temporary wallet file for testing."""
+    import tempfile
+    import json
+    
+    wallet_data = [1, 2, 3, 4, 5] * 32  # 160 bytes for Solana keypair
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+        json.dump(wallet_data, f)
+        temp_path = f.name
+    
+    yield temp_path
+    
+    # Cleanup
+    import os
+    try:
+        os.unlink(temp_path)
+    except OSError:
+        pass
+
+
+@pytest.fixture
+def mock_swift_components():
+    """Mock Swift-related components for testing."""
+    from unittest.mock import Mock, AsyncMock
+    
+    mock_sidecar = Mock()
+    mock_sidecar.health = AsyncMock(return_value={"status": "ok"})
+    mock_sidecar.place_order = Mock(return_value={"ok": True, "id": "test_order_123"})
+    mock_sidecar.cancel_order = AsyncMock(return_value={"ok": True})
+    mock_sidecar.close = Mock()
+    
+    mock_envelope_creator = Mock()
+    mock_envelope_creator.create_order_envelope = Mock(return_value={"order": "test_envelope"})
+    mock_envelope_creator.create_cancel_envelope = Mock(return_value={"cancel": "test_cancel_envelope"})
+    
+    mock_websocket_receiver = Mock()
+    mock_websocket_receiver.start = AsyncMock()
+    mock_websocket_receiver.stop = AsyncMock()
+    
+    mock_order_processor = Mock()
+    mock_order_processor.process_order = AsyncMock(return_value={"status": "success", "message": "Order processed"})
+    mock_order_processor.get_stats = Mock(return_value={"processed": 0, "errors": 0})
+    
+    return {
+        "sidecar": mock_sidecar,
+        "envelope_creator": mock_envelope_creator,
+        "websocket_receiver": mock_websocket_receiver,
+        "order_processor": mock_order_processor
+    }
 
 

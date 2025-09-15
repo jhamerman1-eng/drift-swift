@@ -10,6 +10,14 @@ import websockets
 from typing import Dict, Any, Optional, Callable
 from dataclasses import dataclass
 
+# Import protocol for type checking
+try:
+    from libs.types.interfaces import SwiftReceiverProtocol, SwiftOrderMessage as ProtocolSwiftOrderMessage
+except ImportError:
+    # Fallback for when libs.types is not available
+    SwiftReceiverProtocol = object
+    ProtocolSwiftOrderMessage = None  # Will be set later
+
 logger = logging.getLogger(__name__)
 
 @dataclass
@@ -24,9 +32,12 @@ class SwiftOrderMessage:
     taker_authority: str
     sub_account_id: int
     timestamp: int
-    raw_message: Dict[str, Any]
 
-class SwiftOrderReceiver:
+# Set fallback ProtocolSwiftOrderMessage after SwiftOrderMessage is defined
+if ProtocolSwiftOrderMessage is None:
+    ProtocolSwiftOrderMessage = SwiftOrderMessage
+
+class SwiftOrderReceiver(SwiftReceiverProtocol):
     """Receives and processes Swift orders via websocket"""
     
     def __init__(self, websocket_url: str, api_key: Optional[str] = None):
@@ -35,9 +46,19 @@ class SwiftOrderReceiver:
         self.websocket = None
         self.running = False
         self.order_callback: Optional[Callable] = None
-        self.orders_received = 0
-        self.orders_processed = 0
-        
+        self._orders_received = 0
+        self._orders_processed = 0
+
+    @property
+    def orders_received(self) -> int:
+        """Number of orders received since start"""
+        return self._orders_received
+
+    @property
+    def orders_processed(self) -> int:
+        """Number of orders successfully processed"""
+        return self._orders_processed
+
     async def start(self, order_callback: Callable[[SwiftOrderMessage], None]):
         """Start receiving Swift orders"""
         try:
@@ -106,9 +127,20 @@ class SwiftOrderReceiver:
             # Check if this is a Swift order message
             if data.get("type") == "swift_order":
                 await self._handle_swift_order(data)
+            elif data.get("type") == "order_ack" or data.get("type") == "swift_order_ack":
+                # Normalized sidecar ack; update simple counters/log only
+                self._orders_processed += 1
+                logger.info("Swift order ack: %s", {
+                    "id": data.get("id"),
+                    "status": data.get("status"),
+                    "mode": data.get("mode"),
+                })
             elif data.get("type") == "heartbeat":
                 # Respond to heartbeat
                 await self.websocket.send(json.dumps({"type": "heartbeat_ack"}))
+            elif data.get("type") == "upstream":
+                # Pass-through upstream message (not normalized). Log at debug level.
+                logger.debug("Upstream WS message: %s", list(data.keys()))
             else:
                 logger.debug(f"Unknown message type: {data.get('type')}")
                 
@@ -120,7 +152,7 @@ class SwiftOrderReceiver:
     async def _handle_swift_order(self, data: Dict[str, Any]):
         """Handle incoming Swift order"""
         try:
-            self.orders_received += 1
+            self._orders_received += 1
             
             # Extract order information
             order_message = SwiftOrderMessage(
@@ -136,12 +168,12 @@ class SwiftOrderReceiver:
                 raw_message=data
             )
             
-            logger.info(f"Swift order received #{self.orders_received}: {order_message.side} {order_message.size} @ {order_message.price}")
+            logger.info(f"Swift order received #{self._orders_received}: {order_message.side} {order_message.size} @ {order_message.price}")
             
             # Process the order
             if self.order_callback:
                 await self.order_callback(order_message)
-                self.orders_processed += 1
+                self._orders_processed += 1
             
         except Exception as e:
             logger.error(f"Error handling Swift order: {e}")

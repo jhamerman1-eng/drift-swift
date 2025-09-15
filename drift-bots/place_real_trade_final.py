@@ -52,11 +52,26 @@ class RealDriftTrader:
         try:
             print("🔑 Loading wallet...")
             
-            # Load the wallet keypair
+            # Load the wallet keypair - handle different formats
             if self.wallet_path.endswith('.json'):
                 with open(self.wallet_path, 'r') as f:
-                    secret_key = json.load(f)
-                keypair = Keypair.from_bytes(secret_key)
+                    wallet_data = json.load(f)
+
+                if isinstance(wallet_data, dict) and 'secret_key' in wallet_data:
+                    # JSON format with secret_key field (base58 encoded)
+                    from base58 import b58decode
+                    secret_bytes = b58decode(wallet_data['secret_key'])
+                    keypair = Keypair.from_bytes(secret_bytes)
+                    print(f"   Loaded keypair from JSON format: {keypair.pubkey()}")
+                elif isinstance(wallet_data, list) and len(wallet_data) >= 64:
+                    # Raw byte array format
+                    keypair = Keypair.from_bytes(bytes(wallet_data))
+                    print(f"   Loaded keypair from byte array format: {keypair.pubkey()}")
+                else:
+                    raise ValueError(f"Unsupported wallet format: {type(wallet_data)}")
+            else:
+                # Try to load as raw keypair file
+                keypair = load_keypair(self.wallet_path)
             else:
                 keypair = load_keypair(self.wallet_path)
             
@@ -182,7 +197,7 @@ async def main():
     print("="*60)
     
     # Configuration
-    rpc_url = "https://api.devnet.solana.com"
+    rpc_url = "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
     wallet_path = r"C:\\Users\\genuw\\.config\\solana\\id_devnet_custom.json"
     
     # Initialize client

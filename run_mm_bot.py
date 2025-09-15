@@ -26,9 +26,7 @@ Note: For real Swift order flow without system SSL, use an **HTTP sidecar** (e.g
 from __future__ import annotations
 import argparse
 import asyncio
-import json
 import logging
-import math
 import os
 import signal
 import sys
@@ -41,14 +39,16 @@ import yaml
 import httpx
 
 # ---------------------------- Logging ----------------------------------------
-)
+
 logger = logging.getLogger("jit-mm-swift")
 
 # ---------------------------- SSL/Metrics Safe Import -------------------------
 
 def _ssl_available() -> bool:
     try:
-        import ssl  # noqa: F401
+        import ssl
+        # Use ssl to avoid "imported but not used" warning
+        _ = ssl
         return True
     except Exception:
         return False
@@ -183,13 +183,13 @@ class MarketDataAdapter:
             self._use_driver = False
             logger.warning("[MD] libs.drift.client unavailable (%s); using mock OB", e)
 
-    def get_orderbook(self) -> Orderbook:
+    async def get_orderbook(self) -> Orderbook:
         now = time.time()
         if self._cache and (now - self._cache.ts) <= self._ttl:
             return self._cache
         try:
-            if self._use_driver:
-                raw = self._driver.get_orderbook()  # expected dict {bids:[[p,s]], asks:[[p,s]]}
+            if self._use_driver and self._driver:
+                raw = await self._driver.get_orderbook()  # expected dict {bids:[[p,s]], asks:[[p,s]]}
                 bids = [(float(p), float(s)) for p, s in raw["bids"][:16]]
                 asks = [(float(p), float(s)) for p, s in raw["asks"][:16]]
             else:
@@ -225,12 +225,12 @@ try:
         MarketType,
         SignedMsgOrderParamsMessage,
         PositionDirection,
+        PostOnlyParams,
+        OptionalOrderParams,
     )
     HAVE_DRIFTPY = True
 except Exception as e:  # pragma: no cover
     HAVE_DRIFTPY = False
-    DriftSignerClient = Any  # type: ignore
-    PositionDirection = Any  # type: ignore
     logger.warning("DriftPy not available: %s — Swift submit will run in MOCK ACK mode.", e)
 
 class SwiftExecClient:
@@ -262,7 +262,7 @@ class SwiftExecClient:
 
         # httpx will import ssl only when negotiating TLS; we still avoid HTTPS calls if SSL missing
         self._http = httpx.AsyncClient(timeout=15.0)
-        self._signer: Optional[DriftSignerClient] = None
+        self._signer: Optional[Any] = None
 
         # Ensure market_index is an integer, not a boolean
         market_index_raw = core_cfg.get("market_index", 0)
@@ -271,7 +271,7 @@ class SwiftExecClient:
         logger.info("[SWIFT] mode=%s cluster=%s base=%s market_index=%d",
                    self._mode, self.cluster, self.sidecar_base or self.swift_base, self.market_index)
 
-    async def _ensure_signer(self) -> DriftSignerClient:
+    async def _ensure_signer(self) -> Any:
         if not HAVE_DRIFTPY:
             raise RuntimeError("DriftPy not installed — cannot sign Swift orders")
         if self._signer:
@@ -293,18 +293,37 @@ class SwiftExecClient:
             keypair_path = ".valid_wallet.json"
         if not rpc_url:
             # Try different RPC endpoints to avoid rate limiting
-            rpc_url = "https://api.devnet.solana.com"  # Official devnet endpoint with better rate limits
+            rpc_url = "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"  # Official devnet endpoint with better rate limits
 
         logger.info("[SWIFT] Using keypair: %s, rpc: %s", keypair_path, rpc_url)
 
         # Create and initialize the client
-        self._signer = DriftSignerClient(
-            rpc_url=rpc_url,
-            wallet_secret_key=keypair_path,
-            env=self.cluster
-        )
-        await self._signer.connect()
-        return self._signer
+        try:
+            # Handle the case where DriftSignerClient might not be properly imported
+            if DriftSignerClient is None or (hasattr(DriftSignerClient, '__name__') and DriftSignerClient.__name__ == 'Any'):
+                raise RuntimeError("DriftSignerClient is not properly imported")
+
+            self._signer = DriftSignerClient(  # type: ignore
+                rpc_url=rpc_url,
+                wallet_secret_key=keypair_path,
+                env=self.cluster
+            )
+
+            # Validate that the client was created successfully
+            if self._signer is None:
+                raise RuntimeError("DriftSignerClient constructor returned None")
+
+            # Validate that the client has the connect method
+            if not hasattr(self._signer, 'connect'):
+                raise RuntimeError("DriftSignerClient does not have connect method")
+
+            await self._signer.connect()
+            return self._signer
+
+        except Exception as e:
+            logger.error("[SWIFT] Failed to create/initialize DriftSignerClient: %s", e)
+            self._signer = None
+            raise RuntimeError(f"Cannot create Drift signer client: {e}") from e
 
     async def close(self) -> None:
         try:
@@ -349,28 +368,62 @@ class SwiftExecClient:
         }
 
         # Create properly signed order parameters
-        from driftpy.types import OrderParams, OrderType, MarketType, PositionDirection, SignedMsgOrderParamsMessage
 
         # Build order params for signing
-        order_params = OrderParams(
-            market_index=self.market_index,
-            order_type=OrderType.Limit(),
-            market_type=MarketType.Perp(),
-            direction=PositionDirection.Long() if side.lower() == "buy" else PositionDirection.Short(),
-            base_asset_amount=int(base_qty * 1_000_000),
-            price=int(price * 1_000_000),
-            post_only=post_only,
-        )
+        if not HAVE_DRIFTPY:
+            # Fallback for when DriftPy is not available
+            order_params = {
+                "market_index": self.market_index,
+                "order_type": "limit",
+                "market_type": "perp", 
+                "direction": "long" if side.lower() == "buy" else "short",
+                "base_asset_amount": int(base_qty * 1_000_000),
+                "price": int(price * 1_000_000),
+                "post_only": post_only,
+            }
+        else:
+            order_params = OrderParams(  # type: ignore
+                market_index=self.market_index,
+                order_type=OrderType.Limit(),  # type: ignore
+                market_type=MarketType.Perp(),  # type: ignore
+                direction=PositionDirection.Long() if side.lower() == "buy" else PositionDirection.Short(),  # type: ignore
+                base_asset_amount=int(base_qty * 1_000_000),
+                price=int(price * 1_000_000),
+                post_only=PostOnlyParams.MustPostOnly() if post_only else PostOnlyParams.TryPostOnly(),  # type: ignore
+            )
 
         # Create signed message
-        msg = SignedMsgOrderParamsMessage(
-            signed_msg_order_params=order_params,
-            sub_account_id=0,  # Default sub-account
-            slot=slot,
-            uuid=_gen_uuid(),
-            stop_loss_order_params=None,
-            take_profit_order_params=None,
-        )
+        # Generate UUID and ensure it's bytes
+        uuid_str = _gen_uuid()
+        uuid_bytes = uuid_str.encode('utf-8')
+        
+        if not HAVE_DRIFTPY:
+            # Fallback for when DriftPy is not available
+            msg = {
+                "signed_msg_order_params": order_params,
+                "sub_account_id": 0,
+                "slot": slot,
+                "uuid": uuid_bytes,
+                "stop_loss_order_params": None,
+                "take_profit_order_params": None,
+            }
+        else:
+            msg = SignedMsgOrderParamsMessage(  # type: ignore
+                signed_msg_order_params=OptionalOrderParams(  # type: ignore
+                    market_index=order_params.market_index,  # type: ignore
+                    order_type=order_params.order_type,  # type: ignore
+                    market_type=order_params.market_type,  # type: ignore
+                    direction=order_params.direction,  # type: ignore
+                    base_asset_amount=order_params.base_asset_amount,  # type: ignore
+                    price=order_params.price,  # type: ignore
+                    post_only=order_params.post_only,  # type: ignore
+                ),
+                sub_account_id=0,  # Default sub-account
+                slot=slot,
+                uuid=uuid_bytes,
+                stop_loss_order_params=None,
+                take_profit_order_params=None,
+            )
 
         # Sign the message
         signed = signer.sign_signed_msg_order_params(msg)
@@ -394,8 +447,8 @@ class SwiftExecClient:
             "order_type": "limit",
             "post_only": post_only,
             "slot": slot,
-            "uuid": str(msg.uuid),
-            "sub_account_id": msg.sub_account_id,
+            "uuid": uuid_str,  # Use the original string UUID
+            "sub_account_id": msg.sub_account_id,  # type: ignore
             "taker_authority": str(signer.authority) if signer.authority else "unknown",
             "signature": str(signature),
             "cluster": self.cluster.lower(),
@@ -657,7 +710,7 @@ class JITMarketMaker:
 
     async def tick(self) -> None:
         if MM_TICKS: MM_TICKS.inc()
-        ob = self.md.get_orderbook()  # SYNC
+        ob = await self.md.get_orderbook()  # ASYNC
         if not ob.bids or not ob.asks:
             if MM_SKIPS: MM_SKIPS.labels(reason="no_l1").inc()
             await asyncio.sleep(0.25); return
@@ -727,12 +780,14 @@ async def run_main(env: str, cfg_path: Path, *, no_metrics: bool = False) -> int
         MM_ERRORS = _ShimCounter()
         MM_SPREAD = _Gauge("mm_spread_bps", "Current dynamic spread in bps")
         MM_MID = _Gauge("mm_mid_price", "Mid price used for quoting")
+        import logging
+        logger = logging.getLogger("jit-mm-swift")
         logger.warning("[METRICS] Using NOOP backend")
     else:
         from prometheus_client import Gauge as _G, Counter as _C
-# Setup centralized logging
-from libs.logging_config import setup_critical_logging
-logger = setup_critical_logging("jit-mm-swift")
+        # Setup centralized logging
+        from libs.logging_config import setup_critical_logging
+        logger = setup_critical_logging("jit-mm-swift")
         MM_TICKS = _C("mm_ticks_total", "Total MM ticks")
         MM_SKIPS = _C("mm_skips_total", "MM skips by reason", labelnames=("reason",))
         MM_QUOTES = _C("mm_quotes_total", "Quotes placed")
@@ -813,8 +868,10 @@ def _selftest() -> int:
 
     # MarketDataAdapter caching + fallback
     md = MarketDataAdapter({})
-    ob1 = md.get_orderbook(); time.sleep(0.05); ob2 = md.get_orderbook()
-    assert ob1.ts == ob2.ts, "TTL cache not used"
+    async def test_orderbook():
+        ob1 = await md.get_orderbook(); time.sleep(0.05); ob2 = await md.get_orderbook()
+        assert ob1.ts == ob2.ts, "TTL cache not used"
+    asyncio.get_event_loop().run_until_complete(test_orderbook())
 
     # End-to-end tick with a fake execution client (no network or signer)
     class _FakeExec:

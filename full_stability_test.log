@@ -1,0 +1,118 @@
+2025-09-13 14:35:15,721 - INFO - Loading wallet in secret_key format
+2025-09-13 14:35:16,800 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:16,959 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:17,137 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:17,360 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:17,800 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:19,147 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:19,150 - INFO - DriftPy client connected to devnet
+2025-09-13 14:35:19,203 - INFO - [Swift] Swift WebSocket connected successfully
+2025-09-13 14:35:19,694 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:20,435 - INFO - [UserMap] WebSocket connected successfully
+2025-09-13 14:35:21,514 - WARNING - Swift sidecar not available: All connection attempts failed
+2025-09-13 14:35:21,515 - WARNING - Continuing without Swift sidecar for testing purposes
+2025-09-13 14:35:21,515 - INFO - Complete Swift MM Bot initialized successfully with resilient connections
+2025-09-13 14:35:22,008 - INFO - Loading wallet in secret_key format
+2025-09-13 14:35:22,810 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:22,892 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:23,096 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:23,332 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:23,505 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:24,602 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:24,606 - INFO - DriftPy client connected to devnet
+2025-09-13 14:35:24,637 - INFO - [Swift] Swift WebSocket connected successfully
+2025-09-13 14:35:24,773 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:25,619 - ERROR - Task was destroyed but it is pending!
+task: <Task pending name='Task-53' coro=<resilient_user_map_subscribe.<locals>._subscribe_loop() running at C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\utils\websocket_resilience.py:77> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+2025-09-13 14:35:25,620 - ERROR - Task was destroyed but it is pending!
+task: <Task pending name='Task-54' coro=<resilient_swift_subscribe.<locals>._subscribe_loop() running at C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\utils\websocket_resilience.py:119> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+2025-09-13 14:35:25,746 - INFO - [UserMap] WebSocket connected successfully
+2025-09-13 14:35:26,913 - WARNING - Swift sidecar not available: All connection attempts failed
+2025-09-13 14:35:26,913 - WARNING - Continuing without Swift sidecar for testing purposes
+2025-09-13 14:35:26,914 - INFO - Complete Swift MM Bot initialized successfully with resilient connections
+2025-09-13 14:35:26,920 - INFO -    Total Collateral: $271.52 USD
+2025-09-13 14:35:26,920 - INFO -    Free Collateral: $271.28 USD
+2025-09-13 14:35:26,920 - INFO -    Margin Requirement: $0.24 USD
+2025-09-13 14:35:26,921 - INFO -    Utilization: 0.1%
+2025-09-13 14:35:26,932 - INFO -    Position change: +0.020000 SOL
+2025-09-13 14:35:26,932 - INFO -    Max position: 120.000000 SOL
+2025-09-13 14:35:26,933 - INFO -    Should trade: True
+2025-09-13 14:35:27,019 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:27,021 - INFO - Using real oracle price for fallback orderbook: $238.2696
+2025-09-13 14:35:27,022 - INFO - Using OBI microprice: $238.2651
+2025-09-13 14:35:27,027 - INFO - Advanced pricing: mid=$238.2651, spread=7.9bps, OBI_conf=0.066, inv_skew=0.000, vol=0.0010
+2025-09-13 14:35:29,327 - ERROR - Failed to place Swift order: All connection attempts failed
+2025-09-13 14:35:29,838 - INFO - Loading wallet in secret_key format
+2025-09-13 14:35:30,700 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:30,846 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:31,019 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:31,277 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:31,417 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:32,700 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:32,709 - INFO - DriftPy client connected to devnet
+2025-09-13 14:35:32,785 - INFO - [Swift] Swift WebSocket connected successfully
+2025-09-13 14:35:33,106 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:35:33,867 - INFO - [UserMap] WebSocket connected successfully
+2025-09-13 14:35:35,185 - WARNING - Swift sidecar not available: All connection attempts failed
+2025-09-13 14:35:35,185 - WARNING - Continuing without Swift sidecar for testing purposes
+2025-09-13 14:35:35,186 - INFO - Complete Swift MM Bot initialized successfully with resilient connections
+2025-09-13 14:35:35,203 - INFO - [Swift] Swift WebSocket connected successfully
+2025-09-13 14:38:56,699 - INFO - Loading wallet in secret_key format
+2025-09-13 14:38:57,691 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:38:57,919 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:38:58,092 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:38:58,361 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:38:58,623 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:38:59,730 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:38:59,787 - INFO - DriftPy client connected to devnet
+2025-09-13 14:38:59,867 - INFO - [Swift] Swift WebSocket connected successfully
+2025-09-13 14:39:00,281 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:01,151 - INFO - [UserMap] WebSocket connected successfully
+2025-09-13 14:39:02,198 - WARNING - Swift sidecar not available: All connection attempts failed
+2025-09-13 14:39:02,199 - WARNING - Continuing without Swift sidecar for testing purposes
+2025-09-13 14:39:02,199 - INFO - Complete Swift MM Bot initialized successfully with resilient connections
+2025-09-13 14:39:02,769 - INFO - Loading wallet in secret_key format
+2025-09-13 14:39:03,692 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:03,858 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:04,106 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:04,492 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:04,703 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:06,325 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:06,328 - INFO - DriftPy client connected to devnet
+2025-09-13 14:39:06,347 - INFO - [Swift] Swift WebSocket connected successfully
+2025-09-13 14:39:06,635 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:07,565 - ERROR - Task was destroyed but it is pending!
+task: <Task pending name='Task-53' coro=<resilient_user_map_subscribe.<locals>._subscribe_loop() running at c:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\utils\websocket_resilience.py:77> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+2025-09-13 14:39:07,567 - ERROR - Task was destroyed but it is pending!
+task: <Task pending name='Task-54' coro=<resilient_swift_subscribe.<locals>._subscribe_loop() running at c:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\utils\websocket_resilience.py:119> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+2025-09-13 14:39:07,731 - INFO - [UserMap] WebSocket connected successfully
+2025-09-13 14:39:08,616 - WARNING - Swift sidecar not available: All connection attempts failed
+2025-09-13 14:39:08,617 - WARNING - Continuing without Swift sidecar for testing purposes
+2025-09-13 14:39:08,617 - INFO - Complete Swift MM Bot initialized successfully with resilient connections
+2025-09-13 14:39:08,623 - INFO -    Total Collateral: $271.50 USD
+2025-09-13 14:39:08,624 - INFO -    Free Collateral: $271.26 USD
+2025-09-13 14:39:08,624 - INFO -    Margin Requirement: $0.24 USD
+2025-09-13 14:39:08,625 - INFO -    Utilization: 0.1%
+2025-09-13 14:39:08,639 - INFO -    Position change: +0.020000 SOL
+2025-09-13 14:39:08,639 - INFO -    Max position: 120.000000 SOL
+2025-09-13 14:39:08,640 - INFO -    Should trade: True
+2025-09-13 14:39:08,754 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:08,758 - INFO - Using real oracle price for fallback orderbook: $238.7837
+2025-09-13 14:39:08,758 - INFO - Using OBI microprice: $238.7792
+2025-09-13 14:39:08,764 - INFO - Advanced pricing: mid=$238.7792, spread=7.9bps, OBI_conf=0.066, inv_skew=0.000, vol=0.0010
+2025-09-13 14:39:11,041 - ERROR - Failed to place Swift order: All connection attempts failed
+2025-09-13 14:39:11,535 - INFO - Loading wallet in secret_key format
+2025-09-13 14:39:12,588 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:12,742 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:12,937 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:13,182 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:13,286 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:14,333 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:14,347 - INFO - DriftPy client connected to devnet
+2025-09-13 14:39:14,361 - INFO - [Swift] Swift WebSocket connected successfully
+2025-09-13 14:39:14,561 - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-13 14:39:15,069 - INFO - [UserMap] WebSocket connected successfully
+2025-09-13 14:39:16,681 - WARNING - Swift sidecar not available: All connection attempts failed
+2025-09-13 14:39:16,682 - WARNING - Continuing without Swift sidecar for testing purposes
+2025-09-13 14:39:16,682 - INFO - Complete Swift MM Bot initialized successfully with resilient connections
+2025-09-13 14:39:16,695 - INFO - [Swift] Swift WebSocket connected successfully

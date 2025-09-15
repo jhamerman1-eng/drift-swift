@@ -45,7 +45,6 @@ async def test_driftpy_basic():
         logger.info("Testing basic driftpy functionality...")
         
         # Import driftpy components
-        from driftpy.drift_client import DriftClient
         from solders.keypair import Keypair
         
         logger.info("✅ Basic driftpy imports successful")
@@ -82,6 +81,9 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+
+
 
 
 

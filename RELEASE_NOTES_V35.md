@@ -91,7 +91,7 @@ tools/
 ### **Environment Variables**
 ```bash
 DRIFT_ENV=devnet
-RPC_URL=https://api.devnet.solana.com
+RPC_URL=https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
 SWIFT_SIDECAR_URL=http://localhost:8787
 SWIFT_WEBSOCKET_URL=wss://swift.drift.trade/ws
 ```

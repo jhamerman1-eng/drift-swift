@@ -35,8 +35,8 @@ async def run_mm_bot():
             print("🔧 Running in MOCK mode - no wallet required")
 
         # Set environment variables
-        os.environ['DRIFT_RPC_URL'] = "https://api.devnet.solana.com"
-        os.environ['DRIFT_WS_URL'] = "wss://api.devnet.solana.com"
+        os.environ['DRIFT_RPC_URL'] = "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
+        os.environ['DRIFT_WS_URL'] = "wss://https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
         os.environ['DRIFT_CLUSTER'] = "devnet"
 
         # Set wallet path for real transactions

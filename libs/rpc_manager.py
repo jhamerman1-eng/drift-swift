@@ -385,8 +385,8 @@ DEFAULT_RPC_CONFIG = {
             },
             {
                 'name': 'Solana Labs Devnet',
-                'http': 'https://api.devnet.solana.com',
-                'ws': 'wss://api.devnet.solana.com',
+                'http': 'https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494',
+                'ws': 'wss://https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494',
                 'priority': 50,
                 'max_rps': 50,
                 'timeout': 10.0,
