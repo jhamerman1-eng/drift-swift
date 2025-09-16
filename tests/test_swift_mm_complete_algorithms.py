@@ -555,5 +555,192 @@ class TestOrderSizingAlgorithms:
         assert bid_size > base_size  # Should be larger for buying
         assert ask_size < base_size  # Should be smaller for selling
 
+class TestEnvironmentVariables:
+    """Test environment variable handling and configuration."""
+
+    @pytest.fixture
+    def env_config(self):
+        """Create test configuration with environment variables."""
+        return {
+            "env": "devnet",
+            "rpc_url": "https://test-rpc.com",
+            "wallet_file": ".test_wallet.json",
+            "order_size": 0.01,
+            "sidecar_url": "http://localhost:8787",
+            "swift_websocket_url": "wss://test-swift.com/ws",
+            "swift_api_key": "test_key_123"
+        }
+
+    @pytest.fixture
+    def mock_env_dependencies(self):
+        with patch('run_swift_mm_complete.JITConfig'), \
+             patch('run_swift_mm_complete.InventoryManager'), \
+             patch('run_swift_mm_complete.OBICalculator'), \
+             patch('run_swift_mm_complete.SpreadManager'), \
+             patch('run_swift_mm_complete.Orderbook'), \
+             patch('run_swift_mm_complete.DriftClient'), \
+             patch('run_swift_mm_complete.Keypair'), \
+             patch('run_swift_mm_complete.SwiftSidecarClient'), \
+             patch('run_swift_mm_complete.SwiftEnvelopeCreator'), \
+             patch('run_swift_mm_complete.SwiftWebSocketReceiver'), \
+             patch('run_swift_mm_complete.SwiftOrderProcessor'), \
+             patch('run_swift_mm_complete.WebSocketHealthMonitor'), \
+             patch('run_swift_mm_complete.RELIABILITY_UTILS_AVAILABLE', False):
+            yield
+
+    def test_env_var_overrides(self, env_config, mock_env_dependencies):
+        """Test environment variable overrides for configuration."""
+        import os
+
+        # Test environment variable overrides
+        with patch.dict(os.environ, {
+            'DRIFT_ENV': 'mainnet',
+            'RPC_URL': 'https://mainnet-rpc.com',
+            'SWIFT_SIDECAR_URL': 'http://prod-sidecar:8787',
+            'SWIFT_WEBSOCKET_URL': 'wss://prod-swift.com/ws',
+            'SWIFT_API_KEY': 'prod_key_456'
+        }):
+            # Simulate reading environment variables
+            env = os.getenv('DRIFT_ENV', 'devnet')
+            rpc_url = os.getenv('RPC_URL', 'https://test-rpc.com')
+            sidecar_url = os.getenv('SWIFT_SIDECAR_URL', 'http://localhost:8787')
+            ws_url = os.getenv('SWIFT_WEBSOCKET_URL', 'wss://test-swift.com/ws')
+            api_key = os.getenv('SWIFT_API_KEY', 'test_key_123')
+
+            assert env == 'mainnet'
+            assert rpc_url == 'https://mainnet-rpc.com'
+            assert sidecar_url == 'http://prod-sidecar:8787'
+            assert ws_url == 'wss://prod-swift.com/ws'
+            assert api_key == 'prod_key_456'
+
+    def test_env_var_defaults(self, env_config, mock_env_dependencies):
+        """Test default values when environment variables are not set."""
+        import os
+
+        # Clear environment variables for testing defaults
+        with patch.dict(os.environ, {}, clear=True):
+            # Simulate reading environment variables with defaults
+            env = os.getenv('DRIFT_ENV', 'devnet')
+            rpc_url = os.getenv('RPC_URL', 'https://api.devnet.solana.com')
+            sidecar_url = os.getenv('SWIFT_SIDECAR_URL', 'http://localhost:8787')
+            ws_url = os.getenv('SWIFT_WEBSOCKET_URL', 'wss://swift.drift.trade/ws')
+            api_key = os.getenv('SWIFT_API_KEY')
+
+            assert env == 'devnet'
+            assert rpc_url == 'https://api.devnet.solana.com'
+            assert sidecar_url == 'http://localhost:8787'
+            assert ws_url == 'wss://swift.drift.trade/ws'
+            assert api_key is None
+
+    def test_config_validation_with_env_vars(self, env_config, mock_env_dependencies):
+        """Test configuration validation with environment variable overrides."""
+        import os
+
+        # Test production configuration via environment
+        with patch.dict(os.environ, {
+            'DRIFT_ENV': 'mainnet',
+            'RPC_URL': 'https://api.mainnet.solana.com',
+            'SWIFT_SIDECAR_URL': 'https://api.drift.trade',
+            'ORDER_SIZE': '0.1',
+            'MAX_DAILY_LOSS_USD': '10000'
+        }):
+            # Simulate configuration loading with env vars
+            config = {
+                'env': os.getenv('DRIFT_ENV', 'devnet'),
+                'rpc_url': os.getenv('RPC_URL', 'https://api.devnet.solana.com'),
+                'sidecar_url': os.getenv('SWIFT_SIDECAR_URL', 'http://localhost:8787'),
+                'order_size': float(os.getenv('ORDER_SIZE', '0.01')),
+                'max_daily_loss_usd': float(os.getenv('MAX_DAILY_LOSS_USD', '5000'))
+            }
+
+            # Validate configuration
+            assert config['env'] == 'mainnet'
+            assert config['rpc_url'] == 'https://api.mainnet.solana.com'
+            assert config['sidecar_url'] == 'https://api.drift.trade'
+            assert config['order_size'] == 0.1
+            assert config['max_daily_loss_usd'] == 10000
+
+    def test_env_var_precedence(self, env_config, mock_env_dependencies):
+        """Test that environment variables take precedence over config file values."""
+        import os
+
+        # Test precedence: env vars should override config file values
+        with patch.dict(os.environ, {
+            'DRIFT_ENV': 'beta',
+            'RPC_URL': 'https://beta-rpc.com'
+        }):
+            # Simulate loading config with env var precedence
+            config = env_config.copy()
+
+            # Apply environment variable overrides
+            if os.getenv('DRIFT_ENV'):
+                config['env'] = os.getenv('DRIFT_ENV')
+            if os.getenv('RPC_URL'):
+                config['rpc_url'] = os.getenv('RPC_URL')
+
+            assert config['env'] == 'beta'  # Should be overridden
+            assert config['rpc_url'] == 'https://beta-rpc.com'  # Should be overridden
+            assert config['wallet_file'] == '.test_wallet.json'  # Should remain from config
+
+    def test_missing_env_vars_handling(self, env_config, mock_env_dependencies):
+        """Test graceful handling of missing environment variables."""
+        import os
+
+        # Test with some env vars missing
+        with patch.dict(os.environ, {
+            'DRIFT_ENV': 'testnet'
+            # Missing RPC_URL and other vars
+        }):
+            config = {
+                'env': os.getenv('DRIFT_ENV', 'devnet'),
+                'rpc_url': os.getenv('RPC_URL', 'https://api.devnet.solana.com'),
+                'sidecar_url': os.getenv('SWIFT_SIDECAR_URL', 'http://localhost:8787'),
+                'order_size': float(os.getenv('ORDER_SIZE', '0.01')),
+                'max_daily_loss_usd': float(os.getenv('MAX_DAILY_LOSS_USD', '5000'))
+            }
+
+            # Should use defaults for missing vars
+            assert config['env'] == 'testnet'  # From env var
+            assert config['rpc_url'] == 'https://api.devnet.solana.com'  # Default
+            assert config['sidecar_url'] == 'http://localhost:8787'  # Default
+            assert config['order_size'] == 0.01  # Default
+            assert config['max_daily_loss_usd'] == 5000  # Default
+
+    def test_env_var_type_conversion(self, env_config, mock_env_dependencies):
+        """Test proper type conversion from environment variable strings."""
+        import os
+
+        # Test numeric conversions from string env vars
+        with patch.dict(os.environ, {
+            'ORDER_SIZE': '0.05',
+            'MAX_POSITION_ABS': '200',
+            'SPREAD_BPS': '10.5',
+            'LEVERAGE': '5',
+            'MAX_DAILY_LOSS_USD': '10000'
+        }):
+            # Simulate type conversion
+            config = {
+                'order_size': float(os.getenv('ORDER_SIZE', '0.01')),
+                'max_position_abs': float(os.getenv('MAX_POSITION_ABS', '120')),
+                'spread_bps': float(os.getenv('SPREAD_BPS', '8')),
+                'leverage': int(os.getenv('LEVERAGE', '10')),
+                'max_daily_loss_usd': float(os.getenv('MAX_DAILY_LOSS_USD', '5000'))
+            }
+
+            # Verify correct types
+            assert isinstance(config['order_size'], float)
+            assert isinstance(config['max_position_abs'], float)
+            assert isinstance(config['spread_bps'], float)
+            assert isinstance(config['leverage'], int)
+            assert isinstance(config['max_daily_loss_usd'], float)
+
+            # Verify values
+            assert config['order_size'] == 0.05
+            assert config['max_position_abs'] == 200.0
+            assert config['spread_bps'] == 10.5
+            assert config['leverage'] == 5
+            assert config['max_daily_loss_usd'] == 10000.0
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

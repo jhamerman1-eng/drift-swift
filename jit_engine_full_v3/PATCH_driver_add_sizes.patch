@@ -1,0 +1,21 @@
+*** Begin Patch
+*** Update File: libs/drift/client.py
+@@
+-    async def quote_two_sided(self, ref_price: float, spread: float, size_mult: float, do_cr: bool):
+-        await asyncio.sleep(0.005)
++    async def quote_two_sided(self, ref_price: float, spread: float, size_mult: float, do_cr: bool, bid_size: float=None, ask_size: float=None):
++        # In Local ACK mode, just sleep; sizes are accepted but unused
++        _ = (bid_size, ask_size)
++        await asyncio.sleep(0.005)
+@@
+-    async def quote_two_sided(self, ref_price: float, spread: float, size_mult: float, do_cr: bool):
+-        if not self._use_forward: return await super().quote_two_sided(ref_price, spread, size_mult, do_cr)
++    async def quote_two_sided(self, ref_price: float, spread: float, size_mult: float, do_cr: bool, bid_size: float=None, ask_size: float=None):
++        if not self._use_forward: return await super().quote_two_sided(ref_price, spread, size_mult, do_cr, bid_size, ask_size)
+         # TODO: real HTTP calls to sidecar
+         await asyncio.sleep(0.003)
++
++    async def get_position(self) -> float:
++        # Local ACK approximate position tracking not implemented; return 0 for neutrality
++        return 0.0
+*** End Patch

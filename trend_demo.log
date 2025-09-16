@@ -1,0 +1,360 @@
+2025-09-15 06:13:53,055 - __main__ - INFO - ============================================================
+2025-09-15 06:13:53,055 - __main__ - INFO - TREND BOT - DEMO MODE
+2025-09-15 06:13:53,056 - __main__ - INFO - ============================================================
+2025-09-15 06:13:53,057 - __main__ - INFO - DRY_RUN: False
+2025-09-15 06:13:53,057 - __main__ - INFO - Swift Sidecar: http://localhost:8080
+2025-09-15 06:13:53,058 - __main__ - INFO - Demonstrating: MACD + Momentum + OCO + Attribution
+2025-09-15 06:13:53,059 - __main__ - INFO - ============================================================
+2025-09-15 06:13:54,602 - __main__ - INFO - Demo started - will generate signals every few iterations
+2025-09-15 06:13:54,602 - __main__ - INFO - Watch for DEMO ORDER placements!
+2025-09-15 06:13:54,603 - __main__ - INFO - ============================================================
+2025-09-15 06:13:54,603 - bots.trend.main - INFO - FORCED TREND (TESTING): Weak signal detected, creating synthetic trend
+2025-09-15 06:13:54,603 - __main__ - INFO - [DEMO ORDER] sell $25.00 @ $240.6284 -> demo-1
+2025-09-15 06:13:54,603 - libs.order_management - INFO - Recording new order demo-1 sell size=25.0 price=240.62835796053352
+2025-09-15 06:13:54,819 - __main__ - INFO - [DEMO ORDER] buy $0.46 @ $242.4233 -> demo-2
+2025-09-15 06:13:54,819 - libs.order_management - INFO - Recording new order demo-2 buy size=0.4637587744410894 price=242.4232702597686
+2025-09-15 06:13:55,034 - __main__ - INFO - [DEMO ORDER] buy $0.16 @ $240.7686 -> demo-3
+2025-09-15 06:13:55,035 - libs.order_management - INFO - Recording new order demo-3 buy size=0.16048343430295578 price=240.76861159818512
+2025-09-15 06:13:55,237 - __main__ - INFO - [DEMO ORDER] sell $1.04 @ $237.3389 -> demo-4
+2025-09-15 06:13:55,238 - libs.order_management - INFO - Recording new order demo-4 sell size=1.0405973061951674 price=237.33890031507505
+2025-09-15 06:13:55,454 - __main__ - INFO - [DEMO ORDER] sell $1.75 @ $237.3184 -> demo-5
+2025-09-15 06:13:55,454 - libs.order_management - INFO - Recording new order demo-5 sell size=1.7471802726286396 price=237.31839191494075
+2025-09-15 06:13:55,669 - __main__ - INFO - [DEMO ORDER] sell $1.85 @ $237.8040 -> demo-6
+2025-09-15 06:13:55,669 - libs.order_management - INFO - Recording new order demo-6 sell size=1.84734785236724 price=237.8040368887729
+2025-09-15 06:13:55,884 - __main__ - INFO - [DEMO ORDER] sell $2.30 @ $236.3636 -> demo-7
+2025-09-15 06:13:55,884 - libs.order_management - INFO - Recording new order demo-7 sell size=2.3018949031661027 price=236.36364871681224
+2025-09-15 06:13:56,100 - __main__ - INFO - [DEMO ORDER] sell $2.85 @ $235.3647 -> demo-8
+2025-09-15 06:13:56,100 - libs.order_management - INFO - Recording new order demo-8 sell size=2.8521834040509604 price=235.36467888456383
+2025-09-15 06:13:56,316 - __main__ - INFO - [DEMO ORDER] sell $3.94 @ $232.4433 -> demo-9
+2025-09-15 06:13:56,316 - libs.order_management - INFO - Recording new order demo-9 sell size=3.937192182741737 price=232.4432778079034
+2025-09-15 06:13:56,518 - __main__ - INFO - [DEMO ORDER] sell $4.00 @ $233.4301 -> demo-10
+2025-09-15 06:13:56,518 - libs.order_management - INFO - Recording new order demo-10 sell size=4.004587676218683 price=233.43006175025758
+2025-09-15 06:13:56,734 - __main__ - INFO - [DEMO ORDER] sell $3.29 @ $234.9802 -> demo-11
+2025-09-15 06:13:56,734 - libs.order_management - INFO - Recording new order demo-11 sell size=3.2859009342286263 price=234.980209383489
+2025-09-15 06:13:56,949 - __main__ - INFO - [DEMO ORDER] sell $10.00 @ $234.0082 -> demo-12
+2025-09-15 06:13:56,949 - __main__ - INFO - ========================================
+2025-09-15 06:13:56,949 - __main__ - INFO - SIGNAL GENERATED - Iteration 11
+2025-09-15 06:13:56,949 - __main__ - INFO -   MACD: -4.680165
+2025-09-15 06:13:56,950 - __main__ - INFO -   Signal: -3.276115
+2025-09-15 06:13:56,950 - __main__ - INFO -   Histogram: -1.404049
+2025-09-15 06:13:56,950 - __main__ - INFO -   Signal Strength: -2.00
+2025-09-15 06:13:56,950 - __main__ - INFO -   Direction: SELL
+2025-09-15 06:13:56,951 - __main__ - INFO -   Notional: $10.00
+2025-09-15 06:13:56,951 - __main__ - INFO -   Price: $234.0082
+2025-09-15 06:13:56,951 - __main__ - INFO - ========================================
+2025-09-15 06:13:56,951 - __main__ - INFO - [DEMO OCO] Stop @ $236.3483, Target @ $229.3281
+2025-09-15 06:13:56,962 - services.attribution.store - INFO - SQLite database initialized: data\attribution\attribution.db
+2025-09-15 06:13:56,962 - services.attribution.store - INFO - Attribution store initialized at data\attribution
+2025-09-15 06:13:56,963 - services.attribution.store - INFO - Backends: CSV=True, SQLite=True, JSON=False
+2025-09-15 06:13:56,972 - services.attribution.store - INFO - Logged fill: trend-1757931236963530 SOL-PERP sell 0.0427 @ $234.0082
+2025-09-15 06:13:56,973 - __main__ - INFO - [DEMO ATTRIBUTION] Logged to database
+2025-09-15 06:13:57,178 - __main__ - INFO - [DEMO ORDER] sell $3.00 @ $235.2311 -> demo-13
+2025-09-15 06:13:57,178 - libs.order_management - INFO - Recording new order demo-13 sell size=3.0008006796071562 price=235.23113769697045
+2025-09-15 06:13:57,395 - __main__ - INFO - [DEMO ORDER] sell $0.64 @ $233.9971 -> demo-14
+2025-09-15 06:13:57,396 - libs.order_management - INFO - Recording new order demo-14 sell size=0.6431397060840305 price=233.99710709109144
+2025-09-15 06:13:57,597 - __main__ - INFO - [DEMO ORDER] buy $0.82 @ $233.6478 -> demo-15
+2025-09-15 06:13:57,598 - libs.order_management - INFO - Recording new order demo-15 buy size=0.8238438491929317 price=233.64781353966984
+2025-09-15 06:13:57,799 - __main__ - INFO - [DEMO ORDER] buy $1.68 @ $233.0758 -> demo-16
+2025-09-15 06:13:57,800 - libs.order_management - INFO - Recording new order demo-16 buy size=1.676970053204411 price=233.07580512277949
+2025-09-15 06:13:58,001 - __main__ - INFO - [DEMO ORDER] buy $3.01 @ $235.1292 -> demo-17
+2025-09-15 06:13:58,002 - libs.order_management - INFO - Recording new order demo-17 buy size=3.006144055531139 price=235.1292218870783
+2025-09-15 06:13:58,204 - __main__ - INFO - [DEMO ORDER] buy $3.43 @ $234.0627 -> demo-18
+2025-09-15 06:13:58,204 - libs.order_management - INFO - Recording new order demo-18 buy size=3.4332129527163824 price=234.06266054478004
+2025-09-15 06:13:58,407 - __main__ - INFO - [DEMO ORDER] buy $3.30 @ $233.0519 -> demo-19
+2025-09-15 06:13:58,407 - libs.order_management - INFO - Recording new order demo-19 buy size=3.2975571506544363 price=233.05185179417572
+2025-09-15 06:13:58,622 - __main__ - INFO - [DEMO ORDER] buy $3.25 @ $233.3093 -> demo-20
+2025-09-15 06:13:58,623 - libs.order_management - INFO - Recording new order demo-20 buy size=3.2494759878678394 price=233.30929250605269
+2025-09-15 06:13:58,623 - __main__ - INFO - Demo Status: Iteration 20/100, Price=$232.5627, Position=$-33.55
+2025-09-15 06:13:58,839 - __main__ - INFO - [DEMO ORDER] buy $4.14 @ $235.9172 -> demo-21
+2025-09-15 06:13:58,840 - libs.order_management - INFO - Recording new order demo-21 buy size=4.1377385406677885 price=235.91718175120718
+2025-09-15 06:13:59,052 - __main__ - INFO - [DEMO ORDER] buy $4.00 @ $234.3944 -> demo-22
+2025-09-15 06:13:59,052 - libs.order_management - INFO - Recording new order demo-22 buy size=4.003581421694075 price=234.39444024978616
+2025-09-15 06:13:59,269 - __main__ - INFO - [DEMO ORDER] buy $10.00 @ $232.9856 -> demo-23
+2025-09-15 06:13:59,269 - __main__ - INFO - ========================================
+2025-09-15 06:13:59,270 - __main__ - INFO - SIGNAL GENERATED - Iteration 22
+2025-09-15 06:13:59,270 - __main__ - INFO -   MACD: 4.659712
+2025-09-15 06:13:59,270 - __main__ - INFO -   Signal: 3.261799
+2025-09-15 06:13:59,270 - __main__ - INFO -   Histogram: 1.397914
+2025-09-15 06:13:59,271 - __main__ - INFO -   Signal Strength: 2.00
+2025-09-15 06:13:59,271 - __main__ - INFO -   Direction: BUY
+2025-09-15 06:13:59,271 - __main__ - INFO -   Notional: $10.00
+2025-09-15 06:13:59,271 - __main__ - INFO -   Price: $232.9856
+2025-09-15 06:13:59,271 - __main__ - INFO - ========================================
+2025-09-15 06:13:59,272 - __main__ - INFO - [DEMO OCO] Stop @ $230.6558, Target @ $237.6453
+2025-09-15 06:13:59,273 - services.attribution.store - INFO - SQLite database initialized: data\attribution\attribution.db
+2025-09-15 06:13:59,274 - services.attribution.store - INFO - Attribution store initialized at data\attribution
+2025-09-15 06:13:59,274 - services.attribution.store - INFO - Backends: CSV=True, SQLite=True, JSON=False
+2025-09-15 06:13:59,283 - services.attribution.store - INFO - Logged fill: trend-1757931239274097 SOL-PERP buy 0.0429 @ $232.9856
+2025-09-15 06:13:59,283 - __main__ - INFO - [DEMO ATTRIBUTION] Logged to database
+2025-09-15 06:13:59,486 - __main__ - INFO - [DEMO ORDER] buy $3.63 @ $233.7888 -> demo-24
+2025-09-15 06:13:59,486 - libs.order_management - INFO - Recording new order demo-24 buy size=3.6250971272984045 price=233.78881568164684
+2025-09-15 06:13:59,689 - __main__ - INFO - [DEMO ORDER] buy $1.65 @ $235.0268 -> demo-25
+2025-09-15 06:13:59,690 - libs.order_management - INFO - Recording new order demo-25 buy size=1.6492060971531082 price=235.02684938079057
+2025-09-15 06:13:59,903 - __main__ - INFO - [DEMO ORDER] buy $0.15 @ $235.0694 -> demo-26
+2025-09-15 06:13:59,903 - libs.order_management - INFO - Recording new order demo-26 buy size=0.15180458036266128 price=235.06936397369884
+2025-09-15 06:14:00,113 - __main__ - INFO - [DEMO ORDER] sell $0.71 @ $235.5459 -> demo-27
+2025-09-15 06:14:00,116 - libs.order_management - INFO - Recording new order demo-27 sell size=0.7135350244760393 price=235.54589535786545
+2025-09-15 06:14:00,323 - __main__ - INFO - [DEMO ORDER] sell $1.58 @ $234.9267 -> demo-28
+2025-09-15 06:14:00,323 - libs.order_management - INFO - Recording new order demo-28 sell size=1.5820488927723582 price=234.9267395627463
+2025-09-15 06:14:00,539 - __main__ - INFO - [DEMO ORDER] sell $2.09 @ $235.2278 -> demo-29
+2025-09-15 06:14:00,539 - libs.order_management - INFO - Recording new order demo-29 sell size=2.092443011688838 price=235.2277796278263
+2025-09-15 06:14:00,742 - __main__ - INFO - [DEMO ORDER] sell $3.23 @ $232.9036 -> demo-30
+2025-09-15 06:14:00,742 - libs.order_management - INFO - Recording new order demo-30 sell size=3.231581758437059 price=232.90361266149154
+2025-09-15 06:14:00,946 - __main__ - INFO - [DEMO ORDER] sell $4.10 @ $232.3210 -> demo-31
+2025-09-15 06:14:00,946 - libs.order_management - INFO - Recording new order demo-31 sell size=4.10101422898808 price=232.32104065733878
+2025-09-15 06:14:01,162 - __main__ - INFO - [DEMO ORDER] sell $4.11 @ $233.5888 -> demo-32
+2025-09-15 06:14:01,162 - libs.order_management - INFO - Recording new order demo-32 sell size=4.105903514901513 price=233.58875099644828
+2025-09-15 06:14:01,366 - __main__ - INFO - [DEMO ORDER] sell $3.81 @ $234.2484 -> demo-33
+2025-09-15 06:14:01,366 - libs.order_management - INFO - Recording new order demo-33 sell size=3.810489549331528 price=234.2483715110732
+2025-09-15 06:14:01,569 - __main__ - INFO - [DEMO ORDER] sell $10.00 @ $234.2734 -> demo-34
+2025-09-15 06:14:01,569 - __main__ - INFO - ========================================
+2025-09-15 06:14:01,569 - __main__ - INFO - SIGNAL GENERATED - Iteration 33
+2025-09-15 06:14:01,570 - __main__ - INFO -   MACD: -4.685469
+2025-09-15 06:14:01,570 - __main__ - INFO -   Signal: -3.279828
+2025-09-15 06:14:01,570 - __main__ - INFO -   Histogram: -1.405641
+2025-09-15 06:14:01,570 - __main__ - INFO -   Signal Strength: -2.00
+2025-09-15 06:14:01,570 - __main__ - INFO -   Direction: SELL
+2025-09-15 06:14:01,571 - __main__ - INFO -   Notional: $10.00
+2025-09-15 06:14:01,571 - __main__ - INFO -   Price: $234.2734
+2025-09-15 06:14:01,571 - __main__ - INFO - ========================================
+2025-09-15 06:14:01,571 - __main__ - INFO - [DEMO OCO] Stop @ $236.6162, Target @ $229.5880
+2025-09-15 06:14:01,573 - services.attribution.store - INFO - SQLite database initialized: data\attribution\attribution.db
+2025-09-15 06:14:01,573 - services.attribution.store - INFO - Attribution store initialized at data\attribution
+2025-09-15 06:14:01,574 - services.attribution.store - INFO - Backends: CSV=True, SQLite=True, JSON=False
+2025-09-15 06:14:01,581 - services.attribution.store - INFO - Logged fill: trend-1757931241574575 SOL-PERP sell 0.0427 @ $234.2734
+2025-09-15 06:14:01,581 - __main__ - INFO - [DEMO ATTRIBUTION] Logged to database
+2025-09-15 06:14:01,785 - __main__ - INFO - [DEMO ORDER] sell $3.66 @ $233.5675 -> demo-35
+2025-09-15 06:14:01,785 - libs.order_management - INFO - Recording new order demo-35 sell size=3.659193579118635 price=233.5675410944677
+2025-09-15 06:14:02,001 - __main__ - INFO - [DEMO ORDER] sell $0.42 @ $235.8960 -> demo-36
+2025-09-15 06:14:02,001 - libs.order_management - INFO - Recording new order demo-36 sell size=0.4188970060977055 price=235.89603886714676
+2025-09-15 06:14:02,217 - __main__ - INFO - [DEMO ORDER] buy $1.95 @ $236.6545 -> demo-37
+2025-09-15 06:14:02,217 - libs.order_management - INFO - Recording new order demo-37 buy size=1.9540304793615244 price=236.6545285466949
+2025-09-15 06:14:02,420 - __main__ - INFO - [DEMO ORDER] buy $4.17 @ $238.8734 -> demo-38
+2025-09-15 06:14:02,420 - libs.order_management - INFO - Recording new order demo-38 buy size=4.174269923293473 price=238.87342274035703
+2025-09-15 06:14:02,636 - __main__ - INFO - [DEMO ORDER] buy $4.93 @ $237.3315 -> demo-39
+2025-09-15 06:14:02,637 - libs.order_management - INFO - Recording new order demo-39 buy size=4.933532802461196 price=237.33149517447472
+2025-09-15 06:14:02,838 - __main__ - INFO - [DEMO ORDER] buy $5.91 @ $239.1245 -> demo-40
+2025-09-15 06:14:02,839 - libs.order_management - INFO - Recording new order demo-40 buy size=5.905533333130458 price=239.1244837591305
+2025-09-15 06:14:02,839 - __main__ - INFO - Demo Status: Iteration 40/100, Price=$237.3584, Position=$-26.73
+2025-09-15 06:14:03,042 - __main__ - INFO - [DEMO ORDER] buy $5.82 @ $237.6335 -> demo-41
+2025-09-15 06:14:03,043 - libs.order_management - INFO - Recording new order demo-41 buy size=5.819099350482513 price=237.63346329471617
+2025-09-15 06:14:03,257 - __main__ - INFO - [DEMO ORDER] buy $5.88 @ $238.4313 -> demo-42
+2025-09-15 06:14:03,258 - libs.order_management - INFO - Recording new order demo-42 buy size=5.877638895313472 price=238.43134824597485
+2025-09-15 06:14:03,474 - __main__ - INFO - [DEMO ORDER] buy $5.62 @ $238.4035 -> demo-43
+2025-09-15 06:14:03,475 - libs.order_management - INFO - Recording new order demo-43 buy size=5.623834490695417 price=238.40353341301883
+2025-09-15 06:14:03,677 - __main__ - INFO - [DEMO ORDER] buy $6.49 @ $241.8103 -> demo-44
+2025-09-15 06:14:03,677 - libs.order_management - INFO - Recording new order demo-44 buy size=6.489144299476579 price=241.81027726600917
+2025-09-15 06:14:03,891 - __main__ - INFO - [DEMO ORDER] buy $10.00 @ $241.0266 -> demo-45
+2025-09-15 06:14:03,892 - __main__ - INFO - ========================================
+2025-09-15 06:14:03,892 - __main__ - INFO - SIGNAL GENERATED - Iteration 44
+2025-09-15 06:14:03,893 - __main__ - INFO -   MACD: 4.820533
+2025-09-15 06:14:03,893 - __main__ - INFO -   Signal: 3.374373
+2025-09-15 06:14:03,893 - __main__ - INFO -   Histogram: 1.446160
+2025-09-15 06:14:03,893 - __main__ - INFO -   Signal Strength: 2.00
+2025-09-15 06:14:03,894 - __main__ - INFO -   Direction: BUY
+2025-09-15 06:14:03,894 - __main__ - INFO -   Notional: $10.00
+2025-09-15 06:14:03,894 - __main__ - INFO -   Price: $241.0266
+2025-09-15 06:14:03,894 - __main__ - INFO - ========================================
+2025-09-15 06:14:03,895 - __main__ - INFO - [DEMO OCO] Stop @ $238.6164, Target @ $245.8472
+2025-09-15 06:14:03,897 - services.attribution.store - INFO - SQLite database initialized: data\attribution\attribution.db
+2025-09-15 06:14:03,897 - services.attribution.store - INFO - Attribution store initialized at data\attribution
+2025-09-15 06:14:03,898 - services.attribution.store - INFO - Backends: CSV=True, SQLite=True, JSON=False
+2025-09-15 06:14:03,907 - services.attribution.store - INFO - Logged fill: trend-1757931243898005 SOL-PERP buy 0.0415 @ $241.0266
+2025-09-15 06:14:03,907 - __main__ - INFO - [DEMO ATTRIBUTION] Logged to database
+2025-09-15 06:14:04,122 - __main__ - INFO - [DEMO ORDER] buy $4.04 @ $242.3599 -> demo-46
+2025-09-15 06:14:04,122 - libs.order_management - INFO - Recording new order demo-46 buy size=4.039719512607441 price=242.35992628878532
+2025-09-15 06:14:04,339 - __main__ - INFO - [DEMO ORDER] buy $1.73 @ $242.8906 -> demo-47
+2025-09-15 06:14:04,339 - libs.order_management - INFO - Recording new order demo-47 buy size=1.727974514508006 price=242.89062392174674
+2025-09-15 06:14:04,554 - __main__ - INFO - [DEMO ORDER] sell $0.64 @ $240.4418 -> demo-48
+2025-09-15 06:14:04,555 - libs.order_management - INFO - Recording new order demo-48 sell size=0.6412633792975433 price=240.44182569129876
+2025-09-15 06:14:04,770 - __main__ - INFO - [DEMO ORDER] sell $2.36 @ $240.2255 -> demo-49
+2025-09-15 06:14:04,770 - libs.order_management - INFO - Recording new order demo-49 sell size=2.3635729413780813 price=240.22546363647967
+2025-09-15 06:14:04,988 - __main__ - INFO - [DEMO ORDER] sell $3.58 @ $239.7188 -> demo-50
+2025-09-15 06:14:04,988 - libs.order_management - INFO - Recording new order demo-50 sell size=3.581562680414329 price=239.71879534975656
+2025-09-15 06:14:05,203 - __main__ - INFO - [DEMO ORDER] sell $3.77 @ $241.2530 -> demo-51
+2025-09-15 06:14:05,203 - libs.order_management - INFO - Recording new order demo-51 sell size=3.772371563299834 price=241.25300661680944
+2025-09-15 06:14:05,418 - __main__ - INFO - [DEMO ORDER] sell $3.19 @ $243.2476 -> demo-52
+2025-09-15 06:14:05,418 - libs.order_management - INFO - Recording new order demo-52 sell size=3.190918821591817 price=243.24764689920627
+2025-09-15 06:14:05,620 - __main__ - INFO - [DEMO ORDER] sell $2.94 @ $242.9828 -> demo-53
+2025-09-15 06:14:05,620 - libs.order_management - INFO - Recording new order demo-53 sell size=2.944875664595715 price=242.98278228978148
+2025-09-15 06:14:05,837 - __main__ - INFO - [DEMO ORDER] sell $3.41 @ $241.0382 -> demo-54
+2025-09-15 06:14:05,838 - libs.order_management - INFO - Recording new order demo-54 sell size=3.4127252600202636 price=241.03820007489676
+2025-09-15 06:14:06,053 - __main__ - INFO - [DEMO ORDER] sell $4.40 @ $238.7717 -> demo-55
+2025-09-15 06:14:06,054 - libs.order_management - INFO - Recording new order demo-55 sell size=4.396515042992025 price=238.7716817451015
+2025-09-15 06:14:06,256 - __main__ - INFO - [DEMO ORDER] sell $10.00 @ $240.1407 -> demo-56
+2025-09-15 06:14:06,257 - __main__ - INFO - ========================================
+2025-09-15 06:14:06,257 - __main__ - INFO - SIGNAL GENERATED - Iteration 55
+2025-09-15 06:14:06,257 - __main__ - INFO -   MACD: -4.802814
+2025-09-15 06:14:06,257 - __main__ - INFO -   Signal: -3.361970
+2025-09-15 06:14:06,257 - __main__ - INFO -   Histogram: -1.440844
+2025-09-15 06:14:06,258 - __main__ - INFO -   Signal Strength: -2.00
+2025-09-15 06:14:06,258 - __main__ - INFO -   Direction: SELL
+2025-09-15 06:14:06,258 - __main__ - INFO -   Notional: $10.00
+2025-09-15 06:14:06,258 - __main__ - INFO -   Price: $240.1407
+2025-09-15 06:14:06,259 - __main__ - INFO - ========================================
+2025-09-15 06:14:06,259 - __main__ - INFO - [DEMO OCO] Stop @ $242.5421, Target @ $235.3379
+2025-09-15 06:14:06,261 - services.attribution.store - INFO - SQLite database initialized: data\attribution\attribution.db
+2025-09-15 06:14:06,261 - services.attribution.store - INFO - Attribution store initialized at data\attribution
+2025-09-15 06:14:06,261 - services.attribution.store - INFO - Backends: CSV=True, SQLite=True, JSON=False
+2025-09-15 06:14:06,269 - services.attribution.store - INFO - Logged fill: trend-1757931246261128 SOL-PERP sell 0.0416 @ $240.1407
+2025-09-15 06:14:06,269 - __main__ - INFO - [DEMO ATTRIBUTION] Logged to database
+2025-09-15 06:14:06,472 - __main__ - INFO - [DEMO ORDER] sell $3.57 @ $240.0445 -> demo-57
+2025-09-15 06:14:06,472 - libs.order_management - INFO - Recording new order demo-57 sell size=3.571170221973313 price=240.0445273917743
+2025-09-15 06:14:06,674 - __main__ - INFO - [DEMO ORDER] sell $0.02 @ $242.5970 -> demo-58
+2025-09-15 06:14:06,675 - libs.order_management - INFO - Recording new order demo-58 sell size=0.019207711429565653 price=242.59703050971547
+2025-09-15 06:14:06,891 - __main__ - INFO - [DEMO ORDER] buy $3.15 @ $245.3840 -> demo-59
+2025-09-15 06:14:06,891 - libs.order_management - INFO - Recording new order demo-59 buy size=3.1469343089362036 price=245.38403312985318
+2025-09-15 06:14:07,108 - __main__ - INFO - [DEMO ORDER] buy $5.38 @ $246.3529 -> demo-60
+2025-09-15 06:14:07,109 - libs.order_management - INFO - Recording new order demo-60 buy size=5.375507482760977 price=246.35285508425216
+2025-09-15 06:14:07,109 - __main__ - INFO - Demo Status: Iteration 60/100, Price=$247.0477, Position=$-16.52
+2025-09-15 06:14:07,310 - __main__ - INFO - [DEMO ORDER] buy $5.97 @ $244.4759 -> demo-61
+2025-09-15 06:14:07,310 - libs.order_management - INFO - Recording new order demo-61 buy size=5.965417307352522 price=244.4759327848579
+2025-09-15 06:14:07,515 - __main__ - INFO - [DEMO ORDER] buy $6.37 @ $245.1597 -> demo-62
+2025-09-15 06:14:07,516 - libs.order_management - INFO - Recording new order demo-62 buy size=6.369232124541586 price=245.15968277634914
+2025-09-15 06:14:07,730 - __main__ - INFO - [DEMO ORDER] buy $7.00 @ $246.7362 -> demo-63
+2025-09-15 06:14:07,731 - libs.order_management - INFO - Recording new order demo-63 buy size=6.998669610461672 price=246.73621636549245
+2025-09-15 06:14:07,934 - __main__ - INFO - [DEMO ORDER] buy $6.42 @ $244.7578 -> demo-64
+2025-09-15 06:14:07,934 - libs.order_management - INFO - Recording new order demo-64 buy size=6.424346039555393 price=244.75780424645782
+2025-09-15 06:14:08,136 - __main__ - INFO - [DEMO ORDER] buy $5.68 @ $244.3353 -> demo-65
+2025-09-15 06:14:08,137 - libs.order_management - INFO - Recording new order demo-65 buy size=5.6780531494565 price=244.33527300023798
+2025-09-15 06:14:08,353 - __main__ - INFO - [DEMO ORDER] buy $4.57 @ $243.1079 -> demo-66
+2025-09-15 06:14:08,353 - libs.order_management - INFO - Recording new order demo-66 buy size=4.567768649380064 price=243.10788859513247
+2025-09-15 06:14:08,570 - __main__ - INFO - [DEMO ORDER] buy $10.00 @ $242.7472 -> demo-67
+2025-09-15 06:14:08,570 - __main__ - INFO - ========================================
+2025-09-15 06:14:08,571 - __main__ - INFO - SIGNAL GENERATED - Iteration 66
+2025-09-15 06:14:08,571 - __main__ - INFO -   MACD: 4.854944
+2025-09-15 06:14:08,571 - __main__ - INFO -   Signal: 3.398461
+2025-09-15 06:14:08,571 - __main__ - INFO -   Histogram: 1.456483
+2025-09-15 06:14:08,572 - __main__ - INFO -   Signal Strength: 2.00
+2025-09-15 06:14:08,572 - __main__ - INFO -   Direction: BUY
+2025-09-15 06:14:08,572 - __main__ - INFO -   Notional: $10.00
+2025-09-15 06:14:08,572 - __main__ - INFO -   Price: $242.7472
+2025-09-15 06:14:08,573 - __main__ - INFO - ========================================
+2025-09-15 06:14:08,573 - __main__ - INFO - [DEMO OCO] Stop @ $240.3197, Target @ $247.6021
+2025-09-15 06:14:08,575 - services.attribution.store - INFO - SQLite database initialized: data\attribution\attribution.db
+2025-09-15 06:14:08,576 - services.attribution.store - INFO - Attribution store initialized at data\attribution
+2025-09-15 06:14:08,576 - services.attribution.store - INFO - Backends: CSV=True, SQLite=True, JSON=False
+2025-09-15 06:14:08,586 - services.attribution.store - INFO - Logged fill: trend-1757931248576162 SOL-PERP buy 0.0412 @ $242.7472
+2025-09-15 06:14:08,586 - __main__ - INFO - [DEMO ATTRIBUTION] Logged to database
+2025-09-15 06:14:08,804 - __main__ - INFO - [DEMO ORDER] buy $4.24 @ $244.8524 -> demo-68
+2025-09-15 06:14:08,804 - libs.order_management - INFO - Recording new order demo-68 buy size=4.240158838886455 price=244.85239622002786
+2025-09-15 06:14:09,006 - __main__ - INFO - [DEMO ORDER] buy $1.22 @ $242.6440 -> demo-69
+2025-09-15 06:14:09,007 - libs.order_management - INFO - Recording new order demo-69 buy size=1.2159753398830107 price=242.64396152122515
+2025-09-15 06:14:09,210 - __main__ - INFO - [DEMO ORDER] sell $0.34 @ $244.0290 -> demo-70
+2025-09-15 06:14:09,210 - libs.order_management - INFO - Recording new order demo-70 sell size=0.3355581167977891 price=244.02895971825208
+2025-09-15 06:14:09,413 - __main__ - INFO - [DEMO ORDER] sell $1.12 @ $245.0257 -> demo-71
+2025-09-15 06:14:09,413 - libs.order_management - INFO - Recording new order demo-71 sell size=1.1226627776182072 price=245.02567424890248
+2025-09-15 06:14:09,629 - __main__ - INFO - [DEMO ORDER] sell $1.84 @ $244.7170 -> demo-72
+2025-09-15 06:14:09,630 - libs.order_management - INFO - Recording new order demo-72 sell size=1.8352995690261296 price=244.71696380965477
+2025-09-15 06:14:09,832 - __main__ - INFO - [DEMO ORDER] sell $2.36 @ $244.7680 -> demo-73
+2025-09-15 06:14:09,832 - libs.order_management - INFO - Recording new order demo-73 sell size=2.364793391791607 price=244.76802448972288
+2025-09-15 06:14:10,034 - __main__ - INFO - [DEMO ORDER] sell $2.91 @ $244.0926 -> demo-74
+2025-09-15 06:14:10,035 - libs.order_management - INFO - Recording new order demo-74 sell size=2.905547469583205 price=244.0926359647096
+2025-09-15 06:14:10,251 - __main__ - INFO - [DEMO ORDER] sell $2.77 @ $245.5156 -> demo-75
+2025-09-15 06:14:10,252 - libs.order_management - INFO - Recording new order demo-75 sell size=2.7721317769272797 price=245.5156231663909
+2025-09-15 06:14:10,467 - __main__ - INFO - [DEMO ORDER] sell $2.21 @ $247.0429 -> demo-76
+2025-09-15 06:14:10,468 - libs.order_management - INFO - Recording new order demo-76 sell size=2.209243864241492 price=247.04294289922166
+2025-09-15 06:14:10,670 - __main__ - INFO - [DEMO ORDER] sell $2.84 @ $244.1542 -> demo-77
+2025-09-15 06:14:10,670 - libs.order_management - INFO - Recording new order demo-77 sell size=2.835177579637955 price=244.15422745553653
+2025-09-15 06:14:10,872 - __main__ - INFO - [DEMO ORDER] sell $10.00 @ $244.8390 -> demo-78
+2025-09-15 06:14:10,872 - __main__ - INFO - ========================================
+2025-09-15 06:14:10,873 - __main__ - INFO - SIGNAL GENERATED - Iteration 77
+2025-09-15 06:14:10,873 - __main__ - INFO -   MACD: -4.896779
+2025-09-15 06:14:10,873 - __main__ - INFO -   Signal: -3.427746
+2025-09-15 06:14:10,873 - __main__ - INFO -   Histogram: -1.469034
+2025-09-15 06:14:10,873 - __main__ - INFO -   Signal Strength: -2.00
+2025-09-15 06:14:10,874 - __main__ - INFO -   Direction: SELL
+2025-09-15 06:14:10,874 - __main__ - INFO -   Notional: $10.00
+2025-09-15 06:14:10,874 - __main__ - INFO -   Price: $244.8390
+2025-09-15 06:14:10,874 - __main__ - INFO - ========================================
+2025-09-15 06:14:10,874 - __main__ - INFO - [DEMO OCO] Stop @ $247.2874, Target @ $239.9422
+2025-09-15 06:14:10,876 - services.attribution.store - INFO - SQLite database initialized: data\attribution\attribution.db
+2025-09-15 06:14:10,877 - services.attribution.store - INFO - Attribution store initialized at data\attribution
+2025-09-15 06:14:10,877 - services.attribution.store - INFO - Backends: CSV=True, SQLite=True, JSON=False
+2025-09-15 06:14:10,885 - services.attribution.store - INFO - Logged fill: trend-1757931250877471 SOL-PERP sell 0.0408 @ $244.8390
+2025-09-15 06:14:10,886 - __main__ - INFO - [DEMO ATTRIBUTION] Logged to database
+2025-09-15 06:14:11,090 - __main__ - INFO - [DEMO ORDER] sell $4.01 @ $243.7300 -> demo-79
+2025-09-15 06:14:11,091 - libs.order_management - INFO - Recording new order demo-79 sell size=4.010924162427834 price=243.73002658998044
+2025-09-15 06:14:11,308 - __main__ - INFO - [DEMO ORDER] sell $2.08 @ $241.8633 -> demo-80
+2025-09-15 06:14:11,308 - libs.order_management - INFO - Recording new order demo-80 sell size=2.0819017551039694 price=241.86332521512477
+2025-09-15 06:14:11,309 - __main__ - INFO - Demo Status: Iteration 80/100, Price=$242.9845, Position=$2.46
+2025-09-15 06:14:11,525 - __main__ - INFO - [DEMO ORDER] sell $0.46 @ $242.2215 -> demo-81
+2025-09-15 06:14:11,525 - libs.order_management - INFO - Recording new order demo-81 sell size=0.46176256834999185 price=242.22147599230095
+2025-09-15 06:14:11,728 - __main__ - INFO - [DEMO ORDER] buy $0.96 @ $243.2416 -> demo-82
+2025-09-15 06:14:11,729 - libs.order_management - INFO - Recording new order demo-82 buy size=0.9594759465235518 price=243.24164636086812
+2025-09-15 06:14:11,930 - __main__ - INFO - [DEMO ORDER] buy $1.01 @ $240.3985 -> demo-83
+2025-09-15 06:14:11,931 - libs.order_management - INFO - Recording new order demo-83 buy size=1.006481535121557 price=240.39849901252748
+2025-09-15 06:14:12,133 - __main__ - INFO - [DEMO ORDER] buy $1.40 @ $241.1066 -> demo-84
+2025-09-15 06:14:12,133 - libs.order_management - INFO - Recording new order demo-84 buy size=1.4035766524737938 price=241.10662487499863
+2025-09-15 06:14:12,349 - __main__ - INFO - [DEMO ORDER] buy $1.35 @ $239.8706 -> demo-85
+2025-09-15 06:14:12,349 - libs.order_management - INFO - Recording new order demo-85 buy size=1.3470611446751235 price=239.8706160330081
+2025-09-15 06:14:12,551 - __main__ - INFO - [DEMO ORDER] buy $0.84 @ $238.2058 -> demo-86
+2025-09-15 06:14:12,551 - libs.order_management - INFO - Recording new order demo-86 buy size=0.840242389594304 price=238.2057534985479
+2025-09-15 06:14:12,768 - __main__ - INFO - [DEMO ORDER] buy $0.74 @ $238.4200 -> demo-87
+2025-09-15 06:14:12,769 - libs.order_management - INFO - Recording new order demo-87 buy size=0.7364831917234542 price=238.41995507408532
+2025-09-15 06:14:12,972 - __main__ - INFO - [DEMO ORDER] buy $0.77 @ $238.3711 -> demo-88
+2025-09-15 06:14:12,972 - libs.order_management - INFO - Recording new order demo-88 buy size=0.766534254927655 price=238.37105697347388
+2025-09-15 06:14:13,188 - __main__ - INFO - [DEMO ORDER] buy $10.00 @ $238.9525 -> demo-89
+2025-09-15 06:14:13,189 - __main__ - INFO - ========================================
+2025-09-15 06:14:13,191 - __main__ - INFO - SIGNAL GENERATED - Iteration 88
+2025-09-15 06:14:13,192 - __main__ - INFO -   MACD: 4.779050
+2025-09-15 06:14:13,193 - __main__ - INFO -   Signal: 3.345335
+2025-09-15 06:14:13,193 - __main__ - INFO -   Histogram: 1.433715
+2025-09-15 06:14:13,194 - __main__ - INFO -   Signal Strength: 2.00
+2025-09-15 06:14:13,197 - __main__ - INFO -   Direction: BUY
+2025-09-15 06:14:13,207 - __main__ - INFO -   Notional: $10.00
+2025-09-15 06:14:13,210 - __main__ - INFO -   Price: $238.9525
+2025-09-15 06:14:13,211 - __main__ - INFO - ========================================
+2025-09-15 06:14:13,212 - __main__ - INFO - [DEMO OCO] Stop @ $236.5630, Target @ $243.7315
+2025-09-15 06:14:13,219 - services.attribution.store - INFO - SQLite database initialized: data\attribution\attribution.db
+2025-09-15 06:14:13,220 - services.attribution.store - INFO - Attribution store initialized at data\attribution
+2025-09-15 06:14:13,221 - services.attribution.store - INFO - Backends: CSV=True, SQLite=True, JSON=False
+2025-09-15 06:14:13,231 - services.attribution.store - INFO - Logged fill: trend-1757931253221413 SOL-PERP buy 0.0418 @ $238.9525
+2025-09-15 06:14:13,231 - __main__ - INFO - [DEMO ATTRIBUTION] Logged to database
+2025-09-15 06:14:13,435 - __main__ - INFO - [DEMO ORDER] buy $4.07 @ $240.6032 -> demo-90
+2025-09-15 06:14:13,435 - libs.order_management - INFO - Recording new order demo-90 buy size=4.07415447786475 price=240.6031899618467
+2025-09-15 06:14:13,652 - __main__ - INFO - [DEMO ORDER] buy $2.36 @ $242.4420 -> demo-91
+2025-09-15 06:14:13,652 - libs.order_management - INFO - Recording new order demo-91 buy size=2.3583591693522186 price=242.44199113815256
+2025-09-15 06:14:13,868 - __main__ - INFO - [DEMO ORDER] buy $1.23 @ $243.2819 -> demo-92
+2025-09-15 06:14:13,868 - libs.order_management - INFO - Recording new order demo-92 buy size=1.2345765112214742 price=243.28187777874714
+2025-09-15 06:14:14,070 - __main__ - INFO - [DEMO ORDER] sell $0.14 @ $241.7057 -> demo-93
+2025-09-15 06:14:14,070 - libs.order_management - INFO - Recording new order demo-93 sell size=0.13821281798266682 price=241.70567273695295
+2025-09-15 06:14:14,274 - __main__ - INFO - [DEMO ORDER] sell $1.61 @ $240.4325 -> demo-94
+2025-09-15 06:14:14,274 - libs.order_management - INFO - Recording new order demo-94 sell size=1.6071873523156266 price=240.43253185638983
+2025-09-15 06:14:14,490 - __main__ - INFO - [DEMO ORDER] sell $2.49 @ $240.6736 -> demo-95
+2025-09-15 06:14:14,491 - libs.order_management - INFO - Recording new order demo-95 sell size=2.4890501125867637 price=240.6736324430499
+2025-09-15 06:14:14,692 - __main__ - INFO - [DEMO ORDER] sell $2.92 @ $240.9701 -> demo-96
+2025-09-15 06:14:14,693 - libs.order_management - INFO - Recording new order demo-96 sell size=2.9203847522944684 price=240.97008014191763
+2025-09-15 06:14:14,895 - __main__ - INFO - [DEMO ORDER] sell $2.82 @ $242.1637 -> demo-97
+2025-09-15 06:14:14,896 - libs.order_management - INFO - Recording new order demo-97 sell size=2.821680317754312 price=242.16372971380287
+2025-09-15 06:14:15,099 - __main__ - INFO - [DEMO ORDER] sell $2.66 @ $242.4439 -> demo-98
+2025-09-15 06:14:15,099 - libs.order_management - INFO - Recording new order demo-98 sell size=2.65565991623294 price=242.443886290505
+2025-09-15 06:14:15,302 - __main__ - INFO - [DEMO ORDER] sell $2.31 @ $243.3881 -> demo-99
+2025-09-15 06:14:15,302 - libs.order_management - INFO - Recording new order demo-99 sell size=2.313415732363956 price=243.38810419772173
+2025-09-15 06:14:15,519 - __main__ - INFO - [DEMO ORDER] sell $10.00 @ $245.3622 -> demo-100
+2025-09-15 06:14:15,519 - __main__ - INFO - ========================================
+2025-09-15 06:14:15,519 - __main__ - INFO - SIGNAL GENERATED - Iteration 99
+2025-09-15 06:14:15,519 - __main__ - INFO -   MACD: -4.907245
+2025-09-15 06:14:15,519 - __main__ - INFO -   Signal: -3.435071
+2025-09-15 06:14:15,519 - __main__ - INFO -   Histogram: -1.472173
+2025-09-15 06:14:15,520 - __main__ - INFO -   Signal Strength: -2.00
+2025-09-15 06:14:15,520 - __main__ - INFO -   Direction: SELL
+2025-09-15 06:14:15,520 - __main__ - INFO -   Notional: $10.00
+2025-09-15 06:14:15,520 - __main__ - INFO -   Price: $245.3622
+2025-09-15 06:14:15,520 - __main__ - INFO - ========================================
+2025-09-15 06:14:15,521 - __main__ - INFO - [DEMO OCO] Stop @ $247.8159, Target @ $240.4550
+2025-09-15 06:14:15,522 - services.attribution.store - INFO - SQLite database initialized: data\attribution\attribution.db
+2025-09-15 06:14:15,523 - services.attribution.store - INFO - Attribution store initialized at data\attribution
+2025-09-15 06:14:15,523 - services.attribution.store - INFO - Backends: CSV=True, SQLite=True, JSON=False
+2025-09-15 06:14:15,530 - services.attribution.store - INFO - Logged fill: trend-1757931255523576 SOL-PERP sell 0.0408 @ $245.3622
+2025-09-15 06:14:15,530 - __main__ - INFO - [DEMO ATTRIBUTION] Logged to database
+2025-09-15 06:14:15,531 - __main__ - INFO - Demo Status: Iteration 100/100, Price=$245.3622, Position=$1.78
+2025-09-15 06:14:15,735 - __main__ - INFO - ============================================================
+2025-09-15 06:14:15,735 - __main__ - INFO - TREND BOT DEMO COMPLETE
+2025-09-15 06:14:15,735 - __main__ - INFO - ============================================================
+2025-09-15 06:14:15,735 - __main__ - INFO - Total iterations: 100
+2025-09-15 06:14:15,736 - __main__ - INFO - Final price: $245.3622
+2025-09-15 06:14:15,736 - __main__ - INFO - Position exposure: $1.78
+2025-09-15 06:14:15,736 - __main__ - INFO - Total volume: $280.08
+2025-09-15 06:14:15,737 - __main__ - INFO - Check 'data/attribution/trend_fills.csv' for trade records
+2025-09-15 06:14:15,737 - __main__ - INFO - ============================================================

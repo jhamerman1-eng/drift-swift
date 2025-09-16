@@ -1,0 +1,121 @@
+# Live Testing Configuration for Trend Bot
+# Relaxed filters for demonstration and testing
+
+# Core trend strategy parameters
+trend:
+  # MACD Configuration
+  macd:
+    fast: 12
+    slow: 26
+    signal: 9
+  
+  # Momentum parameters
+  momentum_window: 14
+  momentum_threshold: 0.0
+  
+  # Position sizing (smaller for testing)
+  position_scaler: 0.5      # Reduced from 1.0
+  max_position_usd: 500     # Reduced from 5000 for testing
+  min_notional_usd: 25      # Reduced from 250 for testing
+  
+  # Risk management
+  stop_loss_pct: 0.01       # 1% stop loss
+  take_profit_pct: 0.02     # 2% take profit
+  
+  # Core strategy switches
+  use_macd: true
+  
+  # Feature flags - relaxed for testing
+  use_enhanced_filters: true
+  use_rbc_sizing: false     # Disabled for simpler testing
+  use_oco_stops: true
+  use_attribution: true
+
+# Relaxed Anti-Chop Filters for Testing
+filters:
+  # Very relaxed thresholds for testing
+  atr_min: 0.001            # Reduced from 0.015 to 0.001
+  adx_min: 5.0              # Reduced from 20.0 to 5.0
+  
+  # Filter behavior - allow with minimal criteria
+  require_all_filters: false
+  enabled_filters:
+    - "atr"                 # Only ATR filter enabled
+    # - "adx"               # ADX disabled for testing
+
+# Technical Indicators (same as production)
+indicators:
+  atr_period: 14
+  adx_period: 14
+  rsi_period: 14
+  bollinger_period: 20
+  bollinger_std: 2.0
+  volume_period: 20
+  range_period: 5
+
+# OCO Configuration (same as production)
+oco:
+  max_slippage_bps: 15.0    # Slightly higher for testing
+  poll_interval_seconds: 2.0
+  max_order_age_seconds: 1800  # 30 minutes for testing
+  use_post_only: false      # Disabled for faster fills in testing
+  retry_failed_orders: true
+
+# Attribution Configuration
+attribution:
+  enable_csv: true
+  enable_sqlite: true
+  enable_json: true         # Enabled for testing
+  base_dir: "data/attribution"
+  max_cache_size: 1000
+  cleanup_days: 90
+
+# Engine Configuration
+engine:
+  tick_interval_seconds: 1.0
+  refresh_interval: 1.0
+  min_price_history: 20     # Reduced from 50 for faster startup
+  max_price_history: 1000
+  parallel_indicator_calc: false
+  cache_indicators: true
+
+# Logging Configuration - More verbose for testing
+logging:
+  level: "INFO"
+  log_signals: true
+  log_filters: true
+  log_regime: true
+  log_oco: true
+  log_attribution: true
+  log_performance: true
+  performance_interval: 10  # More frequent for testing
+
+# Metrics Configuration
+metrics:
+  enable_prometheus: true
+  prometheus_port: 9111
+  track_regime_performance: true
+  track_signal_accuracy: true
+  track_filter_effectiveness: true
+
+# Development Overrides for Testing
+development:
+  simulate_fills: false
+  simulation_delay_ms: 100
+  debug_signals: true       # Extra debug for testing
+  debug_filters: true       # Extra debug for testing
+  debug_regime: false
+  force_regime: null
+  mock_indicators: false
+
+# Risk Management - Relaxed for testing
+risk:
+  max_daily_trades: 100     # Increased for testing
+  max_consecutive_losses: 10 # Increased for testing
+  max_daily_loss_usd: 100   # Reduced for testing
+  emergency_stop_loss_pct: 0.10  # 10% for testing
+  max_position_ratio: 0.5   # Higher ratio for testing
+  max_leverage: 2.0         # Reduced leverage for safety
+
+
+

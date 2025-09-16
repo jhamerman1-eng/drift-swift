@@ -11,7 +11,7 @@ import os
 import sys
 import time
 from pathlib import Path
-from typing import Optional, Dict, Any
+from typing import Optional
 
 # Default logging configuration
 DEFAULT_LOG_LEVEL = logging.INFO
@@ -71,18 +71,36 @@ def create_rotating_file_handler(
     """Create a rotating file handler with proper configuration"""
     ensure_log_directory()
     log_path = LOG_DIR / filename
-    
-    handler = logging.handlers.RotatingFileHandler(
-        filename=log_path,
-        maxBytes=max_bytes,
-        backupCount=backup_count,
-        encoding=encoding
-    )
-    
+
+    # Handle Windows encoding issues
+    if os.name == 'nt':  # Windows
+        try:
+            # Try UTF-8 first
+            handler = logging.handlers.RotatingFileHandler(
+                filename=log_path,
+                maxBytes=max_bytes,
+                backupCount=backup_count,
+                encoding=encoding
+            )
+        except UnicodeEncodeError:
+            # Fallback to system default encoding if UTF-8 fails
+            handler = logging.handlers.RotatingFileHandler(
+                filename=log_path,
+                maxBytes=max_bytes,
+                backupCount=backup_count
+            )
+    else:
+        handler = logging.handlers.RotatingFileHandler(
+            filename=log_path,
+            maxBytes=max_bytes,
+            backupCount=backup_count,
+            encoding=encoding
+        )
+
     # Set formatter
     formatter = logging.Formatter(DEFAULT_LOG_FORMAT)
     handler.setFormatter(formatter)
-    
+
     return handler
 
 def create_timed_rotating_file_handler(
@@ -112,13 +130,25 @@ def create_timed_rotating_file_handler(
 
 def setup_console_handler(level: int = DEFAULT_LOG_LEVEL) -> logging.StreamHandler:
     """Create a console handler with proper formatting"""
+    # Handle Windows encoding issues for console output
+    if os.name == 'nt':  # Windows
+        try:
+            # Try to set UTF-8 encoding for console
+            if hasattr(sys.stdout, 'reconfigure'):
+                sys.stdout.reconfigure(encoding='utf-8', errors='replace')  # type: ignore
+        except:
+            pass
+
+        # Use ASCII-safe formatter for Windows
+        formatter = logging.Formatter(DEFAULT_LOG_FORMAT_VERBOSE.replace('✅', '[OK]').replace('❌', '[ERROR]').replace('⚠️', '[WARN]').replace('🚀', '[START]').replace('🔄', '[RETRY]').replace('📝', '[LOG]').replace('🎯', '[TARGET]'))
+    else:
+        # Use full Unicode formatter for other platforms
+        formatter = logging.Formatter(DEFAULT_LOG_FORMAT_VERBOSE)
+
     handler = logging.StreamHandler(sys.stdout)
     handler.setLevel(level)
-    
-    # Use verbose format for console
-    formatter = logging.Formatter(DEFAULT_LOG_FORMAT_VERBOSE)
     handler.setFormatter(formatter)
-    
+
     return handler
 
 def setup_critical_logging(
@@ -323,7 +353,7 @@ class BugTracker:
 
     def log_bug(self, bug_id: str, description: str, root_cause: str = "",
                 impact: str = "", priority: str = "medium",
-                context: dict = None) -> str:
+                context: Optional[dict] = None) -> str:
         """Log a new bug with comprehensive tracking"""
         if bug_id in self.active_bugs:
             self.logger.warning(f"Bug {bug_id} already exists, updating...")
@@ -393,7 +423,7 @@ class BugTracker:
 
         self._save_bug_registry()
 
-    def log_error_with_bug_tracking(self, error: Exception, context: dict = None,
+    def log_error_with_bug_tracking(self, error: Exception, context: Optional[dict] = None,
                                    auto_create_bug: bool = True) -> str:
         """Log an error with automatic bug tracking"""
         error_type = type(error).__name__
@@ -472,7 +502,7 @@ def get_bug_tracker(logger_name: str) -> BugTracker:
 
 # Enhanced logging functions with bug tracking
 def log_error_with_tracking(logger: logging.Logger, error: Exception,
-                           context: dict = None, component: str = "") -> str:
+                           context: Optional[dict] = None, component: str = "") -> str:
     """Log an error with automatic bug tracking"""
     tracker = get_bug_tracker(logger.name)
 
@@ -486,10 +516,11 @@ def log_error_with_tracking(logger: logging.Logger, error: Exception,
     import inspect
     frame = inspect.currentframe()
     try:
-        caller_frame = frame.f_back.f_back  # Go up two frames to get the actual caller
-        context["function"] = caller_frame.f_code.co_name
-        context["file"] = caller_frame.f_code.co_filename
-        context["line"] = caller_frame.f_lineno
+        if frame and frame.f_back and frame.f_back.f_back:
+            caller_frame = frame.f_back.f_back  # Go up two frames to get the actual caller
+            context["function"] = caller_frame.f_code.co_name
+            context["file"] = caller_frame.f_code.co_filename
+            context["line"] = caller_frame.f_lineno
     except:
         pass
 

@@ -9,7 +9,7 @@ import logging
 import os
 import sys
 import time
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple  # pyright: ignore[reportUnusedImport]
 
 # Add libs to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "libs"))
@@ -242,6 +242,11 @@ if __name__ == "__main__":
     except Exception as e:
         logger.error(f"Bot failed: {e}")
         sys.exit(1)
+
+
+
+
+
 
 
 

@@ -48,6 +48,12 @@ class SwiftNetworkError(TransientError):
     """Network connectivity issues with Swift API"""
     pass
 
+class SwiftDegradationError(DriftError):
+    """Swift sidecar degradation - should fallback to DriftPy"""
+    def __init__(self, message: str, response_data: dict = None):
+        super().__init__(message)
+        self.response_data = response_data or {}
+
 def classify_swift_error(status_code: int, response_text: str = "") -> DriftError:
     """Classify Swift API errors into appropriate exception types"""
     

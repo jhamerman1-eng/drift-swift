@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Simple Hedge Bot Runner
-Runs the hedge bot with proper configuration
+Runs the hedge bot with proper configuration using CENTRALIZED ENVIRONMENT CONFIG
 """
 
 import asyncio
@@ -13,6 +13,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "libs"))
 sys.path.insert(0, str(Path(__file__).parent / "orchestrator"))
 sys.path.insert(0, str(Path(__file__).parent / "bots"))
+
+# CRITICAL: Import centralized environment configuration
+from libs.config.environment import get_environment_config
 
 # Configure logging
 logging.basicConfig(
@@ -30,14 +33,31 @@ async def run_hedge_bot():
         # Import the hedge bot main function
         from bots.hedge.main import hedge_iteration
         
-        # Load configuration
-        import yaml
-        with open("configs/core/drift_client.yaml", "r") as f:
-            config = yaml.safe_load(f)
+        # CRITICAL: Load configuration from centralized environment config
+        env_config = get_environment_config()
         
-        logger.info("📡 Configuration loaded")
-        logger.info(f"🏦 Environment: {config.get('cluster', 'devnet')}")
-        logger.info(f"🔗 RPC: {config.get('rpc_url', 'default')}")
+        # Validate configuration
+        validation = env_config.validate_configuration()
+        if not validation["valid"]:
+            logger.error(f"❌ Environment configuration issues: {validation['issues']}")
+            return
+        
+        logger.info("📡 Centralized configuration loaded")
+        logger.info(f"🌍 Environment: {env_config.get_environment().upper()}")
+        logger.info(f"🏦 Drift Environment: {env_config.get_drift_env()}")
+        logger.info(f"🔗 RPC URL: {env_config.get_rpc_url()[:50]}...")
+        logger.info(f"🚀 Swift URL: {env_config.get_swift_config()['base_url']}")
+        logger.info(f"🎯 Use Local Sidecar: {env_config.use_local_sidecar()}")
+        
+        # Convert to legacy format for existing bot components
+        legacy_config = {
+            "cluster": env_config.get_drift_env(),
+            "rpc_url": env_config.get_rpc_url(),
+            "swift": env_config.get_swift_config(),
+            "market_index": 0,  # SOL-PERP
+            "use_mock": False,
+            "live_trading": not env_config.is_local()
+        }
         
         # Initialize components
         from libs.drift.client import build_client_from_config
@@ -46,8 +66,8 @@ async def run_hedge_bot():
         
         logger.info("🔧 Initializing components...")
         
-        # Build client
-        client = await build_client_from_config("configs/core/drift_client.yaml")
+        # Build client using converted config
+        client = await build_client_from_legacy_config(legacy_config)
         logger.info("✅ Drift client initialized")
         
         # Initialize components

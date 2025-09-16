@@ -5,16 +5,15 @@ Implements Swift API order placement with retries, error classification, and met
 """
 
 import time
-import json
 import httpx
-import base64
 import logging
-from typing import Dict, Any, Optional, List
+import asyncio
+from typing import Dict, Any, Optional
 from dataclasses import dataclass
 
 from ..errors import (
-    TransientError, ValidationError, SwiftAPIError, 
-    classify_swift_error, SwiftTimeoutError, SwiftRateLimitError
+    TransientError,
+    SwiftTimeoutError, SwiftDegradationError
 )
 from ...market.auction import fetch_auction_params, should_use_auction_params, get_conservative_auction_defaults
 
@@ -49,7 +48,7 @@ class SwiftSidecarDriver:
         self.cfg = cfg
         self.swift_config = cfg.get("swift", {})
         self.base_url = self.swift_config.get("base_url", "https://swift.drift.trade")
-        self.timeout = self.swift_config.get("timeout_seconds", 1.2)
+        self.timeout = self.swift_config.get("timeout_seconds", 2.5)
         self.retries = int(self.swift_config.get("retries", 3))
         self.backoff_ms = self.swift_config.get("backoff_ms", [60, 150, 300])
         self.sub_account_id = self.swift_config.get("sub_account_id", 0)
@@ -116,19 +115,30 @@ class SwiftSidecarDriver:
     
     def _create_swift_payload(self, envelope: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Create Swift API payload from envelope
+        Create Swift API payload from envelope with correct field mapping
         
-        Based on libs/drift/swift_submit.py format:
-        - market_type, market_index, message, signature, taker_authority
+        Maps envelope fields to Swift API expected format:
+        - order_message -> message
+        - order_signature -> signature  
+        - taker_authority -> taker_authority
         """
-        # Extract required fields only (remove extra fields that cause 422)
+        # CRITICAL FIX: Map envelope fields to Swift API format with signature compatibility
         payload = {
             "market_type": envelope.get("market_type", "perp"),
             "market_index": envelope.get("market_index", 0),
-            "message": envelope.get("message", ""),
-            "signature": envelope.get("signature", ""),
-            "taker_authority": envelope.get("taker_authority", "")
+            "message": envelope.get("message", envelope.get("order_message", "")),  # Hex of complete Borsh-encoded message
+            "signature": envelope.get("signature", envelope.get("order_signature", "")),  # Prefer 'signature', fallback to 'order_signature'
+            "taker_authority": envelope.get("taker_authority", ""),
+            "signing_authority": envelope.get("signing_authority", "")  # Required for delegate mode
         }
+        
+        # Validate required fields are not empty
+        if not payload["message"]:
+            raise ValueError("Missing message/order_message in envelope")
+        if not payload["signature"]:
+            raise ValueError("Missing signature in envelope (checked both 'signature' and 'order_signature')") 
+        if not payload["taker_authority"]:
+            raise ValueError("Missing taker_authority in envelope")
         
         # Add optional fields if present
         if "sub_account_id" in envelope:
@@ -157,82 +167,95 @@ class SwiftSidecarDriver:
         attempt = 0
         start_time = time.time()
         
-        logger.info(f"🚀 Placing order via Swift API: {payload.get('market_type')} market {payload.get('market_index')}")
+        logger.info(f"Placing order via Swift API: {payload.get('market_type')} market {payload.get('market_index')}")
         
         while attempt <= self.retries:
             try:
                 headers = self._prepare_headers()
                 
-                async with httpx.AsyncClient(timeout=self.timeout) as client:
+                client = httpx.AsyncClient(timeout=self.timeout)
+                try:
                     response = await client.post(url, json=payload, headers=headers)
+                finally:
+                    await client.aclose()
                 
-                # Success case
-                if response.status_code == 200:
-                    result = response.json()
-                    order_id = result.get("order_id") or result.get("id") or "swift-unknown"
-                    
-                    duration = time.time() - start_time
-                    self.metrics.inc("swift_orders_total", {"result": "ok"})
-                    self.metrics.observe("swift_submit_seconds", duration)
-                    
-                    logger.info(f"✅ Swift order placed successfully: {order_id} (took {duration:.3f}s)")
-                    return str(order_id)
+                # Handle response according to hardening requirements
+                if response.status_code >= 400:
+                    # Status >= 400 is always a failure - degrade to DriftPy
+                    logger.warning(f"🔄 Status {response.status_code} >= 400, degrading to DriftPy")
+                    logger.warning(f"Response: {response.text}")
+                    raise SwiftDegradationError(f"Swift sidecar returned {response.status_code}", {
+                        "status_code": response.status_code,
+                        "response_text": response.text,
+                        "reason": "status_code_failure"
+                    })
+
+                # Status < 400, check response body for degradation indicators
+                try:
+                    body = response.json()
+                except Exception:
+                    # If we can't parse JSON, treat as success (backward compatibility)
+                    body = {}
+
+                # Check for degradation indicators in response body
+                if body.get("forwarded") is False or body.get("status") == "degraded":
+                    reason = "not_forwarded" if body.get("forwarded") is False else "degraded_status"
+                    logger.warning(f"🔄 Swift sidecar {reason}, degrading to DriftPy")
+                    logger.warning(f"Response: {body}")
+                    raise SwiftDegradationError(f"Swift sidecar {reason}", {
+                        "status_code": response.status_code,
+                        "response_body": body,
+                        "reason": reason
+                    })
+
+                # Success case - forwarded: true and status != "degraded"
+                order_id = body.get("order_id") or body.get("id") or "swift-unknown"
+
+                duration = time.time() - start_time
+                self.metrics.inc("swift_orders_total", {"result": "ok"})
+                self.metrics.observe("swift_submit_seconds", duration)
+
+                logger.info(f"✅ Swift order placed successfully: {order_id} (took {duration:.3f}s)")
+                return str(order_id)
                 
-                # Classify error
-                error = classify_swift_error(response.status_code, response.text)
-                
-                # Don't retry validation errors
-                if isinstance(error, ValidationError):
-                    self.metrics.inc("swift_orders_total", {"result": "fail", "reason": "validation"})
-                    logger.error(f"❌ Swift validation error: {error}")
-                    raise error
-                
-                # Retry transient errors
-                if isinstance(error, TransientError) and attempt < self.retries:
-                    attempt += 1
-                    backoff_delay = self.backoff_ms[min(attempt - 1, len(self.backoff_ms) - 1)] / 1000.0
+            except Exception as e:
+                # Handle timeout exceptions
+                if "timeout" in str(type(e)).lower() or "timeout" in str(e).lower():
+                    if attempt < self.retries:
+                        attempt += 1
+                        backoff_delay = self.backoff_ms[min(attempt - 1, len(self.backoff_ms) - 1)] / 1000.0
+                        
+                        self.metrics.inc("swift_retries_total", {"reason": "timeout"})
+                        logger.warning(f"⚠️  Swift timeout (attempt {attempt}/{self.retries})")
+                        logger.info(f"🔄 Retrying in {backoff_delay:.3f}s...")
+                        
+                        await asyncio.sleep(backoff_delay)
+                        continue
+                    else:
+                        self.metrics.inc("swift_orders_total", {"result": "fail", "reason": "timeout"})
+                        raise SwiftTimeoutError("Swift API timeout after all retries")
                     
-                    self.metrics.inc("swift_retries_total", {"reason": f"http_{response.status_code}"})
-                    logger.warning(f"⚠️  Swift transient error (attempt {attempt}/{self.retries}): {error}")
-                    logger.info(f"🔄 Retrying in {backoff_delay:.3f}s...")
-                    
-                    await asyncio.sleep(backoff_delay)
-                    continue
-                
-                # All retries exhausted
-                self.metrics.inc("swift_orders_total", {"result": "fail", "reason": "exhausted"})
-                logger.error(f"❌ Swift API failed after {self.retries} retries: {error}")
-                raise error
-                
-            except httpx.TimeoutException:
-                if attempt < self.retries:
-                    attempt += 1
-                    backoff_delay = self.backoff_ms[min(attempt - 1, len(self.backoff_ms) - 1)] / 1000.0
-                    
-                    self.metrics.inc("swift_retries_total", {"reason": "timeout"})
-                    logger.warning(f"⚠️  Swift timeout (attempt {attempt}/{self.retries})")
-                    logger.info(f"🔄 Retrying in {backoff_delay:.3f}s...")
-                    
-                    await asyncio.sleep(backoff_delay)
-                    continue
+                # Handle network/request errors
+                elif "request" in str(type(e)).lower() or "connect" in str(type(e)).lower() or "network" in str(e).lower():
+                    if attempt < self.retries:
+                        attempt += 1
+                        backoff_delay = self.backoff_ms[min(attempt - 1, len(self.backoff_ms) - 1)] / 1000.0
+                        
+                        self.metrics.inc("swift_retries_total", {"reason": "network"})
+                        logger.warning(f"⚠️  Swift network error (attempt {attempt}/{self.retries}): {e}")
+                        logger.info(f"🔄 Retrying in {backoff_delay:.3f}s...")
+                        
+                        await asyncio.sleep(backoff_delay)
+                        continue
+                    else:
+                        self.metrics.inc("swift_orders_total", {"result": "fail", "reason": "network"})
+                        raise TransientError(f"Swift network error after all retries: {e}")
                 else:
-                    self.metrics.inc("swift_orders_total", {"result": "fail", "reason": "timeout"})
-                    raise SwiftTimeoutError("Swift API timeout after all retries")
-                    
-            except httpx.RequestError as e:
-                if attempt < self.retries:
-                    attempt += 1
-                    backoff_delay = self.backoff_ms[min(attempt - 1, len(self.backoff_ms) - 1)] / 1000.0
-                    
-                    self.metrics.inc("swift_retries_total", {"reason": "network"})
-                    logger.warning(f"⚠️  Swift network error (attempt {attempt}/{self.retries}): {e}")
-                    logger.info(f"🔄 Retrying in {backoff_delay:.3f}s...")
-                    
-                    await asyncio.sleep(backoff_delay)
-                    continue
-                else:
-                    self.metrics.inc("swift_orders_total", {"result": "fail", "reason": "network"})
-                    raise TransientError(f"Swift network error after all retries: {e}")
+                    # Re-raise other exceptions
+                    raise e
+        
+        # This should never be reached due to the raise statements above
+        raise TransientError("Swift order placement failed - unexpected code path")
     
     async def cancel_order(self, order_id: str) -> bool:
         """
@@ -248,8 +271,11 @@ class SwiftSidecarDriver:
             url = f"{self.base_url}/orders/{order_id}/cancel"
             headers = self._prepare_headers()
             
-            async with httpx.AsyncClient(timeout=self.timeout) as client:
+            client = httpx.AsyncClient(timeout=self.timeout)
+            try:
                 response = await client.post(url, headers=headers)
+            finally:
+                await client.aclose()
             
             if response.status_code == 200:
                 self.metrics.inc("swift_cancel_total", {"result": "ok"})
@@ -311,8 +337,11 @@ class SwiftSidecarDriver:
             url = f"{self.base_url}/health"
             headers = self._prepare_headers()
             
-            async with httpx.AsyncClient(timeout=self.timeout) as client:
+            client = httpx.AsyncClient(timeout=self.timeout)
+            try:
                 response = await client.get(url, headers=headers)
+            finally:
+                await client.aclose()
             
             if response.status_code == 200:
                 return {"status": "healthy", "response": response.json()}
@@ -325,9 +354,7 @@ class SwiftSidecarDriver:
     def get_metrics(self) -> Dict[str, Any]:
         """Get collected metrics"""
         return {
-            "counters": self.counters.copy(),
-            "histograms": {k: {"count": len(v), "avg": sum(v)/len(v) if v else 0} for k, v in self.histograms.items()}
+            "counters": self.metrics.counters.copy(),
+            "histograms": {k: {"count": len(v), "avg": sum(v)/len(v) if v else 0} for k, v in self.metrics.histograms.items()}
         }
 
-# Import asyncio at module level for sleep
-import asyncio

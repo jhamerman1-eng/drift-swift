@@ -1,3 +1,20 @@
+# ============================================================================
+# DEPRECATED CONFIGURATION FILE
+# ============================================================================
+# This file is DEPRECATED and should no longer be used.
+# All bots now use the CENTRALIZED ENVIRONMENT CONFIGURATION system:
+#
+# NEW SYSTEM:
+# - configs/environments.yaml (SINGLE SOURCE OF TRUTH)
+# - libs/config/environment.py (Central manager)
+# - Use DRIFT_ENVIRONMENT=local|devnet|mainnet to switch environments
+#
+# MIGRATION:
+# Replace: import yaml; config = yaml.safe_load(f)
+# With:    from libs.config.environment import get_environment_config
+# ============================================================================
+
+# LEGACY VALUES (FOR REFERENCE ONLY - DO NOT USE)
 cluster: devnet
 driver: driftpy
 

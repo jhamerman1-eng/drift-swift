@@ -1,0 +1,57 @@
+{
+  "summary": {
+    "total_tests": 9,
+    "passed": 9,
+    "failed": 0,
+    "success_rate": 100.0
+  },
+  "tests": [
+    {
+      "test": "JIT Client Import",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "JIT Config Loading",
+      "success": true,
+      "details": "Defaults correctly"
+    },
+    {
+      "test": "JIT Client Creation (Disabled)",
+      "success": true,
+      "details": "Returns None when disabled"
+    },
+    {
+      "test": "Existing Bot Import",
+      "success": true,
+      "details": "CompleteSwiftMMBot class available"
+    },
+    {
+      "test": "Existing Config Compatibility",
+      "success": true,
+      "details": "Old config format works"
+    },
+    {
+      "test": "Feature Flag Isolation",
+      "success": true,
+      "details": "Other features preserved"
+    },
+    {
+      "test": "Existing Imports",
+      "success": true,
+      "details": "All existing imports work"
+    },
+    {
+      "test": "Config File Structure",
+      "success": true,
+      "details": "All required keys present"
+    },
+    {
+      "test": "JIT Client Graceful Failure",
+      "success": true,
+      "details": "Fails gracefully"
+    }
+  ],
+  "failures": [],
+  "timestamp": 1757907672.3674083
+}

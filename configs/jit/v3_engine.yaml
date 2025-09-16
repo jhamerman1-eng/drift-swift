@@ -1,0 +1,200 @@
+# JIT Engine v3.0 Configuration
+# Production-ready configuration for enhanced JIT market making
+
+# Core engine settings
+engine:
+  version: "3.0.0"
+  loop_secs: 0.9
+  max_errors: 10
+  market_symbol: "SOL-PERP"
+  market_index: 0
+
+# Microprice calculation with regime awareness
+microprice:
+  enabled: true
+  
+  # Regime-specific weights (higher = more microprice influence)
+  weights:
+    low: 0.4      # Low volatility regime - conservative microprice
+    normal: 0.6   # Normal regime - balanced approach
+    high: 0.8     # High volatility - aggressive microprice
+  
+  # Profit validation
+  profit_threshold_bps: 2.0    # Minimum improvement vs plain mid
+  measurement_window_fills: 50  # Fills to analyze for profit validation
+  
+  # Hot-swappable parameters (can be updated without restart)
+  hot_reload: true
+
+# Spoof filter for shallow depth detection
+spoof_filter:
+  enabled: true
+  
+  # Depth analysis
+  depth_threshold: 0.4          # Min relative depth to avoid spoof
+  z_score_threshold: 2.0        # Outlier detection threshold
+  
+  # Toxic fill rate targeting
+  toxic_fill_reduction_target: 0.15  # 15% reduction target
+  adverse_move_window_ms: 250        # Forward-looking window
+  
+  # Price adjustment when spoof detected
+  adjustment_bps: 0.5               # Marginal price adjustment
+
+# Toxicity-based spread adjustment
+toxicity:
+  enabled: true
+  
+  # Measurement window
+  measurement_window_ms: 250
+  spread_shock_sensitivity: 1.0
+  
+  # Thresholds
+  threshold: 0.7                    # Toxicity threshold for spread skew
+  high_toxicity_threshold: 0.9     # Extreme toxicity threshold
+  
+  # P&L improvement tracking
+  pnl_improvement_target: 0.25     # 25% P&L improvement target
+
+# Dynamic spread management
+spread:
+  base_bps: 2.5              # Base spread in basis points
+  min_bps: 1.0               # Minimum spread (safety floor)
+  max_bps: 50.0              # Maximum spread (avoid excessive widening)
+  
+  # Toxicity-based adjustment
+  toxicity_multiplier: 1.5   # Multiplier when toxicity > threshold
+  max_toxicity_multiplier: 3.0  # Cap for extreme toxicity
+  
+  # Regime-based adjustment
+  regime_multipliers:
+    low: 0.8                 # Tighten spreads in low vol
+    normal: 1.0              # Normal spreads
+    high: 1.2                # Wider spreads in high vol
+
+# Enhanced cancel/replace logic
+cancel_replace_v2:
+  enabled: true
+  
+  # Timing controls
+  min_lifetime_ms: 250       # Minimum quote lifetime
+  max_age_ms: 5000          # Maximum age before forced refresh
+  price_move_bps: 1.5       # Price movement threshold for refresh
+  
+  # Hot-swappable without restart
+  hot_reload: true
+
+# Volatility regime detection
+regimes:
+  # Detection parameters
+  window_size: 20            # Rolling window for regime detection
+  
+  # Thresholds (as fraction of price)
+  thresholds:
+    low_vol: 0.001          # 0.1% - low volatility threshold
+    high_vol: 0.005         # 0.5% - high volatility threshold
+  
+  # Regime switching parameters
+  hysteresis_factor: 1.2    # Prevent regime flapping
+
+# Rails integration
+rails:
+  enabled: true
+  
+  # Size multipliers for different rail states
+  soft_stop_multiplier: 0.5
+  trend_pause_multiplier: 0.25
+  circuit_breaker_multiplier: 0.0
+  
+  # External size multiplier (set by orchestrator)
+  external_size_mult: 1.0
+
+# Order sizing and inventory management
+sizing:
+  base_size_asset_units: 0.1    # Base order size in asset units (e.g., SOL)
+  max_position_asset_units: 5.0 # Maximum position size
+  
+  # Inventory-based sizing adjustment
+  inventory_skew_adjustment: 0.3  # Reduce size when skewed
+  asymmetric_sizing: true         # Prefer buying when short, selling when long
+  
+  # Size limits
+  min_order_size: 0.01           # Minimum order size
+  max_order_size: 2.0            # Maximum single order size
+
+# Performance measurement and attribution
+performance:
+  enabled: true
+  
+  # Fill tracking
+  fill_history_size: 500
+  
+  # Profit measurement
+  profit_measurement_window_ms: 250  # Forward-looking window
+  baseline_comparison: "mid_price"   # Compare against mid price baseline
+  
+  # Attribution tracking
+  track_regime_performance: true
+  track_toxicity_performance: true
+  track_microprice_performance: true
+
+# Error handling and resilience
+error_handling:
+  max_consecutive_errors: 10
+  error_backoff_ms: 1000
+  circuit_breaker_threshold: 5
+  
+  # Fallback behavior
+  fallback_to_mid_price: true
+  fallback_to_base_spread: true
+  graceful_degradation: true
+
+# Metrics and monitoring
+metrics:
+  enabled: true
+  export_interval_seconds: 30
+  
+  # Prometheus metrics
+  prometheus:
+    enabled: true
+    port: 9112
+    path: "/metrics"
+  
+  # Custom metrics
+  custom_labels:
+    - "market"
+    - "regime" 
+    - "toxicity_level"
+    - "execution_path"
+
+# Development and testing
+development:
+  mock_mode: false
+  log_level: "INFO"
+  enable_debug_metrics: false
+  
+  # Testing overrides
+  test_overrides:
+    force_regime: null         # Force specific regime for testing
+    mock_toxicity: null        # Mock toxicity score
+    disable_filters: false     # Disable all filters for testing
+
+# Environment-specific overrides
+environments:
+  devnet:
+    spread:
+      base_bps: 5.0           # Wider spreads for testing
+    sizing:
+      base_size_asset_units: 0.05  # Smaller sizes for testing
+  
+  testnet:
+    spread:
+      base_bps: 3.0
+    sizing:
+      base_size_asset_units: 0.1
+  
+  mainnet:
+    spread:
+      base_bps: 2.5           # Production spread
+    performance:
+      enabled: true           # Full performance tracking in prod

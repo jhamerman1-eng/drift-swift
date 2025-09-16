@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Trend Bot - Beta.Drift.Trade Runner
-Runs the trend bot on beta.drift.trade (devnet) with enhanced tracking
+Trend Bot - CENTRALIZED ENVIRONMENT CONFIG
+Runs the trend bot using centralized environment configuration system
 """
 
 import asyncio
@@ -17,46 +17,62 @@ sys.path.insert(0, str(Path(__file__).parent / "libs"))
 sys.path.insert(0, str(Path(__file__).parent / "orchestrator"))
 sys.path.insert(0, str(Path(__file__).parent / "bots"))
 
-# Configure enhanced logging for beta tracking
+# CRITICAL: Import centralized environment configuration
+from libs.config.environment import get_environment_config
+
+# Configure enhanced logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('trend_bot_beta_tracking.log'),
+        logging.FileHandler('trend_bot_centralized.log'),
         logging.StreamHandler(sys.stdout)
     ]
 )
 logger = logging.getLogger(__name__)
 
-# Set beta environment variables
-os.environ["DRIFT_SIGNING_AUTHORITY"] = "6g8TziYAupUDtNAz6Thi3c6Ntu7AEcMMVdUWGJPrR2nW"
-os.environ["USE_MOCK"] = "false"
-os.environ["DRIFT_RPC_URL"] = "https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
-os.environ["DRIFT_WS_URL"] = "wss://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494"
+# REMOVED: All hardcoded environment variables - now using centralized config!
 
-async def run_trend_bot_beta():
-    """Run the trend bot on beta.drift.trade with enhanced tracking"""
+async def run_trend_bot_centralized():
+    """Run the trend bot using centralized environment configuration"""
     try:
-        logger.info("🚀 Starting Trend Bot on Beta.Drift.Trade")
+        # CRITICAL: Load configuration from centralized environment config
+        env_config = get_environment_config()
+        
+        # Validate configuration
+        validation = env_config.validate_configuration()
+        if not validation["valid"]:
+            logger.error(f"❌ Environment configuration issues: {validation['issues']}")
+            return
+        
+        logger.info("🚀 Starting Trend Bot with Centralized Configuration")
         logger.info("=" * 60)
-        logger.info("Environment: DEVNET (Beta)")
-        logger.info("Trading Platform: beta.drift.trade")
-        logger.info("Strategy: MACD + Momentum Trend Following")
-        logger.info("Market: SOL-PERP")
+        logger.info(f"🌍 Environment: {env_config.get_environment().upper()}")
+        logger.info(f"🏦 Drift Environment: {env_config.get_drift_env()}")
+        logger.info(f"🔗 RPC URL: {env_config.get_rpc_url()[:50]}...")
+        logger.info(f"🚀 Swift URL: {env_config.get_swift_config()['base_url']}")
+        logger.info(f"🎯 Use Local Sidecar: {env_config.use_local_sidecar()}")
+        logger.info("📊 Strategy: MACD + Momentum Trend Following")
+        logger.info("📈 Market: SOL-PERP")
         logger.info("=" * 60)
         
         # Import the trend bot main function
         from bots.trend.main import trend_iteration, load_trend_config
         
-        # Load beta configuration
-        import yaml
-        with open("configs/core/drift_client_beta.yaml", "r") as f:
-            config = yaml.safe_load(f)
+        # Convert centralized config to legacy format for existing components
+        legacy_config = {
+            "env": env_config.get_environment(),
+            "cluster": env_config.get_drift_env(),
+            "rpc_url": env_config.get_rpc_url(),
+            "swift": env_config.get_swift_config(),
+            "market": "SOL-PERP",
+            "market_index": 0,
+            "use_mock": env_config.is_local(),
+            "live_trading": not env_config.is_local()
+        }
         
-        logger.info("📡 Beta configuration loaded")
-        logger.info(f"🏦 Environment: {config.get('env', 'beta')}")
-        logger.info(f"🔗 RPC: {config.get('rpc_url', 'default')}")
-        logger.info(f"📊 Market: {config.get('market', 'SOL-PERP')}")
+        logger.info("📡 Centralized configuration converted for trend bot")
+        logger.info(f"🎯 Market Making Config Available: {env_config.get_market_making_config()}")
         
         # Initialize components
         from libs.drift.client import build_client_from_config
@@ -65,8 +81,8 @@ async def run_trend_bot_beta():
         
         logger.info("🔧 Initializing components...")
         
-        # Build client with beta config
-        client = await build_client_from_config("configs/core/drift_client_beta.yaml")
+        # Build client using centralized config
+        client = await build_client_from_legacy_config(legacy_config)
         logger.info("✅ Drift client initialized for beta.drift.trade")
         
         # Initialize components
@@ -181,7 +197,8 @@ async def run_trend_bot_beta():
         logger.error(f"Traceback: {traceback.format_exc()}")
 
 if __name__ == "__main__":
-    asyncio.run(run_trend_bot_beta())
+    asyncio.run(run_trend_bot_centralized())
+
 
 
 
