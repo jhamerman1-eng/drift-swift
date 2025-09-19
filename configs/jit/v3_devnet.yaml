@@ -1,0 +1,83 @@
+# JIT v3 LIVE TRADING Configuration
+# LIVE TRADING ENABLED - NO MOCK DATA
+
+# Driver configuration
+driver: real_drift  # Use real DriftPy client
+use_mock: false     # LIVE TRADING MODE
+live_trading: true  # Enable live trading
+
+# Environment settings
+environment: devnet
+cluster: devnet
+
+# Market settings
+market: "SOL-PERP"
+market_index: 0
+
+# Live trading timing
+loop_secs: 1.0  # Faster for live trading
+
+# JIT Engine v3 Configuration
+jit:
+  # Conservative sizing for testing
+  base_size: 0.05  # Start small (0.05 SOL = ~$12)
+  max_position: 2.0  # Conservative position limit
+  
+  # Safety spreads
+  min_spread_bps: 5.0   # 5 bps minimum (wider than prod)
+  max_spread_bps: 100.0  # Wide max for safety
+  
+  # Microprice calculation
+  microprice:
+    enabled: true
+    
+  # Conservative OBI weights for testing
+  obi_weights:
+    low: 0.6      # Less aggressive than prod
+    normal: 0.5   # Balanced
+    high: 0.4     # Conservative in high vol
+  
+  # Toxicity-based spread adjustment
+  skew:
+    enabled: true
+    toxicity_threshold: 0.5  # Lower threshold = more defensive
+    skew_multiplier: 2.0     # Wider spreads when toxic
+  
+  # Cancel/replace settings
+  cancel_replace_v2:
+    enabled: true
+    min_lifetime_ms: 500   # Longer lifetime for testing
+    price_move_bps: 2.0    # Larger move threshold
+
+# Safety limits - LIVE TRADING CONTROLS
+safety:
+  enable_circuit_breaker: true
+  enable_crash_sentinel: true
+  enable_portfolio_rails: true
+  max_daily_trades: 100
+  max_order_value_usd: 50  # $50 max per order
+  max_position: 2.0  # Max 2 SOL position
+  position_check_interval: 10
+  circuit_breaker_threshold: 0.02  # 2% loss triggers halt
+
+# Monitoring - LIVE TRADING MONITORING
+monitoring:
+  prometheus_port: 9109
+  enable_health_endpoints: true
+  enable_alerts: true
+  enable_real_time_monitoring: true
+
+# Logging
+log_level: INFO
+enable_debug_metrics: true
+enable_live_data_logging: true
+
+# RPC settings (for real client)
+rpc:
+  http_url: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+  ws_url: wss://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+
+# Wallet settings
+wallet_secret_key: .devnet_wallet.json
+wallets:
+  maker_keypair_path: .devnet_wallet.json

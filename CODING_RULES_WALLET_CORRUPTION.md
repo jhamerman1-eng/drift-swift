@@ -144,3 +144,5 @@ ERROR | Wallet data keys: array format
 ---
 
 **This rule prevents wallet corruption issues and ensures quick resolution when they occur.**
+
+

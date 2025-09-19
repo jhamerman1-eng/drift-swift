@@ -259,7 +259,7 @@
     "priority": "medium",
     "status": "resolved",
     "created": 1758034281.0843518,
-    "updated": 1758034331.0000000,
+    "updated": 1758034331.0,
     "context": {
       "component": "wallet_loading",
       "function": "initialize",
@@ -276,5 +276,45 @@
       "Solution: Extract 32-byte secret key, derive correct public key using nacl.signing.SigningKey",
       "Result: Wallet now loads successfully with public key GfYpU5xEQVErvsje7Reekq3tfhVnXLX8yvFxJgFRMiZC"
     ]
+  },
+  "ERR-5D87E9D6": {
+    "id": "ERR-5D87E9D6",
+    "description": "Runtime error: TypeError - StartupValidator.__init__() takes 1 positional argument but 2 were given",
+    "root_cause": "Exception in start_jit_mm_shotgun",
+    "impact": "Affects bot_initialization",
+    "priority": "medium",
+    "status": "active",
+    "created": 1758128290.1296191,
+    "updated": 1758128290.1296191,
+    "context": {
+      "component": "bot_initialization",
+      "function": "start_jit_mm_shotgun",
+      "wallet_file": ".valid_wallet.json",
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\start_jit_mm_shotgun.py",
+      "line": 93
+    },
+    "log_entries": [],
+    "resolution_attempted": false,
+    "resolution_notes": []
+  },
+  "ERR-3776A573": {
+    "id": "ERR-3776A573",
+    "description": "Runtime error: StartupValidationError - Startup validation failed: Missing wallet configuration",
+    "root_cause": "Exception in main",
+    "impact": "Affects bot_initialization",
+    "priority": "medium",
+    "status": "active",
+    "created": 1758244192.8934703,
+    "updated": 1758244192.8934703,
+    "context": {
+      "component": "bot_initialization",
+      "function": "main",
+      "wallet_file": ".devnet_wallet.json",
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\run_swift_mm_complete.py",
+      "line": 5330
+    },
+    "log_entries": [],
+    "resolution_attempted": false,
+    "resolution_notes": []
   }
 }

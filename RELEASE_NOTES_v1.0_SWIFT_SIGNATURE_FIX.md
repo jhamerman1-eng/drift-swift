@@ -42,7 +42,7 @@ The Complete Swift Market Making Bot now successfully places real trades on Drif
 
 ### **Real Trading Components**
 - ✅ **SwiftEnvelopeCreator**: Generates cryptographically valid order envelopes
-- ✅ **DriftPy Integration**: Real signature generation using `drift_client.sign_signed_msg_order_params_message()`
+- ✅ **DriftPy Integration**: Real signature generation (Swift requires you to sign the SignedMsgOrderParamsMessage bytes with your taker authority. You don't need a specific DriftPy method; you need a valid wallet/signing key and to build the exact same bytes that you send in message. Keep the emphasis on "correct bytes + correct key," not on a DriftPy function.)
 - ✅ **Swift Sidecar**: HTTP POST to `/orders` with proper payload format
 - ✅ **WebSocket Receiver**: Real-time Swift order processing
 - ✅ **JIT Trading Engine**: Advanced order book imbalance (OBI) algorithms

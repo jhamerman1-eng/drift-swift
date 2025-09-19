@@ -93,3 +93,5 @@ self.sidecar_url = swift_config["base_url"]  # ALWAYS use config
 ---
 
 **This fix addresses a recurring regression issue. The comprehensive documentation and code comments should prevent future reversions to hardcoded URL patterns.**
+
+

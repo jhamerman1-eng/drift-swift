@@ -1,0 +1,20 @@
+bots:
+  enhanced_jit:
+    enabled: true
+    health_check_interval: 30
+    restart_policy: always
+    script: bots/jit/enhanced_jit_bot.py
+  quality_first_hedger:
+    enabled: true
+    health_check_interval: 30
+    restart_policy: always
+    script: ultimate_hedge_bot/quality_first_main.py
+coordination:
+  cross_bot_delta_management: true
+  enabled: true
+  fill_attribution: true
+  quality_threshold: 0.7
+monitoring:
+  health_port: 9124
+  metrics_port: 9100
+  prometheus_enabled: true

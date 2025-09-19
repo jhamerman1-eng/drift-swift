@@ -1,0 +1,100 @@
+# Trend Following Profile Configuration
+# Settings specific to trend following and momentum strategies
+
+# Profile metadata
+profile_name: "Trend Follower"
+profile_version: "1.0.0"
+description: "Trend following and momentum strategies with technical indicators"
+
+# Moderate leverage for trend following
+target_leverage: 4.0
+
+# Trend markets
+markets:
+  - "SOL-PERP"
+  - "ETH-PERP"
+  - "BTC-PERP"
+
+# Trend-specific risk limits
+risk_limits:
+  max_position_usd: 100000
+  max_leverage: 10.0
+  max_drawdown_pct: 5.0
+  daily_loss_limit_usd: 10000
+  max_single_position_pct: 30.0
+  max_correlated_positions_pct: 50.0
+  # Trend-specific extensions
+  max_trend_position_usd: 75000
+  max_position_hold_hours: 48
+  max_volatility_threshold: 0.5
+  volatility_position_scaling: 0.5
+  min_trend_strength: 0.3
+  trend_confirmation_threshold: 0.6
+
+# Trend-specific order caps
+order_caps:
+  max_open_orders: 50
+  max_orders_per_minute: 100
+  max_cancels_per_minute: 200
+  max_order_size_usd: 50000
+  min_order_size_usd: 10
+  # Trend-specific extensions
+  max_trend_entries_per_hour: 10
+  max_position_adjustments_per_hour: 20
+  max_entry_slippage_bps: 10.0
+  max_exit_slippage_bps: 15.0
+
+# Trend strategy configuration
+trend_mode: "adaptive"
+primary_timeframe: "15m"
+confirmation_timeframes:
+  - "5m"
+  - "1h"
+
+# Technical indicators
+use_moving_averages: true
+ma_fast_period: 20
+ma_slow_period: 50
+
+use_rsi: true
+rsi_period: 14
+rsi_oversold_threshold: 30.0
+rsi_overbought_threshold: 70.0
+
+use_macd: true
+macd_fast_period: 12
+macd_slow_period: 26
+macd_signal_period: 9
+
+use_bollinger_bands: true
+bb_period: 20
+bb_std_dev: 2.0
+
+# Entry/Exit conditions
+trend_entry_threshold: 0.5
+trend_exit_threshold: 0.2
+
+# Position management
+use_position_sizing: true
+position_sizing_method: "volatility"
+max_position_add_count: 3
+
+# Risk management
+use_stop_loss: true
+stop_loss_pct: 3.0
+use_trailing_stop: true
+trailing_stop_pct: 1.5
+
+use_take_profit: true
+take_profit_pct: 6.0
+
+# Trend confirmation
+require_volume_confirmation: true
+min_volume_ratio: 1.2
+
+use_momentum_filter: true
+momentum_lookback_periods: 10
+
+# Market regime adaptation
+enable_regime_detection: true
+regime_lookback_hours: 24

@@ -1,0 +1,53 @@
+# Regime-driven Jitter Allocation Configuration
+# KEEP THE SAME - These allocation ratios are specified in requirements
+
+# Regime allocation weights (relative; we normalize)
+# These ratios maintain the exact specifications:
+# Calm Markets:     Shotgun 80% + Sniper 20%  (broad participation)
+# Normal Markets:   Shotgun 60% + Sniper 40%  (balanced) 
+# Volatile Markets: Shotgun 40% + Sniper 60%  (quality focus)
+# Trending Markets: Shotgun 30% + Sniper 70%  (directional quality)
+# Crash Markets:    Shotgun 0%  + Sniper 0%   (risk-off)
+
+calm:
+  shotgun_weight: 0.8
+  sniper_weight: 0.2
+  description: "Stable market - favor broad participation"
+
+normal:
+  shotgun_weight: 0.6  
+  sniper_weight: 0.4
+  description: "Normal volatility - balanced approach"
+
+trend:
+  shotgun_weight: 0.3
+  sniper_weight: 0.7
+  description: "Trending market - favor directional quality"
+
+volatile:
+  shotgun_weight: 0.4
+  sniper_weight: 0.6
+  description: "High volatility - favor selective quality"
+
+crash:
+  shotgun_weight: 0.0
+  sniper_weight: 0.0
+  description: "Risk-off - disable all jitter activity"
+
+# Allocation management
+management:
+  rebalance_frequency_seconds: 30
+  regime_stability_periods: 3     # Confirm regime for 3 periods before switching
+  min_regime_duration_seconds: 60 # Minimum time in regime before switching
+
+# Risk scaling
+risk_scaling:
+  enabled: true
+  volatility_scaling_factor: 0.8  # Scale down in high volatility
+  exposure_scaling_factor: 0.9    # Scale down near exposure limits
+  
+# Attribution tracking
+attribution:
+  enabled: true
+  track_regime_performance: true
+  compare_allocations: true

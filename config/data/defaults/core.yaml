@@ -1,0 +1,86 @@
+# Default Core Configuration
+# This file provides the baseline configuration that all deployments inherit
+
+# Contract versioning
+contract_version: "1.0.0"
+
+# Network and environment
+network: "mainnet-beta"
+environment: "production"
+
+# RPC Configuration
+rpc:
+  primary_url: "https://api.mainnet-beta.solana.com"
+  backup_urls:
+    - "https://rpc.ankr.com/solana"
+    - "https://solana-api.projectserum.com"
+  timeout_seconds: 30
+  max_retries: 3
+
+# WebSocket Configuration
+websocket:
+  url: "wss://api.mainnet-beta.solana.com"
+  reconnect_interval: 5
+  max_reconnect_attempts: 10
+  ping_interval: 30
+
+# Swift Sidecar Configuration
+swift:
+  enabled: true
+  base_url: "http://localhost:8080"
+  timeout_seconds: 5
+  fallback_enabled: true
+  circuit_breaker_threshold: 5
+
+# Drift Protocol Configuration
+drift:
+  environment: "mainnet-beta"
+  program_id: "dRiftyHA39MWEi3m9aunc5MzRF1JYuBsbn6VPcn33UH"
+  clearing_house_id: "JCNCMFXo5M5qwjaqHQmVpZijFxUqCJrtpmQkQCKzGm5B"
+
+# Jito MEV Configuration
+jito:
+  enabled: false
+  tip_account: "96gYZGLnJYVFmbjzopPSU6QiEV5fGqZNyN9nmNhvrZU5"
+  tip_amount_lamports: 10000
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "structured"
+  file_enabled: true
+  console_enabled: true
+  max_file_size_mb: 100
+  backup_count: 5
+
+# Metrics Configuration
+metrics:
+  enabled: true
+  port: 8090
+  path: "/metrics"
+  scrape_interval: 30
+
+# Feature Flags
+feature_flags:
+  enhanced_routing: true
+  cross_venue_hedging: true
+  advanced_position_tracking: true
+  confidence_pricing: true
+  jit_optimization: true
+
+# Kill Switches (should all be false in defaults)
+kill_switches:
+  global_trading: false
+  new_positions: false
+  position_increases: false
+  high_frequency_trading: false
+
+# Default Markets
+default_markets:
+  primary_markets:
+    - "SOL-PERP"
+    - "ETH-PERP" 
+    - "BTC-PERP"
+  backup_markets:
+    - "USDC-PERP"
+  market_refresh_interval: 60

@@ -16,6 +16,7 @@ from ..errors import (
     SwiftTimeoutError, SwiftDegradationError
 )
 from ...market.auction import fetch_auction_params, should_use_auction_params, get_conservative_auction_defaults
+from ..order_validator import OrderValidator
 
 logger = logging.getLogger(__name__)
 
@@ -54,13 +55,21 @@ class SwiftSidecarDriver:
         self.sub_account_id = self.swift_config.get("sub_account_id", 0)
         self.auction_enabled = cfg.get("feature", {}).get("swift", {}).get("auction_params", True)
         self.metrics = metrics or SwiftMetrics()
-        
+
         # Get API key from config or environment
         import os
         self.api_key = cfg.get("swift_api_key") or os.getenv("SWIFT_API_KEY")
-        
+
+        # Order validator for price validation
+        self.order_validator = OrderValidator()
+
         logger.info(f"Swift driver initialized: {self.base_url}, retries={self.retries}, auction={self.auction_enabled}")
-    
+
+    def set_pyth_subscriber(self, pyth_subscriber):
+        """Set the Pyth price subscriber for order validation"""
+        self.order_validator.set_pyth_subscriber(pyth_subscriber)
+        logger.info("Pyth subscriber set for Swift order validation")
+
     def _prepare_headers(self, idempotency_key: Optional[str] = None) -> Dict[str, str]:
         """Prepare HTTP headers for Swift API requests"""
         headers = {
@@ -166,7 +175,32 @@ class SwiftSidecarDriver:
         url = f"{self.base_url}/orders"
         attempt = 0
         start_time = time.time()
-        
+
+        # Validate order against Pyth prices
+        try:
+            is_valid, validation_reason = await self.order_validator.validate_swift_order(payload)
+            if not is_valid:
+                logger.warning(f"❌ Order validation failed: {validation_reason}")
+                self.metrics.inc("order_validation_failed", {
+                    "market_index": str(payload.get('market_index', 'unknown')),
+                    "reason": validation_reason[:50]
+                })
+                # Still allow order placement but log the issue
+                # In strict mode, this could raise ValidationError
+            else:
+                logger.info(f"✅ Order validated: {validation_reason}")
+                self.metrics.inc("order_validation_passed", {
+                    "market_index": str(payload.get('market_index', 'unknown'))
+                })
+        except Exception as e:
+            # CRITICAL FIX: Safely format error message to avoid None formatting errors
+            try:
+                error_msg = str(e)
+                logger.warning(f"Order validation error: {error_msg}")
+            except Exception as format_error:
+                logger.warning(f"Order validation error: {type(e).__name__} (formatting failed: {format_error})")
+            # Continue with order placement despite validation error
+
         logger.info(f"Placing order via Swift API: {payload.get('market_type')} market {payload.get('market_index')}")
         
         while attempt <= self.retries:

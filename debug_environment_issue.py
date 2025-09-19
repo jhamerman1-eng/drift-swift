@@ -36,3 +36,5 @@ if env_config.use_local_sidecar():
     print("This should be FALSE for devnet environment")
 else:
     print("✅ CORRECT: Bot should use external Swift API")
+
+

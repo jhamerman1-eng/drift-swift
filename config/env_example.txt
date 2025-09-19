@@ -1,0 +1,147 @@
+# Environment Variables Example
+# Copy this file to .env and configure with your actual values
+# Never commit actual secrets to version control
+
+# =============================================================================
+# NETWORK & DEPLOYMENT
+# =============================================================================
+
+# Solana network (mainnet-beta, devnet, testnet, localnet)
+NETWORK=devnet
+
+# Deployment environment (production, staging, development, testing)
+ENVIRONMENT=development
+
+# =============================================================================
+# WALLET & KEYS
+# =============================================================================
+
+# Path to keypair file (recommended for production)
+# KEYPAIR_PATH=/path/to/your/keypair.json
+
+# OR base58 encoded private key (for development/testing only)
+# TAKER_SECRET_KEY_BASE58=your_base58_encoded_private_key_here
+
+# =============================================================================
+# CORE CONFIGURATION OVERRIDES
+# =============================================================================
+
+# Contract version override
+# CORE_CONTRACT_VERSION=1.0.0
+
+# =============================================================================
+# RPC CONFIGURATION
+# =============================================================================
+
+# Primary RPC endpoint override
+# RPC_PRIMARY_URL=https://your-rpc-endpoint.com
+
+# RPC timeout in seconds
+# RPC_TIMEOUT_SECONDS=30
+
+# Maximum RPC retries
+# RPC_MAX_RETRIES=3
+
+# =============================================================================
+# SWIFT SIDECAR
+# =============================================================================
+
+# Enable/disable Swift sidecar
+# SWIFT_ENABLED=true
+
+# Swift sidecar base URL
+# SWIFT_BASE_URL=http://localhost:8080
+
+# Swift timeout in seconds
+# SWIFT_TIMEOUT_SECONDS=5
+
+# =============================================================================
+# DRIFT PROTOCOL
+# =============================================================================
+
+# Drift environment override
+# DRIFT_ENVIRONMENT=devnet
+
+# =============================================================================
+# LOGGING
+# =============================================================================
+
+# Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+# LOG_LEVEL=INFO
+
+# Enable file logging
+# LOG_FILE_ENABLED=true
+
+# Enable console logging  
+# LOG_CONSOLE_ENABLED=true
+
+# =============================================================================
+# METRICS & MONITORING
+# =============================================================================
+
+# Enable metrics collection
+# METRICS_ENABLED=true
+
+# Metrics server port
+# METRICS_PORT=8090
+
+# =============================================================================
+# FEATURE FLAGS
+# =============================================================================
+
+# Enable enhanced routing
+# FEATURE_FLAGS_ENHANCED_ROUTING=true
+
+# Enable cross-venue hedging
+# FEATURE_FLAGS_CROSS_VENUE_HEDGING=true
+
+# Enable advanced position tracking
+# FEATURE_FLAGS_ADVANCED_POSITION_TRACKING=true
+
+# Enable confidence pricing
+# FEATURE_FLAGS_CONFIDENCE_PRICING=true
+
+# Enable JIT optimization
+# FEATURE_FLAGS_JIT_OPTIMIZATION=true
+
+# =============================================================================
+# KILL SWITCHES (EMERGENCY CONTROLS)
+# =============================================================================
+
+# Global trading kill switch
+# KILL_SWITCHES_GLOBAL_TRADING=false
+
+# New positions kill switch
+# KILL_SWITCHES_NEW_POSITIONS=false
+
+# Position increases kill switch
+# KILL_SWITCHES_POSITION_INCREASES=false
+
+# High frequency trading kill switch
+# KILL_SWITCHES_HIGH_FREQUENCY_TRADING=false
+
+# =============================================================================
+# MARKETS
+# =============================================================================
+
+# Primary markets (comma-separated)
+# DEFAULT_MARKETS_PRIMARY_MARKETS=SOL-PERP,ETH-PERP,BTC-PERP
+
+# Backup markets (comma-separated)
+# DEFAULT_MARKETS_BACKUP_MARKETS=USDC-PERP
+
+# =============================================================================
+# ADVANCED CONFIGURATION
+# =============================================================================
+
+# Type casting examples:
+# SOME_BOOLEAN__BOOL=true
+# SOME_INTEGER__INT=42
+# SOME_FLOAT__FLOAT=3.14
+# SOME_LIST__LIST=item1,item2,item3
+# SOME_JSON__JSON={"key": "value"}
+
+# Nested configuration examples:
+# RPC__PRIMARY_URL=https://custom-rpc.com
+# SWIFT__TIMEOUT_SECONDS__INT=10
+# KILL_SWITCHES__GLOBAL_TRADING__BOOL=false

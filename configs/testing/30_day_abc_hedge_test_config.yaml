@@ -1,0 +1,725 @@
+# 30-Day A/B/C Test: Three-Way Hedge Strategy Comparison
+# Group A: Sophisticated Hedge Coupling Only
+# Group B: Ultimate Quality-First Only  
+# Group C: Sophisticated Hedge Coupling + Ultimate Quality-First (Hybrid)
+
+test_configuration:
+  name: "30-Day A/B/C Three-Way Hedge Strategy Test"
+  mode: "mock"
+  duration_days: 30
+  start_date: "2025-09-18"
+  test_type: "abc_test"
+  
+  # A/B/C Test Groups
+  test_groups:
+    group_a:
+      name: "Sophisticated Hedge Coupling Only"
+      description: "Feature flag approach with intelligent routing"
+      hedge_approach: "feature_flag_only"
+      
+    group_b:
+      name: "Ultimate Quality-First Only"
+      description: "Ultimate Bot with quality filtering, no coupling"
+      hedge_approach: "quality_first_only"
+      
+    group_c:
+      name: "Hybrid: Sophisticated Coupling + Ultimate Quality-First"
+      description: "Best of both - coupling intelligence with quality filtering"
+      hedge_approach: "hybrid_ultimate"
+      
+  # Mock environment settings
+  mock_settings:
+    use_mock_trading: true
+    mock_market_data: true
+    mock_swift_sidecar: true
+    mock_price_feeds: true
+    real_logging: true
+    real_metrics: true
+    
+  # Dynamic capital allocation test settings
+  capital_allocation:
+    enabled: true
+    dynamic_allocation: true
+    total_portfolio_usd: 10000
+    target_utilization: 0.80  # 80% portfolio utilization target
+    track_performance: true
+    regime_aware: true
+    reallocation_frequency_minutes: 15
+    risk_management:
+      max_single_asset_allocation: 0.35  # 35% max per asset
+      max_correlated_risk: 0.60         # 60% max correlated exposure
+      leverage_buffer: 0.85             # Use 85% of max leverage for safety
+
+# Group A: Sophisticated Hedge Coupling Feature Flag Only
+group_a_feature_progression:
+  
+  week_1: # Days 1-7: Core + Sophisticated Hedge Coupling (NO Ultimate Bot)
+    name: "Group A: Sophisticated Coupling Only"
+    features:
+      # Core (always enabled)
+      core_jitter: true
+      basic_attribution: true  
+      basic_allocation: true
+      
+      # KEY: Enable sophisticated hedge coupling, NO Ultimate Bot
+      sophisticated_hedge_coupling: true   # ENABLED
+      use_ultimate_hedge_bot: false        # DISABLED - Key difference
+      
+      # Other advanced features start disabled
+      advanced_toggle_manager: false
+      advanced_crash_sentinel: false
+      advanced_quality_filters: false
+      realtime_optimization: false
+      comprehensive_testing: false
+      
+      # Monitoring enabled
+      debug_logging: true
+      performance_profiling: true
+      strategy_comparison: true
+      
+    hedge_configuration:
+      type: "jitter_coupling_only"
+      intelligent_routing: true
+      source_aware_hedging: true
+      urgency_based_execution: true
+      ultimate_bot_integration: false  # KEY: No Ultimate Bot
+      
+  week_2: # Days 8-14: Add quality filters
+    name: "Group A: Add Quality Filters"
+    features:
+      core_jitter: true
+      basic_attribution: true
+      basic_allocation: true
+      sophisticated_hedge_coupling: true   # STAYS ENABLED
+      use_ultimate_hedge_bot: false        # STAYS DISABLED
+      
+      # Enable quality filters
+      advanced_quality_filters: true      # NEW
+      
+      # Still disabled
+      advanced_toggle_manager: false
+      advanced_crash_sentinel: false
+      realtime_optimization: false
+      comprehensive_testing: false
+      
+      # Monitoring
+      debug_logging: true
+      performance_profiling: true
+      strategy_comparison: true
+      
+  week_3: # Days 15-21: Add crash sentinel
+    name: "Group A: Add Crash Sentinel"
+    features:
+      core_jitter: true
+      basic_attribution: true
+      basic_allocation: true
+      sophisticated_hedge_coupling: true   # STAYS ENABLED
+      use_ultimate_hedge_bot: false        # STAYS DISABLED
+      advanced_quality_filters: true
+      
+      # Enable crash sentinel
+      advanced_crash_sentinel: true       # NEW
+      
+      # Still disabled
+      advanced_toggle_manager: false
+      realtime_optimization: false
+      comprehensive_testing: false
+      
+      # Monitoring
+      debug_logging: false
+      performance_profiling: true
+      strategy_comparison: true
+      
+  week_4: # Days 22-30: Full advanced features
+    name: "Group A: Full Features (No Ultimate Bot)"
+    features:
+      core_jitter: true
+      basic_attribution: true
+      basic_allocation: true
+      sophisticated_hedge_coupling: true   # STAYS ENABLED
+      use_ultimate_hedge_bot: false        # STAYS DISABLED
+      advanced_quality_filters: true
+      advanced_crash_sentinel: true
+      
+      # Enable remaining features
+      comprehensive_testing: true         # NEW
+      advanced_toggle_manager: true       # NEW
+      
+      # Keep optimization disabled
+      realtime_optimization: false
+      
+      # Monitoring
+      debug_logging: false
+      performance_profiling: true
+      strategy_comparison: true
+
+# Group B: Ultimate Quality-First Only (NO Sophisticated Coupling)
+group_b_feature_progression:
+  
+  week_1: # Days 1-7: Core + Ultimate Quality-First (NO Coupling)
+    name: "Group B: Ultimate Quality-First Only"
+    features:
+      # Core (always enabled)
+      core_jitter: true
+      basic_attribution: true  
+      basic_allocation: true
+      
+      # KEY: NO sophisticated coupling, USE Ultimate Bot
+      sophisticated_hedge_coupling: false  # DISABLED - Key difference
+      use_ultimate_hedge_bot: true         # ENABLED - Use Ultimate Bot
+      
+      # Other advanced features start disabled
+      advanced_toggle_manager: false
+      advanced_crash_sentinel: false
+      advanced_quality_filters: false
+      realtime_optimization: false
+      comprehensive_testing: false
+      
+      # Monitoring enabled
+      debug_logging: true
+      performance_profiling: true
+      strategy_comparison: true
+      
+    hedge_configuration:
+      type: "ultimate_quality_only"
+      quality_threshold: 0.7
+      enterprise_infrastructure: true
+      xemm_bridge: true
+      selective_hedging: true
+      coupling_integration: false         # KEY: No coupling
+      
+  week_2: # Days 8-14: Add quality filters (Ultimate Bot already has quality)
+    name: "Group B: Add Jitter Quality Filters"
+    features:
+      core_jitter: true
+      basic_attribution: true
+      basic_allocation: true
+      sophisticated_hedge_coupling: false  # STAYS DISABLED
+      use_ultimate_hedge_bot: true         # STAYS ENABLED
+      
+      # Enable quality filters (supplements Ultimate Bot)
+      advanced_quality_filters: true      # NEW
+      
+      # Still disabled
+      advanced_toggle_manager: false
+      advanced_crash_sentinel: false
+      realtime_optimization: false
+      comprehensive_testing: false
+      
+      # Monitoring
+      debug_logging: true
+      performance_profiling: true
+      strategy_comparison: true
+      
+  week_3: # Days 15-21: Add crash sentinel
+    name: "Group B: Add Crash Sentinel"
+    features:
+      core_jitter: true
+      basic_attribution: true
+      basic_allocation: true
+      sophisticated_hedge_coupling: false  # STAYS DISABLED
+      use_ultimate_hedge_bot: true         # STAYS ENABLED
+      advanced_quality_filters: true
+      
+      # Enable crash sentinel
+      advanced_crash_sentinel: true       # NEW
+      
+      # Still disabled
+      advanced_toggle_manager: false
+      realtime_optimization: false
+      comprehensive_testing: false
+      
+      # Monitoring
+      debug_logging: false
+      performance_profiling: true
+      strategy_comparison: true
+      
+  week_4: # Days 22-30: Full features (NO coupling)
+    name: "Group B: Full Features (Ultimate Bot Only)"
+    features:
+      core_jitter: true
+      basic_attribution: true
+      basic_allocation: true
+      sophisticated_hedge_coupling: false  # STAYS DISABLED
+      use_ultimate_hedge_bot: true         # STAYS ENABLED
+      advanced_quality_filters: true
+      advanced_crash_sentinel: true
+      
+      # Enable remaining features
+      comprehensive_testing: true         # NEW
+      advanced_toggle_manager: true       # NEW
+      
+      # Keep optimization disabled
+      realtime_optimization: false
+      
+      # Monitoring
+      debug_logging: false
+      performance_profiling: true
+      strategy_comparison: true
+
+# Group C: HYBRID - Sophisticated Coupling + Ultimate Quality-First
+group_c_feature_progression:
+  
+  week_1: # Days 1-7: Core + BOTH Coupling AND Ultimate Bot
+    name: "Group C: Hybrid - Coupling + Ultimate Quality-First"
+    features:
+      # Core (always enabled)
+      core_jitter: true
+      basic_attribution: true  
+      basic_allocation: true
+      
+      # KEY: BOTH sophisticated coupling AND Ultimate Bot
+      sophisticated_hedge_coupling: true   # ENABLED - Best of A
+      use_ultimate_hedge_bot: true         # ENABLED - Best of B
+      
+      # Other advanced features start disabled
+      advanced_toggle_manager: false
+      advanced_crash_sentinel: false
+      advanced_quality_filters: false
+      realtime_optimization: false
+      comprehensive_testing: false
+      
+      # Monitoring enabled
+      debug_logging: true
+      performance_profiling: true
+      strategy_comparison: true
+      
+    hedge_configuration:
+      type: "hybrid_ultimate_coupling"
+      # Coupling features
+      intelligent_routing: true
+      source_aware_hedging: true
+      urgency_based_execution: true
+      # Ultimate Bot features
+      quality_threshold: 0.7
+      enterprise_infrastructure: true
+      xemm_bridge: true
+      selective_hedging: true
+      # Hybrid integration
+      coupling_integration: true          # KEY: Both working together
+      
+  week_2: # Days 8-14: Add quality filters (hybrid benefits)
+    name: "Group C: Add Quality Filters (Triple Quality)"
+    features:
+      core_jitter: true
+      basic_attribution: true
+      basic_allocation: true
+      sophisticated_hedge_coupling: true   # STAYS ENABLED
+      use_ultimate_hedge_bot: true         # STAYS ENABLED
+      
+      # Enable quality filters (now we have 3 layers of quality!)
+      advanced_quality_filters: true      # NEW - Triple quality layer
+      
+      # Still disabled
+      advanced_toggle_manager: false
+      advanced_crash_sentinel: false
+      realtime_optimization: false
+      comprehensive_testing: false
+      
+      # Monitoring
+      debug_logging: true
+      performance_profiling: true
+      strategy_comparison: true
+      
+  week_3: # Days 15-21: Add crash sentinel
+    name: "Group C: Add Crash Sentinel (Full Protection)"
+    features:
+      core_jitter: true
+      basic_attribution: true
+      basic_allocation: true
+      sophisticated_hedge_coupling: true   # STAYS ENABLED
+      use_ultimate_hedge_bot: true         # STAYS ENABLED
+      advanced_quality_filters: true
+      
+      # Enable crash sentinel
+      advanced_crash_sentinel: true       # NEW
+      
+      # Still disabled
+      advanced_toggle_manager: false
+      realtime_optimization: false
+      comprehensive_testing: false
+      
+      # Monitoring
+      debug_logging: false
+      performance_profiling: true
+      strategy_comparison: true
+      
+  week_4: # Days 22-30: Full hybrid features
+    name: "Group C: Full Hybrid System"
+    features:
+      core_jitter: true
+      basic_attribution: true
+      basic_allocation: true
+      sophisticated_hedge_coupling: true   # STAYS ENABLED
+      use_ultimate_hedge_bot: true         # STAYS ENABLED
+      advanced_quality_filters: true
+      advanced_crash_sentinel: true
+      
+      # Enable remaining features
+      comprehensive_testing: true         # NEW
+      advanced_toggle_manager: true       # NEW
+      
+      # Keep optimization disabled
+      realtime_optimization: false
+      
+      # Monitoring
+      debug_logging: false
+      performance_profiling: true
+      strategy_comparison: true
+
+# A/B/C Test Comparison Metrics
+abc_test_metrics:
+  
+  primary_comparison:
+    hedge_approach_effectiveness:
+      - "hedge_response_latency_ms"
+      - "hedge_execution_success_rate"
+      - "hedge_pnl_by_source"
+      - "hedge_quality_filter_effectiveness"
+      - "hedge_coordination_conflicts"
+      
+  secondary_comparison:
+    system_integration:
+      - "jit_hedge_coordination_latency"
+      - "capital_allocation_hedge_requests"
+      - "portfolio_risk_reduction"
+      - "cross_bot_attribution_accuracy"
+      - "hybrid_synergy_effectiveness"  # NEW: How well C combines A+B
+      
+  business_impact:
+    profitability:
+      - "total_pnl_group_a_vs_group_b_vs_group_c"
+      - "pnl_per_trade_group_a_vs_group_b_vs_group_c"
+      - "win_rate_group_a_vs_group_b_vs_group_c"
+      - "risk_adjusted_returns_three_way"
+      
+    operational_efficiency:
+      - "hedge_decision_speed_three_way"
+      - "resource_utilization_three_way"
+      - "error_rates_three_way"
+      - "maintenance_overhead_three_way"
+      - "hybrid_complexity_assessment"   # NEW: Is C too complex?
+
+# Hedge Strategy Specifications
+hedge_strategy_specs:
+  
+  group_a_sophisticated_coupling:
+    implementation: "libs/jitter/advanced/hedge_coupling.py"
+    ultimate_bot_integration: false
+    features:
+      source_aware_routing:
+        shotgun_fills: "immediate hedging"
+        sniper_fills: "opportunistic hedging"
+      urgency_based_execution:
+        immediate: "<5ms response"
+        fast: "<10ms response"
+        opportunistic: "<500ms response"
+      portfolio_awareness:
+        cross_bot_coordination: true
+        position_sizing: "dynamic"
+        risk_limits: "coordinated"
+      intelligence_features:
+        fill_quality_analysis: true
+        market_impact_assessment: true
+        hedge_timing_optimization: true
+        
+  group_b_ultimate_quality_first:
+    implementation: "ultimate_hedge_bot/quality_first_main.py"
+    coupling_integration: false
+    features:
+      quality_first_filtering:
+        base_threshold: 0.7
+        regime_adjustments: true
+        source_specific_thresholds: true
+      enterprise_infrastructure:
+        sub_10ms_response: true
+        race_free_xemm: true
+        advanced_cost_routing: true
+        state_machine_safety: true
+      selective_hedging:
+        quality_based_decisions: true
+        portfolio_aware_sizing: true
+        real_time_coordination: true
+      ml_capabilities:
+        toxicity_detection: true
+        spoof_pattern_recognition: true
+        quality_score_prediction: true
+        
+  group_c_hybrid_ultimate:
+    implementation: ["libs/jitter/advanced/hedge_coupling.py", "ultimate_hedge_bot/quality_first_main.py"]
+    integration_layer: "libs/integration/hybrid_hedge_coordinator.py"
+    features:
+      # Combined from Group A
+      source_aware_routing:
+        shotgun_fills: "immediate hedging with quality check"
+        sniper_fills: "opportunistic hedging with quality check"
+      urgency_based_execution:
+        immediate: "<5ms response + quality filter"
+        fast: "<10ms response + quality filter"
+        opportunistic: "<500ms response + quality filter"
+      # Combined from Group B
+      quality_first_filtering:
+        base_threshold: 0.7
+        regime_adjustments: true
+        source_specific_thresholds: true
+        coupling_aware: true  # NEW: Quality considers coupling decisions
+      # Hybrid synergies
+      hybrid_coordination:
+        coupling_quality_feedback: true   # Coupling informs quality scoring
+        quality_routing_optimization: true # Quality informs routing decisions
+        dual_risk_management: true        # Both systems protect each other
+        performance_attribution: true     # Track which system made decision
+
+# Dynamic Bot Configuration (Regime-Adaptive)
+# Note: USD amounts are base allocations - actual amounts adjusted by regime
+bot_configurations:
+
+  enhanced_jit:
+    enabled: true
+    base_allocation_usd: 75         # Base allocation - adjusted by regime
+    regime_allocation_range: [0.08, 0.20]  # Min/Max % of portfolio
+    cycle_target_ms: 100
+    strategy_type: "market_making"
+    risk_tolerance: "medium"
+    leverage_base: 10.0
+
+  sniper_bot:
+    enabled: true
+    base_allocation_usd: 200        # Base allocation - adjusted by regime
+    regime_allocation_range: [0.05, 0.25]  # Min/Max % of portfolio
+    precision_target_ms: 50
+    strategy_type: "momentum"
+    risk_tolerance: "high"
+    leverage_base: 10.0
+
+  hedge_bot_group_a:
+    enabled: true
+    base_allocation_usd: 500        # Base allocation - adjusted by regime
+    regime_allocation_range: [0.15, 0.25]  # Min/Max % of portfolio
+    response_target_ms: 10
+    hedge_type: "sophisticated_coupling_only"
+    ultimate_bot_enabled: false
+    risk_tolerance: "low"
+    leverage_base: 10.0
+
+  hedge_bot_group_b:
+    enabled: true
+    base_allocation_usd: 500        # Base allocation - adjusted by regime
+    regime_allocation_range: [0.15, 0.25]  # Min/Max % of portfolio
+    response_target_ms: 10
+    hedge_type: "ultimate_quality_first_only"
+    quality_threshold: 0.7
+    coupling_enabled: false
+    risk_tolerance: "low"
+    leverage_base: 10.0
+
+  hedge_bot_group_c:
+    enabled: true
+    base_allocation_usd: 500        # Base allocation - adjusted by regime
+    regime_allocation_range: [0.15, 0.25]  # Min/Max % of portfolio
+    response_target_ms: 8           # Target faster due to hybrid efficiency
+    hedge_type: "hybrid_ultimate_coupling"
+    quality_threshold: 0.7
+    coupling_enabled: true
+    ultimate_bot_enabled: true
+    hybrid_coordination: true
+    risk_tolerance: "low"
+    leverage_base: 10.0
+
+  trend_bot:
+    enabled: true
+    base_allocation_usd: 300        # Base allocation - adjusted by regime
+    regime_allocation_range: [0.02, 0.35]  # Min/Max % of portfolio (widest range)
+    signal_threshold: 0.8
+    strategy_type: "directional"
+    risk_tolerance: "medium"
+    leverage_base: 10.0
+
+  # Dynamic Capital Allocation System
+  capital_allocation:
+    enabled: true
+    dynamic_allocation: true
+    total_portfolio_usd: 10000
+    target_utilization: 0.80        # 80% portfolio utilization
+    regime_aware: true
+    reallocation_frequency_minutes: 15
+
+    # Regime-specific allocation strategies
+    regime_allocations:
+      calm:
+        total_utilization: 0.85      # 85% in calm markets
+        bot_weights:
+          enhanced_jit: 0.15         # 15% - More JIT in calm
+          sniper_bot: 0.25           # 25% - More sniper opportunities
+          hedge_bot: 0.20            # 20% - Less hedging needed
+          trend_bot: 0.25            # 25% - Trend following works well
+
+      normal:
+        total_utilization: 0.80      # 80% in normal markets
+        bot_weights:
+          enhanced_jit: 0.12         # 12% - Standard JIT
+          sniper_bot: 0.20           # 20% - Standard sniper
+          hedge_bot: 0.25            # 25% - Standard hedging
+          trend_bot: 0.23            # 23% - Standard trend
+
+      trending:
+        total_utilization: 0.75      # 75% in trending markets
+        bot_weights:
+          enhanced_jit: 0.08         # 8% - Less JIT
+          sniper_bot: 0.15           # 15% - Fewer opportunities
+          hedge_bot: 0.17            # 17% - Moderate hedging
+          trend_bot: 0.35            # 35% - Heavy trend allocation
+
+      volatile:
+        total_utilization: 0.65      # 65% in volatile markets
+        bot_weights:
+          enhanced_jit: 0.20         # 20% - More JIT for quick profits
+          sniper_bot: 0.25           # 25% - Sniper opportunities
+          hedge_bot: 0.15            # 15% - Less hedging
+          trend_bot: 0.05            # 5% - Minimal trend following
+
+      crash:
+        total_utilization: 0.20      # 20% during crashes
+        bot_weights:
+          enhanced_jit: 0.05         # 5% - Minimal activity
+          sniper_bot: 0.05           # 5% - Minimal activity
+          hedge_bot: 0.08            # 8% - Heavy hedging
+          trend_bot: 0.02            # 2% - Minimal activity
+
+# A/B/C Test Scenarios
+test_scenarios:
+  
+  week_1_baseline:
+    description: "Establish baseline for all three approaches"
+    market_conditions: "calm"
+    expected_difference: "Group C should show early signs of hybrid benefits"
+    
+  week_2_quality_test:
+    description: "Test quality filtering with triple layer (Group C)"
+    market_conditions: "mixed_quality_fills"
+    expected_difference: "Group C should excel with triple quality filtering"
+    
+  week_3_volatility_test:
+    description: "Test coordination under stress"
+    market_conditions: "high_volatility"
+    expected_difference: "Group C should show best risk management"
+    
+  week_4_full_system:
+    description: "Compare full system performance"
+    market_conditions: "comprehensive_scenarios"
+    expected_difference: "Group C should outperform if hybrid works well"
+
+# Success Criteria for A/B/C Test
+success_criteria:
+  
+  statistical_significance:
+    min_sample_size: 1000  # trades per group
+    confidence_level: 0.95
+    effect_size_threshold: 0.1  # 10% difference to be meaningful
+    
+  performance_targets:
+    all_groups_must_meet:
+      hedge_response_latency: "<10ms (95th percentile)"
+      system_uptime: ">99.9%"
+      error_rate: "<1%"
+      
+  comparison_metrics:
+    primary_success:
+      pnl_difference: "Group with highest risk-adjusted returns"
+      latency_difference: "Group with consistently lowest latency"
+      reliability_difference: "Group with fewest errors/conflicts"
+      
+    hybrid_assessment:
+      synergy_effectiveness: "Does Group C outperform A and B individually?"
+      complexity_cost: "Is Group C's complexity justified by performance gains?"
+      integration_reliability: "Does hybrid integration introduce new failure modes?"
+
+# Reporting Configuration
+reporting:
+  
+  daily_abc_comparison:
+    - "Three-way performance metrics side-by-side"
+    - "Statistical significance tracking (A vs B vs C)"
+    - "Cumulative difference analysis"
+    - "Hybrid synergy assessment"
+    
+  weekly_deep_dive:
+    - "Feature interaction analysis (all three approaches)"
+    - "Hedge strategy effectiveness comparison"
+    - "System integration assessment"
+    - "Hybrid coordination evaluation"
+    
+  final_recommendation:
+    - "Three-way quantitative performance comparison"
+    - "Qualitative assessment (complexity, maintenance, reliability)"
+    - "Production deployment recommendation"
+    - "Hybrid approach feasibility analysis"
+
+# Expected Outcomes
+expected_outcomes:
+  
+  group_a_advantages:
+    - "Tighter Jitter system integration"
+    - "Simpler deployment and configuration"
+    - "Consistent feature flag management"
+    - "Lower complexity overhead"
+    
+  group_b_advantages:
+    - "Mature quality filtering algorithms"
+    - "Enterprise-grade infrastructure"
+    - "Proven selective hedging logic"
+    - "Advanced ML capabilities"
+    
+  group_c_advantages:
+    - "Best of both worlds - coupling intelligence + quality filtering"
+    - "Triple quality layer protection"
+    - "Optimal routing with quality awareness"
+    - "Hybrid synergies potentially outperforming individual approaches"
+    
+  group_c_risks:
+    - "Increased complexity may introduce failure modes"
+    - "Integration overhead may reduce performance"
+    - "More difficult to debug and maintain"
+    - "Feature conflicts between coupling and ultimate bot"
+    
+  decision_criteria:
+    - "If Group C outperforms A and B by >15% → Choose Group C (hybrid worth complexity)"
+    - "If Group C performs within 5% of best individual → Choose simpler individual approach"
+    - "If Group C shows integration issues → Avoid hybrid, choose best individual"
+    - "Evaluate complexity vs performance trade-off carefully"
+
+# Hybrid Coordination Specifications
+hybrid_coordination:
+  
+  coupling_quality_integration:
+    quality_informed_routing:
+      description: "Coupling decisions consider Ultimate Bot quality scores"
+      implementation: "Quality scores influence urgency classification"
+      benefit: "Higher quality fills get priority routing"
+      
+    coupling_informed_quality:
+      description: "Quality filtering considers coupling context"
+      implementation: "Source type affects quality thresholds"
+      benefit: "Different quality standards for shotgun vs sniper"
+      
+  dual_risk_management:
+    portfolio_coordination:
+      description: "Both systems share portfolio risk awareness"
+      implementation: "Unified risk limits across coupling and quality decisions"
+      benefit: "No double-counting or risk limit conflicts"
+      
+    performance_feedback:
+      description: "Each system learns from the other's results"
+      implementation: "Quality scores updated based on coupling outcomes"
+      benefit: "Continuous improvement through cross-system feedback"
+      
+  attribution_tracking:
+    decision_source:
+      description: "Track which system made the final hedge decision"
+      implementation: "Tag each hedge with decision path (coupling/quality/hybrid)"
+      benefit: "Clear performance attribution for optimization"
+      
+    synergy_measurement:
+      description: "Measure hybrid benefits vs individual systems"
+      implementation: "Compare hybrid results to simulated individual decisions"
+      benefit: "Quantify value of hybrid approach"

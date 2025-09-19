@@ -136,7 +136,7 @@ class EnvironmentConfig:
         jit_config = self.env_config.get("jit", {})
         common_jit = self.common_config.get("jit", {})
         common_timeouts = self.common_config.get("timeouts", {})
-        
+
         return {
             "enabled": jit_config.get("enabled", False),
             "base_url": jit_config.get("base_url"),
@@ -152,7 +152,51 @@ class EnvironmentConfig:
                 "versioning": True
             }
         }
-    
+
+    # ========================================================================
+    # PYTH CONFIGURATION
+    # ========================================================================
+
+    def get_pyth_config(self) -> Dict[str, Any]:
+        """Get complete Pyth Lazer configuration"""
+        pyth_config = self.env_config.get("pyth", {})
+        common_timeouts = self.common_config.get("timeouts", {})
+
+        return {
+            "enabled": pyth_config.get("enabled", True),
+            "lazer_endpoints": pyth_config.get("lazer_endpoints", []),
+            "lazer_token": pyth_config.get("lazer_token", ""),
+            "http_endpoints": pyth_config.get("http_endpoints", []),
+            "resub_timeout_ms": pyth_config.get("resub_timeout_ms", 2000),
+            "chunk_size": pyth_config.get("chunk_size", 2),
+            "timeout_seconds": common_timeouts.get("pyth_timeout_seconds", 5.0)
+        }
+
+    # ========================================================================
+    # REDIS CONFIGURATION
+    # ========================================================================
+
+    def get_redis_config(self) -> Dict[str, Any]:
+        """Get complete Redis configuration"""
+        redis_config = self.env_config.get("redis", {})
+
+        return {
+            "enabled": redis_config.get("enabled", True),
+            "host": redis_config.get("host", "127.0.0.1"),
+            "port": redis_config.get("port", 6379),
+            "db": redis_config.get("db", 0),
+            "password": redis_config.get("password", ""),
+            "key_prefix": redis_config.get("key_prefix", "drift:pyth:"),
+            "ttl_seconds": redis_config.get("ttl_seconds", 300),
+            "socket_timeout": redis_config.get("socket_timeout", 5.0),
+            "socket_connect_timeout": redis_config.get("socket_connect_timeout", 5.0),
+            "socket_keepalive": redis_config.get("socket_keepalive", True),
+            "health_check_interval": redis_config.get("health_check_interval", 30),
+            "max_connections": redis_config.get("max_connections", 20),
+            "retry_on_timeout": redis_config.get("retry_on_timeout", True),
+            "decode_responses": redis_config.get("decode_responses", True)
+        }
+
     # ========================================================================
     # MARKET MAKING CONFIGURATION
     # ========================================================================
@@ -212,7 +256,16 @@ class EnvironmentConfig:
         jit_config = self.get_jit_config()
         if jit_config["enabled"] and not jit_config["base_url"]:
             issues.append("JIT enabled but missing base_url")
-        
+
+        pyth_config = self.get_pyth_config()
+        if pyth_config["enabled"]:
+            if not pyth_config["lazer_endpoints"]:
+                issues.append("Pyth enabled but missing lazer_endpoints")
+            if not pyth_config["lazer_token"]:
+                issues.append("Pyth enabled but missing lazer_token")
+            if not pyth_config["http_endpoints"]:
+                issues.append("Pyth enabled but missing http_endpoints")
+
         return {
             "environment": self.environment,
             "valid": len(issues) == 0,
@@ -224,7 +277,9 @@ class EnvironmentConfig:
                 "swift_url": swift_config["base_url"],
                 "use_local_sidecar": self.use_local_sidecar(),
                 "jit_enabled": jit_config["enabled"],
-                "jit_url": jit_config["base_url"]
+                "jit_url": jit_config["base_url"],
+                "pyth_enabled": pyth_config["enabled"],
+                "pyth_endpoints": len(pyth_config["lazer_endpoints"])
             }
         }
 
@@ -256,6 +311,18 @@ def get_swift_config() -> Dict[str, Any]:
 def get_jit_config() -> Dict[str, Any]:
     """Get JIT configuration for current environment"""
     return env_config.get_jit_config()
+
+def get_pyth_config() -> Dict[str, Any]:
+    """Get Pyth configuration for current environment"""
+    return env_config.get_pyth_config()
+
+def get_redis_config() -> Dict[str, Any]:
+    """Get Redis configuration for current environment"""
+    return env_config.get_redis_config()
+
+def validate_configuration() -> Dict[str, Any]:
+    """Validate current environment configuration"""
+    return env_config.validate_configuration()
 
 
 

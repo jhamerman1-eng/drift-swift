@@ -147,3 +147,5 @@ base_url = os.getenv("SWIFT_URL", "http://localhost:8787")
 ---
 
 **These rules prevent the recurring hardcoded URL regression issue and ensure maintainable configuration management.**
+
+

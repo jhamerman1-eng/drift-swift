@@ -1,0 +1,329 @@
+{
+  "individual_tests": [
+    {
+      "test_id": 1,
+      "duration_minutes": 10,
+      "test_duration_seconds": 40.78459811210632,
+      "total_fills": 269,
+      "total_events": 5,
+      "events": [
+        {
+          "type": "volatility_spike",
+          "description": "Major news causes 50% volatility spike"
+        },
+        {
+          "type": "regime_change",
+          "description": "Market regime shifts to volatile due to macro news"
+        },
+        {
+          "type": "large_fill",
+          "description": "Large institutional buy order causes market impact"
+        },
+        {
+          "type": "arbitrage_opportunity",
+          "description": "Cross-exchange price divergence creates arbitrage"
+        },
+        {
+          "type": "liquidation_cascade",
+          "description": "Leveraged positions liquidate causing cascade"
+        }
+      ],
+      "ultimate_metrics": {
+        "total_pnl": -798035.3197442313,
+        "total_hedges": 269,
+        "successful_hedges": 269,
+        "hedge_success_rate": 1.0,
+        "avg_processing_latency_ms": 63.075750733839975,
+        "p95_latency_ms": 76.05671882629395,
+        "p99_latency_ms": 77.76641845703125,
+        "avg_slippage_bps": 5.220468370317644,
+        "avg_market_impact_bps": 10.549232930001082,
+        "total_trading_costs": 798053.6963194796,
+        "cost_per_hedge": 2966.7423654999243,
+        "max_delta_exposure": 196.89394745765256,
+        "final_delta": -121.93007351217979
+      },
+      "jitter_metrics": {
+        "total_pnl": -393570.47990917123,
+        "total_hedges": 172,
+        "successful_hedges": 172,
+        "hedge_success_rate": 1.0,
+        "avg_processing_latency_ms": 87.95969292174938,
+        "p95_latency_ms": 94.77806091308594,
+        "p99_latency_ms": 95.65138816833496,
+        "avg_slippage_bps": 7.012942469574998,
+        "avg_market_impact_bps": 11.688237449291664,
+        "total_trading_costs": 393578.9225780079,
+        "cost_per_hedge": 2288.249549872139,
+        "max_delta_exposure": 119.3834216159325,
+        "final_delta": -84.59113602391814
+      }
+    },
+    {
+      "test_id": 2,
+      "duration_minutes": 10,
+      "test_duration_seconds": 39.47313904762268,
+      "total_fills": 257,
+      "total_events": 5,
+      "events": [
+        {
+          "type": "volatility_spike",
+          "description": "Major news causes 50% volatility spike"
+        },
+        {
+          "type": "regime_change",
+          "description": "Market regime shifts to volatile due to macro news"
+        },
+        {
+          "type": "large_fill",
+          "description": "Large institutional buy order causes market impact"
+        },
+        {
+          "type": "arbitrage_opportunity",
+          "description": "Cross-exchange price divergence creates arbitrage"
+        },
+        {
+          "type": "liquidation_cascade",
+          "description": "Leveraged positions liquidate causing cascade"
+        }
+      ],
+      "ultimate_metrics": {
+        "total_pnl": -590928103.4528157,
+        "total_hedges": 257,
+        "successful_hedges": 257,
+        "hedge_success_rate": 1.0,
+        "avg_processing_latency_ms": 64.36860422216037,
+        "p95_latency_ms": 77.55804061889648,
+        "p99_latency_ms": 79.52308654785156,
+        "avg_slippage_bps": 5.231239428136991,
+        "avg_market_impact_bps": 10.610354541445307,
+        "total_trading_costs": 590928121.4326427,
+        "cost_per_hedge": 2299331.211800166,
+        "max_delta_exposure": 134.4025845358021,
+        "final_delta": -98.05349811590166
+      },
+      "jitter_metrics": {
+        "total_pnl": -272007172.20797974,
+        "total_hedges": 162,
+        "successful_hedges": 162,
+        "hedge_success_rate": 1.0,
+        "avg_processing_latency_ms": 89.59127649848844,
+        "p95_latency_ms": 95.33309936523438,
+        "p99_latency_ms": 109.54546928405762,
+        "avg_slippage_bps": 6.873039788728381,
+        "avg_market_impact_bps": 11.455066314547302,
+        "total_trading_costs": 272007179.9383602,
+        "cost_per_hedge": 1679056.6662861742,
+        "max_delta_exposure": 82.5876283134767,
+        "final_delta": -60.23691039344146
+      }
+    },
+    {
+      "test_id": 3,
+      "duration_minutes": 10,
+      "test_duration_seconds": 38.1475191116333,
+      "total_fills": 250,
+      "total_events": 5,
+      "events": [
+        {
+          "type": "volatility_spike",
+          "description": "Major news causes 50% volatility spike"
+        },
+        {
+          "type": "regime_change",
+          "description": "Market regime shifts to volatile due to macro news"
+        },
+        {
+          "type": "large_fill",
+          "description": "Large institutional buy order causes market impact"
+        },
+        {
+          "type": "arbitrage_opportunity",
+          "description": "Cross-exchange price divergence creates arbitrage"
+        },
+        {
+          "type": "liquidation_cascade",
+          "description": "Leveraged positions liquidate causing cascade"
+        }
+      ],
+      "ultimate_metrics": {
+        "total_pnl": -266864860814.89886,
+        "total_hedges": 250,
+        "successful_hedges": 250,
+        "hedge_success_rate": 1.0,
+        "avg_processing_latency_ms": 63.87697219848633,
+        "p95_latency_ms": 77.63123512268066,
+        "p99_latency_ms": 78.81617546081543,
+        "avg_slippage_bps": 4.952243695128712,
+        "avg_market_impact_bps": 9.93674378724406,
+        "total_trading_costs": 266864860830.48007,
+        "cost_per_hedge": 1067459443.3219203,
+        "max_delta_exposure": 227.1359662773436,
+        "final_delta": -183.01725235634007
+      },
+      "jitter_metrics": {
+        "total_pnl": -176320163190.53003,
+        "total_hedges": 157,
+        "successful_hedges": 157,
+        "hedge_success_rate": 1.0,
+        "avg_processing_latency_ms": 89.10087719085111,
+        "p95_latency_ms": 95.12162208557129,
+        "p99_latency_ms": 109.72404479980469,
+        "avg_slippage_bps": 6.666494743004208,
+        "avg_market_impact_bps": 11.110824571673678,
+        "total_trading_costs": 176320163197.89798,
+        "cost_per_hedge": 1123058364.3178215,
+        "max_delta_exposure": 127.34983252903056,
+        "final_delta": -103.39008458909441
+      }
+    },
+    {
+      "test_id": 4,
+      "duration_minutes": 10,
+      "test_duration_seconds": 38.254963636398315,
+      "total_fills": 248,
+      "total_events": 5,
+      "events": [
+        {
+          "type": "volatility_spike",
+          "description": "Major news causes 50% volatility spike"
+        },
+        {
+          "type": "regime_change",
+          "description": "Market regime shifts to volatile due to macro news"
+        },
+        {
+          "type": "large_fill",
+          "description": "Large institutional buy order causes market impact"
+        },
+        {
+          "type": "arbitrage_opportunity",
+          "description": "Cross-exchange price divergence creates arbitrage"
+        },
+        {
+          "type": "liquidation_cascade",
+          "description": "Leveraged positions liquidate causing cascade"
+        }
+      ],
+      "ultimate_metrics": {
+        "total_pnl": -138173537071260.16,
+        "total_hedges": 248,
+        "successful_hedges": 248,
+        "hedge_success_rate": 1.0,
+        "avg_processing_latency_ms": 63.55114136972735,
+        "p95_latency_ms": 77.34441757202148,
+        "p99_latency_ms": 78.30500602722168,
+        "avg_slippage_bps": 4.976160916940362,
+        "avg_market_impact_bps": 9.967534605850188,
+        "total_trading_costs": 138173537071275.95,
+        "cost_per_hedge": 557151359158.3707,
+        "max_delta_exposure": 184.67172003734234,
+        "final_delta": -179.3194613443904
+      },
+      "jitter_metrics": {
+        "total_pnl": -88120505419523.62,
+        "total_hedges": 165,
+        "successful_hedges": 165,
+        "hedge_success_rate": 1.0,
+        "avg_processing_latency_ms": 89.61233225735751,
+        "p95_latency_ms": 95.65186500549316,
+        "p99_latency_ms": 109.59911346435547,
+        "avg_slippage_bps": 6.607654673226304,
+        "avg_market_impact_bps": 11.012757788710507,
+        "total_trading_costs": 88120505419530.84,
+        "cost_per_hedge": 534063669209.27783,
+        "max_delta_exposure": 90.08060974448703,
+        "final_delta": -71.47416480586998
+      }
+    },
+    {
+      "test_id": 5,
+      "duration_minutes": 10,
+      "test_duration_seconds": 40.54604506492615,
+      "total_fills": 264,
+      "total_events": 5,
+      "events": [
+        {
+          "type": "volatility_spike",
+          "description": "Major news causes 50% volatility spike"
+        },
+        {
+          "type": "regime_change",
+          "description": "Market regime shifts to volatile due to macro news"
+        },
+        {
+          "type": "large_fill",
+          "description": "Large institutional buy order causes market impact"
+        },
+        {
+          "type": "arbitrage_opportunity",
+          "description": "Cross-exchange price divergence creates arbitrage"
+        },
+        {
+          "type": "liquidation_cascade",
+          "description": "Leveraged positions liquidate causing cascade"
+        }
+      ],
+      "ultimate_metrics": {
+        "total_pnl": -4.4436204774767475e+17,
+        "total_hedges": 264,
+        "successful_hedges": 264,
+        "hedge_success_rate": 1.0,
+        "avg_processing_latency_ms": 63.00509517843073,
+        "p95_latency_ms": 76.39884948730469,
+        "p99_latency_ms": 78.887939453125,
+        "avg_slippage_bps": 5.1198490713119025,
+        "avg_market_impact_bps": 10.357266856603877,
+        "total_trading_costs": 4.4436204774767475e+17,
+        "cost_per_hedge": 1683189574801798.2,
+        "max_delta_exposure": 117.41046976108909,
+        "final_delta": -102.82477517345527
+      },
+      "jitter_metrics": {
+        "total_pnl": -2.535861128355364e+17,
+        "total_hedges": 179,
+        "successful_hedges": 179,
+        "hedge_success_rate": 1.0,
+        "avg_processing_latency_ms": 88.59947806630055,
+        "p95_latency_ms": 95.23415565490723,
+        "p99_latency_ms": 108.81829261779785,
+        "avg_slippage_bps": 6.86207105599556,
+        "avg_market_impact_bps": 11.436785093325934,
+        "total_trading_costs": 2.5358611283553642e+17,
+        "cost_per_hedge": 1416682194611935.2,
+        "max_delta_exposure": 65.91080489795532,
+        "final_delta": -57.154936188074345
+      }
+    }
+  ],
+  "aggregate_results": {
+    "ultimate_aggregate": {
+      "total_pnl": -4.44500488741333e+17,
+      "avg_pnl_per_test": -8.89000977482666e+16,
+      "pnl_volatility": 1.9870927989920826e+17,
+      "avg_latency_ms": 63.57551274052895,
+      "latency_consistency": 0.5691230370541369,
+      "total_costs": 4.4450048874133306e+17,
+      "total_hedges": 1288,
+      "wins": 0
+    },
+    "jitter_aggregate": {
+      "total_pnl": -2.5367440993351984e+17,
+      "avg_pnl_per_test": -5.073488198670397e+16,
+      "pnl_volatility": 1.1339729178563752e+17,
+      "avg_latency_ms": 88.97273138694939,
+      "latency_consistency": 0.7024374792185202,
+      "total_costs": 2.536744099335199e+17,
+      "total_hedges": 835,
+      "wins": 5
+    },
+    "performance_comparison": {
+      "pnl_advantage_ultimate": -1.9082607880781315e+17,
+      "pnl_advantage_pct": -75.22480444827791,
+      "latency_advantage_ultimate": 25.39721864642044,
+      "cost_advantage_ultimate": -1.9082607880781315e+17,
+      "ultimate_win_rate": 0.0
+    }
+  },
+  "report": "\ud83c\udfc6 PERFORMANCE COMPARISON REPORT\n============================================================\nUltimate Production Hedge Bot vs Jitter Hedge Coupling\nTest Duration: 5x 10-minute sessions (50 minutes total)\n\n\ud83d\udcca AGGREGATE RESULTS:\n  Ultimate Total P&L: $-444500488741332992.00\n  Jitter Total P&L: $-253674409933519840.00\n  Winner: Jitter\n  P&L Advantage: $190826078807813152.00 (75.2%)\n\n\u26a1 LATENCY COMPARISON:\n  Ultimate Avg Latency: 63.6ms\n  Jitter Avg Latency: 89.0ms\n  Ultimate Faster By: 25.4ms (28.5%)\n\n\ud83d\udcb0 COST COMPARISON:\n  Ultimate Total Costs: $444500488741333056.00\n  Jitter Total Costs: $253674409933519904.00\n  Ultimate Cost Savings: $-190826078807813152.00\n\n\ud83c\udfaf SUCCESS METRICS:\n  Ultimate Wins: 0/5 tests\n  Ultimate Win Rate: 0.0%\n  Total Hedges - Ultimate: 1288\n  Total Hedges - Jitter: 835\n\n\ud83d\udcc8 TEST-BY-TEST BREAKDOWN:\n  Test 1: Jitter wins\n    Ultimate: $-798035.32 P&L, 63.1ms latency\n    Jitter: $-393570.48 P&L, 88.0ms latency\n    Events: volatility_spike, regime_change, large_fill, arbitrage_opportunity, liquidation_cascade\n  Test 2: Jitter wins\n    Ultimate: $-590928103.45 P&L, 64.4ms latency\n    Jitter: $-272007172.21 P&L, 89.6ms latency\n    Events: volatility_spike, regime_change, large_fill, arbitrage_opportunity, liquidation_cascade\n  Test 3: Jitter wins\n    Ultimate: $-266864860814.90 P&L, 63.9ms latency\n    Jitter: $-176320163190.53 P&L, 89.1ms latency\n    Events: volatility_spike, regime_change, large_fill, arbitrage_opportunity, liquidation_cascade\n  Test 4: Jitter wins\n    Ultimate: $-138173537071260.16 P&L, 63.6ms latency\n    Jitter: $-88120505419523.62 P&L, 89.6ms latency\n    Events: volatility_spike, regime_change, large_fill, arbitrage_opportunity, liquidation_cascade\n  Test 5: Jitter wins\n    Ultimate: $-444362047747674752.00 P&L, 63.0ms latency\n    Jitter: $-253586112835536384.00 P&L, 88.6ms latency\n    Events: volatility_spike, regime_change, large_fill, arbitrage_opportunity, liquidation_cascade\n\n\ud83c\udfc1 CONCLUSION:\n  Jitter Hedge Coupling demonstrated superior overall performance\n  Key advantages of Jitter:\n    \u2705 Superior real-time MM bot integration\n    \u2705 Better strategy-specific coordination\n    \u2705 More effective fill attribution\n    \u2705 Faster adaptation to market changes"
+}

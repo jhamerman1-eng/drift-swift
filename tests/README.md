@@ -1,371 +1,199 @@
-# Comprehensive Testing Framework for Drift-Swift Bots
+cess
+# 🧪 TESTS - Comprehensive Testing Framework
 
-This directory contains a comprehensive testing framework for all bot implementations in the drift-swift trading system. The framework provides unit tests, integration tests, end-to-end tests, and CI/CD integration.
+This directory contains the comprehensive testing framework for the Drift Swift trading system, including unit tests, integration tests, performance benchmarks, regression tests, and long-term simulations.
 
-## Overview
-
-The testing framework covers three main bot types:
-- **JIT (Just-In-Time) Market Maker**: Advanced market making with OBI pricing
-- **Hedge Bot**: Risk management and position hedging
-- **Trend Bot**: Trend-following strategies with MACD signals
-
-## Test Structure
+## 📁 Directory Structure
 
 ```
 tests/
-├── __init__.py                 # Test package initialization
-├── conftest.py                 # Shared fixtures and configuration
-├── test_jit_bot.py            # JIT bot comprehensive unit tests
-├── test_hedge_bot.py          # Hedge bot comprehensive unit tests
-├── test_trend_bot.py          # Trend bot comprehensive unit tests
-├── test_e2e_bots.py           # End-to-end integration tests
-├── test_client_order_and_orderbook.py  # Existing client tests
-└── README.md                  # This file
+├── unit/                           # Unit Tests
+│   ├── test_capital_allocator.py   # Capital allocation tests
+│   ├── test_ob_normalizer.py       # ⭐ Orderbook normalization tests
+│   ├── test_execution_router.py    # Execution router tests
+│   └── test_drift_client.py        # Drift client tests
+├── integration/                    # Integration Tests
+│   ├── test_bot_coordination.py    # Cross-bot coordination tests
+│   ├── test_swift_integration.py   # Swift API integration tests
+│   └── test_capital_allocation.py  # Capital allocation integration
+├── performance/                    # Performance Benchmarks
+│   ├── benchmark_jit_latency.py    # JIT bot latency benchmarks
+│   ├── benchmark_capital_allocation.py # Capital allocation performance
+│   └── load_test_system.py         # System load testing
+├── regression/                     # Regression Tests
+│   ├── test_swift_signer_regression.py # ⭐ Swift signer regression tests
+│   ├── test_orderbook_regression.py    # Orderbook regression tests
+│   └── test_position_regression.py     # Position tracking regression
+└── simulation/                     # Long-term Simulations
+    ├── 90_day_system_test.py       # ⭐ 90-day combined system test
+    ├── 30_day_hedge_test.py        # 30-day hedge bot test
+    └── market_condition_simulator.py # Market condition simulation
 ```
 
-## Running Tests
+## 🧪 Testing Categories
 
-### Quick Start
+### 1. Unit Tests (`unit/`)
+**Purpose**: Test individual components in isolation.
 
+**Key Tests**:
+- **`test_ob_normalizer.py`**: Prevents "list indices must be integers" errors
+- **`test_capital_allocator.py`**: Validates capital allocation logic
+- **`test_execution_router.py`**: Tests smart execution routing
+
+### 2. Integration Tests (`integration/`)
+**Purpose**: Test interactions between components.
+
+**Key Tests**:
+- **`test_bot_coordination.py`**: Cross-bot coordination validation
+- **`test_swift_integration.py`**: Swift API integration testing
+- **`test_capital_allocation.py`**: End-to-end capital allocation
+
+### 3. Performance Tests (`performance/`)
+**Purpose**: Benchmark system performance and identify bottlenecks.
+
+**Key Benchmarks**:
+- **JIT Order Placement**: <10ms (95th percentile)
+- **Capital Allocation**: <1ms (direct integration)
+- **Quality Assessment**: <5ms (real-time scoring)
+
+### 4. Regression Tests (`regression/`)
+**Purpose**: Prevent regression of previously fixed issues.
+
+**Key Regression Tests**:
+- **Swift Signer Initialization**: Prevents wallet initialization bugs
+- **Orderbook Processing**: Prevents data format parsing errors
+- **Position Tracking**: Prevents position calculation errors
+
+### 5. Long-term Simulations (`simulation/`)
+**Purpose**: Extended testing with realistic market conditions.
+
+**Key Simulations**:
+- **90-Day Combined System**: Full system integration testing
+- **30-Day Hedge Bot**: Hedge bot performance validation
+- **Market Condition Simulation**: Various market regime testing
+
+## 🔧 Running Tests
+
+### Quick Test Commands
 ```bash
-# Install test dependencies
-pip install -r requirements-dev.txt
-
 # Run all tests
-make test
+python -m pytest tests/ -v
 
-# Run unit tests only
-make test-unit
+# Unit tests only
+python -m pytest tests/unit/ -v
 
-# Run end-to-end tests
-make test-e2e
+# Specific critical tests
+python -m pytest tests/unit/test_ob_normalizer.py -v
+python -m pytest tests/regression/test_swift_signer_regression.py -v
 
-# Run specific bot tests
-make test-jit
-make test-hedge
-make test-trend
+# Performance benchmarks
+python -m pytest tests/performance/ -v
+
+# Long-term simulation
+python tests/simulation/90_day_system_test.py
 ```
 
-### Advanced Usage
-
+### Coverage Testing
 ```bash
-# Run tests with coverage
-make test-cov
-
-# Run CI/CD test suite
-make test-ci
-
-# Run tests for development (fast feedback)
-make test-fast
-
-# Clean test artifacts
-make clean-test
-
-# Full development setup
-make dev-setup
+# Generate coverage report
+python -m pytest tests/ --cov=libs --cov=bots --cov-report=html
+open htmlcov/index.html
 ```
 
-### Using the Test Runner Script
+## 📊 Test Quality Standards
 
-```bash
-# Run all test suites
-python scripts/run_tests.py all
+- **Unit Test Coverage**: >95% for critical components
+- **Integration Test Coverage**: >85% for bot interactions
+- **Performance Regression**: <5% latency increase between versions
+- **Flaky Test Rate**: <1% of total tests
 
-# Run unit tests with verbose output
-python scripts/run_tests.py unit --verbose
+## 🛡️ Critical Test Cases
 
-# Run specific bot tests
-python scripts/run_tests.py bot jit
-python scripts/run_tests.py bot hedge
-python scripts/run_tests.py bot trend
-
-# Run tests with coverage
-python scripts/run_tests.py coverage
-python scripts/run_tests.py coverage --xml
-
-# Run CI tests
-python scripts/run_tests.py ci
-
-# Run performance tests
-python scripts/run_tests.py performance
-
-# Run linting
-python scripts/run_tests.py lint
-```
-
-## Test Categories
-
-### Unit Tests (`test_*_bot.py`)
-
-Comprehensive unit tests for individual bot components:
-
-#### JIT Bot Tests (`test_jit_bot.py`)
-- `JITConfig` validation and loading
-- `InventoryManager` functionality
-- `OBICalculator` and Order Book Imbalance calculations
-- `SpreadManager` dynamic spread adjustment
-- Error handling and edge cases
-- Performance validation
-
-#### Hedge Bot Tests (`test_hedge_bot.py`)
-- `HedgeDecision` logic with various market conditions
-- Safe division guards and error handling
-- `HedgeExecution` routing logic
-- Integration between decision and execution
-- Edge cases and boundary conditions
-
-#### Trend Bot Tests (`test_trend_bot.py`)
-- Trend entry logic and regime filtering
-- Anti-chop filters (ATR/ADX)
-- MACD calculation and signal generation
-- Momentum calculation
-- Position sizing and risk management integration
-- Edge cases and boundary conditions
-
-### End-to-End Tests (`test_e2e_bots.py`)
-
-Integration tests covering:
-- Complete bot initialization and configuration
-- Full trading workflow from signal to execution
-- Risk management integration
-- Error handling and recovery
-- Multi-bot coordination
-- Performance and timing constraints
-- System robustness and edge cases
-
-## Test Fixtures
-
-### Shared Fixtures (`conftest.py`)
-
-- `event_loop`: Asyncio event loop for async tests
-- `temp_dir`: Temporary directory for test files
-- `test_config`: Test configuration templates
-- `mock_drift_client`: Mock Drift client for testing
-- `mock_risk_manager`: Mock risk manager
-- `mock_order_manager`: Mock order manager
-- `mock_position_tracker`: Mock position tracker
-- `sample_orderbook`: Sample orderbook data
-- `sample_positions`: Sample position data
-
-### Mock Classes
-
-The framework provides comprehensive mock classes:
-- `MockDriftClient`: Simulates Drift protocol interactions
-- `MockRiskManager`: Simulates risk management
-- `MockOrderManager`: Simulates order management
-- `MockPositionTracker`: Simulates position tracking
-- `MockOrderbook`: Simulates orderbook data
-
-## Configuration Testing
-
-### Test Configurations
-
-Test configurations are provided for all bot types:
-
+### Orderbook Normalization Test
 ```python
-TEST_CONFIGS = {
-    "jit_bot": {
-        "bot": {
-            "symbol": "SOL-PERP",
-            "max_inventory_usd": 10000,
-            "max_position_abs": 50,
-            # ... more config
-        },
-        "risk": {
-            "max_drawdown_pct": 0.05,
-            # ... more config
-        }
-    },
-    # ... other bot configs
-}
+def test_normalizes_many_shapes():
+    """Prevents orderbook parsing errors."""
+    shapes = [
+        {"bids": [[100,1]], "asks": [[100.5,1]]},
+        {"data": {"bids": [{"price":100,"size":1}]}},
+        [{"price":100,"size":1}],  # List format
+    ]
+    for shape in shapes:
+        book = normalize_orderbook(shape)
+        assert book.is_valid()
 ```
 
-### Configuration Validation
-
-Tests validate:
-- Required fields presence
-- Data type correctness
-- Value range validation
-- Cross-field consistency
-- Environment variable expansion
-
-## CI/CD Integration
-
-### GitHub Actions
-
-The framework includes GitHub Actions workflow (`.github/workflows/ci.yml`) with:
-
-- **Multi-Python version testing**: Python 3.10, 3.11
-- **Linting**: ruff and mypy
-- **Security scanning**: bandit and safety
-- **Performance testing**: Dedicated performance test suite
-- **Coverage reporting**: Codecov integration
-- **Bot-specific test matrices**: Individual bot testing
-- **Deployment gates**: Staging and production deployment
-
-### Makefile Integration
-
-Comprehensive Makefile targets:
-
-```makefile
-# Main targets
-test                # Run all tests
-test-unit          # Run unit tests only
-test-e2e           # Run end-to-end tests
-test-cov           # Run tests with coverage
-test-ci            # Run CI/CD test suite
-
-# Bot-specific targets
-test-jit           # Run JIT bot tests
-test-hedge         # Run hedge bot tests
-test-trend         # Run trend bot tests
-
-# Utility targets
-test-fast          # Quick test run for development
-clean-test         # Clean test artifacts
-lint               # Run linting
-dev-setup          # Full development setup
-```
-
-## Coverage Requirements
-
-- **Minimum coverage**: 80%
-- **Target coverage**: 90%+
-- **Coverage reporting**: HTML and XML reports
-- **CI integration**: Coverage gates and reporting
-
-## Performance Testing
-
-### Performance Benchmarks
-
-Tests include performance benchmarks for:
-- Calculation speeds (< 1ms for most operations)
-- Memory usage bounds
-- CPU usage constraints
-- Concurrent operation handling
-- Large dataset processing
-
-### Timing Constraints
-
+### Swift Signer Regression Test
 ```python
-# Example performance test
-def test_calculation_performance(self):
-    start_time = time.time()
-    # Perform calculation
-    end_time = time.time()
-    assert end_time - start_time < 0.001  # Less than 1ms
+def test_swift_signer_initialization():
+    """Prevents Swift signer initialization bugs."""
+    from anchorpy import Wallet
+    from solders.keypair import Keypair
+    
+    keypair = Keypair()
+    wallet = Wallet(keypair)  # Must use Wallet wrapper
+    
+    signer = SwiftSigner(wallet=wallet)
+    assert signer.can_sign()
 ```
 
-## Error Handling and Edge Cases
-
-### Comprehensive Error Testing
-
-Tests cover:
-- **Network failures**: Connection timeouts, API errors
-- **Data validation**: Invalid inputs, malformed data
-- **Boundary conditions**: Extreme values, edge cases
-- **Race conditions**: Concurrent access scenarios
-- **Resource limits**: Memory, CPU, and rate limits
-
-### Safe Division Guards
-
-Special attention to division by zero:
+### Capital Allocation Test
 ```python
-def _safe_div(n, d, name, default=0.0):
-    if d is None or abs(d) < 1e-12:
-        return default
-    return n / d
+def test_allocation_within_limits():
+    """Validates capital allocation limits."""
+    allocator = CapitalAllocator(total_capital=10000.0)
+    allocation = allocator.get_allocation("test_bot", current_position=0.0)
+    
+    assert allocation.can_trade
+    assert allocation.max_trade <= allocation.available_capital
 ```
 
-## Development Workflow
+## 🚀 Advanced Testing
 
-### Adding New Tests
-
-1. **Create test file**: `tests/test_new_feature.py`
-2. **Use fixtures**: Leverage shared fixtures from `conftest.py`
-3. **Follow naming**: `test_function_name` or `TestClassName`
-4. **Add markers**: Use appropriate pytest markers
-5. **Update CI**: Add to GitHub Actions if needed
-
-### Test Organization
-
+### Performance Benchmarking
 ```python
-class TestFeature:
-    """Test feature functionality."""
-
-    def test_normal_operation(self):
-        """Test normal operation."""
-        # Arrange
-        # Act
-        # Assert
-
-    def test_edge_cases(self):
-        """Test edge cases."""
-        # Test boundary conditions
-
-    def test_error_handling(self):
-        """Test error handling."""
-        # Test error scenarios
-
-    @pytest.mark.parametrize("input,expected", [
-        (1, 1),
-        (2, 4),
-        (3, 9),
-    ])
-    def test_parametrized(self, input, expected):
-        """Test with parametrized inputs."""
-        assert input ** 2 == expected
+async def benchmark_jit_latency():
+    """Benchmark JIT bot order placement latency."""
+    latencies = []
+    for i in range(100):
+        start = time.perf_counter()
+        await bot.place_order(side="buy", size=0.1, price=234.56)
+        latency = (time.perf_counter() - start) * 1000
+        latencies.append(latency)
+    
+    p95_latency = statistics.quantiles(latencies, n=20)[18]
+    assert p95_latency < 10.0, "P95 latency must be under 10ms"
 ```
 
-## Contributing
-
-### Test Standards
-
-1. **Test isolation**: Each test should be independent
-2. **Descriptive names**: Clear test naming conventions
-3. **Comprehensive coverage**: Test all code paths
-4. **Performance awareness**: Tests should run quickly
-5. **Documentation**: Clear docstrings and comments
-
-### Code Quality
-
-- **Linting**: ruff for code quality
-- **Type checking**: mypy for type safety
-- **Security**: bandit for security scanning
-- **Coverage**: pytest-cov for coverage reporting
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Import errors**: Ensure test dependencies are installed
-2. **Async test issues**: Use proper async test fixtures
-3. **Mock setup**: Verify mock objects are properly configured
-4. **Coverage gaps**: Review uncovered code sections
-
-### Debug Mode
-
-```bash
-# Run tests with detailed output
-pytest -v -s --tb=long
-
-# Run specific test with debugging
-pytest tests/test_jit_bot.py::TestJITConfig::test_config_creation -s
-
-# Run tests with coverage details
-pytest --cov=bots --cov-report=html
+### Long-term Simulation
+```python
+async def test_90_day_system():
+    """90-day combined system simulation."""
+    simulator = CombinedSystemSimulator()
+    results = await simulator.run_simulation(days=90)
+    
+    assert results["sharpe_ratio"] > 1.0
+    assert results["max_drawdown"] < 0.25
+    assert results["win_rate"] > 0.55
 ```
-
-## Future Enhancements
-
-- **Property-based testing**: Use hypothesis for edge case discovery
-- **Load testing**: Simulate high-frequency trading scenarios
-- **Integration testing**: Test with real Drift protocol (staging)
-- **Visual testing**: Charts and graphs for signal validation
-- **A/B testing**: Framework for comparing bot strategies
 
 ---
 
-For questions or issues with the testing framework, please refer to the main project documentation or create an issue in the repository.
+## 📞 Testing Support
 
+### Troubleshooting Tests
+```bash
+# Debug failing tests
+python -m pytest tests/ -v -x --pdb
 
+# Run with verbose logging
+python -m pytest tests/ --log-cli-level=DEBUG
+```
+
+### Test Environment
+- **Mock Data**: Comprehensive test fixtures
+- **Async Support**: Proper async test configuration
+- **Performance Monitoring**: Built-in benchmarking tools
+- **Regression Prevention**: Automated regression detection
+
+The testing framework ensures system reliability, performance, and correctness through comprehensive validation at all levels.

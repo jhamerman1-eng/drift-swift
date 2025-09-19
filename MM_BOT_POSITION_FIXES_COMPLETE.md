@@ -171,3 +171,8 @@ The bot is ready for live trading once the Swift sidecar order placement issue i
 
 
 
+
+
+
+
+

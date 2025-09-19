@@ -1,0 +1,26 @@
+# Bot Profile for JIT Bot
+# This file contains bot-specific settings that complement the shared core settings
+
+# Bot identification
+name: jit
+
+# Sub-account to use for trading
+sub_account: 0
+
+# Target leverage for positions
+target_leverage: 3.0
+
+# Margin mode: 'cross' or 'isolated'
+margin_mode: cross
+
+# Markets to trade
+markets:
+  - SOL-PERP
+  - BTC-PERP
+
+# Maximum position size in USD
+max_position_usd: 10000.0
+
+# Hedge settings
+hedge_enabled: true
+hedge_threshold: 0.2

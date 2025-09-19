@@ -15,9 +15,14 @@ import logging
 import time
 import uuid
 from enum import Enum
-from typing import Optional, Dict, Any, Callable, Union
+from typing import Optional, Dict, Any, Callable
 from dataclasses import dataclass
-from decimal import Decimal
+
+# Import compute budget utilities
+try:
+    from ..solana.compute_budget_utils import ComputeBudgetOptimizer
+except ImportError:
+    ComputeBudgetOptimizer = None
 
 logger = logging.getLogger(__name__)
 
@@ -25,6 +30,7 @@ class ExecIntent(str, Enum):
     """Order execution intent determines routing and flags"""
     MAKER = "maker"   # resting quotes (MM bot)
     TAKER = "taker"   # JIT responses (aggressive fills)
+    TWAP = "twap"     # TWAP slice execution (adaptive routing)
 
 class ErrorType(str, Enum):
     """Error classification for retry logic"""
@@ -49,7 +55,7 @@ class ExecutionMetrics:
     def __init__(self):
         self.counters = {}
         
-    def inc(self, metric: str, labels: Dict[str, str] = None):
+    def inc(self, metric: str, labels: Optional[Dict[str, str]] = None):
         """Increment counter with labels"""
         key = f"{metric}_{labels}" if labels else metric
         self.counters[key] = self.counters.get(key, 0) + 1
@@ -81,7 +87,7 @@ class ExecutionRouter:
         lot_normalizer: Optional[Callable[[float], float]] = None,
         swift_enabled: bool = True,
         max_retries: int = 3,
-        retry_delays: list = None
+        retry_delays: Optional[list] = None
     ):
         self.drift = drift_client
         self.swift = swift_client
@@ -218,6 +224,33 @@ class ExecutionRouter:
                     # No Swift cancel available - this is expected for some setups
                     logger.info(f"No Swift cancel available for taker order {order_id}; skipping")
                     result = OrderResult(success=True, driver="none")
+                    
+            elif intent == ExecIntent.TWAP:
+                # TWAP orders follow taker-like cancel logic (prefer Swift)
+                if self.swift and self.swift_enabled and hasattr(self.swift, 'cancel_order'):
+                    try:
+                        await self.swift.cancel_order(order_id)
+                        result = OrderResult(success=True, driver="swift")
+                    except Exception as e:
+                        logger.warning(f"Swift cancel failed for TWAP {order_id}: {e}")
+                        # Fallback to Drift cancel for TWAP
+                        if hasattr(self.drift, 'cancel_order'):
+                            try:
+                                await self.drift.cancel_order(order_id)
+                                result = OrderResult(success=True, driver="drift")
+                            except Exception as drift_e:
+                                logger.warning(f"Drift cancel also failed for TWAP {order_id}: {drift_e}")
+                                result = OrderResult(success=False, error=str(drift_e), driver="drift")
+                        else:
+                            result = OrderResult(success=False, error=str(e), driver="swift")
+                else:
+                    # Fallback to Drift for TWAP cancel
+                    if hasattr(self.drift, 'cancel_order'):
+                        await self.drift.cancel_order(order_id)
+                        result = OrderResult(success=True, driver="drift")
+                    else:
+                        logger.info(f"No cancel available for TWAP order {order_id}; skipping")
+                        result = OrderResult(success=True, driver="none")
             else:
                 result = OrderResult(success=False, error=f"Unknown intent: {intent}", error_type=ErrorType.PERMANENT)
             
@@ -292,6 +325,24 @@ class ExecutionRouter:
                     logger.info("Swift replace unavailable; doing cancel+re-place fallback")
                     await self.cancel(order_id, intent)
                     return await self.place(normalized_params, intent)
+                    
+            elif intent == ExecIntent.TWAP:
+                # TWAP replace follows taker-like logic (prefer Swift)
+                if (self.swift and self.swift_enabled and 
+                    hasattr(self.swift, 'replace_order')):
+                    try:
+                        normalized_params = self._enforce_taker_flags(normalized_params)
+                        result_id = await self.swift.replace_order(order_id, normalized_params)
+                        result = OrderResult(success=True, order_id=result_id, driver="swift")
+                    except Exception as e:
+                        logger.warning(f"Swift replace failed for TWAP, falling back to cancel+place: {e}")
+                        await self.cancel(order_id, intent)
+                        return await self.place(normalized_params, intent)
+                else:
+                    # Fallback: cancel + place via appropriate driver
+                    logger.info("Swift replace unavailable for TWAP; doing cancel+re-place fallback")
+                    await self.cancel(order_id, intent)
+                    return await self.place(normalized_params, intent)
             else:
                 result = OrderResult(success=False, error=f"Unknown intent: {intent}", error_type=ErrorType.PERMANENT)
             
@@ -345,17 +396,8 @@ class ExecutionRouter:
         """Enforce maker-specific flags"""
         enforced = params.copy()
         
-        # Import at method level to avoid circular imports
-        try:
-            from driftpy.types import PostOnlyParams
-            if hasattr(PostOnlyParams, 'MUST_POST_ONLY'):
-                enforced['post_only'] = PostOnlyParams.MUST_POST_ONLY
-            elif hasattr(PostOnlyParams, 'MustPostOnly'):
-                enforced['post_only'] = PostOnlyParams.MustPostOnly()
-            else:
-                enforced['post_only'] = True  # Boolean fallback
-        except (ImportError, AttributeError):
-            enforced['post_only'] = True  # Fallback for mock environments
+        # Maker orders should be post-only
+        enforced['post_only'] = True
             
         enforced['immediate_or_cancel'] = False
         
@@ -365,17 +407,8 @@ class ExecutionRouter:
         """Enforce taker-specific flags"""
         enforced = params.copy()
         
-        # Import at method level to avoid circular imports
-        try:
-            from driftpy.types import PostOnlyParams
-            if hasattr(PostOnlyParams, 'NONE'):
-                enforced['post_only'] = PostOnlyParams.NONE
-            elif hasattr(PostOnlyParams, 'None_'):
-                enforced['post_only'] = PostOnlyParams.None_()
-            else:
-                enforced['post_only'] = False  # Boolean fallback
-        except (ImportError, AttributeError):
-            enforced['post_only'] = False  # Fallback for mock environments
+        # Taker orders should not be post-only (can cross spread)
+        enforced['post_only'] = False
             
         enforced['immediate_or_cancel'] = True  # Prefer IOC for taker orders
         
@@ -428,6 +461,34 @@ class ExecutionRouter:
                     error="No execution drivers available",
                     error_type=ErrorType.PERMANENT
                 )
+                
+        elif intent == ExecIntent.TWAP:
+            # TWAP → Adaptive routing (prefer Swift for taker-like behavior, fallback to Drift)
+            # TWAP orders are typically aggressive/taker-like for immediate execution
+            if self.swift and self.swift_enabled:
+                try:
+                    params = self._enforce_taker_flags(params)  # TWAP uses taker flags
+                    if hasattr(self.swift, 'place_signed'):
+                        order_id = await self.swift.place_signed(params)
+                        return OrderResult(success=True, order_id=order_id, driver="swift")
+                    else:
+                        logger.warning("Swift place_signed not available for TWAP, falling back to Drift")
+                except Exception as e:
+                    logger.warning(f"Swift failed for TWAP (attempt {attempt}), falling back to Drift: {e}")
+                    # Fall through to Drift fallback
+            
+            # Drift fallback for TWAP
+            params = self._enforce_taker_flags(params)
+            
+            if hasattr(self.drift, 'place_perp_order'):
+                order_id = await self.drift.place_perp_order(params)
+                return OrderResult(success=True, order_id=order_id, driver="drift")
+            else:
+                return OrderResult(
+                    success=False,
+                    error="No execution drivers available for TWAP",
+                    error_type=ErrorType.PERMANENT
+                )
         else:
             return OrderResult(
                 success=False,
@@ -468,5 +529,104 @@ class ExecutionRouter:
             "order_tracking": {
                 "tracked_orders": len(self.order_drivers),
                 "driver_breakdown": {}
+            }
+        }
+
+    def _optimize_transaction_compute_budget(self, order_type: str, market_conditions: str) -> Dict[str, Any]:
+        """
+        Optimize compute budget based on order type and market conditions
+
+        Args:
+            order_type: Type of order (jitter_sniper, twap, dex_trade, etc.)
+            market_conditions: Market conditions (volatile, calm, etc.)
+
+        Returns:
+            Dictionary with compute budget parameters
+        """
+        if not ComputeBudgetOptimizer:
+            logger.warning("ComputeBudgetOptimizer not available, using defaults")
+            return {}
+
+        # Determine priority level based on order type and market conditions
+        if market_conditions == 'volatile':
+            priority = 'critical'
+        elif order_type in ['jitter_sniper', 'twap']:
+            priority = 'high'
+        else:
+            priority = 'medium'
+
+        # Get optimized compute budget parameters
+        compute_limit = ComputeBudgetOptimizer.get_recommended_compute_limit('dex_trade')
+        compute_price = ComputeBudgetOptimizer.calculate_optimal_price(priority)
+
+        return {
+            'compute_unit_limit': compute_limit,
+            'compute_unit_price': compute_price,
+            'priority_level': priority
+        }
+
+    def _prepare_swift_order_with_compute_budget(self, order_params: Dict[str, Any], order_type: str = "dex_trade") -> Dict[str, Any]:
+        """
+        Prepare Swift order with compute budget optimization
+
+        Args:
+            order_params: Original order parameters
+            order_type: Type of order for optimization
+
+        Returns:
+            Enhanced order parameters with compute budget
+        """
+        if not ComputeBudgetOptimizer:
+            logger.debug("ComputeBudgetOptimizer not available, skipping compute budget optimization")
+            return order_params
+
+        # Get compute budget optimization based on order type
+        compute_budget = self._optimize_transaction_compute_budget(order_type, 'medium')
+
+        if not compute_budget:
+            return order_params
+
+        # Create enhanced parameters with compute budget
+        enhanced_params = order_params.copy()
+        enhanced_params.update(compute_budget)
+
+        logger.debug(f"Enhanced Swift order with compute budget: {compute_budget}")
+        return enhanced_params
+
+    def get_compute_budget_strategy_configs(self) -> Dict[str, Dict[str, Any]]:
+        """
+        Get compute budget configurations for different trading strategies
+
+        Returns:
+            Dictionary mapping strategy names to compute budget configurations
+        """
+        if not ComputeBudgetOptimizer:
+            return {}
+
+        return {
+            'shotgun': {
+                'compute_limit': ComputeBudgetOptimizer.get_recommended_compute_limit('dex_trade'),
+                'compute_price': ComputeBudgetOptimizer.calculate_optimal_price('high'),
+                'description': 'High-frequency shotgun execution'
+            },
+            'sniper': {
+                'compute_limit': ComputeBudgetOptimizer.get_recommended_compute_limit('complex_defi'),
+                'compute_price': ComputeBudgetOptimizer.calculate_optimal_price('critical'),
+                'description': 'Precision sniper fills'
+            },
+            'twap': {
+                'compute_limit': ComputeBudgetOptimizer.get_recommended_compute_limit('dex_trade'),
+                'compute_price': ComputeBudgetOptimizer.calculate_optimal_price('high'),
+                'description': 'Time-weighted average price execution'
+            },
+            'market_making': {
+                'compute_limit': ComputeBudgetOptimizer.get_recommended_compute_limit('dex_trade'),
+                'compute_price': ComputeBudgetOptimizer.calculate_optimal_price('medium'),
+                'description': 'Market making with resting orders'
+            },
+            'jit_response': {
+                'compute_limit': ComputeBudgetOptimizer.get_recommended_compute_limit('dex_trade'),
+                'compute_price': ComputeBudgetOptimizer.calculate_optimal_price('critical'),
+                'description': 'JIT response to Swift orders'
             }
         }

@@ -10,7 +10,7 @@ import asyncio
 import logging
 import base64
 import json
-from typing import Dict, Any, Optional, Union
+from typing import Dict, Any, Optional, List
 from dataclasses import dataclass
 from solders.keypair import Keypair
 from solders.pubkey import Pubkey
@@ -19,16 +19,16 @@ from solders.pubkey import Pubkey
 from driftpy.drift_client import DriftClient  
 from driftpy.user_map.user_map import UserMap
 from driftpy.types import (
-    SignedMsgOrderParamsMessage, 
-    SignedMsgOrderParamsDelegateMessage,
     OrderParams,
-    MarketType,
     OrderType,
-    PositionDirection,
-    PostOnlyParams
+    PositionDirection
 )
 from driftpy.addresses import get_user_account_public_key
 from driftpy.constants.numeric_constants import BASE_PRECISION, PRICE_PRECISION
+from driftpy.constants.config import DriftEnv
+
+# Solana RPC imports
+from solana.rpc.commitment import Commitment
 
 # WebSocket handling
 import websockets
@@ -53,7 +53,7 @@ class OracleAwareSwiftConfig:
     drift_client: DriftClient
     user_map: UserMap
     drift_env: str = "devnet"
-    market_indexes: list = None
+    market_indexes: Optional[List[int]] = None
     enable_oracle_orders: bool = True  # KEY FIX: Enable Oracle orders
     endpoint: Optional[str] = None
 
@@ -135,17 +135,18 @@ class OracleAwareSwiftOrderSubscriber:
             self.subscribed = True
             
             # Subscribe to markets
-            for market_index in self.config.market_indexes:
-                symbol = self.get_symbol_for_market_index(market_index)
-                logger.info(f"📡 Subscribing to market: {symbol} (index {market_index})")
-                await self.ws.send(
-                    json.dumps({
-                        "action": "subscribe",
-                        "market_type": "perp",
-                        "market_name": symbol,
-                    })
-                )
-                await asyncio.sleep(0.1)
+            if self.config.market_indexes:
+                for market_index in self.config.market_indexes:
+                    symbol = self.get_symbol_for_market_index(market_index)
+                    logger.info(f"📡 Subscribing to market: {symbol} (index {market_index})")
+                    await self.ws.send(
+                        json.dumps({
+                            "action": "subscribe",
+                            "market_type": "perp",
+                            "market_name": symbol,
+                        })
+                    )
+                    await asyncio.sleep(0.1)
     
     async def subscribe(self, on_order, accept_sanitized: bool = False) -> None:
         """Subscribe to Swift orders with Oracle order support"""
@@ -225,7 +226,7 @@ class OracleAwareSwiftOrderSubscriber:
                     decoded_message = self.drift_client.decode_signed_msg_order_params_message(
                         signed_order_params_buf, is_delegate=True
                     )
-                except construct.core.StreamError as e:
+                except construct.StreamError as e:
                     logger.error(f"❌ Failed to decode delegate message: {e}")
                     self.stats["errors"] += 1
                     return
@@ -236,7 +237,7 @@ class OracleAwareSwiftOrderSubscriber:
                     decoded_message = self.drift_client.decode_signed_msg_order_params_message(
                         signed_order_params_buf, is_delegate=False
                     )
-                except construct.core.StreamError as e:
+                except construct.StreamError as e:
                     logger.error(f"❌ Failed to decode standard message: {e}")
                     self.stats["errors"] += 1
                     return
@@ -262,7 +263,7 @@ class OracleAwareSwiftOrderSubscriber:
                                 getattr(order_params, 'auction_end_price', None) is not None)
             has_zero_price = getattr(order_params, 'price', 0) == 0
             
-            is_oracle_by_type = getattr(order_params, 'order_type', None) == OrderType.Oracle()
+            is_oracle_by_type = getattr(order_params, 'order_type', None) == OrderType.Oracle
             is_oracle_by_characteristics = has_zero_price and (has_oracle_offset or has_auction_prices)
             
             # Log detection details for debugging
@@ -441,11 +442,11 @@ class SwiftMMIntegrationV2_1:
             order_params = signed_message.signed_msg_order_params
             
             # Handle Oracle orders
-            if order_params.order_type == OrderType.Oracle():
+            if order_params.order_type == OrderType.Oracle:
                 logger.info("🎯 Processing Oracle Order:")
                 logger.info(f"   👤 Taker: {str(taker_user_pubkey)[:8]}...{str(taker_user_pubkey)[-8:]}")
                 logger.info(f"   📊 Market: {order_params.market_index}")
-                logger.info(f"   📈 Direction: {'LONG' if order_params.direction == PositionDirection.Long() else 'SHORT'}")
+                logger.info(f"   📈 Direction: {'LONG' if order_params.direction == PositionDirection.Long else 'SHORT'}")
                 logger.info(f"   📦 Size: {order_params.base_asset_amount / BASE_PRECISION:.4f}")
                 logger.info(f"   🎯 Oracle Offset: {order_params.oracle_price_offset}")
                 
@@ -466,7 +467,7 @@ class SwiftMMIntegrationV2_1:
                 logger.info("💰 Processing Market Order:")
                 logger.info(f"   👤 Taker: {str(taker_user_pubkey)[:8]}...{str(taker_user_pubkey)[-8:]}")
                 logger.info(f"   📊 Market: {order_params.market_index}")
-                logger.info(f"   📈 Direction: {'LONG' if order_params.direction == PositionDirection.Long() else 'SHORT'}")
+                logger.info(f"   📈 Direction: {'LONG' if order_params.direction == PositionDirection.Long else 'SHORT'}")
                 logger.info(f"   📦 Size: {order_params.base_asset_amount / BASE_PRECISION:.4f}")
                 logger.info(f"   💰 Price: ${order_params.price / PRICE_PRECISION:.4f}")
                 
@@ -489,7 +490,7 @@ class SwiftMMIntegrationV2_1:
         """Decide if we should make against Oracle order"""
         try:
             # Basic checks
-            if order_params.market_index not in self.config.market_indexes:
+            if not self.config.market_indexes or order_params.market_index not in self.config.market_indexes:
                 return False
                 
             # Size check
@@ -508,7 +509,7 @@ class SwiftMMIntegrationV2_1:
         """Decide if we should make against Market order"""
         # Use existing logic
         try:
-            if order_params.market_index not in self.config.market_indexes:
+            if not self.config.market_indexes or order_params.market_index not in self.config.market_indexes:
                 return False
                 
             size = order_params.base_asset_amount / BASE_PRECISION
@@ -563,11 +564,14 @@ async def test_oracle_order_handling():
         
         # Create clients
         connection = AsyncClient(config.get_rpc_url())
-        drift_client = DriftClient(connection, keypair, env=config.get_drift_env())
+        drift_env = config.get_drift_env()
+        # Convert string to DriftEnv type
+        drift_env_typed: DriftEnv = "devnet" if drift_env == "devnet" else "mainnet"
+        drift_client = DriftClient(connection, keypair, env=drift_env_typed)
         await drift_client.subscribe()
         
         # Create UserMap
-        ws_config = WebsocketConfig(resub_timeout_ms=30000, commitment="confirmed")
+        ws_config = WebsocketConfig(resub_timeout_ms=30000, commitment=Commitment("confirmed"))
         user_map_config = UserMapConfig(
             drift_client=drift_client,
             subscription_config=ws_config,

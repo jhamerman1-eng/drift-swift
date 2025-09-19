@@ -1,0 +1,288 @@
+# Production Dual Bot Configuration - Drift Swift v1.0.0
+# Official production configuration for Enhanced JIT Market Maker + Quality First Hedger
+
+metadata:
+  version: "1.0.0-production"
+  release_date: "2025-09-18"
+  environment: "devnet"
+  description: "Production configuration for dual bot coordination system"
+
+# Bot Configuration
+bots:
+  enhanced_jit:
+    enabled: true
+    script: "bots/jit/enhanced_jit_bot.py"
+    config_file: "configs/jit/enhanced_params.yaml"
+    restart_policy: "always"
+    health_check_interval: 30
+    max_restarts: 5
+    restart_delay: 10
+    log_level: "INFO"
+    bot_type: "[MM]"
+    
+    # Market Making Parameters
+    market_making:
+      symbol: "SOL-PERP"
+      buy_order_size: 0.5  # SOL
+      sell_order_size: 0.3  # SOL
+      max_orders_per_side: 1
+      spread_management:
+        base_bps: 50
+        min_bps: 20
+        max_bps: 200
+        dynamic_adjustment: true
+      
+      # Performance Optimization
+      latency_budget_enabled: true
+      cancel_replace_enabled: true
+      inventory_management: true
+      
+    # Risk Management
+    risk_management:
+      enable_capital_allocation: false
+      max_position_usd: 1000.0
+      max_daily_loss_usd: 100.0
+      collateral_requirement_pct: 150
+      
+  quality_first_hedger:
+    enabled: true
+    script: "ultimate_hedge_bot/quality_first_main.py"
+    config_file: "configs/hedge/quality_first.yaml"
+    restart_policy: "always"
+    health_check_interval: 30
+    max_restarts: 5
+    restart_delay: 10
+    log_level: "INFO"
+    bot_type: "[H]"
+    
+    # Hedging Parameters
+    hedging:
+      quality_threshold: 0.7  # 70% minimum quality
+      min_hedge_size: 0.01    # Minimum 0.01 SOL
+      max_hedge_size: 5.0     # Maximum 5.0 SOL
+      hedge_delay_ms: 200     # Maximum 200ms response time
+      
+      # Quality Assessment
+      quality_factors:
+        price_impact: 0.3
+        volume_profile: 0.3
+        market_conditions: 0.2
+        timing: 0.2
+      
+    # Risk Management
+    risk_management:
+      max_hedge_notional: 500.0  # USD
+      delta_threshold: 0.1       # 10% delta
+      correlation_threshold: 0.8  # 80% correlation
+
+# Coordination Configuration
+coordination:
+  enabled: true
+  mode: "real_time"
+  
+  # Cross-Bot Communication
+  communication:
+    event_bus_enabled: true
+    shared_state_enabled: true
+    position_sync_interval: 1  # seconds
+    
+  # Position Management
+  position_management:
+    unified_tracking: true
+    delta_management: true
+    cross_bot_netting: true
+    position_limits:
+      max_total_position: 10.0  # SOL
+      max_position_imbalance: 2.0  # SOL
+      
+  # Fill Attribution
+  fill_attribution:
+    enabled: true
+    source_tagging: true
+    performance_tracking: true
+    
+  # Quality Coordination
+  quality_coordination:
+    enabled: true
+    quality_threshold: 0.7
+    cross_bot_quality_sharing: true
+
+# Monitoring Configuration
+monitoring:
+  enabled: true
+  
+  # Metrics
+  metrics:
+    prometheus_enabled: true
+    metrics_port: 9100
+    collection_interval: 1  # seconds
+    
+    # Custom Metrics
+    custom_metrics:
+      - name: "jit_swift_fills_total"
+        type: "counter"
+        labels: ["mode", "side"]
+      - name: "hedge_quality_score"
+        type: "gauge"
+        labels: ["strategy"]
+      - name: "coordination_latency_ms"
+        type: "histogram"
+        buckets: [1, 5, 10, 25, 50, 100, 250, 500]
+        
+  # Health Monitoring
+  health:
+    enabled: true
+    health_port: 9124
+    check_interval: 5  # seconds
+    
+    # Health Checks
+    checks:
+      - name: "drift_client_health"
+        type: "drift_subscription"
+        timeout: 10
+      - name: "swift_api_health" 
+        type: "http_endpoint"
+        url: "https://master.swift.drift.trade/health"
+        timeout: 5
+      - name: "orderbook_health"
+        type: "market_data"
+        timeout: 5
+      - name: "position_health"
+        type: "position_tracking"
+        timeout: 3
+        
+  # Alerting
+  alerting:
+    enabled: true
+    channels:
+      - type: "log"
+        level: "ERROR"
+      - type: "metrics"
+        threshold_breaches: true
+        
+    # Alert Rules
+    rules:
+      - name: "order_success_rate"
+        metric: "orders_placed_success_rate"
+        threshold: 0.95
+        comparison: "less_than"
+      - name: "position_drift"
+        metric: "position_delta_absolute"
+        threshold: 1.0
+        comparison: "greater_than"
+      - name: "system_latency"
+        metric: "order_latency_p95"
+        threshold: 100
+        comparison: "greater_than"
+
+# Environment Configuration
+environment:
+  name: "devnet"
+  
+  # Network Settings
+  network:
+    rpc_url: "https://api.devnet.solana.com"
+    ws_url: "wss://api.devnet.solana.com"
+    commitment: "confirmed"
+    
+  # Swift Configuration
+  swift:
+    base_url: "https://master.swift.drift.trade"
+    ws_url: "wss://master.swift.drift.trade/ws"
+    timeout: 10
+    retry_attempts: 3
+    
+  # Drift Configuration
+  drift:
+    env: "devnet"
+    websocket_url: "wss://master.dlob.drift.trade/ws"
+    program_id: "dRiftyHA39MWEi3m9aunc5MzRF1JYuBsbn6VPcn33UH"
+
+# Security Configuration
+security:
+  # Key Management
+  key_management:
+    keypair_path_env: "KEYPAIR_PATH"
+    validate_on_startup: true
+    
+  # Access Control
+  access_control:
+    environment_isolation: true
+    api_rate_limiting: true
+    
+  # Audit
+  audit:
+    enabled: true
+    log_all_orders: true
+    log_position_changes: true
+    log_configuration_changes: true
+
+# Performance Configuration
+performance:
+  # Optimization Settings
+  optimization:
+    async_processing: true
+    connection_pooling: true
+    batch_operations: true
+    caching_enabled: true
+    
+  # Resource Limits
+  resource_limits:
+    max_memory_mb: 1024
+    max_cpu_percent: 50
+    max_connections: 100
+    
+  # Latency Targets
+  latency_targets:
+    market_data_processing: 10   # ms
+    quote_generation: 5          # ms
+    order_placement: 50          # ms
+    position_updates: 10         # ms
+
+# Logging Configuration
+logging:
+  # Global Settings
+  global:
+    level: "INFO"
+    format: "%(asctime)s | %(name)s | %(levelname)s | %(funcName)s:%(lineno)d | %(message)s"
+    
+  # File Logging
+  file:
+    enabled: true
+    directory: "logs"
+    max_size_mb: 100
+    backup_count: 5
+    rotation: "daily"
+    
+  # Console Logging
+  console:
+    enabled: true
+    level: "INFO"
+    colored: true
+    
+  # Structured Logging
+  structured:
+    enabled: true
+    format: "json"
+    include_metadata: true
+
+# Deployment Configuration
+deployment:
+  # Startup Sequence
+  startup:
+    initialization_timeout: 60  # seconds
+    dependency_check: true
+    health_validation: true
+    
+  # Shutdown Sequence
+  shutdown:
+    graceful_timeout: 30  # seconds
+    position_flattening: true
+    order_cancellation: true
+    
+  # Recovery Settings
+  recovery:
+    auto_restart: true
+    max_restart_attempts: 3
+    restart_backoff: "exponential"
+    health_check_before_restart: true

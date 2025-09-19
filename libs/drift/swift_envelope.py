@@ -8,12 +8,24 @@ import json
 import logging
 import time
 import uuid
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 from dataclasses import dataclass
 from solders.keypair import Keypair
 
 # Set up logger
 logger = logging.getLogger(__name__)
+
+# Import centralized configuration manager
+try:
+    from ..configs.centralized_config_manager import (
+        get_compute_budget_for_strategy,
+        TradingStrategy,
+        MarketCondition
+    )
+    CENTRALIZED_CONFIG_AVAILABLE = True
+except ImportError:
+    CENTRALIZED_CONFIG_AVAILABLE = False
+    logger.warning("Centralized configuration manager not available")
 
 # Import DriftPy types for proper Swift integration
 try:
@@ -35,7 +47,7 @@ except ImportError:
 
 @dataclass
 class SwiftOrderParams:
-    """Parameters for Swift order creation"""
+    """Parameters for Swift order creation with compute budget optimization"""
     market_index: int
     market_type: str
     side: str
@@ -47,14 +59,99 @@ class SwiftOrderParams:
     post_only: bool = True
     reduce_only: bool = False
 
+    # Compute budget optimization parameters
+    compute_unit_limit: Optional[int] = None
+    compute_unit_price: Optional[int] = None
+    priority_level: Optional[str] = None
+
+    # Trading strategy for optimization
+    trading_strategy: Optional[TradingStrategy] = None
+    market_condition: Optional[MarketCondition] = None
+
+    def apply_compute_budget_optimization(self) -> None:
+        """
+        Apply compute budget optimization based on trading strategy and market conditions
+
+        This method uses the centralized configuration manager to determine optimal
+        compute budget parameters for the current order.
+        """
+        if not CENTRALIZED_CONFIG_AVAILABLE:
+            logger.debug("Centralized configuration not available for compute budget optimization")
+            return
+
+        try:
+            # Determine strategy and market condition
+            strategy = self.trading_strategy or TradingStrategy.MARKET_MAKING
+            market_condition = self.market_condition or MarketCondition.NORMAL
+
+            # Get optimized compute budget
+            compute_budget = get_compute_budget_for_strategy(
+                strategy=strategy,
+                market_condition=market_condition,
+                priority_level=self.priority_level or "medium"
+            )
+
+            # Apply optimization if successful
+            if not compute_budget.get('fallback', True):
+                self.compute_unit_limit = compute_budget['compute_unit_limit']
+                self.compute_unit_price = compute_budget['compute_unit_price']
+                self.priority_level = compute_budget['priority_level']
+
+                logger.debug(
+                    f"Applied compute budget optimization for {strategy.value}: "
+                    f"{self.compute_unit_limit} units @ {self.compute_unit_price} µL"
+                )
+            else:
+                logger.debug("Using default compute budget parameters")
+
+        except Exception as e:
+            logger.warning(f"Failed to apply compute budget optimization: {e}")
+
+    def get_envelope_metadata(self) -> Dict[str, Any]:
+        """Get metadata for envelope creation including compute budget info"""
+        metadata = {
+            "sub_account_id": self.sub_account_id,
+            "timestamp": int(time.time() * 1000),
+            "order_type": self.order_type,
+            "post_only": self.post_only,
+            "reduce_only": self.reduce_only
+        }
+
+        # Add compute budget information if available
+        if self.compute_unit_limit is not None:
+            metadata["compute_unit_limit"] = self.compute_unit_limit
+        if self.compute_unit_price is not None:
+            metadata["compute_unit_price"] = self.compute_unit_price
+        if self.priority_level is not None:
+            metadata["priority_level"] = self.priority_level
+
+        return metadata
+
 class SwiftEnvelopeCreator:
     """Creates Swift order envelopes"""
     
     def __init__(self):
         self.envelope_version = "1.0"
     
-    def create_order_envelope(self, params: SwiftOrderParams, keypair: Keypair, drift_client=None, cluster: str = "devnet") -> Dict[str, Any]:
-        """Create a Swift order envelope using DriftPy's native serialization for proper Swift compatibility"""
+    def create_order_envelope(
+        self,
+        params: SwiftOrderParams,
+        keypair: Keypair,
+        drift_client=None,
+        cluster: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """
+        Create a Swift order envelope using centralized configuration and compute budget optimization
+
+        Args:
+            params: Swift order parameters
+            keypair: Keypair for signing
+            drift_client: Drift client for envelope creation
+            cluster: Cluster override (uses centralized config if None)
+
+        Returns:
+            Swift API compatible envelope
+        """
         # Pre-validate parameters
         if not all([
             params.market_index is not None,
@@ -66,28 +163,42 @@ class SwiftEnvelopeCreator:
         ]):
             raise ValueError("Missing required order parameters")
 
+        # Apply compute budget optimization using centralized configuration
+        params.apply_compute_budget_optimization()
+
+        # Get cluster from centralized configuration if not provided
+        if cluster is None and CENTRALIZED_CONFIG_AVAILABLE:
+            try:
+                from ..configs.centralized_config_manager import get_drift_config
+                drift_config = get_drift_config()
+                cluster = drift_config.env
+                logger.debug(f"Using centralized configuration for cluster: {cluster}")
+            except Exception as e:
+                logger.debug(f"Could not get cluster from centralized config: {e}")
+                cluster = "devnet"
+
         try:
             # FIXED: Try DriftPy envelope first, fallback to JSON if needed
             if not DRIFTPY_AVAILABLE or not drift_client:
                 logger.warning("[ENVELOPE] DriftPy not available, using JSON fallback")
-                return self._create_json_envelope(params, keypair)
-            
-            logger.info("[ENVELOPE] Creating DriftPy envelope with enhanced validation")
-            envelope = self._create_driftpy_envelope(params, keypair, drift_client, cluster)
-            
+                return self._create_json_envelope(params, keypair, cluster or "devnet")
+
+            logger.info("[ENVELOPE] Creating DriftPy envelope with centralized config and compute budget optimization")
+            envelope = self._create_driftpy_envelope(params, keypair, drift_client, cluster or "devnet")
+
             validation_result = self._validate_envelope(envelope)
             if not validation_result["valid"]:
                 logger.error(f"[ENVELOPE] Validation failed: {validation_result['errors']}")
                 logger.warning("[ENVELOPE] Falling back to JSON envelope due to validation failure")
-                return self._create_json_envelope(params, keypair)
-            
+                return self._create_json_envelope(params, keypair, cluster or "devnet")
+
             logger.info("[ENVELOPE] DriftPy envelope created and validated successfully")
             return envelope
-            
+
         except Exception as e:
             logger.error(f"Failed to create DriftPy envelope: {e}")
             logger.warning("Falling back to JSON envelope creation")
-            return self._create_json_envelope(params, keypair)
+            return self._create_json_envelope(params, keypair, cluster or "devnet")
     
     def _create_driftpy_envelope(self, params: SwiftOrderParams, keypair: Keypair, drift_client, cluster: str = "devnet") -> Dict[str, Any]:
         """Create envelope using proper Swift-compatible byte signing"""
@@ -114,6 +225,10 @@ class SwiftEnvelopeCreator:
         logger.info(f"🔍 DRIFTPY DEBUG - Scaled price: {price_precision}, Scaled size: {size_precision}")
         logger.info(f"🔍 DRIFTPY DEBUG - Verification: {price_precision / PRICE_PRECISION:.6f} should equal {params.price:.6f}")
         
+        # CRITICAL FIX: Ensure auction prices are never None to prevent signature verification failures
+        auction_start_price = price_precision if price_precision is not None else 0
+        auction_end_price = price_precision if price_precision is not None else 0
+
         order_params = OrderParams(  # type: ignore
             order_type=OrderType.Limit(),  # type: ignore
             market_type=MarketType.Perp(),  # type: ignore
@@ -125,8 +240,8 @@ class SwiftEnvelopeCreator:
             post_only=PostOnlyParams.MustPostOnly() if params.post_only else PostOnlyParams.TryPostOnly(),  # type: ignore
             reduce_only=params.reduce_only,
             auction_duration=auction_duration_option,  # FIXED: Consistent None usage
-            auction_start_price=price_precision,  # Use same precision as main price
-            auction_end_price=price_precision,  # Use same precision as main price
+            auction_start_price=auction_start_price,  # Use safe auction price
+            auction_end_price=auction_end_price,  # Use safe auction price
             max_ts=max_ts_option  # FIXED: Consistent None usage
         )
 
@@ -171,8 +286,15 @@ class SwiftEnvelopeCreator:
         logger.info(f"[ENVELOPE] OrderParams: base_asset_amount={order_params.base_asset_amount}, price={order_params.price}")
         logger.info(f"[ENVELOPE] OrderParams: post_only={order_params.post_only}, reduce_only={order_params.reduce_only}")
         logger.info(f"[ENVELOPE] OrderParams: auction_duration={order_params.auction_duration}, max_ts={order_params.max_ts}")
-        logger.info(f"[ENVELOPE] CRITICAL FIX: auction_duration and max_ts are now properly set to None for Option handling")
-        print(f"[DEBUG] OrderParams: auction_start={order_params.auction_start_price}, auction_end={order_params.auction_end_price}")
+        logger.info("[ENVELOPE] CRITICAL FIX: auction_duration and max_ts are now properly set to None for Option handling")
+
+        # CRITICAL FIX: Safely format auction prices to avoid None formatting errors
+        try:
+            auction_start_str = str(order_params.auction_start_price) if order_params.auction_start_price is not None else "None"
+            auction_end_str = str(order_params.auction_end_price) if order_params.auction_end_price is not None else "None"
+            logger.debug(f"[ENVELOPE] Auction params: start={auction_start_str}, end={auction_end_str}")
+        except Exception as e:
+            logger.debug(f"[ENVELOPE] Could not format auction params: {e}")
 
         # CRITICAL FIX: Encode the COMPLETE SignedMsgOrderParamsMessage for Swift verification
         # Swift verifies the Borsh-encoded bytes of the entire message, not just order_params
@@ -191,9 +313,8 @@ class SwiftEnvelopeCreator:
             params.sub_account_id
         )
 
-        # CRITICAL FIX: Return Swift API format matching official specification
-        # Based on: https://drift-labs.github.io/v2-teacher/?python#submit-order-to-swift-api
-        return {
+        # Build envelope with centralized configuration and compute budget optimization
+        envelope = {
             # Swift API expects these exact field names and format
             "market_index": params.market_index,  # Required: The type of order e.g. market, limit
             "market_type": params.market_type.lower(),  # Required: The market to place order in
@@ -201,14 +322,38 @@ class SwiftEnvelopeCreator:
             "signature": signature_b64,  # Required: Signature from signing the message
             "taker_authority": str(user_account_pubkey),  # Required: Public key of user account
             "signing_authority": str(keypair.pubkey()),  # Optional: Public key of signing authority (delegate)
+            # Legacy aliases for backward compatibility (CRITICAL FIX)
+            "order_message": message_bytes.hex(),  # Legacy field name used by some Swift integrations
+            "order_signature": signature_b64,  # Legacy field name used by some Swift integrations
             # Additional metadata for compatibility
             "sub_account_id": params.sub_account_id,
             "slot": slot,
             "ts": int(time.time() * 1000),
             "cluster": cluster
         }
+
+        # Add compute budget optimization if available
+        if params.compute_unit_limit is not None:
+            envelope["compute_unit_limit"] = params.compute_unit_limit
+            logger.debug(f"Added compute unit limit to envelope: {params.compute_unit_limit}")
+
+        if params.compute_unit_price is not None:
+            envelope["compute_unit_price"] = params.compute_unit_price
+            logger.debug(f"Added compute unit price to envelope: {params.compute_unit_price}")
+
+        if params.priority_level is not None:
+            envelope["priority_level"] = params.priority_level
+            logger.debug(f"Added priority level to envelope: {params.priority_level}")
+
+        # Add trading strategy metadata for analytics
+        if params.trading_strategy is not None:
+            envelope["trading_strategy"] = params.trading_strategy.value
+        if params.market_condition is not None:
+            envelope["market_condition"] = params.market_condition.value
+
+        return envelope
     
-    def _create_json_envelope(self, params: SwiftOrderParams, keypair: Keypair) -> Dict[str, Any]:
+    def _create_json_envelope(self, params: SwiftOrderParams, keypair: Keypair, cluster: str = "devnet") -> Dict[str, Any]:
         """Fallback JSON-based envelope creation with proper signature padding"""
         # Import DriftPy constants for proper precision
         try:
@@ -218,14 +363,26 @@ class SwiftEnvelopeCreator:
             BASE_PRECISION = int(1e9)  # 1e9 for base asset amount
             PRICE_PRECISION = int(1e6)  # 1e6 for price
         
+        # CRITICAL FIX: Handle None values safely to prevent signature verification failures
+        price_value = params.price if params.price is not None else 0
+        size_value = params.size if params.size is not None else 0
+
         # Convert using proper precision
-        price_precision = int(params.price * PRICE_PRECISION)
-        size_precision = int(params.size * BASE_PRECISION)
+        price_precision = int(price_value * PRICE_PRECISION)
+        size_precision = int(size_value * BASE_PRECISION)
         
-        # DEBUG: Log both raw and scaled values for JSON fallback
-        logger.info(f"🔍 JSON FALLBACK DEBUG - Raw price: ${params.price:.6f}, Raw size: {params.size:.6f}")
-        logger.info(f"🔍 JSON FALLBACK DEBUG - Scaled price: {price_precision}, Scaled size: {size_precision}")
-        logger.info(f"🔍 JSON FALLBACK DEBUG - Verification: {price_precision / PRICE_PRECISION:.6f} should equal {params.price:.6f}")
+        # CRITICAL FIX: Safe debug logging to prevent None formatting errors
+        try:
+            price_str = f"${params.price:.6f}" if params.price is not None else "None"
+            size_str = f"{params.size:.6f}" if params.size is not None else "None"
+            logger.info(f"🔍 JSON FALLBACK DEBUG - Raw price: {price_str}, Raw size: {size_str}")
+            logger.info(f"🔍 JSON FALLBACK DEBUG - Scaled price: {price_precision}, Scaled size: {size_precision}")
+
+            if params.price is not None:
+                expected_price = price_precision / PRICE_PRECISION
+                logger.info(f"🔍 JSON FALLBACK DEBUG - Verification: {expected_price:.6f} should equal {params.price:.6f}")
+        except Exception as e:
+            logger.debug(f"[ENVELOPE] Could not log JSON fallback debug info: {e}")
         
         # Get the derived user account public key for proper taker_authority
         from driftpy.addresses import get_user_account_public_key
@@ -277,12 +434,34 @@ class SwiftEnvelopeCreator:
             "signature": signature_b64,  # Required: Signature from signing the message
             "taker_authority": str(user_account_pubkey),  # Required: Public key of user account
             "signing_authority": str(keypair.pubkey()),  # Optional: Public key of signing authority (delegate)
+            # Legacy aliases for backward compatibility (CRITICAL FIX)
+            "order_message": message_json,  # Legacy field name used by some Swift integrations
+            "order_signature": signature_b64,  # Legacy field name used by some Swift integrations
             # Additional metadata for compatibility
             "sub_account_id": int(params.sub_account_id),
             "slot": int(time.time() * 1000),  # Current timestamp as slot
             "ts": int(time.time() * 1000),
-            "cluster": "devnet"  # Default cluster
+            "cluster": cluster or "devnet"  # Use provided cluster or default
         }
+
+        # Add compute budget optimization to JSON envelope
+        if params.compute_unit_limit is not None:
+            envelope["compute_unit_limit"] = params.compute_unit_limit
+            logger.debug(f"Added compute unit limit to JSON envelope: {params.compute_unit_limit}")
+
+        if params.compute_unit_price is not None:
+            envelope["compute_unit_price"] = params.compute_unit_price
+            logger.debug(f"Added compute unit price to JSON envelope: {params.compute_unit_price}")
+
+        if params.priority_level is not None:
+            envelope["priority_level"] = params.priority_level
+            logger.debug(f"Added priority level to JSON envelope: {params.priority_level}")
+
+        # Add trading strategy metadata for analytics
+        if params.trading_strategy is not None:
+            envelope["trading_strategy"] = params.trading_strategy.value
+        if params.market_condition is not None:
+            envelope["market_condition"] = params.market_condition.value
         
         # Validate envelope before returning
         validation_result = self._validate_envelope(envelope)

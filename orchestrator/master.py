@@ -30,6 +30,16 @@ from loguru import logger
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 
+def _syntax_ok(path: str) -> bool:
+    """Check if a Python file has valid syntax."""
+    try:
+        compile(open(path, "rb").read(), path, "exec")
+        return True
+    except SyntaxError as e:
+        logger.error(f"Syntax error in {path}: {e}")
+        return False
+
+
 class BotState(Enum):
     STOPPED = "stopped"
     STARTING = "starting"
@@ -74,7 +84,8 @@ def resolve_specs() -> List[BotSpec]:
             "run_mm_bot_swift_official.py",
         ], required=True),
         BotSpec("hedge", [
-            "launch_hedge_beta_real.py",
+            "ultimate_hedge_bot/quality_first_main.py",
+            "bots/jitter/hybrid.py",
             "bots/hedge/main.py",
         ], required=False),
         BotSpec("trend", [
@@ -219,6 +230,12 @@ class Orchestrator:
         env = os.environ.copy()
         env.update(self.shared_env)
         import sys  # Fix: import sys instead of using os.sys
+        # Syntax check before launching
+        if not _syntax_ok(str(br.path)):
+            logger.error(f"Syntax check failed for {br.spec.role}, aborting launch")
+            br.state = BotState.ERROR
+            return
+
         args = [sys.executable, str(br.path)]
         logger.info(f"Launching {br.spec.role}: {br.path.name}")
         if br.spec.role == "mm":
