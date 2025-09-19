@@ -1,0 +1,169 @@
+Great gaps read. Here’s a crisp, **do-this-next** plan to close them without breaking what’s working. I split it into **4 phases** you can run in a single sprint, with concrete tasks mapped to the JIT-JTR stories, owners, and “done” checks. Hedging stays untouched.
+
+---
+
+# Phase 0 — Safety rails first (same day)
+
+**Goal:** be able to turn this on/off and not crash if the sidecar isn’t there.
+
+1. **JIT-JTR-001 Config & toggle**
+
+   * Add keys to `configs/bots/jit.yaml`:
+
+     ```yaml
+     jitter_enabled: false
+     jitter_backend: ts-sidecar      # ts-sidecar | py-legacy
+     jitter_mode: shotgun            # shotgun | sniper
+     auction_ignore_swift: true
+     ```
+   * Orchestrator: on boot and **SIGHUP** re-read; when `jitter_enabled=false`, route to *current Python path*.
+   * Done when: flip flag at runtime and we live-switch with no restart; logs show backend/mode.
+
+2. **Rollback path**
+
+   * One env flip `JITTER_ENABLED=0` → live revert to Python JIT.
+   * Alert rules (stale params, sidecar down) wired to suggest rollback in the message.
+
+---
+
+# Phase 1 — Control plane (publisher + sidecar skeleton)
+
+**Goal:** keep alpha/risk in Python; let TS do last-mile fills.
+
+3. **JIT-JTR-002 Param publisher (Python)**
+
+   * Lift *existing* decisions into a snapshot:
+
+     * `bidBps/askBps` (from current microprice + spoof + toxicity skew)
+     * `minPos/maxPos` (from allocator + rails per side)
+     * `clipMaxUnits` (optional from allocator)
+     * `subAccountId` (from BotProfile)
+   * Publish every **100–250 ms** or “on change” over loopback (choose one: **gRPC** or **NATS**; both are sub-ms).
+   * Done when: a checksumed JSON payload matches current Python decision within **≤0.5 bps** tolerance and updates land in ≤250 ms.
+
+4. **TS sidecar minimal (Shotgun/Sniper)**
+
+   * Create `jitter-agent.ts` using `@drift-labs/sdk` + `@drift-labs/jit-proxy`.
+   * Parse `JITTER_MODE`, `AUCTION_IGNORE_SWIFT`, subscribe to params, call:
+
+     ```ts
+     jitter.updatePerpParams(market, {
+       bid: bidBps, ask: askBps,
+       minPosition: minPos, maxPosition: maxPos,
+       priceType: PriceType.ORACLE,
+       subAccountId
+     });
+     ```
+   * Expose `/metrics` (Prom). Ship Dockerfile.
+   * Done when: devnet manual test shows auctions are being responded to with our params.
+
+---
+
+# Phase 2 — Correctness & guardrails
+
+**Goal:** one response per auction, hard caps in the hot path, degrade safely.
+
+5. **JIT-JTR-003 Dedup (Swift vs Auction) + cross-mode arbitration**
+
+   * Turn on SDK’s “ignore Swift in Auction subscriber” flag (if present).
+   * Add in-process **DedupeCache** keyed by `market|maker|start_slot|end_slot|nonce` in the sidecar.
+   * If we also run Sniper+Shotgun together later, add `AuctionArbiter` so first mode wins.
+   * Metrics: `jit_dedup_seen_total{source}`, `jit_dedup_filtered_total{source}`.
+   * Done when: 10k dual-notify replay → **0** double placements.
+
+6. **JIT-JTR-006 Caps & lot size (in TS)**
+
+   * Enforce `minPos/maxPos` per side on every send.
+   * Round size to exchange lot; clamp to `clipMaxUnits` (if provided).
+   * Gauges: `jit_cap_headroom_long/short`, counter: `cap_violation_attempts_total`.
+   * Done when: violation attempts **= 0** and gauges match allocator headroom.
+
+7. **JIT-JTR-007 Staleness**
+
+   * Track `params_age_ms`; **age > 2s** → widen ×1.5, halve clip; **age > 10s** → HALT and surface in `/ready`.
+   * Also export `alloc_snapshot_age_ms` from Python publisher.
+   * Done when: kill publisher for 5 s → sidecar degrades; >10 s → HALT; recovery resumes normal.
+
+---
+
+# Phase 3 — Observability, canary, and hedging invariant
+
+**Goal:** see it, prove it, then canary.
+
+8. **JIT-JTR-008 Metrics/logs**
+
+   * TS: `jit_mode{mode}` info, `auction_processing_ms` histogram, adapter totals/errors.
+   * Python: `jit_params_updates_total`, `jit_params_age_ms`, payload bytes; both include `auction_id`, `market`, `mode` in logs.
+   * Done when: Grafana panels show params age, dedupe, cap usage, and p95 latency.
+
+9. **JIT-JTR-011 Hedging invariant**
+
+   * Leave `bots/hedge/**` untouched.
+   * Add dashboard tiles: 1h mean |inventory| and IOC slippage vs baseline.
+   * Done when: canary shows **±5%** drift at same traffic; hedge SLOs green.
+
+10. **JIT-JTR-012 E2E & soak**
+
+    * Devnet replay: 10k auctions → 0 dupes, p95 `notice→submit` in spec for mode.
+    * 12h canary on SOL-PERP @ 25% traffic, `jitter_enabled=true`:
+
+      * Success gates: EV uplift ≥ **+5%** vs 100% Shotgun, no cap violations, no stale>10s events, p95 engine ≤ **6 ms**.
+    * Roll forward to 100% if green; otherwise flip flag off (rollback).
+
+---
+
+## Tiny code stubs you’ll need (just the shape)
+
+**Python → TS payload (already computed by your JITEngine):**
+
+```python
+params = {
+  "market": "SOL-PERP",
+  "bidBps": round(bid_bps, 2),      # from (microprice, spoof, toxicity)
+  "askBps": round(ask_bps, 2),
+  "minPos": limits.max_short_abs * -1,
+  "maxPos": limits.max_long_abs,
+  "clipMaxUnits": clip_max,         # optional
+  "subAccountId": profile.sub_account,
+  "ts": now_ms,
+  "version": "1.0.0"
+}
+publisher.publish("jit.params.SOL-PERP", params)
+```
+
+**TS size/cap check before send:**
+
+```ts
+function clamp(size: number, side: "buy"|"sell", ctx: Caps): number {
+  const head = side === "buy" ? ctx.maxPos - ctx.currentPos
+                              : ctx.currentPos - ctx.minPos;
+  const clip = ctx.clipMaxUnits ?? Number.MAX_VALUE;
+  const allowed = Math.max(0, Math.min(size, head, clip));
+  return roundToLot(allowed, ctx.lotSize);
+}
+```
+
+---
+
+## Why this sequencing
+
+* **Flags first** → safe to test in prod.
+* **Publisher + sidecar skeleton** → you can see it in devnet early.
+* **Dedup/caps/staleness** → correctness & safety before volume.
+* **Observability + canary** → prove it pays, keep hedging unchanged.
+
+---
+
+## Effort & owners (quick estimate)
+
+* Phase 0–1: **2–3 days** (Eng)
+* Phase 2: **2–3 days** (Eng/Platform)
+* Phase 3: **2 days** (SRE/Quant)
+
+Total \~**1 week** focused, with canary on day 5–6.
+
+---
+
+### TL;DR
+
+Yes, this makes sense. Do flags → publisher → sidecar → dedupe/caps → staleness → metrics → canary. You’ll reuse **all** current Python logic (alpha/rails/allocator), keep **hedging the same**, and gain a safer, faster JIT path that supports **Shotgun/Sniper** now and split-allocation later.

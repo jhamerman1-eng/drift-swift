@@ -7,6 +7,7 @@ Integrates advanced JIT algorithms with Swift order placement and reception
 import asyncio
 import logging
 import os
+import signal
 import sys
 import time
 import json
@@ -69,6 +70,7 @@ sys.path.insert(0, str(Path(__file__).parent / "utils"))
 
 from driftpy.drift_client import DriftClient
 from driftpy.types import OrderParams, OrderType, PositionDirection, PostOnlyParams
+from libs.config.config_loader import load_yaml_with_env
 from libs.drift.swift_envelope import SwiftEnvelopeCreator, SwiftOrderParams, SwiftOrderProcessor  # type: ignore
 from libs.drift.swift_receiver import SwiftOrderProcessor, SwiftOrderMessage  # type: ignore
 from solders.keypair import Keypair
@@ -76,11 +78,13 @@ from solders.keypair import Keypair
 # Import advanced JIT functionality
 from bots.jit.main import (
     JITConfig,
-    InventoryManager, 
+    InventoryManager,
     OBICalculator,
     SpreadManager,
     Orderbook
 )
+
+from libs.jitter.runtime import resolve_jitter_settings, JitterSettings
 
 # Import reliability and precision utilities
 BASE_PRECISION = 1_000_000_000
@@ -679,6 +683,16 @@ class CompleteSwiftMMBot:
     def __init__(self, config: Dict[str, Any]):
         # SIMPLIFIED: Use direct config instead of missing centralized env config
         self.config = config
+        self.runtime_config_path = Path(config.get("runtime_config_path", "configs/bots/jit.yaml"))
+        self.jitter_settings: JitterSettings = resolve_jitter_settings(config.get("jitter", {}))
+        self.jitter_backend = self.jitter_settings.backend
+        self.jitter_mode = self.jitter_settings.mode
+        self.auction_ignore_swift = self.jitter_settings.auction_ignore_swift
+        self.ts_jitter_enabled = self.jitter_settings.uses_sidecar_backend()
+        self._runtime_reload_lock = None
+        self._runtime_config_cache: Dict[str, Any] = {"jitter": dict(self.jitter_settings.raw)} if self.jitter_settings.raw else {}
+        self.jitter_params_snapshot_ts: float = 0.0
+
         self.test_mode = config.get("test_mode", False)  # Enable test mode
         
         # Add env_config for compatibility (initialize centralized config)
@@ -1158,6 +1172,153 @@ class CompleteSwiftMMBot:
                 self._sidecar_validated = False
                 return {}
 
+    def _load_runtime_config_from_disk(self) -> Dict[str, Any]:
+        """Load runtime jitter configuration from disk with env substitution."""
+        path = getattr(self, "runtime_config_path", None)
+        if not path:
+            return {}
+
+        try:
+            cfg = load_yaml_with_env(str(path))
+            if not isinstance(cfg, dict):
+                logger.warning("Jitter runtime config at %s is not a mapping; ignoring", path)
+                return {}
+            return cfg
+        except FileNotFoundError:
+            logger.warning("Jitter runtime config file %s not found; using defaults", path)
+            return {}
+        except Exception as exc:
+            logger.error("Failed to load jitter runtime config %s: %s", path, exc)
+            return {}
+
+    async def apply_runtime_config(self, runtime_config: Optional[Dict[str, Any]]) -> None:
+        """Apply runtime configuration overrides (supports live reload)."""
+
+        if runtime_config is None:
+            runtime_config = {}
+        elif not isinstance(runtime_config, dict):
+            runtime_config = dict(runtime_config)
+
+        jitter_cfg = runtime_config.get("jitter") or {}
+        self._runtime_config_cache = dict(runtime_config)
+
+        # Persist merged config for later reference
+        if not hasattr(self, "config") or self.config is None:
+            self.config = {}
+        jitter_section = dict(jitter_cfg)
+        current_jitter_cfg = self.config.setdefault("jitter", {})
+        current_jitter_cfg.update(jitter_section)
+
+        new_settings = resolve_jitter_settings(jitter_section)
+        await self._apply_jitter_settings(new_settings)
+
+    async def reload_runtime_config(self, *, reason: str = "manual") -> None:
+        """Reload jitter configuration from disk (triggered on SIGHUP or manual call)."""
+
+        if self._runtime_reload_lock is None:
+            self._runtime_reload_lock = asyncio.Lock()
+
+        async with self._runtime_reload_lock:
+            cfg = self._load_runtime_config_from_disk()
+            logger.info(
+                "Reloading jitter runtime config (%s): enabled=%s backend=%s mode=%s",
+                reason,
+                cfg.get("jitter", {}).get("jitter_enabled", self.jitter_settings.enabled),
+                cfg.get("jitter", {}).get("jitter_backend", self.jitter_settings.backend),
+                cfg.get("jitter", {}).get("jitter_mode", self.jitter_settings.mode),
+            )
+            await self.apply_runtime_config(cfg)
+
+    async def _apply_jitter_settings(self, new_settings: JitterSettings) -> None:
+        """Switch runtime behaviour according to resolved jitter settings."""
+
+        old_settings = getattr(self, "jitter_settings", None)
+        if old_settings == new_settings:
+            return
+
+        self.jitter_settings = new_settings
+        self.jitter_backend = new_settings.backend
+        self.jitter_mode = new_settings.mode
+        self.auction_ignore_swift = new_settings.auction_ignore_swift
+        self.ts_jitter_enabled = new_settings.uses_sidecar_backend()
+        self.jitter_params_snapshot_ts = time.time()
+
+        logger.info(
+            "Jitter settings applied: enabled=%s backend=%s mode=%s ignore_swift=%s source=%s",
+            new_settings.enabled,
+            new_settings.backend,
+            new_settings.mode,
+            new_settings.auction_ignore_swift,
+            new_settings.source,
+        )
+
+        if not new_settings.enabled:
+            await self._teardown_python_jit_client()
+            self.jit_enabled = False
+            self.ts_jitter_enabled = False
+            return
+
+        if new_settings.uses_python_backend():
+            self.jit_enabled = True
+            self.ts_jitter_enabled = False
+            await self._ensure_python_jit_ready()
+            return
+
+        # Otherwise we are using the TS sidecar backend
+        self.jit_enabled = False
+        await self._teardown_python_jit_client()
+
+        sidecar_healthy = True
+        if hasattr(self, "_check_swift_sidecar_health"):
+            try:
+                sidecar_healthy = await self._check_swift_sidecar_health()
+            except Exception as exc:  # pragma: no cover - defensive logging
+                sidecar_healthy = False
+                logger.warning("Swift sidecar health probe failed during jitter switch: %s", exc)
+
+        if not sidecar_healthy:
+            self.ts_jitter_enabled = False
+            logger.warning(
+                "Requested ts-sidecar backend but health probe failed; keeping Python path active",
+            )
+
+    async def _ensure_python_jit_ready(self) -> None:
+        """Ensure Python JIT client is initialised when backend requires it."""
+
+        if not JIT_CLIENT_AVAILABLE:
+            logger.warning("Python JIT backend requested but client libraries unavailable")
+            self.jit_enabled = False
+            return
+
+        if getattr(self, "jit_client", None) is not None:
+            return
+
+        try:
+            await self._initialize_jit_client()
+        except Exception as exc:  # pragma: no cover - safety net
+            logger.error("Failed to initialise Python JIT backend: %s", exc)
+            self.jit_enabled = False
+            self.jit_client = None
+
+    async def _teardown_python_jit_client(self) -> None:
+        """Close the Python JIT client if it is active."""
+
+        client = getattr(self, "jit_client", None)
+        if not client:
+            self.jit_client = None
+            return
+
+        close_method = getattr(client, "close", None)
+        if close_method:
+            try:
+                result = close_method()
+                if asyncio.iscoroutine(result):
+                    await result
+            except Exception as exc:  # pragma: no cover - defensive logging
+                logger.warning("Error while closing JIT client: %s", exc)
+
+        self.jit_client = None
+
     async def initialize(self):
         """Initialize all components"""
         try:
@@ -1229,6 +1390,9 @@ class CompleteSwiftMMBot:
 
             # US-JIT-005: Initialize JIT client if enabled
             await self._initialize_jit_client()
+
+            # Apply runtime jitter configuration (honours env + config overrides)
+            await self.reload_runtime_config(reason="startup")
 
             # Start periodic order sync task
             logger.info("Starting periodic order sync task...")
@@ -2932,14 +3096,35 @@ class CompleteSwiftMMBot:
                 logger.info("JIT client not available - continuing with Swift/DriftPy flow")
                 return
 
-            # SIMPLIFIED: Use direct config for JIT
-            jit_config = self.config.get("jit_config", {"enabled": False})
-            # Check environment variable first, then config
-            self.jit_enabled = os.getenv("JIT_ENABLED", "").lower() == "true" or jit_config.get("enabled", False)
+            runtime_settings = getattr(self, "jitter_settings", None)
 
-            if not self.jit_enabled:
-                logger.info("JIT feature disabled - using Swift/DriftPy flow")
-                return
+            # SIMPLIFIED: Use direct config for JIT
+            jit_config = dict(self.config.get("jit_config", {"enabled": False}) or {})
+
+            if runtime_settings:
+                if not runtime_settings.enabled:
+                    self.jit_enabled = False
+                    self.jit_client = None
+                    logger.info("Jitter runtime disabled - skipping Python JIT init")
+                    return
+                if not runtime_settings.uses_python_backend():
+                    self.jit_enabled = False
+                    self.jit_client = None
+                    logger.info(
+                        "Jitter backend %s active; Python JIT client disabled",
+                        runtime_settings.backend,
+                    )
+                    return
+                self.jit_enabled = True
+                jit_config["enabled"] = True
+            else:
+                # Check environment variable first, then config
+                env_enabled = os.getenv("JIT_ENABLED", "").lower() == "true"
+                self.jit_enabled = env_enabled or jit_config.get("enabled", False)
+
+                if not self.jit_enabled:
+                    logger.info("JIT feature disabled - using Swift/DriftPy flow")
+                    return
 
             # Build JIT client from centralized config
             if build_jit_client_from_config:
@@ -3997,11 +4182,24 @@ async def main():
         
         # Create and initialize bot
         bot = CompleteSwiftMMBot(config)
-        
+
         if not await bot.initialize():
             logger.error("Failed to initialize bot")
             return 1
-        
+
+        reload_event = asyncio.Event()
+
+        try:
+            loop = asyncio.get_running_loop()
+
+            def _handle_sighup() -> None:
+                logger.info("Received SIGHUP - scheduling jitter config reload")
+                reload_event.set()
+
+            loop.add_signal_handler(signal.SIGHUP, _handle_sighup)
+        except (NotImplementedError, RuntimeError):  # pragma: no cover - platform specific
+            logger.debug("Signal handlers not supported in this environment; jitter reload via polling only")
+
         # Swift WebSocket receiver is already initialized in bot.initialize()
         logger.info(" Swift WebSocket receiver initialized during bot startup")
         
@@ -4035,6 +4233,10 @@ async def main():
         
         while True:
             try:
+                if reload_event.is_set():
+                    reload_event.clear()
+                    await bot.reload_runtime_config(reason="signal")
+
                 # Market making tick
                 await bot.market_making_tick()
                 
