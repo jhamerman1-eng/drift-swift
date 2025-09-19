@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-09-13T14:38:54.112540",
+  "tests": {
+    "initialization": {
+      "success": true,
+      "init_time": 5.501333236694336
+    },
+    "market_making": {
+      "success": true,
+      "tick_time": 2.4232940673828125
+    },
+    "subscriptions": {
+      "success": true,
+      "sub_time": 0.008996725082397461
+    }
+  }
+}

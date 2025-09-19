@@ -1,0 +1,204 @@
+# Jitter Strategy Toggle Manager Configuration
+# Controls switching between Custom JIT and Hybrid (Shotgun+Sniper) systems
+
+toggle:
+  # Default mode on startup
+  default_mode: "custom_jit"  # Options: custom_jit, hybrid, shotgun_only, sniper_only, a_b_test, disabled
+  
+  # Hot-swapping capability
+  hot_swap_enabled: true
+  hot_swap_delay_seconds: 5  # Delay between strategy switches
+  
+  # Strategy validation
+  validate_before_switch: true
+  validation_timeout_seconds: 10
+
+# Performance tracking and comparison
+performance_tracking:
+  enabled: true
+  history_limit: 100            # Number of performance snapshots to keep
+  comparison_interval_minutes: 15  # How often to record performance snapshots
+  
+  # Metrics to track
+  metrics:
+    - fills_count
+    - total_volume
+    - avg_fill_size
+    - win_rate
+    - total_pnl
+    - avg_latency_ms
+    - error_count
+    - uptime_seconds
+  
+  # Performance thresholds
+  thresholds:
+    min_win_rate: 0.5          # Minimum acceptable win rate
+    max_avg_latency_ms: 100    # Maximum acceptable latency
+    max_error_rate: 0.05       # Maximum error rate (5%)
+    min_uptime_percentage: 0.95 # Minimum uptime requirement
+
+# A/B Testing configuration
+ab_test:
+  enabled: false              # Enable A/B testing between strategies
+  duration_minutes: 60        # Duration of A/B test
+  
+  # Traffic allocation
+  custom_allocation: 0.5      # Allocation to custom JIT (0.0 to 1.0)
+  hybrid_allocation: 0.5      # Allocation to hybrid system (0.0 to 1.0)
+  
+  # Testing parameters
+  switch_interval_minutes: 10  # How often to evaluate switching
+  performance_comparison: true # Compare performance during test
+  auto_switch: false          # Automatically switch to better performer
+  statistical_significance: true # Require statistical significance
+  
+  # Success criteria
+  success_criteria:
+    pnl_improvement_threshold: 0.1    # 10% PnL improvement required
+    latency_improvement_threshold: 0.2 # 20% latency improvement
+    error_reduction_threshold: 0.5     # 50% error reduction
+
+# Fallback mechanisms
+fallback:
+  enabled: true
+  strategy: "custom_jit"      # Fallback strategy (custom_jit, hybrid, disabled)
+  
+  # Trigger conditions
+  error_threshold: 5          # Max errors before fallback
+  latency_threshold_ms: 500   # Max latency before fallback  
+  health_check_failures: 3    # Max health check failures
+  switch_delay_seconds: 30    # Delay before switching to fallback
+  
+  # Recovery conditions
+  recovery_enabled: true
+  recovery_delay_minutes: 5   # Wait before attempting to recover
+  recovery_health_checks: 5   # Successful health checks needed for recovery
+
+# Health monitoring
+health_checks:
+  enabled: true
+  interval_seconds: 10        # How often to check health
+  timeout_seconds: 5          # Timeout for health checks
+  
+  # Health check types
+  checks:
+    - connection_status        # Check Drift client connection
+    - subscriber_status        # Check Swift/Auction subscribers
+    - memory_usage            # Check memory consumption
+    - error_rate              # Check recent error rate
+    - response_time           # Check response times
+  
+  # Thresholds
+  thresholds:
+    max_memory_usage_mb: 512
+    max_error_rate_per_minute: 10
+    max_response_time_ms: 200
+
+# Strategy-specific configurations
+strategies:
+  custom_jit:
+    enabled: true
+    config_path: "configs/jit/v3_engine.yaml"
+    warm_up_seconds: 30
+    
+  hybrid:
+    enabled: true
+    shotgun_config_path: "configs/jitter/shotgun.yaml"
+    sniper_config_path: "configs/jitter/sniper.yaml"
+    allocation_config_path: "configs/regime/jitter_allocation.yaml"
+    warm_up_seconds: 45
+    
+  shotgun_only:
+    enabled: true
+    config_path: "configs/jitter/shotgun.yaml"
+    
+  sniper_only:
+    enabled: true
+    config_path: "configs/jitter/sniper.yaml"
+
+# Integration settings
+integration:
+  # Hedge bot coordination
+  hedge_coordination:
+    enabled: true
+    strategy_aware: true      # Pass strategy source to hedge bot
+    priority_mapping:
+      custom_jit: "medium"
+      hybrid: "high"
+      shotgun_only: "low"
+      sniper_only: "high"
+  
+  # Crash Sentinel integration
+  crash_sentinel:
+    enabled: true
+    halt_all_on_crash: true
+    resume_delay_minutes: 5
+    
+  # Portfolio rails
+  portfolio_rails:
+    enabled: true
+    respect_global_limits: true
+    per_strategy_limits: true
+
+# Logging and observability
+logging:
+  level: "info"              # debug, info, warn, error
+  strategy_specific: true    # Log strategy-specific events
+  performance_logging: true  # Log performance metrics
+  
+  # Log rotation
+  log_rotation:
+    enabled: true
+    max_size_mb: 100
+    backup_count: 5
+
+# Metrics and monitoring
+metrics:
+  enabled: true
+  port: 9091                # Prometheus metrics port
+  path: "/metrics"          # Metrics endpoint path
+  
+  # Custom metrics
+  custom_metrics:
+    - strategy_switches_total
+    - ab_test_results
+    - fallback_activations_total
+    - performance_comparisons_total
+    - health_check_failures_total
+
+# API endpoints for external control
+api:
+  enabled: true
+  port: 8789               # Control API port
+  
+  endpoints:
+    - GET /status           # Current strategy and status
+    - POST /switch          # Switch strategy
+    - GET /performance      # Performance comparison
+    - POST /ab_test/start   # Start A/B test
+    - POST /ab_test/stop    # Stop A/B test
+    - GET /health           # Health status
+    - POST /fallback        # Trigger fallback
+
+# Advanced features
+advanced:
+  # Machine learning for strategy selection
+  ml_optimization:
+    enabled: false
+    model_path: "models/strategy_selector.pkl"
+    retrain_interval_hours: 24
+    
+  # Dynamic allocation based on market conditions
+  dynamic_allocation:
+    enabled: true
+    market_data_sources:
+      - drift_orderbook
+      - external_feeds
+    rebalance_frequency_seconds: 60
+    
+  # Strategy warm-up periods
+  warm_up:
+    enabled: true
+    custom_jit_seconds: 30
+    hybrid_seconds: 45
+    validate_performance: true

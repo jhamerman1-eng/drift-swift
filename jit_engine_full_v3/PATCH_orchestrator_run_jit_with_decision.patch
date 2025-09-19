@@ -1,0 +1,26 @@
+*** Begin Patch
+*** Update File: bots/orchestrator/main.py
+@@
+-from bots.jit.engine import JITEngine
++from bots.jit.engine import JITEngine
++from bots.jit.components.types import QuoteDecision
+@@
+-            await engine.step()
+-            BOT_ITER.labels(name).inc(); i+=1
++            decision = await engine.step()
++            if decision and decision.should_quote:
++                # Convert spread_bps to absolute spread
++                abs_spread = (decision.spread_bps / 10000.0) * decision.ref_price
++                # Execute quotes via client (supports size-aware quoting if implemented)
++                with TICK_TO_QUOTE.time():
++                    await client.quote_two_sided(
++                        decision.ref_price,
++                        abs_spread,
++                        decision.size_multiplier,
++                        True,  # do_cr since CR gate already passed
++                        bid_size=decision.bid_size,
++                        ask_size=decision.ask_size
++                    )
++                BOT_ITER.labels(name).inc(); i+=1
+             await asyncio.sleep(cfg.get("loop_secs", 0.9))
+*** End Patch

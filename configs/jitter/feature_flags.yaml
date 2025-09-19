@@ -1,0 +1,122 @@
+# Jitter Feature Flags Configuration
+# ALL ADVANCED FEATURES START DISABLED for production safety
+
+# Core features (always enabled)
+features:
+  core_jitter: true
+  basic_attribution: true
+  basic_allocation: true
+  
+  # ADVANCED FEATURES (disabled by default)
+  # Enable these one at a time after testing
+  
+  # 🔄 Advanced Strategy Toggle Manager
+  # Enables hot-swapping between strategies without downtime
+  # Risk: Strategy transition complexity
+  advanced_toggle_manager: false
+  
+  # 🚨 Advanced Crash Sentinel Integration  
+  # Graduated risk response vs simple on/off
+  # Risk: False positives in volatile markets
+  advanced_crash_sentinel: false
+  
+  # ⚖️ Sophisticated Hedge Coupling
+  # Intelligent hedge routing based on fill source
+  # Risk: Over-complicated hedge logic
+  sophisticated_hedge_coupling: false
+  
+  # 🔍 Advanced Quality Filters
+  # ML-based toxicity and quality scoring
+  # Risk: Model drift, computational overhead
+  advanced_quality_filters: false
+  
+  # 📊 Real-time Strategy Optimization
+  # Auto-tuning of parameters based on performance
+  # Risk: Parameter instability, overfitting
+  realtime_optimization: false
+  
+  # 🧪 Comprehensive Testing Framework
+  # Backtesting, shadow testing, Monte Carlo
+  # Risk: Resource consumption, complexity
+  comprehensive_testing: true
+  
+  # Debug/Development features
+  debug_logging: false
+  performance_profiling: false
+  strategy_comparison: false
+
+# Safety limits (applied even when features are enabled)
+safety:
+  max_concurrent_strategies: 2
+  max_optimization_frequency_seconds: 300  # 5 minutes minimum between optimizations
+  enable_safety_circuit_breakers: true
+  
+  # Circuit breaker thresholds
+  max_consecutive_failures: 5
+  max_loss_threshold_usd: 1000
+  max_exposure_multiplier: 2.0
+
+# Environment-specific overrides
+environments:
+  production:
+    # Force disable risky features in production
+    force_disable:
+      - realtime_optimization
+      - comprehensive_testing
+      - debug_logging
+      - performance_profiling
+    
+  development:
+    # Allow all features in development
+    allow_all: true
+    
+  staging:
+    # Conservative testing environment
+    max_concurrent_strategies: 1
+    enable_safety_circuit_breakers: true
+
+# Feature dependencies
+dependencies:
+  realtime_optimization:
+    requires:
+      - advanced_quality_filters
+    reason: "Optimization needs quality metrics to tune parameters"
+    
+  comprehensive_testing:
+    enables:
+      - strategy_comparison
+    reason: "Testing framework automatically enables comparison metrics"
+    
+  advanced_crash_sentinel:
+    conflicts_with:
+      - debug_logging  # Too much noise in crash scenarios
+    reason: "Debug logging can interfere with crash detection"
+
+# Documentation for operators
+usage:
+  enabling_features: |
+    To enable a feature:
+    1. Set the flag to 'true' in this file
+    2. Restart the jitter system
+    3. Monitor logs for the feature activation
+    4. Check metrics for any performance impact
+    
+  recommended_order: |
+    Enable features in this order for safest rollout:
+    1. advanced_quality_filters (safer trading)
+    2. advanced_crash_sentinel (better risk management)  
+    3. sophisticated_hedge_coupling (better PnL)
+    4. advanced_toggle_manager (operational flexibility)
+    5. realtime_optimization (performance tuning)
+    6. comprehensive_testing (analysis tools)
+    
+  monitoring: |
+    Key metrics to watch when enabling features:
+    - jitter_feature_errors_total{feature=X}
+    - jitter_performance_impact{feature=X}
+    - jitter_latency_p99{feature=X}
+    - jitter_memory_usage{feature=X}
+
+
+
+

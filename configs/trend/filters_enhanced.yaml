@@ -1,0 +1,210 @@
+# Enhanced Trend Bot Configuration v3.0
+# Production-ready configuration with all user story features implemented
+
+# Core trend strategy parameters
+trend:
+  # MACD Configuration (TREND-001: MACD + Momentum Cross)
+  macd:
+    fast: 12              # Fast EMA period
+    slow: 26              # Slow EMA period  
+    signal: 9             # Signal line EMA period
+  
+  # Momentum parameters
+  momentum_window: 14     # Momentum lookback period
+  momentum_threshold: 0.0 # Minimum momentum for signal
+  
+  # Position sizing and risk
+  position_scaler: 1.0    # Base position size multiplier
+  max_position_usd: 5000  # Maximum position size in USD
+  min_notional_usd: 250   # Minimum trade size in USD
+  
+  # Risk management for OCO stops (TREND-007)
+  stop_loss_pct: 0.01     # 1% stop loss
+  take_profit_pct: 0.02   # 2% take profit
+  
+  # Core strategy switches
+  use_macd: true          # Enable MACD signals
+  
+  # Feature flags for v3.0 enhancements
+  use_enhanced_filters: true  # Enable enhanced anti-chop filters (TREND-005)
+  use_rbc_sizing: true        # Enable regime-based sizing (ENCH-TREND-012)
+  use_oco_stops: true         # Enable OCO stop emulation (TREND-007)
+  use_attribution: true       # Enable PnL attribution (TREND-008)
+
+# Enhanced Anti-Chop Filters Configuration (TREND-005)
+filters:
+  # Core ATR/ADX thresholds
+  atr_min: 0.015              # 1.5% minimum normalized ATR
+  adx_min: 20.0               # Minimum ADX for trend strength
+  
+  # Enhanced chop detection
+  bollinger_width_min: 0.02   # 2% minimum Bollinger Band width
+  volume_ratio_min: 0.8       # Minimum volume vs moving average
+  price_range_min: 0.01       # 1% minimum recent price range
+  
+  # Filter behavior
+  require_all_filters: false  # If true, ALL filters must pass; if false, ANY filter passing is sufficient
+  enabled_filters:            # List of active filters
+    - "atr"                   # Average True Range filter
+    - "adx"                   # Average Directional Index filter
+    # - "bollinger"           # Bollinger Band squeeze filter (optional)
+    # - "volume"              # Volume participation filter (optional)
+    # - "range"               # Price range filter (optional)
+
+# Technical Indicators Configuration
+indicators:
+  # ATR (Average True Range)
+  atr_period: 14
+  
+  # ADX (Average Directional Index)
+  adx_period: 14
+  
+  # RSI (Relative Strength Index)
+  rsi_period: 14
+  
+  # Bollinger Bands
+  bollinger_period: 20
+  bollinger_std: 2.0
+  
+  # Volume analysis
+  volume_period: 20
+  
+  # Price range analysis
+  range_period: 5
+
+# RBC Regime-Based Configuration (ENCH-TREND-012)
+regime:
+  # Regime classification thresholds
+  thresholds:
+    superburst_adx: 35.0      # ADX threshold for superburst regime
+    trend_adx: 25.0           # ADX threshold for trend regime
+    volatility_high: 0.05     # High volatility threshold (5%)
+    volatility_low: 0.01      # Low volatility threshold (1%)
+    momentum_strong: 0.7      # Strong momentum threshold
+    momentum_weak: 0.3        # Weak momentum threshold
+  
+  # Position size multipliers by regime
+  size_multipliers:
+    superburst: 2.0           # 2x size in strong breakout conditions
+    trend_up: 1.5             # 1.5x size in uptrend
+    trend_down: 1.5           # 1.5x size in downtrend  
+    mean_revert: 0.75         # 0.75x size in mean-revert conditions
+    choppy: 0.0               # No trading in choppy conditions
+    unknown: 1.0              # Default size for unclassified regimes
+
+# OCO Stop Emulation Configuration (TREND-007)
+oco:
+  # Order behavior
+  max_slippage_bps: 10.0      # Maximum slippage for stop/target orders (10 bps)
+  poll_interval_seconds: 2.0  # How often to check order status
+  max_order_age_seconds: 3600 # Maximum age before canceling stale orders (1 hour)
+  use_post_only: true         # Use post-only orders when possible
+  retry_failed_orders: true   # Retry failed order placements
+  
+  # Risk controls
+  emergency_cancel_all: false # Emergency mode to cancel all OCO pairs
+
+# Attribution Configuration (TREND-008)
+attribution:
+  # Storage backends
+  enable_csv: true            # Enable CSV file output
+  enable_sqlite: true         # Enable SQLite database
+  enable_json: false          # Enable JSON debug files
+  
+  # Performance tracking
+  base_dir: "data/attribution" # Base directory for attribution data
+  max_cache_size: 1000        # Maximum in-memory cache size
+  cleanup_days: 90            # Days of data to keep before cleanup
+
+# Engine Configuration
+engine:
+  tick_interval_seconds: 1.0  # Main loop interval
+  refresh_interval: 1.0       # Data refresh interval
+  
+  # Data requirements
+  min_price_history: 50       # Minimum price bars needed
+  max_price_history: 1000     # Maximum price bars to keep in memory
+  
+  # Performance tuning
+  parallel_indicator_calc: false # Calculate indicators in parallel (experimental)
+  cache_indicators: true          # Cache indicator calculations
+
+# Logging and Monitoring
+logging:
+  # Log levels: DEBUG, INFO, WARNING, ERROR
+  level: "INFO"
+  
+  # Log detail levels
+  log_signals: true           # Log signal generation details
+  log_filters: true           # Log filter decisions
+  log_regime: true            # Log regime classifications
+  log_oco: true               # Log OCO pair activities
+  log_attribution: true       # Log attribution events
+  
+  # Performance logging
+  log_performance: true       # Log performance metrics
+  performance_interval: 60    # Performance log interval (iterations)
+
+# Metrics and Observability
+metrics:
+  # Prometheus metrics
+  enable_prometheus: true     # Enable Prometheus metrics export
+  prometheus_port: 9112       # Prometheus metrics port
+  
+  # Custom metrics
+  track_regime_performance: true    # Track performance by regime
+  track_signal_accuracy: true      # Track signal win/loss rates
+  track_filter_effectiveness: true # Track filter performance
+
+# Development and Testing
+development:
+  # Simulation mode
+  simulate_fills: false       # Simulate order fills for backtesting
+  simulation_delay_ms: 100    # Simulated fill delay
+  
+  # Debug features
+  debug_signals: false        # Extra debug output for signals
+  debug_filters: false        # Extra debug output for filters
+  debug_regime: false         # Extra debug output for regime classification
+  
+  # Testing overrides
+  force_regime: null          # Force specific regime for testing
+  mock_indicators: false      # Use mock indicator values
+
+# Risk Management Integration
+risk:
+  # Global risk limits
+  max_daily_trades: 50        # Maximum trades per day
+  max_consecutive_losses: 5   # Stop after N consecutive losses
+  
+  # Drawdown protection
+  max_daily_loss_usd: 1000   # Maximum daily loss in USD
+  emergency_stop_loss_pct: 0.05  # Emergency stop at 5% account loss
+  
+  # Position limits
+  max_position_ratio: 0.2     # Maximum position as ratio of account value
+  max_leverage: 3.0           # Maximum effective leverage
+
+# Environment-Specific Overrides
+environments:
+  development:
+    trend:
+      min_notional_usd: 10    # Smaller trades in dev
+      max_position_usd: 100   # Smaller positions in dev
+    logging:
+      level: "DEBUG"          # More verbose logging in dev
+    development:
+      debug_signals: true     # Enable debug features
+      debug_filters: true
+  
+  production:
+    logging:
+      level: "INFO"           # Production logging level
+    development:
+      debug_signals: false    # Disable debug in production
+      debug_filters: false
+    risk:
+      max_daily_loss_usd: 5000  # Higher limits in production
+
+
+

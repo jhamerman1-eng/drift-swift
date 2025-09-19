@@ -1,0 +1,42 @@
+# Testnet Environment Configuration
+# Overrides for testnet testing and validation
+
+# Environment settings
+network: "testnet"
+environment: "testing"
+
+# RPC endpoints for testnet
+rpc:
+  primary_url: "https://api.testnet.solana.com"
+  backup_urls:
+    - "https://testnet.helius-rpc.com"
+
+# WebSocket for testnet
+websocket:
+  url: "wss://api.testnet.solana.com"
+
+# Drift configuration for testnet
+drift:
+  environment: "testnet"
+
+# Logging configuration for testing
+logging:
+  level: "INFO"
+  console_enabled: true
+  file_enabled: true
+
+# Feature flags for testing
+feature_flags:
+  enhanced_routing: true
+  cross_venue_hedging: true
+  advanced_position_tracking: true
+  confidence_pricing: true
+  jit_optimization: true
+
+# Default markets for testnet
+default_markets:
+  primary_markets:
+    - "SOL-PERP"
+    - "ETH-PERP"
+  backup_markets:
+    - "USDC-PERP"

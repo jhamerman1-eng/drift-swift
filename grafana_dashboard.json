@@ -1,0 +1,181 @@
+{
+  "dashboard": {
+    "title": "Drift Bots v3.0 - Orchestrator & Trading Bots",
+    "tags": ["drift", "trading", "bots", "prometheus"],
+    "timezone": "UTC",
+    "panels": [
+      {
+        "title": "System Health Overview",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "orchestrator_up",
+            "legendFormat": "Orchestrator Status"
+          },
+          {
+            "expr": "orchestrator_ready",
+            "legendFormat": "Ready Status"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "text": "DOWN",
+                    "color": "red"
+                  },
+                  "1": {
+                    "text": "UP",
+                    "color": "green"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "title": "Bot Activity (Iterations/Minute)",
+        "type": "bargauge",
+        "targets": [
+          {
+            "expr": "rate(bot_iterations_total[5m]) * 60",
+            "legendFormat": "{{bot}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "iter/min"
+          }
+        }
+      },
+      {
+        "title": "Crash Sentinel State by Market",
+        "type": "table",
+        "targets": [
+          {
+            "expr": "crash_sentinel_state",
+            "legendFormat": "{{market}}",
+            "instant": true
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "text": "NORMAL",
+                    "color": "green"
+                  },
+                  "1": {
+                    "text": "DE_RISK",
+                    "color": "yellow"
+                  },
+                  "2": {
+                    "text": "HALT",
+                    "color": "red"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "title": "Portfolio Rails State",
+        "type": "bargauge",
+        "targets": [
+          {
+            "expr": "portfolio_rails_state",
+            "legendFormat": "{{portfolio}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "text": "NORMAL",
+                    "color": "green"
+                  },
+                  "1": {
+                    "text": "SOFT_STOP",
+                    "color": "yellow"
+                  },
+                  "2": {
+                    "text": "TREND_PAUSE",
+                    "color": "orange"
+                  },
+                  "3": {
+                    "text": "CIRCUIT_BREAKER",
+                    "color": "red"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "title": "JIT Bot Quote Latency",
+        "type": "heatmap",
+        "targets": [
+          {
+            "expr": "jit_tick_to_quote_seconds",
+            "legendFormat": "Tick to Quote Latency"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "seconds"
+          }
+        }
+      },
+      {
+        "title": "Bot Performance Trends",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(bot_iterations_total[5m])",
+            "legendFormat": "{{bot}} iterations/sec"
+          }
+        ],
+        "yAxes": [
+          {
+            "unit": "iter/sec"
+          }
+        ]
+      },
+      {
+        "title": "System Alerts",
+        "type": "alertlist",
+        "alerts": [
+          {
+            "expr": "orchestrator_up == 0",
+            "message": "Orchestrator is DOWN"
+          },
+          {
+            "expr": "crash_sentinel_state == 2",
+            "message": "Crash Sentinel HALT active"
+          },
+          {
+            "expr": "portfolio_rails_state >= 3",
+            "message": "Circuit breaker triggered"
+          }
+        ]
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "refresh": "30s",
+    "schemaVersion": 27,
+    "version": 0,
+    "links": []
+  }
+}

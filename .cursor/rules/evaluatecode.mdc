@@ -1,0 +1,9 @@
+---
+description: Review the code, and potential git ready patch below. 
+Do not blindly add code, evaluate it, make it better, write unit tests around it.
+MOST IMPORTANTLY: ENSURE YOU DO NOT INTRODUCE BREAKING CHANGE:
+There for you must plan and understand the impact of this code, and the code you will be adjusting.
+Also, make sure you organize this code and work properly. don't over load one file, make ssure you are using config files, YAML files, and best development pratices
+
+alwaysApply: false
+---

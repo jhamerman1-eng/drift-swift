@@ -1,0 +1,6 @@
+# Beta.Drift Environment Configuration
+DRIFT_ENV=devnet
+SWIFT_FORWARD_BASE=https://beta.drift.trade
+SWIFT_WS_URL=wss://beta.drift.trade/ws
+RPC_URL=https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+SWIFT_SIDECAR_URL=http://localhost:8787

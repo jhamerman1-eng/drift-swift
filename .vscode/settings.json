@@ -1,0 +1,21 @@
+{
+    "python.analysis.extraPaths": [
+        "./libs"
+    ],
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.pycodestyleEnabled": false,
+    "python.analysis.stubPath": "./libs",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": "warning"
+    },
+    "python.analysis.ignore": [
+        "**/driftpy-enhanced-usermap.py"
+    ],
+    "python.analysis.exclude": [
+        "**/__pycache__",
+        "**/node_modules"
+    ]
+}

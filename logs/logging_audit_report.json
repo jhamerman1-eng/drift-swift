@@ -1,0 +1,349 @@
+{
+  "critical_applications": {
+    "run_mm_bot_v2.py": {
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\run_mm_bot_v2.py",
+      "has_logging_import": true,
+      "has_basic_config": true,
+      "has_file_handler": true,
+      "has_console_handler": true,
+      "log_level": "INFO",
+      "handlers": [],
+      "issues": [],
+      "recommendations": [
+        "Migrate to centralized logging_config"
+      ],
+      "audit_compliant": true,
+      "warnings": []
+    },
+    "run_mm_bot.py": {
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\run_mm_bot.py",
+      "has_logging_import": true,
+      "has_basic_config": false,
+      "has_file_handler": false,
+      "has_console_handler": false,
+      "log_level": null,
+      "handlers": [],
+      "issues": [],
+      "recommendations": [
+        "Add file logging for persistence",
+        "Add console output for debugging"
+      ]
+    },
+    "run_mm_bot_enhanced.py": {
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\run_mm_bot_enhanced.py",
+      "has_logging_import": true,
+      "has_basic_config": false,
+      "has_file_handler": false,
+      "has_console_handler": false,
+      "log_level": null,
+      "handlers": [],
+      "issues": [],
+      "recommendations": [
+        "Add file logging for persistence",
+        "Add console output for debugging"
+      ]
+    },
+    "launch_hedge_beta.py": {
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\launch_hedge_beta.py",
+      "has_logging_import": true,
+      "has_basic_config": false,
+      "has_file_handler": true,
+      "has_console_handler": true,
+      "log_level": null,
+      "handlers": [],
+      "issues": [],
+      "recommendations": []
+    },
+    "launch_trend_beta.py": {
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\launch_trend_beta.py",
+      "has_logging_import": true,
+      "has_basic_config": false,
+      "has_file_handler": false,
+      "has_console_handler": false,
+      "log_level": null,
+      "handlers": [],
+      "issues": [],
+      "recommendations": [
+        "Add file logging for persistence",
+        "Add console output for debugging"
+      ]
+    },
+    "run_all_bots.py": {
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\run_all_bots.py",
+      "has_logging_import": true,
+      "has_basic_config": true,
+      "has_file_handler": true,
+      "has_console_handler": true,
+      "log_level": "INFO",
+      "handlers": [],
+      "issues": [],
+      "recommendations": [
+        "Migrate to centralized logging_config"
+      ],
+      "audit_compliant": true,
+      "warnings": []
+    },
+    "libs/drift/client.py": {
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\libs\\drift\\client.py",
+      "has_logging_import": true,
+      "has_basic_config": false,
+      "has_file_handler": false,
+      "has_console_handler": false,
+      "log_level": null,
+      "handlers": [],
+      "issues": [],
+      "recommendations": [
+        "Add file logging for persistence",
+        "Add console output for debugging"
+      ]
+    },
+    "libs/rpc_manager.py": {
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\libs\\rpc_manager.py",
+      "has_logging_import": true,
+      "has_basic_config": false,
+      "has_file_handler": false,
+      "has_console_handler": false,
+      "log_level": null,
+      "handlers": [],
+      "issues": [],
+      "recommendations": [
+        "Add file logging for persistence",
+        "Add console output for debugging"
+      ]
+    },
+    "libs/order_management.py": {
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\libs\\order_management.py",
+      "has_logging_import": true,
+      "has_basic_config": false,
+      "has_file_handler": false,
+      "has_console_handler": false,
+      "log_level": null,
+      "handlers": [],
+      "issues": [],
+      "recommendations": [
+        "Add file logging for persistence",
+        "Add console output for debugging"
+      ]
+    },
+    "orchestrator/risk_manager.py": {
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\orchestrator\\risk_manager.py",
+      "has_logging_import": true,
+      "has_basic_config": false,
+      "has_file_handler": false,
+      "has_console_handler": false,
+      "log_level": null,
+      "handlers": [],
+      "issues": [],
+      "recommendations": [
+        "Add file logging for persistence",
+        "Add console output for debugging"
+      ]
+    }
+  },
+  "utility_applications": {
+    "check_drift_trades.py": {
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\check_drift_trades.py",
+      "has_logging_import": true,
+      "has_basic_config": false,
+      "has_file_handler": false,
+      "has_console_handler": false,
+      "log_level": null,
+      "handlers": [],
+      "issues": [],
+      "recommendations": [
+        "Add file logging for persistence",
+        "Add console output for debugging"
+      ]
+    },
+    "devnet_test_connection.py": {
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\devnet_test_connection.py",
+      "has_logging_import": true,
+      "has_basic_config": false,
+      "has_file_handler": false,
+      "has_console_handler": false,
+      "log_level": null,
+      "handlers": [],
+      "issues": [],
+      "recommendations": [
+        "Add file logging for persistence",
+        "Add console output for debugging"
+      ]
+    },
+    "setup_environment.py": {
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\setup_environment.py",
+      "has_logging_import": false,
+      "has_basic_config": false,
+      "has_file_handler": false,
+      "has_console_handler": false,
+      "log_level": null,
+      "handlers": [],
+      "issues": [
+        "No logging import found"
+      ],
+      "recommendations": []
+    },
+    "test_monitoring.py": {
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\test_monitoring.py",
+      "has_logging_import": true,
+      "has_basic_config": false,
+      "has_file_handler": false,
+      "has_console_handler": false,
+      "log_level": null,
+      "handlers": [],
+      "issues": [],
+      "recommendations": [
+        "Add file logging for persistence",
+        "Add console output for debugging"
+      ]
+    },
+    "test_rpc_health.py": {
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\test_rpc_health.py",
+      "has_logging_import": true,
+      "has_basic_config": false,
+      "has_file_handler": false,
+      "has_console_handler": false,
+      "log_level": null,
+      "handlers": [],
+      "issues": [],
+      "recommendations": [
+        "Add file logging for persistence",
+        "Add console output for debugging"
+      ]
+    }
+  },
+  "logging_tests": {
+    "jit-mm-swift": {
+      "status": "OK",
+      "handlers": 2,
+      "level": "INFO",
+      "file_handler": true,
+      "console_handler": true
+    },
+    "hedge-bot": {
+      "status": "OK",
+      "handlers": 2,
+      "level": "INFO",
+      "file_handler": true,
+      "console_handler": true
+    },
+    "trend-bot": {
+      "status": "OK",
+      "handlers": 2,
+      "level": "INFO",
+      "file_handler": true,
+      "console_handler": true
+    },
+    "drift-client": {
+      "status": "OK",
+      "handlers": 2,
+      "level": "INFO",
+      "file_handler": true,
+      "console_handler": true
+    },
+    "rpc-manager": {
+      "status": "OK",
+      "handlers": 2,
+      "level": "INFO",
+      "file_handler": true,
+      "console_handler": true
+    },
+    "order-management": {
+      "status": "OK",
+      "handlers": 2,
+      "level": "INFO",
+      "file_handler": true,
+      "console_handler": true
+    },
+    "risk-manager": {
+      "status": "OK",
+      "handlers": 2,
+      "level": "INFO",
+      "file_handler": true,
+      "console_handler": true
+    },
+    "swift-client": {
+      "status": "OK",
+      "handlers": 2,
+      "level": "INFO",
+      "file_handler": true,
+      "console_handler": true
+    },
+    "orchestrator": {
+      "status": "OK",
+      "handlers": 2,
+      "level": "INFO",
+      "file_handler": true,
+      "console_handler": true
+    }
+  },
+  "log_files": {
+    "drift-client.log": {
+      "size_bytes": 756,
+      "size_mb": 0.000720977783203125,
+      "modified": 1757867890.487599,
+      "age_days": 1.887204470457854e-07
+    },
+    "hedge-bot.log": {
+      "size_bytes": 702,
+      "size_mb": 0.0006694793701171875,
+      "modified": 1757867890.4812176,
+      "age_days": 2.741261764808937e-07
+    },
+    "jit-mm-swift.log": {
+      "size_bytes": 291922,
+      "size_mb": 0.2783985137939453,
+      "modified": 1757867890.4795496,
+      "age_days": 2.934314586498119e-07
+    },
+    "orchestrator.log": {
+      "size_bytes": 756,
+      "size_mb": 0.000720977783203125,
+      "modified": 1757867890.4999037,
+      "age_days": 6.947252485487196e-08
+    },
+    "order-management.log": {
+      "size_bytes": 828,
+      "size_mb": 0.000789642333984375,
+      "modified": 1757867890.4929025,
+      "age_days": 1.6203909008591264e-07
+    },
+    "risk-manager.log": {
+      "size_bytes": 756,
+      "size_mb": 0.000720977783203125,
+      "modified": 1757867890.4949026,
+      "age_days": 1.5049344963497585e-07
+    },
+    "rpc-manager.log": {
+      "size_bytes": 738,
+      "size_mb": 0.0007038116455078125,
+      "modified": 1757867890.489874,
+      "age_days": 2.202695166623151e-07
+    },
+    "swift-client.log": {
+      "size_bytes": 756,
+      "size_mb": 0.000720977783203125,
+      "modified": 1757867890.4969025,
+      "age_days": 1.5921062893337674e-07
+    },
+    "trend-bot.log": {
+      "size_bytes": 6617,
+      "size_mb": 0.006310462951660156,
+      "modified": 1757867890.484052,
+      "age_days": 3.148035870658027e-07
+    }
+  },
+  "critical_issues": [],
+  "warnings": [
+    "setup_environment.py: No logging import found"
+  ],
+  "recommendations": [
+    "\u26a0\ufe0f  WARNING: Address logging warnings in utility applications",
+    "\ud83d\udd27 MIGRATION: Replace logging.basicConfig with centralized logging_config",
+    "\ud83d\udcc1 PERSISTENCE: Ensure all critical apps have file logging",
+    "\ud83d\udd04 ROTATION: Implement log rotation for large log files",
+    "\ud83d\udcca MONITORING: Set up log monitoring and alerting",
+    "\ud83e\uddf9 MAINTENANCE: Implement log cleanup and retention policies"
+  ],
+  "audit_timestamp": "2025-09-14T12:38:10.523252",
+  "audit_version": "1.0"
+}

@@ -1,0 +1,125 @@
+# ============================================================================
+# DRIFT BOT ENVIRONMENT CONFIGURATION
+# ============================================================================
+# 
+# This is the SINGLE SOURCE OF TRUTH for all environment configurations
+# All other files should reference this configuration
+#
+# ENVIRONMENTS:
+#   local   - Local development with mock sidecar (localhost:8787)
+#   devnet  - Devnet testing with real Swift API (master.swift.drift.trade)  
+#   mainnet - Production with live trading (app.drift.trade)
+# ============================================================================
+
+environments:
+  local:
+    description: "Local development with mock sidecar forwarding to devnet"
+    drift:
+      env: "devnet"  # Use devnet for development
+      rpc_url: "https://api.devnet.solana.com"
+      websocket_url: "wss://master.dlob.drift.trade/ws"  # Match devnet websocket
+    swift:
+      enabled: true
+      base_url: "http://localhost:8787"  # Local sidecar
+      ws_url: "ws://localhost:8787/ws"
+      use_local_sidecar: true
+    jit:
+      enabled: true
+      base_url: "http://localhost:8787"
+    pyth:
+      enabled: true
+      lazer_endpoints: ["wss://lazer.drift.trade"]
+      lazer_token: "${PYTH_LAZER_TOKEN:dev_token}"
+      http_endpoints: ["https://lazer.drift.trade"]
+    redis:
+      enabled: true
+      host: "${REDIS_HOST:127.0.0.1}"
+      port: "${REDIS_PORT:6379}"
+      db: "${REDIS_DB:0}"
+      password: "${REDIS_PASSWORD:}"
+      key_prefix: "drift:pyth:"
+      ttl_seconds: 300  # 5 minutes cache TTL
+    
+  devnet:
+    description: "Devnet testing with real Swift API"
+    drift:
+      env: "devnet"
+      rpc_url: "https://api.devnet.solana.com"
+      websocket_url: "wss://master.dlob.drift.trade/ws"  # Correct websocket for devnet
+    swift:
+      enabled: true
+      base_url: "https://master.swift.drift.trade"
+      ws_url: "wss://master.swift.drift.trade/ws"
+      use_local_sidecar: false
+    jit:
+      enabled: true  # Enable JIT for verbose testing
+      base_url: "https://master.swift.drift.trade"
+    pyth:
+      enabled: true
+      lazer_endpoints: ["wss://lazer.drift.trade"]
+      lazer_token: "${PYTH_LAZER_TOKEN}"
+      http_endpoints: ["https://lazer.drift.trade"]
+    redis:
+      enabled: true
+      host: "${REDIS_HOST:127.0.0.1}"
+      port: "${REDIS_PORT:6379}"
+      db: "${REDIS_DB:0}"
+      password: "${REDIS_PASSWORD:}"
+      key_prefix: "drift:pyth:"
+      ttl_seconds: 300  # 5 minutes cache TTL
+
+  mainnet:
+    description: "Production mainnet trading"
+    drift:
+      env: "mainnet-beta"
+      rpc_url: "https://mainnet.helius-rpc.com"
+      websocket_url: "wss://dlob.drift.trade/ws"  # Correct websocket for mainnet-beta
+    swift:
+      enabled: true
+      base_url: "https://swift.drift.trade"  # Match sidecar forwarding destination
+      ws_url: "wss://swift.drift.trade/ws"
+      use_local_sidecar: true  # Use local sidecar that forwards to mainnet
+    jit:
+      enabled: false  # Use real Swift API for production
+      base_url: "https://swift.drift.trade"
+    pyth:
+      enabled: true
+      lazer_endpoints: ["wss://lazer.drift.trade"]
+      lazer_token: "${PYTH_LAZER_TOKEN}"
+      http_endpoints: ["https://lazer.drift.trade"]
+    redis:
+      enabled: true
+      host: "${REDIS_HOST:127.0.0.1}"
+      port: "${REDIS_PORT:6379}"
+      db: "${REDIS_DB:0}"
+      password: "${REDIS_PASSWORD:}"
+      key_prefix: "drift:pyth:"
+      ttl_seconds: 300  # 5 minutes cache TTL
+
+# ============================================================================
+# DEFAULT ENVIRONMENT SELECTION
+# ============================================================================
+# Set which environment to use by default
+# Override with DRIFT_ENVIRONMENT environment variable
+default_environment: "devnet"  # Default to devnet for testing
+
+# ============================================================================
+# COMMON SETTINGS (applied to all environments)
+# ============================================================================
+common:
+  timeouts:
+    swift_timeout_seconds: 1.2
+    rpc_timeout_seconds: 30
+  retries:
+    swift_retries: 3
+    rpc_retries: 2
+  jit:
+    slot_skew_max: 30
+    tombstone_ttl_ms: 800
+  market_making:
+    tick_interval_seconds: 2.0
+    position_limit_sol: 120.0
+    max_live_orders: 32  # Drift Protocol limit (MaxNumberOfOrders: 6060 error)
+
+
+

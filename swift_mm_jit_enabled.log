@@ -1,0 +1,222 @@
+2025-09-15 14:12:44,029 - __main__ - INFO - ================================================================================
+2025-09-15 14:12:44,037 - __main__ - INFO -    Environment: devnet (LIVE BLOCKCHAIN)
+2025-09-15 14:12:44,038 - __main__ - INFO -    Order Size: 0.2 SOL
+2025-09-15 14:12:44,039 - __main__ - INFO -    Spread: 8 bps
+2025-09-15 14:12:44,053 - __main__ - INFO -    Swift Sidecar: http://localhost:8787
+2025-09-15 14:12:44,053 - __main__ - INFO -    Swift WebSocket: wss://swift.drift.trade/ws
+2025-09-15 14:12:52,611 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:12:52,903 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:12:53,110 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:12:53,309 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:12:53,474 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:12:54,699 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:12:58,099 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:12:58,638 - utils.websocket_resilience - INFO - [UserMap] WebSocket connected successfully
+2025-09-15 14:13:00,108 - libs.jit.client - INFO - Building JIT client: http://localhost:8787
+2025-09-15 14:13:00,117 - __main__ - INFO - 
+2025-09-15 14:13:00,123 - __main__ - INFO - ================================================================================
+2025-09-15 14:13:00,128 - __main__ - INFO -    • Atomic transaction bundling
+2025-09-15 14:13:00,129 - __main__ - INFO -    • Place-and-make operations
+2025-09-15 14:13:00,129 - __main__ - INFO -    • Cancel-replace optimization
+2025-09-15 14:13:00,129 - __main__ - INFO -    • Multi-instruction transactions
+2025-09-15 14:13:00,130 - __main__ - INFO - 
+2025-09-15 14:13:00,136 - __main__ - INFO -    • Real-time order flow reception
+2025-09-15 14:13:00,136 - __main__ - INFO -    • WebSocket order notifications
+2025-09-15 14:13:00,136 - __main__ - INFO -    • Keeper bundling and gasless submits
+2025-09-15 14:13:00,136 - __main__ - INFO -    • Auction parameter optimization
+2025-09-15 14:13:00,137 - __main__ - INFO - 
+2025-09-15 14:13:00,142 - __main__ - INFO -    • Order size: 0.2 SOL per order
+2025-09-15 14:13:00,142 - __main__ - INFO -    • Max daily risk: $5000.0 USD
+2025-09-15 14:13:00,143 - __main__ - INFO -    • Tick interval: 100ms (10 Hz)
+2025-09-15 14:13:00,143 - __main__ - INFO - 
+2025-09-15 14:13:00,149 - __main__ - INFO - ================================================================================
+2025-09-15 14:13:00,462 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:13:02,525 - libs.jit.client - WARNING - JIT health check error: 
+2025-09-15 14:13:02,553 - libs.drift.drivers.swift - INFO - Swift driver initialized: http://localhost:8787, retries=3, auction=True
+2025-09-15 14:13:02,553 - libs.drift.swift_envelope - INFO - [ENVELOPE] Creating DriftPy envelope with enhanced validation
+2025-09-15 14:13:02,563 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams created: market_index=0, direction=PositionDirection.Long()
+2025-09-15 14:13:02,564 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: base_asset_amount=111618231, price=232415500
+2025-09-15 14:13:02,564 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: post_only=PostOnlyParams.MustPostOnly(), reduce_only=False
+2025-09-15 14:13:02,564 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: auction_duration=None, max_ts=None
+2025-09-15 14:13:02,565 - libs.drift.swift_envelope - INFO - [ENVELOPE] CRITICAL FIX: auction_duration and max_ts are now properly set to None for Option handling
+2025-09-15 14:13:03,264 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:13:10,377 - libs.drift.drivers.swift - INFO - Swift driver initialized: http://localhost:8787, retries=3, auction=True
+2025-09-15 14:13:10,377 - libs.drift.swift_envelope - INFO - [ENVELOPE] Creating DriftPy envelope with enhanced validation
+2025-09-15 14:13:10,378 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams created: market_index=0, direction=PositionDirection.Short()
+2025-09-15 14:13:10,379 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: base_asset_amount=111529886, price=232599600
+2025-09-15 14:13:10,379 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: post_only=PostOnlyParams.MustPostOnly(), reduce_only=False
+2025-09-15 14:13:10,379 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: auction_duration=None, max_ts=None
+2025-09-15 14:13:10,380 - libs.drift.swift_envelope - INFO - [ENVELOPE] CRITICAL FIX: auction_duration and max_ts are now properly set to None for Option handling
+2025-09-15 14:13:11,343 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:13:17,765 - __main__ - INFO -    Orders Placed: 0
+2025-09-15 14:13:17,766 - __main__ - INFO -    Orders Cancelled: 0
+2025-09-15 14:13:17,766 - __main__ - INFO -    Swift Orders Received: 18
+2025-09-15 14:13:17,767 - __main__ - INFO -    JIT Trades Executed: 0
+2025-09-15 14:13:17,767 - __main__ - INFO -    JIT Profit: $0.0000
+2025-09-15 14:13:17,767 - __main__ - INFO -    Active Orders: 0
+2025-09-15 14:13:17,768 - __main__ - INFO -    Avg Tick Time: 17604.8ms
+2025-09-15 14:13:17,768 - __main__ - INFO -    Success Rate: 100.0%
+2025-09-15 14:13:17,769 - __main__ - INFO -    Current Position: -1.030000 SOL
+2025-09-15 14:13:17,769 - __main__ - INFO -    Should Trade: True
+2025-09-15 14:13:17,769 - __main__ - INFO -    User Map Active: True
+2025-09-15 14:13:17,770 - __main__ - INFO -    Swift Active: False
+2025-09-15 14:13:17,770 - __main__ - INFO - 
+2025-09-15 14:13:18,226 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:13:18,235 - libs.drift.drivers.swift - INFO - Swift driver initialized: http://localhost:8787, retries=3, auction=True
+2025-09-15 14:13:18,237 - libs.drift.swift_envelope - INFO - [ENVELOPE] Creating DriftPy envelope with enhanced validation
+2025-09-15 14:13:18,237 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams created: market_index=0, direction=PositionDirection.Long()
+2025-09-15 14:13:18,238 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: base_asset_amount=111554764, price=232518900
+2025-09-15 14:13:18,239 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: post_only=PostOnlyParams.MustPostOnly(), reduce_only=False
+2025-09-15 14:13:18,239 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: auction_duration=None, max_ts=None
+2025-09-15 14:13:18,239 - libs.drift.swift_envelope - INFO - [ENVELOPE] CRITICAL FIX: auction_duration and max_ts are now properly set to None for Option handling
+2025-09-15 14:13:19,083 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:13:27,322 - libs.drift.drivers.swift - INFO - Swift driver initialized: http://localhost:8787, retries=3, auction=True
+2025-09-15 14:13:27,326 - libs.drift.swift_envelope - INFO - [ENVELOPE] Creating DriftPy envelope with enhanced validation
+2025-09-15 14:13:27,333 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams created: market_index=0, direction=PositionDirection.Short()
+2025-09-15 14:13:27,334 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: base_asset_amount=111466461, price=232703100
+2025-09-15 14:13:27,334 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: post_only=PostOnlyParams.MustPostOnly(), reduce_only=False
+2025-09-15 14:13:27,335 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: auction_duration=None, max_ts=None
+2025-09-15 14:13:27,335 - libs.drift.swift_envelope - INFO - [ENVELOPE] CRITICAL FIX: auction_duration and max_ts are now properly set to None for Option handling
+2025-09-15 14:13:28,577 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:13:36,867 - __main__ - INFO -    Orders Placed: 0
+2025-09-15 14:13:36,867 - __main__ - INFO -    Orders Cancelled: 0
+2025-09-15 14:13:36,868 - __main__ - INFO -    Swift Orders Received: 36
+2025-09-15 14:13:36,868 - __main__ - INFO -    JIT Trades Executed: 0
+2025-09-15 14:13:36,870 - __main__ - INFO -    JIT Profit: $0.0000
+2025-09-15 14:13:36,872 - __main__ - INFO -    Active Orders: 0
+2025-09-15 14:13:36,875 - __main__ - INFO -    Avg Tick Time: 18285.3ms
+2025-09-15 14:13:36,876 - __main__ - INFO -    Success Rate: 100.0%
+2025-09-15 14:13:36,876 - __main__ - INFO -    Current Position: -1.030000 SOL
+2025-09-15 14:13:36,877 - __main__ - INFO -    Should Trade: True
+2025-09-15 14:13:36,877 - __main__ - INFO -    User Map Active: True
+2025-09-15 14:13:36,878 - __main__ - INFO -    Swift Active: False
+2025-09-15 14:13:36,878 - __main__ - INFO - 
+2025-09-15 14:13:37,548 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:13:37,560 - libs.drift.drivers.swift - INFO - Swift driver initialized: http://localhost:8787, retries=3, auction=True
+2025-09-15 14:13:37,560 - libs.drift.swift_envelope - INFO - [ENVELOPE] Creating DriftPy envelope with enhanced validation
+2025-09-15 14:13:37,561 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams created: market_index=0, direction=PositionDirection.Long()
+2025-09-15 14:13:37,562 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: base_asset_amount=111494775, price=232647400
+2025-09-15 14:13:37,563 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: post_only=PostOnlyParams.MustPostOnly(), reduce_only=False
+2025-09-15 14:13:37,563 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: auction_duration=None, max_ts=None
+2025-09-15 14:13:37,568 - libs.drift.swift_envelope - INFO - [ENVELOPE] CRITICAL FIX: auction_duration and max_ts are now properly set to None for Option handling
+2025-09-15 14:13:38,716 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:13:46,790 - libs.drift.drivers.swift - INFO - Swift driver initialized: http://localhost:8787, retries=3, auction=True
+2025-09-15 14:13:46,791 - libs.drift.swift_envelope - INFO - [ENVELOPE] Creating DriftPy envelope with enhanced validation
+2025-09-15 14:13:46,791 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams created: market_index=0, direction=PositionDirection.Short()
+2025-09-15 14:13:46,792 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: base_asset_amount=111406186, price=232832400
+2025-09-15 14:13:46,792 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: post_only=PostOnlyParams.MustPostOnly(), reduce_only=False
+2025-09-15 14:13:46,793 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: auction_duration=None, max_ts=None
+2025-09-15 14:13:46,793 - libs.drift.swift_envelope - INFO - [ENVELOPE] CRITICAL FIX: auction_duration and max_ts are now properly set to None for Option handling
+2025-09-15 14:13:47,755 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:13:54,304 - __main__ - INFO -    Orders Placed: 0
+2025-09-15 14:13:54,305 - __main__ - INFO -    Orders Cancelled: 0
+2025-09-15 14:13:54,305 - __main__ - INFO -    Swift Orders Received: 55
+2025-09-15 14:13:54,305 - __main__ - INFO -    JIT Trades Executed: 0
+2025-09-15 14:13:54,306 - __main__ - INFO -    JIT Profit: $0.0000
+2025-09-15 14:13:54,306 - __main__ - INFO -    Active Orders: 0
+2025-09-15 14:13:54,306 - __main__ - INFO -    Avg Tick Time: 17957.6ms
+2025-09-15 14:13:54,307 - __main__ - INFO -    Success Rate: 100.0%
+2025-09-15 14:13:54,307 - __main__ - INFO -    Current Position: -1.030000 SOL
+2025-09-15 14:13:54,307 - __main__ - INFO -    Should Trade: True
+2025-09-15 14:13:54,307 - __main__ - INFO -    User Map Active: True
+2025-09-15 14:13:54,308 - __main__ - INFO -    Swift Active: False
+2025-09-15 14:13:54,308 - __main__ - INFO - 
+2025-09-15 14:13:54,655 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:13:54,663 - libs.drift.drivers.swift - INFO - Swift driver initialized: http://localhost:8787, retries=3, auction=True
+2025-09-15 14:13:54,663 - libs.drift.swift_envelope - INFO - [ENVELOPE] Creating DriftPy envelope with enhanced validation
+2025-09-15 14:13:54,664 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams created: market_index=0, direction=PositionDirection.Long()
+2025-09-15 14:13:54,665 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: base_asset_amount=111601746, price=232434100
+2025-09-15 14:13:54,665 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: post_only=PostOnlyParams.MustPostOnly(), reduce_only=False
+2025-09-15 14:13:54,665 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: auction_duration=None, max_ts=None
+2025-09-15 14:13:54,666 - libs.drift.swift_envelope - INFO - [ENVELOPE] CRITICAL FIX: auction_duration and max_ts are now properly set to None for Option handling
+2025-09-15 14:13:55,316 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:14:02,247 - libs.drift.drivers.swift - INFO - Swift driver initialized: http://localhost:8787, retries=3, auction=True
+2025-09-15 14:14:02,247 - libs.drift.swift_envelope - INFO - [ENVELOPE] Creating DriftPy envelope with enhanced validation
+2025-09-15 14:14:02,248 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams created: market_index=0, direction=PositionDirection.Short()
+2025-09-15 14:14:02,248 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: base_asset_amount=111509874, price=232625600
+2025-09-15 14:14:02,249 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: post_only=PostOnlyParams.MustPostOnly(), reduce_only=False
+2025-09-15 14:14:02,249 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: auction_duration=None, max_ts=None
+2025-09-15 14:14:02,249 - libs.drift.swift_envelope - INFO - [ENVELOPE] CRITICAL FIX: auction_duration and max_ts are now properly set to None for Option handling
+2025-09-15 14:14:03,000 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:14:09,506 - __main__ - INFO -    Orders Placed: 0
+2025-09-15 14:14:09,507 - __main__ - INFO -    Orders Cancelled: 0
+2025-09-15 14:14:09,507 - __main__ - INFO -    Swift Orders Received: 71
+2025-09-15 14:14:09,507 - __main__ - INFO -    JIT Trades Executed: 0
+2025-09-15 14:14:09,507 - __main__ - INFO -    JIT Profit: $0.0000
+2025-09-15 14:14:09,508 - __main__ - INFO -    Active Orders: 0
+2025-09-15 14:14:09,508 - __main__ - INFO -    Avg Tick Time: 17244.4ms
+2025-09-15 14:14:09,508 - __main__ - INFO -    Success Rate: 100.0%
+2025-09-15 14:14:09,508 - __main__ - INFO -    Current Position: -1.030000 SOL
+2025-09-15 14:14:09,508 - __main__ - INFO -    Should Trade: True
+2025-09-15 14:14:09,509 - __main__ - INFO -    User Map Active: True
+2025-09-15 14:14:09,509 - __main__ - INFO -    Swift Active: False
+2025-09-15 14:14:09,509 - __main__ - INFO - 
+2025-09-15 14:14:10,053 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:14:10,059 - libs.drift.drivers.swift - INFO - Swift driver initialized: http://localhost:8787, retries=3, auction=True
+2025-09-15 14:14:10,060 - libs.drift.swift_envelope - INFO - [ENVELOPE] Creating DriftPy envelope with enhanced validation
+2025-09-15 14:14:10,060 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams created: market_index=0, direction=PositionDirection.Long()
+2025-09-15 14:14:10,061 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: base_asset_amount=111579780, price=232437100
+2025-09-15 14:14:10,061 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: post_only=PostOnlyParams.MustPostOnly(), reduce_only=False
+2025-09-15 14:14:10,062 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: auction_duration=None, max_ts=None
+2025-09-15 14:14:10,062 - libs.drift.swift_envelope - INFO - [ENVELOPE] CRITICAL FIX: auction_duration and max_ts are now properly set to None for Option handling
+2025-09-15 14:14:10,737 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:14:17,330 - libs.drift.drivers.swift - INFO - Swift driver initialized: http://localhost:8787, retries=3, auction=True
+2025-09-15 14:14:17,330 - libs.drift.swift_envelope - INFO - [ENVELOPE] Creating DriftPy envelope with enhanced validation
+2025-09-15 14:14:17,331 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams created: market_index=0, direction=PositionDirection.Short()
+2025-09-15 14:14:17,331 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: base_asset_amount=111488550, price=232627300
+2025-09-15 14:14:17,331 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: post_only=PostOnlyParams.MustPostOnly(), reduce_only=False
+2025-09-15 14:14:17,332 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: auction_duration=None, max_ts=None
+2025-09-15 14:14:17,332 - libs.drift.swift_envelope - INFO - [ENVELOPE] CRITICAL FIX: auction_duration and max_ts are now properly set to None for Option handling
+2025-09-15 14:14:18,296 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:14:25,563 - __main__ - INFO -    Orders Placed: 0
+2025-09-15 14:14:25,564 - __main__ - INFO -    Orders Cancelled: 0
+2025-09-15 14:14:25,565 - __main__ - INFO -    Swift Orders Received: 86
+2025-09-15 14:14:25,566 - __main__ - INFO -    JIT Trades Executed: 0
+2025-09-15 14:14:25,567 - __main__ - INFO -    JIT Profit: $0.0000
+2025-09-15 14:14:25,569 - __main__ - INFO -    Active Orders: 0
+2025-09-15 14:14:25,569 - __main__ - INFO -    Avg Tick Time: 16984.5ms
+2025-09-15 14:14:25,570 - __main__ - INFO -    Success Rate: 100.0%
+2025-09-15 14:14:25,570 - __main__ - INFO -    Current Position: -1.030000 SOL
+2025-09-15 14:14:25,571 - __main__ - INFO -    Should Trade: True
+2025-09-15 14:14:25,571 - __main__ - INFO -    User Map Active: True
+2025-09-15 14:14:25,572 - __main__ - INFO -    Swift Active: False
+2025-09-15 14:14:25,572 - __main__ - INFO - 
+2025-09-15 14:14:26,114 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:14:26,122 - libs.drift.drivers.swift - INFO - Swift driver initialized: http://localhost:8787, retries=3, auction=True
+2025-09-15 14:14:26,122 - libs.drift.swift_envelope - INFO - [ENVELOPE] Creating DriftPy envelope with enhanced validation
+2025-09-15 14:14:26,123 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams created: market_index=0, direction=PositionDirection.Long()
+2025-09-15 14:14:26,124 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: base_asset_amount=111538320, price=232519700
+2025-09-15 14:14:26,124 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: post_only=PostOnlyParams.MustPostOnly(), reduce_only=False
+2025-09-15 14:14:26,124 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: auction_duration=None, max_ts=None
+2025-09-15 14:14:26,125 - libs.drift.swift_envelope - INFO - [ENVELOPE] CRITICAL FIX: auction_duration and max_ts are now properly set to None for Option handling
+2025-09-15 14:14:26,955 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:14:33,883 - libs.drift.drivers.swift - INFO - Swift driver initialized: http://localhost:8787, retries=3, auction=True
+2025-09-15 14:14:33,883 - libs.drift.swift_envelope - INFO - [ENVELOPE] Creating DriftPy envelope with enhanced validation
+2025-09-15 14:14:33,884 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams created: market_index=0, direction=PositionDirection.Short()
+2025-09-15 14:14:33,884 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: base_asset_amount=111447492, price=232709200
+2025-09-15 14:14:33,884 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: post_only=PostOnlyParams.MustPostOnly(), reduce_only=False
+2025-09-15 14:14:33,885 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: auction_duration=None, max_ts=None
+2025-09-15 14:14:33,885 - libs.drift.swift_envelope - INFO - [ENVELOPE] CRITICAL FIX: auction_duration and max_ts are now properly set to None for Option handling
+2025-09-15 14:14:34,804 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:14:41,469 - __main__ - INFO -    Orders Placed: 0
+2025-09-15 14:14:41,471 - __main__ - INFO -    Orders Cancelled: 0
+2025-09-15 14:14:41,471 - __main__ - INFO -    Swift Orders Received: 102
+2025-09-15 14:14:41,471 - __main__ - INFO -    JIT Trades Executed: 0
+2025-09-15 14:14:41,472 - __main__ - INFO -    JIT Profit: $0.0000
+2025-09-15 14:14:41,472 - __main__ - INFO -    Active Orders: 0
+2025-09-15 14:14:41,473 - __main__ - INFO -    Avg Tick Time: 16784.7ms
+2025-09-15 14:14:41,474 - __main__ - INFO -    Success Rate: 100.0%
+2025-09-15 14:14:41,474 - __main__ - INFO -    Current Position: -1.030000 SOL
+2025-09-15 14:14:41,474 - __main__ - INFO -    Should Trade: True
+2025-09-15 14:14:41,475 - __main__ - INFO -    User Map Active: True
+2025-09-15 14:14:41,475 - __main__ - INFO -    Swift Active: False
+2025-09-15 14:14:41,476 - __main__ - INFO - 
+2025-09-15 14:14:41,887 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-15 14:14:41,894 - libs.drift.drivers.swift - INFO - Swift driver initialized: http://localhost:8787, retries=3, auction=True
+2025-09-15 14:14:41,895 - libs.drift.swift_envelope - INFO - [ENVELOPE] Creating DriftPy envelope with enhanced validation
+2025-09-15 14:14:41,896 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams created: market_index=0, direction=PositionDirection.Long()
+2025-09-15 14:14:41,896 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: base_asset_amount=111563324, price=232471700
+2025-09-15 14:14:41,896 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: post_only=PostOnlyParams.MustPostOnly(), reduce_only=False
+2025-09-15 14:14:41,897 - libs.drift.swift_envelope - INFO - [ENVELOPE] OrderParams: auction_duration=None, max_ts=None
+2025-09-15 14:14:41,897 - libs.drift.swift_envelope - INFO - [ENVELOPE] CRITICAL FIX: auction_duration and max_ts are now properly set to None for Option handling
+2025-09-15 14:14:42,555 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"

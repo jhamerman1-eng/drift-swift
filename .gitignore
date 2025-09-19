@@ -1,0 +1,23 @@
+# --- Secrets & local env ---
+*.env
+.env
+devnet_drift.env
+
+# Keys (DO NOT COMMIT)
+drift-maker-keypair.json
+**/keys/*.json
+**/keys/*.key
+**/keys/*.pem
+
+# Python build/cache
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.pyc
+
+# Virtual envs
+.venv/
+# Node build artifacts
+**/node_modules/
+**/dist/

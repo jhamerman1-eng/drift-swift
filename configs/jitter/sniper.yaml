@@ -1,0 +1,43 @@
+# JitterSniper Configuration - Clean Production Setup  
+# Selective high-quality fills with larger clips for maximum edge
+
+enabled: true
+markets: ["SOL-PERP"]           # can differ from shotgun
+clip_size: 2.0                  # bigger clips for good flow
+min_notional_usd: 2000          # only chase ≥ $2k prints
+toxicity_max: 0.35              # selective; avoid toxic
+direction_filter: "with_regime" # with_regime | against_regime | any
+priority_fee_micro_lamports: 180
+compute_unit_limit: 1600000
+max_open_exposure_usd: 40000
+
+# Auction configuration  
+auction:
+  use: true
+  duration_ms: 150
+  max_width_bps: 6
+
+# Attribution and monitoring
+attribution:
+  source_tag: "sniper"
+  track_performance: true
+  track_quality_score: true
+
+# Risk controls
+risk:
+  max_position_sol: 25.0
+  exposure_warning_threshold: 35000  # USD
+  
+# Quality filters (strict for selective participation)
+quality:
+  min_fill_size: 1.0            # Larger minimum for quality
+  skip_sanitized_orders: true   # Skip sanitized orders
+  participation_rate: 0.30      # Only 30% participation (selective)
+  min_quality_score: 0.7        # Quality threshold
+  
+# Advanced filtering
+advanced:
+  require_regime_alignment: true
+  trend_alignment_threshold: 0.7
+  depth_analysis: true
+  spoof_detection: true

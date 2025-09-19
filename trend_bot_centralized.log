@@ -1,0 +1,9 @@
+2025-09-15 05:48:05,363 - __main__ - INFO - ============================================================
+2025-09-15 05:48:05,400 - __main__ - INFO - ============================================================
+2025-09-15 05:48:11,063 - __main__ - ERROR - Trend Bot beta failed: name 'build_client_from_legacy_config' is not defined
+2025-09-15 05:48:11,064 - __main__ - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Users\Jeremy\OneDrive\Documents\Drift_bots\drift-swift\run_trend_bot_beta.py", line 85, in run_trend_bot_centralized
+    client = await build_client_from_legacy_config(legacy_config)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'build_client_from_legacy_config' is not defined
+

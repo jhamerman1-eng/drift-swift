@@ -1,0 +1,329 @@
+# 30-Day Mock Mode Full System Test Configuration
+# Complete ecosystem test with feature flag progression
+
+test_configuration:
+  name: "30-Day Full System Mock Test"
+  mode: "mock"
+  duration_days: 30
+  start_date: "2025-09-18"
+  
+  # Mock environment settings
+  mock_settings:
+    use_mock_trading: true
+    mock_market_data: true
+    mock_swift_sidecar: true
+    mock_price_feeds: true
+    real_logging: true
+    real_metrics: true
+    
+  # Capital allocation test settings  
+  capital_allocation:
+    enabled: true
+    total_portfolio_usd: 10000
+    track_performance: true
+    
+# Feature Flag Test Progression (Weekly Rollouts)
+feature_flag_progression:
+  
+  week_1: # Days 1-7: Baseline with core features only
+    name: "Baseline Core System"
+    features:
+      # Core (always enabled)
+      core_jitter: true
+      basic_attribution: true  
+      basic_allocation: true
+      
+      # All advanced features DISABLED
+      advanced_toggle_manager: false
+      advanced_crash_sentinel: false
+      sophisticated_hedge_coupling: false
+      advanced_quality_filters: false
+      realtime_optimization: false
+      comprehensive_testing: false
+      
+      # Monitoring enabled
+      debug_logging: true
+      performance_profiling: true
+      strategy_comparison: true
+      
+  week_2: # Days 8-14: Add quality filters
+    name: "Quality Filters Enabled"
+    features:
+      # Keep all Week 1 settings
+      core_jitter: true
+      basic_attribution: true
+      basic_allocation: true
+      
+      # Enable first advanced feature
+      advanced_quality_filters: true  # NEW
+      
+      # Still disabled
+      advanced_toggle_manager: false
+      advanced_crash_sentinel: false
+      sophisticated_hedge_coupling: false
+      realtime_optimization: false
+      comprehensive_testing: false
+      
+      # Monitoring
+      debug_logging: true
+      performance_profiling: true
+      strategy_comparison: true
+      
+  week_3: # Days 15-21: Add crash sentinel
+    name: "Crash Sentinel Added"
+    features:
+      # Keep Week 2 settings
+      core_jitter: true
+      basic_attribution: true
+      basic_allocation: true
+      advanced_quality_filters: true
+      
+      # Enable second advanced feature
+      advanced_crash_sentinel: true  # NEW
+      
+      # Still disabled
+      advanced_toggle_manager: false
+      sophisticated_hedge_coupling: false
+      realtime_optimization: false
+      comprehensive_testing: false
+      
+      # Monitoring (reduce debug for crash sentinel)
+      debug_logging: false  # CHANGED: Conflicts with crash sentinel
+      performance_profiling: true
+      strategy_comparison: true
+      
+  week_4: # Days 22-30: Add hedge coupling + testing
+    name: "Full Advanced Features"
+    features:
+      # Keep Week 3 settings
+      core_jitter: true
+      basic_attribution: true
+      basic_allocation: true
+      advanced_quality_filters: true
+      advanced_crash_sentinel: true
+      
+      # Enable remaining advanced features
+      sophisticated_hedge_coupling: true  # NEW
+      comprehensive_testing: true        # NEW
+      advanced_toggle_manager: true      # NEW
+      
+      # Keep optimization disabled (requires manual validation)
+      realtime_optimization: false
+      
+      # Full monitoring
+      debug_logging: false
+      performance_profiling: true
+      strategy_comparison: true  # Auto-enabled by testing framework
+
+# Bot-Specific Test Configuration
+bot_configurations:
+  
+  enhanced_jit:
+    enabled: true
+    capital_limit_usd: 75
+    cycle_target_ms: 100
+    features_to_test:
+      - "Order placement latency"
+      - "OBI calculation speed"
+      - "Capital allocation integration"
+      - "Quality score generation"
+    metrics_to_track:
+      - "jit_cycle_duration_ms"
+      - "jit_orders_placed_total"
+      - "jit_fills_received_total"
+      - "jit_capital_allocation_requests"
+      
+  sniper_bot:
+    enabled: true
+    capital_limit_usd: 200
+    precision_target_ms: 50
+    features_to_test:
+      - "Precision timing algorithms"
+      - "Market impact assessment"
+      - "Quality-based execution"
+    metrics_to_track:
+      - "sniper_execution_latency_ms"
+      - "sniper_market_impact_bps"
+      - "sniper_quality_scores"
+      
+  hedge_bot:
+    enabled: true
+    capital_limit_usd: 500
+    response_target_ms: 10
+    quality_threshold: 0.7
+    features_to_test:
+      - "Quality-first filtering"
+      - "Selective hedging logic"
+      - "Enterprise infrastructure performance"
+      - "XEMM bridge race conditions"
+    metrics_to_track:
+      - "hedge_response_latency_ms"
+      - "hedge_quality_filter_rate"
+      - "hedge_execution_success_rate"
+      - "hedge_pnl_by_source"
+      
+  trend_bot:
+    enabled: true
+    capital_limit_usd: 300
+    signal_threshold: 0.8
+    holding_period_days: 7
+    features_to_test:
+      - "Long-term signal accuracy"
+      - "Regime-aware position sizing"
+      - "Portfolio integration"
+    metrics_to_track:
+      - "trend_signal_strength"
+      - "trend_position_duration"
+      - "trend_pnl_per_trade"
+      
+  capital_allocation:
+    enabled: true
+    total_portfolio_usd: 10000
+    max_utilization: 0.8
+    max_single_asset: 0.3
+    features_to_test:
+      - "4-5x performance improvement"
+      - "Portfolio-wide coordination"
+      - "Conflict prevention"
+      - "Real-time rebalancing"
+    metrics_to_track:
+      - "capital_allocation_latency_ms"
+      - "capital_conflicts_prevented_total"
+      - "capital_utilization_ratio"
+      - "capital_rebalancing_events_total"
+
+# Performance Tracking Configuration
+performance_tracking:
+  
+  latency_targets:
+    enhanced_jit_cycle_ms: 100
+    capital_allocation_ms: 6
+    hedge_response_ms: 10
+    sniper_execution_ms: 50
+    trend_analysis_ms: 200
+    
+  win_loss_tracking:
+    by_bot:
+      - enhanced_jit
+      - sniper_bot  
+      - hedge_bot
+      - trend_bot
+    by_strategy:
+      - shotgun_strategy
+      - sniper_strategy
+      - hedge_strategy
+      - trend_strategy
+    by_regime:
+      - calm
+      - normal
+      - trend
+      - volatile
+      - crash
+      
+  attribution_tracking:
+    fill_sources:
+      - "enhanced_jit_shotgun"
+      - "sniper_precision"
+    hedge_sources:
+      - "jit_fill_hedge"
+      - "sniper_fill_hedge"
+    regime_performance:
+      - "calm_regime_pnl"
+      - "volatile_regime_pnl"
+      - "trend_regime_pnl"
+      
+# Mock Market Scenarios
+mock_market_scenarios:
+  
+  week_1: # Baseline testing
+    regime: "calm"
+    volatility: "low"
+    spread: "tight"
+    volume: "normal"
+    
+  week_2: # Quality filter testing
+    regime: "normal"
+    volatility: "medium"
+    spread: "medium"
+    volume: "high"
+    special_events:
+      - "low_quality_fills" # Test quality filtering
+      - "spoof_patterns"    # Test toxicity detection
+      
+  week_3: # Crash sentinel testing
+    regime: "volatile"
+    volatility: "high"
+    spread: "wide"
+    volume: "extreme"
+    special_events:
+      - "volatility_spike"  # Test crash sentinel
+      - "regime_transitions" # Test allocation changes
+      
+  week_4: # Full system stress test
+    regime: "mixed"
+    volatility: "variable"
+    spread: "dynamic"
+    volume: "variable"
+    special_events:
+      - "multi_regime_day"   # Multiple regime changes
+      - "extreme_volatility" # Stress test all systems
+      - "high_quality_fills" # Test full coordination
+
+# Expected Results & Success Criteria
+success_criteria:
+  
+  performance_targets:
+    enhanced_jit_latency: "<100ms (95th percentile)"
+    capital_allocation_latency: "<6ms (95th percentile)"
+    hedge_response_latency: "<10ms (95th percentile)"
+    system_uptime: ">99.9%"
+    
+  business_metrics:
+    cost_reduction: "Measure slippage savings vs baseline"
+    risk_management: "Zero portfolio limit violations"
+    quality_improvement: "61% higher profit on quality-filtered trades"
+    coordination_efficiency: "Zero bot conflicts detected"
+    
+  feature_progression:
+    week_1_baseline: "Establish performance baseline"
+    week_2_quality: "Demonstrate quality filter benefits"
+    week_3_risk: "Validate crash sentinel effectiveness"
+    week_4_full: "Prove full system coordination"
+    
+# Monitoring & Reporting
+monitoring:
+  
+  daily_reports:
+    - "Performance metrics summary"
+    - "Win/loss by bot and strategy"
+    - "Feature flag impact analysis"
+    - "Latency percentile tracking"
+    
+  weekly_reports:
+    - "Feature progression analysis"
+    - "Regime performance comparison"
+    - "Attribution tracking summary"
+    - "Business impact assessment"
+    
+  final_report:
+    - "Complete 30-day performance analysis"
+    - "Feature flag benefit quantification"
+    - "Production readiness assessment"
+    - "Optimization recommendations"
+
+# Alert Thresholds
+alerts:
+  performance_degradation:
+    latency_increase: ">20% from baseline"
+    error_rate_increase: ">1% from baseline"
+    memory_increase: ">50% from baseline"
+    
+  business_impact:
+    loss_threshold_daily: ">$100 (in mock mode)"
+    portfolio_limit_violation: "Any violation"
+    bot_conflict_detection: "Any conflict"
+    
+  feature_specific:
+    quality_filter_effectiveness: "<50% improvement"
+    crash_sentinel_false_positives: ">10% of events"
+    hedge_coupling_performance: "<Expected benefit"

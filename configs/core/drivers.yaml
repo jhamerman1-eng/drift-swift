@@ -1,0 +1,44 @@
+# Drift Drivers Configuration
+# Controls order placement routing and feature flags
+
+feature:
+  swift:
+    enabled: true                    # Use Swift as primary order placement
+    fallback_on_error: true         # Fallback to DriftPy on Swift failures
+    auction_params: true            # Use DLOB auction parameters for better fills
+    cancel_replace: true            # Enable emulated cancel/replace functionality
+  kill_switch: false                # Emergency stop for all Swift operations
+
+# Swift API Configuration
+swift:
+  base_url: "https://swift.drift.trade"
+  timeout_seconds: 1.2
+  retries: 3
+  backoff_ms: [60, 150, 300]        # Exponential backoff delays
+  order_ttl_ms: 1500                # Order time-to-live
+  tombstone_ttl_ms: 800             # Cancel tombstone TTL
+  sub_account_id: 0
+
+# DLOB Configuration for auction parameters
+dlob:
+  base_url: "https://dlob.drift.trade"
+  timeout_seconds: 0.6
+  enabled: true
+
+# DriftPy Configuration (fallback)
+driftpy:
+  timeout_seconds: 5.0
+  retries: 2
+  
+# Environment-specific overrides
+devnet:
+  swift:
+    base_url: "https://swift.drift.trade"  # Swift supports devnet
+  dlob:
+    base_url: "https://dlob.drift.trade"   # DLOB supports devnet
+
+mainnet:
+  swift:
+    base_url: "https://swift.drift.trade"
+  dlob:
+    base_url: "https://dlob.drift.trade"

@@ -1,0 +1,1673 @@
+2025-09-05 13:32:58,971 - __main__ - INFO - Starting Trend Bot with DLOB API for Real Price Data
+2025-09-05 13:32:58,971 - __main__ - INFO - ======================================================================
+2025-09-05 13:32:58,972 - __main__ - INFO - Environment: DEVNET (Beta)
+2025-09-05 13:32:58,972 - __main__ - INFO - Trading Platform: beta.drift.trade
+2025-09-05 13:32:58,972 - __main__ - INFO - Strategy: MACD + Momentum Trend Following
+2025-09-05 13:32:58,973 - __main__ - INFO - Market: SOL-PERP
+2025-09-05 13:32:58,973 - __main__ - INFO - Data Source: DLOB API (https://dlob.drift.trade)
+2025-09-05 13:32:58,973 - __main__ - INFO - ======================================================================
+2025-09-05 13:32:58,974 - __main__ - INFO - Using DLOB devnet endpoint: master.dlob.drift.trade
+2025-09-05 13:32:59,716 - __main__ - INFO - DLOB API client initialized
+2025-09-05 13:32:59,717 - __main__ - INFO - Testing DLOB API connection...
+2025-09-05 13:33:00,346 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:00,347 - __main__ - INFO - DLOB API connection successful! Price: $203696750.0000
+2025-09-05 13:33:00,348 - __main__ - INFO - Mid price: $203696750.0000
+2025-09-05 13:33:00,348 - __main__ - INFO - Oracle price: $202676654.0000
+2025-09-05 13:33:00,364 - __main__ - INFO - Initializing components...
+2025-09-05 13:33:00,365 - __main__ - INFO - All components initialized
+2025-09-05 13:33:01,931 - __main__ - INFO - Trend configuration loaded
+2025-09-05 13:33:01,932 - __main__ - INFO - Starting trend analysis loop with DLOB API...
+2025-09-05 13:33:01,932 - __main__ - INFO - You can track orders at: https://beta.drift.trade
+2025-09-05 13:33:01,932 - __main__ - INFO - Press Ctrl+C to stop
+2025-09-05 13:33:01,932 - __main__ - INFO - ======================================================================
+2025-09-05 13:33:02,068 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:02,069 - __main__ - INFO - REAL PRICE from DLOB: $203654800.0000
+2025-09-05 13:33:02,069 - __main__ - INFO -   Mid: $203654800.0000
+2025-09-05 13:33:02,070 - __main__ - INFO -   Oracle: $202657500.0000
+2025-09-05 13:33:04,398 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:04,399 - __main__ - INFO - REAL PRICE from DLOB: $203657350.0000
+2025-09-05 13:33:04,400 - __main__ - INFO -   Mid: $203657350.0000
+2025-09-05 13:33:04,400 - __main__ - INFO -   Oracle: $202635261.0000
+2025-09-05 13:33:04,400 - __main__ - INFO - MACD Analysis: Fast=203657350.0000, Slow=203657350.0000, MACD=0.0000, Signal=SELL
+2025-09-05 13:33:06,535 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:06,536 - __main__ - INFO - REAL PRICE from DLOB: $203691750.0000
+2025-09-05 13:33:06,537 - __main__ - INFO -   Mid: $203691750.0000
+2025-09-05 13:33:06,537 - __main__ - INFO -   Oracle: $202667812.0000
+2025-09-05 13:33:06,537 - __main__ - INFO - MACD Analysis: Fast=203662642.3077, Slow=203659898.1481, MACD=2744.1595, Signal=SELL
+2025-09-05 13:33:08,850 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:08,852 - __main__ - INFO - REAL PRICE from DLOB: $203722750.0000
+2025-09-05 13:33:08,853 - __main__ - INFO -   Mid: $203722750.0000
+2025-09-05 13:33:08,853 - __main__ - INFO -   Oracle: $202682489.0000
+2025-09-05 13:33:08,853 - __main__ - INFO - MACD Analysis: Fast=203671889.6450, Slow=203664553.8409, MACD=7335.8041, Signal=SELL
+2025-09-05 13:33:11,189 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:11,190 - __main__ - INFO - REAL PRICE from DLOB: $203723700.0000
+2025-09-05 13:33:11,190 - __main__ - INFO -   Mid: $203723700.0000
+2025-09-05 13:33:11,191 - __main__ - INFO -   Oracle: $202701799.0000
+2025-09-05 13:33:11,191 - __main__ - INFO - MACD Analysis: Fast=203679860.4688, Slow=203668935.0378, MACD=10925.4310, Signal=SELL
+2025-09-05 13:33:11,191 - __main__ - INFO - ==================================================
+2025-09-05 13:33:11,192 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 5
+2025-09-05 13:33:11,192 - __main__ - INFO - Runtime: 9.3s
+2025-09-05 13:33:11,192 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:33:11,192 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:33:11,193 - __main__ - INFO - Current Price: $203723700.0000
+2025-09-05 13:33:11,193 - __main__ - INFO - Price Change: +0.00%
+2025-09-05 13:33:11,193 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:33:11,193 - __main__ - INFO - MACD Values: 4
+2025-09-05 13:33:11,194 - __main__ - INFO - Signals Generated: 4
+2025-09-05 13:33:11,194 - __main__ - INFO - DLOB API Success Rate: 5/5
+2025-09-05 13:33:11,194 - __main__ - INFO - ==================================================
+2025-09-05 13:33:13,517 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:13,518 - __main__ - INFO - REAL PRICE from DLOB: $203728200.0000
+2025-09-05 13:33:13,519 - __main__ - INFO -   Mid: $203728200.0000
+2025-09-05 13:33:13,519 - __main__ - INFO -   Oracle: $202708177.0000
+2025-09-05 13:33:13,519 - __main__ - INFO - MACD Analysis: Fast=203687297.3198, Slow=203673325.0350, MACD=13972.2847, Signal=SELL
+2025-09-05 13:33:15,655 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:15,656 - __main__ - INFO - REAL PRICE from DLOB: $203728200.0000
+2025-09-05 13:33:15,656 - __main__ - INFO -   Mid: $203728200.0000
+2025-09-05 13:33:15,656 - __main__ - INFO -   Oracle: $202708177.0000
+2025-09-05 13:33:15,656 - __main__ - INFO - MACD Analysis: Fast=203693590.0398, Slow=203677389.8473, MACD=16200.1925, Signal=SELL
+2025-09-05 13:33:17,782 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:17,784 - __main__ - INFO - REAL PRICE from DLOB: $203766700.0000
+2025-09-05 13:33:17,785 - __main__ - INFO -   Mid: $203766700.0000
+2025-09-05 13:33:17,785 - __main__ - INFO -   Oracle: $202708177.0000
+2025-09-05 13:33:17,785 - __main__ - INFO - MACD Analysis: Fast=203704837.7260, Slow=203684005.4141, MACD=20832.3119, Signal=SELL
+2025-09-05 13:33:20,105 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:20,106 - __main__ - INFO - REAL PRICE from DLOB: $203781800.0000
+2025-09-05 13:33:20,106 - __main__ - INFO -   Mid: $203781800.0000
+2025-09-05 13:33:20,106 - __main__ - INFO -   Oracle: $202761658.0000
+2025-09-05 13:33:20,107 - __main__ - INFO - MACD Analysis: Fast=203716678.0758, Slow=203691249.4575, MACD=25428.6183, Signal=SELL
+2025-09-05 13:33:22,235 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:22,236 - __main__ - INFO - REAL PRICE from DLOB: $203848750.0000
+2025-09-05 13:33:22,236 - __main__ - INFO -   Mid: $203848750.0000
+2025-09-05 13:33:22,237 - __main__ - INFO -   Oracle: $202785359.0000
+2025-09-05 13:33:22,237 - __main__ - INFO - MACD Analysis: Fast=203736996.8334, Slow=203702916.1644, MACD=34080.6690, Signal=SELL
+2025-09-05 13:33:22,237 - __main__ - INFO - ==================================================
+2025-09-05 13:33:22,237 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 10
+2025-09-05 13:33:22,237 - __main__ - INFO - Runtime: 20.3s
+2025-09-05 13:33:22,238 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:33:22,238 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:33:22,238 - __main__ - INFO - Current Price: $203848750.0000
+2025-09-05 13:33:22,238 - __main__ - INFO - Price Change: +0.06%
+2025-09-05 13:33:22,238 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:33:22,239 - __main__ - INFO - MACD Values: 9
+2025-09-05 13:33:22,239 - __main__ - INFO - Signals Generated: 9
+2025-09-05 13:33:22,239 - __main__ - INFO - DLOB API Success Rate: 10/10
+2025-09-05 13:33:22,239 - __main__ - INFO - ==================================================
+2025-09-05 13:33:24,565 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:24,567 - __main__ - INFO - REAL PRICE from DLOB: $203848800.0000
+2025-09-05 13:33:24,567 - __main__ - INFO -   Mid: $203848800.0000
+2025-09-05 13:33:24,567 - __main__ - INFO -   Oracle: $202829093.0000
+2025-09-05 13:33:24,568 - __main__ - INFO - MACD Analysis: Fast=203754197.3206, Slow=203713722.3744, MACD=40474.9461, Signal=SELL
+2025-09-05 13:33:26,703 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:26,704 - __main__ - INFO - REAL PRICE from DLOB: $203853200.0000
+2025-09-05 13:33:26,704 - __main__ - INFO -   Mid: $203853200.0000
+2025-09-05 13:33:26,705 - __main__ - INFO -   Oracle: $202829093.0000
+2025-09-05 13:33:26,705 - __main__ - INFO - MACD Analysis: Fast=203769428.5020, Slow=203724054.0504, MACD=45374.4516, Signal=SELL
+2025-09-05 13:33:29,028 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:29,029 - __main__ - INFO - REAL PRICE from DLOB: $203858850.0000
+2025-09-05 13:33:29,030 - __main__ - INFO -   Mid: $203858850.0000
+2025-09-05 13:33:29,030 - __main__ - INFO -   Oracle: $202832247.0000
+2025-09-05 13:33:29,030 - __main__ - INFO - MACD Analysis: Fast=203783185.6556, Slow=203734038.9356, MACD=49146.7200, Signal=SELL
+2025-09-05 13:33:31,156 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:31,158 - __main__ - INFO - REAL PRICE from DLOB: $203858850.0000
+2025-09-05 13:33:31,158 - __main__ - INFO -   Mid: $203858850.0000
+2025-09-05 13:33:31,158 - __main__ - INFO -   Oracle: $202838186.0000
+2025-09-05 13:33:31,158 - __main__ - INFO - MACD Analysis: Fast=203794826.3239, Slow=203743284.1996, MACD=51542.1243, Signal=SELL
+2025-09-05 13:33:33,289 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:33,290 - __main__ - INFO - REAL PRICE from DLOB: $203858850.0000
+2025-09-05 13:33:33,291 - __main__ - INFO -   Mid: $203858850.0000
+2025-09-05 13:33:33,291 - __main__ - INFO -   Oracle: $202838186.0000
+2025-09-05 13:33:33,291 - __main__ - INFO - MACD Analysis: Fast=203804676.1203, Slow=203751844.6292, MACD=52831.4910, Signal=SELL
+2025-09-05 13:33:33,292 - __main__ - INFO - ==================================================
+2025-09-05 13:33:33,292 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 15
+2025-09-05 13:33:33,292 - __main__ - INFO - Runtime: 31.4s
+2025-09-05 13:33:33,292 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:33:33,292 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:33:33,293 - __main__ - INFO - Current Price: $203858850.0000
+2025-09-05 13:33:33,293 - __main__ - INFO - Price Change: +0.00%
+2025-09-05 13:33:33,293 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:33:33,293 - __main__ - INFO - MACD Values: 14
+2025-09-05 13:33:33,293 - __main__ - INFO - Signals Generated: 14
+2025-09-05 13:33:33,294 - __main__ - INFO - DLOB API Success Rate: 15/15
+2025-09-05 13:33:33,294 - __main__ - INFO - ==================================================
+2025-09-05 13:33:35,618 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:35,620 - __main__ - INFO - REAL PRICE from DLOB: $203889000.0000
+2025-09-05 13:33:35,620 - __main__ - INFO -   Mid: $203889000.0000
+2025-09-05 13:33:35,620 - __main__ - INFO -   Oracle: $202846218.0000
+2025-09-05 13:33:35,621 - __main__ - INFO - MACD Analysis: Fast=203817649.0248, Slow=203762004.2863, MACD=55644.7385, Signal=SELL
+2025-09-05 13:33:37,935 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:37,936 - __main__ - INFO - REAL PRICE from DLOB: $203942650.0000
+2025-09-05 13:33:37,936 - __main__ - INFO -   Mid: $203942650.0000
+2025-09-05 13:33:37,936 - __main__ - INFO -   Oracle: $202846218.0000
+2025-09-05 13:33:37,936 - __main__ - INFO - MACD Analysis: Fast=203836879.9441, Slow=203775385.4503, MACD=61494.4938, Signal=SELL
+2025-09-05 13:33:40,066 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:40,067 - __main__ - INFO - REAL PRICE from DLOB: $203912800.0000
+2025-09-05 13:33:40,067 - __main__ - INFO -   Mid: $203912800.0000
+2025-09-05 13:33:40,067 - __main__ - INFO -   Oracle: $202893026.0000
+2025-09-05 13:33:40,067 - __main__ - INFO - MACD Analysis: Fast=203848559.9527, Slow=203785564.3058, MACD=62995.6468, Signal=SELL
+2025-09-05 13:33:42,205 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:42,206 - __main__ - INFO - REAL PRICE from DLOB: $203915050.0000
+2025-09-05 13:33:42,207 - __main__ - INFO -   Mid: $203915050.0000
+2025-09-05 13:33:42,207 - __main__ - INFO -   Oracle: $202909013.0000
+2025-09-05 13:33:42,208 - __main__ - INFO - MACD Analysis: Fast=203858789.1907, Slow=203795155.8387, MACD=63633.3520, Signal=SELL
+2025-09-05 13:33:44,344 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:44,345 - __main__ - INFO - REAL PRICE from DLOB: $203905500.0000
+2025-09-05 13:33:44,345 - __main__ - INFO -   Mid: $203905500.0000
+2025-09-05 13:33:44,345 - __main__ - INFO -   Oracle: $202885134.0000
+2025-09-05 13:33:44,345 - __main__ - INFO - MACD Analysis: Fast=203865975.4691, Slow=203803329.4803, MACD=62645.9888, Signal=SELL
+2025-09-05 13:33:44,346 - __main__ - INFO - ==================================================
+2025-09-05 13:33:44,346 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 20
+2025-09-05 13:33:44,346 - __main__ - INFO - Runtime: 42.4s
+2025-09-05 13:33:44,346 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:33:44,346 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:33:44,347 - __main__ - INFO - Current Price: $203905500.0000
+2025-09-05 13:33:44,347 - __main__ - INFO - Price Change: +0.02%
+2025-09-05 13:33:44,347 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:33:44,347 - __main__ - INFO - MACD Values: 19
+2025-09-05 13:33:44,347 - __main__ - INFO - Signals Generated: 19
+2025-09-05 13:33:44,348 - __main__ - INFO - DLOB API Success Rate: 20/20
+2025-09-05 13:33:44,348 - __main__ - INFO - ==================================================
+2025-09-05 13:33:44,348 - __main__ - INFO - DETAILED BETA ANALYSIS
+2025-09-05 13:33:44,349 - __main__ - INFO -    - MACD Fast EMA: 203865975.4691
+2025-09-05 13:33:44,349 - __main__ - INFO -    - MACD Slow EMA: 203803329.4803
+2025-09-05 13:33:44,349 - __main__ - INFO -    - MACD Signal: 2989362.7992
+2025-09-05 13:33:44,349 - __main__ - INFO -    - Current MACD: -2926716.8104
+2025-09-05 13:33:44,350 - __main__ - INFO -    - Price History: 20 points
+2025-09-05 13:33:44,350 - __main__ - INFO -    - Risk State: 0.00% drawdown
+2025-09-05 13:33:46,481 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:46,481 - __main__ - INFO - REAL PRICE from DLOB: $203893450.0000
+2025-09-05 13:33:46,482 - __main__ - INFO -   Mid: $203893450.0000
+2025-09-05 13:33:46,482 - __main__ - INFO -   Oracle: $202869329.0000
+2025-09-05 13:33:46,482 - __main__ - INFO - MACD Analysis: Fast=203870202.3200, Slow=203810005.0744, MACD=60197.2456, Signal=SELL
+2025-09-05 13:33:48,813 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:48,814 - __main__ - INFO - REAL PRICE from DLOB: $203920050.0000
+2025-09-05 13:33:48,814 - __main__ - INFO -   Mid: $203920050.0000
+2025-09-05 13:33:48,814 - __main__ - INFO -   Oracle: $202869329.0000
+2025-09-05 13:33:48,814 - __main__ - INFO - MACD Analysis: Fast=203877871.1938, Slow=203818156.5503, MACD=59714.6435, Signal=SELL
+2025-09-05 13:33:50,950 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:50,951 - __main__ - INFO - REAL PRICE from DLOB: $203952150.0000
+2025-09-05 13:33:50,951 - __main__ - INFO -   Mid: $203952150.0000
+2025-09-05 13:33:50,951 - __main__ - INFO -   Oracle: $202899138.0000
+2025-09-05 13:33:50,951 - __main__ - INFO - MACD Analysis: Fast=203889298.7025, Slow=203828081.9911, MACD=61216.7114, Signal=SELL
+2025-09-05 13:33:53,086 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:53,087 - __main__ - INFO - REAL PRICE from DLOB: $203936300.0000
+2025-09-05 13:33:53,087 - __main__ - INFO -   Mid: $203936300.0000
+2025-09-05 13:33:53,087 - __main__ - INFO -   Oracle: $202915235.0000
+2025-09-05 13:33:53,088 - __main__ - INFO - MACD Analysis: Fast=203896529.6713, Slow=203836098.1399, MACD=60431.5315, Signal=SELL
+2025-09-05 13:33:55,426 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:55,427 - __main__ - INFO - REAL PRICE from DLOB: $203927650.0000
+2025-09-05 13:33:55,427 - __main__ - INFO -   Mid: $203927650.0000
+2025-09-05 13:33:55,427 - __main__ - INFO -   Oracle: $202912915.0000
+2025-09-05 13:33:55,427 - __main__ - INFO - MACD Analysis: Fast=203901317.4142, Slow=203842879.7591, MACD=58437.6551, Signal=SELL
+2025-09-05 13:33:55,428 - __main__ - INFO - ==================================================
+2025-09-05 13:33:55,428 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 25
+2025-09-05 13:33:55,428 - __main__ - INFO - Runtime: 53.5s
+2025-09-05 13:33:55,428 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:33:55,428 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:33:55,428 - __main__ - INFO - Current Price: $203927650.0000
+2025-09-05 13:33:55,429 - __main__ - INFO - Price Change: +0.01%
+2025-09-05 13:33:55,429 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:33:55,429 - __main__ - INFO - MACD Values: 24
+2025-09-05 13:33:55,429 - __main__ - INFO - Signals Generated: 24
+2025-09-05 13:33:55,429 - __main__ - INFO - DLOB API Success Rate: 25/25
+2025-09-05 13:33:55,430 - __main__ - INFO - ==================================================
+2025-09-05 13:33:57,753 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:57,753 - __main__ - INFO - REAL PRICE from DLOB: $203925550.0000
+2025-09-05 13:33:57,753 - __main__ - INFO -   Mid: $203925550.0000
+2025-09-05 13:33:57,753 - __main__ - INFO -   Oracle: $202912915.0000
+2025-09-05 13:33:57,754 - __main__ - INFO - MACD Analysis: Fast=203905045.5043, Slow=203849003.4807, MACD=56042.0236, Signal=SELL
+2025-09-05 13:33:59,890 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:33:59,891 - __main__ - INFO - REAL PRICE from DLOB: $203950500.0000
+2025-09-05 13:33:59,892 - __main__ - INFO -   Mid: $203950500.0000
+2025-09-05 13:33:59,892 - __main__ - INFO -   Oracle: $202929415.0000
+2025-09-05 13:33:59,892 - __main__ - INFO - MACD Analysis: Fast=203912038.5037, Slow=203856521.7414, MACD=55516.7623, Signal=SELL
+2025-09-05 13:34:02,064 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:02,065 - __main__ - INFO - REAL PRICE from DLOB: $203948850.0000
+2025-09-05 13:34:02,065 - __main__ - INFO -   Mid: $203948850.0000
+2025-09-05 13:34:02,065 - __main__ - INFO -   Oracle: $202920968.0000
+2025-09-05 13:34:02,066 - __main__ - INFO - MACD Analysis: Fast=203917701.8108, Slow=203863360.8716, MACD=54340.9391, Signal=SELL
+2025-09-05 13:34:04,382 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:04,384 - __main__ - INFO - REAL PRICE from DLOB: $203953200.0000
+2025-09-05 13:34:04,384 - __main__ - INFO -   Mid: $203953200.0000
+2025-09-05 13:34:04,384 - __main__ - INFO -   Oracle: $202931918.0000
+2025-09-05 13:34:04,384 - __main__ - INFO - MACD Analysis: Fast=203923163.0707, Slow=203870015.6219, MACD=53147.4488, Signal=SELL
+2025-09-05 13:34:06,708 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:06,709 - __main__ - INFO - REAL PRICE from DLOB: $203957700.0000
+2025-09-05 13:34:06,709 - __main__ - INFO -   Mid: $203957700.0000
+2025-09-05 13:34:06,709 - __main__ - INFO -   Oracle: $202931072.0000
+2025-09-05 13:34:06,710 - __main__ - INFO - MACD Analysis: Fast=203928476.4444, Slow=203876510.7610, MACD=51965.6834, Signal=SELL
+2025-09-05 13:34:06,710 - __main__ - INFO - ==================================================
+2025-09-05 13:34:06,710 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 30
+2025-09-05 13:34:06,710 - __main__ - INFO - Runtime: 64.8s
+2025-09-05 13:34:06,710 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:34:06,711 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:34:06,711 - __main__ - INFO - Current Price: $203957700.0000
+2025-09-05 13:34:06,711 - __main__ - INFO - Price Change: +0.01%
+2025-09-05 13:34:06,711 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:34:06,711 - __main__ - INFO - MACD Values: 29
+2025-09-05 13:34:06,712 - __main__ - INFO - Signals Generated: 29
+2025-09-05 13:34:06,712 - __main__ - INFO - DLOB API Success Rate: 30/30
+2025-09-05 13:34:06,712 - __main__ - INFO - ==================================================
+2025-09-05 13:34:08,847 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:08,849 - __main__ - INFO - REAL PRICE from DLOB: $203953150.0000
+2025-09-05 13:34:08,849 - __main__ - INFO -   Mid: $203953150.0000
+2025-09-05 13:34:08,849 - __main__ - INFO -   Oracle: $202932065.0000
+2025-09-05 13:34:08,850 - __main__ - INFO - MACD Analysis: Fast=203932272.3760, Slow=203882187.7417, MACD=50084.6344, Signal=SELL
+2025-09-05 13:34:11,167 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:11,168 - __main__ - INFO - REAL PRICE from DLOB: $203970350.0000
+2025-09-05 13:34:11,168 - __main__ - INFO -   Mid: $203970350.0000
+2025-09-05 13:34:11,168 - __main__ - INFO -   Oracle: $202939133.0000
+2025-09-05 13:34:11,168 - __main__ - INFO - MACD Analysis: Fast=203938130.4720, Slow=203888718.2793, MACD=49412.1927, Signal=SELL
+2025-09-05 13:34:13,299 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:13,300 - __main__ - INFO - REAL PRICE from DLOB: $203970250.0000
+2025-09-05 13:34:13,300 - __main__ - INFO -   Mid: $203970250.0000
+2025-09-05 13:34:13,301 - __main__ - INFO -   Oracle: $202939133.0000
+2025-09-05 13:34:13,301 - __main__ - INFO - MACD Analysis: Fast=203943071.9379, Slow=203894757.6660, MACD=48314.2718, Signal=SELL
+2025-09-05 13:34:15,633 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:15,634 - __main__ - INFO - REAL PRICE from DLOB: $203970150.0000
+2025-09-05 13:34:15,634 - __main__ - INFO -   Mid: $203970150.0000
+2025-09-05 13:34:15,635 - __main__ - INFO -   Oracle: $202949136.0000
+2025-09-05 13:34:15,635 - __main__ - INFO - MACD Analysis: Fast=203947237.7936, Slow=203900342.2834, MACD=46895.5102, Signal=SELL
+2025-09-05 13:34:17,767 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:17,768 - __main__ - INFO - REAL PRICE from DLOB: $203974050.0000
+2025-09-05 13:34:17,768 - __main__ - INFO -   Mid: $203974050.0000
+2025-09-05 13:34:17,769 - __main__ - INFO -   Oracle: $202947301.0000
+2025-09-05 13:34:17,769 - __main__ - INFO - MACD Analysis: Fast=203951362.7484, Slow=203905802.1142, MACD=45560.6342, Signal=SELL
+2025-09-05 13:34:17,769 - __main__ - INFO - ==================================================
+2025-09-05 13:34:17,769 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 35
+2025-09-05 13:34:17,769 - __main__ - INFO - Runtime: 75.8s
+2025-09-05 13:34:17,770 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:34:17,770 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:34:17,770 - __main__ - INFO - Current Price: $203974050.0000
+2025-09-05 13:34:17,770 - __main__ - INFO - Price Change: +0.01%
+2025-09-05 13:34:17,770 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:34:17,771 - __main__ - INFO - MACD Values: 34
+2025-09-05 13:34:17,771 - __main__ - INFO - Signals Generated: 34
+2025-09-05 13:34:17,771 - __main__ - INFO - DLOB API Success Rate: 35/35
+2025-09-05 13:34:17,771 - __main__ - INFO - ==================================================
+2025-09-05 13:34:20,088 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:20,090 - __main__ - INFO - REAL PRICE from DLOB: $203987350.0000
+2025-09-05 13:34:20,090 - __main__ - INFO -   Mid: $203987350.0000
+2025-09-05 13:34:20,090 - __main__ - INFO -   Oracle: $202977103.0000
+2025-09-05 13:34:20,090 - __main__ - INFO - MACD Analysis: Fast=203956899.2487, Slow=203911842.6984, MACD=45056.5503, Signal=SELL
+2025-09-05 13:34:22,226 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:22,227 - __main__ - INFO - REAL PRICE from DLOB: $203991650.0000
+2025-09-05 13:34:22,227 - __main__ - INFO -   Mid: $203991650.0000
+2025-09-05 13:34:22,227 - __main__ - INFO -   Oracle: $202973046.0000
+2025-09-05 13:34:22,228 - __main__ - INFO - MACD Analysis: Fast=203962245.5181, Slow=203917754.3503, MACD=44491.1678, Signal=SELL
+2025-09-05 13:34:24,673 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:24,674 - __main__ - INFO - REAL PRICE from DLOB: $203986550.0000
+2025-09-05 13:34:24,675 - __main__ - INFO -   Mid: $203986550.0000
+2025-09-05 13:34:24,675 - __main__ - INFO -   Oracle: $202965301.0000
+2025-09-05 13:34:24,675 - __main__ - INFO - MACD Analysis: Fast=203965984.6692, Slow=203922850.3244, MACD=43134.3448, Signal=SELL
+2025-09-05 13:34:26,813 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:26,815 - __main__ - INFO - REAL PRICE from DLOB: $204005550.0000
+2025-09-05 13:34:26,815 - __main__ - INFO -   Mid: $204005550.0000
+2025-09-05 13:34:26,816 - __main__ - INFO -   Oracle: $202965301.0000
+2025-09-05 13:34:26,816 - __main__ - INFO - MACD Analysis: Fast=203972071.6431, Slow=203928976.2263, MACD=43095.4168, Signal=SELL
+2025-09-05 13:34:28,947 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:28,948 - __main__ - INFO - REAL PRICE from DLOB: $203998550.0000
+2025-09-05 13:34:28,949 - __main__ - INFO -   Mid: $203998550.0000
+2025-09-05 13:34:28,949 - __main__ - INFO -   Oracle: $202965301.0000
+2025-09-05 13:34:28,949 - __main__ - INFO - MACD Analysis: Fast=203976145.2365, Slow=203934129.8392, MACD=42015.3973, Signal=SELL
+2025-09-05 13:34:28,950 - __main__ - INFO - ==================================================
+2025-09-05 13:34:28,950 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 40
+2025-09-05 13:34:28,950 - __main__ - INFO - Runtime: 87.0s
+2025-09-05 13:34:28,950 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:34:28,951 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:34:28,951 - __main__ - INFO - Current Price: $203998550.0000
+2025-09-05 13:34:28,951 - __main__ - INFO - Price Change: +0.01%
+2025-09-05 13:34:28,951 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:34:28,951 - __main__ - INFO - MACD Values: 39
+2025-09-05 13:34:28,952 - __main__ - INFO - Signals Generated: 39
+2025-09-05 13:34:28,952 - __main__ - INFO - DLOB API Success Rate: 40/40
+2025-09-05 13:34:28,952 - __main__ - INFO - ==================================================
+2025-09-05 13:34:28,952 - __main__ - INFO - DETAILED BETA ANALYSIS
+2025-09-05 13:34:28,952 - __main__ - INFO -    - MACD Fast EMA: 203976145.2365
+2025-09-05 13:34:28,953 - __main__ - INFO -    - MACD Slow EMA: 203934129.8392
+2025-09-05 13:34:28,953 - __main__ - INFO -    - MACD Signal: 79299.9145
+2025-09-05 13:34:28,953 - __main__ - INFO -    - Current MACD: -37284.5172
+2025-09-05 13:34:28,953 - __main__ - INFO -    - Price History: 40 points
+2025-09-05 13:34:28,953 - __main__ - INFO -    - Risk State: 0.00% drawdown
+2025-09-05 13:34:31,269 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:31,270 - __main__ - INFO - REAL PRICE from DLOB: $204013700.0000
+2025-09-05 13:34:31,270 - __main__ - INFO -   Mid: $204013700.0000
+2025-09-05 13:34:31,270 - __main__ - INFO -   Oracle: $202993058.0000
+2025-09-05 13:34:31,271 - __main__ - INFO - MACD Analysis: Fast=203981922.8924, Slow=203940023.9251, MACD=41898.9673, Signal=SELL
+2025-09-05 13:34:33,598 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:33,599 - __main__ - INFO - REAL PRICE from DLOB: $204007850.0000
+2025-09-05 13:34:33,599 - __main__ - INFO -   Mid: $204007850.0000
+2025-09-05 13:34:33,599 - __main__ - INFO -   Oracle: $202988549.0000
+2025-09-05 13:34:33,600 - __main__ - INFO - MACD Analysis: Fast=203985911.6782, Slow=203945048.0788, MACD=40863.5994, Signal=SELL
+2025-09-05 13:34:35,722 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:35,723 - __main__ - INFO - REAL PRICE from DLOB: $204003850.0000
+2025-09-05 13:34:35,724 - __main__ - INFO -   Mid: $204003850.0000
+2025-09-05 13:34:35,724 - __main__ - INFO -   Oracle: $202987185.0000
+2025-09-05 13:34:35,725 - __main__ - INFO - MACD Analysis: Fast=203988671.4200, Slow=203949403.7767, MACD=39267.6433, Signal=SELL
+2025-09-05 13:34:38,036 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:38,037 - __main__ - INFO - REAL PRICE from DLOB: $204002450.0000
+2025-09-05 13:34:38,038 - __main__ - INFO -   Mid: $204002450.0000
+2025-09-05 13:34:38,038 - __main__ - INFO -   Oracle: $202982515.0000
+2025-09-05 13:34:38,038 - __main__ - INFO - MACD Analysis: Fast=203990791.2016, Slow=203953333.1266, MACD=37458.0750, Signal=SELL
+2025-09-05 13:34:40,360 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:40,361 - __main__ - INFO - REAL PRICE from DLOB: $204003250.0000
+2025-09-05 13:34:40,361 - __main__ - INFO -   Mid: $204003250.0000
+2025-09-05 13:34:40,362 - __main__ - INFO -   Oracle: $202981883.0000
+2025-09-05 13:34:40,362 - __main__ - INFO - MACD Analysis: Fast=203992707.9398, Slow=203957030.6728, MACD=35677.2670, Signal=SELL
+2025-09-05 13:34:40,362 - __main__ - INFO - ==================================================
+2025-09-05 13:34:40,362 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 45
+2025-09-05 13:34:40,362 - __main__ - INFO - Runtime: 98.4s
+2025-09-05 13:34:40,363 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:34:40,363 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:34:40,363 - __main__ - INFO - Current Price: $204003250.0000
+2025-09-05 13:34:40,364 - __main__ - INFO - Price Change: +0.00%
+2025-09-05 13:34:40,364 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:34:40,364 - __main__ - INFO - MACD Values: 44
+2025-09-05 13:34:40,365 - __main__ - INFO - Signals Generated: 44
+2025-09-05 13:34:40,365 - __main__ - INFO - DLOB API Success Rate: 45/45
+2025-09-05 13:34:40,365 - __main__ - INFO - ==================================================
+2025-09-05 13:34:42,699 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:42,700 - __main__ - INFO - REAL PRICE from DLOB: $204013250.0000
+2025-09-05 13:34:42,700 - __main__ - INFO -   Mid: $204013250.0000
+2025-09-05 13:34:42,701 - __main__ - INFO -   Oracle: $202991790.0000
+2025-09-05 13:34:42,701 - __main__ - INFO - MACD Analysis: Fast=203995868.2567, Slow=203961195.0674, MACD=34673.1894, Signal=SELL
+2025-09-05 13:34:44,835 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:44,836 - __main__ - INFO - REAL PRICE from DLOB: $204007950.0000
+2025-09-05 13:34:44,836 - __main__ - INFO -   Mid: $204007950.0000
+2025-09-05 13:34:44,837 - __main__ - INFO -   Oracle: $202986245.0000
+2025-09-05 13:34:44,837 - __main__ - INFO - MACD Analysis: Fast=203997726.9865, Slow=203964658.3957, MACD=33068.5908, Signal=SELL
+2025-09-05 13:34:46,970 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:46,972 - __main__ - INFO - REAL PRICE from DLOB: $204006950.0000
+2025-09-05 13:34:46,972 - __main__ - INFO -   Mid: $204006950.0000
+2025-09-05 13:34:46,972 - __main__ - INFO -   Oracle: $202986245.0000
+2025-09-05 13:34:46,973 - __main__ - INFO - MACD Analysis: Fast=203999145.9116, Slow=203967791.1071, MACD=31354.8045, Signal=SELL
+2025-09-05 13:34:49,287 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:49,289 - __main__ - INFO - REAL PRICE from DLOB: $204012700.0000
+2025-09-05 13:34:49,290 - __main__ - INFO -   Mid: $204012700.0000
+2025-09-05 13:34:49,290 - __main__ - INFO -   Oracle: $202985617.0000
+2025-09-05 13:34:49,290 - __main__ - INFO - MACD Analysis: Fast=204001231.1560, Slow=203971117.6918, MACD=30113.4642, Signal=SELL
+2025-09-05 13:34:51,623 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:51,624 - __main__ - INFO - REAL PRICE from DLOB: $204019350.0000
+2025-09-05 13:34:51,624 - __main__ - INFO -   Mid: $204019350.0000
+2025-09-05 13:34:51,624 - __main__ - INFO -   Oracle: $202998055.0000
+2025-09-05 13:34:51,625 - __main__ - INFO - MACD Analysis: Fast=204004018.6705, Slow=203974690.4554, MACD=29328.2151, Signal=SELL
+2025-09-05 13:34:51,625 - __main__ - INFO - ==================================================
+2025-09-05 13:34:51,625 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 50
+2025-09-05 13:34:51,625 - __main__ - INFO - Runtime: 109.7s
+2025-09-05 13:34:51,625 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:34:51,626 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:34:51,626 - __main__ - INFO - Current Price: $204019350.0000
+2025-09-05 13:34:51,626 - __main__ - INFO - Price Change: +0.01%
+2025-09-05 13:34:51,626 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:34:51,626 - __main__ - INFO - MACD Values: 49
+2025-09-05 13:34:51,627 - __main__ - INFO - Signals Generated: 49
+2025-09-05 13:34:51,627 - __main__ - INFO - DLOB API Success Rate: 50/50
+2025-09-05 13:34:51,627 - __main__ - INFO - ==================================================
+2025-09-05 13:34:53,950 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:53,951 - __main__ - INFO - REAL PRICE from DLOB: $204023950.0000
+2025-09-05 13:34:53,951 - __main__ - INFO -   Mid: $204023950.0000
+2025-09-05 13:34:53,952 - __main__ - INFO -   Oracle: $203000000.0000
+2025-09-05 13:34:53,952 - __main__ - INFO - MACD Analysis: Fast=204007085.0288, Slow=203978339.3105, MACD=28745.7183, Signal=SELL
+2025-09-05 13:34:56,089 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:56,091 - __main__ - INFO - REAL PRICE from DLOB: $204025850.0000
+2025-09-05 13:34:56,091 - __main__ - INFO -   Mid: $204025850.0000
+2025-09-05 13:34:56,091 - __main__ - INFO -   Oracle: $203007500.0000
+2025-09-05 13:34:56,092 - __main__ - INFO - MACD Analysis: Fast=204009971.9475, Slow=203981858.6209, MACD=28113.3266, Signal=SELL
+2025-09-05 13:34:58,413 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:34:58,414 - __main__ - INFO - REAL PRICE from DLOB: $204040250.0000
+2025-09-05 13:34:58,415 - __main__ - INFO -   Mid: $204040250.0000
+2025-09-05 13:34:58,415 - __main__ - INFO -   Oracle: $203018633.0000
+2025-09-05 13:34:58,415 - __main__ - INFO - MACD Analysis: Fast=204014630.1094, Slow=203986183.9082, MACD=28446.2012, Signal=SELL
+2025-09-05 13:35:00,557 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:00,558 - __main__ - INFO - REAL PRICE from DLOB: $204042600.0000
+2025-09-05 13:35:00,558 - __main__ - INFO -   Mid: $204042600.0000
+2025-09-05 13:35:00,559 - __main__ - INFO -   Oracle: $203013538.0000
+2025-09-05 13:35:00,559 - __main__ - INFO - MACD Analysis: Fast=204018933.1695, Slow=203990362.8780, MACD=28570.2915, Signal=SELL
+2025-09-05 13:35:02,917 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:02,918 - __main__ - INFO - REAL PRICE from DLOB: $204020450.0000
+2025-09-05 13:35:02,918 - __main__ - INFO -   Mid: $204020450.0000
+2025-09-05 13:35:02,918 - __main__ - INFO -   Oracle: $203011712.0000
+2025-09-05 13:35:02,919 - __main__ - INFO - MACD Analysis: Fast=204019166.5280, Slow=203992591.5537, MACD=26574.9744, Signal=SELL
+2025-09-05 13:35:02,919 - __main__ - INFO - ==================================================
+2025-09-05 13:35:02,919 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 55
+2025-09-05 13:35:02,919 - __main__ - INFO - Runtime: 121.0s
+2025-09-05 13:35:02,919 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:35:02,920 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:35:02,920 - __main__ - INFO - Current Price: $204020450.0000
+2025-09-05 13:35:02,920 - __main__ - INFO - Price Change: +0.00%
+2025-09-05 13:35:02,920 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:35:02,920 - __main__ - INFO - MACD Values: 54
+2025-09-05 13:35:02,921 - __main__ - INFO - Signals Generated: 54
+2025-09-05 13:35:02,921 - __main__ - INFO - DLOB API Success Rate: 55/55
+2025-09-05 13:35:02,921 - __main__ - INFO - ==================================================
+2025-09-05 13:35:05,052 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:05,053 - __main__ - INFO - REAL PRICE from DLOB: $203986450.0000
+2025-09-05 13:35:05,053 - __main__ - INFO -   Mid: $203986450.0000
+2025-09-05 13:35:05,053 - __main__ - INFO -   Oracle: $202987138.0000
+2025-09-05 13:35:05,054 - __main__ - INFO - MACD Analysis: Fast=204014133.2160, Slow=203992136.6238, MACD=21996.5923, Signal=SELL
+2025-09-05 13:35:07,382 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:07,383 - __main__ - INFO - REAL PRICE from DLOB: $203977550.0000
+2025-09-05 13:35:07,383 - __main__ - INFO -   Mid: $203977550.0000
+2025-09-05 13:35:07,383 - __main__ - INFO -   Oracle: $202962023.0000
+2025-09-05 13:35:07,383 - __main__ - INFO - MACD Analysis: Fast=204008505.0290, Slow=203991056.1331, MACD=17448.8958, Signal=SELL
+2025-09-05 13:35:09,703 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:09,704 - __main__ - INFO - REAL PRICE from DLOB: $203978750.0000
+2025-09-05 13:35:09,704 - __main__ - INFO -   Mid: $203978750.0000
+2025-09-05 13:35:09,704 - __main__ - INFO -   Oracle: $202958212.0000
+2025-09-05 13:35:09,705 - __main__ - INFO - MACD Analysis: Fast=204003927.3322, Slow=203990144.5677, MACD=13782.7645, Signal=SELL
+2025-09-05 13:35:11,845 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:11,847 - __main__ - INFO - REAL PRICE from DLOB: $204025000.0000
+2025-09-05 13:35:11,847 - __main__ - INFO -   Mid: $204025000.0000
+2025-09-05 13:35:11,847 - __main__ - INFO -   Oracle: $202958212.0000
+2025-09-05 13:35:11,847 - __main__ - INFO - MACD Analysis: Fast=204007169.2811, Slow=203992726.4516, MACD=14442.8295, Signal=SELL
+2025-09-05 13:35:14,164 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:14,165 - __main__ - INFO - REAL PRICE from DLOB: $204018950.0000
+2025-09-05 13:35:14,165 - __main__ - INFO -   Mid: $204018950.0000
+2025-09-05 13:35:14,166 - __main__ - INFO -   Oracle: $203003809.0000
+2025-09-05 13:35:14,166 - __main__ - INFO - MACD Analysis: Fast=204008981.6994, Slow=203994668.9366, MACD=14312.7627, Signal=SELL
+2025-09-05 13:35:14,166 - __main__ - INFO - ==================================================
+2025-09-05 13:35:14,166 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 60
+2025-09-05 13:35:14,167 - __main__ - INFO - Runtime: 132.2s
+2025-09-05 13:35:14,167 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:35:14,167 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:35:14,167 - __main__ - INFO - Current Price: $204018950.0000
+2025-09-05 13:35:14,167 - __main__ - INFO - Price Change: -0.00%
+2025-09-05 13:35:14,168 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:35:14,168 - __main__ - INFO - MACD Values: 59
+2025-09-05 13:35:14,168 - __main__ - INFO - Signals Generated: 59
+2025-09-05 13:35:14,168 - __main__ - INFO - DLOB API Success Rate: 60/60
+2025-09-05 13:35:14,168 - __main__ - INFO - ==================================================
+2025-09-05 13:35:14,168 - __main__ - INFO - DETAILED BETA ANALYSIS
+2025-09-05 13:35:14,169 - __main__ - INFO -    - MACD Fast EMA: 204008981.6994
+2025-09-05 13:35:14,169 - __main__ - INFO -    - MACD Slow EMA: 203994668.9366
+2025-09-05 13:35:14,169 - __main__ - INFO -    - MACD Signal: 20741.6475
+2025-09-05 13:35:14,169 - __main__ - INFO -    - Current MACD: -6428.8848
+2025-09-05 13:35:14,169 - __main__ - INFO -    - Price History: 60 points
+2025-09-05 13:35:14,170 - __main__ - INFO -    - Risk State: 0.00% drawdown
+2025-09-05 13:35:16,307 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:16,308 - __main__ - INFO - REAL PRICE from DLOB: $204015650.0000
+2025-09-05 13:35:16,308 - __main__ - INFO -   Mid: $204015650.0000
+2025-09-05 13:35:16,308 - __main__ - INFO -   Oracle: $203003809.0000
+2025-09-05 13:35:16,309 - __main__ - INFO - MACD Analysis: Fast=204010007.5918, Slow=203996223.0895, MACD=13784.5023, Signal=SELL
+2025-09-05 13:35:18,437 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:18,438 - __main__ - INFO - REAL PRICE from DLOB: $204015850.0000
+2025-09-05 13:35:18,439 - __main__ - INFO -   Mid: $204015850.0000
+2025-09-05 13:35:18,439 - __main__ - INFO -   Oracle: $202994375.0000
+2025-09-05 13:35:18,439 - __main__ - INFO - MACD Analysis: Fast=204010906.4238, Slow=203997676.9347, MACD=13229.4891, Signal=SELL
+2025-09-05 13:35:20,565 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:20,566 - __main__ - INFO - REAL PRICE from DLOB: $204017150.0000
+2025-09-05 13:35:20,566 - __main__ - INFO -   Mid: $204017150.0000
+2025-09-05 13:35:20,567 - __main__ - INFO -   Oracle: $202995857.0000
+2025-09-05 13:35:20,567 - __main__ - INFO - MACD Analysis: Fast=204011866.9740, Slow=203999119.3840, MACD=12747.5900, Signal=SELL
+2025-09-05 13:35:22,882 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:22,883 - __main__ - INFO - REAL PRICE from DLOB: $204037150.0000
+2025-09-05 13:35:22,884 - __main__ - INFO -   Mid: $204037150.0000
+2025-09-05 13:35:22,884 - __main__ - INFO -   Oracle: $203015511.0000
+2025-09-05 13:35:22,884 - __main__ - INFO - MACD Analysis: Fast=204015756.6703, Slow=204001936.4667, MACD=13820.2036, Signal=SELL
+2025-09-05 13:35:25,027 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:25,028 - __main__ - INFO - REAL PRICE from DLOB: $204040050.0000
+2025-09-05 13:35:25,028 - __main__ - INFO -   Mid: $204040050.0000
+2025-09-05 13:35:25,029 - __main__ - INFO -   Oracle: $203018488.0000
+2025-09-05 13:35:25,029 - __main__ - INFO - MACD Analysis: Fast=204019494.1056, Slow=204004759.6913, MACD=14734.4143, Signal=SELL
+2025-09-05 13:35:25,029 - __main__ - INFO - ==================================================
+2025-09-05 13:35:25,030 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 65
+2025-09-05 13:35:25,030 - __main__ - INFO - Runtime: 143.1s
+2025-09-05 13:35:25,031 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:35:25,031 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:35:25,031 - __main__ - INFO - Current Price: $204040050.0000
+2025-09-05 13:35:25,031 - __main__ - INFO - Price Change: +0.01%
+2025-09-05 13:35:25,031 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:35:25,032 - __main__ - INFO - MACD Values: 64
+2025-09-05 13:35:25,032 - __main__ - INFO - Signals Generated: 64
+2025-09-05 13:35:25,032 - __main__ - INFO - DLOB API Success Rate: 65/65
+2025-09-05 13:35:25,032 - __main__ - INFO - ==================================================
+2025-09-05 13:35:27,343 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:27,344 - __main__ - INFO - REAL PRICE from DLOB: $204047650.0000
+2025-09-05 13:35:27,344 - __main__ - INFO -   Mid: $204047650.0000
+2025-09-05 13:35:27,344 - __main__ - INFO -   Oracle: $203018488.0000
+2025-09-05 13:35:27,344 - __main__ - INFO - MACD Analysis: Fast=204023825.7817, Slow=204007936.7512, MACD=15889.0304, Signal=SELL
+2025-09-05 13:35:29,665 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:29,666 - __main__ - INFO - REAL PRICE from DLOB: $204047550.0000
+2025-09-05 13:35:29,666 - __main__ - INFO -   Mid: $204047550.0000
+2025-09-05 13:35:29,666 - __main__ - INFO -   Oracle: $203025986.0000
+2025-09-05 13:35:29,666 - __main__ - INFO - MACD Analysis: Fast=204027475.6614, Slow=204010871.0660, MACD=16604.5955, Signal=BUY
+2025-09-05 13:35:31,803 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:31,804 - __main__ - INFO - REAL PRICE from DLOB: $204046250.0000
+2025-09-05 13:35:31,805 - __main__ - INFO -   Mid: $204046250.0000
+2025-09-05 13:35:31,805 - __main__ - INFO -   Oracle: $203025270.0000
+2025-09-05 13:35:31,805 - __main__ - INFO - MACD Analysis: Fast=204030364.0212, Slow=204013491.7278, MACD=16872.2935, Signal=BUY
+2025-09-05 13:35:34,119 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:34,120 - __main__ - INFO - REAL PRICE from DLOB: $204047050.0000
+2025-09-05 13:35:34,120 - __main__ - INFO -   Mid: $204047050.0000
+2025-09-05 13:35:34,121 - __main__ - INFO -   Oracle: $203025270.0000
+2025-09-05 13:35:34,121 - __main__ - INFO - MACD Analysis: Fast=204032931.0949, Slow=204015977.5257, MACD=16953.5692, Signal=BUY
+2025-09-05 13:35:36,243 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:36,245 - __main__ - INFO - REAL PRICE from DLOB: $204048150.0000
+2025-09-05 13:35:36,245 - __main__ - INFO -   Mid: $204048150.0000
+2025-09-05 13:35:36,246 - __main__ - INFO -   Oracle: $203025721.0000
+2025-09-05 13:35:36,246 - __main__ - INFO - MACD Analysis: Fast=204035272.4649, Slow=204018360.6719, MACD=16911.7930, Signal=BUY
+2025-09-05 13:35:36,246 - __main__ - INFO - ==================================================
+2025-09-05 13:35:36,246 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 70
+2025-09-05 13:35:36,247 - __main__ - INFO - Runtime: 154.3s
+2025-09-05 13:35:36,247 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:35:36,247 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:35:36,248 - __main__ - INFO - Current Price: $204048150.0000
+2025-09-05 13:35:36,248 - __main__ - INFO - Price Change: +0.00%
+2025-09-05 13:35:36,249 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:35:36,249 - __main__ - INFO - MACD Values: 69
+2025-09-05 13:35:36,249 - __main__ - INFO - Signals Generated: 69
+2025-09-05 13:35:36,249 - __main__ - INFO - DLOB API Success Rate: 70/70
+2025-09-05 13:35:36,249 - __main__ - INFO - ==================================================
+2025-09-05 13:35:38,378 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:38,380 - __main__ - INFO - REAL PRICE from DLOB: $203945250.0000
+2025-09-05 13:35:38,380 - __main__ - INFO -   Mid: $203945250.0000
+2025-09-05 13:35:38,380 - __main__ - INFO -   Oracle: $203025721.0000
+2025-09-05 13:35:38,381 - __main__ - INFO - MACD Analysis: Fast=204021422.8549, Slow=204012945.0666, MACD=8477.7883, Signal=SELL
+2025-09-05 13:35:40,698 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:40,699 - __main__ - INFO - REAL PRICE from DLOB: $203948250.0000
+2025-09-05 13:35:40,699 - __main__ - INFO -   Mid: $203948250.0000
+2025-09-05 13:35:40,700 - __main__ - INFO -   Oracle: $202924242.0000
+2025-09-05 13:35:40,700 - __main__ - INFO - MACD Analysis: Fast=204010165.4926, Slow=204008152.8395, MACD=2012.6532, Signal=SELL
+2025-09-05 13:35:42,837 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:42,839 - __main__ - INFO - REAL PRICE from DLOB: $203918200.0000
+2025-09-05 13:35:42,839 - __main__ - INFO -   Mid: $203918200.0000
+2025-09-05 13:35:42,839 - __main__ - INFO -   Oracle: $202895926.0000
+2025-09-05 13:35:42,839 - __main__ - INFO - MACD Analysis: Fast=203996016.9553, Slow=204001489.6662, MACD=-5472.7109, Signal=SELL
+2025-09-05 13:35:44,972 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:44,973 - __main__ - INFO - REAL PRICE from DLOB: $203948550.0000
+2025-09-05 13:35:44,973 - __main__ - INFO -   Mid: $203948550.0000
+2025-09-05 13:35:44,973 - __main__ - INFO -   Oracle: $202921257.0000
+2025-09-05 13:35:44,973 - __main__ - INFO - MACD Analysis: Fast=203988714.3468, Slow=203997568.2094, MACD=-8853.8626, Signal=SELL
+2025-09-05 13:35:47,288 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:47,289 - __main__ - INFO - REAL PRICE from DLOB: $203967250.0000
+2025-09-05 13:35:47,289 - __main__ - INFO -   Mid: $203967250.0000
+2025-09-05 13:35:47,290 - __main__ - INFO -   Oracle: $202921257.0000
+2025-09-05 13:35:47,290 - __main__ - INFO - MACD Analysis: Fast=203985412.1396, Slow=203995322.4161, MACD=-9910.2765, Signal=SELL
+2025-09-05 13:35:47,291 - __main__ - INFO - ==================================================
+2025-09-05 13:35:47,291 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 75
+2025-09-05 13:35:47,291 - __main__ - INFO - Runtime: 165.4s
+2025-09-05 13:35:47,291 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:35:47,292 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:35:47,292 - __main__ - INFO - Current Price: $203967250.0000
+2025-09-05 13:35:47,292 - __main__ - INFO - Price Change: -0.04%
+2025-09-05 13:35:47,292 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:35:47,292 - __main__ - INFO - MACD Values: 74
+2025-09-05 13:35:47,292 - __main__ - INFO - Signals Generated: 74
+2025-09-05 13:35:47,293 - __main__ - INFO - DLOB API Success Rate: 75/75
+2025-09-05 13:35:47,293 - __main__ - INFO - ==================================================
+2025-09-05 13:35:49,621 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:49,622 - __main__ - INFO - REAL PRICE from DLOB: $203998850.0000
+2025-09-05 13:35:49,622 - __main__ - INFO -   Mid: $203998850.0000
+2025-09-05 13:35:49,622 - __main__ - INFO -   Oracle: $202921257.0000
+2025-09-05 13:35:49,623 - __main__ - INFO - MACD Analysis: Fast=203987479.5027, Slow=203995583.7186, MACD=-8104.2159, Signal=SELL
+2025-09-05 13:35:51,754 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:51,754 - __main__ - INFO - REAL PRICE from DLOB: $203999150.0000
+2025-09-05 13:35:51,755 - __main__ - INFO -   Mid: $203999150.0000
+2025-09-05 13:35:51,755 - __main__ - INFO -   Oracle: $202921257.0000
+2025-09-05 13:35:51,755 - __main__ - INFO - MACD Analysis: Fast=203989274.9638, Slow=203995847.8876, MACD=-6572.9238, Signal=SELL
+2025-09-05 13:35:54,078 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:54,079 - __main__ - INFO - REAL PRICE from DLOB: $203986850.0000
+2025-09-05 13:35:54,080 - __main__ - INFO -   Mid: $203986850.0000
+2025-09-05 13:35:54,080 - __main__ - INFO -   Oracle: $202972857.0000
+2025-09-05 13:35:54,080 - __main__ - INFO - MACD Analysis: Fast=203988901.8925, Slow=203995181.3774, MACD=-6279.4849, Signal=SELL
+2025-09-05 13:35:56,401 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:56,402 - __main__ - INFO - REAL PRICE from DLOB: $203993450.0000
+2025-09-05 13:35:56,402 - __main__ - INFO -   Mid: $203993450.0000
+2025-09-05 13:35:56,402 - __main__ - INFO -   Oracle: $202972857.0000
+2025-09-05 13:35:56,403 - __main__ - INFO - MACD Analysis: Fast=203989601.6013, Slow=203995053.1272, MACD=-5451.5259, Signal=SELL
+2025-09-05 13:35:58,539 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:35:58,540 - __main__ - INFO - REAL PRICE from DLOB: $203999350.0000
+2025-09-05 13:35:58,540 - __main__ - INFO -   Mid: $203999350.0000
+2025-09-05 13:35:58,540 - __main__ - INFO -   Oracle: $202977959.0000
+2025-09-05 13:35:58,540 - __main__ - INFO - MACD Analysis: Fast=203991101.3550, Slow=203995371.4141, MACD=-4270.0591, Signal=SELL
+2025-09-05 13:35:58,541 - __main__ - INFO - ==================================================
+2025-09-05 13:35:58,541 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 80
+2025-09-05 13:35:58,541 - __main__ - INFO - Runtime: 176.6s
+2025-09-05 13:35:58,541 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:35:58,541 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:35:58,542 - __main__ - INFO - Current Price: $203999350.0000
+2025-09-05 13:35:58,542 - __main__ - INFO - Price Change: +0.02%
+2025-09-05 13:35:58,542 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:35:58,542 - __main__ - INFO - MACD Values: 79
+2025-09-05 13:35:58,542 - __main__ - INFO - Signals Generated: 79
+2025-09-05 13:35:58,543 - __main__ - INFO - DLOB API Success Rate: 80/80
+2025-09-05 13:35:58,543 - __main__ - INFO - ==================================================
+2025-09-05 13:35:58,543 - __main__ - INFO - DETAILED BETA ANALYSIS
+2025-09-05 13:35:58,543 - __main__ - INFO -    - MACD Fast EMA: 203991101.3550
+2025-09-05 13:35:58,543 - __main__ - INFO -    - MACD Slow EMA: 203995371.4141
+2025-09-05 13:35:58,544 - __main__ - INFO -    - MACD Signal: -3141.0215
+2025-09-05 13:35:58,544 - __main__ - INFO -    - Current MACD: -1129.0376
+2025-09-05 13:35:58,544 - __main__ - INFO -    - Price History: 80 points
+2025-09-05 13:35:58,545 - __main__ - INFO -    - Risk State: 0.00% drawdown
+2025-09-05 13:36:00,673 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:00,674 - __main__ - INFO - REAL PRICE from DLOB: $203973650.0000
+2025-09-05 13:36:00,675 - __main__ - INFO -   Mid: $203973650.0000
+2025-09-05 13:36:00,675 - __main__ - INFO -   Oracle: $202948461.0000
+2025-09-05 13:36:00,675 - __main__ - INFO - MACD Analysis: Fast=203988416.5311, Slow=203993762.4205, MACD=-5345.8893, Signal=SELL
+2025-09-05 13:36:02,995 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:02,996 - __main__ - INFO - REAL PRICE from DLOB: $203986350.0000
+2025-09-05 13:36:02,996 - __main__ - INFO -   Mid: $203986350.0000
+2025-09-05 13:36:02,996 - __main__ - INFO -   Oracle: $202953539.0000
+2025-09-05 13:36:02,997 - __main__ - INFO - MACD Analysis: Fast=203988098.6033, Slow=203993213.3523, MACD=-5114.7490, Signal=SELL
+2025-09-05 13:36:05,171 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:05,173 - __main__ - INFO - REAL PRICE from DLOB: $203934050.0000
+2025-09-05 13:36:05,174 - __main__ - INFO -   Mid: $203934050.0000
+2025-09-05 13:36:05,174 - __main__ - INFO -   Oracle: $202928449.0000
+2025-09-05 13:36:05,174 - __main__ - INFO - MACD Analysis: Fast=203979783.4335, Slow=203988830.8818, MACD=-9047.4482, Signal=SELL
+2025-09-05 13:36:07,304 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:07,306 - __main__ - INFO - REAL PRICE from DLOB: $203947650.0000
+2025-09-05 13:36:07,306 - __main__ - INFO -   Mid: $203947650.0000
+2025-09-05 13:36:07,306 - __main__ - INFO -   Oracle: $202928449.0000
+2025-09-05 13:36:07,306 - __main__ - INFO - MACD Analysis: Fast=203974839.8284, Slow=203985780.4461, MACD=-10940.6177, Signal=SELL
+2025-09-05 13:36:09,431 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:09,432 - __main__ - INFO - REAL PRICE from DLOB: $203868500.0000
+2025-09-05 13:36:09,433 - __main__ - INFO -   Mid: $203868500.0000
+2025-09-05 13:36:09,433 - __main__ - INFO -   Oracle: $202901354.0000
+2025-09-05 13:36:09,433 - __main__ - INFO - MACD Analysis: Fast=203958479.8548, Slow=203977093.0056, MACD=-18613.1508, Signal=SELL
+2025-09-05 13:36:09,433 - __main__ - INFO - ==================================================
+2025-09-05 13:36:09,433 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 85
+2025-09-05 13:36:09,434 - __main__ - INFO - Runtime: 187.5s
+2025-09-05 13:36:09,434 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:36:09,434 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:36:09,434 - __main__ - INFO - Current Price: $203868500.0000
+2025-09-05 13:36:09,434 - __main__ - INFO - Price Change: -0.06%
+2025-09-05 13:36:09,435 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:36:09,435 - __main__ - INFO - MACD Values: 84
+2025-09-05 13:36:09,435 - __main__ - INFO - Signals Generated: 84
+2025-09-05 13:36:09,435 - __main__ - INFO - DLOB API Success Rate: 85/85
+2025-09-05 13:36:09,436 - __main__ - INFO - ==================================================
+2025-09-05 13:36:11,750 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:11,751 - __main__ - INFO - REAL PRICE from DLOB: $203782950.0000
+2025-09-05 13:36:11,751 - __main__ - INFO -   Mid: $203782950.0000
+2025-09-05 13:36:11,751 - __main__ - INFO -   Oracle: $202775991.0000
+2025-09-05 13:36:11,752 - __main__ - INFO - MACD Analysis: Fast=203931475.2617, Slow=203962712.0422, MACD=-31236.7805, Signal=SELL
+2025-09-05 13:36:13,887 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:13,888 - __main__ - INFO - REAL PRICE from DLOB: $203823900.0000
+2025-09-05 13:36:13,888 - __main__ - INFO -   Mid: $203823900.0000
+2025-09-05 13:36:13,889 - __main__ - INFO -   Oracle: $202775991.0000
+2025-09-05 13:36:13,889 - __main__ - INFO - MACD Analysis: Fast=203914925.2215, Slow=203952429.6687, MACD=-37504.4473, Signal=SELL
+2025-09-05 13:36:16,023 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:16,024 - __main__ - INFO - REAL PRICE from DLOB: $203822650.0000
+2025-09-05 13:36:16,025 - __main__ - INFO -   Mid: $203822650.0000
+2025-09-05 13:36:16,025 - __main__ - INFO -   Oracle: $202775991.0000
+2025-09-05 13:36:16,025 - __main__ - INFO - MACD Analysis: Fast=203900729.0335, Slow=203942816.3599, MACD=-42087.3264, Signal=SELL
+2025-09-05 13:36:18,151 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:18,153 - __main__ - INFO - REAL PRICE from DLOB: $203783000.0000
+2025-09-05 13:36:18,153 - __main__ - INFO -   Mid: $203783000.0000
+2025-09-05 13:36:18,153 - __main__ - INFO -   Oracle: $202775991.0000
+2025-09-05 13:36:18,154 - __main__ - INFO - MACD Analysis: Fast=203882616.8745, Slow=203930978.1111, MACD=-48361.2365, Signal=SELL
+2025-09-05 13:36:20,280 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:20,281 - __main__ - INFO - REAL PRICE from DLOB: $203777050.0000
+2025-09-05 13:36:20,281 - __main__ - INFO -   Mid: $203777050.0000
+2025-09-05 13:36:20,282 - __main__ - INFO -   Oracle: $202762711.0000
+2025-09-05 13:36:20,282 - __main__ - INFO - MACD Analysis: Fast=203866375.8169, Slow=203919576.0288, MACD=-53200.2118, Signal=SELL
+2025-09-05 13:36:20,282 - __main__ - INFO - ==================================================
+2025-09-05 13:36:20,282 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 90
+2025-09-05 13:36:20,283 - __main__ - INFO - Runtime: 198.3s
+2025-09-05 13:36:20,283 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:36:20,283 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:36:20,283 - __main__ - INFO - Current Price: $203777050.0000
+2025-09-05 13:36:20,283 - __main__ - INFO - Price Change: -0.04%
+2025-09-05 13:36:20,283 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:36:20,284 - __main__ - INFO - MACD Values: 89
+2025-09-05 13:36:20,284 - __main__ - INFO - Signals Generated: 89
+2025-09-05 13:36:20,284 - __main__ - INFO - DLOB API Success Rate: 90/90
+2025-09-05 13:36:20,284 - __main__ - INFO - ==================================================
+2025-09-05 13:36:22,597 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:22,598 - __main__ - INFO - REAL PRICE from DLOB: $203783000.0000
+2025-09-05 13:36:22,598 - __main__ - INFO -   Mid: $203783000.0000
+2025-09-05 13:36:22,598 - __main__ - INFO -   Oracle: $202751764.0000
+2025-09-05 13:36:22,599 - __main__ - INFO - MACD Analysis: Fast=203853548.7682, Slow=203909459.2859, MACD=-55910.5177, Signal=SELL
+2025-09-05 13:36:24,921 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:24,922 - __main__ - INFO - REAL PRICE from DLOB: $203776200.0000
+2025-09-05 13:36:24,922 - __main__ - INFO -   Mid: $203776200.0000
+2025-09-05 13:36:24,923 - __main__ - INFO -   Oracle: $202760527.0000
+2025-09-05 13:36:24,923 - __main__ - INFO - MACD Analysis: Fast=203841648.9577, Slow=203899588.2277, MACD=-57939.2700, Signal=SELL
+2025-09-05 13:36:27,053 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:27,055 - __main__ - INFO - REAL PRICE from DLOB: $203777150.0000
+2025-09-05 13:36:27,055 - __main__ - INFO -   Mid: $203777150.0000
+2025-09-05 13:36:27,055 - __main__ - INFO -   Oracle: $202760527.0000
+2025-09-05 13:36:27,055 - __main__ - INFO - MACD Analysis: Fast=203831726.0411, Slow=203890518.7293, MACD=-58792.6882, Signal=SELL
+2025-09-05 13:36:29,364 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:29,365 - __main__ - INFO - REAL PRICE from DLOB: $203784500.0000
+2025-09-05 13:36:29,366 - __main__ - INFO -   Mid: $203784500.0000
+2025-09-05 13:36:29,366 - __main__ - INFO -   Oracle: $202770236.0000
+2025-09-05 13:36:29,366 - __main__ - INFO - MACD Analysis: Fast=203824460.4963, Slow=203882665.4901, MACD=-58204.9938, Signal=SELL
+2025-09-05 13:36:31,493 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:31,496 - __main__ - INFO - REAL PRICE from DLOB: $203780800.0000
+2025-09-05 13:36:31,496 - __main__ - INFO -   Mid: $203780800.0000
+2025-09-05 13:36:31,496 - __main__ - INFO -   Oracle: $202772952.0000
+2025-09-05 13:36:31,496 - __main__ - INFO - MACD Analysis: Fast=203817743.4969, Slow=203875119.8983, MACD=-57376.4014, Signal=SELL
+2025-09-05 13:36:31,497 - __main__ - INFO - ==================================================
+2025-09-05 13:36:31,497 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 95
+2025-09-05 13:36:31,497 - __main__ - INFO - Runtime: 209.6s
+2025-09-05 13:36:31,497 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:36:31,497 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:36:31,498 - __main__ - INFO - Current Price: $203780800.0000
+2025-09-05 13:36:31,498 - __main__ - INFO - Price Change: +0.00%
+2025-09-05 13:36:31,498 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:36:31,498 - __main__ - INFO - MACD Values: 94
+2025-09-05 13:36:31,498 - __main__ - INFO - Signals Generated: 94
+2025-09-05 13:36:31,499 - __main__ - INFO - DLOB API Success Rate: 95/95
+2025-09-05 13:36:31,499 - __main__ - INFO - ==================================================
+2025-09-05 13:36:33,626 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:33,627 - __main__ - INFO - REAL PRICE from DLOB: $203783450.0000
+2025-09-05 13:36:33,628 - __main__ - INFO -   Mid: $203783450.0000
+2025-09-05 13:36:33,628 - __main__ - INFO -   Oracle: $202763191.0000
+2025-09-05 13:36:33,628 - __main__ - INFO - MACD Analysis: Fast=203812467.5743, Slow=203868329.5354, MACD=-55861.9611, Signal=SELL
+2025-09-05 13:36:35,941 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:35,943 - __main__ - INFO - REAL PRICE from DLOB: $203783150.0000
+2025-09-05 13:36:35,943 - __main__ - INFO -   Mid: $203783150.0000
+2025-09-05 13:36:35,944 - __main__ - INFO -   Oracle: $202763191.0000
+2025-09-05 13:36:35,944 - __main__ - INFO - MACD Analysis: Fast=203807957.1782, Slow=203862019.9402, MACD=-54062.7620, Signal=SELL
+2025-09-05 13:36:38,256 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:38,257 - __main__ - INFO - REAL PRICE from DLOB: $203790950.0000
+2025-09-05 13:36:38,257 - __main__ - INFO -   Mid: $203790950.0000
+2025-09-05 13:36:38,257 - __main__ - INFO -   Oracle: $202770619.0000
+2025-09-05 13:36:38,257 - __main__ - INFO - MACD Analysis: Fast=203805340.6893, Slow=203856755.5002, MACD=-51414.8109, Signal=BUY
+2025-09-05 13:36:40,385 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:40,386 - __main__ - INFO - REAL PRICE from DLOB: $203785000.0000
+2025-09-05 13:36:40,387 - __main__ - INFO -   Mid: $203785000.0000
+2025-09-05 13:36:40,387 - __main__ - INFO -   Oracle: $202765486.0000
+2025-09-05 13:36:40,387 - __main__ - INFO - MACD Analysis: Fast=203802211.3525, Slow=203851440.2780, MACD=-49228.9255, Signal=BUY
+2025-09-05 13:36:42,526 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:42,527 - __main__ - INFO - REAL PRICE from DLOB: $203766300.0000
+2025-09-05 13:36:42,528 - __main__ - INFO -   Mid: $203766300.0000
+2025-09-05 13:36:42,528 - __main__ - INFO -   Oracle: $202759970.0000
+2025-09-05 13:36:42,528 - __main__ - INFO - MACD Analysis: Fast=203796686.5290, Slow=203845133.5907, MACD=-48447.0617, Signal=BUY
+2025-09-05 13:36:42,528 - __main__ - INFO - ==================================================
+2025-09-05 13:36:42,529 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 100
+2025-09-05 13:36:42,529 - __main__ - INFO - Runtime: 220.6s
+2025-09-05 13:36:42,529 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:36:42,530 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:36:42,530 - __main__ - INFO - Current Price: $203766300.0000
+2025-09-05 13:36:42,530 - __main__ - INFO - Price Change: -0.01%
+2025-09-05 13:36:42,530 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:36:42,530 - __main__ - INFO - MACD Values: 99
+2025-09-05 13:36:42,531 - __main__ - INFO - Signals Generated: 99
+2025-09-05 13:36:42,531 - __main__ - INFO - DLOB API Success Rate: 100/100
+2025-09-05 13:36:42,531 - __main__ - INFO - ==================================================
+2025-09-05 13:36:42,531 - __main__ - INFO - DETAILED BETA ANALYSIS
+2025-09-05 13:36:42,531 - __main__ - INFO -    - MACD Fast EMA: 203796686.5290
+2025-09-05 13:36:42,531 - __main__ - INFO -    - MACD Slow EMA: 203845133.5907
+2025-09-05 13:36:42,532 - __main__ - INFO -    - MACD Signal: -50524.3539
+2025-09-05 13:36:42,532 - __main__ - INFO -    - Current MACD: 2077.2922
+2025-09-05 13:36:42,532 - __main__ - INFO -    - Price History: 100 points
+2025-09-05 13:36:42,532 - __main__ - INFO -    - Risk State: 0.00% drawdown
+2025-09-05 13:36:44,851 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:44,852 - __main__ - INFO - REAL PRICE from DLOB: $203785700.0000
+2025-09-05 13:36:44,852 - __main__ - INFO -   Mid: $203785700.0000
+2025-09-05 13:36:44,853 - __main__ - INFO -   Oracle: $202750088.0000
+2025-09-05 13:36:44,853 - __main__ - INFO - MACD Analysis: Fast=203794996.2938, Slow=203840731.1025, MACD=-45734.8087, Signal=BUY
+2025-09-05 13:36:46,988 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:46,989 - __main__ - INFO - REAL PRICE from DLOB: $203770450.0000
+2025-09-05 13:36:46,990 - __main__ - INFO -   Mid: $203770450.0000
+2025-09-05 13:36:46,990 - __main__ - INFO -   Oracle: $202750088.0000
+2025-09-05 13:36:46,990 - __main__ - INFO - MACD Analysis: Fast=203791219.9409, Slow=203835525.0949, MACD=-44305.1540, Signal=BUY
+2025-09-05 13:36:49,309 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:49,310 - __main__ - INFO - REAL PRICE from DLOB: $203823450.0000
+2025-09-05 13:36:49,310 - __main__ - INFO -   Mid: $203823450.0000
+2025-09-05 13:36:49,311 - __main__ - INFO -   Oracle: $202758803.0000
+2025-09-05 13:36:49,311 - __main__ - INFO - MACD Analysis: Fast=203796178.4115, Slow=203834630.6434, MACD=-38452.2319, Signal=BUY
+2025-09-05 13:36:51,632 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:51,633 - __main__ - INFO - REAL PRICE from DLOB: $203820350.0000
+2025-09-05 13:36:51,633 - __main__ - INFO -   Mid: $203820350.0000
+2025-09-05 13:36:51,633 - __main__ - INFO -   Oracle: $202758803.0000
+2025-09-05 13:36:51,633 - __main__ - INFO - MACD Analysis: Fast=203799897.1174, Slow=203833572.8180, MACD=-33675.7005, Signal=BUY
+2025-09-05 13:36:53,963 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:53,963 - __main__ - INFO - REAL PRICE from DLOB: $203787650.0000
+2025-09-05 13:36:53,964 - __main__ - INFO -   Mid: $203787650.0000
+2025-09-05 13:36:53,964 - __main__ - INFO -   Oracle: $202798010.0000
+2025-09-05 13:36:53,964 - __main__ - INFO - MACD Analysis: Fast=203798012.9455, Slow=203830171.1278, MACD=-32158.1822, Signal=BUY
+2025-09-05 13:36:53,964 - __main__ - INFO - ==================================================
+2025-09-05 13:36:53,964 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 105
+2025-09-05 13:36:53,965 - __main__ - INFO - Runtime: 232.0s
+2025-09-05 13:36:53,965 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:36:53,965 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:36:53,965 - __main__ - INFO - Current Price: $203787650.0000
+2025-09-05 13:36:53,965 - __main__ - INFO - Price Change: +0.01%
+2025-09-05 13:36:53,966 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:36:53,966 - __main__ - INFO - MACD Values: 104
+2025-09-05 13:36:53,966 - __main__ - INFO - Signals Generated: 104
+2025-09-05 13:36:53,966 - __main__ - INFO - DLOB API Success Rate: 105/105
+2025-09-05 13:36:53,967 - __main__ - INFO - ==================================================
+2025-09-05 13:36:56,099 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:56,100 - __main__ - INFO - REAL PRICE from DLOB: $203818250.0000
+2025-09-05 13:36:56,101 - __main__ - INFO -   Mid: $203818250.0000
+2025-09-05 13:36:56,102 - __main__ - INFO -   Oracle: $202798010.0000
+2025-09-05 13:36:56,103 - __main__ - INFO - MACD Analysis: Fast=203801126.3385, Slow=203829288.0813, MACD=-28161.7427, Signal=BUY
+2025-09-05 13:36:58,421 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:36:58,422 - __main__ - INFO - REAL PRICE from DLOB: $203813550.0000
+2025-09-05 13:36:58,422 - __main__ - INFO -   Mid: $203813550.0000
+2025-09-05 13:36:58,423 - __main__ - INFO -   Oracle: $202798010.0000
+2025-09-05 13:36:58,423 - __main__ - INFO - MACD Analysis: Fast=203803037.6711, Slow=203828122.2975, MACD=-25084.6264, Signal=BUY
+2025-09-05 13:37:00,751 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:00,753 - __main__ - INFO - REAL PRICE from DLOB: $203785250.0000
+2025-09-05 13:37:00,753 - __main__ - INFO -   Mid: $203785250.0000
+2025-09-05 13:37:00,753 - __main__ - INFO -   Oracle: $202770588.0000
+2025-09-05 13:37:00,753 - __main__ - INFO - MACD Analysis: Fast=203800301.1063, Slow=203824946.5717, MACD=-24645.4655, Signal=BUY
+2025-09-05 13:37:02,878 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:02,879 - __main__ - INFO - REAL PRICE from DLOB: $203745100.0000
+2025-09-05 13:37:02,880 - __main__ - INFO -   Mid: $203745100.0000
+2025-09-05 13:37:02,880 - __main__ - INFO -   Oracle: $202723384.0000
+2025-09-05 13:37:02,880 - __main__ - INFO - MACD Analysis: Fast=203791808.6284, Slow=203819032.0109, MACD=-27223.3825, Signal=BUY
+2025-09-05 13:37:05,196 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:05,197 - __main__ - INFO - REAL PRICE from DLOB: $203755350.0000
+2025-09-05 13:37:05,197 - __main__ - INFO -   Mid: $203755350.0000
+2025-09-05 13:37:05,198 - __main__ - INFO -   Oracle: $202735223.0000
+2025-09-05 13:37:05,198 - __main__ - INFO - MACD Analysis: Fast=203786199.6086, Slow=203814314.8249, MACD=-28115.2162, Signal=BUY
+2025-09-05 13:37:05,199 - __main__ - INFO - ==================================================
+2025-09-05 13:37:05,199 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 110
+2025-09-05 13:37:05,199 - __main__ - INFO - Runtime: 243.3s
+2025-09-05 13:37:05,200 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:37:05,200 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:37:05,201 - __main__ - INFO - Current Price: $203755350.0000
+2025-09-05 13:37:05,202 - __main__ - INFO - Price Change: -0.02%
+2025-09-05 13:37:05,202 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:37:05,202 - __main__ - INFO - MACD Values: 109
+2025-09-05 13:37:05,203 - __main__ - INFO - Signals Generated: 109
+2025-09-05 13:37:05,203 - __main__ - INFO - DLOB API Success Rate: 110/110
+2025-09-05 13:37:05,204 - __main__ - INFO - ==================================================
+2025-09-05 13:37:07,369 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:07,370 - __main__ - INFO - REAL PRICE from DLOB: $203749550.0000
+2025-09-05 13:37:07,370 - __main__ - INFO -   Mid: $203749550.0000
+2025-09-05 13:37:07,370 - __main__ - INFO -   Oracle: $202735223.0000
+2025-09-05 13:37:07,371 - __main__ - INFO - MACD Analysis: Fast=203780561.2073, Slow=203809517.4304, MACD=-28956.2231, Signal=BUY
+2025-09-05 13:37:09,505 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:09,506 - __main__ - INFO - REAL PRICE from DLOB: $203778050.0000
+2025-09-05 13:37:09,506 - __main__ - INFO -   Mid: $203778050.0000
+2025-09-05 13:37:09,506 - __main__ - INFO -   Oracle: $202750525.0000
+2025-09-05 13:37:09,507 - __main__ - INFO - MACD Analysis: Fast=203780174.8677, Slow=203807186.5097, MACD=-27011.6419, Signal=BUY
+2025-09-05 13:37:11,834 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:11,836 - __main__ - INFO - REAL PRICE from DLOB: $203697650.0000
+2025-09-05 13:37:11,836 - __main__ - INFO -   Mid: $203697650.0000
+2025-09-05 13:37:11,836 - __main__ - INFO -   Oracle: $202750525.0000
+2025-09-05 13:37:11,837 - __main__ - INFO - MACD Analysis: Fast=203767478.7342, Slow=203799072.6941, MACD=-31593.9599, Signal=SELL
+2025-09-05 13:37:13,961 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:13,963 - __main__ - INFO - REAL PRICE from DLOB: $203679100.0000
+2025-09-05 13:37:13,963 - __main__ - INFO -   Mid: $203679100.0000
+2025-09-05 13:37:13,963 - __main__ - INFO -   Oracle: $202665751.0000
+2025-09-05 13:37:13,963 - __main__ - INFO - MACD Analysis: Fast=203753882.0059, Slow=203790185.8279, MACD=-36303.8220, Signal=SELL
+2025-09-05 13:37:16,282 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:16,284 - __main__ - INFO - REAL PRICE from DLOB: $203680200.0000
+2025-09-05 13:37:16,284 - __main__ - INFO -   Mid: $203680200.0000
+2025-09-05 13:37:16,285 - __main__ - INFO -   Oracle: $202665751.0000
+2025-09-05 13:37:16,285 - __main__ - INFO - MACD Analysis: Fast=203742546.3127, Slow=203782038.7295, MACD=-39492.4169, Signal=SELL
+2025-09-05 13:37:16,285 - __main__ - INFO - ==================================================
+2025-09-05 13:37:16,285 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 115
+2025-09-05 13:37:16,286 - __main__ - INFO - Runtime: 254.4s
+2025-09-05 13:37:16,286 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:37:16,286 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:37:16,286 - __main__ - INFO - Current Price: $203680200.0000
+2025-09-05 13:37:16,287 - __main__ - INFO - Price Change: -0.04%
+2025-09-05 13:37:16,287 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:37:16,287 - __main__ - INFO - MACD Values: 114
+2025-09-05 13:37:16,287 - __main__ - INFO - Signals Generated: 114
+2025-09-05 13:37:16,287 - __main__ - INFO - DLOB API Success Rate: 115/115
+2025-09-05 13:37:16,288 - __main__ - INFO - ==================================================
+2025-09-05 13:37:18,422 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:18,423 - __main__ - INFO - REAL PRICE from DLOB: $203675250.0000
+2025-09-05 13:37:18,423 - __main__ - INFO -   Mid: $203675250.0000
+2025-09-05 13:37:18,423 - __main__ - INFO -   Oracle: $202655546.0000
+2025-09-05 13:37:18,424 - __main__ - INFO - MACD Analysis: Fast=203732193.0338, Slow=203774128.4533, MACD=-41935.4195, Signal=SELL
+2025-09-05 13:37:20,557 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:20,558 - __main__ - INFO - REAL PRICE from DLOB: $203614650.0000
+2025-09-05 13:37:20,558 - __main__ - INFO -   Mid: $203614650.0000
+2025-09-05 13:37:20,559 - __main__ - INFO -   Oracle: $202642566.0000
+2025-09-05 13:37:20,559 - __main__ - INFO - MACD Analysis: Fast=203714109.4901, Slow=203762315.2345, MACD=-48205.7444, Signal=SELL
+2025-09-05 13:37:22,878 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:22,879 - __main__ - INFO - REAL PRICE from DLOB: $203660300.0000
+2025-09-05 13:37:22,879 - __main__ - INFO -   Mid: $203660300.0000
+2025-09-05 13:37:22,879 - __main__ - INFO -   Oracle: $202610408.0000
+2025-09-05 13:37:22,880 - __main__ - INFO - MACD Analysis: Fast=203705831.1070, Slow=203754758.5505, MACD=-48927.4434, Signal=SELL
+2025-09-05 13:37:25,020 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:25,021 - __main__ - INFO - REAL PRICE from DLOB: $203644800.0000
+2025-09-05 13:37:25,021 - __main__ - INFO -   Mid: $203644800.0000
+2025-09-05 13:37:25,022 - __main__ - INFO -   Oracle: $202621379.0000
+2025-09-05 13:37:25,022 - __main__ - INFO - MACD Analysis: Fast=203696441.7060, Slow=203746613.4727, MACD=-50171.7667, Signal=SELL
+2025-09-05 13:37:27,143 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:27,144 - __main__ - INFO - REAL PRICE from DLOB: $203615750.0000
+2025-09-05 13:37:27,145 - __main__ - INFO -   Mid: $203615750.0000
+2025-09-05 13:37:27,145 - __main__ - INFO -   Oracle: $202621379.0000
+2025-09-05 13:37:27,145 - __main__ - INFO - MACD Analysis: Fast=203684027.5973, Slow=203736919.8821, MACD=-52892.2847, Signal=SELL
+2025-09-05 13:37:27,145 - __main__ - INFO - ==================================================
+2025-09-05 13:37:27,146 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 120
+2025-09-05 13:37:27,146 - __main__ - INFO - Runtime: 265.2s
+2025-09-05 13:37:27,146 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:37:27,146 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:37:27,146 - __main__ - INFO - Current Price: $203615750.0000
+2025-09-05 13:37:27,147 - __main__ - INFO - Price Change: -0.03%
+2025-09-05 13:37:27,147 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:37:27,147 - __main__ - INFO - MACD Values: 119
+2025-09-05 13:37:27,147 - __main__ - INFO - Signals Generated: 119
+2025-09-05 13:37:27,147 - __main__ - INFO - DLOB API Success Rate: 120/120
+2025-09-05 13:37:27,147 - __main__ - INFO - ==================================================
+2025-09-05 13:37:27,147 - __main__ - INFO - DETAILED BETA ANALYSIS
+2025-09-05 13:37:27,148 - __main__ - INFO -    - MACD Fast EMA: 203684027.5973
+2025-09-05 13:37:27,148 - __main__ - INFO -    - MACD Slow EMA: 203736919.8821
+2025-09-05 13:37:27,148 - __main__ - INFO -    - MACD Signal: -44137.3137
+2025-09-05 13:37:27,148 - __main__ - INFO -    - Current MACD: -8754.9710
+2025-09-05 13:37:27,148 - __main__ - INFO -    - Price History: 120 points
+2025-09-05 13:37:27,148 - __main__ - INFO -    - Risk State: 0.00% drawdown
+2025-09-05 13:37:29,472 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:29,473 - __main__ - INFO - REAL PRICE from DLOB: $203581450.0000
+2025-09-05 13:37:29,473 - __main__ - INFO -   Mid: $203581450.0000
+2025-09-05 13:37:29,474 - __main__ - INFO -   Oracle: $202621379.0000
+2025-09-05 13:37:29,474 - __main__ - INFO - MACD Analysis: Fast=203668246.4285, Slow=203725403.5945, MACD=-57157.1660, Signal=SELL
+2025-09-05 13:37:31,799 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:31,801 - __main__ - INFO - REAL PRICE from DLOB: $203554350.0000
+2025-09-05 13:37:31,801 - __main__ - INFO -   Mid: $203554350.0000
+2025-09-05 13:37:31,801 - __main__ - INFO -   Oracle: $202532174.0000
+2025-09-05 13:37:31,802 - __main__ - INFO - MACD Analysis: Fast=203650723.9011, Slow=203712732.9579, MACD=-62009.0568, Signal=SELL
+2025-09-05 13:37:33,968 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:33,970 - __main__ - INFO - REAL PRICE from DLOB: $203606900.0000
+2025-09-05 13:37:33,970 - __main__ - INFO -   Mid: $203606900.0000
+2025-09-05 13:37:33,970 - __main__ - INFO -   Oracle: $202577505.0000
+2025-09-05 13:37:33,970 - __main__ - INFO - MACD Analysis: Fast=203643981.7624, Slow=203704893.4795, MACD=-60911.7171, Signal=SELL
+2025-09-05 13:37:36,136 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:36,137 - __main__ - INFO - REAL PRICE from DLOB: $203605600.0000
+2025-09-05 13:37:36,138 - __main__ - INFO -   Mid: $203605600.0000
+2025-09-05 13:37:36,138 - __main__ - INFO -   Oracle: $202577505.0000
+2025-09-05 13:37:36,138 - __main__ - INFO - MACD Analysis: Fast=203638076.8759, Slow=203697538.4070, MACD=-59461.5311, Signal=SELL
+2025-09-05 13:37:38,448 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:38,450 - __main__ - INFO - REAL PRICE from DLOB: $203599900.0000
+2025-09-05 13:37:38,450 - __main__ - INFO -   Mid: $203599900.0000
+2025-09-05 13:37:38,450 - __main__ - INFO -   Oracle: $202579241.0000
+2025-09-05 13:37:38,451 - __main__ - INFO - MACD Analysis: Fast=203632203.5104, Slow=203690305.9324, MACD=-58102.4220, Signal=SELL
+2025-09-05 13:37:38,451 - __main__ - INFO - ==================================================
+2025-09-05 13:37:38,451 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 125
+2025-09-05 13:37:38,451 - __main__ - INFO - Runtime: 276.5s
+2025-09-05 13:37:38,452 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:37:38,452 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:37:38,452 - __main__ - INFO - Current Price: $203599900.0000
+2025-09-05 13:37:38,452 - __main__ - INFO - Price Change: -0.01%
+2025-09-05 13:37:38,452 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:37:38,453 - __main__ - INFO - MACD Values: 124
+2025-09-05 13:37:38,453 - __main__ - INFO - Signals Generated: 124
+2025-09-05 13:37:38,453 - __main__ - INFO - DLOB API Success Rate: 125/125
+2025-09-05 13:37:38,453 - __main__ - INFO - ==================================================
+2025-09-05 13:37:40,628 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:40,629 - __main__ - INFO - REAL PRICE from DLOB: $203584150.0000
+2025-09-05 13:37:40,629 - __main__ - INFO -   Mid: $203584150.0000
+2025-09-05 13:37:40,629 - __main__ - INFO -   Oracle: $202579241.0000
+2025-09-05 13:37:40,629 - __main__ - INFO - MACD Analysis: Fast=203624810.6626, Slow=203682442.5300, MACD=-57631.8674, Signal=SELL
+2025-09-05 13:37:42,760 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:42,761 - __main__ - INFO - REAL PRICE from DLOB: $203587100.0000
+2025-09-05 13:37:42,761 - __main__ - INFO -   Mid: $203587100.0000
+2025-09-05 13:37:42,762 - __main__ - INFO -   Oracle: $202564316.0000
+2025-09-05 13:37:42,762 - __main__ - INFO - MACD Analysis: Fast=203619009.0222, Slow=203675380.1204, MACD=-56371.0981, Signal=SELL
+2025-09-05 13:37:45,074 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:45,076 - __main__ - INFO - REAL PRICE from DLOB: $203584150.0000
+2025-09-05 13:37:45,077 - __main__ - INFO -   Mid: $203584150.0000
+2025-09-05 13:37:45,077 - __main__ - INFO -   Oracle: $202567050.0000
+2025-09-05 13:37:45,077 - __main__ - INFO - MACD Analysis: Fast=203613646.0957, Slow=203668622.3337, MACD=-54976.2379, Signal=BUY
+2025-09-05 13:37:47,212 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:47,213 - __main__ - INFO - REAL PRICE from DLOB: $203553050.0000
+2025-09-05 13:37:47,213 - __main__ - INFO -   Mid: $203553050.0000
+2025-09-05 13:37:47,214 - __main__ - INFO -   Oracle: $202567050.0000
+2025-09-05 13:37:47,214 - __main__ - INFO - MACD Analysis: Fast=203604323.6195, Slow=203660061.4201, MACD=-55737.8006, Signal=SELL
+2025-09-05 13:37:49,345 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:49,346 - __main__ - INFO - REAL PRICE from DLOB: $203542350.0000
+2025-09-05 13:37:49,346 - __main__ - INFO -   Mid: $203542350.0000
+2025-09-05 13:37:49,346 - __main__ - INFO -   Oracle: $202534532.0000
+2025-09-05 13:37:49,347 - __main__ - INFO - MACD Analysis: Fast=203594789.2165, Slow=203651342.0556, MACD=-56552.8391, Signal=SELL
+2025-09-05 13:37:49,347 - __main__ - INFO - ==================================================
+2025-09-05 13:37:49,347 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 130
+2025-09-05 13:37:49,347 - __main__ - INFO - Runtime: 287.4s
+2025-09-05 13:37:49,347 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:37:49,348 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:37:49,348 - __main__ - INFO - Current Price: $203542350.0000
+2025-09-05 13:37:49,348 - __main__ - INFO - Price Change: -0.03%
+2025-09-05 13:37:49,348 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:37:49,349 - __main__ - INFO - MACD Values: 129
+2025-09-05 13:37:49,349 - __main__ - INFO - Signals Generated: 129
+2025-09-05 13:37:49,350 - __main__ - INFO - DLOB API Success Rate: 130/130
+2025-09-05 13:37:49,350 - __main__ - INFO - ==================================================
+2025-09-05 13:37:51,666 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:51,667 - __main__ - INFO - REAL PRICE from DLOB: $203522800.0000
+2025-09-05 13:37:51,667 - __main__ - INFO -   Mid: $203522800.0000
+2025-09-05 13:37:51,668 - __main__ - INFO -   Oracle: $202534532.0000
+2025-09-05 13:37:51,668 - __main__ - INFO - MACD Analysis: Fast=203583713.9524, Slow=203641820.4219, MACD=-58106.4695, Signal=SELL
+2025-09-05 13:37:53,803 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:53,804 - __main__ - INFO - REAL PRICE from DLOB: $203536600.0000
+2025-09-05 13:37:53,804 - __main__ - INFO -   Mid: $203536600.0000
+2025-09-05 13:37:53,804 - __main__ - INFO -   Oracle: $202534532.0000
+2025-09-05 13:37:53,805 - __main__ - INFO - MACD Analysis: Fast=203576465.6520, Slow=203634026.3165, MACD=-57560.6645, Signal=SELL
+2025-09-05 13:37:56,133 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:56,134 - __main__ - INFO - REAL PRICE from DLOB: $203569350.0000
+2025-09-05 13:37:56,134 - __main__ - INFO -   Mid: $203569350.0000
+2025-09-05 13:37:56,135 - __main__ - INFO -   Oracle: $202534532.0000
+2025-09-05 13:37:56,135 - __main__ - INFO - MACD Analysis: Fast=203575370.9363, Slow=203629235.4783, MACD=-53864.5419, Signal=BUY
+2025-09-05 13:37:58,269 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:37:58,271 - __main__ - INFO - REAL PRICE from DLOB: $203596900.0000
+2025-09-05 13:37:58,271 - __main__ - INFO -   Mid: $203596900.0000
+2025-09-05 13:37:58,272 - __main__ - INFO -   Oracle: $202534532.0000
+2025-09-05 13:37:58,272 - __main__ - INFO - MACD Analysis: Fast=203578683.1000, Slow=203626840.2577, MACD=-48157.1577, Signal=BUY
+2025-09-05 13:38:00,595 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:38:00,598 - __main__ - INFO - REAL PRICE from DLOB: $203616950.0000
+2025-09-05 13:38:00,598 - __main__ - INFO -   Mid: $203616950.0000
+2025-09-05 13:38:00,598 - __main__ - INFO -   Oracle: $202597959.0000
+2025-09-05 13:38:00,599 - __main__ - INFO - MACD Analysis: Fast=203584570.3154, Slow=203626107.6460, MACD=-41537.3306, Signal=BUY
+2025-09-05 13:38:00,599 - __main__ - INFO - ==================================================
+2025-09-05 13:38:00,599 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 135
+2025-09-05 13:38:00,599 - __main__ - INFO - Runtime: 298.7s
+2025-09-05 13:38:00,600 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:38:00,600 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:38:00,600 - __main__ - INFO - Current Price: $203616950.0000
+2025-09-05 13:38:00,600 - __main__ - INFO - Price Change: +0.04%
+2025-09-05 13:38:00,601 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:38:00,601 - __main__ - INFO - MACD Values: 134
+2025-09-05 13:38:00,601 - __main__ - INFO - Signals Generated: 134
+2025-09-05 13:38:00,601 - __main__ - INFO - DLOB API Success Rate: 135/135
+2025-09-05 13:38:00,602 - __main__ - INFO - ==================================================
+2025-09-05 13:38:02,737 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:38:02,738 - __main__ - INFO - REAL PRICE from DLOB: $203614550.0000
+2025-09-05 13:38:02,738 - __main__ - INFO -   Mid: $203614550.0000
+2025-09-05 13:38:02,739 - __main__ - INFO -   Oracle: $202597565.0000
+2025-09-05 13:38:02,739 - __main__ - INFO - MACD Analysis: Fast=203589182.5745, Slow=203625251.5241, MACD=-36068.9495, Signal=BUY
+2025-09-05 13:38:04,878 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:38:04,879 - __main__ - INFO - REAL PRICE from DLOB: $203613750.0000
+2025-09-05 13:38:04,879 - __main__ - INFO -   Mid: $203613750.0000
+2025-09-05 13:38:04,879 - __main__ - INFO -   Oracle: $202597565.0000
+2025-09-05 13:38:04,880 - __main__ - INFO - MACD Analysis: Fast=203592962.1785, Slow=203624399.5593, MACD=-31437.3809, Signal=BUY
+2025-09-05 13:38:07,276 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:38:07,277 - __main__ - INFO - REAL PRICE from DLOB: $203608700.0000
+2025-09-05 13:38:07,277 - __main__ - INFO -   Mid: $203608700.0000
+2025-09-05 13:38:07,277 - __main__ - INFO -   Oracle: $202597565.0000
+2025-09-05 13:38:07,277 - __main__ - INFO - MACD Analysis: Fast=203595383.3818, Slow=203623236.6290, MACD=-27853.2472, Signal=BUY
+2025-09-05 13:38:09,612 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:38:09,613 - __main__ - INFO - REAL PRICE from DLOB: $203519600.0000
+2025-09-05 13:38:09,614 - __main__ - INFO -   Mid: $203519600.0000
+2025-09-05 13:38:09,614 - __main__ - INFO -   Oracle: $202597565.0000
+2025-09-05 13:38:09,614 - __main__ - INFO - MACD Analysis: Fast=203583724.4000, Slow=203615559.8417, MACD=-31835.4417, Signal=BUY
+2025-09-05 13:38:11,938 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:38:11,939 - __main__ - INFO - REAL PRICE from DLOB: $203514300.0000
+2025-09-05 13:38:11,940 - __main__ - INFO -   Mid: $203514300.0000
+2025-09-05 13:38:11,940 - __main__ - INFO -   Oracle: $202597565.0000
+2025-09-05 13:38:11,940 - __main__ - INFO - MACD Analysis: Fast=203573043.7230, Slow=203608059.1127, MACD=-35015.3896, Signal=BUY
+2025-09-05 13:38:11,941 - __main__ - INFO - ==================================================
+2025-09-05 13:38:11,941 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 140
+2025-09-05 13:38:11,941 - __main__ - INFO - Runtime: 310.0s
+2025-09-05 13:38:11,941 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:38:11,942 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:38:11,942 - __main__ - INFO - Current Price: $203514300.0000
+2025-09-05 13:38:11,942 - __main__ - INFO - Price Change: -0.05%
+2025-09-05 13:38:11,942 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:38:11,943 - __main__ - INFO - MACD Values: 139
+2025-09-05 13:38:11,943 - __main__ - INFO - Signals Generated: 139
+2025-09-05 13:38:11,943 - __main__ - INFO - DLOB API Success Rate: 140/140
+2025-09-05 13:38:11,943 - __main__ - INFO - ==================================================
+2025-09-05 13:38:11,944 - __main__ - INFO - DETAILED BETA ANALYSIS
+2025-09-05 13:38:11,944 - __main__ - INFO -    - MACD Fast EMA: 203573043.7230
+2025-09-05 13:38:11,944 - __main__ - INFO -    - MACD Slow EMA: 203608059.1127
+2025-09-05 13:38:11,944 - __main__ - INFO -    - MACD Signal: -38802.6795
+2025-09-05 13:38:11,945 - __main__ - INFO -    - Current MACD: 3787.2899
+2025-09-05 13:38:11,945 - __main__ - INFO -    - Price History: 140 points
+2025-09-05 13:38:11,945 - __main__ - INFO -    - Risk State: 0.00% drawdown
+2025-09-05 13:38:14,076 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:38:14,078 - __main__ - INFO - REAL PRICE from DLOB: $203534500.0000
+2025-09-05 13:38:14,078 - __main__ - INFO -   Mid: $203534500.0000
+2025-09-05 13:38:14,078 - __main__ - INFO -   Oracle: $202597565.0000
+2025-09-05 13:38:14,078 - __main__ - INFO - MACD Analysis: Fast=203567113.9195, Slow=203602610.2895, MACD=-35496.3700, Signal=BUY
+2025-09-05 13:38:16,394 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:38:16,395 - __main__ - INFO - REAL PRICE from DLOB: $203547100.0000
+2025-09-05 13:38:16,396 - __main__ - INFO -   Mid: $203547100.0000
+2025-09-05 13:38:16,396 - __main__ - INFO -   Oracle: $202597565.0000
+2025-09-05 13:38:16,396 - __main__ - INFO - MACD Analysis: Fast=203564034.8550, Slow=203598498.4162, MACD=-34463.5612, Signal=BUY
+2025-09-05 13:38:18,531 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:38:18,533 - __main__ - INFO - REAL PRICE from DLOB: $203552200.0000
+2025-09-05 13:38:18,533 - __main__ - INFO -   Mid: $203552200.0000
+2025-09-05 13:38:18,533 - __main__ - INFO -   Oracle: $202597565.0000
+2025-09-05 13:38:18,534 - __main__ - INFO - MACD Analysis: Fast=203562214.1080, Slow=203595068.9039, MACD=-32854.7958, Signal=BUY
+2025-09-05 13:38:20,845 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:38:20,846 - __main__ - INFO - REAL PRICE from DLOB: $203540200.0000
+2025-09-05 13:38:20,846 - __main__ - INFO -   Mid: $203540200.0000
+2025-09-05 13:38:20,846 - __main__ - INFO -   Oracle: $202597565.0000
+2025-09-05 13:38:20,846 - __main__ - INFO - MACD Analysis: Fast=203558827.3222, Slow=203591004.5406, MACD=-32177.2184, Signal=BUY
+2025-09-05 13:38:22,975 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:22,976 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:22,976 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:22,976 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:22,976 - __main__ - WARNING - Using mock price: $214.4000
+2025-09-05 13:38:22,977 - __main__ - INFO - MACD Analysis: Fast=172242117.6419, Slow=188510205.2710, MACD=-16268087.6291, Signal=SELL
+2025-09-05 13:38:22,977 - __main__ - INFO - ==================================================
+2025-09-05 13:38:22,977 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 145
+2025-09-05 13:38:22,977 - __main__ - INFO - Runtime: 321.0s
+2025-09-05 13:38:22,977 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:38:22,978 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:38:22,978 - __main__ - INFO - Current Price: $214.4000
+2025-09-05 13:38:22,978 - __main__ - INFO - Price Change: -100.00%
+2025-09-05 13:38:22,978 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:38:22,978 - __main__ - INFO - MACD Values: 144
+2025-09-05 13:38:22,979 - __main__ - INFO - Signals Generated: 144
+2025-09-05 13:38:22,979 - __main__ - INFO - DLOB API Success Rate: 144/145
+2025-09-05 13:38:22,979 - __main__ - INFO - ==================================================
+2025-09-05 13:38:25,292 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:25,293 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:25,294 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:25,294 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:25,294 - __main__ - WARNING - Using mock price: $214.5000
+2025-09-05 13:38:25,295 - __main__ - INFO - MACD Analysis: Fast=145743363.3123, Slow=174546502.2509, MACD=-28803138.9386, Signal=SELL
+2025-09-05 13:38:27,605 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:27,606 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:27,607 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:27,607 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:27,607 - __main__ - WARNING - Using mock price: $214.6000
+2025-09-05 13:38:27,607 - __main__ - INFO - MACD Analysis: Fast=123321340.4335, Slow=161617147.6101, MACD=-38295807.1766, Signal=SELL
+2025-09-05 13:38:29,730 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:29,731 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:29,731 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:29,732 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:29,732 - __main__ - WARNING - Using mock price: $214.7000
+2025-09-05 13:38:29,732 - __main__ - INFO - MACD Analysis: Fast=104348859.5514, Slow=149645522.9501, MACD=-45296663.3986, Signal=SELL
+2025-09-05 13:38:32,037 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:32,038 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:32,038 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:32,039 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:32,039 - __main__ - WARNING - Using mock price: $214.8000
+2025-09-05 13:38:32,039 - __main__ - INFO - MACD Analysis: Fast=88295221.8974, Slow=138560685.3093, MACD=-50265463.4120, Signal=SELL
+2025-09-05 13:38:34,172 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:34,173 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:34,174 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:34,174 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:34,174 - __main__ - WARNING - Using mock price: $214.9000
+2025-09-05 13:38:34,175 - __main__ - INFO - MACD Analysis: Fast=74711374.6670, Slow=128296946.7605, MACD=-53585572.0935, Signal=SELL
+2025-09-05 13:38:34,175 - __main__ - INFO - ==================================================
+2025-09-05 13:38:34,175 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 150
+2025-09-05 13:38:34,176 - __main__ - INFO - Runtime: 332.2s
+2025-09-05 13:38:34,176 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:38:34,176 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:38:34,176 - __main__ - INFO - Current Price: $214.9000
+2025-09-05 13:38:34,177 - __main__ - INFO - Price Change: +0.23%
+2025-09-05 13:38:34,177 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:38:34,177 - __main__ - INFO - MACD Values: 149
+2025-09-05 13:38:34,178 - __main__ - INFO - Signals Generated: 149
+2025-09-05 13:38:34,178 - __main__ - INFO - DLOB API Success Rate: 144/150
+2025-09-05 13:38:34,178 - __main__ - INFO - ==================================================
+2025-09-05 13:38:36,310 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:36,311 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:36,311 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:36,311 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:36,311 - __main__ - WARNING - Using mock price: $215.0000
+2025-09-05 13:38:36,312 - __main__ - INFO - MACD Analysis: Fast=63217350.1029, Slow=118793485.1486, MACD=-55576135.0458, Signal=SELL
+2025-09-05 13:38:38,443 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:38,444 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:38,444 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:38,445 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:38,445 - __main__ - WARNING - Using mock price: $215.1000
+2025-09-05 13:38:38,445 - __main__ - INFO - MACD Analysis: Fast=53491637.0255, Slow=109993983.6635, MACD=-56502346.6380, Signal=SELL
+2025-09-05 13:38:40,759 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:40,760 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:40,760 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:40,760 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:40,760 - __main__ - WARNING - Using mock price: $215.2000
+2025-09-05 13:38:40,760 - __main__ - INFO - MACD Analysis: Fast=45262187.5139, Slow=101846297.1107, MACD=-56584109.5968, Signal=SELL
+2025-09-05 13:38:42,894 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:42,894 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:42,895 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:42,895 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:42,895 - __main__ - WARNING - Using mock price: $215.3000
+2025-09-05 13:38:42,895 - __main__ - INFO - MACD Analysis: Fast=38298807.1733, Slow=94302142.9025, MACD=-56003335.7292, Signal=SELL
+2025-09-05 13:38:45,203 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:45,203 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:45,204 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:45,204 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:45,204 - __main__ - WARNING - Using mock price: $215.4000
+2025-09-05 13:38:45,204 - __main__ - INFO - MACD Analysis: Fast=32406716.1312, Slow=87316814.9393, MACD=-54910098.8081, Signal=SELL
+2025-09-05 13:38:45,204 - __main__ - INFO - ==================================================
+2025-09-05 13:38:45,205 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 155
+2025-09-05 13:38:45,205 - __main__ - INFO - Runtime: 343.3s
+2025-09-05 13:38:45,206 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:38:45,207 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:38:45,207 - __main__ - INFO - Current Price: $215.4000
+2025-09-05 13:38:45,207 - __main__ - INFO - Price Change: +0.23%
+2025-09-05 13:38:45,208 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:38:45,208 - __main__ - INFO - MACD Values: 154
+2025-09-05 13:38:45,208 - __main__ - INFO - Signals Generated: 154
+2025-09-05 13:38:45,209 - __main__ - INFO - DLOB API Success Rate: 144/155
+2025-09-05 13:38:45,209 - __main__ - INFO - ==================================================
+2025-09-05 13:38:47,353 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:47,354 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:47,354 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:47,355 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:47,355 - __main__ - WARNING - Using mock price: $215.5000
+2025-09-05 13:38:47,356 - __main__ - INFO - MACD Analysis: Fast=27421100.6495, Slow=80848918.6846, MACD=-53427818.0351, Signal=SELL
+2025-09-05 13:38:49,483 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:49,483 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:49,484 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:49,484 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:49,484 - __main__ - WARNING - Using mock price: $215.6000
+2025-09-05 13:38:49,484 - __main__ - INFO - MACD Analysis: Fast=23202502.9496, Slow=74860125.8635, MACD=-51657622.9139, Signal=SELL
+2025-09-05 13:38:51,610 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:51,610 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:51,611 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:51,611 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:51,611 - __main__ - WARNING - Using mock price: $215.7000
+2025-09-05 13:38:51,611 - __main__ - INFO - MACD Analysis: Fast=19632920.2958, Slow=69314947.3329, MACD=-49682027.0371, Signal=SELL
+2025-09-05 13:38:53,733 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:53,734 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:53,734 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:53,734 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:53,734 - __main__ - WARNING - Using mock price: $215.8000
+2025-09-05 13:38:53,734 - __main__ - INFO - MACD Analysis: Fast=16612504.2195, Slow=64180522.7749, MACD=-47568018.5553, Signal=BUY
+2025-09-05 13:38:56,057 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:56,057 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:56,057 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:56,057 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:56,058 - __main__ - WARNING - Using mock price: $215.9000
+2025-09-05 13:38:56,058 - __main__ - INFO - MACD Analysis: Fast=14056767.5550, Slow=59426425.9693, MACD=-45369658.4143, Signal=BUY
+2025-09-05 13:38:56,058 - __main__ - INFO - ==================================================
+2025-09-05 13:38:56,058 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 160
+2025-09-05 13:38:56,058 - __main__ - INFO - Runtime: 354.1s
+2025-09-05 13:38:56,059 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:38:56,059 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:38:56,059 - __main__ - INFO - Current Price: $215.9000
+2025-09-05 13:38:56,059 - __main__ - INFO - Price Change: +0.23%
+2025-09-05 13:38:56,060 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:38:56,060 - __main__ - INFO - MACD Values: 159
+2025-09-05 13:38:56,060 - __main__ - INFO - Signals Generated: 159
+2025-09-05 13:38:56,060 - __main__ - INFO - DLOB API Success Rate: 144/160
+2025-09-05 13:38:56,060 - __main__ - INFO - ==================================================
+2025-09-05 13:38:56,060 - __main__ - INFO - DETAILED BETA ANALYSIS
+2025-09-05 13:38:56,061 - __main__ - INFO -    - MACD Fast EMA: 14056767.5550
+2025-09-05 13:38:56,061 - __main__ - INFO -    - MACD Slow EMA: 59426425.9693
+2025-09-05 13:38:56,061 - __main__ - INFO -    - MACD Signal: -48433261.1796
+2025-09-05 13:38:56,061 - __main__ - INFO -    - Current MACD: 3063602.7652
+2025-09-05 13:38:56,062 - __main__ - INFO -    - Price History: 160 points
+2025-09-05 13:38:56,062 - __main__ - INFO -    - Risk State: 0.00% drawdown
+2025-09-05 13:38:58,387 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:38:58,388 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:38:58,388 - __main__ - WARNING - No L2 data received
+2025-09-05 13:38:58,389 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:38:58,389 - __main__ - WARNING - Using mock price: $216.0000
+2025-09-05 13:38:58,389 - __main__ - INFO - MACD Analysis: Fast=11894221.1619, Slow=55024484.4901, MACD=-43130263.3282, Signal=BUY
+2025-09-05 13:39:00,516 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:00,517 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:00,518 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:00,518 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:00,518 - __main__ - WARNING - Using mock price: $216.1000
+2025-09-05 13:39:00,519 - __main__ - INFO - MACD Analysis: Fast=10064374.2293, Slow=50948612.7575, MACD=-40884238.5282, Signal=BUY
+2025-09-05 13:39:02,648 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:02,649 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:02,649 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:02,650 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:02,650 - __main__ - WARNING - Using mock price: $216.2000
+2025-09-05 13:39:02,650 - __main__ - INFO - MACD Analysis: Fast=8516042.2248, Slow=47174657.4570, MACD=-38658615.2322, Signal=BUY
+2025-09-05 13:39:04,970 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:04,971 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:04,971 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:04,972 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:04,972 - __main__ - WARNING - Using mock price: $216.3000
+2025-09-05 13:39:04,972 - __main__ - INFO - MACD Analysis: Fast=7205915.1594, Slow=43680254.4083, MACD=-36474339.2488, Signal=BUY
+2025-09-05 13:39:07,098 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:07,098 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:07,099 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:07,099 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:07,099 - __main__ - WARNING - Using mock price: $216.4000
+2025-09-05 13:39:07,099 - __main__ - INFO - MACD Analysis: Fast=6097346.1195, Slow=40444696.0373, MACD=-34347349.9178, Signal=BUY
+2025-09-05 13:39:07,099 - __main__ - INFO - ==================================================
+2025-09-05 13:39:07,100 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 165
+2025-09-05 13:39:07,100 - __main__ - INFO - Runtime: 365.2s
+2025-09-05 13:39:07,100 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:39:07,100 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:39:07,100 - __main__ - INFO - Current Price: $216.4000
+2025-09-05 13:39:07,100 - __main__ - INFO - Price Change: +0.23%
+2025-09-05 13:39:07,101 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:39:07,101 - __main__ - INFO - MACD Values: 164
+2025-09-05 13:39:07,101 - __main__ - INFO - Signals Generated: 164
+2025-09-05 13:39:07,101 - __main__ - INFO - DLOB API Success Rate: 144/165
+2025-09-05 13:39:07,101 - __main__ - INFO - ==================================================
+2025-09-05 13:39:09,417 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:09,418 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:09,418 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:09,419 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:09,419 - __main__ - WARNING - Using mock price: $216.5000
+2025-09-05 13:39:09,419 - __main__ - INFO - MACD Analysis: Fast=5159326.1781, Slow=37448808.6642, MACD=-32289482.4861, Signal=BUY
+2025-09-05 13:39:11,551 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:11,552 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:11,552 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:11,552 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:11,552 - __main__ - WARNING - Using mock price: $216.6000
+2025-09-05 13:39:11,552 - __main__ - INFO - MACD Analysis: Fast=4365617.0122, Slow=34674838.8816, MACD=-30309221.8694, Signal=BUY
+2025-09-05 13:39:13,674 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:13,675 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:13,676 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:13,676 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:13,676 - __main__ - WARNING - Using mock price: $216.7000
+2025-09-05 13:39:13,676 - __main__ - INFO - MACD Analysis: Fast=3694016.9642, Slow=32106348.3497, MACD=-28412331.3855, Signal=BUY
+2025-09-05 13:39:15,994 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:15,994 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:15,995 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:15,995 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:15,995 - __main__ - WARNING - Using mock price: $216.8000
+2025-09-05 13:39:15,996 - __main__ - INFO - MACD Analysis: Fast=3125740.0158, Slow=29728116.3830, MACD=-26602376.3672, Signal=BUY
+2025-09-05 13:39:18,137 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:18,138 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:18,138 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:18,138 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:18,139 - __main__ - WARNING - Using mock price: $216.9000
+2025-09-05 13:39:18,139 - __main__ - INFO - MACD Analysis: Fast=2644890.3057, Slow=27526049.7547, MACD=-24881159.4489, Signal=BUY
+2025-09-05 13:39:18,139 - __main__ - INFO - ==================================================
+2025-09-05 13:39:18,139 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 170
+2025-09-05 13:39:18,139 - __main__ - INFO - Runtime: 376.2s
+2025-09-05 13:39:18,140 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:39:18,140 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:39:18,140 - __main__ - INFO - Current Price: $216.9000
+2025-09-05 13:39:18,140 - __main__ - INFO - Price Change: +0.23%
+2025-09-05 13:39:18,140 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:39:18,141 - __main__ - INFO - MACD Values: 169
+2025-09-05 13:39:18,141 - __main__ - INFO - Signals Generated: 169
+2025-09-05 13:39:18,141 - __main__ - INFO - DLOB API Success Rate: 144/170
+2025-09-05 13:39:18,141 - __main__ - INFO - ==================================================
+2025-09-05 13:39:20,448 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:20,449 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:20,449 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:20,450 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:20,450 - __main__ - WARNING - Using mock price: $217.0000
+2025-09-05 13:39:20,450 - __main__ - INFO - MACD Analysis: Fast=2238017.4894, Slow=25487099.1802, MACD=-23249081.6908, Signal=BUY
+2025-09-05 13:39:22,773 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:22,774 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:22,774 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:22,775 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:22,775 - __main__ - WARNING - Using mock price: $217.1000
+2025-09-05 13:39:22,775 - __main__ - INFO - MACD Analysis: Fast=1893740.5065, Slow=23599181.9891, MACD=-21705441.4826, Signal=BUY
+2025-09-05 13:39:24,910 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:24,911 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:24,911 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:24,912 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:24,912 - __main__ - WARNING - Using mock price: $217.2000
+2025-09-05 13:39:24,912 - __main__ - INFO - MACD Analysis: Fast=1602429.2285, Slow=21851110.5232, MACD=-20248681.2947, Signal=BUY
+2025-09-05 13:39:27,040 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:27,040 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:27,041 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:27,041 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:27,041 - __main__ - WARNING - Using mock price: $217.3000
+2025-09-05 13:39:27,041 - __main__ - INFO - MACD Analysis: Fast=1355935.0857, Slow=20232525.8400, MACD=-18876590.7544, Signal=BUY
+2025-09-05 13:39:29,351 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:29,351 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:29,352 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:29,352 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:29,352 - __main__ - WARNING - Using mock price: $217.4000
+2025-09-05 13:39:29,352 - __main__ - INFO - MACD Analysis: Fast=1147363.1340, Slow=18733836.3260, MACD=-17586473.1919, Signal=BUY
+2025-09-05 13:39:29,353 - __main__ - INFO - ==================================================
+2025-09-05 13:39:29,353 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 175
+2025-09-05 13:39:29,353 - __main__ - INFO - Runtime: 387.4s
+2025-09-05 13:39:29,354 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:39:29,354 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:39:29,354 - __main__ - INFO - Current Price: $217.4000
+2025-09-05 13:39:29,355 - __main__ - INFO - Price Change: +0.23%
+2025-09-05 13:39:29,355 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:39:29,355 - __main__ - INFO - MACD Values: 174
+2025-09-05 13:39:29,355 - __main__ - INFO - Signals Generated: 174
+2025-09-05 13:39:29,355 - __main__ - INFO - DLOB API Success Rate: 144/175
+2025-09-05 13:39:29,356 - __main__ - INFO - ==================================================
+2025-09-05 13:39:31,491 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:31,492 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:31,492 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:31,492 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:31,492 - __main__ - WARNING - Using mock price: $217.5000
+2025-09-05 13:39:31,493 - __main__ - INFO - MACD Analysis: Fast=970879.1903, Slow=17346160.8574, MACD=-16375281.6670, Signal=BUY
+2025-09-05 13:39:33,808 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:33,809 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:33,809 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:33,809 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:33,810 - __main__ - WARNING - Using mock price: $217.6000
+2025-09-05 13:39:33,810 - __main__ - INFO - MACD Analysis: Fast=821546.6380, Slow=16061276.1716, MACD=-15239729.5337, Signal=BUY
+2025-09-05 13:39:35,944 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:35,945 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:35,945 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:35,946 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:35,946 - __main__ - WARNING - Using mock price: $217.7000
+2025-09-05 13:39:35,946 - __main__ - INFO - MACD Analysis: Fast=695188.3398, Slow=14871568.1367, MACD=-14176379.7969, Signal=BUY
+2025-09-05 13:39:38,265 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:38,266 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:38,266 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:38,266 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:38,267 - __main__ - WARNING - Using mock price: $217.8000
+2025-09-05 13:39:38,267 - __main__ - INFO - MACD Analysis: Fast=588269.7952, Slow=13769986.6303, MACD=-13181716.8350, Signal=BUY
+2025-09-05 13:39:40,394 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:40,395 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:40,396 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:40,396 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:40,396 - __main__ - WARNING - Using mock price: $217.9000
+2025-09-05 13:39:40,396 - __main__ - INFO - MACD Analysis: Fast=497800.2729, Slow=12750003.7614, MACD=-12252203.4885, Signal=BUY
+2025-09-05 13:39:40,397 - __main__ - INFO - ==================================================
+2025-09-05 13:39:40,397 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 180
+2025-09-05 13:39:40,397 - __main__ - INFO - Runtime: 398.5s
+2025-09-05 13:39:40,397 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:39:40,397 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:39:40,398 - __main__ - INFO - Current Price: $217.9000
+2025-09-05 13:39:40,398 - __main__ - INFO - Price Change: +0.23%
+2025-09-05 13:39:40,398 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:39:40,399 - __main__ - INFO - MACD Values: 179
+2025-09-05 13:39:40,399 - __main__ - INFO - Signals Generated: 179
+2025-09-05 13:39:40,399 - __main__ - INFO - DLOB API Success Rate: 144/180
+2025-09-05 13:39:40,399 - __main__ - INFO - ==================================================
+2025-09-05 13:39:40,399 - __main__ - INFO - DETAILED BETA ANALYSIS
+2025-09-05 13:39:40,400 - __main__ - INFO -    - MACD Fast EMA: 497800.2729
+2025-09-05 13:39:40,400 - __main__ - INFO -    - MACD Slow EMA: 12750003.7614
+2025-09-05 13:39:40,400 - __main__ - INFO -    - MACD Signal: -17070281.4683
+2025-09-05 13:39:40,400 - __main__ - INFO -    - Current MACD: 4818077.9798
+2025-09-05 13:39:40,400 - __main__ - INFO -    - Price History: 180 points
+2025-09-05 13:39:40,400 - __main__ - INFO -    - Risk State: 0.00% drawdown
+2025-09-05 13:39:42,719 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:42,721 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:42,721 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:42,721 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:42,721 - __main__ - WARNING - Using mock price: $218.0000
+2025-09-05 13:39:42,722 - __main__ - INFO - MACD Analysis: Fast=421249.1540, Slow=11805575.1865, MACD=-11384326.0325, Signal=BUY
+2025-09-05 13:39:44,848 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:44,849 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:44,849 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:44,850 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:44,850 - __main__ - WARNING - Using mock price: $218.1000
+2025-09-05 13:39:44,850 - __main__ - INFO - MACD Analysis: Fast=356475.1457, Slow=10931104.2912, MACD=-10574629.1455, Signal=BUY
+2025-09-05 13:39:46,980 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:46,981 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:46,981 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:46,981 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:46,982 - __main__ - WARNING - Using mock price: $218.2000
+2025-09-05 13:39:46,982 - __main__ - INFO - MACD Analysis: Fast=301666.3848, Slow=10121409.0252, MACD=-9819742.6403, Signal=BUY
+2025-09-05 13:39:49,292 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:39:49,293 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:39:49,293 - __main__ - WARNING - No L2 data received
+2025-09-05 13:39:49,293 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:39:49,293 - __main__ - WARNING - Using mock price: $218.3000
+2025-09-05 13:39:49,294 - __main__ - INFO - MACD Analysis: Fast=255289.7564, Slow=9371691.1937, MACD=-9116401.4373, Signal=BUY
+2025-09-05 13:39:51,612 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:39:51,613 - __main__ - INFO - REAL PRICE from DLOB: $203746550.0000
+2025-09-05 13:39:51,614 - __main__ - INFO -   Mid: $203746550.0000
+2025-09-05 13:39:51,614 - __main__ - INFO -   Oracle: $202765605.0000
+2025-09-05 13:39:51,614 - __main__ - INFO - MACD Analysis: Fast=31561637.4862, Slow=23769828.8830, MACD=7791808.6031, Signal=BUY
+2025-09-05 13:39:51,614 - __main__ - INFO - ==================================================
+2025-09-05 13:39:51,614 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 185
+2025-09-05 13:39:51,615 - __main__ - INFO - Runtime: 409.7s
+2025-09-05 13:39:51,615 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:39:51,615 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:39:51,615 - __main__ - INFO - Current Price: $203746550.0000
+2025-09-05 13:39:51,615 - __main__ - INFO - Price Change: +93504512.21%
+2025-09-05 13:39:51,616 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:39:51,616 - __main__ - INFO - MACD Values: 184
+2025-09-05 13:39:51,616 - __main__ - INFO - Signals Generated: 184
+2025-09-05 13:39:51,616 - __main__ - INFO - DLOB API Success Rate: 145/185
+2025-09-05 13:39:51,616 - __main__ - INFO - ==================================================
+2025-09-05 13:39:53,773 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:39:53,774 - __main__ - INFO - REAL PRICE from DLOB: $203747150.0000
+2025-09-05 13:39:53,774 - __main__ - INFO -   Mid: $203747150.0000
+2025-09-05 13:39:53,774 - __main__ - INFO -   Oracle: $202765605.0000
+2025-09-05 13:39:53,774 - __main__ - INFO - MACD Analysis: Fast=58051716.3344, Slow=37101482.2991, MACD=20950234.0354, Signal=BUY
+2025-09-05 13:39:55,906 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:39:55,908 - __main__ - INFO - REAL PRICE from DLOB: $203721050.0000
+2025-09-05 13:39:55,908 - __main__ - INFO -   Mid: $203721050.0000
+2025-09-05 13:39:55,908 - __main__ - INFO -   Oracle: $202765605.0000
+2025-09-05 13:39:55,908 - __main__ - INFO - MACD Analysis: Fast=80462383.0522, Slow=49443672.4992, MACD=31018710.5531, Signal=BUY
+2025-09-05 13:39:58,222 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:39:58,223 - __main__ - INFO - REAL PRICE from DLOB: $203688050.0000
+2025-09-05 13:39:58,223 - __main__ - INFO -   Mid: $203688050.0000
+2025-09-05 13:39:58,223 - __main__ - INFO -   Oracle: $202765605.0000
+2025-09-05 13:39:58,223 - __main__ - INFO - MACD Analysis: Fast=99420177.9673, Slow=60869181.9437, MACD=38550996.0236, Signal=BUY
+2025-09-05 13:40:00,539 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:40:00,540 - __main__ - INFO - REAL PRICE from DLOB: $203709900.0000
+2025-09-05 13:40:00,541 - __main__ - INFO -   Mid: $203709900.0000
+2025-09-05 13:40:00,541 - __main__ - INFO -   Oracle: $202690051.0000
+2025-09-05 13:40:00,541 - __main__ - INFO - MACD Analysis: Fast=115464750.5877, Slow=71449975.8738, MACD=44014774.7139, Signal=BUY
+2025-09-05 13:40:02,666 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:40:02,667 - __main__ - INFO - REAL PRICE from DLOB: $203740450.0000
+2025-09-05 13:40:02,667 - __main__ - INFO -   Mid: $203740450.0000
+2025-09-05 13:40:02,668 - __main__ - INFO -   Oracle: $202703054.0000
+2025-09-05 13:40:02,668 - __main__ - INFO - MACD Analysis: Fast=129045627.4204, Slow=81249270.2535, MACD=47796357.1669, Signal=BUY
+2025-09-05 13:40:02,668 - __main__ - INFO - ==================================================
+2025-09-05 13:40:02,668 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 190
+2025-09-05 13:40:02,669 - __main__ - INFO - Runtime: 420.7s
+2025-09-05 13:40:02,669 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:40:02,669 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:40:02,669 - __main__ - INFO - Current Price: $203740450.0000
+2025-09-05 13:40:02,670 - __main__ - INFO - Price Change: -0.00%
+2025-09-05 13:40:02,670 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:40:02,670 - __main__ - INFO - MACD Values: 189
+2025-09-05 13:40:02,671 - __main__ - INFO - Signals Generated: 189
+2025-09-05 13:40:02,671 - __main__ - INFO - DLOB API Success Rate: 150/190
+2025-09-05 13:40:02,671 - __main__ - INFO - ==================================================
+2025-09-05 13:40:04,798 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:40:04,799 - __main__ - INFO - REAL PRICE from DLOB: $203763500.0000
+2025-09-05 13:40:04,799 - __main__ - INFO -   Mid: $203763500.0000
+2025-09-05 13:40:04,799 - __main__ - INFO -   Oracle: $202703054.0000
+2025-09-05 13:40:04,799 - __main__ - INFO - MACD Analysis: Fast=140540684.7403, Slow=90324398.3829, MACD=50216286.3574, Signal=BUY
+2025-09-05 13:40:07,121 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:40:07,122 - __main__ - INFO - REAL PRICE from DLOB: $203756650.0000
+2025-09-05 13:40:07,122 - __main__ - INFO -   Mid: $203756650.0000
+2025-09-05 13:40:07,122 - __main__ - INFO -   Oracle: $202703054.0000
+2025-09-05 13:40:07,123 - __main__ - INFO - MACD Analysis: Fast=150266217.8572, Slow=98726787.3915, MACD=51539430.4656, Signal=BUY
+2025-09-05 13:40:09,265 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:40:09,266 - __main__ - INFO - REAL PRICE from DLOB: $203756600.0000
+2025-09-05 13:40:09,266 - __main__ - INFO -   Mid: $203756600.0000
+2025-09-05 13:40:09,266 - __main__ - INFO -   Oracle: $202703054.0000
+2025-09-05 13:40:09,266 - __main__ - INFO - MACD Analysis: Fast=158495507.4176, Slow=106506773.5107, MACD=51988733.9069, Signal=BUY
+2025-09-05 13:40:11,584 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:40:11,585 - __main__ - INFO - REAL PRICE from DLOB: $204058550.0000
+2025-09-05 13:40:11,585 - __main__ - INFO -   Mid: $204058550.0000
+2025-09-05 13:40:11,585 - __main__ - INFO -   Oracle: $202703054.0000
+2025-09-05 13:40:11,586 - __main__ - INFO - MACD Analysis: Fast=165505206.2764, Slow=113732831.0284, MACD=51772375.2480, Signal=BUY
+2025-09-05 13:40:13,763 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:40:13,775 - __main__ - INFO - REAL PRICE from DLOB: $204099750.0000
+2025-09-05 13:40:13,776 - __main__ - INFO -   Mid: $204099750.0000
+2025-09-05 13:40:13,776 - __main__ - INFO -   Oracle: $202703054.0000
+2025-09-05 13:40:13,776 - __main__ - INFO - MACD Analysis: Fast=171442828.3878, Slow=120426676.8782, MACD=51016151.5096, Signal=BUY
+2025-09-05 13:40:13,776 - __main__ - INFO - ==================================================
+2025-09-05 13:40:13,777 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 195
+2025-09-05 13:40:13,777 - __main__ - INFO - Runtime: 431.8s
+2025-09-05 13:40:13,777 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:40:13,777 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:40:13,778 - __main__ - INFO - Current Price: $204099750.0000
+2025-09-05 13:40:13,778 - __main__ - INFO - Price Change: +0.18%
+2025-09-05 13:40:13,778 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:40:13,778 - __main__ - INFO - MACD Values: 194
+2025-09-05 13:40:13,779 - __main__ - INFO - Signals Generated: 194
+2025-09-05 13:40:13,779 - __main__ - INFO - DLOB API Success Rate: 155/195
+2025-09-05 13:40:13,779 - __main__ - INFO - ==================================================
+2025-09-05 13:40:16,098 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:40:16,099 - __main__ - INFO - REAL PRICE from DLOB: $204175350.0000
+2025-09-05 13:40:16,099 - __main__ - INFO -   Mid: $204175350.0000
+2025-09-05 13:40:16,099 - __main__ - INFO -   Oracle: $202703054.0000
+2025-09-05 13:40:16,099 - __main__ - INFO - MACD Analysis: Fast=176478600.9435, Slow=126630282.2946, MACD=49848318.6489, Signal=BUY
+2025-09-05 13:40:18,237 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:40:18,238 - __main__ - INFO - REAL PRICE from DLOB: $204172650.0000
+2025-09-05 13:40:18,238 - __main__ - INFO -   Mid: $204172650.0000
+2025-09-05 13:40:18,238 - __main__ - INFO -   Oracle: $202703054.0000
+2025-09-05 13:40:18,239 - __main__ - INFO - MACD Analysis: Fast=180739223.8753, Slow=132374161.3839, MACD=48365062.4914, Signal=BUY
+2025-09-05 13:40:20,555 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 200 OK"
+2025-09-05 13:40:20,556 - __main__ - INFO - REAL PRICE from DLOB: $204179950.0000
+2025-09-05 13:40:20,556 - __main__ - INFO -   Mid: $204179950.0000
+2025-09-05 13:40:20,556 - __main__ - INFO -   Oracle: $202703054.0000
+2025-09-05 13:40:20,557 - __main__ - INFO - MACD Analysis: Fast=184345489.4329, Slow=137693108.6888, MACD=46652380.7441, Signal=BUY
+2025-09-05 13:40:22,682 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:40:22,682 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:40:22,683 - __main__ - WARNING - No L2 data received
+2025-09-05 13:40:22,683 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:40:22,683 - __main__ - WARNING - Using mock price: $219.8000
+2025-09-05 13:40:22,683 - __main__ - INFO - MACD Analysis: Fast=155984678.7202, Slow=127493635.4378, MACD=28491043.2824, Signal=SELL
+2025-09-05 13:40:24,817 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:40:24,819 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:40:24,819 - __main__ - WARNING - No L2 data received
+2025-09-05 13:40:24,819 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:40:24,819 - __main__ - WARNING - Using mock price: $219.9000
+2025-09-05 13:40:24,819 - __main__ - INFO - MACD Analysis: Fast=131987069.6709, Slow=118049678.7313, MACD=13937390.9396, Signal=SELL
+2025-09-05 13:40:24,820 - __main__ - INFO - ==================================================
+2025-09-05 13:40:24,820 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 200
+2025-09-05 13:40:24,820 - __main__ - INFO - Runtime: 442.9s
+2025-09-05 13:40:24,821 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:40:24,821 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:40:24,821 - __main__ - INFO - Current Price: $219.9000
+2025-09-05 13:40:24,821 - __main__ - INFO - Price Change: -100.00%
+2025-09-05 13:40:24,822 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:40:24,822 - __main__ - INFO - MACD Values: 199
+2025-09-05 13:40:24,822 - __main__ - INFO - Signals Generated: 199
+2025-09-05 13:40:24,822 - __main__ - INFO - DLOB API Success Rate: 158/200
+2025-09-05 13:40:24,822 - __main__ - INFO - ==================================================
+2025-09-05 13:40:24,822 - __main__ - INFO - DETAILED BETA ANALYSIS
+2025-09-05 13:40:24,823 - __main__ - INFO -    - MACD Fast EMA: 131987069.6709
+2025-09-05 13:40:24,823 - __main__ - INFO -    - MACD Slow EMA: 118049678.7313
+2025-09-05 13:40:24,823 - __main__ - INFO -    - MACD Signal: 36198717.8385
+2025-09-05 13:40:24,823 - __main__ - INFO -    - Current MACD: -22261326.8988
+2025-09-05 13:40:24,823 - __main__ - INFO -    - Price History: 200 points
+2025-09-05 13:40:24,824 - __main__ - INFO -    - Risk State: 0.00% drawdown
+2025-09-05 13:40:26,950 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:40:26,953 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:40:26,953 - __main__ - WARNING - No L2 data received
+2025-09-05 13:40:26,953 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:40:26,953 - __main__ - WARNING - Using mock price: $220.0000
+2025-09-05 13:40:26,954 - __main__ - INFO - MACD Analysis: Fast=111681400.4908, Slow=109305274.3808, MACD=2376126.1100, Signal=SELL
+2025-09-05 13:40:29,082 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:40:29,083 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:40:29,083 - __main__ - WARNING - No L2 data received
+2025-09-05 13:40:29,083 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:40:29,083 - __main__ - WARNING - Using mock price: $220.1000
+2025-09-05 13:40:29,083 - __main__ - INFO - MACD Analysis: Fast=94499680.4306, Slow=101208603.6933, MACD=-6708923.2627, Signal=SELL
+2025-09-05 13:40:31,219 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:40:31,221 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:40:31,221 - __main__ - WARNING - No L2 data received
+2025-09-05 13:40:31,221 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:40:31,222 - __main__ - WARNING - Using mock price: $220.2000
+2025-09-05 13:40:31,222 - __main__ - INFO - MACD Analysis: Fast=79961301.9336, Slow=93711686.3975, MACD=-13750384.4639, Signal=SELL
+2025-09-05 13:40:33,350 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:40:33,351 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:40:33,351 - __main__ - WARNING - No L2 data received
+2025-09-05 13:40:33,351 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:40:33,352 - __main__ - WARNING - Using mock price: $220.3000
+2025-09-05 13:40:33,352 - __main__ - INFO - MACD Analysis: Fast=67659597.0669, Slow=86770096.3162, MACD=-19110499.2493, Signal=SELL
+2025-09-05 13:40:35,487 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:40:35,488 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:40:35,488 - __main__ - WARNING - No L2 data received
+2025-09-05 13:40:35,488 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:40:35,489 - __main__ - WARNING - Using mock price: $220.4000
+2025-09-05 13:40:35,489 - __main__ - INFO - MACD Analysis: Fast=57250462.1951, Slow=80342698.1002, MACD=-23092235.9051, Signal=SELL
+2025-09-05 13:40:35,489 - __main__ - INFO - ==================================================
+2025-09-05 13:40:35,490 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 205
+2025-09-05 13:40:35,490 - __main__ - INFO - Runtime: 453.6s
+2025-09-05 13:40:35,490 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:40:35,490 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:40:35,490 - __main__ - INFO - Current Price: $220.4000
+2025-09-05 13:40:35,491 - __main__ - INFO - Price Change: +0.23%
+2025-09-05 13:40:35,491 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:40:35,491 - __main__ - INFO - MACD Values: 204
+2025-09-05 13:40:35,491 - __main__ - INFO - Signals Generated: 204
+2025-09-05 13:40:35,491 - __main__ - INFO - DLOB API Success Rate: 158/205
+2025-09-05 13:40:35,492 - __main__ - INFO - ==================================================
+2025-09-05 13:40:37,813 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:40:37,814 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:40:37,814 - __main__ - WARNING - No L2 data received
+2025-09-05 13:40:37,814 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:40:37,814 - __main__ - WARNING - Using mock price: $220.5000
+2025-09-05 13:40:37,815 - __main__ - INFO - MACD Analysis: Fast=48442732.7035, Slow=74391403.4632, MACD=-25948670.7596, Signal=SELL
+2025-09-05 13:40:39,935 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:40:39,936 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:40:39,936 - __main__ - WARNING - No L2 data received
+2025-09-05 13:40:39,936 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:40:39,937 - __main__ - WARNING - Using mock price: $220.6000
+2025-09-05 13:40:39,937 - __main__ - INFO - MACD Analysis: Fast=40990038.5338, Slow=68880945.4733, MACD=-27890906.9395, Signal=SELL
+2025-09-05 13:40:42,062 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:40:42,062 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:40:42,063 - __main__ - WARNING - No L2 data received
+2025-09-05 13:40:42,063 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:40:42,063 - __main__ - WARNING - Using mock price: $220.7000
+2025-09-05 13:40:42,063 - __main__ - INFO - MACD Analysis: Fast=34683912.7132, Slow=63778669.5642, MACD=-29094756.8510, Signal=SELL

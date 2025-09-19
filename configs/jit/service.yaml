@@ -1,0 +1,47 @@
+# JIT Service Configuration - US-JIT-005
+# This config shows how to enable JIT routing in market making bots
+
+feature:
+  jit:
+    enabled: true  # Set to true to route MM orders through JIT service
+    base_url: "http://localhost:8787"
+    timeout_seconds: 1.2
+    
+    # US-JIT-002: Place and make configuration
+    place_and_make:
+      slot_skew_max: 30
+      default_compute_units: 1000000
+      default_priority_fee_micro_lamports: 2000
+      
+    # US-JIT-004: Cancel/replace configuration  
+    cancel_replace:
+      tombstone_ttl_ms: 800
+      enable_versioning: true
+      
+    # Health check configuration
+    health:
+      check_interval_seconds: 30
+      required_subscribers: ["swift", "auction", "drift", "slot"]
+      
+# Market Making Strategy (when JIT enabled)
+market_making:
+  # Alpha signals remain unchanged
+  obi_microprice: true
+  spread_bps_base: 8.0
+  inventory_target: 0.0
+  
+  # Position limits and sizing unchanged
+  max_position_abs: 120.0
+  order_size: 0.01
+  
+  # Cancel/replace settings
+  cancel_replace_enabled: true
+  cancel_replace_interval_ms: 1000
+  
+# Fallback configuration (when JIT disabled)
+fallback:
+  use_swift_sidecar: true
+  use_driftpy_direct: true
+
+
+

@@ -1,0 +1,21 @@
+Documentation from https://drift-labs.github.io/v2-teacher/?python#order-params
+
+Python
+Parameter	Description	Optional	Default
+order_type	Type of order	No	
+market_index	Index of the market to place order in	No	
+direction	Direction of the order	No	
+base_asset_amount	Amount of base asset to buy or sell	No	
+market_type	Type of market	Yes	Depends on method
+price	Limit price for the order	Yes	0
+user_order_id	Unique order ID specified by user	Yes	0
+reduce_only	Whether the order is only to reduce positions	Yes	false
+post_only	If the order should only be a maker	Yes	PostOnlyParams.NONE()
+immediate_or_cancel	Whether the order is immediate or cancel	Yes	false
+max_ts	Max timestamp for the order expiry	Yes	None
+trigger_price	Trigger price for trigger orders	Yes	None
+trigger_condition	Condition for triggering the order	Yes	OrderTriggerCondition.Above()
+oracle_price_offset	Offset for oracle-derived limit price	Yes	None
+auction_duration	Duration of the auction in slots	Yes	None
+auction_start_price	Starting price of the auction	Yes	None
+auction_end_price	Ending price of the auction	Yes	None

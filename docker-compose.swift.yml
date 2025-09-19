@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  swift-mm:
+    build:
+      context: ./services/swift-mm
+      dockerfile: Dockerfile
+    container_name: swift-mm
+    environment:
+      - PORT=${PORT:-8787}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      # 🚀 SWIFT FORWARD MODE: Forward orders to real Swift API
+      # This enables keeper bundling, gasless submits, and auction params
+      # For devnet: use swift.drift.trade, for mainnet: use swift.drift.trade  
+      - SWIFT_FORWARD_BASE=https://swift.drift.trade
+      - SWIFT_WS_URL=wss://swift.drift.trade/ws
+      - SWIFT_API_KEY=${SWIFT_API_KEY}
+      - METRICS_ENABLED=${METRICS_ENABLED:-true}
+      - METRICS_PREFIX=${METRICS_PREFIX:-swift_}
+      # Additional debugging for sidecar configuration
+      - DEBUG=${DEBUG:-true}
+      # Environment configuration
+      - DRIFT_ENV=devnet
+    ports:
+      - "${PORT:-8787}:8787"
+    restart: unless-stopped

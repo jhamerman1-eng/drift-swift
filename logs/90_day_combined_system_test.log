@@ -1,0 +1,399 @@
+2025-09-18 13:14:17,141 | __main__ | INFO | Starting 90-Day Combined System Test
+2025-09-18 13:14:17,161 | __main__ | ERROR | Test failed: 'capital_allocation'
+2025-09-18 13:14:47,649 | __main__ | INFO | Starting 90-Day Combined System Test
+2025-09-18 13:14:47,670 | __main__ | INFO | Config loaded successfully with keys: ['test_configuration', 'combined_system_features', 'mock_settings', 'performance_tracking', 'safety_settings']
+2025-09-18 13:14:47,671 | __main__ | ERROR | Test failed: 'capital_allocation'
+2025-09-18 13:15:35,887 | __main__ | INFO | Starting 90-Day Combined System Test
+2025-09-18 13:15:35,906 | __main__ | INFO | Config loaded successfully with keys: ['test_configuration', 'combined_system_features', 'mock_settings', 'performance_tracking', 'safety_settings']
+2025-09-18 13:15:35,907 | __main__ | INFO | Combined System Simulator initialized
+2025-09-18 13:15:35,907 | __main__ | INFO | Starting Capital: $20,000.00
+2025-09-18 13:15:35,907 | __main__ | INFO | Target Utilization: 85.0%
+2025-09-18 13:15:35,907 | __main__ | INFO | Starting 90-Day Combined System Test
+2025-09-18 13:15:35,908 | __main__ | INFO | ================================================================================
+2025-09-18 13:15:35,935 | __main__ | INFO | Generated 6451 test fills across 90 days
+2025-09-18 13:15:35,936 | __main__ | INFO | Market regime distribution: {'volatile': 0.13333333333333333, 'calm': 0.6111111111111112, 'normal': 0.2222222222222222, 'crash': 0.03333333333333333}
+2025-09-18 13:15:35,936 | __main__ | ERROR | Test failed: BULL
+2025-09-18 13:16:09,088 | __main__ | INFO | Starting 90-Day Combined System Test
+2025-09-18 13:16:09,115 | __main__ | INFO | Config loaded successfully with keys: ['test_configuration', 'combined_system_features', 'mock_settings', 'performance_tracking', 'safety_settings']
+2025-09-18 13:16:09,116 | __main__ | INFO | Combined System Simulator initialized
+2025-09-18 13:16:09,116 | __main__ | INFO | Starting Capital: $20,000.00
+2025-09-18 13:16:09,117 | __main__ | INFO | Target Utilization: 85.0%
+2025-09-18 13:16:09,117 | __main__ | INFO | Starting 90-Day Combined System Test
+2025-09-18 13:16:09,118 | __main__ | INFO | ================================================================================
+2025-09-18 13:16:09,118 | __main__ | ERROR | Test failed: The number of weights does not match the population
+2025-09-18 13:16:33,732 | __main__ | INFO | Starting 90-Day Combined System Test
+2025-09-18 13:16:33,753 | __main__ | INFO | Config loaded successfully with keys: ['test_configuration', 'combined_system_features', 'mock_settings', 'performance_tracking', 'safety_settings']
+2025-09-18 13:16:33,754 | __main__ | INFO | Combined System Simulator initialized
+2025-09-18 13:16:33,754 | __main__ | INFO | Starting Capital: $20,000.00
+2025-09-18 13:16:33,754 | __main__ | INFO | Target Utilization: 85.0%
+2025-09-18 13:16:33,754 | __main__ | INFO | Starting 90-Day Combined System Test
+2025-09-18 13:16:33,755 | __main__ | INFO | ================================================================================
+2025-09-18 13:16:33,784 | __main__ | INFO | Generated 7012 test fills across 90 days
+2025-09-18 13:16:33,785 | __main__ | INFO | Market regime distribution: {'bull': 0.34444444444444444, 'calm': 0.1111111111111111, 'volatile': 0.2111111111111111, 'normal': 0.17777777777777778, 'crash': 0.03333333333333333, 'recovery': 0.06666666666666667, 'bear': 0.05555555555555555}
+2025-09-18 13:16:33,786 | __main__ | INFO | Day 1: Capital=$20,034.52, Daily P&L=$34.52, Exposure=-50.5
+2025-09-18 13:16:33,786 | __main__ | INFO | Day 2: Capital=$20,083.52, Daily P&L=$49.00, Exposure=-38.2
+2025-09-18 13:16:33,787 | __main__ | INFO | Day 3: Capital=$20,130.14, Daily P&L=$46.62, Exposure=-80.2
+2025-09-18 13:16:33,788 | __main__ | INFO | Day 4: Capital=$20,169.56, Daily P&L=$39.42, Exposure=79.2
+2025-09-18 13:16:33,788 | __main__ | INFO | Day 5: Capital=$20,196.78, Daily P&L=$27.22, Exposure=122.6
+2025-09-18 13:16:33,789 | __main__ | INFO | Day 6: Capital=$20,225.41, Daily P&L=$28.63, Exposure=195.0
+2025-09-18 13:16:33,790 | __main__ | INFO | Day 7: Capital=$20,287.74, Daily P&L=$62.33, Exposure=308.9
+2025-09-18 13:16:33,790 | __main__ | INFO | Day 8: Capital=$20,328.35, Daily P&L=$40.61, Exposure=353.5
+2025-09-18 13:16:33,791 | __main__ | INFO | Day 9: Capital=$20,370.91, Daily P&L=$42.56, Exposure=429.5
+2025-09-18 13:16:33,792 | __main__ | INFO | Day 10: Capital=$20,408.82, Daily P&L=$37.92, Exposure=448.2
+2025-09-18 13:16:33,792 | __main__ | INFO | Day 11: Capital=$20,449.78, Daily P&L=$40.96, Exposure=528.9
+2025-09-18 13:16:33,793 | __main__ | INFO | Day 12: Capital=$20,485.75, Daily P&L=$35.97, Exposure=510.0
+2025-09-18 13:16:33,794 | __main__ | INFO | Day 13: Capital=$20,519.88, Daily P&L=$34.13, Exposure=419.7
+2025-09-18 13:16:33,794 | __main__ | INFO | Day 14: Capital=$20,570.21, Daily P&L=$50.34, Exposure=329.2
+2025-09-18 13:16:33,795 | __main__ | INFO | Day 15: Capital=$20,612.05, Daily P&L=$41.84, Exposure=402.2
+2025-09-18 13:16:33,796 | __main__ | INFO | Day 16: Capital=$20,649.04, Daily P&L=$36.98, Exposure=380.0
+2025-09-18 13:16:33,796 | __main__ | INFO | Day 17: Capital=$20,690.87, Daily P&L=$41.83, Exposure=313.3
+2025-09-18 13:16:33,797 | __main__ | INFO | Day 18: Capital=$20,728.55, Daily P&L=$37.69, Exposure=401.2
+2025-09-18 13:16:33,798 | __main__ | INFO | Day 19: Capital=$20,779.79, Daily P&L=$51.24, Exposure=342.3
+2025-09-18 13:16:33,799 | __main__ | INFO | Processed 1000/7012 fills in 0.0s
+2025-09-18 13:16:33,800 | __main__ | INFO | Day 20: Capital=$20,824.27, Daily P&L=$44.48, Exposure=235.1
+2025-09-18 13:16:33,800 | __main__ | INFO | Day 21: Capital=$20,880.22, Daily P&L=$55.95, Exposure=134.5
+2025-09-18 13:16:33,801 | __main__ | INFO | Day 22: Capital=$20,909.94, Daily P&L=$29.73, Exposure=147.9
+2025-09-18 13:16:33,802 | __main__ | INFO | Day 23: Capital=$20,960.09, Daily P&L=$50.14, Exposure=89.1
+2025-09-18 13:16:33,802 | __main__ | INFO | Day 24: Capital=$20,987.18, Daily P&L=$27.09, Exposure=67.0
+2025-09-18 13:16:33,803 | __main__ | INFO | Day 25: Capital=$21,022.45, Daily P&L=$35.27, Exposure=122.2
+2025-09-18 13:16:33,804 | __main__ | INFO | Day 26: Capital=$21,065.39, Daily P&L=$42.95, Exposure=191.7
+2025-09-18 13:16:33,804 | __main__ | INFO | Day 27: Capital=$21,108.84, Daily P&L=$43.45, Exposure=215.8
+2025-09-18 13:16:33,805 | __main__ | INFO | Day 28: Capital=$21,135.14, Daily P&L=$26.29, Exposure=241.6
+2025-09-18 13:16:33,805 | __main__ | INFO | Day 29: Capital=$21,176.84, Daily P&L=$41.70, Exposure=370.6
+2025-09-18 13:16:33,806 | __main__ | INFO | Day 30: Capital=$21,206.85, Daily P&L=$30.01, Exposure=318.3
+2025-09-18 13:16:33,807 | __main__ | INFO | Day 31: Capital=$21,243.09, Daily P&L=$36.25, Exposure=386.8
+2025-09-18 13:16:33,807 | __main__ | INFO | Day 32: Capital=$21,290.00, Daily P&L=$46.91, Exposure=447.3
+2025-09-18 13:16:33,808 | __main__ | INFO | Day 33: Capital=$21,343.78, Daily P&L=$53.78, Exposure=519.0
+2025-09-18 13:16:33,809 | __main__ | INFO | Day 34: Capital=$21,398.41, Daily P&L=$54.63, Exposure=479.0
+2025-09-18 13:16:33,809 | __main__ | INFO | Day 35: Capital=$21,432.25, Daily P&L=$33.84, Exposure=519.9
+2025-09-18 13:16:33,810 | __main__ | INFO | Day 36: Capital=$21,467.64, Daily P&L=$35.39, Exposure=700.0
+2025-09-18 13:16:33,811 | __main__ | INFO | Day 37: Capital=$21,515.77, Daily P&L=$48.13, Exposure=693.4
+2025-09-18 13:16:33,811 | __main__ | INFO | Day 38: Capital=$21,561.37, Daily P&L=$45.60, Exposure=847.9
+2025-09-18 13:16:33,812 | __main__ | INFO | Day 39: Capital=$21,591.76, Daily P&L=$30.39, Exposure=919.7
+2025-09-18 13:16:33,813 | __main__ | INFO | Processed 2000/7012 fills in 0.0s
+2025-09-18 13:16:33,813 | __main__ | INFO | Day 40: Capital=$21,626.00, Daily P&L=$34.23, Exposure=928.0
+2025-09-18 13:16:33,814 | __main__ | INFO | Day 41: Capital=$21,665.21, Daily P&L=$39.21, Exposure=832.7
+2025-09-18 13:16:33,814 | __main__ | INFO | Day 42: Capital=$21,711.79, Daily P&L=$46.58, Exposure=835.7
+2025-09-18 13:16:33,815 | __main__ | INFO | Day 43: Capital=$21,761.76, Daily P&L=$49.97, Exposure=802.8
+2025-09-18 13:16:33,815 | __main__ | INFO | Day 44: Capital=$21,791.42, Daily P&L=$29.65, Exposure=762.9
+2025-09-18 13:16:33,816 | __main__ | INFO | Day 45: Capital=$21,819.78, Daily P&L=$28.36, Exposure=816.6
+2025-09-18 13:16:33,817 | __main__ | INFO | Day 46: Capital=$21,878.08, Daily P&L=$58.30, Exposure=741.2
+2025-09-18 13:16:33,817 | __main__ | INFO | Day 47: Capital=$21,915.01, Daily P&L=$36.94, Exposure=734.3
+2025-09-18 13:16:33,818 | __main__ | INFO | Day 48: Capital=$21,970.38, Daily P&L=$55.37, Exposure=919.3
+2025-09-18 13:16:33,819 | __main__ | INFO | Day 49: Capital=$21,997.96, Daily P&L=$27.58, Exposure=834.7
+2025-09-18 13:16:33,819 | __main__ | INFO | Day 50: Capital=$22,024.97, Daily P&L=$27.01, Exposure=950.7
+2025-09-18 13:16:33,820 | __main__ | INFO | Day 51: Capital=$22,065.54, Daily P&L=$40.57, Exposure=971.7
+2025-09-18 13:16:33,821 | __main__ | INFO | Day 52: Capital=$22,107.82, Daily P&L=$42.29, Exposure=996.0
+2025-09-18 13:16:33,822 | __main__ | INFO | Day 53: Capital=$22,152.07, Daily P&L=$44.25, Exposure=1030.7
+2025-09-18 13:16:33,822 | __main__ | INFO | Day 54: Capital=$22,204.40, Daily P&L=$52.33, Exposure=1000.3
+2025-09-18 13:16:33,823 | __main__ | INFO | Day 55: Capital=$22,229.84, Daily P&L=$25.45, Exposure=964.2
+2025-09-18 13:16:33,824 | __main__ | INFO | Day 56: Capital=$22,274.10, Daily P&L=$44.26, Exposure=966.9
+2025-09-18 13:16:33,824 | __main__ | INFO | Day 57: Capital=$22,327.27, Daily P&L=$53.17, Exposure=978.1
+2025-09-18 13:16:33,825 | __main__ | INFO | Day 58: Capital=$22,364.72, Daily P&L=$37.45, Exposure=1000.1
+2025-09-18 13:16:33,826 | __main__ | INFO | Day 59: Capital=$22,405.01, Daily P&L=$40.29, Exposure=987.0
+2025-09-18 13:16:33,826 | __main__ | INFO | Processed 3000/7012 fills in 0.0s
+2025-09-18 13:16:33,826 | __main__ | INFO | Day 60: Capital=$22,444.58, Daily P&L=$39.58, Exposure=1031.5
+2025-09-18 13:16:33,827 | __main__ | INFO | Day 61: Capital=$22,492.28, Daily P&L=$47.70, Exposure=1082.9
+2025-09-18 13:16:33,828 | __main__ | INFO | Day 62: Capital=$22,535.24, Daily P&L=$42.96, Exposure=1003.1
+2025-09-18 13:16:33,829 | __main__ | INFO | Day 63: Capital=$22,579.15, Daily P&L=$43.91, Exposure=1086.6
+2025-09-18 13:16:33,830 | __main__ | INFO | Day 64: Capital=$22,635.93, Daily P&L=$56.77, Exposure=854.5
+2025-09-18 13:16:33,830 | __main__ | INFO | Day 65: Capital=$22,661.66, Daily P&L=$25.73, Exposure=893.3
+2025-09-18 13:16:33,831 | __main__ | INFO | Day 66: Capital=$22,694.30, Daily P&L=$32.64, Exposure=817.5
+2025-09-18 13:16:33,832 | __main__ | INFO | Day 67: Capital=$22,760.54, Daily P&L=$66.24, Exposure=676.0
+2025-09-18 13:16:33,833 | __main__ | INFO | Day 68: Capital=$22,804.11, Daily P&L=$43.57, Exposure=645.0
+2025-09-18 13:16:33,833 | __main__ | INFO | Day 69: Capital=$22,840.97, Daily P&L=$36.86, Exposure=467.4
+2025-09-18 13:16:33,834 | __main__ | INFO | Day 70: Capital=$22,872.32, Daily P&L=$31.35, Exposure=467.5
+2025-09-18 13:16:33,835 | __main__ | INFO | Day 71: Capital=$22,912.52, Daily P&L=$40.20, Exposure=511.3
+2025-09-18 13:16:33,835 | __main__ | INFO | Day 72: Capital=$22,935.92, Daily P&L=$23.40, Exposure=439.0
+2025-09-18 13:16:33,836 | __main__ | INFO | Day 73: Capital=$22,971.30, Daily P&L=$35.38, Exposure=317.6
+2025-09-18 13:16:33,837 | __main__ | INFO | Day 74: Capital=$23,003.71, Daily P&L=$32.41, Exposure=411.9
+2025-09-18 13:16:33,837 | __main__ | INFO | Day 75: Capital=$23,054.28, Daily P&L=$50.57, Exposure=438.6
+2025-09-18 13:16:33,838 | __main__ | INFO | Day 76: Capital=$23,089.55, Daily P&L=$35.27, Exposure=509.9
+2025-09-18 13:16:33,839 | __main__ | INFO | Day 77: Capital=$23,137.37, Daily P&L=$47.82, Exposure=479.3
+2025-09-18 13:16:33,839 | __main__ | INFO | Day 78: Capital=$23,176.74, Daily P&L=$39.36, Exposure=445.8
+2025-09-18 13:16:33,840 | __main__ | INFO | Day 79: Capital=$23,211.04, Daily P&L=$34.30, Exposure=510.9
+2025-09-18 13:16:33,841 | __main__ | INFO | Processed 4000/7012 fills in 0.1s
+2025-09-18 13:16:33,841 | __main__ | INFO | Day 80: Capital=$23,243.59, Daily P&L=$32.55, Exposure=468.7
+2025-09-18 13:16:33,842 | __main__ | INFO | Day 81: Capital=$23,285.91, Daily P&L=$42.32, Exposure=447.6
+2025-09-18 13:16:33,843 | __main__ | INFO | Day 82: Capital=$23,334.37, Daily P&L=$48.46, Exposure=462.2
+2025-09-18 13:16:33,843 | __main__ | INFO | Day 83: Capital=$23,399.95, Daily P&L=$65.58, Exposure=552.2
+2025-09-18 13:16:33,844 | __main__ | INFO | Day 84: Capital=$23,469.34, Daily P&L=$69.39, Exposure=722.2
+2025-09-18 13:16:33,845 | __main__ | INFO | Day 85: Capital=$23,519.70, Daily P&L=$50.36, Exposure=743.7
+2025-09-18 13:16:33,845 | __main__ | INFO | Day 86: Capital=$23,572.91, Daily P&L=$53.21, Exposure=549.7
+2025-09-18 13:16:33,846 | __main__ | INFO | Day 87: Capital=$23,610.92, Daily P&L=$38.01, Exposure=566.9
+2025-09-18 13:16:33,847 | __main__ | INFO | Day 88: Capital=$23,659.80, Daily P&L=$48.88, Exposure=600.5
+2025-09-18 13:16:33,847 | __main__ | INFO | Day 89: Capital=$23,691.02, Daily P&L=$31.22, Exposure=551.5
+2025-09-18 13:16:33,848 | __main__ | INFO | Day 90: Capital=$23,728.56, Daily P&L=$37.54, Exposure=509.2
+2025-09-18 13:16:33,849 | __main__ | INFO | Day 91: Capital=$23,773.15, Daily P&L=$44.59, Exposure=347.0
+2025-09-18 13:16:33,850 | __main__ | INFO | Day 92: Capital=$23,795.43, Daily P&L=$22.29, Exposure=369.6
+2025-09-18 13:16:33,851 | __main__ | INFO | Day 93: Capital=$23,835.83, Daily P&L=$40.40, Exposure=408.9
+2025-09-18 13:16:33,852 | __main__ | INFO | Day 94: Capital=$23,875.58, Daily P&L=$39.75, Exposure=455.5
+2025-09-18 13:16:33,853 | __main__ | INFO | Day 95: Capital=$23,921.19, Daily P&L=$45.61, Exposure=504.5
+2025-09-18 13:16:33,853 | __main__ | INFO | Day 96: Capital=$23,965.94, Daily P&L=$44.75, Exposure=463.5
+2025-09-18 13:16:33,854 | __main__ | INFO | Day 97: Capital=$23,993.59, Daily P&L=$27.66, Exposure=474.7
+2025-09-18 13:16:33,855 | __main__ | INFO | Day 98: Capital=$24,040.16, Daily P&L=$46.56, Exposure=308.0
+2025-09-18 13:16:33,856 | __main__ | INFO | Day 99: Capital=$24,078.60, Daily P&L=$38.44, Exposure=242.3
+2025-09-18 13:16:33,856 | __main__ | INFO | Processed 5000/7012 fills in 0.1s
+2025-09-18 13:16:33,856 | __main__ | INFO | Day 100: Capital=$24,114.65, Daily P&L=$36.06, Exposure=267.3
+2025-09-18 13:16:33,857 | __main__ | INFO | Day 101: Capital=$24,150.27, Daily P&L=$35.62, Exposure=169.2
+2025-09-18 13:16:33,858 | __main__ | INFO | Day 102: Capital=$24,203.22, Daily P&L=$52.96, Exposure=173.5
+2025-09-18 13:16:33,859 | __main__ | INFO | Day 103: Capital=$24,227.11, Daily P&L=$23.89, Exposure=94.2
+2025-09-18 13:16:33,859 | __main__ | INFO | Day 104: Capital=$24,254.33, Daily P&L=$27.22, Exposure=94.5
+2025-09-18 13:16:33,860 | __main__ | INFO | Day 105: Capital=$24,301.51, Daily P&L=$47.18, Exposure=-16.3
+2025-09-18 13:16:33,861 | __main__ | INFO | Day 106: Capital=$24,343.34, Daily P&L=$41.83, Exposure=-29.6
+2025-09-18 13:16:33,861 | __main__ | INFO | Day 107: Capital=$24,378.63, Daily P&L=$35.28, Exposure=3.8
+2025-09-18 13:16:33,862 | __main__ | INFO | Day 108: Capital=$24,398.48, Daily P&L=$19.85, Exposure=33.9
+2025-09-18 13:16:33,863 | __main__ | INFO | Day 109: Capital=$24,436.89, Daily P&L=$38.41, Exposure=4.7
+2025-09-18 13:16:33,863 | __main__ | INFO | Day 110: Capital=$24,489.44, Daily P&L=$52.55, Exposure=-99.0
+2025-09-18 13:16:33,864 | __main__ | INFO | Day 111: Capital=$24,526.63, Daily P&L=$37.19, Exposure=39.8
+2025-09-18 13:16:33,865 | __main__ | INFO | Day 112: Capital=$24,570.15, Daily P&L=$43.52, Exposure=237.3
+2025-09-18 13:16:33,866 | __main__ | INFO | Day 113: Capital=$24,599.53, Daily P&L=$29.38, Exposure=274.0
+2025-09-18 13:16:33,866 | __main__ | INFO | Day 114: Capital=$24,634.84, Daily P&L=$35.31, Exposure=195.2
+2025-09-18 13:16:33,867 | __main__ | INFO | Day 115: Capital=$24,674.61, Daily P&L=$39.77, Exposure=268.7
+2025-09-18 13:16:33,868 | __main__ | INFO | Day 116: Capital=$24,717.59, Daily P&L=$42.98, Exposure=301.0
+2025-09-18 13:16:33,868 | __main__ | INFO | Day 117: Capital=$24,749.97, Daily P&L=$32.39, Exposure=178.3
+2025-09-18 13:16:33,869 | __main__ | INFO | Day 118: Capital=$24,790.23, Daily P&L=$40.26, Exposure=208.4
+2025-09-18 13:16:33,870 | __main__ | INFO | Day 119: Capital=$24,820.51, Daily P&L=$30.28, Exposure=176.3
+2025-09-18 13:16:33,871 | __main__ | INFO | Processed 6000/7012 fills in 0.1s
+2025-09-18 13:16:33,871 | __main__ | INFO | Day 120: Capital=$24,871.87, Daily P&L=$51.36, Exposure=180.5
+2025-09-18 13:16:33,871 | __main__ | INFO | Day 121: Capital=$24,902.10, Daily P&L=$30.23, Exposure=147.5
+2025-09-18 13:16:33,872 | __main__ | INFO | Day 122: Capital=$24,949.36, Daily P&L=$47.26, Exposure=331.0
+2025-09-18 13:16:33,873 | __main__ | INFO | Day 123: Capital=$24,996.10, Daily P&L=$46.75, Exposure=262.0
+2025-09-18 13:16:33,873 | __main__ | INFO | Day 124: Capital=$25,035.26, Daily P&L=$39.15, Exposure=255.9
+2025-09-18 13:16:33,874 | __main__ | INFO | Day 125: Capital=$25,070.28, Daily P&L=$35.02, Exposure=240.7
+2025-09-18 13:16:33,875 | __main__ | INFO | Day 126: Capital=$25,097.05, Daily P&L=$26.77, Exposure=113.6
+2025-09-18 13:16:33,876 | __main__ | INFO | Day 127: Capital=$25,155.13, Daily P&L=$58.08, Exposure=-31.4
+2025-09-18 13:16:33,877 | __main__ | INFO | Day 128: Capital=$25,211.08, Daily P&L=$55.95, Exposure=-49.3
+2025-09-18 13:16:33,878 | __main__ | INFO | Day 129: Capital=$25,268.11, Daily P&L=$57.03, Exposure=-98.0
+2025-09-18 13:16:33,879 | __main__ | INFO | Day 130: Capital=$25,318.84, Daily P&L=$50.73, Exposure=44.1
+2025-09-18 13:16:33,879 | __main__ | INFO | Day 131: Capital=$25,365.09, Daily P&L=$46.24, Exposure=-92.1
+2025-09-18 13:16:33,880 | __main__ | INFO | Day 132: Capital=$25,396.41, Daily P&L=$31.32, Exposure=-93.1
+2025-09-18 13:16:33,881 | __main__ | INFO | Day 133: Capital=$25,445.35, Daily P&L=$48.94, Exposure=-88.3
+2025-09-18 13:16:33,881 | __main__ | INFO | Day 134: Capital=$25,490.75, Daily P&L=$45.40, Exposure=-26.0
+2025-09-18 13:16:33,882 | __main__ | INFO | Day 135: Capital=$25,514.24, Daily P&L=$23.49, Exposure=42.5
+2025-09-18 13:16:33,883 | __main__ | INFO | Day 136: Capital=$25,542.40, Daily P&L=$28.16, Exposure=68.9
+2025-09-18 13:16:33,884 | __main__ | INFO | Day 137: Capital=$25,585.85, Daily P&L=$43.45, Exposure=63.6
+2025-09-18 13:16:33,884 | __main__ | INFO | Day 138: Capital=$25,635.51, Daily P&L=$49.66, Exposure=140.3
+2025-09-18 13:16:33,885 | __main__ | INFO | Day 139: Capital=$25,676.43, Daily P&L=$40.92, Exposure=-38.5
+2025-09-18 13:16:33,886 | __main__ | INFO | Processed 7000/7012 fills in 0.1s
+2025-09-18 13:16:33,886 | __main__ | INFO | Day 140: Capital=$25,717.72, Daily P&L=$41.29, Exposure=-75.2
+2025-09-18 13:16:33,886 | __main__ | INFO | Day 90: Capital=$25,726.74, Daily P&L=$9.02, Exposure=-36.7
+2025-09-18 13:16:33,887 | __main__ | INFO | Processing complete in 0.1s
+2025-09-18 13:16:33,887 | __main__ | ERROR | Test failed: 'CombinedSystemSimulator' object has no attribute '_calculate_final_results'
+2025-09-18 13:16:47,238 | __main__ | INFO | Starting 90-Day Combined System Test
+2025-09-18 13:16:47,258 | __main__ | INFO | Config loaded successfully with keys: ['test_configuration', 'combined_system_features', 'mock_settings', 'performance_tracking', 'safety_settings']
+2025-09-18 13:16:47,258 | __main__ | INFO | Combined System Simulator initialized
+2025-09-18 13:16:47,259 | __main__ | INFO | Starting Capital: $20,000.00
+2025-09-18 13:16:47,259 | __main__ | INFO | Target Utilization: 85.0%
+2025-09-18 13:16:47,260 | __main__ | INFO | Starting 90-Day Combined System Test
+2025-09-18 13:16:47,260 | __main__ | INFO | ================================================================================
+2025-09-18 13:16:47,290 | __main__ | INFO | Generated 6971 test fills across 90 days
+2025-09-18 13:16:47,291 | __main__ | INFO | Market regime distribution: {'bear': 0.12222222222222222, 'volatile': 0.12222222222222222, 'bull': 0.28888888888888886, 'normal': 0.2111111111111111, 'calm': 0.07777777777777778, 'recovery': 0.13333333333333333, 'crash': 0.044444444444444446}
+2025-09-18 13:16:47,292 | __main__ | INFO | Day 1: Capital=$20,023.40, Daily P&L=$23.40, Exposure=-31.5
+2025-09-18 13:16:47,293 | __main__ | INFO | Day 2: Capital=$20,064.42, Daily P&L=$41.02, Exposure=-83.3
+2025-09-18 13:16:47,294 | __main__ | INFO | Day 3: Capital=$20,102.07, Daily P&L=$37.65, Exposure=-75.8
+2025-09-18 13:16:47,294 | __main__ | INFO | Day 4: Capital=$20,137.39, Daily P&L=$35.32, Exposure=-47.0
+2025-09-18 13:16:47,295 | __main__ | INFO | Day 5: Capital=$20,176.13, Daily P&L=$38.74, Exposure=-78.4
+2025-09-18 13:16:47,296 | __main__ | INFO | Day 6: Capital=$20,236.64, Daily P&L=$60.51, Exposure=-127.8
+2025-09-18 13:16:47,296 | __main__ | INFO | Day 7: Capital=$20,285.36, Daily P&L=$48.72, Exposure=-11.7
+2025-09-18 13:16:47,297 | __main__ | INFO | Day 8: Capital=$20,333.22, Daily P&L=$47.86, Exposure=9.9
+2025-09-18 13:16:47,298 | __main__ | INFO | Day 9: Capital=$20,392.36, Daily P&L=$59.15, Exposure=-63.6
+2025-09-18 13:16:47,298 | __main__ | INFO | Day 10: Capital=$20,436.09, Daily P&L=$43.73, Exposure=-130.6
+2025-09-18 13:16:47,299 | __main__ | INFO | Day 11: Capital=$20,468.37, Daily P&L=$32.28, Exposure=-142.1
+2025-09-18 13:16:47,299 | __main__ | INFO | Day 12: Capital=$20,529.66, Daily P&L=$61.30, Exposure=-332.1
+2025-09-18 13:16:47,300 | __main__ | INFO | Day 13: Capital=$20,574.48, Daily P&L=$44.82, Exposure=-402.3
+2025-09-18 13:16:47,301 | __main__ | INFO | Day 14: Capital=$20,611.81, Daily P&L=$37.33, Exposure=-281.8
+2025-09-18 13:16:47,302 | __main__ | INFO | Day 15: Capital=$20,656.53, Daily P&L=$44.71, Exposure=-254.4
+2025-09-18 13:16:47,302 | __main__ | INFO | Day 16: Capital=$20,715.20, Daily P&L=$58.67, Exposure=-359.9
+2025-09-18 13:16:47,303 | __main__ | INFO | Day 17: Capital=$20,759.40, Daily P&L=$44.20, Exposure=-371.0
+2025-09-18 13:16:47,304 | __main__ | INFO | Day 18: Capital=$20,782.12, Daily P&L=$22.72, Exposure=-373.2
+2025-09-18 13:16:47,304 | __main__ | INFO | Day 19: Capital=$20,826.27, Daily P&L=$44.15, Exposure=-276.7
+2025-09-18 13:16:47,305 | __main__ | INFO | Processed 1000/6971 fills in 0.0s
+2025-09-18 13:16:47,305 | __main__ | INFO | Day 20: Capital=$20,864.43, Daily P&L=$38.16, Exposure=-267.1
+2025-09-18 13:16:47,306 | __main__ | INFO | Day 21: Capital=$20,891.08, Daily P&L=$26.65, Exposure=-245.4
+2025-09-18 13:16:47,307 | __main__ | INFO | Day 22: Capital=$20,916.98, Daily P&L=$25.90, Exposure=-179.4
+2025-09-18 13:16:47,307 | __main__ | INFO | Day 23: Capital=$20,966.64, Daily P&L=$49.67, Exposure=-131.2
+2025-09-18 13:16:47,308 | __main__ | INFO | Day 24: Capital=$21,007.35, Daily P&L=$40.70, Exposure=-231.6
+2025-09-18 13:16:47,309 | __main__ | INFO | Day 25: Capital=$21,052.98, Daily P&L=$45.63, Exposure=-312.9
+2025-09-18 13:16:47,309 | __main__ | INFO | Day 26: Capital=$21,079.33, Daily P&L=$26.35, Exposure=-332.3
+2025-09-18 13:16:47,310 | __main__ | INFO | Day 27: Capital=$21,127.46, Daily P&L=$48.13, Exposure=-407.8
+2025-09-18 13:16:47,311 | __main__ | INFO | Day 28: Capital=$21,164.42, Daily P&L=$36.96, Exposure=-467.3
+2025-09-18 13:16:47,312 | __main__ | INFO | Day 29: Capital=$21,207.04, Daily P&L=$42.62, Exposure=-372.8
+2025-09-18 13:16:47,312 | __main__ | INFO | Day 30: Capital=$21,265.50, Daily P&L=$58.46, Exposure=-164.7
+2025-09-18 13:16:47,313 | __main__ | INFO | Day 31: Capital=$21,304.72, Daily P&L=$39.22, Exposure=-209.5
+2025-09-18 13:16:47,314 | __main__ | INFO | Day 32: Capital=$21,350.68, Daily P&L=$45.96, Exposure=-105.3
+2025-09-18 13:16:47,315 | __main__ | INFO | Day 33: Capital=$21,405.34, Daily P&L=$54.67, Exposure=-182.6
+2025-09-18 13:16:47,315 | __main__ | INFO | Day 34: Capital=$21,443.74, Daily P&L=$38.40, Exposure=-119.9
+2025-09-18 13:16:47,316 | __main__ | INFO | Day 35: Capital=$21,471.34, Daily P&L=$27.60, Exposure=-161.5
+2025-09-18 13:16:47,317 | __main__ | INFO | Day 36: Capital=$21,508.51, Daily P&L=$37.17, Exposure=-66.4
+2025-09-18 13:16:47,318 | __main__ | INFO | Day 37: Capital=$21,554.75, Daily P&L=$46.24, Exposure=-84.3
+2025-09-18 13:16:47,319 | __main__ | INFO | Day 38: Capital=$21,600.73, Daily P&L=$45.98, Exposure=-58.2
+2025-09-18 13:16:47,319 | __main__ | INFO | Day 39: Capital=$21,639.29, Daily P&L=$38.56, Exposure=-167.0
+2025-09-18 13:16:47,320 | __main__ | INFO | Processed 2000/6971 fills in 0.0s
+2025-09-18 13:16:47,320 | __main__ | INFO | Day 40: Capital=$21,668.16, Daily P&L=$28.87, Exposure=-161.0
+2025-09-18 13:16:47,321 | __main__ | INFO | Day 41: Capital=$21,710.81, Daily P&L=$42.65, Exposure=-127.9
+2025-09-18 13:16:47,322 | __main__ | INFO | Day 42: Capital=$21,739.90, Daily P&L=$29.09, Exposure=-225.3
+2025-09-18 13:16:47,322 | __main__ | INFO | Day 43: Capital=$21,768.87, Daily P&L=$28.97, Exposure=-230.0
+2025-09-18 13:16:47,323 | __main__ | INFO | Day 44: Capital=$21,810.57, Daily P&L=$41.69, Exposure=-128.3
+2025-09-18 13:16:47,324 | __main__ | INFO | Day 45: Capital=$21,840.96, Daily P&L=$30.40, Exposure=-93.8
+2025-09-18 13:16:47,325 | __main__ | INFO | Day 46: Capital=$21,878.50, Daily P&L=$37.54, Exposure=-161.9
+2025-09-18 13:16:47,326 | __main__ | INFO | Day 47: Capital=$21,929.09, Daily P&L=$50.58, Exposure=-305.8
+2025-09-18 13:16:47,326 | __main__ | INFO | Day 48: Capital=$21,970.54, Daily P&L=$41.45, Exposure=-216.3
+2025-09-18 13:16:47,327 | __main__ | INFO | Day 49: Capital=$22,008.02, Daily P&L=$37.48, Exposure=-234.6
+2025-09-18 13:16:47,328 | __main__ | INFO | Day 50: Capital=$22,046.31, Daily P&L=$38.29, Exposure=-148.5
+2025-09-18 13:16:47,328 | __main__ | INFO | Day 51: Capital=$22,086.68, Daily P&L=$40.37, Exposure=-127.5
+2025-09-18 13:16:47,329 | __main__ | INFO | Day 52: Capital=$22,137.90, Daily P&L=$51.22, Exposure=154.5
+2025-09-18 13:16:47,330 | __main__ | INFO | Day 53: Capital=$22,171.26, Daily P&L=$33.36, Exposure=142.4
+2025-09-18 13:16:47,331 | __main__ | INFO | Day 54: Capital=$22,200.42, Daily P&L=$29.17, Exposure=137.0
+2025-09-18 13:16:47,331 | __main__ | INFO | Day 55: Capital=$22,233.97, Daily P&L=$33.55, Exposure=231.9
+2025-09-18 13:16:47,332 | __main__ | INFO | Day 56: Capital=$22,283.39, Daily P&L=$49.41, Exposure=142.4
+2025-09-18 13:16:47,333 | __main__ | INFO | Day 57: Capital=$22,326.83, Daily P&L=$43.45, Exposure=83.2
+2025-09-18 13:16:47,333 | __main__ | INFO | Day 58: Capital=$22,370.90, Daily P&L=$44.06, Exposure=45.5
+2025-09-18 13:16:47,334 | __main__ | INFO | Day 59: Capital=$22,404.81, Daily P&L=$33.91, Exposure=95.4
+2025-09-18 13:16:47,335 | __main__ | INFO | Processed 3000/6971 fills in 0.0s
+2025-09-18 13:16:47,335 | __main__ | INFO | Day 60: Capital=$22,447.95, Daily P&L=$43.14, Exposure=10.1
+2025-09-18 13:16:47,335 | __main__ | INFO | Day 61: Capital=$22,472.11, Daily P&L=$24.16, Exposure=104.2
+2025-09-18 13:16:47,336 | __main__ | INFO | Day 62: Capital=$22,512.75, Daily P&L=$40.64, Exposure=59.1
+2025-09-18 13:16:47,337 | __main__ | INFO | Day 63: Capital=$22,550.17, Daily P&L=$37.42, Exposure=138.4
+2025-09-18 13:16:47,337 | __main__ | INFO | Day 64: Capital=$22,606.00, Daily P&L=$55.83, Exposure=-38.2
+2025-09-18 13:16:47,338 | __main__ | INFO | Day 65: Capital=$22,659.02, Daily P&L=$53.02, Exposure=50.3
+2025-09-18 13:16:47,339 | __main__ | INFO | Day 66: Capital=$22,693.48, Daily P&L=$34.46, Exposure=61.7
+2025-09-18 13:16:47,339 | __main__ | INFO | Day 67: Capital=$22,727.87, Daily P&L=$34.39, Exposure=17.2
+2025-09-18 13:16:47,340 | __main__ | INFO | Day 68: Capital=$22,782.55, Daily P&L=$54.69, Exposure=-148.7
+2025-09-18 13:16:47,341 | __main__ | INFO | Day 69: Capital=$22,843.95, Daily P&L=$61.39, Exposure=-280.2
+2025-09-18 13:16:47,342 | __main__ | INFO | Day 70: Capital=$22,898.98, Daily P&L=$55.03, Exposure=-367.9
+2025-09-18 13:16:47,342 | __main__ | INFO | Day 71: Capital=$22,947.16, Daily P&L=$48.18, Exposure=-292.7
+2025-09-18 13:16:47,343 | __main__ | INFO | Day 72: Capital=$22,984.52, Daily P&L=$37.36, Exposure=-338.8
+2025-09-18 13:16:47,344 | __main__ | INFO | Day 73: Capital=$23,041.30, Daily P&L=$56.78, Exposure=-372.1
+2025-09-18 13:16:47,345 | __main__ | INFO | Day 74: Capital=$23,096.74, Daily P&L=$55.44, Exposure=-483.6
+2025-09-18 13:16:47,345 | __main__ | INFO | Day 75: Capital=$23,145.99, Daily P&L=$49.25, Exposure=-582.3
+2025-09-18 13:16:47,345 | __main__ | INFO | Day 76: Capital=$23,166.97, Daily P&L=$20.98, Exposure=-483.8
+2025-09-18 13:16:47,346 | __main__ | INFO | Day 77: Capital=$23,225.09, Daily P&L=$58.12, Exposure=-529.3
+2025-09-18 13:16:47,347 | __main__ | INFO | Day 78: Capital=$23,277.04, Daily P&L=$51.95, Exposure=-427.1
+2025-09-18 13:16:47,348 | __main__ | INFO | Day 79: Capital=$23,319.85, Daily P&L=$42.81, Exposure=-259.2
+2025-09-18 13:16:47,348 | __main__ | INFO | Processed 4000/6971 fills in 0.1s
+2025-09-18 13:16:47,349 | __main__ | INFO | Day 80: Capital=$23,351.65, Daily P&L=$31.80, Exposure=-351.7
+2025-09-18 13:16:47,349 | __main__ | INFO | Day 81: Capital=$23,394.25, Daily P&L=$42.60, Exposure=-386.7
+2025-09-18 13:16:47,350 | __main__ | INFO | Day 82: Capital=$23,431.36, Daily P&L=$37.10, Exposure=-355.8
+2025-09-18 13:16:47,350 | __main__ | INFO | Day 83: Capital=$23,469.14, Daily P&L=$37.78, Exposure=-254.7
+2025-09-18 13:16:47,351 | __main__ | INFO | Day 84: Capital=$23,505.91, Daily P&L=$36.77, Exposure=-297.0
+2025-09-18 13:16:47,352 | __main__ | INFO | Day 85: Capital=$23,531.50, Daily P&L=$25.59, Exposure=-380.7
+2025-09-18 13:16:47,352 | __main__ | INFO | Day 86: Capital=$23,568.05, Daily P&L=$36.55, Exposure=-385.1
+2025-09-18 13:16:47,353 | __main__ | INFO | Day 87: Capital=$23,597.23, Daily P&L=$29.18, Exposure=-425.1
+2025-09-18 13:16:47,354 | __main__ | INFO | Day 88: Capital=$23,644.46, Daily P&L=$47.23, Exposure=-558.6
+2025-09-18 13:16:47,354 | __main__ | INFO | Day 89: Capital=$23,680.22, Daily P&L=$35.76, Exposure=-649.4
+2025-09-18 13:16:47,355 | __main__ | INFO | Day 90: Capital=$23,732.67, Daily P&L=$52.45, Exposure=-406.7
+2025-09-18 13:16:47,356 | __main__ | INFO | Day 91: Capital=$23,785.38, Daily P&L=$52.71, Exposure=-486.0
+2025-09-18 13:16:47,356 | __main__ | INFO | Day 92: Capital=$23,832.06, Daily P&L=$46.68, Exposure=-501.7
+2025-09-18 13:16:47,357 | __main__ | INFO | Day 93: Capital=$23,861.11, Daily P&L=$29.05, Exposure=-393.6
+2025-09-18 13:16:47,358 | __main__ | INFO | Day 94: Capital=$23,895.36, Daily P&L=$34.25, Exposure=-503.5
+2025-09-18 13:16:47,358 | __main__ | INFO | Day 95: Capital=$23,932.56, Daily P&L=$37.20, Exposure=-496.1
+2025-09-18 13:16:47,359 | __main__ | INFO | Day 96: Capital=$23,976.46, Daily P&L=$43.90, Exposure=-446.2
+2025-09-18 13:16:47,360 | __main__ | INFO | Day 97: Capital=$24,017.50, Daily P&L=$41.04, Exposure=-371.7
+2025-09-18 13:16:47,361 | __main__ | INFO | Day 98: Capital=$24,063.54, Daily P&L=$46.03, Exposure=-425.0
+2025-09-18 13:16:47,361 | __main__ | INFO | Day 99: Capital=$24,097.15, Daily P&L=$33.62, Exposure=-483.2
+2025-09-18 13:16:47,362 | __main__ | INFO | Processed 5000/6971 fills in 0.1s
+2025-09-18 13:16:47,362 | __main__ | INFO | Day 100: Capital=$24,132.41, Daily P&L=$35.26, Exposure=-468.0
+2025-09-18 13:16:47,363 | __main__ | INFO | Day 101: Capital=$24,180.78, Daily P&L=$48.36, Exposure=-470.5
+2025-09-18 13:16:47,364 | __main__ | INFO | Day 102: Capital=$24,242.88, Daily P&L=$62.10, Exposure=-559.3
+2025-09-18 13:16:47,364 | __main__ | INFO | Day 103: Capital=$24,285.85, Daily P&L=$42.97, Exposure=-545.8
+2025-09-18 13:16:47,365 | __main__ | INFO | Day 104: Capital=$24,326.05, Daily P&L=$40.20, Exposure=-526.6
+2025-09-18 13:16:47,365 | __main__ | INFO | Day 105: Capital=$24,371.48, Daily P&L=$45.43, Exposure=-440.5
+2025-09-18 13:16:47,366 | __main__ | INFO | Day 106: Capital=$24,409.53, Daily P&L=$38.06, Exposure=-344.7
+2025-09-18 13:16:47,367 | __main__ | INFO | Day 107: Capital=$24,449.11, Daily P&L=$39.57, Exposure=-312.4
+2025-09-18 13:16:47,367 | __main__ | INFO | Day 108: Capital=$24,498.39, Daily P&L=$49.28, Exposure=-235.6
+2025-09-18 13:16:47,368 | __main__ | INFO | Day 109: Capital=$24,548.67, Daily P&L=$50.28, Exposure=-319.9
+2025-09-18 13:16:47,369 | __main__ | INFO | Day 110: Capital=$24,580.24, Daily P&L=$31.58, Exposure=-369.4
+2025-09-18 13:16:47,370 | __main__ | INFO | Day 111: Capital=$24,628.29, Daily P&L=$48.05, Exposure=-417.3
+2025-09-18 13:16:47,371 | __main__ | INFO | Day 112: Capital=$24,668.02, Daily P&L=$39.73, Exposure=-506.8
+2025-09-18 13:16:47,371 | __main__ | INFO | Day 113: Capital=$24,718.94, Daily P&L=$50.92, Exposure=-292.8
+2025-09-18 13:16:47,372 | __main__ | INFO | Day 114: Capital=$24,748.81, Daily P&L=$29.87, Exposure=-234.8
+2025-09-18 13:16:47,373 | __main__ | INFO | Day 115: Capital=$24,793.29, Daily P&L=$44.48, Exposure=-136.6
+2025-09-18 13:16:47,373 | __main__ | INFO | Day 116: Capital=$24,832.62, Daily P&L=$39.32, Exposure=51.2
+2025-09-18 13:16:47,374 | __main__ | INFO | Day 117: Capital=$24,869.32, Daily P&L=$36.70, Exposure=10.6
+2025-09-18 13:16:47,375 | __main__ | INFO | Day 118: Capital=$24,907.85, Daily P&L=$38.53, Exposure=1.2
+2025-09-18 13:16:47,377 | __main__ | INFO | Day 119: Capital=$24,944.02, Daily P&L=$36.17, Exposure=41.7
+2025-09-18 13:16:47,377 | __main__ | INFO | Processed 6000/6971 fills in 0.1s
+2025-09-18 13:16:47,377 | __main__ | INFO | Day 120: Capital=$24,966.38, Daily P&L=$22.36, Exposure=105.5
+2025-09-18 13:16:47,378 | __main__ | INFO | Day 121: Capital=$25,007.25, Daily P&L=$40.87, Exposure=129.4
+2025-09-18 13:16:47,379 | __main__ | INFO | Day 122: Capital=$25,035.10, Daily P&L=$27.85, Exposure=160.6
+2025-09-18 13:16:47,380 | __main__ | INFO | Day 123: Capital=$25,063.44, Daily P&L=$28.34, Exposure=133.5
+2025-09-18 13:16:47,380 | __main__ | INFO | Day 124: Capital=$25,112.50, Daily P&L=$49.06, Exposure=44.4
+2025-09-18 13:16:47,381 | __main__ | INFO | Day 125: Capital=$25,156.81, Daily P&L=$44.31, Exposure=-80.0
+2025-09-18 13:16:47,382 | __main__ | INFO | Day 126: Capital=$25,179.21, Daily P&L=$22.40, Exposure=-168.9
+2025-09-18 13:16:47,383 | __main__ | INFO | Day 127: Capital=$25,215.55, Daily P&L=$36.34, Exposure=-147.2
+2025-09-18 13:16:47,383 | __main__ | INFO | Day 128: Capital=$25,246.50, Daily P&L=$30.95, Exposure=-207.7
+2025-09-18 13:16:47,384 | __main__ | INFO | Day 129: Capital=$25,301.14, Daily P&L=$54.64, Exposure=-133.1
+2025-09-18 13:16:47,385 | __main__ | INFO | Day 130: Capital=$25,335.07, Daily P&L=$33.93, Exposure=-255.2
+2025-09-18 13:16:47,386 | __main__ | INFO | Day 131: Capital=$25,367.40, Daily P&L=$32.33, Exposure=-228.8
+2025-09-18 13:16:47,386 | __main__ | INFO | Day 132: Capital=$25,401.01, Daily P&L=$33.60, Exposure=-198.6
+2025-09-18 13:16:47,386 | __main__ | INFO | Day 133: Capital=$25,427.01, Daily P&L=$26.01, Exposure=-259.2
+2025-09-18 13:16:47,387 | __main__ | INFO | Day 134: Capital=$25,473.50, Daily P&L=$46.49, Exposure=-244.1
+2025-09-18 13:16:47,388 | __main__ | INFO | Day 135: Capital=$25,516.59, Daily P&L=$43.09, Exposure=-456.1
+2025-09-18 13:16:47,388 | __main__ | INFO | Day 136: Capital=$25,555.11, Daily P&L=$38.52, Exposure=-460.9
+2025-09-18 13:16:47,389 | __main__ | INFO | Day 137: Capital=$25,591.88, Daily P&L=$36.77, Exposure=-539.2
+2025-09-18 13:16:47,390 | __main__ | INFO | Day 138: Capital=$25,637.56, Daily P&L=$45.67, Exposure=-654.4
+2025-09-18 13:16:47,392 | __main__ | INFO | Day 139: Capital=$25,670.82, Daily P&L=$33.26, Exposure=-788.0
+2025-09-18 13:16:47,392 | __main__ | INFO | Day 90: Capital=$25,688.41, Daily P&L=$17.59, Exposure=-829.4
+2025-09-18 13:16:47,392 | __main__ | INFO | Processing complete in 0.1s
+2025-09-18 13:16:47,402 | __main__ | INFO | 
+====================================================================================================
+2025-09-18 13:16:47,402 | __main__ | INFO | 90-DAY COMBINED SYSTEM TEST RESULTS
+2025-09-18 13:16:47,403 | __main__ | INFO | ====================================================================================================
+2025-09-18 13:16:47,403 | __main__ | INFO | SYSTEM CONFIGURATION:
+2025-09-18 13:16:47,403 | __main__ | INFO |    Starting Capital: $20,000.00
+2025-09-18 13:16:47,403 | __main__ | INFO |    Target Utilization: 85.0%
+2025-09-18 13:16:47,403 | __main__ | INFO |    Quality Threshold: 0.65
+2025-09-18 13:16:47,404 | __main__ | INFO |    JIT Leverage: 8x
+2025-09-18 13:16:47,404 | __main__ | INFO | 
+OVERALL PERFORMANCE:
+2025-09-18 13:16:47,404 | __main__ | INFO |    Final Capital: $25,688.41
+2025-09-18 13:16:47,404 | __main__ | INFO |    Total P&L: $5,688.41 (28.4%)
+2025-09-18 13:16:47,404 | __main__ | INFO |    Win Rate: 100.0%
+2025-09-18 13:16:47,405 | __main__ | INFO |    Sharpe Ratio: 0.97
+2025-09-18 13:16:47,405 | __main__ | INFO |    Max Drawdown: $12.80
+2025-09-18 13:16:47,405 | __main__ | INFO | 
+TRADE FLOW SUMMARY:
+2025-09-18 13:16:47,405 | __main__ | INFO |    Total Fills: 6,971
+2025-09-18 13:16:47,405 | __main__ | INFO |    Fills Hedged: 3,904 (56.0%)
+2025-09-18 13:16:47,406 | __main__ | INFO |    Fills Skipped: 3,067
+2025-09-18 13:16:47,406 | __main__ | INFO |    Quality Filtered: 2,125
+2025-09-18 13:16:47,406 | __main__ | INFO |    Coordinated Fills: 6,971
+2025-09-18 13:16:47,406 | __main__ | INFO |    Regime Adaptations: 3,044
+2025-09-18 13:16:47,406 | __main__ | INFO | 
+AVERAGE PERFORMANCE:
+2025-09-18 13:16:47,407 | __main__ | INFO |    Avg Profit per Hedge: $1.46
+2025-09-18 13:16:47,407 | __main__ | INFO |    Avg Profit per Fill: $0.82
+2025-09-18 13:16:47,408 | __main__ | INFO |    Avg Latency: 0.0ms
+2025-09-18 13:16:47,408 | __main__ | INFO | 
+COMPONENT BREAKDOWN:
+2025-09-18 13:16:47,408 | __main__ | INFO |    JIT System Processed: 6,971 fills
+2025-09-18 13:16:47,408 | __main__ | INFO |    Quality First Processed: 6,971 fills
+2025-09-18 13:16:47,408 | __main__ | INFO | 
+QUALITY DISTRIBUTION:
+2025-09-18 13:16:47,409 | __main__ | INFO |    Medium: 955 fills (13.7%)
+2025-09-18 13:16:47,409 | __main__ | INFO |    High: 2,947 fills (42.3%)
+2025-09-18 13:16:47,409 | __main__ | INFO |    Low: 2 fills (0.0%)
+2025-09-18 13:16:47,409 | __main__ | INFO | 
+REGIME PERFORMANCE:
+2025-09-18 13:16:47,410 | __main__ | INFO |    BEAR: 533 fills, 533 hedged, $733.69 profit, Avg Quality: 0.88
+2025-09-18 13:16:47,410 | __main__ | INFO |    VOLATILE: 502 fills, 502 hedged, $667.46 profit, Avg Quality: 0.88
+2025-09-18 13:16:47,410 | __main__ | INFO |    BULL: 979 fills, 979 hedged, $1700.54 profit, Avg Quality: 0.91
+2025-09-18 13:16:47,410 | __main__ | INFO |    NORMAL: 860 fills, 860 hedged, $1145.71 profit, Avg Quality: 0.88
+2025-09-18 13:16:47,410 | __main__ | INFO |    CALM: 296 fills, 296 hedged, $418.35 profit, Avg Quality: 0.90
+2025-09-18 13:16:47,411 | __main__ | INFO |    RECOVERY: 552 fills, 552 hedged, $731.51 profit, Avg Quality: 0.88
+2025-09-18 13:16:47,411 | __main__ | INFO |    CRASH: 182 fills, 182 hedged, $291.14 profit, Avg Quality: 0.86
+2025-09-18 13:16:47,411 | __main__ | INFO | 
+RISK METRICS:
+2025-09-18 13:16:47,412 | __main__ | INFO |    Daily Volatility: 0.05%
+2025-09-18 13:16:47,412 | __main__ | INFO |    Best Day: $62.10
+2025-09-18 13:16:47,412 | __main__ | INFO |    Worst Day: $17.59
+2025-09-18 13:16:47,412 | __main__ | INFO | 
+SYSTEM HEALTH:
+2025-09-18 13:16:47,413 | __main__ | INFO |    Success Rate: 56.0%
+2025-09-18 13:16:47,413 | __main__ | INFO |    System Adaptations: 3044
+2025-09-18 13:16:47,413 | __main__ | INFO | 
+====================================================================================================
+2025-09-18 13:16:47,413 | __main__ | INFO | 90-DAY COMBINED SYSTEM TEST COMPLETE!
+2025-09-18 13:16:47,414 | __main__ | INFO | ====================================================================================================
+2025-09-18 13:16:47,414 | __main__ | INFO | Test completed successfully

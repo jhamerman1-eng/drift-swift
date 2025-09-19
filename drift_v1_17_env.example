@@ -1,0 +1,43 @@
+# ===== Drift Bot v1.17 (rc3) .env template =====
+# Copy this file to .env and fill in your values
+
+# ===== REQUIRED: Wallets =====
+KEYPAIR_PATH={USERPROFILE}\.config\solana\id.json
+# JITO key (optional; only if using Jito tip/priority flow)
+# JITO_KEYPAIR_PATH=C:\path\to\jito-keypair.json
+
+# ===== REQUIRED: Cluster Configuration =====
+# devnet | testnet | mainnet
+DRIFT_CLUSTER=devnet
+
+# ===== REQUIRED: Helius API Key =====
+# Required for RPC/WS connections
+HELIUS_API_KEY=YOUR_API_KEY
+
+# ===== REQUIRED: RPC / WS Configuration =====
+# Devnet (HTTP/WS)
+DRIFT_HTTP_URL=https://devnet.helius-rpc.com/?api-key=YOUR_API_KEY
+DRIFT_WS_URL=wss://devnet.helius-rpc.com/?api-key=YOUR_API_KEY
+
+# Mainnet (HTTP/WS)
+# DRIFT_HTTP_URL=https://mainnet.helius-rpc.com/?api-key=YOUR_API_KEY
+# DRIFT_WS_URL=wss://mainnet.helius-rpc.com/?api-key=YOUR_API_KEY
+
+# ===== REQUIRED: Swift Configuration =====
+# ⚠️  CRITICAL: Must be configured for production trading
+# Sidecar will run in LOCAL_ACK mode (stub) if not configured
+SWIFT_FORWARD_BASE=https://swift.drift.trade
+
+# OPTIONAL: Swift API Key (if required by your Swift instance)
+SWIFT_API_KEY=
+
+# ===== REQUIRED: Sidecar Port =====
+PORT=8787
+
+# ===== OPTIONAL: Metrics =====
+# Prometheus metrics port for the bot
+PROMETHEUS_PORT=8000
+
+# ===== OPTIONAL: Advanced =====
+# Explicit taker authority (fallback if not using KEYPAIR_PATH)
+# TAKER_AUTHORITY=<base58 pubkey>

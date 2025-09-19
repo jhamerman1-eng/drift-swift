@@ -1,0 +1,269 @@
+2025-09-05 13:41:47,145 - __main__ - INFO - Starting Trend Bot with Fixed DLOB API (Proper Price Scaling)
+2025-09-05 13:41:47,146 - __main__ - INFO - ======================================================================
+2025-09-05 13:41:47,146 - __main__ - INFO - Environment: DEVNET (Beta)
+2025-09-05 13:41:47,146 - __main__ - INFO - Trading Platform: beta.drift.trade
+2025-09-05 13:41:47,146 - __main__ - INFO - Strategy: MACD + Momentum Trend Following
+2025-09-05 13:41:47,147 - __main__ - INFO - Market: SOL-PERP
+2025-09-05 13:41:47,147 - __main__ - INFO - Data Source: DLOB API with PRICE_PRECISION scaling (1e6)
+2025-09-05 13:41:47,147 - __main__ - INFO - ======================================================================
+2025-09-05 13:41:47,148 - __main__ - INFO - Using DLOB devnet endpoint: master.dlob.drift.trade
+2025-09-05 13:41:47,825 - __main__ - INFO - DLOB API client initialized
+2025-09-05 13:41:47,825 - __main__ - INFO - Testing DLOB API connection with proper price scaling...
+2025-09-05 13:41:48,539 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:41:48,540 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:41:48,541 - __main__ - WARNING - DLOB API connection failed, using mock data
+2025-09-05 13:41:48,556 - __main__ - INFO - Initializing components...
+2025-09-05 13:41:48,556 - __main__ - INFO - All components initialized
+2025-09-05 13:41:50,245 - __main__ - INFO - Trend configuration loaded
+2025-09-05 13:41:50,246 - __main__ - INFO - Starting trend analysis loop with properly scaled DLOB data...
+2025-09-05 13:41:50,246 - __main__ - INFO - You can track orders at: https://beta.drift.trade
+2025-09-05 13:41:50,246 - __main__ - INFO - Press Ctrl+C to stop
+2025-09-05 13:41:50,247 - __main__ - INFO - ======================================================================
+2025-09-05 13:41:50,367 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:41:50,368 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:41:50,368 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:41:50,368 - __main__ - WARNING - Using mock price: $200.0000
+2025-09-05 13:41:52,762 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:41:52,762 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:41:52,763 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:41:52,763 - __main__ - WARNING - Using mock price: $200.1000
+2025-09-05 13:41:52,763 - __main__ - INFO - MACD Analysis: Fast=200.1000, Slow=200.1000, MACD=0.0000, Signal=SELL
+2025-09-05 13:41:54,940 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:41:54,942 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:41:54,942 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:41:54,943 - __main__ - WARNING - Using mock price: $200.2000
+2025-09-05 13:41:54,943 - __main__ - INFO - MACD Analysis: Fast=200.1154, Slow=200.1074, MACD=0.0080, Signal=SELL
+2025-09-05 13:41:57,071 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:41:57,072 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:41:57,072 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:41:57,073 - __main__ - WARNING - Using mock price: $200.3000
+2025-09-05 13:41:57,073 - __main__ - INFO - MACD Analysis: Fast=200.1438, Slow=200.1217, MACD=0.0221, Signal=SELL
+2025-09-05 13:41:59,443 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:41:59,445 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:41:59,445 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:41:59,445 - __main__ - WARNING - Using mock price: $200.4000
+2025-09-05 13:41:59,445 - __main__ - INFO - MACD Analysis: Fast=200.1832, Slow=200.1423, MACD=0.0409, Signal=SELL
+2025-09-05 13:41:59,446 - __main__ - INFO - ==================================================
+2025-09-05 13:41:59,446 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 5
+2025-09-05 13:41:59,446 - __main__ - INFO - Runtime: 9.2s
+2025-09-05 13:41:59,446 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:41:59,446 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:41:59,447 - __main__ - INFO - Current Price: $200.4000
+2025-09-05 13:41:59,447 - __main__ - INFO - Price Change: +0.00%
+2025-09-05 13:41:59,447 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:41:59,447 - __main__ - INFO - MACD Values: 4
+2025-09-05 13:41:59,447 - __main__ - INFO - Signals Generated: 4
+2025-09-05 13:41:59,448 - __main__ - INFO - DLOB API Success Rate: 0/5
+2025-09-05 13:41:59,448 - __main__ - INFO - ==================================================
+2025-09-05 13:42:01,568 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:01,569 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:01,569 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:01,569 - __main__ - WARNING - Using mock price: $200.5000
+2025-09-05 13:42:01,570 - __main__ - INFO - MACD Analysis: Fast=200.2319, Slow=200.1688, MACD=0.0632, Signal=SELL
+2025-09-05 13:42:03,692 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:03,693 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:03,693 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:03,693 - __main__ - WARNING - Using mock price: $200.6000
+2025-09-05 13:42:03,694 - __main__ - INFO - MACD Analysis: Fast=200.2886, Slow=200.2007, MACD=0.0878, Signal=SELL
+2025-09-05 13:42:05,987 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:05,988 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:05,988 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:05,988 - __main__ - WARNING - Using mock price: $200.7000
+2025-09-05 13:42:05,988 - __main__ - INFO - MACD Analysis: Fast=200.3519, Slow=200.2377, MACD=0.1142, Signal=SELL
+2025-09-05 13:42:08,117 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:08,118 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:08,118 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:08,118 - __main__ - WARNING - Using mock price: $200.8000
+2025-09-05 13:42:08,118 - __main__ - INFO - MACD Analysis: Fast=200.4208, Slow=200.2794, MACD=0.1414, Signal=SELL
+2025-09-05 13:42:10,237 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:10,238 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:10,238 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:10,238 - __main__ - WARNING - Using mock price: $200.9000
+2025-09-05 13:42:10,238 - __main__ - INFO - MACD Analysis: Fast=200.4945, Slow=200.3253, MACD=0.1692, Signal=SELL
+2025-09-05 13:42:10,239 - __main__ - INFO - ==================================================
+2025-09-05 13:42:10,239 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 10
+2025-09-05 13:42:10,239 - __main__ - INFO - Runtime: 20.0s
+2025-09-05 13:42:10,239 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:42:10,239 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:42:10,240 - __main__ - INFO - Current Price: $200.9000
+2025-09-05 13:42:10,240 - __main__ - INFO - Price Change: +0.25%
+2025-09-05 13:42:10,240 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:42:10,241 - __main__ - INFO - MACD Values: 9
+2025-09-05 13:42:10,241 - __main__ - INFO - Signals Generated: 9
+2025-09-05 13:42:10,241 - __main__ - INFO - DLOB API Success Rate: 0/10
+2025-09-05 13:42:10,242 - __main__ - INFO - ==================================================
+2025-09-05 13:42:12,371 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:12,372 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:12,372 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:12,373 - __main__ - WARNING - Using mock price: $201.0000
+2025-09-05 13:42:12,373 - __main__ - INFO - MACD Analysis: Fast=200.5723, Slow=200.3753, MACD=0.1970, Signal=SELL
+2025-09-05 13:42:14,497 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:14,499 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:14,499 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:14,499 - __main__ - WARNING - Using mock price: $201.1000
+2025-09-05 13:42:14,500 - __main__ - INFO - MACD Analysis: Fast=200.6535, Slow=200.4290, MACD=0.2245, Signal=SELL
+2025-09-05 13:42:16,629 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:16,630 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:16,630 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:16,630 - __main__ - WARNING - Using mock price: $201.2000
+2025-09-05 13:42:16,630 - __main__ - INFO - MACD Analysis: Fast=200.7376, Slow=200.4861, MACD=0.2515, Signal=SELL
+2025-09-05 13:42:18,748 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:18,749 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:18,750 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:18,750 - __main__ - WARNING - Using mock price: $201.3000
+2025-09-05 13:42:18,750 - __main__ - INFO - MACD Analysis: Fast=200.8241, Slow=200.5464, MACD=0.2777, Signal=SELL
+2025-09-05 13:42:20,871 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:20,872 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:20,873 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:20,873 - __main__ - WARNING - Using mock price: $201.4000
+2025-09-05 13:42:20,873 - __main__ - INFO - MACD Analysis: Fast=200.9127, Slow=200.6096, MACD=0.3031, Signal=SELL
+2025-09-05 13:42:20,873 - __main__ - INFO - ==================================================
+2025-09-05 13:42:20,874 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 15
+2025-09-05 13:42:20,874 - __main__ - INFO - Runtime: 30.6s
+2025-09-05 13:42:20,874 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:42:20,874 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:42:20,875 - __main__ - INFO - Current Price: $201.4000
+2025-09-05 13:42:20,875 - __main__ - INFO - Price Change: +0.25%
+2025-09-05 13:42:20,875 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:42:20,875 - __main__ - INFO - MACD Values: 14
+2025-09-05 13:42:20,876 - __main__ - INFO - Signals Generated: 14
+2025-09-05 13:42:20,876 - __main__ - INFO - DLOB API Success Rate: 0/15
+2025-09-05 13:42:20,876 - __main__ - INFO - ==================================================
+2025-09-05 13:42:23,004 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:23,005 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:23,005 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:23,006 - __main__ - WARNING - Using mock price: $201.5000
+2025-09-05 13:42:23,006 - __main__ - INFO - MACD Analysis: Fast=201.0030, Slow=200.6756, MACD=0.3275, Signal=SELL
+2025-09-05 13:42:25,286 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:25,287 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:25,287 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:25,287 - __main__ - WARNING - Using mock price: $201.6000
+2025-09-05 13:42:25,287 - __main__ - INFO - MACD Analysis: Fast=201.0949, Slow=200.7441, MACD=0.3508, Signal=SELL
+2025-09-05 13:42:27,412 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:27,412 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:27,413 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:27,413 - __main__ - WARNING - Using mock price: $201.7000
+2025-09-05 13:42:27,413 - __main__ - INFO - MACD Analysis: Fast=201.1880, Slow=200.8149, MACD=0.3731, Signal=SELL
+2025-09-05 13:42:29,529 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:29,529 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:29,530 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:29,530 - __main__ - WARNING - Using mock price: $201.8000
+2025-09-05 13:42:29,530 - __main__ - INFO - MACD Analysis: Fast=201.2821, Slow=200.8878, MACD=0.3943, Signal=SELL
+2025-09-05 13:42:31,656 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:31,658 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:31,658 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:31,658 - __main__ - WARNING - Using mock price: $201.9000
+2025-09-05 13:42:31,658 - __main__ - INFO - MACD Analysis: Fast=201.3772, Slow=200.9628, MACD=0.4144, Signal=SELL
+2025-09-05 13:42:31,659 - __main__ - INFO - ==================================================
+2025-09-05 13:42:31,659 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 20
+2025-09-05 13:42:31,659 - __main__ - INFO - Runtime: 41.4s
+2025-09-05 13:42:31,660 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:42:31,660 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:42:31,660 - __main__ - INFO - Current Price: $201.9000
+2025-09-05 13:42:31,660 - __main__ - INFO - Price Change: +0.25%
+2025-09-05 13:42:31,661 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:42:31,661 - __main__ - INFO - MACD Values: 19
+2025-09-05 13:42:31,661 - __main__ - INFO - Signals Generated: 19
+2025-09-05 13:42:31,661 - __main__ - INFO - DLOB API Success Rate: 0/20
+2025-09-05 13:42:31,661 - __main__ - INFO - ==================================================
+2025-09-05 13:42:31,662 - __main__ - INFO - DETAILED BETA ANALYSIS
+2025-09-05 13:42:31,662 - __main__ - INFO -    - MACD Fast EMA: 201.3772
+2025-09-05 13:42:31,662 - __main__ - INFO -    - MACD Slow EMA: 200.9628
+2025-09-05 13:42:31,662 - __main__ - INFO -    - MACD Signal: 3.2076
+2025-09-05 13:42:31,662 - __main__ - INFO -    - Current MACD: -2.7932
+2025-09-05 13:42:31,662 - __main__ - INFO -    - Price History: 20 points
+2025-09-05 13:42:31,663 - __main__ - INFO -    - Risk State: 0.00% drawdown
+2025-09-05 13:42:33,958 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:33,959 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:33,960 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:33,960 - __main__ - WARNING - Using mock price: $202.0000
+2025-09-05 13:42:33,960 - __main__ - INFO - MACD Analysis: Fast=201.4730, Slow=201.0396, MACD=0.4334, Signal=SELL
+2025-09-05 13:42:36,320 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:36,321 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:36,321 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:36,322 - __main__ - WARNING - Using mock price: $202.1000
+2025-09-05 13:42:36,322 - __main__ - INFO - MACD Analysis: Fast=201.5695, Slow=201.1182, MACD=0.4513, Signal=SELL
+2025-09-05 13:42:38,441 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:38,442 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:38,443 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:38,443 - __main__ - WARNING - Using mock price: $202.2000
+2025-09-05 13:42:38,443 - __main__ - INFO - MACD Analysis: Fast=201.6665, Slow=201.1983, MACD=0.4682, Signal=SELL
+2025-09-05 13:42:40,565 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:40,566 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:40,566 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:40,567 - __main__ - WARNING - Using mock price: $202.3000
+2025-09-05 13:42:40,567 - __main__ - INFO - MACD Analysis: Fast=201.7639, Slow=201.2799, MACD=0.4840, Signal=SELL
+2025-09-05 13:42:42,852 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:42,853 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:42,853 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:42,853 - __main__ - WARNING - Using mock price: $202.4000
+2025-09-05 13:42:42,853 - __main__ - INFO - MACD Analysis: Fast=201.8618, Slow=201.3629, MACD=0.4989, Signal=SELL
+2025-09-05 13:42:42,854 - __main__ - INFO - ==================================================
+2025-09-05 13:42:42,854 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 25
+2025-09-05 13:42:42,854 - __main__ - INFO - Runtime: 52.6s
+2025-09-05 13:42:42,854 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:42:42,855 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:42:42,855 - __main__ - INFO - Current Price: $202.4000
+2025-09-05 13:42:42,855 - __main__ - INFO - Price Change: +0.25%
+2025-09-05 13:42:42,856 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:42:42,856 - __main__ - INFO - MACD Values: 24
+2025-09-05 13:42:42,856 - __main__ - INFO - Signals Generated: 24
+2025-09-05 13:42:42,857 - __main__ - INFO - DLOB API Success Rate: 0/25
+2025-09-05 13:42:42,857 - __main__ - INFO - ==================================================
+2025-09-05 13:42:45,147 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:45,148 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:45,149 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:45,149 - __main__ - WARNING - Using mock price: $202.5000
+2025-09-05 13:42:45,149 - __main__ - INFO - MACD Analysis: Fast=201.9600, Slow=201.4471, MACD=0.5129, Signal=SELL
+2025-09-05 13:42:47,429 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:47,430 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:47,431 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:47,431 - __main__ - WARNING - Using mock price: $202.6000
+2025-09-05 13:42:47,431 - __main__ - INFO - MACD Analysis: Fast=202.0584, Slow=201.5325, MACD=0.5259, Signal=SELL
+2025-09-05 13:42:49,745 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:49,746 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:49,746 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:49,746 - __main__ - WARNING - Using mock price: $202.7000
+2025-09-05 13:42:49,747 - __main__ - INFO - MACD Analysis: Fast=202.1571, Slow=201.6190, MACD=0.5381, Signal=SELL
+2025-09-05 13:42:51,864 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:51,865 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:51,865 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:51,865 - __main__ - WARNING - Using mock price: $202.8000
+2025-09-05 13:42:51,866 - __main__ - INFO - MACD Analysis: Fast=202.2560, Slow=201.7065, MACD=0.5496, Signal=SELL
+2025-09-05 13:42:54,153 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:54,153 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:54,154 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:54,154 - __main__ - WARNING - Using mock price: $202.9000
+2025-09-05 13:42:54,154 - __main__ - INFO - MACD Analysis: Fast=202.3551, Slow=201.7949, MACD=0.5602, Signal=SELL
+2025-09-05 13:42:54,154 - __main__ - INFO - ==================================================
+2025-09-05 13:42:54,155 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 30
+2025-09-05 13:42:54,155 - __main__ - INFO - Runtime: 63.9s
+2025-09-05 13:42:54,155 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:42:54,156 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:42:54,156 - __main__ - INFO - Current Price: $202.9000
+2025-09-05 13:42:54,157 - __main__ - INFO - Price Change: +0.25%
+2025-09-05 13:42:54,157 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:42:54,157 - __main__ - INFO - MACD Values: 29
+2025-09-05 13:42:54,157 - __main__ - INFO - Signals Generated: 29
+2025-09-05 13:42:54,158 - __main__ - INFO - DLOB API Success Rate: 0/30
+2025-09-05 13:42:54,158 - __main__ - INFO - ==================================================
+2025-09-05 13:42:56,275 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:56,276 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:56,276 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:56,277 - __main__ - WARNING - Using mock price: $203.0000
+2025-09-05 13:42:56,277 - __main__ - INFO - MACD Analysis: Fast=202.4543, Slow=201.8842, MACD=0.5702, Signal=SELL
+2025-09-05 13:42:58,404 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:42:58,404 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:42:58,405 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:42:58,405 - __main__ - WARNING - Using mock price: $203.1000
+2025-09-05 13:42:58,405 - __main__ - INFO - MACD Analysis: Fast=202.5537, Slow=201.9742, MACD=0.5794, Signal=SELL
+2025-09-05 13:43:00,540 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:43:00,541 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:43:00,542 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:43:00,542 - __main__ - WARNING - Using mock price: $203.2000
+2025-09-05 13:43:00,542 - __main__ - INFO - MACD Analysis: Fast=202.6531, Slow=202.0650, MACD=0.5881, Signal=SELL
+2025-09-05 13:43:02,836 - httpx - INFO - HTTP Request: GET https://master.dlob.drift.trade/l2?marketName=SOL-PERP&depth=1&includeOracle=true "HTTP/1.1 503 Service Unavailable"
+2025-09-05 13:43:02,837 - __main__ - ERROR - HTTP error fetching L2 orderbook: 503
+2025-09-05 13:43:02,838 - __main__ - WARNING - No price data from DLOB API
+2025-09-05 13:43:02,839 - __main__ - WARNING - Using mock price: $203.3000
+2025-09-05 13:43:02,839 - __main__ - INFO - MACD Analysis: Fast=202.7526, Slow=202.1565, MACD=0.5961, Signal=HOLD

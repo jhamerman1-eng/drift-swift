@@ -1,0 +1,6 @@
+crash_sentinel:
+  enabled: true
+  sigma_threshold: 3.0
+  halt_seconds: 120
+  max_drawdown_soft_pct: 7.5
+  max_drawdown_hard_pct: 20.0

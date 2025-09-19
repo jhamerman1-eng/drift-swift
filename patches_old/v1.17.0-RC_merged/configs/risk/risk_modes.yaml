@@ -1,0 +1,5 @@
+# Portfolio Risk Rails (STUB) — policy defaults
+risk_rails:
+  soft_drawdown_pct: -7.5      # warn + tighten quotes
+  trend_pause_pct:  -12.5      # pause trend entries
+  circuit_break_pct: -20.0     # halt all bots

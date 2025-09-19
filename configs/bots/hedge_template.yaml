@@ -1,0 +1,27 @@
+# Bot Profile for Hedge Bot
+# This file contains bot-specific settings that complement the shared core settings
+
+# Bot identification
+name: hedge
+
+# Sub-account to use for trading
+sub_account: 1
+
+# Target leverage for positions
+target_leverage: 1.0
+
+# Margin mode: 'cross' or 'isolated'
+margin_mode: isolated
+
+# Markets to trade
+markets:
+  - SOL-PERP
+  - BTC-PERP
+  - ETH-PERP
+
+# Maximum position size in USD
+max_position_usd: 50000.0
+
+# Hedge settings
+hedge_enabled: true
+hedge_threshold: 0.05

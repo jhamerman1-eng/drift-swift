@@ -1,0 +1,491 @@
+diff --git a/README_SWIFT_MM.md b/README_SWIFT_MM.md
+new file mode 100644
+index 0000000..a8a2f6f
+--- /dev/null
++++ b/README_SWIFT_MM.md
+@@ -0,0 +1,146 @@
++# Swift MM Sidecar & Python Driver
++
++This adds a Node/TypeScript **Swift MM Sidecar** and a Python **SwiftSidecarDriver**.
++
++## Why
++- Avoids 422 signature/encoding issues by keeping signing in Python and forwarding envelopes.
++- Provides a **local ACK mode** for offline smoke tests.
++- When `SWIFT_FORWARD_BASE` is set, the sidecar **proxies** to the real Swift API.
++- Exposes `/health`, `/metrics`, `/orders` (submit), and `/orders/:id/cancel`.
++
++## Layout
++```
++services/swift-mm/
++  Dockerfile
++  package.json
++  tsconfig.json
++  src/
++    index.ts
++    metrics.ts
++    types.ts
++libs/drift/swift_sidecar_driver.py
++docker-compose.swift.yml
++configs/core/swift_mm.example.env
++examples/swift_smoke_place_order.py
++```
++
++## Quick start
++```bash
++cp configs/core/swift_mm.example.env .env.swift
++docker compose -f docker-compose.swift.yml --env-file .env.swift up -d --build
++curl -s localhost:8787/health
++curl -s localhost:8787/metrics | head
++```
++
++## Using the Python driver
++```python
++from libs.drift.swift_sidecar_driver import SwiftSidecarDriver
++driver = SwiftSidecarDriver(base_url="http://localhost:8787", api_key=None)
++ack = driver.place_order({
++    "message": "SignedMsgOrderParamsMessageBase64OrHex",
++    "signature": "base64/hex",
++    "market_index": 0,
++    "market_type": "perp",
++    "taker_authority": "yourPubkey",
++})
++print(ack)
++```
++
++To cancel:
++```python
++driver.cancel_order("your-order-id")
++```
++
++## Modes
++- **Local ACK mode** (default): sidecar returns `{"status":"accepted","id":"..."}`
++- **Forward mode**: set `SWIFT_FORWARD_BASE` to the real Swift base (e.g. `https://swift.drift.trade`)
++
++## Env (example)
++See `configs/core/swift_mm.example.env`.
++
++## Metrics
++Prometheus endpoint at `/metrics`. Basic counters/timers are included:
++- `swift_submit_seconds` (histogram)
++- `swift_submit_total`
++- `swift_cancel_seconds` (histogram)
++- `swift_cancel_total`
++
++## Notes
++- Keep secrets out of the repo and environment where possible.
++- Start with tiny order sizes on devnet/beta to validate wiring.
+diff --git a/configs/core/swift_mm.example.env b/configs/core/swift_mm.example.env
+new file mode 100644
+index 0000000..d0d501a
+--- /dev/null
++++ b/configs/core/swift_mm.example.env
+@@ -0,0 +1,17 @@
++# Example environment for Swift MM Sidecar
++# Copy to .env.swift and edit safely (do NOT commit real secrets)
++
++# If set, forward to real Swift (e.g., https://swift.drift.trade)
++SWIFT_FORWARD_BASE=
++
++# Optional: API key/header if Swift requires
++SWIFT_API_KEY=
++
++# Sidecar server
++PORT=8787
++LOG_LEVEL=info
++
++# Prometheus
++METRICS_ENABLED=true
++METRICS_PREFIX=swift_
++
+diff --git a/docker-compose.swift.yml b/docker-compose.swift.yml
+new file mode 100644
+index 0000000..b2e16a4
+--- /dev/null
++++ b/docker-compose.swift.yml
+@@ -0,0 +1,36 @@
++version: "3.9"
++services:
++  swift-mm:
++    build:
++      context: ./services/swift-mm
++      dockerfile: Dockerfile
++    container_name: swift-mm
++    environment:
++      - PORT=${PORT:-8787}
++      - LOG_LEVEL=${LOG_LEVEL:-info}
++      - SWIFT_FORWARD_BASE=${SWIFT_FORWARD_BASE}
++      - SWIFT_API_KEY=${SWIFT_API_KEY}
++      - METRICS_ENABLED=${METRICS_ENABLED:-true}
++      - METRICS_PREFIX=${METRICS_PREFIX:-swift_}
++    ports:
++      - "${PORT:-8787}:8787"
++    restart: unless-stopped
++
+diff --git a/examples/swift_smoke_place_order.py b/examples/swift_smoke_place_order.py
+new file mode 100644
+index 0000000..4f2e2c5
+--- /dev/null
++++ b/examples/swift_smoke_place_order.py
+@@ -0,0 +1,63 @@
++#!/usr/bin/env python3
++"""
++Smoke-test for Swift Sidecar
++"""
++import json
++from libs.drift.swift_sidecar_driver import SwiftSidecarDriver
++
++def main():
++    driver = SwiftSidecarDriver(base_url="http://localhost:8787")
++    # This is a fake envelope for smoke test; replace with a real signed envelope in live runs.
++    envelope = {
++        "message": "BASE64_OR_HEX_SIGNED_MSG",
++        "signature": "BASE64_OR_HEX_SIGNATURE",
++        "market_index": 0,
++        "market_type": "perp",
++        "taker_authority": "YourPubkeyHere"
++    }
++    ack = driver.place_order(envelope)
++    print("ACK:", json.dumps(ack, indent=2))
++    if "id" in ack:
++        res = driver.cancel_order(ack["id"])
++        print("CANCEL:", json.dumps(res, indent=2))
++
++if __name__ == "__main__":
++    main()
++
+diff --git a/libs/drift/swift_sidecar_driver.py b/libs/drift/swift_sidecar_driver.py
+new file mode 100644
+index 0000000..a73d4c9
+--- /dev/null
++++ b/libs/drift/swift_sidecar_driver.py
+@@ -0,0 +1,119 @@
++from __future__ import annotations
++import httpx
++from typing import Any, Dict, Optional
++
++class SwiftSidecarDriver:
++    """
++    Minimal client for the Swift MM Sidecar.
++    - place_order(envelope) -> dict (ack)
++    - cancel_order(order_id) -> dict (ack)
++    - health() -> dict
++    """
++    def __init__(self, base_url: str, api_key: Optional[str] = None, timeout_s: float = 10.0):
++        self.base_url = base_url.rstrip("/")
++        self.api_key = api_key
++        self._timeout = timeout_s
++        self._client = httpx.Client(timeout=self._timeout)
++
++    def _headers(self) -> Dict[str, str]:
++        h = {"Content-Type": "application/json"}
++        if self.api_key:
++            h["Authorization"] = f"Bearer {self.api_key}"
++        return h
++
++    def health(self) -> dict[str, Any]:
++        r = self._client.get(f"{self.base_url}/health")
++        r.raise_for_status()
++        return r.json()
++
++    def place_order(self, envelope: Dict[str, Any]) -> Dict[str, Any]:
++        """
++        envelope keys expected:
++          - message (signed Swift envelope payload, base64/hex)
++          - signature (base64/hex)
++          - market_index (int)
++          - market_type ("perp"|"spot"|"oracle")
++          - taker_authority (pubkey string)
++        """
++        r = self._client.post(f"{self.base_url}/orders", json=envelope, headers=self._headers())
++        r.raise_for_status()
++        return r.json()
++
++    def cancel_order(self, order_id: str) -> Dict[str, Any]:
++        r = self._client.post(f"{self.base_url}/orders/{order_id}/cancel", headers=self._headers())
++        r.raise_for_status()
++        return r.json()
++
++    def close(self) -> None:
++        try:
++            self._client.close()
++        except Exception:
++            pass
+diff --git a/services/swift-mm/Dockerfile b/services/swift-mm/Dockerfile
+new file mode 100644
+index 0000000..ba2e3d6
+--- /dev/null
++++ b/services/swift-mm/Dockerfile
+@@ -0,0 +1,25 @@
++FROM node:20-alpine AS deps
++WORKDIR /app
++COPY package.json package-lock.json* ./
++RUN npm ci --no-audit --no-fund
++
++FROM node:20-alpine AS build
++WORKDIR /app
++COPY --from=deps /app/node_modules ./node_modules
++COPY tsconfig.json ./
++COPY src ./src
++RUN npx tsc
++
++FROM node:20-alpine AS run
++WORKDIR /app
++ENV NODE_ENV=production
++COPY --from=deps /app/node_modules ./node_modules
++COPY --from=build /app/dist ./dist
++ENV PORT=8787
++EXPOSE 8787
++CMD ["node", "dist/index.js"]
++
+diff --git a/services/swift-mm/package.json b/services/swift-mm/package.json
+new file mode 100644
+index 0000000..57e1e08
+--- /dev/null
++++ b/services/swift-mm/package.json
+@@ -0,0 +1,37 @@
++{
++  "name": "swift-mm-sidecar",
++  "version": "0.1.0",
++  "private": true,
++  "type": "module",
++  "main": "dist/index.js",
++  "scripts": {
++    "build": "tsc",
++    "start": "node dist/index.js",
++    "dev": "tsx src/index.ts"
++  },
++  "dependencies": {
++    "express": "^4.19.2",
++    "pino": "^9.5.0",
++    "prom-client": "^15.1.3",
++    "undici": "^6.19.8",
++    "ulid": "^2.3.0"
++  },
++  "devDependencies": {
++    "@types/express": "^4.17.21",
++    "tsx": "^4.16.2",
++ "typescript": "^5.5.4"
++  }
++}
++
+diff --git a/services/swift-mm/src/index.ts b/services/swift-mm/src/index.ts
+new file mode 100644
+index 0000000..4a70ca7
+--- /dev/null
++++ b/services/swift-mm/src/index.ts
+@@ -0,0 +1,162 @@
++import express from "express";
++import pino from "pino";
++import { fetch } from "undici";
++import { register, metrics, timeSubmit, timeCancel } from "./metrics.js";
++import { ulid } from "ulid";
++
++const PORT = Number(process.env.PORT ?? 8787);
++const LOG_LEVEL = process.env.LOG_LEVEL ?? "info";
++const SWIFT_FORWARD_BASE = process.env.SWIFT_FORWARD_BASE?.replace(/\/+$/, "");
++const SWIFT_API_KEY = process.env.SWIFT_API_KEY;
++
++const logger = pino({ level: LOG_LEVEL });
++const app = express();
++app.use(express.json({ limit: "1mb" }));
++
++app.get("/health", (_req, res) => {
++  res.json({
++    status: "ok",
++    forward: Boolean(SWIFT_FORWARD_BASE),
++    version: "0.1.0",
++  });
++});
++
++app.get("/metrics", async (_req, res) => {
++  res.setHeader("Content-Type", register.contentType);
++  return res.end(await register.metrics());
++});
++
++// Submit a Swift order envelope
++app.post("/orders", async (req, res) => {
++  const stopTimer = timeSubmit();
++  try {
++    const envelope = req.body ?? {};
++    if (!envelope?.message || !envelope?.signature) {
++      res.status(400).json({ error: "missing message/signature" });
++      return;
++    }
++
++    if (SWIFT_FORWARD_BASE) {
++      const r = await fetch(`${SWIFT_FORWARD_BASE}/orders`, {
++        method: "POST",
++        headers: {
++          "content-type": "application/json",
++          ...(SWIFT_API_KEY ? { Authorization: `Bearer ${SWIFT_API_KEY}` } : {}),
++        },
++        body: JSON.stringify(envelope),
++      });
++      const text = await r.text();
++      if (!r.ok) {
++        logger.warn({ status: r.status, text }, "Swift forward error");
++        res.status(r.status).send(text);
++        return;
++      }
++      try {
++        const json = JSON.parse(text);
++        metrics.submit_total.inc({ mode: "forward", status: "ok" });
++        res.json(json);
++        return;
++      } catch {
++        metrics.submit_total.inc({ mode: "forward", status: "text" });
++        res.send(text);
++        return;
++      }
++    }
++
++    // Local ACK mode (no forward)
++    const id = ulid();
++    metrics.submit_total.inc({ mode: "local", status: "ok" });
++    res.json({ status: "accepted", id });
++  } catch (e: any) {
++    metrics.submit_total.inc({ mode: SWIFT_FORWARD_BASE ? "forward" : "forward" : "local", status: "err" });
++    logger.error({ err: e?.message }, "order submit error");
++    res.status(500).json({ error: "submit_failed" });
++  } finally {
++    stopTimer();
++    return;
++  }
++});
++
++// Cancel order by id
++app.post("/orders/:id/cancel", async (req, res) => {
++  const stopTimer = timeCancel();
++  try {
++    const { id } = req.params;
++    if (!id) {
++      res.status(400).json({ error: "missing id" });
++      return;
++    }
++    if (SWIFT_FORWARD_BASE) {
++      const r = await fetch(`${SWIFT_FORWARD_BASE}/orders/${id}/cancel`, {
++        method: "POST",
++        headers: {
++          ...(SWIFT_API_KEY ? { Authorization: `Bearer ${SWIFT_API_KEY}` } : {}),
++        },
++      });
++      const r = await fetch(`${SWIFT_FORWARD_BASE}/orders/${id}/cancel`, {
++        method: "POST",
++        headers: {
++          ...(SWIFT_API_KEY ? { Authorization: `Bearer ${SWIFT_API_KEY}` } : {}),
++        },
++      });
++      const text = await r.text();
++      if (!r.ok) {
++        logger.warn({ status: r.status, text }, "Swift forward cancel error");
++        res.status(r.status).send(text);
++        return;
++      }
++      try {
++        const json = JSON.parse(text);
++        metrics.cancel_total.inc({ mode: "forward", status: "ok" });
++        res.json(json);
++        return;
++      } catch {
++        metrics.cancel_total.inc({ mode: "forward", status: "text" });
++        res.send(text);
++        return;
++        return;
++      }
++    }
++    metrics.cancel_total.inc({ mode: "local", status: "ok" });
++    res.json({ status: "cancelled", id });
++  } catch (e: any) {
++    metrics.cancel_total.inc({ mode: SWIFT_FORWARD_BASE ? "forward" : "local", status: "err" });
++    logger.error({ err: e?.message }, "order cancel error");
++    res.status(500).json({ error: "cancel_failed" });
++  } finally {
++    stopTimer();
++    return;
++  }
++});
++
++app.listen(PORT, () => {
++  logger.info({ port: PORT, forward: Boolean(SWIFT_FORWARD_BASE) }, "swift-mm sidecar up");
++});
++
+diff --git a/services/swift-mm/src/metrics.ts b/services/swift-mm/src/metrics.ts
+new file mode 100644
+index 0000000..5df9e69
+--- /dev/null
++++ b/services/swift-mm/src/metrics.ts
+@@ -0,0 +1,43 @@
++import client, { Histogram, Registry, Counter } from "prom-client";
++
++const METRICS_PREFIX = process.env.METRICS_PREFIX ?? "swift_";
++export const register = new Registry();
++client.collectDefaultMetrics({ register, prefix: METRICS_PREFIX });
++
++export const metrics = {
++  submit_seconds: new Histogram({
++    name: `${METRICS_PREFIX}submit_seconds`,
++    help: "Swift submit latency seconds",
++    labelNames: ["mode"],
++    buckets: [0.01, 0.05, 0.1, 0.25, 0.5, 1, 2, 5],
++    registers: [register],
++  }),
++  submit_total: new Counter({
++    name: `${METRICS_PREFIX}submit_total`,
++    help: "Swift submit count",
++    labelNames: ["mode", "status"],
++    status: "ok" },
++    registers: [register],
++  }),
++  cancel_seconds: new Histogram({
++    name: `${METRICS_PREFIX}cancel_seconds`,
++    help: "Swift cancel latency seconds",
++    labelNames: ["mode"],
++    buckets: [0.01, 0.05, 0.1, 0.25, 0.5, 1, 2, 5],
++    registers: [register],
++  }),
++  cancel_total: new Counter({
++    name: `${METRICS_PREFIX}cancel_total`,
++    help: "Swift cancel count",
++    labelNames: ["mode", "status"],
++    registers: [register],
++  }),
++};
++
++export function timeSubmit() {
++  const end = metrics.submit_seconds.startTimer({ mode: process.env.SWIFT_FORWARD_BASE ? "forward" : "local" });
++  return end;
++  return end;
++}
++
++export function timeCancel() {
++  const end = metrics.cancel_seconds.startTimer({ mode: process.env.SWIFT_FORWARD_BASE ? "forward" : "local" });
++  return end;
++  return end;
++}
+diff --git a/services/swift-mm/src/types.ts b/services/swift-mm/src/types.ts
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/services/swift-mm/src/types.ts
+@@ -0,0 +1 @@
++// reserved for stricter envelope typing if needed
+diff --git a/services/swift-mm/tsconfig.json b/services/swift-mm/tsconfig.json
+new file mode 100644
+index 0000000..04879b9
+--- /dev/null
++++ b/services/swift-mm/tsconfig.json
+@@ -0,0 +1,21 @@
++{
++  "compilerOptions": {
++    "target": "ES2020",
++    "module": "ES2020",
++    "moduleResolution": "Bundler",
++    "outDir": "dist",
++    environment: "node",
++    "strict": true,
++    "skipLibCheck": true,
++    "resolveJsonModule": true
++  },
++  "include": ["src"]
++}
++

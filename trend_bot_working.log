@@ -1,0 +1,144 @@
+2025-09-05 13:29:14,215 - __main__ - INFO - Starting Working Trend Bot with Real Price Data
+2025-09-05 13:29:14,215 - __main__ - INFO - ======================================================================
+2025-09-05 13:29:14,216 - __main__ - INFO - Environment: DEVNET (Beta)
+2025-09-05 13:29:14,216 - __main__ - INFO - Trading Platform: beta.drift.trade
+2025-09-05 13:29:14,216 - __main__ - INFO - Strategy: MACD + Momentum Trend Following
+2025-09-05 13:29:14,217 - __main__ - INFO - Market: SOL-PERP
+2025-09-05 13:29:14,217 - __main__ - INFO - Data Source: Drift Oracle (same as MM bot)
+2025-09-05 13:29:14,217 - __main__ - INFO - ======================================================================
+2025-09-05 13:29:15,800 - __main__ - INFO - Initializing components...
+2025-09-05 13:29:17,082 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-05 13:29:17,303 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-05 13:29:17,600 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-05 13:29:17,735 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-05 13:29:18,821 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-05 13:29:19,018 - httpx - INFO - HTTP Request: POST https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494 "HTTP/1.1 200 OK"
+2025-09-05 13:29:19,019 - libs.drift.client - INFO - ✅ driftpy connected and subscribed (env=devnet, rpc=https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494)
+2025-09-05 13:29:19,020 - libs.drift.client - INFO - User account initialized
+2025-09-05 13:29:19,020 - libs.drift.client - INFO - Drift client ready with user account
+2025-09-05 13:29:19,020 - libs.drift.client - INFO - ✅ Drift client initialized and subscribed
+2025-09-05 13:29:19,020 - __main__ - INFO - Drift client initialized for beta.drift.trade
+2025-09-05 13:29:19,021 - __main__ - INFO - All components initialized
+2025-09-05 13:29:19,142 - __main__ - INFO - Trend configuration loaded
+2025-09-05 13:29:19,142 - __main__ - INFO - Starting trend analysis loop with REAL price data...
+2025-09-05 13:29:19,142 - __main__ - INFO - You can track orders at: https://beta.drift.trade
+2025-09-05 13:29:19,142 - __main__ - INFO - Press Ctrl+C to stop
+2025-09-05 13:29:19,143 - __main__ - INFO - ======================================================================
+2025-09-05 13:29:19,143 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:19,949 - websockets.client - INFO - ! connect failed; reconnecting in 3.7 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-09-05 13:29:19,967 - websockets.client - INFO - ! connect failed; reconnecting in 4.4 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-09-05 13:29:20,111 - websockets.client - INFO - ! connect failed; reconnecting in 3.7 seconds
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 603, in __aiter__
+    async with self as protocol:
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\solana\rpc\websocket_api.py", line 422, in __aenter__
+    protocol = await super().__aenter__()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 634, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 655, in __await_impl__
+    await protocol.handshake(
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python311\Lib\site-packages\websockets\legacy\client.py", line 321, in handshake
+    raise InvalidStatusCode(status_code, response_headers)
+websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: HTTP 429
+2025-09-05 13:29:21,150 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:21,151 - __main__ - INFO - MACD Analysis: Fast=200.1000, Slow=200.1000, MACD=0.0000, Signal=SELL
+2025-09-05 13:29:23,154 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:23,154 - __main__ - INFO - MACD Analysis: Fast=200.1154, Slow=200.1074, MACD=0.0080, Signal=SELL
+2025-09-05 13:29:25,177 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:25,177 - __main__ - INFO - MACD Analysis: Fast=200.1438, Slow=200.1217, MACD=0.0221, Signal=SELL
+2025-09-05 13:29:27,190 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:27,191 - __main__ - INFO - MACD Analysis: Fast=200.1832, Slow=200.1423, MACD=0.0409, Signal=SELL
+2025-09-05 13:29:27,191 - __main__ - INFO - ==================================================
+2025-09-05 13:29:27,192 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 5
+2025-09-05 13:29:27,192 - __main__ - INFO - Runtime: 8.0s
+2025-09-05 13:29:27,192 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:29:27,193 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:29:27,193 - __main__ - INFO - Current Price: $200.4000
+2025-09-05 13:29:27,193 - __main__ - INFO - Price Change: +0.00%
+2025-09-05 13:29:27,193 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:29:27,194 - __main__ - INFO - MACD Values: 4
+2025-09-05 13:29:27,194 - __main__ - INFO - Signals Generated: 4
+2025-09-05 13:29:27,194 - __main__ - INFO - Real Price Success Rate: 0/5
+2025-09-05 13:29:27,194 - __main__ - INFO - ==================================================
+2025-09-05 13:29:29,195 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:29,195 - __main__ - INFO - MACD Analysis: Fast=200.2319, Slow=200.1688, MACD=0.0632, Signal=SELL
+2025-09-05 13:29:31,193 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:31,193 - __main__ - INFO - MACD Analysis: Fast=200.2886, Slow=200.2007, MACD=0.0878, Signal=SELL
+2025-09-05 13:29:33,203 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:33,203 - __main__ - INFO - MACD Analysis: Fast=200.3519, Slow=200.2377, MACD=0.1142, Signal=SELL
+2025-09-05 13:29:35,203 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:35,204 - __main__ - INFO - MACD Analysis: Fast=200.4208, Slow=200.2794, MACD=0.1414, Signal=SELL
+2025-09-05 13:29:37,218 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:37,219 - __main__ - INFO - MACD Analysis: Fast=200.4945, Slow=200.3253, MACD=0.1692, Signal=SELL
+2025-09-05 13:29:37,219 - __main__ - INFO - ==================================================
+2025-09-05 13:29:37,220 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 10
+2025-09-05 13:29:37,220 - __main__ - INFO - Runtime: 18.1s
+2025-09-05 13:29:37,221 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:29:37,221 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:29:37,221 - __main__ - INFO - Current Price: $200.9000
+2025-09-05 13:29:37,222 - __main__ - INFO - Price Change: +0.25%
+2025-09-05 13:29:37,222 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:29:37,222 - __main__ - INFO - MACD Values: 9
+2025-09-05 13:29:37,222 - __main__ - INFO - Signals Generated: 9
+2025-09-05 13:29:37,223 - __main__ - INFO - Real Price Success Rate: 0/10
+2025-09-05 13:29:37,223 - __main__ - INFO - ==================================================
+2025-09-05 13:29:39,228 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:39,228 - __main__ - INFO - MACD Analysis: Fast=200.5723, Slow=200.3753, MACD=0.1970, Signal=SELL
+2025-09-05 13:29:41,221 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:41,221 - __main__ - INFO - MACD Analysis: Fast=200.6535, Slow=200.4290, MACD=0.2245, Signal=SELL
+2025-09-05 13:29:43,215 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:43,216 - __main__ - INFO - MACD Analysis: Fast=200.7376, Slow=200.4861, MACD=0.2515, Signal=SELL
+2025-09-05 13:29:45,223 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:45,223 - __main__ - INFO - MACD Analysis: Fast=200.8241, Slow=200.5464, MACD=0.2777, Signal=SELL
+2025-09-05 13:29:47,218 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:47,218 - __main__ - INFO - MACD Analysis: Fast=200.9127, Slow=200.6096, MACD=0.3031, Signal=SELL
+2025-09-05 13:29:47,219 - __main__ - INFO - ==================================================
+2025-09-05 13:29:47,219 - __main__ - INFO - BETA TRACKING UPDATE - Iteration 15
+2025-09-05 13:29:47,219 - __main__ - INFO - Runtime: 28.1s
+2025-09-05 13:29:47,219 - __main__ - INFO - Current Position: $0.00
+2025-09-05 13:29:47,219 - __main__ - INFO - Total Volume: $0.00
+2025-09-05 13:29:47,220 - __main__ - INFO - Current Price: $201.4000
+2025-09-05 13:29:47,220 - __main__ - INFO - Price Change: +0.25%
+2025-09-05 13:29:47,220 - __main__ - INFO - Open Orders: 0
+2025-09-05 13:29:47,220 - __main__ - INFO - MACD Values: 14
+2025-09-05 13:29:47,220 - __main__ - INFO - Signals Generated: 14
+2025-09-05 13:29:47,221 - __main__ - INFO - Real Price Success Rate: 0/15
+2025-09-05 13:29:47,221 - __main__ - INFO - ==================================================
+2025-09-05 13:29:49,227 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:49,227 - __main__ - INFO - MACD Analysis: Fast=201.0030, Slow=200.6756, MACD=0.3275, Signal=SELL
+2025-09-05 13:29:51,232 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:51,232 - __main__ - INFO - MACD Analysis: Fast=201.0949, Slow=200.7441, MACD=0.3508, Signal=SELL
+2025-09-05 13:29:53,236 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:53,236 - __main__ - INFO - MACD Analysis: Fast=201.1880, Slow=200.8149, MACD=0.3731, Signal=SELL
+2025-09-05 13:29:55,244 - __main__ - WARNING - Oracle price fetch failed: 'DriftClient' object has no attribute 'convert_to_number'
+2025-09-05 13:29:55,245 - __main__ - INFO - MACD Analysis: Fast=201.2821, Slow=200.8878, MACD=0.3943, Signal=SELL

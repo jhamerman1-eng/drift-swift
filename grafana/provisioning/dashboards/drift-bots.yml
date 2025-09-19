@@ -1,0 +1,13 @@
+# Grafana Dashboard Provisioning Configuration
+# This file tells Grafana to automatically load dashboards from the specified directory
+
+apiVersion: 1
+
+providers:
+  - name: 'Drift Bots Dashboards'
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 10
+    allowUiUpdates: true
+    options:
+      path: /var/lib/grafana/dashboards

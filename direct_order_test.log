@@ -1,0 +1,9 @@
+2025-09-18 00:24:44,784 - INFO - DIRECT ORDER PLACEMENT TEST
+2025-09-18 00:24:44,784 - INFO - Testing if we can post orders directly to Drift Protocol blockchain
+2025-09-18 00:24:44,784 - INFO - TESTING DIRECT ORDER PLACEMENT TO BLOCKCHAIN
+2025-09-18 00:24:44,785 - INFO - ============================================================
+2025-09-18 00:24:46,861 - ERROR - Test failed: cannot import name 'OrderSide' from 'driftpy.types' (C:\Users\genuw\AppData\Local\Programs\Python\Python311\Lib\site-packages\driftpy\types.py)
+2025-09-18 00:24:46,864 - ERROR - ============================================================
+2025-09-18 00:24:46,865 - ERROR - FAILED: Cannot place orders directly
+2025-09-18 00:24:46,865 - ERROR - Need to fix the underlying Drift account connection
+2025-09-18 00:24:46,865 - ERROR - ============================================================

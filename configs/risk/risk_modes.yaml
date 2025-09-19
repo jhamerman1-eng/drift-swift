@@ -1,0 +1,8 @@
+risk_rails:
+  soft_drawdown_pct: -7.5
+  trend_pause_pct: -12.5
+  circuit_break_pct: -20.0
+feature_flags:
+  obi_enabled: false
+  trend_enabled: true
+  hedge_enabled: true

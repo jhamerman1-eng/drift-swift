@@ -1,0 +1,85 @@
+# Hedge Bot Profile Configuration
+# Settings specific to hedging and cross-venue arbitrage
+
+# Profile metadata
+profile_name: "Hedge Bot"
+profile_version: "1.0.0"
+description: "Delta hedging and cross-venue arbitrage strategies"
+
+# Moderate leverage for hedging
+target_leverage: 3.0
+
+# Hedge markets
+markets:
+  - "SOL-PERP"
+  - "ETH-PERP"
+  - "BTC-PERP"
+
+# Hedge-specific risk limits
+risk_limits:
+  max_position_usd: 100000
+  max_leverage: 10.0
+  max_drawdown_pct: 5.0
+  daily_loss_limit_usd: 10000
+  max_single_position_pct: 30.0
+  max_correlated_positions_pct: 50.0
+  # Hedge-specific extensions
+  max_hedge_size_usd: 50000
+  max_total_exposure_usd: 200000
+  max_venue_exposure_usd: 100000
+  max_delta_threshold: 0.1
+  delta_rebalance_threshold: 0.05
+  max_basis_bps: 20.0
+  min_profit_bps: 2.0
+
+# Hedge-specific order caps
+order_caps:
+  max_open_orders: 50
+  max_orders_per_minute: 100
+  max_cancels_per_minute: 200
+  max_order_size_usd: 50000
+  min_order_size_usd: 10
+  # Hedge-specific extensions
+  max_hedges_per_minute: 60
+  max_rebalances_per_hour: 20
+  max_hedge_latency_ms: 100.0
+  max_arbitrage_latency_ms: 50.0
+  max_concurrent_venues: 3
+
+# Hedge strategy configuration
+hedge_mode: "adaptive"
+
+# Venue configuration
+primary_venue: "drift"
+hedge_venues:
+  - "drift"
+  - "binance"
+
+# Delta management
+target_delta: 0.0
+delta_tolerance: 0.02
+auto_rebalance_enabled: true
+
+# Hedging parameters
+hedge_ratio: 1.0
+partial_hedge_threshold: 0.3
+
+# Cross-venue arbitrage
+enable_cross_venue_arb: true
+min_arb_opportunity_bps: 5.0
+max_arb_position_ratio: 0.5
+
+# Risk management
+enable_stop_loss: true
+stop_loss_threshold_pct: 2.0
+enable_position_limits: true
+
+# Execution preferences
+prefer_maker_orders: true
+use_ioc_orders: false
+enable_smart_routing: true
+
+# Performance optimization
+use_advanced_position_tracker: true
+enable_confidence_pricing: true
+use_urgency_scoring: true

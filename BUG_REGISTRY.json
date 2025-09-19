@@ -1,0 +1,183 @@
+{
+  "bugs": {
+    "BUG-001": {
+      "id": "BUG-001",
+      "description": "Port 9090 conflict preventing monitoring stack launch",
+      "root_cause": "Previous Prometheus/Grafana instance still running, port not properly released",
+      "impact": "Cannot start monitoring stack, no Grafana dashboard access, no Prometheus metrics",
+      "status": "open",
+      "priority": "critical",
+      "created": "2025-08-26",
+      "updated": "2025-08-26",
+      "regression_test": "test_bug_001_port_conflict.py",
+      "prevention_guard": "check_port_availability",
+      "resolution_commands": [
+        "netstat -ano | findstr :9090",
+        "taskkill /PID <PID_NUMBER> /F",
+        "netstat -ano | findstr :9090"
+      ],
+      "long_term_prevention": [
+        "Add port conflict detection to docker-compose",
+        "Implement graceful shutdown handling",
+        "Add process cleanup script"
+      ]
+    },
+    "BUG-002": {
+      "id": "BUG-002",
+      "description": "PowerShell command compatibility issues",
+      "root_cause": "Using Unix-style commands in Windows PowerShell environment",
+      "impact": "Scripts fail on Windows systems, cannot check file permissions or directory contents",
+      "status": "open",
+      "priority": "high",
+      "created": "2025-08-26",
+      "updated": "2025-08-26",
+      "regression_test": "test_bug_002_cross_platform.py",
+      "prevention_guard": "check_cross_platform_scripts",
+      "resolution_commands": [
+        "Replace Unix commands with PowerShell equivalents",
+        "Create Windows batch file alternatives",
+        "Add platform detection to scripts"
+      ],
+      "long_term_prevention": [
+        "Implement cross-platform script detection",
+        "Provide both .sh and .bat versions",
+        "Use Python for complex operations instead of shell scripts"
+      ]
+    },
+    "BUG-003": {
+      "id": "BUG-003",
+      "description": "JSON serialization errors causing bot crashes",
+      "root_cause": "Bytes objects and non-serializable objects in JSON payloads",
+      "impact": "Bot crashes after 17 seconds, no actual market making happening",
+      "status": "open",
+      "priority": "critical",
+      "created": "2025-08-30",
+      "updated": "2025-08-30",
+      "regression_test": "test_bug_003_json_serialization.py",
+      "prevention_guard": "check_json_safety",
+      "resolution_commands": [
+        "Convert bytes objects to hex strings before JSON serialization",
+        "Implement make_json_safe() function",
+        "Add JSON safety checks before sending payloads"
+      ],
+      "long_term_prevention": [
+        "Add JSON serialization safety checks to all payload creation",
+        "Implement automatic bytes-to-hex conversion",
+        "Add pre-commit hooks for JSON safety validation"
+      ]
+    },
+    "BUG-004": {
+      "id": "BUG-004",
+      "description": "Position tracking showing -5000 values causing wrong trading decisions",
+      "root_cause": "Incorrect position update logic not properly handling DriftPy position data",
+      "impact": "Bot makes wrong trading decisions based on incorrect position values",
+      "status": "open",
+      "priority": "high",
+      "created": "2025-08-30",
+      "updated": "2025-08-30",
+      "regression_test": "test_bug_004_position_tracking.py",
+      "prevention_guard": "check_position_accuracy",
+      "resolution_commands": [
+        "Fix position update method with proper DriftUser integration",
+        "Add position anomaly detection and correction",
+        "Implement comprehensive position validation"
+      ],
+      "long_term_prevention": [
+        "Add position anomaly detection to all position updates",
+        "Implement automatic position reset on anomalies",
+        "Add position validation to trading decision logic"
+      ]
+    },
+    "BUG-005": {
+      "id": "BUG-005",
+      "description": "Swift 422 errors on order placement",
+      "root_cause": "Invalid message format in Swift order payload",
+      "impact": "No order execution, bot cannot place trades",
+      "status": "open",
+      "priority": "high",
+      "created": "2025-08-30",
+      "updated": "2025-08-30",
+      "regression_test": "test_bug_005_swift_orders.py",
+      "prevention_guard": "check_swift_order_validation",
+      "resolution_commands": [
+        "Fix Swift order message format",
+        "Validate order payloads before sending",
+        "Add proper error handling for 422 responses"
+      ],
+      "long_term_prevention": [
+        "Add Swift order payload validation",
+        "Implement order format testing",
+        "Add 422 error handling and retry logic"
+      ]
+    },
+    "BUG-006": {
+      "id": "BUG-006",
+      "description": "WebSocket connection resilience issues",
+      "root_cause": "No reconnection logic for WebSocket connections",
+      "impact": "Lost order reception, bot stops receiving Swift orders",
+      "status": "open",
+      "priority": "medium",
+      "created": "2025-08-30",
+      "updated": "2025-08-30",
+      "regression_test": "test_bug_006_websocket_resilience.py",
+      "prevention_guard": "check_websocket_health",
+      "resolution_commands": [
+        "Implement WebSocket reconnection logic",
+        "Add connection health monitoring",
+        "Implement exponential backoff for reconnections"
+      ],
+      "long_term_prevention": [
+        "Add resilient WebSocket subscription system",
+        "Implement connection health metrics",
+        "Add automatic reconnection with backoff"
+      ]
+    },
+    "BUG-007": {
+      "id": "BUG-007",
+      "description": "Memory leaks in long-running bots",
+      "root_cause": "Unclosed connections and resources not properly cleaned up",
+      "impact": "Performance degradation over time, eventual bot crashes",
+      "status": "open",
+      "priority": "medium",
+      "created": "2025-08-30",
+      "updated": "2025-08-30",
+      "regression_test": "test_bug_007_memory_leaks.py",
+      "prevention_guard": "check_memory_usage",
+      "resolution_commands": [
+        "Add proper resource cleanup in shutdown methods",
+        "Implement connection pooling",
+        "Add memory usage monitoring"
+      ],
+      "long_term_prevention": [
+        "Add resource lifecycle management",
+        "Implement memory usage alerts",
+        "Add periodic resource cleanup"
+      ]
+    }
+  },
+  "metadata": {
+    "total_bugs": 7,
+    "critical_bugs": 2,
+    "high_priority_bugs": 3,
+    "medium_priority_bugs": 2,
+    "last_updated": "2025-08-30",
+    "version": "1.0"
+  },
+  "prevention_strategy": {
+    "regression_tests": {
+      "location": "tests/regression/",
+      "naming_convention": "test_bug_XXX_description.py",
+      "coverage_requirement": "100% of open bugs must have regression tests"
+    },
+    "prevention_guards": {
+      "location": "scripts/bug_prevention_check.py",
+      "execution": "pre-commit and pre-deployment",
+      "coverage_requirement": "All critical and high priority bugs must have prevention guards"
+    },
+    "monitoring": {
+      "metrics": "Prometheus metrics for bug prevention checks",
+      "alerts": "Immediate alerts for prevention guard failures",
+      "reporting": "Daily bug prevention status reports"
+    }
+  }
+}

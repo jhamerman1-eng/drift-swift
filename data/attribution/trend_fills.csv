@@ -1,0 +1,10 @@
+fill_id,timestamp,iso_timestamp,symbol,side,price,size,notional_usd,feature,strategy,regime,fill_type,entry_reason,exit_reason,confidence,risk_adjusted,unrealized_pnl_usd,realized_pnl_usd,holding_period_seconds
+trend-1757931236963530,1757931236.96353,2025-09-15T10:13:56.963530+00:00,SOL-PERP,sell,234.008245,0.042734,10.00,trend,demo_macd,demo_trending,entry,demo_signal,,0.8,False,,,
+trend-1757931239274097,1757931239.274097,2025-09-15T10:13:59.274097+00:00,SOL-PERP,buy,232.985615,0.042921,10.00,trend,demo_macd,demo_trending,entry,demo_signal,,0.8,False,,,
+trend-1757931241574575,1757931241.5745757,2025-09-15T10:14:01.574576+00:00,SOL-PERP,sell,234.273430,0.042685,10.00,trend,demo_macd,demo_trending,entry,demo_signal,,0.8,False,,,
+trend-1757931243898005,1757931243.8980052,2025-09-15T10:14:03.898005+00:00,SOL-PERP,buy,241.026637,0.041489,10.00,trend,demo_macd,demo_trending,entry,demo_signal,,0.8,False,,,
+trend-1757931246261128,1757931246.261128,2025-09-15T10:14:06.261128+00:00,SOL-PERP,sell,240.140702,0.041642,10.00,trend,demo_macd,demo_trending,entry,demo_signal,,0.8,False,,,
+trend-1757931248576162,1757931248.5761623,2025-09-15T10:14:08.576162+00:00,SOL-PERP,buy,242.747200,0.041195,10.00,trend,demo_macd,demo_trending,entry,demo_signal,,0.8,False,,,
+trend-1757931250877471,1757931250.8774714,2025-09-15T10:14:10.877471+00:00,SOL-PERP,sell,244.838966,0.040843,10.00,trend,demo_macd,demo_trending,entry,demo_signal,,0.8,False,,,
+trend-1757931253221413,1757931253.2214136,2025-09-15T10:14:13.221414+00:00,SOL-PERP,buy,238.952482,0.041849,10.00,trend,demo_macd,demo_trending,entry,demo_signal,,0.8,False,,,
+trend-1757931255523576,1757931255.5235765,2025-09-15T10:14:15.523576+00:00,SOL-PERP,sell,245.362244,0.040756,10.00,trend,demo_macd,demo_trending,entry,demo_signal,,0.8,False,,,

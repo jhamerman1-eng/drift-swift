@@ -1,0 +1,65 @@
+{
+  "test_info": {
+    "start_time": "2025-09-13T14:01:56.091098",
+    "end_time": "2025-09-13T14:02:00.462188",
+    "duration_seconds": 4.37109,
+    "planned_duration_minutes": 5,
+    "actual_duration_minutes": 0.0728515
+  },
+  "performance_metrics": {
+    "ticks_processed": 0,
+    "orders_placed": 0,
+    "orders_cancelled": 0,
+    "swift_orders_received": 0,
+    "swift_orders_processed": 0,
+    "errors_encountered": 0,
+    "jit_trades_executed": 0,
+    "position_updates": 0,
+    "pnl_updates": [],
+    "connection_status": [],
+    "performance_stats": []
+  },
+  "summary_stats": {
+    "ticks_per_second": 0.0,
+    "orders_per_minute": 0.0,
+    "error_rate": 0.0,
+    "success_rate": 0.0
+  },
+  "log_entries": [
+    {
+      "timestamp": "2025-09-13T14:01:56.091098",
+      "level": "INFO",
+      "message": "\ud83d\ude80 STARTING 5-MINUTE PRODUCTION TEST"
+    },
+    {
+      "timestamp": "2025-09-13T14:01:56.187284",
+      "level": "INFO",
+      "message": "============================================================"
+    },
+    {
+      "timestamp": "2025-09-13T14:01:56.198292",
+      "level": "INFO",
+      "message": "\ud83d\udccb Test Configuration: {\n  \"env\": \"devnet\",\n  \"rpc_url\": \"https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494\",\n  \"sidecar_url\": \"http://localhost:8787\",\n  \"swift_websocket_url\": \"wss://swift.drift.trade/ws\",\n  \"wallet_file\": \".valid_wallet.json\",\n  \"order_size\": 0.001,\n  \"max_orders_per_side\": 1,\n  \"price_tolerance\": 0.01,\n  \"spread_bps\": 10,\n  \"test_mode\": true,\n  \"max_order_size_usd\": 10.0,\n  \"max_daily_loss_usd\": 5.0\n}"
+    },
+    {
+      "timestamp": "2025-09-13T14:01:59.478475",
+      "level": "INFO",
+      "message": "\u2705 Bot import successful"
+    },
+    {
+      "timestamp": "2025-09-13T14:01:59.484475",
+      "level": "INFO",
+      "message": "\ud83d\udd27 Initializing bot..."
+    },
+    {
+      "timestamp": "2025-09-13T14:02:00.455185",
+      "level": "ERROR",
+      "message": "\u274c Bot initialization failed"
+    }
+  ],
+  "system_info": {
+    "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "platform": "win32",
+    "working_directory": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift"
+  }
+}

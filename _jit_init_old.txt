@@ -1,0 +1,44 @@
+    async def _initialize_jit_client(self):
+        """Initialize JIT client if feature flag is enabled - US-JIT-005"""
+        try:
+            if not JIT_CLIENT_AVAILABLE:
+                logger.info("JIT client not available - continuing with Swift/DriftPy flow")
+                return
+
+            # SIMPLIFIED: Use direct config for JIT
+            jit_config = self.config.get("jit_config", {"enabled": False})
+            # Check environment variable first, then config
+            self.jit_enabled = os.getenv("JIT_ENABLED", "").lower() == "true" or jit_config.get("enabled", False)
+
+            if not self.jit_enabled:
+                logger.info("JIT feature disabled - using Swift/DriftPy flow")
+                return
+
+            # Build JIT client from centralized config
+            if build_jit_client_from_config:
+                # Convert centralized config to format expected by JIT client
+                legacy_config = {
+                    "feature": {"jit": jit_config}
+                }
+                self.jit_client = build_jit_client_from_config(legacy_config)
+            else:
+                self.jit_client = None
+
+            if self.jit_client:
+                logger.info("✅ JIT client initialized - orders will route through JIT service")
+                logger.info(f"🎯 JIT service: {jit_config.get('base_url')}")
+                
+                # Log JIT health details
+                try:
+                    health = self.jit_client.get_health_details()
+                    logger.info(f"📊 JIT health: {health}")
+                except Exception as e:
+                    logger.warning(f"⚠️  Could not get JIT health: {e}")
+            else:
+                logger.warning("⚠️  JIT client failed to initialize - falling back to Swift/DriftPy")
+                self.jit_enabled = False
+
+        except Exception as e:
+            logger.error(f"Failed to initialize JIT client: {e}")
+            self.jit_enabled = False
+            self.jit_client = None
