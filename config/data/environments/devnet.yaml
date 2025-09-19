@@ -1,0 +1,43 @@
+# Devnet Environment Configuration
+# Overrides for devnet development and testing
+
+# Environment settings
+network: "devnet"
+environment: "development"
+
+# RPC endpoints for devnet
+rpc:
+  primary_url: "https://api.devnet.solana.com"
+  backup_urls:
+    - "https://devnet.helius-rpc.com"
+    - "https://rpc-devnet.solana.com"
+
+# WebSocket for devnet
+websocket:
+  url: "wss://api.devnet.solana.com"
+
+# Drift configuration for devnet
+drift:
+  environment: "devnet"
+
+# Logging configuration for development
+logging:
+  level: "DEBUG"
+  console_enabled: true
+  file_enabled: true
+
+# Feature flags for development
+feature_flags:
+  enhanced_routing: true
+  cross_venue_hedging: true
+  advanced_position_tracking: true
+  confidence_pricing: true
+  jit_optimization: true
+
+# Default markets for devnet
+default_markets:
+  primary_markets:
+    - "SOL-PERP"
+    - "ETH-PERP"
+  backup_markets:
+    - "USDC-PERP"

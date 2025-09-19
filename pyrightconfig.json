@@ -63,6 +63,12 @@
     {
       "include": ["run_swift_mm_complete.py"],
       "typeCheckingMode": "off"
+    },
+    {
+      "include": ["**/driftpy-enhanced-usermap.py"],
+      "reportMissingImports": false,
+      "reportMissingTypeStubs": false,
+      "reportImportCycles": false
     }
   ],
 

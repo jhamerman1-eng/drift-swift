@@ -1,5 +1,17 @@
+# ============================================================================
+# ORCHESTRATOR CONFIGURATION - USES CENTRALIZED ENVIRONMENT CONFIG
+# ============================================================================
+# This file now references the centralized environment configuration system
+# Environment-specific settings (RPC, Swift URLs, etc.) are loaded from:
+# - configs/environments.yaml (SINGLE SOURCE OF TRUTH)
+# - Use DRIFT_ENVIRONMENT env var to switch between local/devnet/mainnet
+# ============================================================================
+
 market: SOL-PERP
 metrics_port: 9109
+
+# Environment configuration is now loaded from libs.config.environment
+# Use: DRIFT_ENVIRONMENT=local|devnet|mainnet
 jit:
   loop_secs: 0.9
   skew:

@@ -1,8 +1,41 @@
 hedge:
   enabled: true
   urgency_scoring: true
+  advanced_features:
+    funding_skewed_quotes: true
+    impact_aware_bands: true
+    unified_fair_value: true
+    market_regime_detection: true
+    dynamic_slippage: true
+    confidence_adjusted_pricing: true
+
+  sub_account:
+    name: "hedge_account"
+    create_if_missing: true
+    market_index: 0  # SOL-PERP
+    initial_collateral_usd: 1000.0
+
+  risk_parameters:
+    max_inventory_usd: 1500.0
+    urgency_threshold: 0.7
+    max_slippage_bps: 5
+    min_confidence_threshold: 0.5
+    max_position_size_pct: 0.8
+
+  advanced_settings:
+    funding_sensitivity: 1000.0
+    band_width_limit: 0.05
+    regime_adaptation_rate: 0.1
+    oracle_weight_base: 0.8
+
   route:
-    - venue: "CEX:BINANCE"
+    - venue: "DRIFT:INTERNAL"
       mode: "IOC"
-    - venue: "CEX:OKX"
+      sub_account: "hedge_account"
+      max_slippage_bps: 5
+      urgency_threshold: 0.7
+    - venue: "DRIFT:INTERNAL"
       mode: "PASSIVE"
+      sub_account: "hedge_account"
+      max_slippage_bps: 3
+      urgency_threshold: 0.3

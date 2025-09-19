@@ -1,0 +1,33 @@
+# JitterShotgun Configuration - Clean Production Setup
+# Broad volume capture with small clips for maximum flow participation
+
+enabled: true
+markets: ["SOL-PERP"]          # allowlist for shotgun
+clip_size: 0.25                # base units per fill (e.g., SOL)
+min_notional_usd: 0            # no floor; grab broad flow
+toxicity_max: 0.95             # permissive; let filters drop only worst
+priority_fee_micro_lamports: 120
+compute_unit_limit: 1400000
+max_open_exposure_usd: 50000   # cap to avoid runaway inventory
+
+# Auction configuration
+auction:
+  use: true
+  duration_ms: 150
+  max_width_bps: 8
+
+# Attribution and monitoring
+attribution:
+  source_tag: "shotgun"
+  track_performance: true
+  
+# Risk controls
+risk:
+  max_position_sol: 10.0
+  exposure_warning_threshold: 40000  # USD
+  
+# Quality filters (lenient for broad participation)
+quality:
+  min_fill_size: 0.01           # Very small minimum
+  skip_sanitized_orders: false  # Accept sanitized orders
+  participation_rate: 0.95      # Participate in 95% of orders

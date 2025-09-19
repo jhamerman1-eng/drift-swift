@@ -1,0 +1,235 @@
+# 90-Day Combined System Test: JIT Ultimate Jitter Hedger + Quality First Hedger
+# Combined system with $20k capital allocation
+# Full feature set enabled for maximum performance
+
+test_configuration:
+  name: "90-Day Combined System Test: JIT + Quality First Hedger"
+  mode: "mock"  # Use mock for safe testing
+  duration_days: 90
+  start_date: "2025-09-18"
+  test_type: "combined_system_test"
+
+  # Capital allocation for this test
+  capital_allocation:
+    enabled: true
+    dynamic_allocation: true
+    total_portfolio_usd: 20000  # $20k as requested
+    target_utilization: 0.85    # 85% portfolio utilization (conservative)
+    track_performance: true
+    regime_aware: true
+    reallocation_frequency_minutes: 15
+
+    risk_management:
+      max_single_asset_allocation: 0.40  # 40% max per asset (more conservative)
+      max_correlated_risk: 0.65         # 65% max correlated exposure
+      leverage_buffer: 0.80             # Use 80% of max leverage for safety
+
+# Combined System Configuration
+combined_system_features:
+
+  # JIT Ultimate Jitter Hedger Configuration
+  jit_ultimate_system:
+    enabled: true
+
+    # Core JIT features (always enabled)
+    core_jitter: true
+    basic_attribution: true
+    basic_allocation: true
+
+    # Advanced JIT features (ENABLED for combined system)
+    advanced_toggle_manager: true       # Hot strategy swapping
+    advanced_crash_sentinel: true      # Graduated risk response
+    sophisticated_hedge_coupling: true # Intelligent hedge routing
+    advanced_quality_filters: true     # ML-based quality scoring
+    realtime_optimization: true        # Auto parameter tuning
+    comprehensive_testing: true        # Backtesting & shadow testing
+
+    # JIT-specific configuration
+    jit_config:
+      symbol: "SOL-PERP"
+      leverage: 8  # Conservative leverage for $20k
+      post_only: true
+      obi_microprice: true
+      spread_bps_base: 6.0  # Tighter spreads for efficiency
+      spread_bps_min: 3.0
+      spread_bps_max: 20.0
+      inventory_target: 0.0
+      max_position_abs: 80.0  # Conservative position limits
+      cancel_replace_enabled: true
+      cancel_replace_interval_ms: 800
+      toxicity_guard: true
+      latency_budget_enabled: true
+      performance_tracking: true
+      attribution_enabled: true
+      strategy_coordination: true
+
+    # Regime allocation for JIT (optimized for combined system)
+    regime_allocation:
+      calm:
+        shotgun_weight: 0.75   # 75% shotgun in calm markets
+        sniper_weight: 0.25    # 25% sniper
+        hedge_ratio: 0.85      # 85% hedge ratio
+      normal:
+        shotgun_weight: 0.60
+        sniper_weight: 0.40
+        hedge_ratio: 0.80
+      volatile:
+        shotgun_weight: 0.45   # Shift to sniper in volatile
+        sniper_weight: 0.55
+        hedge_ratio: 0.90      # Higher hedge ratio in volatile
+      crash:
+        shotgun_weight: 0.10   # Minimal shotgun in crash
+        sniper_weight: 0.90    # Heavy sniper focus
+        hedge_ratio: 0.95      # Near full hedging in crash
+
+  # Quality First Hedger Configuration
+  quality_first_hedger:
+    enabled: true
+
+    # Quality thresholds (optimized for combined system)
+    quality_thresholds:
+      default_threshold: 0.65  # Slightly lower for combined system
+      min_hedge_size: 1.5      # Minimum hedge size
+      sniper_threshold: 0.75   # Higher threshold for sniper fills
+      shotgun_threshold: 0.60  # Lower threshold for shotgun fills
+
+    # Strategy-specific configurations
+    strategies:
+      hybrid_shotgun:
+        hedge_ratio: 0.80
+        quality_threshold: 0.60
+        max_delay_ms: 500
+        regime_overrides:
+          volatile:
+            quality_threshold: 0.65
+            hedge_ratio: 0.85
+          crash:
+            quality_threshold: 0.55
+            hedge_ratio: 0.90
+            max_delay_ms: 200
+
+      hybrid_sniper:
+        hedge_ratio: 0.75
+        quality_threshold: 0.75
+        max_delay_ms: 1500
+        regime_overrides:
+          volatile:
+            quality_threshold: 0.80
+            hedge_ratio: 0.80
+          crash:
+            quality_threshold: 0.70
+            hedge_ratio: 0.85
+            max_delay_ms: 800
+
+    # Enterprise infrastructure settings
+    enterprise_features:
+      xemm_bridge: true
+      cost_routing: "advanced"
+      margin_coordination: true
+      audit_trail: true
+      state_machine_safety: true
+      race_condition_protection: true
+
+  # Coordination Configuration
+  coordination_system:
+    enabled: true
+
+    # Real-time coordination settings
+    fill_attribution: true
+    cross_bot_delta_management: true
+    quality_threshold: 0.65
+    coordination_mode: "real_time"
+
+    # Performance tracking
+    attribution_tracking: true
+    performance_monitoring: true
+    cross_bot_analytics: true
+
+    # Safety mechanisms
+    circuit_breakers: true
+    emergency_halt_enabled: true
+    automatic_recovery: true
+
+# Mock Environment Settings (for safe testing)
+mock_settings:
+  use_mock_trading: true
+  mock_market_data: true
+  mock_swift_sidecar: true
+  mock_price_feeds: true
+  real_logging: true
+  real_metrics: true
+
+  # Realistic market simulation
+  market_simulation:
+    volatility_model: "realistic"  # Use realistic volatility patterns
+    regime_distribution:
+      calm: 0.30      # 30% calm periods
+      normal: 0.40    # 40% normal periods
+      volatile: 0.20  # 20% volatile periods
+      crash: 0.10     # 10% crash periods
+
+    # Quality score distribution (realistic)
+    quality_distribution:
+      high_quality: 0.35    # 35% high quality fills (0.8-1.0)
+      medium_quality: 0.45  # 45% medium quality (0.6-0.8)
+      low_quality: 0.20     # 20% low quality (0.2-0.6)
+
+    # Fill volume distribution
+    volume_distribution:
+      small_fills: 0.75     # 75% small fills (1-10 units)
+      medium_fills: 0.20    # 20% medium fills (10-30 units)
+      large_fills: 0.05     # 5% large fills (30+ units)
+
+# Performance Tracking Configuration
+performance_tracking:
+  enabled: true
+
+  # Metrics to track
+  metrics:
+    - total_pnl
+    - win_rate
+    - sharpe_ratio
+    - max_drawdown
+    - hedge_coverage_rate
+    - average_profit_per_trade
+    - quality_score_distribution
+    - regime_performance
+    - strategy_breakdown
+    - latency_measurements
+    - error_rate
+
+  # Reporting intervals
+  reporting:
+    daily_reports: true
+    weekly_summaries: true
+    final_comprehensive_report: true
+
+  # Alert thresholds
+  alerts:
+    max_drawdown_threshold: 0.15  # 15% max drawdown alert
+    error_rate_threshold: 0.05    # 5% error rate alert
+    performance_degradation_threshold: 0.10  # 10% performance degradation
+
+# Safety Configuration
+safety_settings:
+  enabled: true
+
+  # Risk limits
+  risk_limits:
+    max_daily_loss: 1000.0      # $1k max daily loss
+    max_portfolio_drawdown: 0.20  # 20% max drawdown
+    max_single_trade_loss: 200.0  # $200 max per trade
+    max_concentration: 0.50       # 50% max concentration
+
+  # Emergency controls
+  emergency_controls:
+    automatic_halt_on_drawdown: true
+    circuit_breaker_enabled: true
+    manual_override_available: true
+
+  # Monitoring
+  monitoring:
+    health_checks: true
+    performance_alerts: true
+    system_monitoring: true
+    log_aggregation: true

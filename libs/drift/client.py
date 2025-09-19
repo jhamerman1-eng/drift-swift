@@ -73,11 +73,85 @@ class Order:
 def _price_to_int(px: float) -> int:
     return max(1, int(round(px * PRICE_PRECISION_I)))
 
-def _base_amt_to_int(size_usd: float, px: float) -> int:
-    # base_qty = notional / price, then scale to BASE_PRECISION
+def _base_amt_to_int(size_usd: float, px: float, market_step: Optional[float] = None) -> int:
+    """
+    IMPROVED: Convert USD size to base amount with precision and step validation.
+
+    Args:
+        size_usd: USD notional size
+        px: Price per unit
+        market_step: Minimum order step size (optional for validation)
+
+    Returns:
+        Base amount in integer precision
+
+    Raises:
+        ValueError: If calculated quantity is below minimum step size
+    """
     if px <= 0:
         raise ValueError("price must be > 0")
-    return max(1, int(round((size_usd / px) * BASE_PRECISION_I)))
+
+    # IMPROVED: Better precision with step validation
+    base_qty = size_usd / max(1e-9, px)
+
+    # Apply market step rounding if provided
+    if market_step is not None:
+        base_qty = round_down(base_qty, market_step)
+
+    # IMPROVED: Validation against minimum step size
+    if base_qty <= 0:
+        raise ValueError("base_qty below step")
+
+    return max(1, int(round(base_qty * BASE_PRECISION_I)))
+
+
+def round_down(value: float, step: float) -> float:
+    """Round down to the nearest multiple of step."""
+    if step <= 0:
+        raise ValueError("step must be > 0")
+    return (value // step) * step
+
+
+def round_to_tick(price: float, tick_size: float) -> float:
+    """
+    Round price to the nearest tick size.
+
+    Args:
+        price: Price to round
+        tick_size: Minimum price increment
+
+    Returns:
+        Price rounded to nearest tick
+    """
+    if tick_size <= 0:
+        raise ValueError("tick_size must be > 0")
+    return round(price / tick_size) * tick_size
+
+
+def calculate_limit_price_with_slippage(ref_price: float, side: str, slippage_pct: float,
+                                        price_tick: Optional[float] = None) -> float:
+    """
+    IMPROVED: Calculate limit price with slippage guard and tick rounding.
+
+    Args:
+        ref_price: Reference price
+        side: 'buy' or 'sell'
+        slippage_pct: Slippage percentage (e.g., 0.001 for 0.1%)
+        price_tick: Price tick size for rounding (optional)
+
+    Returns:
+        Limit price with slippage applied and tick-rounded
+    """
+    if side.lower() == "sell":
+        limit_price = ref_price * (1 - slippage_pct)
+    else:  # buy
+        limit_price = ref_price * (1 + slippage_pct)
+
+    # IMPROVED: Round to tick size if provided
+    if price_tick is not None:
+        limit_price = round_to_tick(limit_price, price_tick)
+
+    return limit_price
 
 class DriftpyClient:
     def __init__(
@@ -120,7 +194,11 @@ class DriftpyClient:
         if not wallet_path:
             wallet_path = os.environ.get("DRIFT_KEYPAIR_PATH")
 
-        self._secret_src = wallet_path or wallet_secret_key
+        # CRITICAL: Ensure wallet_secret_key is properly set for DriftpyClient
+        if "wallet_secret_key" in self._cfg:
+            self._secret_src = self._cfg["wallet_secret_key"]
+        else:
+            self._secret_src = wallet_path or wallet_secret_key
         self._secret: Optional[bytes] = None
 
         self._conn: Optional[AsyncClient] = None
@@ -148,6 +226,20 @@ class DriftpyClient:
 
         if not self._rpc_url:
             raise ValueError("rpc_url is required (set in config or pass rpc_url=)")
+
+        # CRITICAL FIX: Use unified wallet manager if no wallet_secret_key provided
+        if "wallet_secret_key" not in self._cfg:
+            try:
+                from WALLET_CORRUPTION_PERMANENT_FIX import get_validated_keypair_for_drift_client
+                import logging
+                logger = logging.getLogger(__name__)
+                
+                # Load wallet using unified manager
+                keypair = get_validated_keypair_for_drift_client(self._cfg)
+                self._cfg["wallet_secret_key"] = list(bytes(keypair))
+                self._logger.debug(f"✅ Added wallet_secret_key via unified manager: {keypair.pubkey()}")
+            except Exception as e:
+                self._logger.warning(f"⚠️ Unified wallet manager failed in __init__: {e}")
 
         # Load secret now so errors surface early
         self._secret = self._load_secret(self._secret_src)
@@ -510,13 +602,18 @@ class DriftpyClient:
                             if px is not None and q is not None:
                                 px = float(px)
                                 q = float(q)
-                                if q > 0:
-                                    buckets[px] += q
+                                try:
+                                    if px is not None and q is not None:
+                                        px = float(px)
+                                        q = float(q)
+                                        if q > 0:
+                                            buckets[px] += q
+                                except Exception:
+                                    continue
+                                if buckets:
+                                    out = sorted(((p, buckets[p]) for p in buckets), key=lambda x: x[0], reverse=(side=="bids"))
                         except Exception:
                             continue
-                if buckets:
-                    out = sorted(((p, buckets[p]) for p in buckets), key=lambda x: x[0], reverse=(side=="bids"))
-            # trim to depth and enforce side sorting
             if side == "bids":
                 out.sort(key=lambda x: x[0], reverse=True)
             else:
@@ -693,6 +790,29 @@ class DriftpyClient:
             self._logger.warning(f"[ORDERBOOK] Error in L2 helper: {e}")
             raise
 
+    def _get_market_metadata(self, market_index: int = 0):
+        """
+        Get market metadata including step sizes and tick sizes.
+
+        Args:
+            market_index: Market index (0 for SOL-PERP)
+
+        Returns:
+            Market metadata object or None if unavailable
+        """
+        try:
+            if self._driver and hasattr(self._driver, 'get_perp_market_info'):
+                market_info = self._driver.get_perp_market_info(market_index)
+                return market_info
+            elif self._driver and hasattr(self._driver, 'perp_markets'):
+                # Fallback to perp markets array
+                if market_index < len(self._driver.perp_markets):
+                    return self._driver.perp_markets[market_index]
+        except Exception as e:
+            self._logger.debug(f"Could not get market metadata: {e}")
+
+        return None
+
     def _convert_drift_orderbook_to_l2(self, drift_orderbook) -> dict:
         """Convert drift orderbook format to L2 format."""
         l2_orderbook = {
@@ -866,6 +986,8 @@ class DriftpyClient:
                 if ua is None:
                     raise RuntimeError("Drift user not ready (no user account) after subscribe()")
                 self._logger.info("Drift client ready with user account")
+                raise RuntimeError("Drift user not ready (no user account) after subscribe()")
+                self._logger.info("Drift client ready with user account")
         except Exception as e:
             self._logger.warning(f"User verification failed: {e}")
             self._logger.info("Drift client ready (user verification skipped)")
@@ -878,14 +1000,14 @@ class DriftpyClient:
         try:
             # Ensure the driver is ready before fetching orderbook
             await self._ensure_ready()
-            
+
             # Use the robust L2 orderbook adapter
             ob = await self.get_l2_orderbook_compat(market_index, depth=10)
             
             # Convert to the expected format (lists of lists for MarketDataAdapter compatibility)
             bids = []
             asks = []
-            
+
             # Process bids (buy orders)
             for bid in ob.get("bids", [])[:10]:  # Top 10 bids
                 if isinstance(bid, (list, tuple)) and len(bid) >= 2:
@@ -939,8 +1061,13 @@ class DriftpyClient:
             px = float(order.price)
             size_usd = float(order.size_usd)
 
+            # IMPROVED: Use enhanced precision for base amount calculation
+            # Get market metadata for step size validation
+            market_metadata = self._get_market_metadata(getattr(order, "market_index", 0))
+            market_step = getattr(market_metadata, 'base_step', None) if market_metadata else None
+
             price_i = _price_to_int(px)
-            base_amt_i = _base_amt_to_int(size_usd, px)
+            base_amt_i = _base_amt_to_int(size_usd, px, market_step)
 
             direction = PositionDirection.Long() if str(order.side).upper().endswith("BUY") else PositionDirection.Short()  # type: ignore
 
@@ -999,6 +1126,19 @@ class DriftpyClient:
 
         except Exception as e:
             self._logger.error("❌ BLOCKCHAIN ORDER FAILED: %s", e, exc_info=True)
+
+            # Add detailed error analysis for troubleshooting
+            error_str = str(e)
+            if "MaxNumberOfOrders" in error_str:
+                self._logger.error("[VERBOSE] 🚨 MAX ORDERS ERROR: Hit Drift protocol limit")
+                self._logger.error("[VERBOSE] 🚨 SOLUTION: Need to cancel existing orders or increase limit")
+            elif "insufficient funds" in error_str.lower():
+                self._logger.error("[VERBOSE] 🚨 INSUFFICIENT FUNDS: Need more SOL in wallet")
+            elif "simulation failed" in error_str.lower():
+                self._logger.error("[VERBOSE] 🚨 SIMULATION FAILED: Transaction would fail on chain")
+            else:
+                self._logger.error(f"[VERBOSE] 🚨 OTHER ERROR TYPE: {type(e).__name__}")
+
             # Create detailed fallback with order info
             import time
             mock_id = f"MOCK-{int(time.time()*1000)%1000000:06d}"
@@ -1177,6 +1317,23 @@ async def build_client_from_config(config_path: str) -> DriftpyClient:
         # Load configuration
         with open(config_path, 'r') as f:
             cfg = yaml.safe_load(f)
+
+        # CRITICAL FIX: Use unified wallet manager to prevent corruption
+        from WALLET_CORRUPTION_PERMANENT_FIX import get_validated_keypair_for_drift_client
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        try:
+            # Load wallet using unified manager (prevents corruption)
+            keypair = get_validated_keypair_for_drift_client(cfg)
+            logger.info(f"✅ Loaded validated wallet for DriftPy client: {keypair.pubkey()}")
+            
+            # Update config with validated wallet_secret_key
+            cfg["wallet_secret_key"] = list(bytes(keypair))
+            
+        except Exception as e:
+            logger.error(f"❌ Failed to load wallet with unified manager: {e}")
+            logger.warning("⚠️ Falling back to original wallet loading method")
 
         # Allow environment override for RPC failover
         override_rpc = os.getenv("DRIFT_RPC_URL") or os.getenv("RPC_URL")

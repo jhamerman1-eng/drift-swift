@@ -1,5 +1,5 @@
 # ===== LIVE TRADING CONFIGURATION =====
-# ⚠️  WARNING: This configuration enables REAL blockchain orders with REAL money!
+# WARNING: This configuration enables REAL blockchain orders with REAL money!
 # Only use this configuration if you understand the risks and have sufficient funds.
 
 cluster: devnet
@@ -13,16 +13,16 @@ use_mock: false
 rpc_url: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
 rpc:
   http_url: https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
-  ws_url: wss://https://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
+  ws_url: wss://devnet.helius-rpc.com/?api-key=2728d54b-ce26-4696-bb4d-dc8170fcd494
 
 # Swift configuration for real orders
 swift:
-  http_url: https://swift.drift.trade
-  ws_url: wss://swift.drift.trade/ws
+  http_url: https://master.swift.drift.trade
+  ws_url: wss://master.swift.drift.trade/ws
 
 # Wallet configuration - MUST be funded!
 wallets:
-  maker_keypair_path: .valid_wallet.json  # ⚠️  Must be funded wallet!
+  maker_keypair_path: .valid_wallet.json
   jito_keypair_path: .swift_test_wallet.json
 
 # Market configuration

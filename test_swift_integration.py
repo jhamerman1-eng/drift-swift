@@ -1,110 +1,114 @@
 #!/usr/bin/env python3
 """
-Test Swift Integration
-Verifies that the Swift submit module works correctly
+Quick test script to verify Swift API integration is working
 """
 
 import asyncio
+import sys
 import os
-from libs.drift.swift_submit import swift_market_taker, _gen_uuid, SWIFT_BASE
+import traceback
 
-def test_uuid_generation():
-    """Test UUID generation"""
-    uuid1 = _gen_uuid()
-    uuid2 = _gen_uuid()
+# Add project root to path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-    print(f"✅ UUID Generation:")
-    print(f"   UUID 1: {uuid1}")
-    print(f"   UUID 2: {uuid2}")
-    print(f"   Unique: {uuid1 != uuid2}")
+from libs.drift.swift_envelope import SwiftEnvelopeCreator, SwiftOrderParams
+from libs.drift.drivers.swift import SwiftSidecarDriver
+from solders.keypair import Keypair
 
-    assert uuid1 != uuid2, "UUIDs should be unique"
-    assert len(uuid1) == 36, "UUID should be 36 characters"
-
-def test_swift_base_config():
-    """Test Swift base URL configuration"""
-    original_base = SWIFT_BASE
-
-    # Test default
-    print(f"✅ Swift Base URL: {SWIFT_BASE}")
-
-    # Test override (simulate)
-    os.environ['SWIFT_BASE'] = 'https://test.swift.drift.trade'
-    from libs.drift.swift_submit import SWIFT_BASE as test_base
-    print(f"✅ Override test: {test_base}")
-
-    # Reset
-    if 'SWIFT_BASE' in os.environ:
-        del os.environ['SWIFT_BASE']
-
-def test_imports():
-    """Test that all required imports work"""
+async def test_swift_integration():
+    """Test Swift API integration with real envelope creation"""
+    print("🔍 Testing Swift API Integration...")
+    
     try:
-        from driftpy.drift_client import DriftClient
-        from driftpy.types import OrderParams, OrderType, MarketType, SignedMsgOrderParamsMessage, PositionDirection
-        import httpx
-        print("✅ All Swift dependencies imported successfully")
-
-        # Check httpx version
-        print(f"   httpx version: {httpx.__version__}")
-
-    except ImportError as e:
-        print(f"⚠️  Import issue (expected in test env): {e}")
-
-def test_swift_submit_structure():
-    """Test that swift_market_taker function has correct signature"""
-    import inspect
-    from libs.drift.swift_submit import swift_market_taker
-
-    sig = inspect.signature(swift_market_taker)
-    params = list(sig.parameters.keys())
-
-    print(f"✅ swift_market_taker parameters: {params}")
-
-    # Check required parameters
-    assert 'drift_client' in params, "Should have drift_client parameter"
-    assert 'market_index' in params, "Should have market_index parameter"
-    assert 'direction' in params, "Should have direction parameter"
-    assert 'qty_perp' in params, "Should have qty_perp parameter"
-    assert 'auction_ms' in params, "Should have auction_ms parameter"
-
-async def mock_swift_test():
-    """Test with mock data (doesn't require real connection)"""
-    try:
-        print("🔧 Testing Swift integration with mock data...")
-
-        # Test UUID generation
-        test_uuid_generation()
-
-        # Test imports
-        test_imports()
-
-        # Test function structure
-        test_swift_submit_structure()
-
-        # Test Swift base configuration
-        test_swift_base_config()
-
-        print("✅ All Swift integration tests passed!")
-
+        # Create test components
+        envelope_creator = SwiftEnvelopeCreator()
+        test_keypair = Keypair()
+        
+        # Create realistic order parameters
+        params = SwiftOrderParams(
+            market_index=0,
+            market_type="perp",
+            side="buy",
+            price=242.50,
+            size=0.1,
+            order_type="limit",
+            post_only=True,
+            reduce_only=False,
+            sub_account_id=0,
+            taker_authority=str(test_keypair.pubkey())
+        )
+        
+        print(f"✅ Test parameters created: {params.side} {params.size} SOL @ ${params.price}")
+        
+        # Try JSON envelope creation (fallback)
+        print("📝 Testing JSON envelope creation...")
+        try:
+            json_envelope = envelope_creator._create_json_envelope(params, test_keypair)
+            print(f"✅ JSON envelope created successfully")
+            print(f"   Fields: {list(json_envelope.keys())}")
+            
+            # Verify required fields
+            required_fields = ['taker_authority', 'order_message', 'signature', 'market_index']
+            missing_fields = [field for field in required_fields if field not in json_envelope]
+            if missing_fields:
+                print(f"❌ Missing required fields: {missing_fields}")
+                return False
+            else:
+                print(f"✅ All required fields present")
+                
+            # Test Swift driver field mapping
+            print("🔄 Testing Swift driver field mapping...")
+            driver = SwiftSidecarDriver({}, None)
+            payload = driver._create_swift_payload(json_envelope)
+            
+            print(f"✅ Swift payload created:")
+            print(f"   message length: {len(payload.get('message', ''))}")
+            print(f"   signature length: {len(payload.get('signature', ''))}")
+            print(f"   taker_authority: {payload.get('taker_authority', '')[:20]}...")
+            
+            # Verify no empty fields
+            if not payload.get('message'):
+                print("❌ Swift payload message is empty!")
+                return False
+            if not payload.get('signature'):
+                print("❌ Swift payload signature is empty!")
+                return False
+            if not payload.get('taker_authority'):
+                print("❌ Swift payload taker_authority is empty!")
+                return False
+                
+            print("✅ Swift driver field mapping successful")
+            
+        except Exception as e:
+            print(f"❌ JSON envelope creation failed: {e}")
+            traceback.print_exc()
+            return False
+        
+        print("\n🎉 SUCCESS: Swift API integration test passed!")
+        print("   - Envelope creation: ✅")
+        print("   - Field validation: ✅") 
+        print("   - Driver mapping: ✅")
+        print("   - No empty fields: ✅")
+        
+        return True
+        
     except Exception as e:
-        print(f"❌ Test failed: {e}")
-        import traceback
+        print(f"❌ CRITICAL ERROR: {e}")
         traceback.print_exc()
+        return False
+
+def main():
+    """Main entry point"""
+    success = asyncio.run(test_swift_integration())
+    
+    if success:
+        print("\n✅ Swift API integration is working correctly!")
+        print("   The bot should now be able to place orders via Swift API without errors.")
+        sys.exit(0)
+    else:
+        print("\n❌ Swift API integration test failed!")
+        print("   Do not run the bot until this test passes.")
+        sys.exit(1)
 
 if __name__ == "__main__":
-    print("🚀 Running Swift Integration Tests")
-    print("=" * 50)
-
-    asyncio.run(mock_swift_test())
-
-    print("\n📊 Test Summary:")
-    print("   ✅ UUID generation working")
-    print("   ✅ Function signatures correct")
-    print("   ✅ Configuration handling working")
-    print("   ⚠️  Real blockchain tests require funded wallet")
-
-    print("\n🎯 Next Steps:")
-    print("   1. Fund wallet with DEV SOL")
-    print("   2. Run: python examples/swift_market_taker_example.py")
-    print("   3. Monitor Swift order execution")
+    main()

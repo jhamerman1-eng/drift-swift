@@ -1,12 +1,117 @@
-prometheus-client>=0.20.0
-pydantic>=2.7.0
-PyYAML>=6.0.1
-httpx>=0.25.0
-aiohttp>=3.9.0
-# Enable when wiring to real Drift:
-driftpy>=0.6.3
-anchorpy>=0.20
-solana>=0.30.0
-base58>=2.1.0
-cryptography>=41.0.0
-websockets>=11.0.0
+# Core dependencies
+asyncio-mqtt==0.16.2
+websockets==13.0
+aiohttp==3.9.4
+requests==2.28.1
+urllib3==1.26.13
+certifi==2025.1.31
+charset-normalizer==2.1.1
+idna==3.4
+
+# Async and networking
+aiosignal==1.3.1
+async-timeout==4.0.3
+frozenlist==1.3.3
+multidict==6.0.3
+yarl==1.9.4
+aiodns==3.0.0
+pycares==4.3.0
+dnspython==2.2.1
+websockets==13.0  # For direct Swift WebSocket integration
+
+# Data processing (project-specific)
+pandas==2.3.2
+numpy==1.26.4
+scipy==1.16.2
+
+# Configuration and logging
+pyyaml==6.0.2
+loguru==0.7.3
+python-dotenv==1.1.1
+
+# HTTP and API clients
+httpx==0.28.1
+httpcore==1.0.7
+h11==0.14.0
+sniffio==1.3.0
+anyio==4.4.0
+rfc3986==1.5.0
+
+# JSON and serialization
+jsonschema==4.18.0
+pyrsistent==0.19.2
+apischema==0.17.5
+jsonalias==0.1.1
+jsonrpcclient==4.0.3
+jsonrpcserver==5.0.9
+
+# Cryptography and encoding
+cffi==1.15.1
+pycparser==2.21
+base58==2.1.1
+based58==0.1.1
+zstandard==0.18.0
+pynacl==1.5.0
+
+# Solana and blockchain
+solana==0.36.0
+solders==0.25.0
+anchorpy==0.21.0
+anchorpy-core==0.2.0
+construct==2.10.68
+construct-typing==0.5.3
+borsh-construct==0.1.0
+cachetools==5.3
+types-cachetools==4.2.10
+
+# Drift Protocol and trading
+pythclient==0.2.1
+backoff==2.2.1
+OSlash==0.6.3
+sumtypes==0.1a6
+toolz==0.11.2
+pyheck==0.1.5
+
+# Additional driftpy dependencies
+deprecated==1.2.14
+events==0.5
+grpcio==1.68.1
+protobuf==5.29.2
+tqdm==4.67.1
+
+# Testing dependencies
+pytest==6.2.5
+pytest-asyncio==0.17.2
+pytest-xprocess==0.18.1
+iniconfig==1.1.1
+pluggy==1.6.0
+py==1.11.0
+packaging==23.1
+exceptiongroup==1.0.4
+tomli==2.0.1
+
+# Development dependencies
+black==25.1.0
+isort==6.0.1
+mypy==1.17.1
+flake8==6.0.0
+mccabe==0.7.0
+pycodestyle==2.10.0
+pyflakes==3.0.1
+click==8.2.1
+platformdirs==4.4.0
+pathspec==0.12.1
+mypy-extensions==1.1.0
+typing_extensions==4.4.0
+toml==0.10.2
+
+# Utility and helpers
+attrs==22.2.0
+more-itertools==8.14.0
+
+# Optional: Drift Protocol integration
+# driftpy>=0.8.68
+
+# Optional: Performance monitoring
+psutil==5.9.4
+memory-profiler==0.61.0

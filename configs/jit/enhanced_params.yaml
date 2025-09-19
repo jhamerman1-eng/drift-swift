@@ -1,0 +1,92 @@
+# Enhanced JIT Market Maker Configuration
+# Optimized for Ultimate Bot performance characteristics
+
+# Core JIT parameters
+symbol: "SOL-PERP"
+leverage: 10
+post_only: true
+obi_microprice: true
+
+# Spread management
+spread_bps:
+  base: 8.0      # Base spread in basis points
+  min: 4.0       # Minimum spread
+  max: 25.0      # Maximum spread
+
+# Position management
+inventory_target: 0.0      # Target inventory position
+max_position_abs: 120.0    # Maximum absolute position
+
+# Order sizing
+buy_order_size: 0.5        # Specific buy order size in SOL
+sell_order_size: 0.3       # Specific sell order size in SOL
+order_size: 0.4            # Base order size (fallback)
+
+# Order management
+cancel_replace:
+  enabled: true
+  interval_ms: 900         # Cancel/replace interval
+  toxicity_guard: true     # Enable toxicity protection
+
+# Latency optimization settings
+latency_optimization:
+  enabled: true
+  performance_tracking: true
+  attribution_enabled: true
+  cycle_frequency_hz: 1.0      # Target cycle frequency
+  max_cycle_latency_ms: 100.0  # Maximum cycle latency
+  adaptive_frequency: true      # Enable adaptive frequency adjustment
+
+# Strategy coordination settings
+strategy_coordination:
+  enabled: true
+  max_total_delta: 100.0       # Maximum total delta exposure
+  warning_delta: 75.0          # Warning threshold for delta
+  strategies:
+    hybrid_shotgun:
+      hedge_ratio: 0.8
+      max_delay_ms: 500
+      urgency_multiplier: 1.2
+      allow_position_building: true
+      max_strategy_delta: 30.0
+    hybrid_sniper:
+      hedge_ratio: 0.6
+      max_delay_ms: 2000
+      urgency_multiplier: 0.8
+      quality_threshold: 0.7
+      allow_position_building: false
+      max_strategy_delta: 20.0
+    custom_jit:
+      hedge_ratio: 1.0
+      max_delay_ms: 100
+      urgency_multiplier: 1.5
+      allow_position_building: false
+      max_strategy_delta: 15.0
+
+# Performance monitoring
+monitoring:
+  prometheus_enabled: true
+  metrics_port: 9300
+  log_level: "INFO"
+  performance_alerts: true
+  
+# Risk management
+risk_management:
+  position_limits_enabled: true
+  delta_limits_enabled: true
+  emergency_stop_enabled: true
+  max_daily_loss: 1000.0
+  
+# Capital allocation settings
+capital_allocation:
+  enabled: false              # Disable capital allocation to fix position utilization bug
+  max_trade_usd: 100.0        # Maximum trade size in USD
+  risk_limit_usd: 50.0        # Risk limit per trade
+
+# Advanced features
+advanced:
+  obi_levels: 10              # Number of orderbook levels for OBI
+  volatility_lookback: 100    # Volatility calculation lookback
+  position_decay_rate: 0.95   # Position decay rate for inventory management
+  spread_volatility_factor: 0.5  # Spread adjustment for volatility
+

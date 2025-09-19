@@ -51,11 +51,13 @@ class SwiftMessageSerializer:
         # Add userOrderId (u32)
         buffer.extend(struct.pack('<I', order_params.get('userOrderId', 0)))
 
-        # Add auctionDuration (u32) - handle None values for non-auction orders
-        auction_duration = order_params.get('auctionDuration', 0)
+        # Add auctionDuration (Option<u32>) - proper Option serialization
+        auction_duration = order_params.get('auctionDuration', None)
         if auction_duration is None:
-            auction_duration = 0  # Default to 0 for non-auction orders
-        buffer.extend(struct.pack('<I', auction_duration))
+            buffer.append(0)  # Option::None = 0
+        else:
+            buffer.append(1)  # Option::Some = 1
+            buffer.extend(struct.pack('<I', auction_duration))
 
         # Add auctionStartPrice (i64)
         buffer.extend(struct.pack('<q', order_params.get('auctionStartPrice', 0)))
@@ -63,11 +65,13 @@ class SwiftMessageSerializer:
         # Add auctionEndPrice (i64)
         buffer.extend(struct.pack('<q', order_params.get('auctionEndPrice', 0)))
 
-        # Add maxTs (i64) - handle None values for no expiration
-        max_ts = order_params.get('maxTs', 0)
+        # Add maxTs (Option<i64>) - proper Option serialization for expiration
+        max_ts = order_params.get('maxTs', None)
         if max_ts is None:
-            max_ts = 0  # Default to 0 for no expiration
-        buffer.extend(struct.pack('<q', max_ts))
+            buffer.append(0)  # Option::None = 0 (no expiration)
+        else:
+            buffer.append(1)  # Option::Some = 1
+            buffer.extend(struct.pack('<q', max_ts))
 
         # Add triggerPrice (i64)
         buffer.extend(struct.pack('<q', order_params.get('triggerPrice', 0)))

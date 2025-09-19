@@ -1,0 +1,38 @@
+# Base Profile Configuration
+# Shared settings inherited by all bot profiles
+
+# Profile metadata
+profile_name: "Base Profile"
+profile_version: "1.0.0"
+description: "Base configuration inherited by all bot types"
+
+# Account configuration
+sub_account: 0
+margin_mode: "cross"
+
+# Risk management limits
+risk_limits:
+  max_position_usd: 100000
+  max_leverage: 10.0
+  max_drawdown_pct: 5.0
+  daily_loss_limit_usd: 10000
+  max_single_position_pct: 30.0
+  max_correlated_positions_pct: 50.0
+
+# Order and rate limits
+order_caps:
+  max_open_orders: 50
+  max_orders_per_minute: 100
+  max_cancels_per_minute: 200
+  max_order_size_usd: 50000
+  min_order_size_usd: 10
+
+# Trading parameters
+target_leverage: 5.0
+
+# Default markets
+markets:
+  - "SOL-PERP"
+
+# Feature flags (can be overridden by bot-specific profiles)
+features: {}

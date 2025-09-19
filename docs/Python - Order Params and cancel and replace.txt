@@ -1,0 +1,171 @@
+Documentation from https://drift-labs.github.io/v2-teacher/?python#order-params
+
+Python
+Parameter	Description	Optional	Default
+order_type	Type of order	No	
+market_index	Index of the market to place order in	No	
+direction	Direction of the order	No	
+base_asset_amount	Amount of base asset to buy or sell	No	
+market_type	Type of market	Yes	Depends on method
+price	Limit price for the order	Yes	0
+user_order_id	Unique order ID specified by user	Yes	0
+reduce_only	Whether the order is only to reduce positions	Yes	false
+post_only	If the order should only be a maker	Yes	PostOnlyParams.NONE()
+immediate_or_cancel	Whether the order is immediate or cancel	Yes	false
+max_ts	Max timestamp for the order expiry	Yes	None
+trigger_price	Trigger price for trigger orders	Yes	None
+trigger_condition	Condition for triggering the order	Yes	OrderTriggerCondition.Above()
+oracle_price_offset	Offset for oracle-derived limit price	Yes	None
+auction_duration	Duration of the auction in slots	Yes	None
+auction_start_price	Starting price of the auction	Yes	None
+auction_end_price	Ending price of the auction	Yes	None
+
+
+await drift_client.cancel_and_place_orders(canel_order_params, place_order_params)
+TypeScript
+Parameter	Description	Optional	Default
+cancelOrderParams	Parameters for cancel orders instruction		
+placeOrderParams	Parameters for place order instructions		
+Python
+Parameter	Description	Optional	Default
+cancel_params	Tuple with optional MarketType, market index, and PositionDirection for canceling orders	Yes	None
+place_order_params	List of OrderParams for placing new orders	No	
+sub_account_id	The sub account to use	Yes	None
+
+
+Cancel and Place Orders
+
+canel_order_params = (MarketType.Perp(), 0, None) # cancel all orders in perp market 0
+place_order_params = [
+    OrderParams(
+    order_type=OrderType.Limit(),
+    base_asset_amount=drift_client.convert_to_perp_precision(100),
+    market_index=0,
+    direction=PositionDirection.Long(),
+    market_type=MarketType.Perp(),
+    price=drift_client.convert_to_price_precision(21.23),
+  ),
+   OrderParams(
+    order_type=OrderType.Limit(),
+    base_asset_amount=drift_client.convert_to_perp_precision(100),
+    market_index=0,
+    direction=PositionDirection.Short(),
+    market_type=MarketType.Perp(),
+    oracle_price_offset=drift_client.convert_to_price_precision(.05),
+  )
+]
+Cancel Orders
+market_type = MarketType.Perp()
+market_index = 0
+direction = PositionDirection.Long()
+await drift_client.cancel_orders(market_type, market_index, direction) # cancel bids in perp market 0
+
+await drift_client.cancel_orders() # cancels all orders
+TypeScript
+Parameter	Description	Optional	Default
+marketType	The market type of orders to cancel. Must be set if marketIndex set	Yes	
+marketIndex	The market index of orders to cancel. Must be set if marketType set	Yes	
+direction	The direction of orders to cancel.	Yes	
+Python
+Parameter	Description	Optional	Default
+market_type	The market type of orders to cancel	Yes	None
+market_index	The market index of orders to cancel	Yes	None
+direction	The direction of orders to cancel	Yes	None
+sub_account_id	The sub account from which to cancel orders	Yes	None
+To cancel all orders, do not set any parameters.
+
+Canceling Order By User Order Id
+
+const user_order_id = 1
+await drift_client.cancel_order_by_user_order_id(user_order_id)
+TypeScript
+Parameter	Description	Optional	Default
+userOrderId	Unique order id specified by user when order was placed	No	
+Python
+Parameter	Description	Optional	Default
+user_order_id	Unique order id specified by user when order was placed	No	
+sub_account_id	Sub account to cancel orders under	Yes	None
+
+Canceling Order
+
+order_id = 1;
+await drift_client.cancel_order(order_id)
+TypeScript
+Parameter	Description	Optional	Default
+orderId	The order being canceled	No	
+Python
+Parameter	Description	Optional	Default
+order_id	The order being canceled	No	
+sub_account_id	Sub account to cancel order under	Yes	None
+
+.py
+
+canel_order_params = (MarketType.Perp(), 0, None) # cancel all orders in perp market 0
+place_order_params = [
+    OrderParams(
+    order_type=OrderType.Limit(),
+    base_asset_amount=drift_client.convert_to_perp_precision(100),
+    market_index=0,
+    direction=PositionDirection.Long(),
+    market_type=MarketType.Perp(),
+    price=drift_client.convert_to_price_precision(21.23),
+  ),
+   OrderParams(
+    order_type=OrderType.Limit(),
+    base_asset_amount=drift_client.convert_to_perp_precision(100),
+    market_index=0,
+    direction=PositionDirection.Short(),
+    market_type=MarketType.Perp(),
+    oracle_price_offset=drift_client.convert_to_price_precision(.05),
+  )
+]
+
+await drift_client.cancel_and_place_orders(canel_order_params, place_order_params)
+
+.ts
+const cancelOrderParams = {
+   marketType: MarketType.PERP,
+   marketIndex: 0,
+};
+
+const placeOrderParams = [
+    {
+    orderType: OrderType.LIMIT,
+    marketIndex: 0,
+    direction: PositionDirection.LONG,
+    baseAssetAmount: driftClient.convertToPerpPrecision(100),
+    price: driftClient.convertToPricePrecision(21.23),
+  },
+  {
+    orderType: OrderType.LIMIT,
+    marketIndex: 0,
+    direction: PositionDirection.SHORT,
+    baseAssetAmount: driftClient.convertToPerpPrecision(100),
+    oraclePriceOffset: driftClient.convertToPricePrecision(.05).toNumber(),
+  }
+];
+
+await drift_client.modify_order(order_id, modify_order_params)
+TypeScript
+Parameter	Description	Optional	Default
+orderId	The order id of order to modify	No	
+modifyOrderParams	The modify order params	Yes	
+Python
+Parameter	Description	Optional	Default
+order_id	The order ID of the order to modify	No	
+modify_order_params	The parameters for modifying the order	No	
+sub_account_id	The sub account to use	Yes	None
+Modify cancels and places a new order
+
+For typescript, the orderId and modifyOrderParams are merged into a single object and some properties are prefixed with new e.g. newBaseAssetAmount
+
+.py
+Modifying Order
+
+order_id = 1
+
+modify_order_params = ModifyOrderParams(
+  base_asset_amount=drift_client.convert_to_perp_precision(1),
+  price=drift_client.convert_to_price_precision(20),
+)
+

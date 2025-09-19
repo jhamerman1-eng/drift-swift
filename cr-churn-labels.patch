@@ -1,0 +1,163 @@
+*** a/run_swift_mm_complete.py
+--- b/run_swift_mm_complete.py
+@@
+ class SwiftMMBot:
+     def __init__(self, cfg):
+         self.cfg = cfg
+         self.metrics = cfg.get("metrics") or Metrics.default()
+@@
+     def _cancel_stale_orders(self, now_ts: float):
+         """
+         Position-aware cancellation with added:
+           - auction-aware guard
+           - spread-regime multipliers
+           - PnL-aware keep rule
+           - detailed Prom metrics
+         """
+         orders = list(self.live_orders.values())
+         if not orders:
+             return
+         base_tol = self._price_tolerance()
+         inv_skew = self.inventory_skew()  # negative = short, positive = long
+         best_bid, best_ask = self.orderbook.best_bid(), self.orderbook.best_ask()
+         mid = (best_bid + best_ask) / 2 if best_bid and best_ask else None
+         spread_bp = (abs(best_ask - best_bid) / mid * 1e4) if (best_bid and best_ask and mid) else None
+
+         # spread regime multiplier
+         if spread_bp is None:
+             spread_mult = 1.0
+         elif spread_bp <= self.spread_tight_bp:
+             spread_mult = 0.85
+         elif spread_bp >= self.spread_wide_bp:
+             spread_mult = 1.25
+         else:
+             spread_mult = 1.0
+
+         # gauges
+         if spread_bp is not None:
+             self.metrics.observe("mm_spread_bp", spread_bp)
+         self.metrics.set("mm_inventory_skew", inv_skew)
+
+         for o in orders:
+             side = o.side  # 'buy' or 'sell'
+             px   = o.price
+             ts   = o.ts
+             age_seconds = max(0.0, now_ts - ts)
+             price_diff = self._px_diff_to_fair(px, side)  # in price units
+             tol = base_tol * spread_mult
+
+             aligned = False
+             if side == "buy":
+                 aligned = (inv_skew < -0.1)   # short -> buys aligned
+             else:
+                 aligned = (inv_skew > 0.1)    # long  -> sells aligned
+
+             # dynamic tolerance & age thresholds
+             tol_eff = tol * (self.tolerance_mult_aligned if aligned else 1.0)
+             age_soft = self.cancel_age_hard_s if aligned else self.cancel_age_soft_s
+
+             # auction-aware guard
+             keep_for_auction = False
+             if o.auction is not None and mid is not None:
+                 auc_px = o.auction.current_price(now_ts)
+                 if auc_px:
+                     bp_off = abs((px - auc_px) / auc_px) * 1e4
+                     keep_for_auction = (bp_off <= self.auction_cancel_guard_bp)
+
+             # PnL-aware keep
+             pnl_keep = False
+             try:
+                 if mid is not None:
+                     pnl = self.position_unrealized_pnl_usd(mark=mid)
+                     if pnl < 0 and abs(pnl) >= self.unrealized_pnl_keep_usd:
+                         pnl_keep = True
+             except Exception:
+                 pnl_keep = False
+
+             # time & price conditions
+             cond_price = (price_diff > tol_eff)
+             cond_time_soft = (age_seconds > age_soft)
+             cond_time_hard = (age_seconds > self.cancel_age_hard_s)
+
+             # safety: oracle band
+             if not self._within_oracle_band(px, self.px_oracle_band_bp):
+                 self.metrics.inc("mm_cancel_decision_total", {
+                     "alignment": "n/a",
+                     "reason": "oracle_band",
+                     "result": "cancel"
+                 })
++                # annotate order so downstream C/R metrics inherit decision cause
++                self._annotate_cancel_meta(o, reason="oracle_band", aligned=None)
++                # also mirror into cancel_replace_total{phase=decision}
++                self.metrics.inc("cancel_replace_total", {
++                    "phase": "decision",
++                    "alignment": "n/a",
++                    "reason": "oracle_band",
++                    "via": "swift"  # default; actual via is added at execution
++                })
+                 self._cancel(o)
+                 self.metrics.observe("mm_order_age_seconds", age_seconds)
+                 continue
+
+             # decision
+             decided_cancel = False
+             reason = "keep"
+             if cond_time_hard:
+                 reason = "age_hard"
+                 decided_cancel = True
+             elif keep_for_auction or pnl_keep:
+                 reason = "auction_guard" if keep_for_auction else "pnl_keep"
+                 decided_cancel = False
+             elif cond_price or cond_time_soft:
+                 reason = "price" if cond_price else "age_soft"
+                 decided_cancel = True
+
+             # metrics (aligned vs misaligned + reason)
+             self.metrics.inc("mm_cancel_decision_total", {
+                 "alignment": "aligned" if aligned else "misaligned",
+                 "reason": reason,
+                 "result": "cancel" if decided_cancel else "keep"
+             })
+             self.metrics.observe("mm_order_age_seconds", age_seconds)
+
+             if decided_cancel:
++                # annotate order so the downstream cancel→replace execution can inherit labels
++                self._annotate_cancel_meta(o, reason=reason, aligned=aligned)
++                # also mirror the decision into existing cancel_replace_total for churn correlation
++                self.metrics.inc("cancel_replace_total", {
++                    "phase": "decision",
++                    "alignment": "aligned" if aligned else "misaligned",
++                    "reason": reason,
++                    "via": "swift"  # placeholder; true via emitted at execution
++                })
+                 self._cancel(o)
+                 continue
+             # keep order
+             # (optional) bump/refresh logic here
+@@
+     def _within_oracle_band(self, price: float, band_bp: int) -> bool:
+         """
+         Return true if price is within ±band_bp of oracle mark.
+         """
+         try:
+             oracle = self.oracle_price()
+             if oracle is None or oracle <= 0:
+                 return True
+             bp = abs(price - oracle) / oracle * 1e4
+             return bp <= band_bp
+         except Exception:
+             return True
++
++    def _annotate_cancel_meta(self, order, *, reason: str, aligned: bool|None):
++        """
++        Attach cancel decision context onto an order object for downstream metrics.
++        Safe on plain objects; ignored if attributes are frozen/missing.
++        """
++        try:
++            setattr(order, "cancel_reason", reason)
+            setattr(order, "cancel_alignment", ("aligned" if aligned else "misaligned") if aligned is not None else "n/a")
+        except Exception:
+            pass
+
+
+

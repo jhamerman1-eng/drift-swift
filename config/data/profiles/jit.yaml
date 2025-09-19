@@ -1,0 +1,71 @@
+# JIT Market Maker Profile Configuration
+# Settings specific to Just-In-Time market making
+
+# Profile metadata
+profile_name: "JIT Market Maker"
+profile_version: "1.0.0"
+description: "Just-In-Time market making with shotgun and sniper strategies"
+
+# Conservative leverage for market making
+target_leverage: 2.0
+
+# JIT markets
+markets:
+  - "SOL-PERP"
+  - "ETH-PERP"
+
+# JIT-specific risk limits
+risk_limits:
+  max_position_usd: 100000
+  max_leverage: 10.0
+  max_drawdown_pct: 5.0
+  daily_loss_limit_usd: 10000
+  max_single_position_pct: 30.0
+  max_correlated_positions_pct: 50.0
+  # JIT-specific extensions
+  max_clip_size_usd: 1000
+  max_inventory_usd: 10000
+  inventory_timeout_seconds: 300
+  min_spread_bps: 1.0
+  max_spread_bps: 50.0
+
+# JIT-specific order caps
+order_caps:
+  max_open_orders: 50
+  max_orders_per_minute: 100
+  max_cancels_per_minute: 200
+  max_order_size_usd: 50000
+  min_order_size_usd: 10
+  # JIT-specific extensions
+  max_clips_per_minute: 300
+  max_quote_updates_per_minute: 1000
+  max_quote_latency_ms: 10.0
+  max_fill_response_ms: 50.0
+
+# JIT strategy configuration
+jit_mode: "hybrid"
+
+# Strategy allocation for hybrid mode
+shotgun_allocation_pct: 70.0
+sniper_allocation_pct: 30.0
+
+# Market making parameters
+base_spread_bps: 5.0
+spread_adjustment_factor: 1.5
+
+# Quote management
+quote_size_multiplier: 1.0
+max_quote_skew_bps: 10.0
+
+# Inventory management
+inventory_target_ratio: 0.0
+inventory_skew_factor: 0.5
+
+# Performance optimization
+use_obi_microprice: true
+enable_smart_routing: true
+use_fill_prediction: true
+
+# Swift integration
+enable_swift_sidecar: true
+swift_fallback_enabled: true

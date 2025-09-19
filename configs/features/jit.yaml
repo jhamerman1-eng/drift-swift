@@ -1,0 +1,79 @@
+# JIT (Just-In-Time) Configuration
+# Feature flag and configuration for JIT maker service integration
+
+# Feature flag - toggle JIT functionality
+feature:
+  jit:
+    enabled: true  # Set to true to enable JIT routing for market making
+    base_url: "http://localhost:8787"
+    timeout_seconds: 1.2
+
+    # US-JIT-002: Place and make configuration
+    place_and_make:
+      slot_skew_max: 30
+      default_compute_units: 1000000
+      default_priority_fee_micro_lamports: 2000
+
+    # US-JIT-004: Cancel/replace configuration
+    cancel_replace:
+      tombstone_ttl_ms: 800
+      enable_versioning: true
+
+    # Health check configuration
+    health:
+      check_interval_seconds: 30
+      required_subscribers: ["swift", "auction", "drift", "slot"]
+
+# JIT Service Configuration
+jit:
+  # Service endpoint
+  base_url: "http://localhost:8787"
+  timeout_seconds: 1.5
+  retries: 3
+
+  # Slot validation
+  slot_skew_max: 30  # Maximum allowed slot difference
+
+  # Market configuration
+  markets: [0, 1, 2]  # SOL-PERP, BTC-PERP, ETH-PERP
+
+  # Place and make configuration
+  place_and_make:
+    default_compute_units: 1000000
+    default_priority_fee_micro_lamports: 2000
+    max_ix_per_tx: 10
+
+  # Cancel/replace configuration
+  cancel_replace:
+    tombstone_ttl_ms: 800
+    enable_versioning: true
+    max_concurrent_operations: 5
+
+  # Health monitoring
+  health:
+    check_interval_seconds: 30
+    required_subscribers: ["swift", "auction", "drift", "slot"]
+    max_consecutive_failures: 3
+
+  # Metrics and monitoring
+  metrics:
+    enabled: true
+    labels:
+      - "via"
+      - "result"
+      - "phase"
+      - "alignment"
+      - "reason"
+
+# Fallback configuration when JIT is disabled or unavailable
+fallback:
+  use_swift_sidecar: true
+  use_driftpy_direct: true
+  swift_timeout_seconds: 1.2
+
+# Development and testing
+development:
+  mock_mode: false
+  log_level: "INFO"
+  enable_debug_endpoints: false
+  simulate_failures: false

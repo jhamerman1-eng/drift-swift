@@ -29,20 +29,17 @@ Usage:
 """
 
 from __future__ import annotations
-import argparse
-import asyncio
+import argparse  # pyright: ignore[reportUnusedImport]
 import logging
-import math
-import os
-import signal
-import sys
-import time
+import os  # pyright: ignore[reportUnusedImport]
+import signal  # pyright: ignore[reportUnusedImport]
+import sys  # pyright: ignore[reportUnusedImport]
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Tuple
 
 import yaml
-from prometheus_client import start_http_server, Gauge, Counter, Histogram
+from prometheus_client import start_http_server, Gauge  # pyright: ignore[reportUnusedImport]
 
 # Local imports
 # TODO: SWIFT_INTEGRATION - Update imports to use Swift client instead of Drift client
@@ -66,7 +63,7 @@ def safe_ratio(numerator: float, denominator: float, default: float = 0.0) -> fl
 
 RUNNING = True
 
-def _sigterm(_signo: int, _frame: Any) -> None:
+def _sigterm(_signo: int, _frame: Any) -> None:  # pyright: ignore[reportUnusedFunction]
     """Signal handler for graceful shutdown"""
     global RUNNING
     logger.info(f"Received signal {_signo}, initiating graceful shutdown...")
@@ -285,69 +282,69 @@ class SpreadManager:
 #             if hasattr(pos, 'size'):
 #                 return pos.size
 #         return 0.0
-
-    async def get_oracle_price(self, market_index: int = 0) -> float:
-        """Get current oracle price using the new oracle utility"""
-        try:
-            from libs.drift.utils.oracle import get_perp_oracle_price_data
-            oracle_data = await get_perp_oracle_price_data(self.client, market_index)
-            if hasattr(oracle_data, 'price') and oracle_data.price > 0:
-                logger.info(f"Oracle Price from Drift: ${oracle_data.price:.4f}")
-                return oracle_data.price
-        except Exception as e:
-            logger.debug(f"Could not get oracle price using utility: {e}")
-
-        # Fallback: try to get from client mid price (for mock client)
-        try:
-            if hasattr(self.client, 'mid'):
-                logger.info(f"Using mock client mid price: ${self.client.mid:.4f}")
-                return self.client.mid
-        except Exception as e:
-            logger.debug(f"Could not get mid price from client: {e}")
-
-        return 0.0
-
-# TODO: SWIFT_INTEGRATION - Update mid price calculation for Swift client
-# PRESERVING ADVANCED FUNCTIONALITY - DO NOT DELETE
-    async def calculate_mid_price(self, orderbook: 'Orderbook', obi: OrderBookImbalance, market_index: int = 0) -> float:
-        """Calculate mid price using oracle price, OBI microprice, or orderbook mid"""
-        # Priority 1: Use oracle price if available (most accurate)
-        oracle_price = await self.get_oracle_price(market_index)
-        if oracle_price > 0:
-            logger.info(f"Using Oracle Price for mid: ${oracle_price:.4f}")
-            return oracle_price
-
-        # Priority 2: Use OBI microprice if enabled and available
-        if self.config.obi_microprice and obi.microprice > 0:
-            logger.info(f"Using OBI Microprice for mid: ${obi.microprice:.4f}")
-            return obi.microprice
-
-        # Priority 3: Traditional orderbook mid price
-        if orderbook.bids and orderbook.asks:
-            traditional_mid = (orderbook.bids[0][0] + orderbook.asks[0][0]) / 2.0
-            logger.info(f"Using Orderbook Mid Price: ${traditional_mid:.4f}")
-            return traditional_mid
-
-        logger.error("No valid price source available!")
-        return 0.0
-
-    def calculate_order_sizes(self, mid_price: float, inventory_skew: float) -> Tuple[float, float]:
-        """Calculate bid and ask sizes based on inventory skew"""
-        base_size = 50.0
-
-        # Reduce size when inventory is skewed to avoid further imbalance
-        size_multiplier = 1.0 - abs(inventory_skew) * 0.5
-        bid_size = base_size * size_multiplier
-        ask_size = base_size * size_multiplier
-
-        # Increase ask size when long (want to sell more)
-        # Increase bid size when short (want to buy more)
-        if inventory_skew > 0.1:  # Long position
-            ask_size *= 1.2
-        elif inventory_skew < -0.1:  # Short position
-            bid_size *= 1.2
-
-        return bid_size, ask_size
+#
+#     async def get_oracle_price(self, market_index: int = 0) -> float:
+#         """Get current oracle price using the new oracle utility"""
+#         try:
+#             from libs.drift.utils.oracle import get_perp_oracle_price_data
+#             oracle_data = await get_perp_oracle_price_data(self.client, market_index)
+#             if hasattr(oracle_data, 'price') and oracle_data.price > 0:
+#                 logger.info(f"Oracle Price from Drift: ${oracle_data.price:.4f}")
+#                 return oracle_data.price
+#         except Exception as e:
+#             logger.debug(f"Could not get oracle price using utility: {e}")
+#
+#         # Fallback: try to get from client mid price (for mock client)
+#         try:
+#             if hasattr(self.client, 'mid'):
+#                 logger.info(f"Using mock client mid price: ${self.client.mid:.4f}")
+#                 return self.client.mid
+#         except Exception as e:
+#             logger.debug(f"Could not get mid price from client: {e}")
+#
+#         return 0.0
+#
+# # TODO: SWIFT_INTEGRATION - Update mid price calculation for Swift client
+# # PRESERVING ADVANCED FUNCTIONALITY - DO NOT DELETE
+#     async def calculate_mid_price(self, orderbook: 'Orderbook', obi: OrderBookImbalance, market_index: int = 0) -> float:
+#         """Calculate mid price using oracle price, OBI microprice, or orderbook mid"""
+#         # Priority 1: Use oracle price if available (most accurate)
+#         oracle_price = await self.get_oracle_price(market_index)
+#         if oracle_price > 0:
+#             logger.info(f"Using Oracle Price for mid: ${oracle_price:.4f}")
+#             return oracle_price
+#
+#         # Priority 2: Use OBI microprice if enabled and available
+#         if self.config.obi_microprice and obi.microprice > 0:
+#             logger.info(f"Using OBI Microprice for mid: ${obi.microprice:.4f}")
+#             return obi.microprice
+#
+#         # Priority 3: Traditional orderbook mid price
+#         if orderbook.bids and orderbook.asks:
+#             traditional_mid = (orderbook.bids[0][0] + orderbook.asks[0][0]) / 2.0
+#             logger.info(f"Using Orderbook Mid Price: ${traditional_mid:.4f}")
+#             return traditional_mid
+#
+#         logger.error("No valid price source available!")
+#         return 0.0
+#
+#     def calculate_order_sizes(self, mid_price: float, inventory_skew: float) -> Tuple[float, float]:
+#         """Calculate bid and ask sizes based on inventory skew"""
+#         base_size = 50.0
+#
+#         # Reduce size when inventory is skewed to avoid further imbalance
+#         size_multiplier = 1.0 - abs(inventory_skew) * 0.5
+#         bid_size = base_size * size_multiplier
+#         ask_size = base_size * size_multiplier
+#
+#         # Increase ask size when long (want to sell more)
+#         # Increase bid size when short (want to buy more)
+#         if inventory_skew > 0.1:  # Long position
+#             ask_size *= 1.2
+#         elif inventory_skew < -0.1:  # Short position
+#             bid_size *= 1.2
+#
+#         return bid_size, ask_size
 
 # TODO: SWIFT_INTEGRATION - Update order management methods for Swift client
 # PRESERVING ADVANCED FUNCTIONALITY - DO NOT DELETE

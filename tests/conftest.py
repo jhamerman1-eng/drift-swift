@@ -121,6 +121,13 @@ TEST_CONFIGS = {
         "cancel_replace_enabled": True,
         "cancel_replace_interval_ms": 1000,
         "toxicity_guard": True
+    },
+
+    "capital_allocator": {
+        "max_leverage": 5.0,
+        "leverage_buffer": 0.8,
+        "min_collateral_buffer": 50.0,
+        "min_trade_usd": 25.0
     }
 }
 
@@ -432,5 +439,279 @@ def mock_swift_components():
         "websocket_receiver": mock_websocket_receiver,
         "order_processor": mock_order_processor
     }
+
+
+class MockCapitalAllocation:
+    """Mock CapitalAllocation for testing."""
+
+    def __init__(self, bot_id="test_bot", max_trade_usd=100.0, available_capital_usd=1000.0,
+                 max_position_sol=3.0, leverage_factor=5.0, min_trade_sol=0.1, max_trade_sol=2.0,
+                 free_collateral_usd=1000.0, total_collateral_usd=2000.0, current_position_sol=0.0):
+        self.bot_id = bot_id
+        self.max_trade_usd = max_trade_usd
+        self.available_capital_usd = available_capital_usd
+        self.max_position_sol = max_position_sol
+        self.leverage_factor = leverage_factor
+        self.min_trade_sol = min_trade_sol
+        self.max_trade_sol = max_trade_sol
+        self.free_collateral_usd = free_collateral_usd
+        self.total_collateral_usd = total_collateral_usd
+        self.current_position_sol = current_position_sol
+
+
+class MockCapitalAllocator:
+    """Mock capital allocator for testing the capital allocation architecture."""
+
+    def __init__(self):
+        self.allocations = {
+            "shotgun_mm": {
+                "max_trade_usd": 100.0,
+                "available_capital_usd": 400.0,
+                "risk_limit_usd": 50.0,
+                "max_position_usd": 500.0,
+            },
+            "sniper_mm": {
+                "max_trade_usd": 200.0,
+                "available_capital_usd": 800.0,
+                "risk_limit_usd": 100.0,
+                "max_position_usd": 1000.0,
+            },
+            "hedge": {
+                "max_trade_usd": 500.0,
+                "available_capital_usd": 2000.0,
+                "risk_limit_usd": 250.0,
+                "max_position_usd": 2500.0,
+            },
+            "trend": {
+                "max_trade_usd": 300.0,
+                "available_capital_usd": 1200.0,
+                "risk_limit_usd": 150.0,
+                "max_position_usd": 1500.0,
+            },
+            "jit_mm": {
+                "max_trade_usd": 75.0,
+                "available_capital_usd": 300.0,
+                "risk_limit_usd": 37.5,
+                "max_position_usd": 375.0,
+            }
+        }
+
+    async def get_capital_allocation(self, bot_id: str, drift_user):
+        """Get mock capital allocation for testing."""
+        from libs.orchestration.capital_allocator import CapitalAllocation
+
+        if bot_id not in self.allocations:
+            return CapitalAllocation(
+                bot_id=bot_id,
+                max_trade_usd=0.0,
+                available_capital_usd=0.0,
+                current_position_usd=0.0,
+                risk_limit_usd=0.0,
+                can_trade=False,
+                reason=f"Unknown bot type: {bot_id}"
+            )
+
+        config = self.allocations[bot_id]
+        # Mock current position for testing
+        current_position_usd = getattr(drift_user, 'current_position_usd', 0.0)
+        max_position_usd = config["max_position_usd"]
+        available_capital_usd = max(max_position_usd - abs(current_position_usd), 0.0)
+
+        # Determine if trading is allowed
+        risk_limit_usd = config["risk_limit_usd"]
+        position_utilization = abs(current_position_usd) / max_position_usd
+
+        if position_utilization > 0.95:
+            can_trade = False
+            reason = f"Position utilization too high: {position_utilization:.1%}"
+        elif available_capital_usd < risk_limit_usd:
+            can_trade = False
+            reason = f"Insufficient capital: {available_capital_usd:.2f} < {risk_limit_usd:.2f}"
+        else:
+            can_trade = True
+            reason = None
+
+        return CapitalAllocation(
+            bot_id=bot_id,
+            max_trade_usd=config["max_trade_usd"],
+            available_capital_usd=available_capital_usd,
+            current_position_usd=current_position_usd,
+            risk_limit_usd=risk_limit_usd,
+            can_trade=can_trade,
+            reason=reason
+        )
+
+    def get_bot_config(self, bot_id: str):
+        """Get mock bot configuration."""
+        configs = {
+            "shotgun_mm": {
+                "strategy": "high_frequency",
+                "max_orders_per_side": 1,
+                "position_tolerance": 0.1,
+            },
+            "sniper_mm": {
+                "strategy": "precision",
+                "max_orders_per_side": 1,
+                "position_tolerance": 0.05,
+            },
+            "hedge": {
+                "strategy": "hedging",
+                "max_orders_per_side": 3,
+                "position_tolerance": 0.2,
+            },
+            "trend": {
+                "strategy": "momentum",
+                "max_orders_per_side": 2,
+                "position_tolerance": 0.15,
+            },
+            "jit_mm": {
+                "strategy": "just_in_time",
+                "max_orders_per_side": 1,
+                "position_tolerance": 0.08,
+            }
+        }
+        return configs.get(bot_id, {})
+
+
+class MockCapitalAllocator:
+    """Mock CapitalAllocator for testing."""
+    
+    def __init__(self, config=None):
+        self.config = config or {}
+        self.stats = {
+            "total_allocations": 0,
+            "successful_allocations": 0,
+            "failed_allocations": 0,
+            "avg_processing_time_ms": 1.5,
+            "allocations_by_bot": {}
+        }
+        self._should_fail = False
+    
+    def set_should_fail(self, fail: bool):
+        """Set whether allocations should fail (for testing)."""
+        self._should_fail = fail
+    
+    async def get_capital_allocation(self, bot_id: str, drift_user) -> Optional[MockCapitalAllocation]:
+        """Mock get capital allocation."""
+        self.stats["total_allocations"] += 1
+        
+        if self._should_fail:
+            self.stats["failed_allocations"] += 1
+            return None
+        
+        # Default allocation based on bot type
+        if "shotgun" in bot_id.lower():
+            allocation = MockCapitalAllocation(
+                bot_id=bot_id,
+                max_trade_usd=100.0,
+                max_position_sol=3.0
+            )
+        elif "sniper" in bot_id.lower():
+            allocation = MockCapitalAllocation(
+                bot_id=bot_id,
+                max_trade_usd=400.0,
+                max_position_sol=5.0
+            )
+        elif "hedge" in bot_id.lower():
+            allocation = MockCapitalAllocation(
+                bot_id=bot_id,
+                max_trade_usd=500.0,
+                max_position_sol=10.0
+            )
+        elif "trend" in bot_id.lower():
+            allocation = MockCapitalAllocation(
+                bot_id=bot_id,
+                max_trade_usd=600.0,
+                max_position_sol=15.0
+            )
+        else:
+            allocation = MockCapitalAllocation(
+                bot_id=bot_id,
+                max_trade_usd=250.0,
+                max_position_sol=4.0
+            )
+        
+        self.stats["successful_allocations"] += 1
+        if bot_id not in self.stats["allocations_by_bot"]:
+            self.stats["allocations_by_bot"][bot_id] = 0
+        self.stats["allocations_by_bot"][bot_id] += 1
+        
+        return allocation
+    
+    def can_trade(self, allocation: MockCapitalAllocation, requested_usd: float) -> bool:
+        """Mock can trade validation."""
+        return (
+            allocation.free_collateral_usd > 50.0 and
+            requested_usd <= allocation.max_trade_usd and
+            requested_usd >= 25.0
+        )
+    
+    def get_performance_stats(self) -> Dict:
+        """Mock get performance stats."""
+        success_rate = 0.0
+        if self.stats["total_allocations"] > 0:
+            success_rate = (self.stats["successful_allocations"] / self.stats["total_allocations"]) * 100
+        
+        return {
+            **self.stats,
+            "success_rate_percent": round(success_rate, 2)
+        }
+
+
+class MockDriftUserForCapital:
+    """Mock DriftUser for capital allocation testing."""
+    
+    def __init__(self, total_collateral=2000000, free_collateral=1000000, positions=None):
+        self.total_collateral = total_collateral
+        self.free_collateral = free_collateral
+        self.positions = positions or []
+    
+    def get_total_collateral(self):
+        return self.total_collateral
+    
+    def get_free_collateral(self):
+        return self.free_collateral
+    
+    def get_perp_positions(self):
+        return self.positions
+
+
+@pytest.fixture
+def capital_allocator_config(test_config):
+    """Capital allocator configuration for testing."""
+    return test_config["capital_allocator"]
+
+
+@pytest.fixture
+def mock_capital_allocator(capital_allocator_config):
+    """Create a mock capital allocator."""
+    return MockCapitalAllocator(capital_allocator_config)
+
+
+@pytest.fixture
+def mock_drift_user_for_capital():
+    """Create a mock drift user for capital allocation testing."""
+    return MockDriftUserForCapital(
+        total_collateral=2000000,  # $2000 (scaled by 1e6)
+        free_collateral=1000000,   # $1000 (scaled by 1e6)
+        positions=[]
+    )
+
+
+@pytest.fixture
+def mock_capital_allocation():
+    """Create a mock capital allocation."""
+    return MockCapitalAllocation(
+        bot_id="test_bot",
+        max_trade_usd=100.0,
+        available_capital_usd=1000.0,
+        max_position_sol=3.0,
+        leverage_factor=5.0,
+        min_trade_sol=0.1,
+        max_trade_sol=2.0,
+        free_collateral_usd=1000.0,
+        total_collateral_usd=2000.0,
+        current_position_sol=0.0
+    )
 
 

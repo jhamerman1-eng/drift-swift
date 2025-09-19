@@ -1,0 +1,234 @@
+# Docker Compose for Trend Bot v3.0 Production Environment
+# Includes trend bot, monitoring, and supporting services
+
+version: '3.8'
+
+services:
+  # ============================================================================
+  # Trend Bot Service
+  # ============================================================================
+  trend-bot:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile.trend
+    container_name: trend-bot-v3
+    restart: unless-stopped
+    
+    environment:
+      # Core configuration
+      - TREND_CFG=/app/configs/trend/filters_enhanced.yaml
+      - DRIFT_CFG=/app/configs/core/drift_client.yaml
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+      
+      # Drift Protocol settings
+      - DRIFT_ENV=devnet
+      - DRIFT_RPC_URL=https://devnet.helius-rpc.com
+      - DRIFT_WS_URL=wss://devnet.helius-rpc.com
+      
+      # Swift integration
+      - SWIFT_FORWARD_BASE=https://master.swift.drift.trade
+      - SWIFT_WS_URL=wss://master.swift.drift.trade/ws
+      - SWIFT_API_KEY=${SWIFT_API_KEY}
+      
+      # Feature flags
+      - USE_ENHANCED_FILTERS=true
+      - USE_RBC_SIZING=true
+      - USE_OCO_STOPS=true
+      - USE_ATTRIBUTION=true
+      
+      # Monitoring
+      - METRICS_PORT=9112
+      - LOG_LEVEL=INFO
+      
+      # Risk management
+      - MAX_POSITION_USD=5000
+      - MAX_DAILY_LOSS_USD=1000
+      - STOP_LOSS_PCT=0.01
+      - TAKE_PROFIT_PCT=0.02
+    
+    volumes:
+      # Persistent data storage
+      - trend-data:/app/data
+      - trend-logs:/app/logs
+      # Configuration overrides (optional)
+      - ./configs:/app/configs:ro
+      # Wallet file (if using file-based wallet)
+      - ${WALLET_PATH:-./wallet.json}:/app/wallet.json:ro
+    
+    ports:
+      - "9112:9112"  # Prometheus metrics
+    
+    networks:
+      - trend-network
+    
+    depends_on:
+      - prometheus
+      - grafana
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9112/metrics"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ============================================================================
+  # Monitoring Stack
+  # ============================================================================
+  
+  # Prometheus - Metrics collection
+  prometheus:
+    image: prom/prometheus:v2.45.0
+    container_name: trend-prometheus
+    restart: unless-stopped
+    
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=30d'
+      - '--web.enable-lifecycle'
+    
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    
+    ports:
+      - "9090:9090"
+    
+    networks:
+      - trend-network
+
+  # Grafana - Metrics visualization
+  grafana:
+    image: grafana/grafana:10.0.0
+    container_name: trend-grafana
+    restart: unless-stopped
+    
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-trendbot123}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel
+    
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    
+    ports:
+      - "3000:3000"
+    
+    networks:
+      - trend-network
+    
+    depends_on:
+      - prometheus
+
+  # ============================================================================
+  # Optional Services
+  # ============================================================================
+  
+  # Redis - For caching and session state (optional)
+  redis:
+    image: redis:7-alpine
+    container_name: trend-redis
+    restart: unless-stopped
+    
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-trendbot123}
+    
+    volumes:
+      - redis-data:/data
+    
+    ports:
+      - "6379:6379"
+    
+    networks:
+      - trend-network
+    
+    profiles:
+      - "full"  # Only start with --profile full
+
+  # PostgreSQL - For advanced attribution analytics (optional)
+  postgres:
+    image: postgres:15-alpine
+    container_name: trend-postgres
+    restart: unless-stopped
+    
+    environment:
+      - POSTGRES_DB=trendbot
+      - POSTGRES_USER=trendbot
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-trendbot123}
+    
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    
+    ports:
+      - "5432:5432"
+    
+    networks:
+      - trend-network
+    
+    profiles:
+      - "full"
+
+  # Jupyter Lab - For research and analysis (optional)
+  jupyter:
+    image: jupyter/datascience-notebook:latest
+    container_name: trend-jupyter
+    restart: unless-stopped
+    
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=${JUPYTER_TOKEN:-trendbot123}
+    
+    volumes:
+      - trend-data:/home/jovyan/data:ro
+      - ./notebooks:/home/jovyan/notebooks
+    
+    ports:
+      - "8888:8888"
+    
+    networks:
+      - trend-network
+    
+    profiles:
+      - "research"  # Only start with --profile research
+
+# ============================================================================
+# Networks and Volumes
+# ============================================================================
+
+networks:
+  trend-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  trend-data:
+    driver: local
+  trend-logs:
+    driver: local
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local
+  redis-data:
+    driver: local
+    external: false
+  postgres-data:
+    driver: local
+    external: false
+
+
+

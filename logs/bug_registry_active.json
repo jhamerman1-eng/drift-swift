@@ -101,5 +101,220 @@
     "log_entries": [],
     "resolution_attempted": false,
     "resolution_notes": []
+  },
+  "SIDECAR-MODULE-001": {
+    "id": "SIDECAR-MODULE-001",
+    "description": "Sidecar module dependency failures preventing on-chain order placement",
+    "root_cause": "TypeScript files not compiled, module exports conflicts, intentional stub mode",
+    "impact": "All orders routed to stub mode, zero on-chain transactions",
+    "priority": "critical",
+    "status": "active",
+    "created": 1726409400.0,
+    "updated": 1726409400.0,
+    "context": {
+      "affected_component": "swift_sidecar",
+      "missing_files": [
+        "dist/market.js",
+        "dist/metrics.js"
+      ],
+      "module_errors": [
+        "ERR_MODULE_NOT_FOUND",
+        "Cannot find module dist/market"
+      ],
+      "stub_indicators": [
+        "Line 22: TODO: Implement actual on-chain order placement",
+        "Line 32: FALLBACK: Using stub mode - order NOT placed on-chain"
+      ]
+    },
+    "log_entries": [],
+    "resolution_attempted": false,
+    "resolution_notes": []
+  },
+  "DRIFTCLIENT-SUB-001": {
+    "id": "DRIFTCLIENT-SUB-001",
+    "description": "DriftClient subscription failure causing position and oracle errors",
+    "root_cause": "DriftClient.subscribe() not called before accessing sub account data",
+    "impact": "Position tracking fails, oracle price returns 0, max order size calculation errors",
+    "priority": "critical",
+    "status": "active",
+    "created": 1726409400.0,
+    "updated": 1726409400.0,
+    "context": {
+      "affected_component": "drift_client",
+      "error_message": "No sub account id 0 found, need to call await DriftClient.subscribe() first",
+      "impact_areas": [
+        "position_tracking",
+        "oracle_pricing",
+        "order_sizing",
+        "account_balance"
+      ]
+    },
+    "log_entries": [],
+    "resolution_attempted": false,
+    "resolution_notes": []
+  },
+  "JIT-LIMITATION-001": {
+    "id": "JIT-LIMITATION-001",
+    "description": "JIT place_and_make only supports Swift taker orders, not market maker orders",
+    "root_cause": "Architectural limitation - JIT designed for responding to taker orders",
+    "impact": "Market maker orders cannot use JIT functionality, falls back to non-functional sidecar",
+    "priority": "high",
+    "status": "active",
+    "created": 1726409400.0,
+    "updated": 1726409400.0,
+    "context": {
+      "affected_component": "jit_service",
+      "limitation": "place_and_make requires Swift taker order - this is a market making order",
+      "solution_needed": "Direct DriftPy integration for market maker orders"
+    },
+    "log_entries": [],
+    "resolution_attempted": false,
+    "resolution_notes": []
+  },
+  "BALANCE-SAFETY-001": {
+    "id": "BALANCE-SAFETY-001",
+    "description": "Bot attempted JIT trade larger than account balance",
+    "root_cause": "Insufficient balance validation before trade execution",
+    "impact": "Risk of failed transactions and capital inefficiency",
+    "priority": "medium",
+    "status": "active",
+    "created": 1726409400.0,
+    "updated": 1726409400.0,
+    "context": {
+      "affected_component": "risk_management",
+      "example_error": "Insufficient balance for JIT trade: 322.6900 SOL",
+      "account_balance": "259.4513 SOL",
+      "attempted_trade": "322.6900 SOL"
+    },
+    "log_entries": [],
+    "resolution_attempted": false,
+    "resolution_notes": []
+  },
+  "ERR-36F61AE5": {
+    "id": "ERR-36F61AE5",
+    "description": "Runtime error: RecursionError - maximum recursion depth exceeded",
+    "root_cause": "Exception in initialize",
+    "impact": "Affects swift_subscriber",
+    "priority": "medium",
+    "status": "active",
+    "created": 1757978040.6704762,
+    "updated": 1757978040.6704762,
+    "context": {
+      "component": "swift_subscriber",
+      "function": "initialize",
+      "websocket_available": true,
+      "sidecar_url": null,
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\run_swift_mm_complete.py",
+      "line": 1035
+    },
+    "log_entries": [],
+    "resolution_attempted": false,
+    "resolution_notes": []
+  },
+  "ERR-B01FF344": {
+    "id": "ERR-B01FF344",
+    "description": "Runtime error: SolanaRpcException - ",
+    "root_cause": "Exception in main",
+    "impact": "Affects bot_initialization",
+    "priority": "medium",
+    "status": "active",
+    "created": 1757978679.9679434,
+    "updated": 1757978679.9679434,
+    "context": {
+      "component": "bot_initialization",
+      "function": "main",
+      "wallet_file": ".valid_wallet.json",
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\run_swift_mm_complete.py",
+      "line": 3158
+    },
+    "log_entries": [],
+    "resolution_attempted": false,
+    "resolution_notes": []
+  },
+  "ERR-56FBB37F": {
+    "id": "ERR-56FBB37F",
+    "description": "Runtime error: RuntimeError - Sidecar validation failed: Expecting value: line 1 column 1 (char 0)",
+    "root_cause": "Exception in main",
+    "impact": "Affects bot_initialization",
+    "priority": "medium",
+    "status": "active",
+    "created": 1758011127.518369,
+    "updated": 1758011127.518369,
+    "context": {
+      "component": "bot_initialization",
+      "function": "main",
+      "wallet_file": ".valid_wallet.json",
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\run_swift_mm_complete.py",
+      "line": 3885
+    },
+    "log_entries": [],
+    "resolution_attempted": false,
+    "resolution_notes": []
+  },
+  "ERR-6E457E46": {
+    "id": "ERR-6E457E46",
+    "description": "Runtime error: ValueError - signature error: Cannot decompress Edwards point",
+    "root_cause": "Exception in initialize",
+    "impact": "Affects wallet_loading",
+    "priority": "medium",
+    "status": "resolved",
+    "created": 1758034281.0843518,
+    "updated": 1758034331.0,
+    "context": {
+      "component": "wallet_loading",
+      "function": "initialize",
+      "wallet_file": ".devnet_wallet.json",
+      "wallet_format": "array",
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\run_swift_mm_complete.py",
+      "line": 1157
+    },
+    "log_entries": [],
+    "resolution_attempted": true,
+    "resolution_notes": [
+      "Fixed corrupted keypair by deriving correct public key from secret seed using repair_devnet_wallet.py",
+      "Root cause: 64-byte keypair had corrupted public key portion",
+      "Solution: Extract 32-byte secret key, derive correct public key using nacl.signing.SigningKey",
+      "Result: Wallet now loads successfully with public key GfYpU5xEQVErvsje7Reekq3tfhVnXLX8yvFxJgFRMiZC"
+    ]
+  },
+  "ERR-5D87E9D6": {
+    "id": "ERR-5D87E9D6",
+    "description": "Runtime error: TypeError - StartupValidator.__init__() takes 1 positional argument but 2 were given",
+    "root_cause": "Exception in start_jit_mm_shotgun",
+    "impact": "Affects bot_initialization",
+    "priority": "medium",
+    "status": "active",
+    "created": 1758128290.1296191,
+    "updated": 1758128290.1296191,
+    "context": {
+      "component": "bot_initialization",
+      "function": "start_jit_mm_shotgun",
+      "wallet_file": ".valid_wallet.json",
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\start_jit_mm_shotgun.py",
+      "line": 93
+    },
+    "log_entries": [],
+    "resolution_attempted": false,
+    "resolution_notes": []
+  },
+  "ERR-3776A573": {
+    "id": "ERR-3776A573",
+    "description": "Runtime error: StartupValidationError - Startup validation failed: Missing wallet configuration",
+    "root_cause": "Exception in main",
+    "impact": "Affects bot_initialization",
+    "priority": "medium",
+    "status": "active",
+    "created": 1758244192.8934703,
+    "updated": 1758244192.8934703,
+    "context": {
+      "component": "bot_initialization",
+      "function": "main",
+      "wallet_file": ".devnet_wallet.json",
+      "file": "C:\\Users\\Jeremy\\OneDrive\\Documents\\Drift_bots\\drift-swift\\run_swift_mm_complete.py",
+      "line": 5330
+    },
+    "log_entries": [],
+    "resolution_attempted": false,
+    "resolution_notes": []
   }
 }

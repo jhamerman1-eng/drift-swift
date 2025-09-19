@@ -22,6 +22,7 @@ FLAG_KEYS = {
     "obi_enabled": "feature:obi:enabled",
     "trend_enabled": "feature:trend:enabled",
     "hedge_enabled": "feature:hedge:enabled",
+    "jit_enabled": "feature:jit:enabled",
 }
 
 def get_flag(name: str, fallback: bool) -> bool:

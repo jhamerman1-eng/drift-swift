@@ -20,7 +20,7 @@ sys.path.append(str(Path(__file__).parent / "libs"))
 from libs.drift.client import build_client_from_config
 from libs.order_management import PositionTracker, OrderManager
 from orchestrator.risk_manager import RiskManager
-from bots.trend.main import trend_iteration, load_trend_config
+from bots.trend.main import enhanced_trend_iteration, load_enhanced_trend_config
 # Setup centralized logging
 from libs.logging_config import setup_critical_logging
 logger = setup_critical_logging("trend-bot")
@@ -44,6 +44,9 @@ class TrendBetaLauncher:
 
         # Initialize data structures for trend analysis
         self.prices = deque(maxlen=1000)
+        self.highs = deque(maxlen=1000)
+        self.lows = deque(maxlen=1000)
+        self.volumes = deque(maxlen=1000)
         self.macd_values = deque(maxlen=1000)
         self.state_vars = {}  # For EMA state variables
 
@@ -107,7 +110,7 @@ class TrendBetaLauncher:
                 logger.error(f"Expected path: {Path(config_path).absolute()}")
                 return {}
                 
-            config = load_trend_config(config_path)
+            config = load_enhanced_trend_config(config_path)
             logger.info("Trend configuration loaded")
             return config
         except Exception as e:
@@ -129,10 +132,11 @@ class TrendBetaLauncher:
 
                 # Run one iteration of trend analysis
                 if self.client is not None:
-                    await trend_iteration(
+                    await enhanced_trend_iteration(
                         config, self.client, self.risk_manager,
                         self.position_tracker, self.order_manager,
-                        self.prices, self.macd_values, self.state_vars
+                        self.prices, self.highs, self.lows, self.volumes,
+                        self.macd_values, self.state_vars
                     )
                 else:
                     logger.error("Drift client is not initialized. Skipping trend iteration.")

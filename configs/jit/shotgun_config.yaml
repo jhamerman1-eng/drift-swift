@@ -1,0 +1,65 @@
+# Enhanced JIT Market Maker - Shotgun Mode Configuration
+# Optimized for broad volume capture with small clips
+
+# Core JIT parameters
+symbol: "SOL-PERP"
+leverage: 10
+post_only: true
+obi_microprice: true
+
+# Spread management (tighter for shotgun)
+spread_bps:
+  base: 6.0      # Tighter base spread for shotgun
+  min: 3.0       # Minimum spread
+  max: 15.0      # Maximum spread
+
+# Position management (shotgun specific)
+inventory_target: 0.0      # Target inventory position
+max_position_abs: 200.0    # Higher position limit for shotgun
+
+# Order management (shotgun specific)
+cancel_replace:
+  enabled: true
+  interval_ms: 500         # Faster cancel/replace for shotgun
+  toxicity_guard: true     # Enable toxicity protection
+
+# Latency optimization settings
+latency_optimization:
+  enabled: true
+  performance_tracking: true
+  attribution_enabled: true
+  cycle_frequency_hz: 2.0      # Higher frequency for shotgun
+  max_cycle_latency_ms: 50.0   # Stricter latency for shotgun
+  adaptive_frequency: true      # Enable adaptive frequency adjustment
+
+# Strategy coordination settings (shotgun mode)
+strategy_coordination:
+  enabled: true
+  max_total_delta: 150.0       # Higher delta limit for shotgun
+  warning_delta: 100.0         # Warning threshold for delta
+  strategies:
+    hybrid_shotgun:
+      hedge_ratio: 0.9         # Higher hedge ratio for shotgun
+      max_delay_ms: 300        # Faster hedging
+      urgency_multiplier: 1.5  # Higher urgency
+      allow_position_building: true
+      max_strategy_delta: 50.0 # Higher delta per strategy
+      quality_threshold: 0.6   # Lower quality threshold for shotgun
+      min_hedge_size: 0.5      # Smaller minimum hedge size
+
+# RPC configuration
+rpc:
+  endpoints:
+    - name: "mainnet-beta"
+      http_url: "https://api.mainnet-beta.solana.com"
+      priority: 1
+    - name: "helius"
+      http_url: "https://mainnet.helius-rpc.com/?api-key=YOUR_API_KEY"
+      priority: 2
+
+# Drift client configuration
+drift_client:
+  env: "mainnet"
+  rpc_url: "https://api.mainnet-beta.solana.com"
+  commitment: "confirmed"
+  timeout: 30

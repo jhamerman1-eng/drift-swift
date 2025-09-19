@@ -80,7 +80,11 @@ Once Solana CLI is installed and working:
 
 3. **Start real beta trading:**
    ```bash
-   python launch_hedge_beta_real.py
+   # Using Ultimate Hedge Bot (recommended)
+   python ultimate_hedge_bot/core/main.py
+
+   # Or using Jitter Hedge Bot
+   python bots/jitter/hybrid.py
    ```
 
 ## Alternative: Use Existing Wallet

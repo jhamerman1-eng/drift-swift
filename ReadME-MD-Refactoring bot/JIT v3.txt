@@ -1,0 +1,183 @@
+JIT v3
+JIT MM Bot — Product Deep Dive
+1) User stories with profit-oriented acceptance criteria
+JIT-QUOTE-001 — OBI Microprice as Quote Reference
+
+Story: As a maker, I want my quotes centered on a robust microprice (OBI-weighted mid) so that the expected value of a passive fill is maximized after fees and adverse selection.
+
+Acceptance criteria (why this makes money):
+
+On a 7-day devnet replay, quotes centered on microprice must improve post-fee fill edge by ≥ 2 bps vs plain mid (baseline), measured as (signed fill price − true next mid at +250ms) aggregated across fills.
+
+Handling degenerate books:
+
+If either side missing: do not quote that side.
+
+If best_ask ≤ best_bid: widen to at least min_spread_bps (config) or skip quoting.
+
+Microprice weights are regime-aware (low/normal/high vol) and must be hot-swappable without restart.
+
+JIT-QUOTE-002 — Spoof Filter (Shallow Depth Guard)
+
+Story: As a maker, I want to ignore shallow/outlier levels to avoid quoting against spoof-prone top-of-book.
+
+Acceptance criteria (profit focus):
+
+With spoof filter ON, toxic fill rate (fills followed by adverse move > X bps within 250ms) must drop ≥ 15% vs OFF, with ≤5% loss in fill share.
+
+If bid/ask adjustment from spoof filter would push spread < min_spread_bps, clamp at min_spread_bps.
+
+JIT-QUOTE-003 — Toxicity-Based Spread Skew
+
+Story: As a maker, I need to widen quotes when toxicity (sweep rate / spread shock proxy) spikes to reduce adverse fills.
+
+Acceptance criteria:
+
+When toxicity proxy > threshold, effective quoted spread increases by configured multiplier and yields ≥25% reduction in P&L per toxic interval loss vs no-skew control arm.
+
+Widening must not exceed max_spread_bps. If exceeded, cap and emit metric jit_spread_bps.
+
+JIT-EXEC-001 — Cancel/Replace v2 (Min Lifetime + Price Move Bps)
+
+Story: As a quote engine, I need to refresh only when the reference moves meaningfully, while respecting a minimum quote lifetime, so I reduce waste and avoid rate-limit bans.
+
+Acceptance criteria:
+
+Quotes refresh if and only if:
+
+Age ≥ min_lifetime_ms, and
+
+Reference moves ≥ price_move_bps.
+
+95th percentile refresh rate ≤ 3/s per side in normal regime.
+
+Maker order lifetime median ≥ min_lifetime_ms.
+
+Achieve ≥80% maker fills (not taker by our own submission) in shadow runs.
+
+JIT-EXEC-002 — Post-Only/Auction Guard (Driver Level)
+
+Story: As a maker, I want all submissions routed as post-only (or equivalent) and avoid taker fees unless explicitly allowed by risk rails.
+
+Acceptance criteria:
+
+≥ 99% of new/replace actions are not immediately matched as taker due to our submit (exchange semantics permitting).
+
+If post-only not available, emulate by price ≤ best_bid (for bid) or ≥ best_ask (for ask) with 1 tick offset.
+
+JIT-RISK-001 — Crash Sentinel v2 (3σ/Hard Move)
+
+Story: As risk, I need to halt or de-risk during crashes.
+
+Acceptance criteria:
+
+On HALT: 0 new orders within ≤50ms of trigger; cancel_all issued within ≤200ms.
+
+On DE_RISK: new quote sizes reduced by configured fraction; measured size multiplier drops accordingly in metrics.
+
+Post event, realized drawdown (peak-to-trough, per minute) ≤ 70% of control arm without sentinel.
+
+JIT-RISK-002 — Portfolio Rails
+
+Story: As PM, I want automatic sizing and strategy gates based on P&L drawdown and inventory caps.
+
+Acceptance criteria:
+
+When cumulative P&L ≤ −7.5%: size multiplier halves; ≤ −12.5%: JIT sizes quartered & trend paused; ≤ −20%: only hedger active.
+
+Token inventory never exceeds token_cap; any attempt clamps size to avoid breaches.
+
+Average absolute inventory over 1h ≤ 60% of token_cap.
+
+JIT-ALPHA-001 — Superburst Profile-D (Breakout Boost)
+
+Story: As a maker, I want temporary size boosts when ATR≥trigger and price change ≥ threshold (clear breakout) to monetize directional microstructure.
+
+Acceptance criteria:
+
+On enabled markets, backtests must show stat-sig positive incremental P&L (t-stat ≥ 2) in breakout windows; otherwise feature defaults to OFF.
+
+Size boost never exceeds leverage_cap, and not applied during DE_RISK/HALT.
+
+JIT-ATTR-001 — A/B Attribution (OBI vs Control)
+
+Story: As research, I want per-arm metrics & tags.
+
+Acceptance criteria:
+
+All quote actions/fills carry arm label (with_obi | default).
+
+Export metrics: jit_quotes_total{arm}, spread bps, ref price, and (when wired to fills) jit_pnl{arm}.
+
+Able to run both arms concurrently with separate configs (orchestrator supports two JIT loops).
+
+JIT-OBS-001 — Metrics Coverage
+
+Story: As SRE/trader, I want full real-time visibility.
+
+Acceptance criteria:
+
+Gauges/Counters/Summaries:
+
+jit_ref_price, jit_spread_bps, jit_size_mult, jit_toxicity_score, jit_quotes_total, jit_refresh_total{reason}, jit_tick_to_quote_seconds{arm}.
+
+Grafana panel shows spread, ref price, and refresh reasons distribution.
+
+2) Logic & technical blueprint (per feature)
+
+Inputs:
+
+orderbook: best_bid/ask (extend to levels for production), last trade events (optional), realized vol, short-horizon return, ATR estimate.
+
+pnl_step, inventory, time since last hedge (rails + hedger interaction).
+
+Core Reference:
+ref = microprice_weight * ask + (1 - microprice_weight) * bid.
+Regime selection (low/normal/high vol) sets microprice weight & spoof strength.
+
+Spoof Filter:
+Inflate best_ask/bid marginally when spoof strength high. In prod: compute depth-weighted median or drop thin levels outlier by z-score.
+
+Toxicity Proxy:
+Proxy = f(spread/base, recent sweep rate, imbalance). Here we ship a simple spread-shock proxy; can extend with imbalance/sweep features.
+
+Spread:
+base_spread from filtered bests; apply skew if tox > threshold; clamp [min_spread_bps, max_spread_bps].
+
+Cancel/Replace v2:
+Track last quoted ref_price + timestamp; refresh only if age_ms ≥ min_lifetime_ms and abs(delta_ref)/ref ≥ price_move_bps/1e4.
+
+Rails/Crash Sentinel:
+Orchestrator computes rails state (pnl driven) + sentinel state (vol & price change). JIT engine reads size multiplier from cfg injected by orchestrator; halts on sentinel.
+
+Superburst:
+If ATR ≥ atr_trigger and |Δp| ≥ breakout_threshold, temporarily boost size (bounded by leverage_cap); disabled in de-risk/halt.
+
+Attribution:
+Arm selection from config; propagate to metrics/labels; for production, attach to order metadata.
+
+3) Production-ready code (drop-in for our v3.0 build)
+
+I wrote focused modules and an orchestrator patch that slots into the v3.0 scaffold we already shipped.
+
+Upgrade ZIP: jit_v3_upgrade.zip
+Contains:
+
+bots/jit/engine.py – JITEngine (ref price, spoof filter, toxicity-skew, CRv2, metrics)
+
+bots/jit/metrics.py – Prometheus metrics
+
+bots/jit/cancel_replace.py – CRv2 logic
+
+bots/jit/attribution.py – arm tagging
+
+orchestrator_engine_integration.patch – patch to wire engine into the orchestrator loop
+
+Orchestrator integration patch
+
+Apply this patch to bots/orchestrator/main.py to switch the JIT loop to JITEngine:
+
+patch -p0 < orchestrator_engine_integration.patch
+
+
+(You can also open and apply it manually; it only touches the JIT import and the run_jit_bot body.)
