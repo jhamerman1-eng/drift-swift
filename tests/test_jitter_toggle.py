@@ -1,6 +1,48 @@
 ﻿import asyncio
 
+import sys
+import types
+
 from libs.jitter.runtime import resolve_jitter_settings
+
+
+def _install_runtime_stubs() -> None:
+    if "driftpy" not in sys.modules:
+        driftpy_module = types.ModuleType("driftpy")
+        sys.modules["driftpy"] = driftpy_module
+
+        drift_client_module = types.ModuleType("driftpy.drift_client")
+        setattr(drift_client_module, "DriftClient", object)
+        sys.modules["driftpy.drift_client"] = drift_client_module
+
+        types_module = types.ModuleType("driftpy.types")
+        for name in ["OrderParams", "OrderType", "PositionDirection", "PostOnlyParams"]:
+            setattr(types_module, name, type(name, (), {}))
+        sys.modules["driftpy.types"] = types_module
+
+    if "solders" not in sys.modules:
+        solders_module = types.ModuleType("solders")
+        keypair_module = types.ModuleType("solders.keypair")
+
+        class _KeypairStub:
+            def __init__(self, *_, **__):
+                pass
+
+            @staticmethod
+            def from_bytes(data):  # type: ignore[override]
+                return _KeypairStub()
+
+            def pubkey(self):  # type: ignore[override]
+                return "StubPubkey"
+
+        keypair_module.Keypair = _KeypairStub
+        solders_module.keypair = keypair_module
+        sys.modules["solders"] = solders_module
+        sys.modules["solders.keypair"] = keypair_module
+
+
+_install_runtime_stubs()
+
 from run_swift_mm_complete import CompleteSwiftMMBot
 
 
